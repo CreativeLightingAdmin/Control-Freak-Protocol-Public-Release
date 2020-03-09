@@ -1,0 +1,981 @@
+// The eDIDIO S10 Protocol Buffer Structure
+// Version Number 1.0.0
+
+syntax = "proto3";
+
+/*********** ENUMERATIONS/Types ************/
+enum TriggerOperationType {
+    MOMENTARY             = 0; // A Short Press occurs when a button is pressed for less than 250ms (and at least 50ms). A Long Press occurs when a button is pressed for longer than 650ms. Holding the button down will repeat the Long Press action every 400ms.
+    LATCHING              = 1; // Instantaneous on short to ground (debounced to 50ms). Trigger occurs once upon entering this state (LOW) and once upon leaving this state (HIGH).
+    MOMENTARY_OUTPUT      = 2; // A temporary output signal
+    LATCHING_OUTPUT       = 3; // A continous output signal
+    MOMENTARY_DISABLED    = 128; // Used to track the enabled/disabled state of an I/O
+    LATCHING_DISABLED     = 129; // Used to track the enabled/disabled state of an I/O
+}
+
+enum TriggerType {
+	DALI_ARC                            = 0; // For controlling DALI Arc Levels (0 to 254) and 255 for MASK
+	DALI_COMMAND                        = 1; // See (https://en.wikipedia.org/wiki/Digital_Addressable_Lighting_Interface#Commands_for_control_gear) for a list of common DALI commands
+	DMX_CHANNELS_SPLIT_LOW              = 2; // NOTE: Expects the channel number (not zero-based)
+	DMX_CHANNELS_SPLIT_HIGH             = 3; // NOTE: Expects the channel number (not zero-based)
+	DMX_MULTICAST_CHANNELS_SPLIT_LOW    = 4; // NOTE: Expects the channel INDEX to start from, as it takes into account the start address set from Spektra
+	DMX_MULTICAST_CHANNELS_SPLIT_HIGH   = 5; // NOTE: Expects the channel INDEX to start from, as it takes into account the start address set from Spektra
+	DMX_BROADCAST                       = 6; // Affects all DMX lights as per the Spektra Settings (number of lights and channels per light)
+	DIDIO                               = 7;
+	FADE_UP_WITH_MIN                    = 8;
+	LIST_START                          = 9;
+	LIST_START_CONTINUOUS               = 10;
+	LIST_STOP                           = 11;
+	SPEKTRA_START_SEQ                   = 12;
+	SPEKTRA_STOP_SEQ                    = 13;
+	SPEKTRA_THEME                       = 14;
+	SPEKTRA_STATIC                      = 15;
+	SPEKTRA_SCHEDULE                    = 16;
+	LINK_START                          = 17;
+	LINK_STOP                           = 18;
+	DISABLE_BURN                        = 19;
+	ENABLE_BURN                         = 20;
+	ON_OFF_TOG                          = 21;
+	MIN_MAX_TOG                         = 22;
+	ENABLE_INPUT                        = 23;
+	DISABLE_INPUT                       = 24;
+	ENABLE_TOG_INPUT                    = 25;
+	OUTPUT_TOG                          = 26;
+	OUTPUT_HIGH                         = 27;
+	OUTPUT_LOW                          = 28;
+	OUTPUT_TRIG                         = 29;
+	PROFILE_CHANGE                      = 30;
+	FADE_LONG_PRESS                     = 31;
+	SYNCRO                              = 32;
+	PRESET_CODE                         = 33;
+	CUSTOM_CODE                         = 34;
+    SPEKTRA_SLEEP                       = 35;
+    SPEKTRA_RESUME                      = 36;
+	DEVICE_RESET						= 37;
+	DEVICE_SAVE							= 38;
+    USER_LEVEL_STORE_NEW                = 39;
+    USER_LEVEL_SET_DEFAULT              = 40;
+    USER_LEVEL_RECALL                   = 41;
+    ROOM_JOIN                           = 43;
+    ROOM_UNJOIN                         = 44;
+	TYPE8_TC_WARMER					    = 45;
+	TYPE8_TC_COOLER					    = 46;
+	TYPE8_TC_ACTUAL					    = 47;
+	LOGIC_OPERATION                     = 48;
+	ALARM_ENABLE						= 49;
+	ALARM_DISABLE						= 50;
+    NO_COMMAND                          = 254; // This TriggerType should always be at the bottom of the list. Add any new TriggerTypes above it (up to 253).
+}
+
+enum ReadType {
+    INPUTS      = 0;
+    OUTPUTS     = 1;
+    IR          = 2;
+    SENSOR      = 3;
+    // DEPRECATED: SENSORS (4)
+    LIST        = 5;
+    // DEPRECATED: LISTS (6)
+    ALARMS      = 7;
+    BURN_IN     = 8;
+    PROJECT     = 9;
+    NETWORK     = 10;
+    DEVICE      = 11;
+    POLL_DATA   = 12;
+    LIST_EXTENDED = 13;
+	LOGIC	= 14;
+}
+
+enum AlarmRepeatType {
+    ALARM_NO_REPEAT         = 0;
+    ALARM_REPEAT_DAILY      = 1;
+    ALARM_REPEAT_WORK_DAY   = 2;
+    ALARM_REPEAT_WEEKLY     = 3;
+    ALARM_REPEAT_MONTHLY    = 4;
+}
+
+enum AlarmAstroType {
+    ALARM_NO_ASTRO  = 0;
+    ALARM_SUNRUSE   = 1;
+    ALARM_SUNSET    = 2;
+}
+
+enum SpektraTargetType {
+    SETTINGS     = 0;
+    SEQUENCE     = 1;
+    THEME        = 2;
+    STATIC       = 3;
+	CALENDAR     = 4;
+}
+
+enum SpektraActionType {
+    START  = 0;
+    STOP   = 1;
+    PAUSE  = 2;
+    SAVE   = 3;
+}
+
+enum SpektraUnscheduledBehaviourType {
+    RUN_RANDOM_COLOURED_SEQUENCE    = 0; // Unless otherwise specified, this is a rotate sequence with random colours rotating every 5 seconds
+    RUN_SEQUENCE_1                  = 1; // Can be used to set a 'Default Sequence' with a known pattern and colour combination
+    RESUME_PREVIOUS                 = 2; // Resume the last Sequence or Theme that Spektra had active
+    DO_NOTHING                      = 254; // Left as the last possible type, fill between 0 and 253 as necessary
+}
+
+enum AckMessageType {
+    DECODE_FAILED                  = 0; // May indicate an issue with the protocol (e.g. a mismatch in expected fields between clients). Ensure both parties are using the latest version.
+    INDEX_OUT_OF_BOUNDS            = 1; // A resource was requested beyond the amount available.
+    UNEXPECTED_TYPE                = 2; // The provided message was not able to be handled or processed (likely due to a lack of enough information or incorrect values).
+    ENCODE_FAILED                  = 3; // Not currently in use.
+    KEY_MISMATCH                   = 4; // Not currently in use.
+    SUCCESS                        = 5; // The message was decoded and handled successfully.
+    INVALID_PARAMS                 = 6; // The message was decoded but had invalid data for the intended outcome.
+    UNEXPECTED_COMMAND             = 7; // The message was decoded but the requested action was not valid for current the state of the device.
+    COMMUNICATION_FAILED           = 8; // The message could not be received or sent due to an internal issue.
+    COMMUNICATION_TIMEOUT          = 9; // May indicate contention for a shared resource or that an existing task is taking longer than expected and the latest request has timed-out.
+    DATA_TOO_LONG                  = 10; // May indicate too much data was in the request or the required reply would be too big to handle.
+    UNEXPECTED_CASE                = 11; // May indicate that the message is out of context (e.g. an "end" command for a process that is not running) or that the message requests a feature that is not yet implemented.
+    SLOTS_FULL                     = 12; // Typically indicates that a request was valid, but the relevant content is "full" and thus elements must be removed before continuing.
+    UNAUTHORISED                   = 13; // The message could not be actioned because the connection has not been authorised.
+}
+
+enum Type8CommandType {
+    ENABLE_DEVICE_TYPE8                  = 0;
+    SET_TEMP_X_COORD                     = 1;
+    SET_TEMP_Y_COORD                     = 2;
+    ACTIVATE                             = 3;
+    X_COORD_STEP_UP                      = 4;
+    X_COORD_STEP_DOWN                    = 5;
+    Y_COORD_STEP_UP                      = 6;
+    Y_COORD_STEP_DOWN                    = 7;
+    SET_TEMP_COLOUR_TEMPERATURE          = 8;
+    COLOUR_TEMPERATURE_STEP_COOLER       = 9;
+    COLOUR_TEMPERATURE_STEP_WARMER       = 10;
+    SET_TEMP_PRI_N_DIMLEVEL              = 11;
+    SET_TEMP_RGB_DIMLEVEL                = 12;
+    SET_TEMP_WAF_DIMLEVEL                = 13;
+    SET_TEMP_RGBWAF_CONTROL              = 14;
+    COPY_REPORT_TEMPORARY                = 15;
+    STORE_TY_PRI_N                       = 16;
+    STORE_XY_COORD_PRI_N                 = 17;
+    STORE_COLOUR_TEMPERATURE_LIMIT       = 18;
+    STORE_GEAR_FEATURES_STATUS           = 19;
+    ASSIGN_COLOR_LINKED_CH               = 20;
+    START_AUTO_CAL                       = 21;
+}
+
+enum Type8QueryType {
+    TYPE8_QUERY_GEAR_FEATURES_STATUS  = 0;
+    TYPE8_QUERY_COLOUR_STATUS         = 1;
+    TYPE8_QUERY_COLOUR_TYPE_FEATURES  = 2;
+    TYPE8_QUERY_COLOUR_VALUE          = 3;
+    TYPE8_QUERY_RGBWAF_CONTROL        = 4;
+    TYPE8_QUERY_ASSIGNED_COLOUR       = 5;
+    TYPE8_QUERY_EXT_VERSION_NUM       = 6;
+}
+
+enum LineType {
+    LINE_EMPTY  = 0;
+    LINE_DALI   = 1;
+    LINE_DMX    = 2;
+	LINE_DMX_IN = 3; // Must be set in the case of DMX to DALI Translation.
+}
+
+enum EventType {
+    REGISTER         = 0; // Sent by the client to register for events.
+    TRIGGER_EVENT    = 1; // Emitted when trigger runs an action listed in TriggerType.
+    INPUT_EVENT      = 2; // Emitted when an input is triggered.
+    SENSOR_EVENT     = 3; // Emitted when a sensor is triggered.
+    CONTROL_EVENT    = 4; // Emitted when an DALI/DMX/phyiscal output type event is done. References an action in TriggerType.
+    ROOM_JOIN_EVENT  = 5; // Emitted when rooms are joined/unjoined.
+}
+
+enum DALIQueryType {
+    DALI_QUERY_NULL                         = 0; // Required as the first "default" element for the Protocol. Will not perform any action.
+    DALI_QUERY_STATUS                       = 144;
+    DALI_QUERY_BALLAST                      = 145;
+    DALI_QUERY_LAMP_FAILURE                 = 146;
+    DALI_QUERY_LAMP_POWER_ON                = 147;
+    DALI_QUERY_LIMIT_ERROR                  = 148;
+    DALI_QUERY_RESET_STATE                  = 149;
+    DALI_QUERY_MISSING_SHORT_ADDRESS        = 150;
+    DALI_QUERY_VERSION_NUMBER               = 151;
+    DALI_QUERY_DTR0                         = 152;
+    DALI_QUERY_DEVICE_TYPE                  = 153;
+    DALI_QUERY_PHYSICAL_MIN                 = 154;
+    DALI_QUERY_POWER_FAILURE                = 155;
+    DALI_QUERY_DTR1                         = 156;
+    DALI_QUERY_DTR2                         = 157;
+    DALI_QUERY_OPERATING_MODE               = 158;
+    DALI_QUERY_LIGHTSOURCE_TYPE             = 159;
+    DALI_QUERY_ACTUAL_LEVEL                 = 160;
+    DALI_QUERY_MAX_LEVEL                    = 161;
+    DALI_QUERY_MIN_LEVEL                    = 162;
+    DALI_QUERY_POWER_ON_LEVEL               = 163;
+    DALI_QUERY_SYSTEM_FAILURE_LEVEL         = 164;
+    DALI_QUERY_FADETIME_FADERATE            = 165;
+    DALI_QUERY_MANUFACTURER_SPECIFIC_MODE   = 166;
+    DALI_QUERY_NEXT_DEVICE_TYPE             = 167;
+    DALI_QUERY_EXTENDED_FADE_TIME           = 168;
+    DALI_QUERY_CONTROL_GEAR_FAILURE         = 170;
+    DALI_QUERY_SCENE_X_LEVEL                = 176;
+    DALI_QUERY_GROUPS_0_7                   = 192;
+    DALI_QUERY_GROUPS_8_15                  = 193;
+    DALI_QUERY_RANDOM_ADDRESS_H             = 194;
+    DALI_QUERY_RANDOM_ADDRESS_M             = 195;
+    DALI_QUERY_RANDOM_ADDRESS_L             = 196;
+    DALI_QUERY_READ_DTR_0_1                 = 197;
+    DALI_QUERY_APP_EXT_COMMANDS             = 224;
+    DALI_QUERY_EXT_VERSION_NUMBER           = 255;
+    DALI_QUERY_COMPARE                      = 260;
+    DALI_QUERY_VERIFY_SHORT_ADDRESS         = 268;
+    DALI_QUERY_SHORT_ADDRESS                = 269;
+}
+
+// Standard DALI commands.
+enum DALICommandType {
+    DALI_OFF                       = 0;
+    DALI_FADE_UP                   = 1;
+    DALI_FADE_DOWN                 = 2;
+    DALI_STEP_UP                   = 3;
+    DALI_STEP_DOWN                 = 4;
+    DALI_MAX_LEVEL                 = 5;
+    DALI_MIN_LEVEL                 = 6;
+    DALI_STEP_DOWN_OFF             = 7;
+    DALI_ON_STEP_UP                = 8;
+    DALI_ENABLE_DAPC_SEQ           = 9; 
+    DALI_RECALL_LAST_ACTIVE_LEVEL  = 10;
+    DALI_RECALL_SCENE_X            = 16;
+    DALI_RESET                     = 32;
+    DALI_STORE_ACTUAL_LEVEL_DTR0   = 33;
+    DALI_SAVE_PERSISTENT_VARS      = 34;
+    DALI_SET_OPERATING_MODE        = 35;
+    DALI_RESET_MEMORY_BANK         = 36;
+    DALI_IDENTIFY_DEVICE           = 37;
+    DALI_SET_MAX_LEVEL             = 42;
+    DALI_SET_MIN_LEVEL             = 43;
+    DALI_SET_SYSTEM_FAILURE_LEVEL  = 44;
+    DALI_SET_POWER_ON_LEVEL        = 45;
+    DALI_SET_FADE_TIME             = 46;
+    DALI_SET_FADE_RATE             = 47;
+    DALI_SET_EXT_FADE_TIME         = 48;
+    DALI_SET_SCENE_X               = 64;
+    DALI_REMOVE_FROM_SCENE_X       = 80;
+    DALI_ADD_TO_GROUP_X            = 96;
+    DALI_REMOVE_FROM_GROUP_X       = 112;
+    DALI_SET_SHORT_ADDRESS         = 128;
+    DALI_ENABLE_WRITE_MEMORY       = 129;
+    DALI_TERMINATE                 = 255;
+    DALI_INITIALISE                = 258;
+    DALI_RANDOMISE                 = 259;
+    DALI_WITHDRAW                  = 261;
+    DALI_SEARCH_ADDR_H             = 264;
+    DALI_SEARCH_ADDR_M             = 265;
+    DALI_SEARCH_ADDR_L             = 266;
+    DALI_PROGRAM_SHORT_ADDRESS     = 267;
+}
+
+// Non-native DALI Commands provided as quality-of-life functions.
+enum CustomDALICommandType {
+    DALI_ARC_LEVEL                 = 0; // DALI Arc level (0 - 254)
+    DALI_DAPC_LEVEL                = 1; // Runs a DALI_ENABLE_DAPC_SEQUENCE if needed.
+    DALI_GROUP_ARC_LEVEL           = 2; // Specified by Group ID (0 - 15)
+    DALI_BROADCAST_SCENE           = 3; // No specific Address required, sent to all Devices
+    DALI_SCENE_ON_GROUP            = 4; // Specified by Group ID (0 - 15)
+    DALI_SCENE_ON_ADDRESS          = 5; // Specified by Address (0 - 63)
+}
+
+enum AdminPropertyType {
+    DEVICE_NAME         = 0; // The device name that appears on the network. Limited to 16 characters.
+    PROJECT_NAME        = 1; // Used for documentation. Limited to 32 characters.
+    LONGITUDE           = 2; // Used for calculating astronomical sunrise / sunset.
+    LATITUDE            = 3; // Used for calculating astronomical sunrise / sunset.
+    LOCAL_UTC_OFFSET    = 4; // Used for calculating astronomical sunrise / sunset.
+    DAYLIGHT_SAVINGS    = 5; // Used for calculating astronomical sunrise / sunset.
+    POLL_ACTIVE         = 6; // Whether or not to poll the current level of DALI devices to keep an in-memory cache up-to-date.
+    DHCP_ENABLED        = 7; // Whether or not the device should use a static IP or expect a DHCP server to provide it with an IP.
+    IP_ADDR             = 8; // The static IP address to use if DHCP_ENABLED is FALSE.
+    MAC_ADDR            = 9; // The MAC Address of the device. Expected format: [40:D8:55:1B:XX:XX]
+    GATEWAY_IP          = 10; // The IP address of the gateway for the network this device will be installed on.
+    NETWORK_PROPERTIES  = 11; // Contains numerous properties such as DHCP, NTP, Gateway, IP, MAC
+    SYSTEM_PROPERTIES   = 12; // Contains numerous properties such as Device Name (documentation only; not network hostname), Project Name, Latitude, Longitude, UTC Offset, DLS, Polling
+    CONTROLLER_LINES    = 13; // Allows you to specify the daughterboards installed in the device [NONE, DALI, DMX, DMX_IN]
+    EEPROM_FULL_CHIP    = 14; // Allows you to request a reset to default values for all data stored in EEPROM
+    CONFIG_DATA         = 15; // Allows you to request a reset to default values for the Config Data stored in EEPROM
+    SPEKTRA_DATA        = 16; // Allows you to request a reset to default values for the Spektra Data stored in EEPROM
+    DEVICE_STATUS       = 17; // Can be used to request the Device Status: Temperature and Battery Voltage
+    CONFIG_STATUS       = 18; // Can be used to request the Config Status: Active Alarm, List States, Sensor States, Burn-in States
+    DEVICE_TIME         = 19; // Get or Set the RTC time on the device
+    NTP_DETAILS         = 20; // Allows you to Get or Set the NTP parameters (i.e. NTP Server) used for maintaining the RTC via NTP updates.
+    TRIDONIC_MSENSORS   = 21; // Provides actions for Tridonic MSensor control: "ADD" to un-mute all. "REMOVE" to mute all. "RESET" to remove all.
+    SECURE_SESSION      = 22; // Allows you to Get or Set the "Secure Session" status of the device
+    NONCE               = 23; // Allows you to request a Nonce to perform a Secure Login
+}
+
+enum AdminCommandType {
+    SET     = 0;
+    GET     = 1;
+    ADD     = 2;
+    REMOVE  = 3;
+    RESET   = 4;
+}
+
+// DALI status query response bitmask values
+enum DALIStatusType {
+    LAMP_OFF              = 0; // Not technically in DALI. But this is the default when mask = 0b00000000
+    CONTROL_GEAR_FAILURE  = 1;
+    LAMP_FAILURE          = 3;
+    LAMP_ON               = 7;
+    LIMIT_ERROR           = 15;
+    FADE_RUNNING          = 31;
+    RESET_STATE           = 63;
+    SHORT_ADDRESS         = 127;
+    POWER_CYCLE_SEEN      = 255;
+}
+
+enum DiagnosticMessageType {
+    DIAGNOSTIC_SYSTEM_INFO   = 0; // Can be used to retrieve a large number of properties that describe the capabilities of the device. (Number of supported Lists, Alarms, etc.).
+    DIAGNOSTIC_INPUT_STATUS  = 1; // Not currently supported (will default to SYSTEM_INFO).
+    DALI_LEVEL_CACHE         = 2; // Can be used to retrieve the current entries of the in-memory DALI values cache.
+    DMX_LEVEL_CACHE          = 3; // Can be used to retrieve the current entries of the in-memory DMX levels cache. Results must be paginated due to size of DMX universe (512).
+    ROOM_JOINS               = 4; // Can be used to manipulate the "Joined Rooms" state.
+}
+
+enum FirmwareCommandType {
+	FW_READY           = 0;
+	FW_APPLY           = 1;
+	FW_VERIFY          = 2;
+	FW_VERIFY_FAILED   = 3;
+	FW_VERIFY_SUCCESS  = 4;
+	FW_READ            = 5;
+}
+
+enum SpektraTransitionType {
+	BLEND           = 0;    // Blended colour transitions. Example: Transition between red and green will go through yellow.
+    SNAP            = 1;    // Instant colour transitions.
+    FADE_TO_BLACK   = 2;    // Example: Transition between red and green will fade the light off then on between colours. Not currently supported.
+}
+
+enum LogicType {
+	DALI_LEVEL = 0;
+	INPUT_STATE = 1;
+	LIST_RUNNING = 2;
+	OCCUPANCY_DETECTED = 3;
+	DMX_PRESENT = 4;
+	CAL_WEEKDAY = 5;
+	CAL_MONTH = 6;
+	ALARM_SCHEDULED = 7;
+}
+
+enum LogicComparisonType {
+	LESS_THAN = 0;
+	LESS_THAN_OR_EQUALS = 1;
+	EQUALS = 2;
+	MORE_THAN = 3;
+	MORE_THAN_OR_EQUALS = 4;
+	NOT_EQUAL = 5;
+}
+
+/********** General Messages ****************/
+// Sent in Response to another message.
+message AckMessage {
+    AckMessageType payload  = 1;    // Will either indicate 'Success' or a particular Error as specified by "AckMessageType"
+}
+
+// Contains a payload.
+message PayloadMessage {
+    oneof data {
+        uint32 uint_data     = 1;
+        float  float_data    = 2;
+    }
+    string string_data       = 3; // Every PayloadMessage will contain String data, with optional uint or float data
+}
+
+// "Are You There" Message with some supplementary values for debugging
+message AytMessage {
+	uint32 timesinceboot = 1;	// Device uptime in seconds
+	float temperature = 2;		// Current Temp on the device internals
+	TimeClockMessage time = 3;	// Current Time of the RTC
+}
+
+// This message contains the 'variable state' for the Device
+message DeviceStateMessage {
+    uint32 uptime                       = 1;    // Uptime (seconds since boot)
+    float temp                          = 2;    // Temperature
+    float vbat                          = 3;    // Battery voltage
+    TimeClockMessage clock              = 4;    // RTC Time on device
+    uint32 next_alarm                   = 5;    // Index of next alarm
+    TimeClockMessage next_alarm_time    = 6;    // Time of next alarm
+    uint32 input_state                  = 7;    // Input state mask
+    repeated uint32 list_states         = 8;    // State of each List (DISABLED / ENABLED / LOOPING)
+	repeated uint32 burn_in_states      = 9;    // State of each Burn-in (RUNNING / NOT RUNNING)
+	repeated uint32 sensor_states       = 10;   // State of each Tridonic MSensor (IDLE / DISABLED / WARNING / OCCUPANCY)
+    repeated uint32 zone_states         = 11;   // State of each Spektra Zone (OFF / SEQUENCE / THEME / STATIC)
+    repeated uint32 zone_sleep_states   = 12;   // Sleep State of each Spektra Zone (TRUE / FALSE)
+    repeated uint32 zone_indexes        = 13;   // Index of the selected Sequence, Theme, or Static colour for each Zone
+}
+
+/****** CONFIGURABLE MESSAGES ******/
+// Trigger
+message TriggerMessage {
+    TriggerType type     = 1; // The type of Trigger
+    uint32 zone          = 2; // Which Zone (Spektra)
+    uint32 line_mask     = 3; // Which Line(s) to perform this trigger on (if applicable)
+    uint32 target_index  = 4; // Index to target (context depends on TriggerType)
+    uint32 value         = 5; // Value for this trigger (if applicable)
+    uint32 query_index   = 6; // Index to query (if applicable)
+}
+
+// Date/Time
+message TimeClockMessage {
+    uint32 date  = 1;    // Year | Month | Date | Day 
+    uint32 time  = 2;    // <Empty> | Hour | Minute | Second
+}
+
+// Burn In Types
+message BurnInBitsMessage {
+    uint32 light_state   = 1; // Tracks when a Light is 'On' and "burning in"
+    uint32 running_flag  = 2; // Whether or not the burn-in is currently counting down
+    uint32 enable_flag   = 3; // Whether or not the burn-in should count down
+}
+
+// Inputs
+message IOInputMessage {
+    uint32 index                       = 1; // Which Input is this (0 - 11) on 4 Pole and (0 - 23) on 9 Pole
+    TriggerOperationType button_state  = 2; // How will this Input be triggered? Momentary (short/long press) or Latching (low/high)
+    TriggerMessage short_press         = 3; // What action should occur on short/low
+    TriggerMessage long_press          = 4; // What action should occur on long/high
+}
+
+// Outputs
+message IOOutputMessage {
+    uint32 index                    = 1; // Which Output is this? (0 - 3) on 4 Pole and (0 - 7) on 9 Pole. Note: Actual Pin numbers are (9 - 12) and (21 - 24) respectively.
+    uint32 initial_level            = 2; // Will the Output be Low or High at startup?
+    uint32 time_trigger_is_active   = 3; // How long should a 'Trigger Output' command last?
+    TriggerOperationType type       = 4; // Is this a continuous (latching) trigger or momentary output?
+}
+
+// IR
+message IOIRMessage {
+    uint32 index           = 1;
+    TriggerMessage action  = 2;
+    uint32 codes           = 3;
+}
+
+// Sensors
+message SensorMessage {
+    uint32 profile            = 1;
+    uint32 index              = 2;
+    uint32 sensor_address     = 3;
+    uint32 sensor_dali_line   = 4;
+    uint32 address_query      = 5;
+    uint32 control_dali_line  = 6;
+    uint32 control_group      = 7;
+    uint32 light_setpoint     = 8;
+    uint32 warning_setpoint   = 9;
+    uint32 motion_only        = 10;
+    uint32 timeout_values     = 11;
+    uint32 warning_values     = 12;
+    uint32 disable_values     = 13;
+    uint32 input_1_pm         = 14;
+    uint32 input_2_pm         = 15;
+    uint32 sensor_states      = 16;
+    uint32 motion_sensors     = 17;
+    uint32 lux_sensors        = 18;
+    uint32 off_flag           = 19;
+    bool is_programmed        = 20;
+}
+
+// List Steps
+message ListStepMessage {
+    uint32 step_index      = 1;
+    TriggerMessage action  = 2;
+    uint32 time_seconds    = 3;
+}
+
+// Alarms
+message AlarmMessage {
+    uint32 index                    = 1;
+    bool enabled                    = 2;
+    TimeClockMessage start_time     = 3;
+    TimeClockMessage end_time       = 4;
+    TriggerMessage start_trigger    = 5;
+    TriggerMessage end_trigger      = 6;
+    AlarmAstroType astro_start      = 7;
+    AlarmAstroType astro_end        = 8;
+    AlarmRepeatType repeat          = 9;
+    uint32 repeat_day_bitmask       = 10; // 1 to trigger on this day. LSB (0) = Monday, MSB (6) = Sunday
+    uint32 repeat_month_bitmask     = 11; // 1 to trigger during this month. LSB (0) = January, MSB (11) = December
+    bool yearly                     = 12; // Should this Alarm happen each year?
+    bool start_offset_is_before     = 13; // E.g. 10 minutes BEFORE or AFTER the start astro event?
+    bool end_offset_is_before       = 14; // E.g. 10 minutes BEFORE or AFTER the end astro event?
+}
+
+// Burn_In
+message BurnInMessage {
+    uint32 index              = 1;
+    uint32 line               = 2;
+    uint32 address            = 3;
+    uint32 query_address      = 4;
+    uint32 time               = 5;
+    uint32 remaining          = 6;
+    BurnInBitsMessage states  = 7;
+}
+
+message ExternalTriggerMessage {
+    TriggerMessage trigger  = 1; // Can be used to action Triggers via the network instead of via a hardware input or on-board alarm
+}
+
+message InputMultiMessage {
+    uint32 profile                  = 1;
+    repeated IOInputMessage inputs  = 2;     
+}
+
+message OutputMultiMessage {
+    uint32 profile                    = 1;
+    repeated IOOutputMessage outputs  = 2;
+}
+
+message IRMultiMessage {
+    uint32 profile            = 1;
+    repeated IOIRMessage irs  = 2;
+}
+
+message ListMessage {
+    uint32 list_index              = 1;
+    repeated ListStepMessage step  = 2; // Limited to 32 for this Message Type; you must use ExtendedListMessage to configure more than 32 steps per List
+    uint32 list_state              = 3; // Typically will be 'DISABLED' to start with (requires a 'START LIST' trigger to begin)
+    uint32 total_step_count        = 4; // Can be greater than 32, but you must use ExtendedListMessage to send the rest
+}
+
+// This Message must be used when the List has more than 32 steps
+message ExtendedListMessage {
+    uint32 list_index              = 1; // Which List do these steps belong to?
+    uint32 step_index_offset       = 2; // 0 for the first ExtendedListMessage; offset by 32 for every ExtendedListMessage beyond the first
+    repeated ListStepMessage step  = 3;
+}
+
+message AlarmMultiMessage {
+    repeated AlarmMessage alarm  = 1;
+}
+
+message BurnInMultiMessage {
+    repeated BurnInMessage burnin  = 1;
+}
+
+message LogicMessage {
+	uint32 index = 1;
+	bool enabled = 2;
+	TriggerMessage comparison_object = 3;		// What to compare??
+	uint32 comparison_value = 4;				// Setpoint for comparison
+	LogicComparisonType comparison_type = 5;	// Type to compare
+	TriggerMessage actionA = 6;					// Action if True
+	TriggerMessage actionB = 7;					// Action if False
+}
+
+message LogicMultiMessage {
+	repeated LogicMessage logic = 1;
+}
+
+/*********** SYSTEM MESSAGES *******/
+message SensorCommandMessage {
+    uint32 command   = 1;
+    uint32 index     = 2;
+}
+
+message ChangeProfileMessage {
+    uint32 profile  = 1;
+}
+
+message IdentifyMessage {
+    uint64 MAC  = 1;
+    uint64 IP   = 2;
+}
+
+message UpdateTimeMessage {
+    TimeClockMessage time  = 1;
+}
+
+message ReadDeviceMessage {
+    uint32 profile  = 1;
+    ReadType type   = 2;
+    uint32 index    = 3;
+    uint32 secondary_index = 4; // For more advanced reads (e.g. ExtendedListMessage)
+}
+message SecureDeviceSettingsMessage {
+    string payload   = 1; // Encrypted payload of a PB message.
+}
+
+/************ DALI MESSAGES ************/
+message DTRPayloadMessage {
+    // For DALI, you can use 2 bytes, for eDALI 3...
+    repeated uint32 dtr = 1;
+}
+
+message DALIMessage {
+    uint32 line_mask             = 1; // Binary mask; e.g. selecting line 1 out of 4 looks like 0b0001
+    uint32 address               = 2; // DALI Address
+    oneof action {
+        uint32 edali_command              = 3; // eDALI commmands are manufacturer specific, so we have to take a raw value.
+        uint32 edali_command_reply        = 4; // eDALI commands can have a reply.
+        DALICommandType command           = 5;
+        CustomDALICommandType custom_command = 6;
+        DALIQueryType query               = 7;
+        Type8CommandType type8            = 8;
+    }
+    oneof params {
+        uint32 arg               = 9; // 'arg' rather than level for methods where you need a scene number.
+        DTRPayloadMessage dtr    = 10;
+    }
+}
+
+message DALIStatusFlagMessage {
+    repeated DALIStatusType flags  = 1;
+}
+
+// DALI Response is tagged with the line and DALI address. 
+message DALIQueryResponse {
+    oneof payload {
+        DALIStatusFlagMessage status_flags  = 1;
+        PayloadMessage data                 = 2;
+    }
+}
+
+/************* DMX MESSAGES *************/
+message DMXMessage {
+    uint32 zone                 = 1; // For Spektra (default of 0 is fine if not applicable)
+    uint32 universe_mask        = 2; // Which DMX Universes to apply the values to. Specified as a binary mask.
+    uint32 channel              = 3; // The actual channel number (not zero-based index)
+    uint32 repeat               = 4; // The number of times to repeat the data given (e.g. start from DMX channel 30 and set the RGB channel values (levels) of the next 3 lights, so repeat would be 3 with 3 levels provided)
+    repeated uint32 level       = 5;
+    uint32 fade_time_by_10ms    = 6; // The DMX Fade Task runs every 10ms, so a value of 25 will fade over 250ms
+}
+
+/************** RDM MESSAGES ************/
+// Message to send a DMX command with/without a response (Getset)
+message RDMMessage {
+	uint32 universe_mask = 1;
+	uint64 uid = 2;
+	uint32 pid = 3;
+	uint32 getset = 4;          // Expects [DMX_RDM_GET_COMMAND = 0x20] or [DMX_RDM_SET_COMMAND = 0x30]
+	uint32 datalength = 5;
+	repeated uint32 data = 6;
+}
+
+// RDM Response message - source uid, pid, datalength and data
+message RDMResponseMessage {
+	uint64 uid = 1;
+	uint32 pid = 2;
+	uint32 datalength = 3;
+	repeated uint32 data = 4;
+}
+
+/************   SPEKTRA    *************/
+message SpektraSettingMessage {    
+    uint32 zone                      = 1;
+    uint32 start_address             = 2;
+    uint32 line_or_universe_mask     = 3; // Which DALI Line(s) or DMX Universe(s) to control
+    uint32 protocol                  = 4; // E.g. DMX or DALI
+    uint32 number_of_lights          = 5;
+    uint32 channels_per_light        = 6; // E.g. 4 for RGBW
+    repeated uint32 channel_colours  = 7; // What colour is assigned to each channel (e.g. Red, Green, etc.)
+    SpektraUnscheduledBehaviourType unscheduled_behaviour     = 8; // 0 = Random colours rotate sequence, 1 = Run default sequence (seq 1)
+	repeated uint32 channel_mapping = 9;	// Channel mapping for DALI or future DMX virtual 'grouping'
+}
+
+message SpektraColourConfigMessage {
+    repeated uint32 channel_value = 1;  // Include as many values as there are channels, e.g. [0, 255, 0] would be Green for an RGB light (3 channel values)
+}
+
+message SpektraSequenceConfigMessage {
+    uint32 index                                        = 1;
+    uint32 type                                         = 2; // BLEND / SIMPLE CHASE / SHADOW CHASE / COMET / ROTATE / TWINKLE / BUILD-UP / CRASH / FIREWORKS
+    SpektraTransitionType transition                    = 3; // BLEND / SNAP / FADE_TO_BLACK
+    uint32 fade_time_by_10ms                            = 4; // Correlates to blend transitions
+    uint32 time_per_colour                              = 5; // How long each colour should be shown
+    uint32 time_per_colour_unit                         = 6; // MILLISECONDS / SECONDS / MINUTES / HOURS
+    uint32 time_per_step                                = 7; // How long each sequence type 'animation' takes (e.g. speed of the chase)
+    uint32 time_per_step_unit                           = 8; // MILLISECONDS / SECONDS / MINUTES / HOURS
+    uint32 range                                        = 9; // 0 for all lights, any number above 0 will repeat in blocks of (TOTAL LIGHTS / RANGE)
+    repeated uint64 colour                              = 10; // Deprecated (kept for backward compatability) -> Use "colours" instead
+    uint32 is_randomised_type                           = 11; // Will randomly selected (from random_types_mask) one of the Sequence Types
+    uint32 random_types_mask                            = 12; // A bitmask of Sequence Types
+    uint32 is_reverse_direction                         = 13; // Animate the sequence in reverse light order
+    uint32 is_cycle_direction                           = 14; // Animate the sequence in alternating light order from forward to reverse
+    string title                                        = 15; // The name of the Sequence
+    bool has_random_colour_order                        = 16; // Randomly pick the next colour out of the chosen colours
+    repeated SpektraColourConfigMessage colours         = 17; // The colours used in the Sequence
+}
+
+message SpektraCalendarMessage {
+	SpektraTargetType type = 1;	    // Type (e.g. Sequence or Theme)
+	uint32 index = 2;               // Index
+	repeated bool days = 3;         // Boolean array to specify when this Target Index is active (up to the number of days in a year)
+}
+
+message SpektraThemeConfigMessage {
+    uint32 index                                        = 1;
+    repeated uint64 colour                              = 2; // Deprecated (kept for backward compatability) -> Use colours instead
+    string title                                        = 3; // The name of the Theme
+    repeated SpektraColourConfigMessage colours         = 4; // The colours used in the Theme (will repeat colours if less colours than lights)
+}
+
+message SpektraReadMessage {
+    SpektraTargetType type  = 1;
+    uint32 index            = 2;
+}
+
+message SpektraControlMessage {
+    SpektraTargetType type    = 1;
+    uint32 zone               = 2;
+    uint32 index              = 3;
+    SpektraActionType action  = 4;
+}
+
+
+/************ TRANSLATION  *************/
+message DMXTranslationObject {
+    uint32 line_in               = 1; // DMX IN
+    uint32 line_out              = 2; // DALI OUT
+    uint32 dmx_start_address     = 3; // DMX Start Address
+    uint32 channel_count         = 4; // DMX Count
+    repeated uint32 dali_array   = 5; // DALI Addresses
+    // DEPRECATED: repeated uint32 sent_levels (6)
+    uint32 affected_input        = 7; // Bitmask of affected inputs
+    bool blocking                = 8; // If DMX to DALI function blocks inputs
+    bool enabled                 = 9;    
+}
+
+message DMXProtocolTranslation {
+    repeated DMXTranslationObject object  = 1; // Typically 1 for a 4 Pole device but can be more for 9 Pole eDIDIO
+}
+
+/************ DIAGNOSTICS *************/
+
+// Inputs State
+message InputStateMessage {
+    bool use_mask = 1; // Reply with a mask rather than a list of active inputs.
+}
+
+message InputStateResponse {
+    repeated uint32 inputs = 1; // Contains Inputs that are Low (i.e. currently active)
+    uint32 input_mask = 2; // Usage is determined by "InputStateMessage: use_mask"
+}
+
+message LevelCacheResponse { // DALI/DMX agnostic.
+    repeated uint32 levels  = 1; 
+    uint32 line             = 2;
+    uint32 page             = 3; 
+}
+
+message JoinedRoomsMessage {
+    repeated uint32 pairs  = 1; // Pairs of integers indicating joins between physical zones.
+    bool joined            = 2; // If True, these pairs are joined. Else they are being separated.
+    bool clear_joins       = 3; // Can be sent at the same time as joining, but interpreted as "clear all". An "override" type effect.
+}
+
+// Get System Info
+message DiagnosticSystemInfoResponse {
+    string firmware                = 1; // Firmware Version number
+    string hardware                = 2; // Hardware Version number
+    string error                   = 3; // Any populated Error message
+    uint32 input_count             = 4; // Number of supported Inputs
+    uint32 output_count            = 5; // Number of supported Outptus
+    uint32 ir_count                = 6; // Number of supported IR codes
+    uint32 list_step_count         = 7; // Number of supported List Steps
+    uint32 list_count              = 8; // Number of supported Lists
+    uint32 alarm_count             = 9; // Number of supported Alarms (Schedules)
+    uint32 burnin_count            = 10; // Number of supported Burn-ins
+    uint32 spektra_seq_count       = 11; // Number of supported Spektra Sequences
+    uint32 spektra_seq_step_count  = 12; // Number of supported Spektra Sequence Steps
+    uint32 spektra_theme_count     = 13; // Number of supported Spektra Themes
+    uint32 spektra_static_count    = 14; // Number of supported Spektra Static Colours
+    uint32 proto_version           = 15; // Protocol Buffer Version number
+    uint32 line_count              = 16; // Number of supported Control Lines (for DMX, DALI)
+    repeated LineType lines        = 17; // Denotes what control type is assigned to each line (e.g. DMX, DALI)
+    uint32 profile_count           = 18; // Number of supported Profiles
+    uint32 preset_code_count       = 19; // Number of supported Preset Codes
+    uint32 user_level_count        = 20; // Number of supported User Levels
+    uint32 dmx_to_dali_count       = 21; // Number of supported DMX to DALI Translations 
+    uint32 spektra_zone_count      = 22; // Number of supported Spektra Zones
+	uint32 logic_count			   = 23; // Number of supported Logic Mappings
+}
+
+// Request a diagnostic response message of a given type.
+message DiagnosticMessage {
+    DiagnosticMessageType type  = 1;
+    uint32 page                 = 2; // Allow paging of results, eg. 32 DMX levels per page, 16 pages.
+    uint32 line                 = 3; // If a line/DMX universe needs to be indicated it can go here.
+}
+
+/**************** ADMIN ***************/
+
+message AdminProjectPropertiesMessage {
+    string device_name     = 2; // As shown on the Network (in Spektra/Configurator Discovery)
+    string project_name    = 3; // For project documentation
+    float longitude        = 4; // For astronomical calculations (e.g. sunrise/sunset)
+    float latitude         = 5; // For astronomical calculations (e.g. sunrise/sunset)
+    float local_offset     = 6; // For astronomical calculations (e.g. sunrise/sunset)
+    bool daylight_savings  = 7; // For astronomical calculations (e.g. sunrise/sunset)
+	uint32 daylight_savings_start = 8; // Can be used to state when DST is active from
+	uint32 daylight_savings_end = 9; // Can be used to state when DST is active to
+    bool poll_active       = 10; // Should the device be polling the DALI line to cache arc levels
+}
+
+message AdminConfigStatusMessage {
+	repeated uint32 list_status = 1;				// State of each List (DISABLED / ENABLED / LOOPING)
+	repeated uint32 burn_in_status = 2;				// State of each Burn-in (RUNNING / NOT RUNNING)
+	uint32 alarm_status = 3;						// Currently Selected Alarm (i.e. 'next Alarm')
+	TimeClockMessage alarm_time_from_reg = 4;		// Time for next Alarm as per RTC Register
+	repeated uint32 sensor_status = 5;				// State of each Tridonic MSensor (IDLE / DISABLED / WARNING / OCCUPANCY)
+	
+}
+
+message AdminNetworkPropertiesMessage {
+    bool DHCP       = 1; // Should DHCP be used? If False, the static IP will be used instead
+    string IP       = 2; // A static IP to use if DHCP is False
+    string MAC      = 3; // The MAC Address of this Device
+    string gateway  = 4; // The Gateway IP for the network this Device is on
+	string NTPServer = 5; // The NTP Server address from RTC updates over the network
+	bool NTP = 6; // Should NTP be used to keep the RTC up-to-date via network requests
+}
+
+message AdminControllerLinesMessage {
+    repeated LineType lines     = 1; // Used to set the control type on each control line (e.g. DMX / DALI)
+}
+
+message AdminDeviceStatusMessage {
+	    float temperature = 1; // The current device chip temperature
+		float battery = 2; // The current battery voltage (3.3V battery)
+}
+
+message AdminSecureLoginMessage {
+    string username         = 1; // Which username to login as
+    string cnonce           = 2; // The nonce generated by the client attempting to login
+    repeated uint32 hash    = 3; // The hash of the server nonce + client nonce + client password, encrypted using AES CTR
+}
+
+message AdminMessage {
+    AdminCommandType command                              = 1; // What type of Command to run (GET / SET / etc.)
+    AdminPropertyType target                              = 2; // Which property to run the Command on
+    oneof payload {
+        PayloadMessage data                               = 3;
+        AdminNetworkPropertiesMessage network_properties  = 4;
+        AdminProjectPropertiesMessage project_properties  = 5;
+        AdminControllerLinesMessage controller_lines      = 6;
+		AdminDeviceStatusMessage device_status			  = 7;
+		AdminConfigStatusMessage config_status 			  = 8;
+		UpdateTimeMessage device_time					  = 9;
+    }
+}
+
+/************ FIRMWARE UPDATE ********/
+// Simple free-form binary data blob that can be used for chunk transfer.
+message DataMessage {
+    uint32 identifier     = 1; // A free-form number that indicates exactly what type of data is being dealt with. Eg. 0x99 may indicate a firmware flash.
+    uint32 seq            = 2; // The message position in the sequence.
+    uint32 count          = 3; // The expected total number of DataMessages to be sent. When seq == count, you know you've got the last chunk and can go ahead and process the data (eg. flash firmware).
+    repeated uint32 data  = 4;
+}
+
+
+message FirmwareMetaMessage {
+	// WARNING - Will Erase Stored Firmware
+	uint32 firmware_version 			 = 1; // MSB.XXX.LSB
+	uint32 firmware_date	 			 = 2; // Day/Month/Year Compiled
+	uint32 firmware_date_upload          = 3; // Day/Month/Year Uploaded
+	uint32 firmware_checksum		     = 4; // Checksum to verify data
+	uint32 firmware_chunk_count	         = 5; // Number of stored chunks
+	uint32 firmware_base_address 	     = 6; // Base Address of the Firmware
+	uint32 firmware_end_address	         = 7; // End Address - For sector erases
+	// Controller will reply 'Ready' After each succesful action. 
+}
+
+// Reply from eDIDIO, or command from program. eDIDIO will check firmware before 'Apply'
+message FirmwareControlMessage {
+	FirmwareCommandType cmd  = 1;
+}
+
+message FirmwareChunkMessage {
+	uint32 firmware_address       = 1;
+	uint32 total_bytes            = 2;
+    DataMessage payload           = 3;
+}
+
+/********************  Events ******************/
+
+message TriggerEvent {
+    TriggerType type                  = 1; // What type of Trigger occurred
+    oneof payload {
+        uint32 level                  = 2; // Associated level (if applicable)
+        DALICommandType dali_command  = 3; // Associated DALI Command (if applicable)
+    }
+    uint32 target_address             = 4; // The target address for the TriggerType (if applicable)
+    uint32 line_mask                  = 5; // The Line(s) on wich the Trigger occurred (if applicable)
+
+}
+
+// A message sent to a client when an event occurs. Depending on the event type (Trigger, Input or Sensor) different data is supplied with the event.
+// If a client sends an EventMessage with EventType of REGISTER then broadcast events out to the client.
+message EventMessage {
+    EventType event                      = 1;
+    oneof event_data {
+        TriggerEvent trigger             = 2;
+        InputStateResponse inputs        = 3;
+        PayloadMessage payload           = 4;
+        JoinedRoomsMessage joined_rooms  = 5;
+    }
+}
+
+// Every Message to and from the eDIDIO will be a populated EdidioMessage with a singular payload. The EdidioMessage itself is wrapped with a 0xCD Start Byte and 2 Bytes denoting Message Length of the form: [Length MSB, Length LSB]
+message EdidioMessage
+{
+    uint32 message_id                                         = 1; // As decided by the client. Will not be unique across clients.
+    oneof payload {
+        AckMessage ack                                        = 2;
+        InputMultiMessage inputs                              = 3;
+        OutputMultiMessage outputs                            = 4;
+        IRMultiMessage irs                                    = 5;
+        SensorMessage sensor                                  = 6;
+        // DEPRECATED: SensorMultiMessage (7) --> Send as many SensorMessages as necessary
+        ListMessage list                                      = 8;
+        // DEPRECATED: ListMultiMessage (9) --> Send as many ListMessages as necessary
+        AlarmMessage alarm                                    = 10;
+        AlarmMultiMessage alarms                              = 11;
+        BurnInMultiMessage burn_ins                           = 12;
+        SensorCommandMessage sensor_command                   = 13;
+        ChangeProfileMessage change_profile                   = 14;
+        IdentifyMessage identify_message                      = 15;
+        UpdateTimeMessage update_time                         = 16;
+        ReadDeviceMessage read_device                         = 17;
+        DALIMessage dali_message                              = 18;
+        DALIQueryResponse dali_query                          = 19;
+        DMXMessage dmx_message                                = 20;
+        ExternalTriggerMessage external_trigger               = 21;
+        SpektraSettingMessage spektra_settings                = 22;
+        SpektraSequenceConfigMessage spektra_sequence         = 23;
+        SpektraCalendarMessage spektra_calendar               = 24;
+        SpektraThemeConfigMessage spektra_theme               = 25;
+        SpektraReadMessage spektra_read                       = 26;
+        SpektraControlMessage spektra_control                 = 27;
+        DMXProtocolTranslation dmx_translator                 = 28;
+        InputStateMessage  input_request                      = 29; 
+        InputStateResponse input_response                     = 30;
+        DiagnosticSystemInfoResponse diag_system              = 31;
+        DiagnosticMessage diag_message                        = 32;
+        AdminMessage admin_message                            = 33;
+        EventMessage event                                    = 34;
+        SecureDeviceSettingsMessage secure_device_settings    = 35;
+        FirmwareMetaMessage firmware_new                      = 36;
+        FirmwareControlMessage firmware_control               = 37;
+        FirmwareChunkMessage firmware_chunk                   = 38;
+        LevelCacheResponse level_cache_response               = 39;
+        JoinedRoomsMessage joined_rooms                       = 40;
+        ExtendedListMessage list_extended                     = 41;
+        AytMessage ayt_message                                = 42;
+        RDMMessage rdm_message                                = 43;
+        RDMResponseMessage rdm_response_message               = 44;
+        LogicMultiMessage logic_message                       = 45;
+        AdminSecureLoginMessage secure_login                  = 46;
+        DeviceStateMessage device_state_message               = 47;
+    }
+}

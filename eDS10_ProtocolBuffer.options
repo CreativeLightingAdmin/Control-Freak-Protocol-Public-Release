@@ -1,0 +1,67 @@
+InputMultiMessage.inputs                               max_count:24
+OutputMultiMessage.outputs                             max_count:8
+IRMultiMessage.irs                                     max_count:5
+ListMessage.step                                       max_count:32
+ExtendedListMessage.step                               max_count:32
+AlarmMultiMessage.alarm                                max_count:9
+BurnInMultiMessage.burnin                              max_count:2
+LogicMultiMessage.logic								   max_count:5
+DMXMessage.level                                       max_count:256, int_size:IS_8
+RDMMessage.data										   max_count:256, int_size:IS_8
+RDMResponseMessage.data							       max_count:256, int_size:IS_8
+InputStateResponse.inputs                              int_size:IS_8, max_count:24 
+DiagnosticSystemInfoResponse.firmware                  max_size:16
+DiagnosticSystemInfoResponse.hardware                  max_size:16
+DiagnosticSystemInfoResponse.error                     max_size:16
+DiagnosticSystemInfoResponse.input_count               int_size:IS_8
+DiagnosticSystemInfoResponse.output_count              int_size:IS_8
+DiagnosticSystemInfoResponse.ir_count                  int_size:IS_8
+DiagnosticSystemInfoResponse.list_step_count           int_size:IS_8
+DiagnosticSystemInfoResponse.list_count                int_size:IS_8
+DiagnosticSystemInfoResponse.alarm_count               int_size:IS_8
+DiagnosticSystemInfoResponse.burnin_count              int_size:IS_8
+DiagnosticSystemInfoResponse.spektra_seq_count         int_size:IS_8
+DiagnosticSystemInfoResponse.spektra_seq_step_count    int_size:IS_8
+DiagnosticSystemInfoResponse.spektra_theme_count       int_size:IS_8
+DiagnosticSystemInfoResponse.spektra_static_count      int_size:IS_8
+DiagnosticSystemInfoResponse.proto_version             int_size:IS_8
+DiagnosticSystemInfoResponse.line_count                int_size:IS_8
+DiagnosticSystemInfoResponse.lines                     max_count:4
+AdminProjectPropertiesMessage.device_name              max_size:32
+AdminProjectPropertiesMessage.project_name             max_size:32
+AdminNetworkPropertiesMessage.IP                       max_size:32
+AdminNetworkPropertiesMessage.MAC                      max_size:32
+AdminNetworkPropertiesMessage.gateway                  max_size:32
+AdminNetworkPropertiesMessage.NTPServer				   max_size:32
+AdminControllerLinesMessage.lines                      max_count:4
+AdminConfigStatusMessage.list_status                   int_size:IS_8, max_count:255
+AdminConfigStatusMessage.burn_in_status                int_size:IS_8, max_count:2
+AdminConfigStatusMessage.sensor_status                 int_size:IS_8, max_count:40
+AdminSecureLoginMessage.username                       max_size:32
+AdminSecureLoginMessage.cnonce                         max_size:16
+AdminSecureLoginMessage.hash                           max_count:64, int_size:IS_8
+SecureDeviceSettingsMessage.payload                    max_size:1000
+SpektraColourConfigMessage.channel_value               max_count:10                 # Number of channels per colour.
+SpektraSequenceConfigMessage.title                     max_size:28
+SpektraSequenceConfigMessage.colour                    max_count:20                 # DEPRECATED! Use 'colours' instead! [Kept to facilitate backward compatibility]
+SpektraSequenceConfigMessage.colours                   max_count:20                 # Number of colours in a sequence.
+SpektraThemeConfigMessage.title                        max_size:28
+SpektraThemeConfigMessage.colour                       max_count:20                 # DEPRECATED! Use 'colours' instead! [Kept to facilitate backward compatibility]
+SpektraThemeConfigMessage.colours                      max_count:20                 # Number of colours in a theme.
+SpektraCalendarMessage.days                            max_count:366
+SpektraSettingMessage.channel_colours                  max_count:256                # This allows for up to a 256 channel device (where most are 3 or 4; e.g. RGB/RGBW)
+SpektraSettingMessage.channel_mapping				   max_count:10
+DMXTranslationObject.dali_array                        max_count:64, int_size:IS_8
+DMXProtocolTranslation.object                          max_count:3
+DTRPayloadMessage.dtr                                  max_count:3, int_size:IS_8
+DataMessage.data                                       max_count:256, int_size:IS_8
+DALIStatusFlagMessage.flags                            max_count:9, int_size:IS_8
+PayloadMessage.string_data                             max_size:256
+DeviceStateMessage.list_states                         int_size:IS_8, max_count:32
+DeviceStateMessage.burn_in_states                      int_size:IS_8, max_count:2
+DeviceStateMessage.sensor_states                       int_size:IS_8, max_count:40
+DeviceStateMessage.zone_states                         int_size:IS_8, max_count:5
+DeviceStateMessage.zone_sleep_states                   int_size:IS_8, max_count:5
+DeviceStateMessage.zone_indexes                        int_size:IS_8, max_count:5
+JoinedRoomsMessage.pairs                               max_count:64, int_size:IS_8
+LevelCacheResponse.levels                              max_count:64, int_size:IS_8
