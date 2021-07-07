@@ -1,12 +1,13 @@
-InputMultiMessage.inputs                               max_count:24
-OutputMultiMessage.outputs                             max_count:8
+InputMultiMessage.inputs                               max_count:24                 # Maximum 24 Physical Inputs on a 9 Pole eDIDIO
+OutputMultiMessage.outputs                             max_count:8                  # Maximum 8 Physical Outputs on a 9 Pole eDIDIO
+DALIInputMultiMessage.inputs						   max_count:10                 # Maximum 10 per Message
 IRMultiMessage.irs                                     max_count:5
-ListMessage.step                                       max_count:32
-ExtendedListMessage.step                               max_count:32
+ListMessage.step                                       max_count:32                 # The first 32 Steps of any List
+ExtendedListMessage.step                               max_count:32                 # Subsequent List Steps after the first 32, sent in batches of 32 Steps
 AlarmMultiMessage.alarm                                max_count:9
 BurnInMultiMessage.burnin                              max_count:2
 LogicMultiMessage.logic								   max_count:5
-DMXMessage.level                                       max_count:256, int_size:IS_8
+DMXMessage.level                                       max_count:256, int_size:IS_8 # DMX split to low/high end of Channel Range to reduce message size
 RDMMessage.data										   max_count:256, int_size:IS_8
 RDMResponseMessage.data							       max_count:256, int_size:IS_8
 InputStateResponse.inputs                              int_size:IS_8, max_count:24 
@@ -34,9 +35,9 @@ AdminNetworkPropertiesMessage.MAC                      max_size:32
 AdminNetworkPropertiesMessage.gateway                  max_size:32
 AdminNetworkPropertiesMessage.NTPServer				   max_size:32
 AdminControllerLinesMessage.lines                      max_count:4
-AdminConfigStatusMessage.list_status                   int_size:IS_8, max_count:255
+AdminConfigStatusMessage.list_status                   int_size:IS_8, max_count:32  # 32 Lists
 AdminConfigStatusMessage.burn_in_status                int_size:IS_8, max_count:2
-AdminConfigStatusMessage.sensor_status                 int_size:IS_8, max_count:40
+AdminConfigStatusMessage.sensor_status                 int_size:IS_8, max_count:40  # 40 Sensors max (10 per Line, up to 4 Lines)
 AdminSecureLoginMessage.username                       max_size:32
 AdminSecureLoginMessage.cnonce                         max_size:16
 AdminSecureLoginMessage.hash                           max_count:64, int_size:IS_8
@@ -45,10 +46,12 @@ SpektraColourConfigMessage.channel_value               max_count:10             
 SpektraSequenceConfigMessage.title                     max_size:28
 SpektraSequenceConfigMessage.colour                    max_count:20                 # DEPRECATED! Use 'colours' instead! [Kept to facilitate backward compatibility]
 SpektraSequenceConfigMessage.colours                   max_count:20                 # Number of colours in a sequence.
+SpektraSequenceConfigMessage.args					   max_count:5					# Number of sequence arguments (arguments are specific to the sequence type)
 SpektraThemeConfigMessage.title                        max_size:28
 SpektraThemeConfigMessage.colour                       max_count:20                 # DEPRECATED! Use 'colours' instead! [Kept to facilitate backward compatibility]
 SpektraThemeConfigMessage.colours                      max_count:20                 # Number of colours in a theme.
 SpektraCalendarMessage.days                            max_count:366
+SpektraCalendarOverviewMessage.days                    max_count:90                 # 90 day chunks
 SpektraSettingMessage.channel_colours                  max_count:256                # This allows for up to a 256 channel device (where most are 3 or 4; e.g. RGB/RGBW)
 SpektraSettingMessage.channel_mapping				   max_count:10
 DMXTranslationObject.dali_array                        max_count:64, int_size:IS_8
@@ -60,8 +63,12 @@ PayloadMessage.string_data                             max_size:256
 DeviceStateMessage.list_states                         int_size:IS_8, max_count:32
 DeviceStateMessage.burn_in_states                      int_size:IS_8, max_count:2
 DeviceStateMessage.sensor_states                       int_size:IS_8, max_count:40
-DeviceStateMessage.zone_states                         int_size:IS_8, max_count:5
-DeviceStateMessage.zone_sleep_states                   int_size:IS_8, max_count:5
-DeviceStateMessage.zone_indexes                        int_size:IS_8, max_count:5
+DeviceStateMessage.zone_states                         int_size:IS_8, max_count:10  # 10 Spektra Zones as of Device Firmware 1.0.17
+DeviceStateMessage.zone_sleep_states                   int_size:IS_8, max_count:10  # 10 Spektra Zones as of Device Firmware 1.0.17
+DeviceStateMessage.zone_indexes                        int_size:IS_8, max_count:10  # 10 Spektra Zones as of Device Firmware 1.0.17
 JoinedRoomsMessage.pairs                               max_count:64, int_size:IS_8
 LevelCacheResponse.levels                              max_count:64, int_size:IS_8
+SystemLogReadMessage.logs                              max_count: 32, int_size:IS_8
+SystemMetaDataReadMessage.input_press_counter          max_count:24, int_size:IS_16
+SystemMetaDataReadMessage.list_start_counter           max_count:32, int_size:IS_16
+SystemMetaDataReadMessage.schedules_counter            max_count:10, int_size:IS_16

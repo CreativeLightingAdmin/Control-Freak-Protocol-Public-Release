@@ -55,6 +55,14 @@ public final class EDS10ProtocolBuffer {
     LATCHING_OUTPUT(3),
     /**
      * <pre>
+     * Rotary device, DALI input device
+     * </pre>
+     *
+     * <code>ROTARY = 4;</code>
+     */
+    ROTARY(4),
+    /**
+     * <pre>
      * Used to track the enabled/disabled state of an I/O
      * </pre>
      *
@@ -106,6 +114,14 @@ public final class EDS10ProtocolBuffer {
     public static final int LATCHING_OUTPUT_VALUE = 3;
     /**
      * <pre>
+     * Rotary device, DALI input device
+     * </pre>
+     *
+     * <code>ROTARY = 4;</code>
+     */
+    public static final int ROTARY_VALUE = 4;
+    /**
+     * <pre>
      * Used to track the enabled/disabled state of an I/O
      * </pre>
      *
@@ -144,6 +160,7 @@ public final class EDS10ProtocolBuffer {
         case 1: return LATCHING;
         case 2: return MOMENTARY_OUTPUT;
         case 3: return LATCHING_OUTPUT;
+        case 4: return ROTARY;
         case 128: return MOMENTARY_DISABLED;
         case 129: return LATCHING_DISABLED;
         default: return null;
@@ -433,6 +450,122 @@ public final class EDS10ProtocolBuffer {
     ALARM_DISABLE(50),
     /**
      * <pre>
+     * Puts the DALI Sensor in 'override mode', which means it will no longer control the lighting until occupancy has timed-out or control is manually resumed
+     * </pre>
+     *
+     * <code>DALI_CONTROL_SENSOR_OVERRIDE = 51;</code>
+     */
+    DALI_CONTROL_SENSOR_OVERRIDE(51),
+    /**
+     * <pre>
+     * Sets the occupancy timer to zero and puts the DALI Sensor in a temporary 'disable mode' (duration depends on Sensor configuration: 'Disable Period')
+     * </pre>
+     *
+     * <code>DALI_CONTROL_SENSOR_TEMP_DISABLE = 52;</code>
+     */
+    DALI_CONTROL_SENSOR_TEMP_DISABLE(52),
+    /**
+     * <pre>
+     * Takes the DALI Sensor out of 'override mode'
+     * </pre>
+     *
+     * <code>DALI_CONTROL_SENSOR_RESUME = 53;</code>
+     */
+    DALI_CONTROL_SENSOR_RESUME(53),
+    /**
+     * <pre>
+     * For controlling DALI Arc Levels (0 to 254) and 255 for MASK - Sets associated group to override mode
+     * </pre>
+     *
+     * <code>DALI_ARC_OVERRIDE = 54;</code>
+     */
+    DALI_ARC_OVERRIDE(54),
+    /**
+     * <pre>
+     * For sending DALI commands - Sets associated group to override mode
+     * </pre>
+     *
+     * <code>DALI_COMMAND_OVERRIDE = 55;</code>
+     */
+    DALI_COMMAND_OVERRIDE(55),
+    /**
+     * <pre>
+     * Non-native DALI command override (sets associated group to override mode)
+     * </pre>
+     *
+     * <code>FADE_UP_WITH_MIN_OVERRIDE = 56;</code>
+     */
+    FADE_UP_WITH_MIN_OVERRIDE(56),
+    /**
+     * <pre>
+     * Non-native DALI command override (sets associated group to override mode)
+     * </pre>
+     *
+     * <code>ON_OFF_TOG_OVERRIDE = 57;</code>
+     */
+    ON_OFF_TOG_OVERRIDE(57),
+    /**
+     * <pre>
+     * Non-native DALI command override (sets associated group to override mode)
+     * </pre>
+     *
+     * <code>MIN_MAX_TOG_OVERRIDE = 58;</code>
+     */
+    MIN_MAX_TOG_OVERRIDE(58),
+    /**
+     * <code>MAX_OFF_TOG = 59;</code>
+     */
+    MAX_OFF_TOG(59),
+    /**
+     * <pre>
+     * Non-native DALI command override (sets associated group to override mode)
+     * </pre>
+     *
+     * <code>MAX_OFF_TOG_OVERRIDE = 60;</code>
+     */
+    MAX_OFF_TOG_OVERRIDE(60),
+    /**
+     * <pre>
+     * Non-native DALI command override (sets associated group to override mode)
+     * </pre>
+     *
+     * <code>FADE_LONG_PRESS_OVERRIDE = 61;</code>
+     */
+    FADE_LONG_PRESS_OVERRIDE(61),
+    /**
+     * <pre>
+     * Non-native DALI command override (sets associated group to override mode)
+     * </pre>
+     *
+     * <code>USER_LEVEL_RECALL_OVERRIDE = 62;</code>
+     */
+    USER_LEVEL_RECALL_OVERRIDE(62),
+    /**
+     * <pre>
+     * DMX Spektra Zone Fade UP
+     * </pre>
+     *
+     * <code>DMX_ZONE_FADE_UP = 63;</code>
+     */
+    DMX_ZONE_FADE_UP(63),
+    /**
+     * <pre>
+     * DMX Spektra Zone Fade DOWN
+     * </pre>
+     *
+     * <code>DMX_ZONE_FADE_DOWN = 64;</code>
+     */
+    DMX_ZONE_FADE_DOWN(64),
+    /**
+     * <pre>
+     * Enable Logging to EEPROM to be read by configurator
+     * </pre>
+     *
+     * <code>LOGGING_LEVEL = 65;</code>
+     */
+    LOGGING_LEVEL(65),
+    /**
+     * <pre>
      * This TriggerType should always be at the bottom of the list. Add any new TriggerTypes above it (up to 253).
      * </pre>
      *
@@ -672,6 +805,122 @@ public final class EDS10ProtocolBuffer {
     public static final int ALARM_DISABLE_VALUE = 50;
     /**
      * <pre>
+     * Puts the DALI Sensor in 'override mode', which means it will no longer control the lighting until occupancy has timed-out or control is manually resumed
+     * </pre>
+     *
+     * <code>DALI_CONTROL_SENSOR_OVERRIDE = 51;</code>
+     */
+    public static final int DALI_CONTROL_SENSOR_OVERRIDE_VALUE = 51;
+    /**
+     * <pre>
+     * Sets the occupancy timer to zero and puts the DALI Sensor in a temporary 'disable mode' (duration depends on Sensor configuration: 'Disable Period')
+     * </pre>
+     *
+     * <code>DALI_CONTROL_SENSOR_TEMP_DISABLE = 52;</code>
+     */
+    public static final int DALI_CONTROL_SENSOR_TEMP_DISABLE_VALUE = 52;
+    /**
+     * <pre>
+     * Takes the DALI Sensor out of 'override mode'
+     * </pre>
+     *
+     * <code>DALI_CONTROL_SENSOR_RESUME = 53;</code>
+     */
+    public static final int DALI_CONTROL_SENSOR_RESUME_VALUE = 53;
+    /**
+     * <pre>
+     * For controlling DALI Arc Levels (0 to 254) and 255 for MASK - Sets associated group to override mode
+     * </pre>
+     *
+     * <code>DALI_ARC_OVERRIDE = 54;</code>
+     */
+    public static final int DALI_ARC_OVERRIDE_VALUE = 54;
+    /**
+     * <pre>
+     * For sending DALI commands - Sets associated group to override mode
+     * </pre>
+     *
+     * <code>DALI_COMMAND_OVERRIDE = 55;</code>
+     */
+    public static final int DALI_COMMAND_OVERRIDE_VALUE = 55;
+    /**
+     * <pre>
+     * Non-native DALI command override (sets associated group to override mode)
+     * </pre>
+     *
+     * <code>FADE_UP_WITH_MIN_OVERRIDE = 56;</code>
+     */
+    public static final int FADE_UP_WITH_MIN_OVERRIDE_VALUE = 56;
+    /**
+     * <pre>
+     * Non-native DALI command override (sets associated group to override mode)
+     * </pre>
+     *
+     * <code>ON_OFF_TOG_OVERRIDE = 57;</code>
+     */
+    public static final int ON_OFF_TOG_OVERRIDE_VALUE = 57;
+    /**
+     * <pre>
+     * Non-native DALI command override (sets associated group to override mode)
+     * </pre>
+     *
+     * <code>MIN_MAX_TOG_OVERRIDE = 58;</code>
+     */
+    public static final int MIN_MAX_TOG_OVERRIDE_VALUE = 58;
+    /**
+     * <code>MAX_OFF_TOG = 59;</code>
+     */
+    public static final int MAX_OFF_TOG_VALUE = 59;
+    /**
+     * <pre>
+     * Non-native DALI command override (sets associated group to override mode)
+     * </pre>
+     *
+     * <code>MAX_OFF_TOG_OVERRIDE = 60;</code>
+     */
+    public static final int MAX_OFF_TOG_OVERRIDE_VALUE = 60;
+    /**
+     * <pre>
+     * Non-native DALI command override (sets associated group to override mode)
+     * </pre>
+     *
+     * <code>FADE_LONG_PRESS_OVERRIDE = 61;</code>
+     */
+    public static final int FADE_LONG_PRESS_OVERRIDE_VALUE = 61;
+    /**
+     * <pre>
+     * Non-native DALI command override (sets associated group to override mode)
+     * </pre>
+     *
+     * <code>USER_LEVEL_RECALL_OVERRIDE = 62;</code>
+     */
+    public static final int USER_LEVEL_RECALL_OVERRIDE_VALUE = 62;
+    /**
+     * <pre>
+     * DMX Spektra Zone Fade UP
+     * </pre>
+     *
+     * <code>DMX_ZONE_FADE_UP = 63;</code>
+     */
+    public static final int DMX_ZONE_FADE_UP_VALUE = 63;
+    /**
+     * <pre>
+     * DMX Spektra Zone Fade DOWN
+     * </pre>
+     *
+     * <code>DMX_ZONE_FADE_DOWN = 64;</code>
+     */
+    public static final int DMX_ZONE_FADE_DOWN_VALUE = 64;
+    /**
+     * <pre>
+     * Enable Logging to EEPROM to be read by configurator
+     * </pre>
+     *
+     * <code>LOGGING_LEVEL = 65;</code>
+     */
+    public static final int LOGGING_LEVEL_VALUE = 65;
+    /**
+     * <pre>
      * This TriggerType should always be at the bottom of the list. Add any new TriggerTypes above it (up to 253).
      * </pre>
      *
@@ -748,6 +997,21 @@ public final class EDS10ProtocolBuffer {
         case 48: return LOGIC_OPERATION;
         case 49: return ALARM_ENABLE;
         case 50: return ALARM_DISABLE;
+        case 51: return DALI_CONTROL_SENSOR_OVERRIDE;
+        case 52: return DALI_CONTROL_SENSOR_TEMP_DISABLE;
+        case 53: return DALI_CONTROL_SENSOR_RESUME;
+        case 54: return DALI_ARC_OVERRIDE;
+        case 55: return DALI_COMMAND_OVERRIDE;
+        case 56: return FADE_UP_WITH_MIN_OVERRIDE;
+        case 57: return ON_OFF_TOG_OVERRIDE;
+        case 58: return MIN_MAX_TOG_OVERRIDE;
+        case 59: return MAX_OFF_TOG;
+        case 60: return MAX_OFF_TOG_OVERRIDE;
+        case 61: return FADE_LONG_PRESS_OVERRIDE;
+        case 62: return USER_LEVEL_RECALL_OVERRIDE;
+        case 63: return DMX_ZONE_FADE_UP;
+        case 64: return DMX_ZONE_FADE_DOWN;
+        case 65: return LOGGING_LEVEL;
         case 254: return NO_COMMAND;
         default: return null;
       }
@@ -866,6 +1130,10 @@ public final class EDS10ProtocolBuffer {
      * <code>LOGIC = 14;</code>
      */
     LOGIC(14),
+    /**
+     * <code>DALI_INPUTS = 15;</code>
+     */
+    DALI_INPUTS(15),
     UNRECOGNIZED(-1),
     ;
 
@@ -929,6 +1197,10 @@ public final class EDS10ProtocolBuffer {
      * <code>LOGIC = 14;</code>
      */
     public static final int LOGIC_VALUE = 14;
+    /**
+     * <code>DALI_INPUTS = 15;</code>
+     */
+    public static final int DALI_INPUTS_VALUE = 15;
 
 
     public final int getNumber() {
@@ -962,6 +1234,7 @@ public final class EDS10ProtocolBuffer {
         case 12: return POLL_DATA;
         case 13: return LIST_EXTENDED;
         case 14: return LOGIC;
+        case 15: return DALI_INPUTS;
         default: return null;
       }
     }
@@ -1636,6 +1909,120 @@ public final class EDS10ProtocolBuffer {
   }
 
   /**
+   * Protobuf enum {@code LineAddressingType}
+   */
+  public enum LineAddressingType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <pre>
+     * Control Lines are independently adddressed (e.g. DMX 1 to 512 per line)
+     * </pre>
+     *
+     * <code>INDEPENDENT = 0;</code>
+     */
+    INDEPENDENT(0),
+    /**
+     * <pre>
+     * Control Lines are consecutively addressed (e.g. DMX 1 to 512 on the first line, 513 to 1024 on the next, etc.)
+     * </pre>
+     *
+     * <code>CONSECUTIVE = 1;</code>
+     */
+    CONSECUTIVE(1),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <pre>
+     * Control Lines are independently adddressed (e.g. DMX 1 to 512 per line)
+     * </pre>
+     *
+     * <code>INDEPENDENT = 0;</code>
+     */
+    public static final int INDEPENDENT_VALUE = 0;
+    /**
+     * <pre>
+     * Control Lines are consecutively addressed (e.g. DMX 1 to 512 on the first line, 513 to 1024 on the next, etc.)
+     * </pre>
+     *
+     * <code>CONSECUTIVE = 1;</code>
+     */
+    public static final int CONSECUTIVE_VALUE = 1;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static LineAddressingType valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static LineAddressingType forNumber(int value) {
+      switch (value) {
+        case 0: return INDEPENDENT;
+        case 1: return CONSECUTIVE;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<LineAddressingType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        LineAddressingType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<LineAddressingType>() {
+            public LineAddressingType findValueByNumber(int number) {
+              return LineAddressingType.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(8);
+    }
+
+    private static final LineAddressingType[] VALUES = values();
+
+    public static LineAddressingType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private LineAddressingType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:LineAddressingType)
+  }
+
+  /**
    * Protobuf enum {@code AckMessageType}
    */
   public enum AckMessageType
@@ -1752,6 +2139,22 @@ public final class EDS10ProtocolBuffer {
      * <code>UNAUTHORISED = 13;</code>
      */
     UNAUTHORISED(13),
+    /**
+     * <pre>
+     * Can be returned in the case where some but not all Lines in a line_mask successfully sent
+     * </pre>
+     *
+     * <code>PARTIAL_SUCCESS = 14;</code>
+     */
+    PARTIAL_SUCCESS(14),
+    /**
+     * <pre>
+     * For whatever reason, the intended command did not complete
+     * </pre>
+     *
+     * <code>COMMAND_FAILED = 15;</code>
+     */
+    COMMAND_FAILED(15),
     UNRECOGNIZED(-1),
     ;
 
@@ -1867,6 +2270,22 @@ public final class EDS10ProtocolBuffer {
      * <code>UNAUTHORISED = 13;</code>
      */
     public static final int UNAUTHORISED_VALUE = 13;
+    /**
+     * <pre>
+     * Can be returned in the case where some but not all Lines in a line_mask successfully sent
+     * </pre>
+     *
+     * <code>PARTIAL_SUCCESS = 14;</code>
+     */
+    public static final int PARTIAL_SUCCESS_VALUE = 14;
+    /**
+     * <pre>
+     * For whatever reason, the intended command did not complete
+     * </pre>
+     *
+     * <code>COMMAND_FAILED = 15;</code>
+     */
+    public static final int COMMAND_FAILED_VALUE = 15;
 
 
     public final int getNumber() {
@@ -1901,6 +2320,8 @@ public final class EDS10ProtocolBuffer {
         case 11: return UNEXPECTED_CASE;
         case 12: return SLOTS_FULL;
         case 13: return UNAUTHORISED;
+        case 14: return PARTIAL_SUCCESS;
+        case 15: return COMMAND_FAILED;
         default: return null;
       }
     }
@@ -1927,7 +2348,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(8);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(9);
     }
 
     private static final AckMessageType[] VALUES = values();
@@ -2205,7 +2626,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(9);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(10);
     }
 
     private static final Type8CommandType[] VALUES = values();
@@ -2348,7 +2769,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(10);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(11);
     }
 
     private static final Type8QueryType[] VALUES = values();
@@ -2472,7 +2893,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(11);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(12);
     }
 
     private static final LineType[] VALUES = values();
@@ -2654,7 +3075,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(12);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(13);
     }
 
     private static final EventType[] VALUES = values();
@@ -3093,7 +3514,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(13);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(14);
     }
 
     private static final DALIQueryType[] VALUES = values();
@@ -3528,7 +3949,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(14);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(15);
     }
 
     private static final DALICommandType[] VALUES = values();
@@ -3714,7 +4135,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(15);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(16);
     }
 
     private static final CustomDALICommandType[] VALUES = values();
@@ -3937,6 +4358,30 @@ public final class EDS10ProtocolBuffer {
      * <code>NONCE = 23;</code>
      */
     NONCE(23),
+    /**
+     * <pre>
+     * The type of DALI frame (24 or 25-bit) for eDALI packets to/from motion sensors
+     * </pre>
+     *
+     * <code>DALI_SENSOR_TYPE = 24;</code>
+     */
+    DALI_SENSOR_TYPE(24),
+    /**
+     * <pre>
+     * Will reboot the device when used with the 'RUN' AdminCommandType
+     * </pre>
+     *
+     * <code>DEVICE_REBOOT = 25;</code>
+     */
+    DEVICE_REBOOT(25),
+    /**
+     * <pre>
+     * Will reset the system logs when used with a 'RESET' AdminCommandTyppe
+     * </pre>
+     *
+     * <code>SYSTEM_LOGGING = 26;</code>
+     */
+    SYSTEM_LOGGING(26),
     UNRECOGNIZED(-1),
     ;
 
@@ -4132,6 +4577,30 @@ public final class EDS10ProtocolBuffer {
      * <code>NONCE = 23;</code>
      */
     public static final int NONCE_VALUE = 23;
+    /**
+     * <pre>
+     * The type of DALI frame (24 or 25-bit) for eDALI packets to/from motion sensors
+     * </pre>
+     *
+     * <code>DALI_SENSOR_TYPE = 24;</code>
+     */
+    public static final int DALI_SENSOR_TYPE_VALUE = 24;
+    /**
+     * <pre>
+     * Will reboot the device when used with the 'RUN' AdminCommandType
+     * </pre>
+     *
+     * <code>DEVICE_REBOOT = 25;</code>
+     */
+    public static final int DEVICE_REBOOT_VALUE = 25;
+    /**
+     * <pre>
+     * Will reset the system logs when used with a 'RESET' AdminCommandTyppe
+     * </pre>
+     *
+     * <code>SYSTEM_LOGGING = 26;</code>
+     */
+    public static final int SYSTEM_LOGGING_VALUE = 26;
 
 
     public final int getNumber() {
@@ -4176,6 +4645,9 @@ public final class EDS10ProtocolBuffer {
         case 21: return TRIDONIC_MSENSORS;
         case 22: return SECURE_SESSION;
         case 23: return NONCE;
+        case 24: return DALI_SENSOR_TYPE;
+        case 25: return DEVICE_REBOOT;
+        case 26: return SYSTEM_LOGGING;
         default: return null;
       }
     }
@@ -4202,7 +4674,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(16);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(17);
     }
 
     private static final AdminPropertyType[] VALUES = values();
@@ -4253,6 +4725,10 @@ public final class EDS10ProtocolBuffer {
      * <code>RESET = 4;</code>
      */
     RESET(4),
+    /**
+     * <code>RUN = 5;</code>
+     */
+    RUN(5),
     UNRECOGNIZED(-1),
     ;
 
@@ -4276,6 +4752,10 @@ public final class EDS10ProtocolBuffer {
      * <code>RESET = 4;</code>
      */
     public static final int RESET_VALUE = 4;
+    /**
+     * <code>RUN = 5;</code>
+     */
+    public static final int RUN_VALUE = 5;
 
 
     public final int getNumber() {
@@ -4301,6 +4781,7 @@ public final class EDS10ProtocolBuffer {
         case 2: return ADD;
         case 3: return REMOVE;
         case 4: return RESET;
+        case 5: return RUN;
         default: return null;
       }
     }
@@ -4327,7 +4808,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(17);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(18);
     }
 
     private static final AdminCommandType[] VALUES = values();
@@ -4375,33 +4856,37 @@ public final class EDS10ProtocolBuffer {
      */
     CONTROL_GEAR_FAILURE(1),
     /**
-     * <code>LAMP_FAILURE = 3;</code>
+     * <code>LAMP_FAILURE = 2;</code>
      */
-    LAMP_FAILURE(3),
+    LAMP_FAILURE(2),
     /**
-     * <code>LAMP_ON = 7;</code>
+     * <code>LAMP_ON = 4;</code>
      */
-    LAMP_ON(7),
+    LAMP_ON(4),
     /**
-     * <code>LIMIT_ERROR = 15;</code>
+     * <code>LIMIT_ERROR = 8;</code>
      */
-    LIMIT_ERROR(15),
+    LIMIT_ERROR(8),
     /**
-     * <code>FADE_RUNNING = 31;</code>
+     * <pre>
+     * 
+     * </pre>
+     *
+     * <code>FADE_RUNNING = 16;</code>
      */
-    FADE_RUNNING(31),
+    FADE_RUNNING(16),
     /**
-     * <code>RESET_STATE = 63;</code>
+     * <code>RESET_STATE = 32;</code>
      */
-    RESET_STATE(63),
+    RESET_STATE(32),
     /**
-     * <code>SHORT_ADDRESS = 127;</code>
+     * <code>SHORT_ADDRESS = 64;</code>
      */
-    SHORT_ADDRESS(127),
+    SHORT_ADDRESS(64),
     /**
-     * <code>POWER_CYCLE_SEEN = 255;</code>
+     * <code>POWER_CYCLE_SEEN = 128;</code>
      */
-    POWER_CYCLE_SEEN(255),
+    POWER_CYCLE_SEEN(128),
     UNRECOGNIZED(-1),
     ;
 
@@ -4418,33 +4903,37 @@ public final class EDS10ProtocolBuffer {
      */
     public static final int CONTROL_GEAR_FAILURE_VALUE = 1;
     /**
-     * <code>LAMP_FAILURE = 3;</code>
+     * <code>LAMP_FAILURE = 2;</code>
      */
-    public static final int LAMP_FAILURE_VALUE = 3;
+    public static final int LAMP_FAILURE_VALUE = 2;
     /**
-     * <code>LAMP_ON = 7;</code>
+     * <code>LAMP_ON = 4;</code>
      */
-    public static final int LAMP_ON_VALUE = 7;
+    public static final int LAMP_ON_VALUE = 4;
     /**
-     * <code>LIMIT_ERROR = 15;</code>
+     * <code>LIMIT_ERROR = 8;</code>
      */
-    public static final int LIMIT_ERROR_VALUE = 15;
+    public static final int LIMIT_ERROR_VALUE = 8;
     /**
-     * <code>FADE_RUNNING = 31;</code>
+     * <pre>
+     * 
+     * </pre>
+     *
+     * <code>FADE_RUNNING = 16;</code>
      */
-    public static final int FADE_RUNNING_VALUE = 31;
+    public static final int FADE_RUNNING_VALUE = 16;
     /**
-     * <code>RESET_STATE = 63;</code>
+     * <code>RESET_STATE = 32;</code>
      */
-    public static final int RESET_STATE_VALUE = 63;
+    public static final int RESET_STATE_VALUE = 32;
     /**
-     * <code>SHORT_ADDRESS = 127;</code>
+     * <code>SHORT_ADDRESS = 64;</code>
      */
-    public static final int SHORT_ADDRESS_VALUE = 127;
+    public static final int SHORT_ADDRESS_VALUE = 64;
     /**
-     * <code>POWER_CYCLE_SEEN = 255;</code>
+     * <code>POWER_CYCLE_SEEN = 128;</code>
      */
-    public static final int POWER_CYCLE_SEEN_VALUE = 255;
+    public static final int POWER_CYCLE_SEEN_VALUE = 128;
 
 
     public final int getNumber() {
@@ -4467,13 +4956,13 @@ public final class EDS10ProtocolBuffer {
       switch (value) {
         case 0: return LAMP_OFF;
         case 1: return CONTROL_GEAR_FAILURE;
-        case 3: return LAMP_FAILURE;
-        case 7: return LAMP_ON;
-        case 15: return LIMIT_ERROR;
-        case 31: return FADE_RUNNING;
-        case 63: return RESET_STATE;
-        case 127: return SHORT_ADDRESS;
-        case 255: return POWER_CYCLE_SEEN;
+        case 2: return LAMP_FAILURE;
+        case 4: return LAMP_ON;
+        case 8: return LIMIT_ERROR;
+        case 16: return FADE_RUNNING;
+        case 32: return RESET_STATE;
+        case 64: return SHORT_ADDRESS;
+        case 128: return POWER_CYCLE_SEEN;
         default: return null;
       }
     }
@@ -4500,7 +4989,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(18);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(19);
     }
 
     private static final DALIStatusType[] VALUES = values();
@@ -4524,6 +5013,185 @@ public final class EDS10ProtocolBuffer {
     }
 
     // @@protoc_insertion_point(enum_scope:DALIStatusType)
+  }
+
+  /**
+   * Protobuf enum {@code DALIRXStatusFlag}
+   */
+  public enum DALIRXStatusFlag
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>WAITING = 0;</code>
+     */
+    WAITING(0),
+    /**
+     * <code>RECEIVING_FRAME = 1;</code>
+     */
+    RECEIVING_FRAME(1),
+    /**
+     * <code>NO_RECEIVED_FRAME = 2;</code>
+     */
+    NO_RECEIVED_FRAME(2),
+    /**
+     * <code>RECEIVED_8_BIT_FRAME = 3;</code>
+     */
+    RECEIVED_8_BIT_FRAME(3),
+    /**
+     * <code>RECEIVED_16_BIT_FRAME = 4;</code>
+     */
+    RECEIVED_16_BIT_FRAME(4),
+    /**
+     * <code>RECEIVED_24_BIT_FRAME = 5;</code>
+     */
+    RECEIVED_24_BIT_FRAME(5),
+    /**
+     * <code>RECEIVED_PARTIAL_FRAME = 6;</code>
+     */
+    RECEIVED_PARTIAL_FRAME(6),
+    /**
+     * <code>IDLE = 7;</code>
+     */
+    IDLE(7),
+    /**
+     * <code>CALIBRATION = 8;</code>
+     */
+    CALIBRATION(8),
+    /**
+     * <code>ERROR_WHILE_SENDING = 254;</code>
+     */
+    ERROR_WHILE_SENDING(254),
+    /**
+     * <code>ERROR_WHILE_RECEIVING = 255;</code>
+     */
+    ERROR_WHILE_RECEIVING(255),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>WAITING = 0;</code>
+     */
+    public static final int WAITING_VALUE = 0;
+    /**
+     * <code>RECEIVING_FRAME = 1;</code>
+     */
+    public static final int RECEIVING_FRAME_VALUE = 1;
+    /**
+     * <code>NO_RECEIVED_FRAME = 2;</code>
+     */
+    public static final int NO_RECEIVED_FRAME_VALUE = 2;
+    /**
+     * <code>RECEIVED_8_BIT_FRAME = 3;</code>
+     */
+    public static final int RECEIVED_8_BIT_FRAME_VALUE = 3;
+    /**
+     * <code>RECEIVED_16_BIT_FRAME = 4;</code>
+     */
+    public static final int RECEIVED_16_BIT_FRAME_VALUE = 4;
+    /**
+     * <code>RECEIVED_24_BIT_FRAME = 5;</code>
+     */
+    public static final int RECEIVED_24_BIT_FRAME_VALUE = 5;
+    /**
+     * <code>RECEIVED_PARTIAL_FRAME = 6;</code>
+     */
+    public static final int RECEIVED_PARTIAL_FRAME_VALUE = 6;
+    /**
+     * <code>IDLE = 7;</code>
+     */
+    public static final int IDLE_VALUE = 7;
+    /**
+     * <code>CALIBRATION = 8;</code>
+     */
+    public static final int CALIBRATION_VALUE = 8;
+    /**
+     * <code>ERROR_WHILE_SENDING = 254;</code>
+     */
+    public static final int ERROR_WHILE_SENDING_VALUE = 254;
+    /**
+     * <code>ERROR_WHILE_RECEIVING = 255;</code>
+     */
+    public static final int ERROR_WHILE_RECEIVING_VALUE = 255;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static DALIRXStatusFlag valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static DALIRXStatusFlag forNumber(int value) {
+      switch (value) {
+        case 0: return WAITING;
+        case 1: return RECEIVING_FRAME;
+        case 2: return NO_RECEIVED_FRAME;
+        case 3: return RECEIVED_8_BIT_FRAME;
+        case 4: return RECEIVED_16_BIT_FRAME;
+        case 5: return RECEIVED_24_BIT_FRAME;
+        case 6: return RECEIVED_PARTIAL_FRAME;
+        case 7: return IDLE;
+        case 8: return CALIBRATION;
+        case 254: return ERROR_WHILE_SENDING;
+        case 255: return ERROR_WHILE_RECEIVING;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<DALIRXStatusFlag>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        DALIRXStatusFlag> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<DALIRXStatusFlag>() {
+            public DALIRXStatusFlag findValueByNumber(int number) {
+              return DALIRXStatusFlag.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(20);
+    }
+
+    private static final DALIRXStatusFlag[] VALUES = values();
+
+    public static DALIRXStatusFlag valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private DALIRXStatusFlag(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:DALIRXStatusFlag)
   }
 
   /**
@@ -4665,7 +5333,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(19);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(21);
     }
 
     private static final DiagnosticMessageType[] VALUES = values();
@@ -4799,7 +5467,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(20);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(22);
     }
 
     private static final FirmwareCommandType[] VALUES = values();
@@ -4930,7 +5598,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(21);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(23);
     }
 
     private static final SpektraTransitionType[] VALUES = values();
@@ -5082,7 +5750,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(22);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(24);
     }
 
     private static final LogicType[] VALUES = values();
@@ -5216,7 +5884,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(23);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(25);
     }
 
     private static final LogicComparisonType[] VALUES = values();
@@ -5240,6 +5908,625 @@ public final class EDS10ProtocolBuffer {
     }
 
     // @@protoc_insertion_point(enum_scope:LogicComparisonType)
+  }
+
+  /**
+   * Protobuf enum {@code DALISensorType}
+   */
+  public enum DALISensorType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <pre>
+     * Specific 25-bit frame type for Tridonic pre-configured MSensors
+     * </pre>
+     *
+     * <code>TRIDONIC_EDALI = 0;</code>
+     */
+    TRIDONIC_EDALI(0),
+    /**
+     * <pre>
+     * Standard 24-bit 'eDALI' frames
+     * </pre>
+     *
+     * <code>STANDARD_EDALI = 1;</code>
+     */
+    STANDARD_EDALI(1),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <pre>
+     * Specific 25-bit frame type for Tridonic pre-configured MSensors
+     * </pre>
+     *
+     * <code>TRIDONIC_EDALI = 0;</code>
+     */
+    public static final int TRIDONIC_EDALI_VALUE = 0;
+    /**
+     * <pre>
+     * Standard 24-bit 'eDALI' frames
+     * </pre>
+     *
+     * <code>STANDARD_EDALI = 1;</code>
+     */
+    public static final int STANDARD_EDALI_VALUE = 1;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static DALISensorType valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static DALISensorType forNumber(int value) {
+      switch (value) {
+        case 0: return TRIDONIC_EDALI;
+        case 1: return STANDARD_EDALI;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<DALISensorType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        DALISensorType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<DALISensorType>() {
+            public DALISensorType findValueByNumber(int number) {
+              return DALISensorType.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(26);
+    }
+
+    private static final DALISensorType[] VALUES = values();
+
+    public static DALISensorType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private DALISensorType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:DALISensorType)
+  }
+
+  /**
+   * Protobuf enum {@code SensorCommandType}
+   */
+  public enum SensorCommandType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <pre>
+     * Applies default settings to all known (programmed) Sensors and resets their state
+     * </pre>
+     *
+     * <code>INITIALISE = 0;</code>
+     */
+    INITIALISE(0),
+    /**
+     * <pre>
+     * Stops a Sensor from sending DALI packets
+     * </pre>
+     *
+     * <code>MUTE = 1;</code>
+     */
+    MUTE(1),
+    /**
+     * <pre>
+     * Allows a Sensor to send DALI packets
+     * </pre>
+     *
+     * <code>UNMUTE = 2;</code>
+     */
+    UNMUTE(2),
+    /**
+     * <pre>
+     * Puts a Sensor in 'Override Mode' which prevents it from adjusting the Light Level (until after the occupancy timeout occurs)
+     * </pre>
+     *
+     * <code>OVERRIDE = 3;</code>
+     */
+    OVERRIDE(3),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <pre>
+     * Applies default settings to all known (programmed) Sensors and resets their state
+     * </pre>
+     *
+     * <code>INITIALISE = 0;</code>
+     */
+    public static final int INITIALISE_VALUE = 0;
+    /**
+     * <pre>
+     * Stops a Sensor from sending DALI packets
+     * </pre>
+     *
+     * <code>MUTE = 1;</code>
+     */
+    public static final int MUTE_VALUE = 1;
+    /**
+     * <pre>
+     * Allows a Sensor to send DALI packets
+     * </pre>
+     *
+     * <code>UNMUTE = 2;</code>
+     */
+    public static final int UNMUTE_VALUE = 2;
+    /**
+     * <pre>
+     * Puts a Sensor in 'Override Mode' which prevents it from adjusting the Light Level (until after the occupancy timeout occurs)
+     * </pre>
+     *
+     * <code>OVERRIDE = 3;</code>
+     */
+    public static final int OVERRIDE_VALUE = 3;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static SensorCommandType valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static SensorCommandType forNumber(int value) {
+      switch (value) {
+        case 0: return INITIALISE;
+        case 1: return MUTE;
+        case 2: return UNMUTE;
+        case 3: return OVERRIDE;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<SensorCommandType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        SensorCommandType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<SensorCommandType>() {
+            public SensorCommandType findValueByNumber(int number) {
+              return SensorCommandType.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(27);
+    }
+
+    private static final SensorCommandType[] VALUES = values();
+
+    public static SensorCommandType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private SensorCommandType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:SensorCommandType)
+  }
+
+  /**
+   * Protobuf enum {@code SystemLogType}
+   */
+  public enum SystemLogType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>BOOT = 0;</code>
+     */
+    BOOT(0),
+    /**
+     * <code>NET_LINK = 1;</code>
+     */
+    NET_LINK(1),
+    /**
+     * <code>NTP = 2;</code>
+     */
+    NTP(2),
+    /**
+     * <code>TRIGGER = 3;</code>
+     */
+    TRIGGER(3),
+    /**
+     * <code>SPEKTRA = 4;</code>
+     */
+    SPEKTRA(4),
+    /**
+     * <code>SCHEDULE = 5;</code>
+     */
+    SCHEDULE(5),
+    /**
+     * <code>USER = 6;</code>
+     */
+    USER(6),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>BOOT = 0;</code>
+     */
+    public static final int BOOT_VALUE = 0;
+    /**
+     * <code>NET_LINK = 1;</code>
+     */
+    public static final int NET_LINK_VALUE = 1;
+    /**
+     * <code>NTP = 2;</code>
+     */
+    public static final int NTP_VALUE = 2;
+    /**
+     * <code>TRIGGER = 3;</code>
+     */
+    public static final int TRIGGER_VALUE = 3;
+    /**
+     * <code>SPEKTRA = 4;</code>
+     */
+    public static final int SPEKTRA_VALUE = 4;
+    /**
+     * <code>SCHEDULE = 5;</code>
+     */
+    public static final int SCHEDULE_VALUE = 5;
+    /**
+     * <code>USER = 6;</code>
+     */
+    public static final int USER_VALUE = 6;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static SystemLogType valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static SystemLogType forNumber(int value) {
+      switch (value) {
+        case 0: return BOOT;
+        case 1: return NET_LINK;
+        case 2: return NTP;
+        case 3: return TRIGGER;
+        case 4: return SPEKTRA;
+        case 5: return SCHEDULE;
+        case 6: return USER;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<SystemLogType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        SystemLogType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<SystemLogType>() {
+            public SystemLogType findValueByNumber(int number) {
+              return SystemLogType.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(28);
+    }
+
+    private static final SystemLogType[] VALUES = values();
+
+    public static SystemLogType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private SystemLogType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:SystemLogType)
+  }
+
+  /**
+   * Protobuf enum {@code DALIAddressingError}
+   */
+  public enum DALIAddressingError
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>NO_ERROR = 0;</code>
+     */
+    NO_ERROR(0),
+    /**
+     * <code>VERIFY = 1;</code>
+     */
+    VERIFY(1),
+    /**
+     * <code>SEARCH = 2;</code>
+     */
+    SEARCH(2),
+    /**
+     * <code>NO_NEW_DEVICE = 3;</code>
+     */
+    NO_NEW_DEVICE(3),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>NO_ERROR = 0;</code>
+     */
+    public static final int NO_ERROR_VALUE = 0;
+    /**
+     * <code>VERIFY = 1;</code>
+     */
+    public static final int VERIFY_VALUE = 1;
+    /**
+     * <code>SEARCH = 2;</code>
+     */
+    public static final int SEARCH_VALUE = 2;
+    /**
+     * <code>NO_NEW_DEVICE = 3;</code>
+     */
+    public static final int NO_NEW_DEVICE_VALUE = 3;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static DALIAddressingError valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static DALIAddressingError forNumber(int value) {
+      switch (value) {
+        case 0: return NO_ERROR;
+        case 1: return VERIFY;
+        case 2: return SEARCH;
+        case 3: return NO_NEW_DEVICE;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<DALIAddressingError>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        DALIAddressingError> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<DALIAddressingError>() {
+            public DALIAddressingError findValueByNumber(int number) {
+              return DALIAddressingError.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(29);
+    }
+
+    private static final DALIAddressingError[] VALUES = values();
+
+    public static DALIAddressingError valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private DALIAddressingError(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:DALIAddressingError)
+  }
+
+  /**
+   * Protobuf enum {@code DALIAddressingType}
+   */
+  public enum DALIAddressingType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>ADDRESS_NEW = 0;</code>
+     */
+    ADDRESS_NEW(0),
+    /**
+     * <code>READDRESS_ALL = 1;</code>
+     */
+    READDRESS_ALL(1),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>ADDRESS_NEW = 0;</code>
+     */
+    public static final int ADDRESS_NEW_VALUE = 0;
+    /**
+     * <code>READDRESS_ALL = 1;</code>
+     */
+    public static final int READDRESS_ALL_VALUE = 1;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static DALIAddressingType valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static DALIAddressingType forNumber(int value) {
+      switch (value) {
+        case 0: return ADDRESS_NEW;
+        case 1: return READDRESS_ALL;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<DALIAddressingType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        DALIAddressingType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<DALIAddressingType>() {
+            public DALIAddressingType findValueByNumber(int number) {
+              return DALIAddressingType.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(30);
+    }
+
+    private static final DALIAddressingType[] VALUES = values();
+
+    public static DALIAddressingType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private DALIAddressingType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:DALIAddressingType)
   }
 
   public interface AckMessageOrBuilder extends
@@ -7706,6 +8993,15 @@ public final class EDS10ProtocolBuffer {
      * <code>repeated uint32 zone_indexes = 13;</code>
      */
     int getZoneIndexes(int index);
+
+    /**
+     * <pre>
+     * DALI Input state mask
+     * </pre>
+     *
+     * <code>uint64 dali_input_state = 14;</code>
+     */
+    long getDaliInputState();
   }
   /**
    * <pre>
@@ -7735,6 +9031,7 @@ public final class EDS10ProtocolBuffer {
       zoneStates_ = java.util.Collections.emptyList();
       zoneSleepStates_ = java.util.Collections.emptyList();
       zoneIndexes_ = java.util.Collections.emptyList();
+      daliInputState_ = 0L;
     }
 
     @java.lang.Override
@@ -7936,6 +9233,11 @@ public final class EDS10ProtocolBuffer {
                 zoneIndexes_.add(input.readUInt32());
               }
               input.popLimit(limit);
+              break;
+            }
+            case 112: {
+
+              daliInputState_ = input.readUInt64();
               break;
             }
             default: {
@@ -8330,6 +9632,19 @@ public final class EDS10ProtocolBuffer {
     }
     private int zoneIndexesMemoizedSerializedSize = -1;
 
+    public static final int DALI_INPUT_STATE_FIELD_NUMBER = 14;
+    private long daliInputState_;
+    /**
+     * <pre>
+     * DALI Input state mask
+     * </pre>
+     *
+     * <code>uint64 dali_input_state = 14;</code>
+     */
+    public long getDaliInputState() {
+      return daliInputState_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -8407,6 +9722,9 @@ public final class EDS10ProtocolBuffer {
       }
       for (int i = 0; i < zoneIndexes_.size(); i++) {
         output.writeUInt32NoTag(zoneIndexes_.get(i));
+      }
+      if (daliInputState_ != 0L) {
+        output.writeUInt64(14, daliInputState_);
       }
       unknownFields.writeTo(output);
     }
@@ -8529,6 +9847,10 @@ public final class EDS10ProtocolBuffer {
         }
         zoneIndexesMemoizedSerializedSize = dataSize;
       }
+      if (daliInputState_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(14, daliInputState_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -8581,6 +9903,8 @@ public final class EDS10ProtocolBuffer {
           .equals(other.getZoneSleepStatesList());
       result = result && getZoneIndexesList()
           .equals(other.getZoneIndexesList());
+      result = result && (getDaliInputState()
+          == other.getDaliInputState());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -8636,6 +9960,9 @@ public final class EDS10ProtocolBuffer {
         hash = (37 * hash) + ZONE_INDEXES_FIELD_NUMBER;
         hash = (53 * hash) + getZoneIndexesList().hashCode();
       }
+      hash = (37 * hash) + DALI_INPUT_STATE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getDaliInputState());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -8807,6 +10134,8 @@ public final class EDS10ProtocolBuffer {
         bitField0_ = (bitField0_ & ~0x00000800);
         zoneIndexes_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00001000);
+        daliInputState_ = 0L;
+
         return this;
       }
 
@@ -8880,6 +10209,7 @@ public final class EDS10ProtocolBuffer {
           bitField0_ = (bitField0_ & ~0x00001000);
         }
         result.zoneIndexes_ = zoneIndexes_;
+        result.daliInputState_ = daliInputState_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -9009,6 +10339,9 @@ public final class EDS10ProtocolBuffer {
             zoneIndexes_.addAll(other.zoneIndexes_);
           }
           onChanged();
+        }
+        if (other.getDaliInputState() != 0L) {
+          setDaliInputState(other.getDaliInputState());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -10096,6 +11429,44 @@ public final class EDS10ProtocolBuffer {
       public Builder clearZoneIndexes() {
         zoneIndexes_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00001000);
+        onChanged();
+        return this;
+      }
+
+      private long daliInputState_ ;
+      /**
+       * <pre>
+       * DALI Input state mask
+       * </pre>
+       *
+       * <code>uint64 dali_input_state = 14;</code>
+       */
+      public long getDaliInputState() {
+        return daliInputState_;
+      }
+      /**
+       * <pre>
+       * DALI Input state mask
+       * </pre>
+       *
+       * <code>uint64 dali_input_state = 14;</code>
+       */
+      public Builder setDaliInputState(long value) {
+        
+        daliInputState_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * DALI Input state mask
+       * </pre>
+       *
+       * <code>uint64 dali_input_state = 14;</code>
+       */
+      public Builder clearDaliInputState() {
+        
+        daliInputState_ = 0L;
         onChanged();
         return this;
       }
@@ -14317,6 +15688,1314 @@ public final class EDS10ProtocolBuffer {
 
   }
 
+  public interface DALIInputMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:DALIInputMessage)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Which index for this Input
+     * </pre>
+     *
+     * <code>uint32 index = 1;</code>
+     */
+    int getIndex();
+
+    /**
+     * <pre>
+     * The eDALI Address of this Input
+     * </pre>
+     *
+     * <code>uint32 address = 2;</code>
+     */
+    int getAddress();
+
+    /**
+     * <pre>
+     * The DALI Line this Input is on
+     * </pre>
+     *
+     * <code>uint32 dali_line = 3;</code>
+     */
+    int getDaliLine();
+
+    /**
+     * <pre>
+     * How will this Input be triggered? Momentary (short/long press) or Latching (low/high)
+     * </pre>
+     *
+     * <code>.TriggerOperationType button_state = 4;</code>
+     */
+    int getButtonStateValue();
+    /**
+     * <pre>
+     * How will this Input be triggered? Momentary (short/long press) or Latching (low/high)
+     * </pre>
+     *
+     * <code>.TriggerOperationType button_state = 4;</code>
+     */
+    EDS10ProtocolBuffer.TriggerOperationType getButtonState();
+
+    /**
+     * <pre>
+     * What action should occur on short/low
+     * </pre>
+     *
+     * <code>.TriggerMessage short_press = 5;</code>
+     */
+    boolean hasShortPress();
+    /**
+     * <pre>
+     * What action should occur on short/low
+     * </pre>
+     *
+     * <code>.TriggerMessage short_press = 5;</code>
+     */
+    EDS10ProtocolBuffer.TriggerMessage getShortPress();
+    /**
+     * <pre>
+     * What action should occur on short/low
+     * </pre>
+     *
+     * <code>.TriggerMessage short_press = 5;</code>
+     */
+    EDS10ProtocolBuffer.TriggerMessageOrBuilder getShortPressOrBuilder();
+
+    /**
+     * <pre>
+     * What action should occur on long/high
+     * </pre>
+     *
+     * <code>.TriggerMessage long_press = 6;</code>
+     */
+    boolean hasLongPress();
+    /**
+     * <pre>
+     * What action should occur on long/high
+     * </pre>
+     *
+     * <code>.TriggerMessage long_press = 6;</code>
+     */
+    EDS10ProtocolBuffer.TriggerMessage getLongPress();
+    /**
+     * <pre>
+     * What action should occur on long/high
+     * </pre>
+     *
+     * <code>.TriggerMessage long_press = 6;</code>
+     */
+    EDS10ProtocolBuffer.TriggerMessageOrBuilder getLongPressOrBuilder();
+  }
+  /**
+   * <pre>
+   * DALI Inputs
+   * </pre>
+   *
+   * Protobuf type {@code DALIInputMessage}
+   */
+  public  static final class DALIInputMessage extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:DALIInputMessage)
+      DALIInputMessageOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use DALIInputMessage.newBuilder() to construct.
+    private DALIInputMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private DALIInputMessage() {
+      index_ = 0;
+      address_ = 0;
+      daliLine_ = 0;
+      buttonState_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DALIInputMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              index_ = input.readUInt32();
+              break;
+            }
+            case 16: {
+
+              address_ = input.readUInt32();
+              break;
+            }
+            case 24: {
+
+              daliLine_ = input.readUInt32();
+              break;
+            }
+            case 32: {
+              int rawValue = input.readEnum();
+
+              buttonState_ = rawValue;
+              break;
+            }
+            case 42: {
+              EDS10ProtocolBuffer.TriggerMessage.Builder subBuilder = null;
+              if (shortPress_ != null) {
+                subBuilder = shortPress_.toBuilder();
+              }
+              shortPress_ = input.readMessage(EDS10ProtocolBuffer.TriggerMessage.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(shortPress_);
+                shortPress_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 50: {
+              EDS10ProtocolBuffer.TriggerMessage.Builder subBuilder = null;
+              if (longPress_ != null) {
+                subBuilder = longPress_.toBuilder();
+              }
+              longPress_ = input.readMessage(EDS10ProtocolBuffer.TriggerMessage.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(longPress_);
+                longPress_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.internal_static_DALIInputMessage_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return EDS10ProtocolBuffer.internal_static_DALIInputMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              EDS10ProtocolBuffer.DALIInputMessage.class, EDS10ProtocolBuffer.DALIInputMessage.Builder.class);
+    }
+
+    public static final int INDEX_FIELD_NUMBER = 1;
+    private int index_;
+    /**
+     * <pre>
+     * Which index for this Input
+     * </pre>
+     *
+     * <code>uint32 index = 1;</code>
+     */
+    public int getIndex() {
+      return index_;
+    }
+
+    public static final int ADDRESS_FIELD_NUMBER = 2;
+    private int address_;
+    /**
+     * <pre>
+     * The eDALI Address of this Input
+     * </pre>
+     *
+     * <code>uint32 address = 2;</code>
+     */
+    public int getAddress() {
+      return address_;
+    }
+
+    public static final int DALI_LINE_FIELD_NUMBER = 3;
+    private int daliLine_;
+    /**
+     * <pre>
+     * The DALI Line this Input is on
+     * </pre>
+     *
+     * <code>uint32 dali_line = 3;</code>
+     */
+    public int getDaliLine() {
+      return daliLine_;
+    }
+
+    public static final int BUTTON_STATE_FIELD_NUMBER = 4;
+    private int buttonState_;
+    /**
+     * <pre>
+     * How will this Input be triggered? Momentary (short/long press) or Latching (low/high)
+     * </pre>
+     *
+     * <code>.TriggerOperationType button_state = 4;</code>
+     */
+    public int getButtonStateValue() {
+      return buttonState_;
+    }
+    /**
+     * <pre>
+     * How will this Input be triggered? Momentary (short/long press) or Latching (low/high)
+     * </pre>
+     *
+     * <code>.TriggerOperationType button_state = 4;</code>
+     */
+    public EDS10ProtocolBuffer.TriggerOperationType getButtonState() {
+      @SuppressWarnings("deprecation")
+      EDS10ProtocolBuffer.TriggerOperationType result = EDS10ProtocolBuffer.TriggerOperationType.valueOf(buttonState_);
+      return result == null ? EDS10ProtocolBuffer.TriggerOperationType.UNRECOGNIZED : result;
+    }
+
+    public static final int SHORT_PRESS_FIELD_NUMBER = 5;
+    private EDS10ProtocolBuffer.TriggerMessage shortPress_;
+    /**
+     * <pre>
+     * What action should occur on short/low
+     * </pre>
+     *
+     * <code>.TriggerMessage short_press = 5;</code>
+     */
+    public boolean hasShortPress() {
+      return shortPress_ != null;
+    }
+    /**
+     * <pre>
+     * What action should occur on short/low
+     * </pre>
+     *
+     * <code>.TriggerMessage short_press = 5;</code>
+     */
+    public EDS10ProtocolBuffer.TriggerMessage getShortPress() {
+      return shortPress_ == null ? EDS10ProtocolBuffer.TriggerMessage.getDefaultInstance() : shortPress_;
+    }
+    /**
+     * <pre>
+     * What action should occur on short/low
+     * </pre>
+     *
+     * <code>.TriggerMessage short_press = 5;</code>
+     */
+    public EDS10ProtocolBuffer.TriggerMessageOrBuilder getShortPressOrBuilder() {
+      return getShortPress();
+    }
+
+    public static final int LONG_PRESS_FIELD_NUMBER = 6;
+    private EDS10ProtocolBuffer.TriggerMessage longPress_;
+    /**
+     * <pre>
+     * What action should occur on long/high
+     * </pre>
+     *
+     * <code>.TriggerMessage long_press = 6;</code>
+     */
+    public boolean hasLongPress() {
+      return longPress_ != null;
+    }
+    /**
+     * <pre>
+     * What action should occur on long/high
+     * </pre>
+     *
+     * <code>.TriggerMessage long_press = 6;</code>
+     */
+    public EDS10ProtocolBuffer.TriggerMessage getLongPress() {
+      return longPress_ == null ? EDS10ProtocolBuffer.TriggerMessage.getDefaultInstance() : longPress_;
+    }
+    /**
+     * <pre>
+     * What action should occur on long/high
+     * </pre>
+     *
+     * <code>.TriggerMessage long_press = 6;</code>
+     */
+    public EDS10ProtocolBuffer.TriggerMessageOrBuilder getLongPressOrBuilder() {
+      return getLongPress();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (index_ != 0) {
+        output.writeUInt32(1, index_);
+      }
+      if (address_ != 0) {
+        output.writeUInt32(2, address_);
+      }
+      if (daliLine_ != 0) {
+        output.writeUInt32(3, daliLine_);
+      }
+      if (buttonState_ != EDS10ProtocolBuffer.TriggerOperationType.MOMENTARY.getNumber()) {
+        output.writeEnum(4, buttonState_);
+      }
+      if (shortPress_ != null) {
+        output.writeMessage(5, getShortPress());
+      }
+      if (longPress_ != null) {
+        output.writeMessage(6, getLongPress());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (index_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, index_);
+      }
+      if (address_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, address_);
+      }
+      if (daliLine_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(3, daliLine_);
+      }
+      if (buttonState_ != EDS10ProtocolBuffer.TriggerOperationType.MOMENTARY.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(4, buttonState_);
+      }
+      if (shortPress_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, getShortPress());
+      }
+      if (longPress_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, getLongPress());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof EDS10ProtocolBuffer.DALIInputMessage)) {
+        return super.equals(obj);
+      }
+      EDS10ProtocolBuffer.DALIInputMessage other = (EDS10ProtocolBuffer.DALIInputMessage) obj;
+
+      boolean result = true;
+      result = result && (getIndex()
+          == other.getIndex());
+      result = result && (getAddress()
+          == other.getAddress());
+      result = result && (getDaliLine()
+          == other.getDaliLine());
+      result = result && buttonState_ == other.buttonState_;
+      result = result && (hasShortPress() == other.hasShortPress());
+      if (hasShortPress()) {
+        result = result && getShortPress()
+            .equals(other.getShortPress());
+      }
+      result = result && (hasLongPress() == other.hasLongPress());
+      if (hasLongPress()) {
+        result = result && getLongPress()
+            .equals(other.getLongPress());
+      }
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + INDEX_FIELD_NUMBER;
+      hash = (53 * hash) + getIndex();
+      hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
+      hash = (53 * hash) + getAddress();
+      hash = (37 * hash) + DALI_LINE_FIELD_NUMBER;
+      hash = (53 * hash) + getDaliLine();
+      hash = (37 * hash) + BUTTON_STATE_FIELD_NUMBER;
+      hash = (53 * hash) + buttonState_;
+      if (hasShortPress()) {
+        hash = (37 * hash) + SHORT_PRESS_FIELD_NUMBER;
+        hash = (53 * hash) + getShortPress().hashCode();
+      }
+      if (hasLongPress()) {
+        hash = (37 * hash) + LONG_PRESS_FIELD_NUMBER;
+        hash = (53 * hash) + getLongPress().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static EDS10ProtocolBuffer.DALIInputMessage parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.DALIInputMessage parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALIInputMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.DALIInputMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALIInputMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.DALIInputMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALIInputMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.DALIInputMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALIInputMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.DALIInputMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALIInputMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.DALIInputMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(EDS10ProtocolBuffer.DALIInputMessage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * DALI Inputs
+     * </pre>
+     *
+     * Protobuf type {@code DALIInputMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:DALIInputMessage)
+        EDS10ProtocolBuffer.DALIInputMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return EDS10ProtocolBuffer.internal_static_DALIInputMessage_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return EDS10ProtocolBuffer.internal_static_DALIInputMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                EDS10ProtocolBuffer.DALIInputMessage.class, EDS10ProtocolBuffer.DALIInputMessage.Builder.class);
+      }
+
+      // Construct using EDS10ProtocolBuffer.DALIInputMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        index_ = 0;
+
+        address_ = 0;
+
+        daliLine_ = 0;
+
+        buttonState_ = 0;
+
+        if (shortPressBuilder_ == null) {
+          shortPress_ = null;
+        } else {
+          shortPress_ = null;
+          shortPressBuilder_ = null;
+        }
+        if (longPressBuilder_ == null) {
+          longPress_ = null;
+        } else {
+          longPress_ = null;
+          longPressBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return EDS10ProtocolBuffer.internal_static_DALIInputMessage_descriptor;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.DALIInputMessage getDefaultInstanceForType() {
+        return EDS10ProtocolBuffer.DALIInputMessage.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.DALIInputMessage build() {
+        EDS10ProtocolBuffer.DALIInputMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.DALIInputMessage buildPartial() {
+        EDS10ProtocolBuffer.DALIInputMessage result = new EDS10ProtocolBuffer.DALIInputMessage(this);
+        result.index_ = index_;
+        result.address_ = address_;
+        result.daliLine_ = daliLine_;
+        result.buttonState_ = buttonState_;
+        if (shortPressBuilder_ == null) {
+          result.shortPress_ = shortPress_;
+        } else {
+          result.shortPress_ = shortPressBuilder_.build();
+        }
+        if (longPressBuilder_ == null) {
+          result.longPress_ = longPress_;
+        } else {
+          result.longPress_ = longPressBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof EDS10ProtocolBuffer.DALIInputMessage) {
+          return mergeFrom((EDS10ProtocolBuffer.DALIInputMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(EDS10ProtocolBuffer.DALIInputMessage other) {
+        if (other == EDS10ProtocolBuffer.DALIInputMessage.getDefaultInstance()) return this;
+        if (other.getIndex() != 0) {
+          setIndex(other.getIndex());
+        }
+        if (other.getAddress() != 0) {
+          setAddress(other.getAddress());
+        }
+        if (other.getDaliLine() != 0) {
+          setDaliLine(other.getDaliLine());
+        }
+        if (other.buttonState_ != 0) {
+          setButtonStateValue(other.getButtonStateValue());
+        }
+        if (other.hasShortPress()) {
+          mergeShortPress(other.getShortPress());
+        }
+        if (other.hasLongPress()) {
+          mergeLongPress(other.getLongPress());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        EDS10ProtocolBuffer.DALIInputMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (EDS10ProtocolBuffer.DALIInputMessage) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int index_ ;
+      /**
+       * <pre>
+       * Which index for this Input
+       * </pre>
+       *
+       * <code>uint32 index = 1;</code>
+       */
+      public int getIndex() {
+        return index_;
+      }
+      /**
+       * <pre>
+       * Which index for this Input
+       * </pre>
+       *
+       * <code>uint32 index = 1;</code>
+       */
+      public Builder setIndex(int value) {
+        
+        index_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Which index for this Input
+       * </pre>
+       *
+       * <code>uint32 index = 1;</code>
+       */
+      public Builder clearIndex() {
+        
+        index_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int address_ ;
+      /**
+       * <pre>
+       * The eDALI Address of this Input
+       * </pre>
+       *
+       * <code>uint32 address = 2;</code>
+       */
+      public int getAddress() {
+        return address_;
+      }
+      /**
+       * <pre>
+       * The eDALI Address of this Input
+       * </pre>
+       *
+       * <code>uint32 address = 2;</code>
+       */
+      public Builder setAddress(int value) {
+        
+        address_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The eDALI Address of this Input
+       * </pre>
+       *
+       * <code>uint32 address = 2;</code>
+       */
+      public Builder clearAddress() {
+        
+        address_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int daliLine_ ;
+      /**
+       * <pre>
+       * The DALI Line this Input is on
+       * </pre>
+       *
+       * <code>uint32 dali_line = 3;</code>
+       */
+      public int getDaliLine() {
+        return daliLine_;
+      }
+      /**
+       * <pre>
+       * The DALI Line this Input is on
+       * </pre>
+       *
+       * <code>uint32 dali_line = 3;</code>
+       */
+      public Builder setDaliLine(int value) {
+        
+        daliLine_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The DALI Line this Input is on
+       * </pre>
+       *
+       * <code>uint32 dali_line = 3;</code>
+       */
+      public Builder clearDaliLine() {
+        
+        daliLine_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int buttonState_ = 0;
+      /**
+       * <pre>
+       * How will this Input be triggered? Momentary (short/long press) or Latching (low/high)
+       * </pre>
+       *
+       * <code>.TriggerOperationType button_state = 4;</code>
+       */
+      public int getButtonStateValue() {
+        return buttonState_;
+      }
+      /**
+       * <pre>
+       * How will this Input be triggered? Momentary (short/long press) or Latching (low/high)
+       * </pre>
+       *
+       * <code>.TriggerOperationType button_state = 4;</code>
+       */
+      public Builder setButtonStateValue(int value) {
+        buttonState_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * How will this Input be triggered? Momentary (short/long press) or Latching (low/high)
+       * </pre>
+       *
+       * <code>.TriggerOperationType button_state = 4;</code>
+       */
+      public EDS10ProtocolBuffer.TriggerOperationType getButtonState() {
+        @SuppressWarnings("deprecation")
+        EDS10ProtocolBuffer.TriggerOperationType result = EDS10ProtocolBuffer.TriggerOperationType.valueOf(buttonState_);
+        return result == null ? EDS10ProtocolBuffer.TriggerOperationType.UNRECOGNIZED : result;
+      }
+      /**
+       * <pre>
+       * How will this Input be triggered? Momentary (short/long press) or Latching (low/high)
+       * </pre>
+       *
+       * <code>.TriggerOperationType button_state = 4;</code>
+       */
+      public Builder setButtonState(EDS10ProtocolBuffer.TriggerOperationType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        buttonState_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * How will this Input be triggered? Momentary (short/long press) or Latching (low/high)
+       * </pre>
+       *
+       * <code>.TriggerOperationType button_state = 4;</code>
+       */
+      public Builder clearButtonState() {
+        
+        buttonState_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private EDS10ProtocolBuffer.TriggerMessage shortPress_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.TriggerMessage, EDS10ProtocolBuffer.TriggerMessage.Builder, EDS10ProtocolBuffer.TriggerMessageOrBuilder> shortPressBuilder_;
+      /**
+       * <pre>
+       * What action should occur on short/low
+       * </pre>
+       *
+       * <code>.TriggerMessage short_press = 5;</code>
+       */
+      public boolean hasShortPress() {
+        return shortPressBuilder_ != null || shortPress_ != null;
+      }
+      /**
+       * <pre>
+       * What action should occur on short/low
+       * </pre>
+       *
+       * <code>.TriggerMessage short_press = 5;</code>
+       */
+      public EDS10ProtocolBuffer.TriggerMessage getShortPress() {
+        if (shortPressBuilder_ == null) {
+          return shortPress_ == null ? EDS10ProtocolBuffer.TriggerMessage.getDefaultInstance() : shortPress_;
+        } else {
+          return shortPressBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * What action should occur on short/low
+       * </pre>
+       *
+       * <code>.TriggerMessage short_press = 5;</code>
+       */
+      public Builder setShortPress(EDS10ProtocolBuffer.TriggerMessage value) {
+        if (shortPressBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          shortPress_ = value;
+          onChanged();
+        } else {
+          shortPressBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * What action should occur on short/low
+       * </pre>
+       *
+       * <code>.TriggerMessage short_press = 5;</code>
+       */
+      public Builder setShortPress(
+          EDS10ProtocolBuffer.TriggerMessage.Builder builderForValue) {
+        if (shortPressBuilder_ == null) {
+          shortPress_ = builderForValue.build();
+          onChanged();
+        } else {
+          shortPressBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * What action should occur on short/low
+       * </pre>
+       *
+       * <code>.TriggerMessage short_press = 5;</code>
+       */
+      public Builder mergeShortPress(EDS10ProtocolBuffer.TriggerMessage value) {
+        if (shortPressBuilder_ == null) {
+          if (shortPress_ != null) {
+            shortPress_ =
+              EDS10ProtocolBuffer.TriggerMessage.newBuilder(shortPress_).mergeFrom(value).buildPartial();
+          } else {
+            shortPress_ = value;
+          }
+          onChanged();
+        } else {
+          shortPressBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * What action should occur on short/low
+       * </pre>
+       *
+       * <code>.TriggerMessage short_press = 5;</code>
+       */
+      public Builder clearShortPress() {
+        if (shortPressBuilder_ == null) {
+          shortPress_ = null;
+          onChanged();
+        } else {
+          shortPress_ = null;
+          shortPressBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * What action should occur on short/low
+       * </pre>
+       *
+       * <code>.TriggerMessage short_press = 5;</code>
+       */
+      public EDS10ProtocolBuffer.TriggerMessage.Builder getShortPressBuilder() {
+        
+        onChanged();
+        return getShortPressFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * What action should occur on short/low
+       * </pre>
+       *
+       * <code>.TriggerMessage short_press = 5;</code>
+       */
+      public EDS10ProtocolBuffer.TriggerMessageOrBuilder getShortPressOrBuilder() {
+        if (shortPressBuilder_ != null) {
+          return shortPressBuilder_.getMessageOrBuilder();
+        } else {
+          return shortPress_ == null ?
+              EDS10ProtocolBuffer.TriggerMessage.getDefaultInstance() : shortPress_;
+        }
+      }
+      /**
+       * <pre>
+       * What action should occur on short/low
+       * </pre>
+       *
+       * <code>.TriggerMessage short_press = 5;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.TriggerMessage, EDS10ProtocolBuffer.TriggerMessage.Builder, EDS10ProtocolBuffer.TriggerMessageOrBuilder> 
+          getShortPressFieldBuilder() {
+        if (shortPressBuilder_ == null) {
+          shortPressBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.TriggerMessage, EDS10ProtocolBuffer.TriggerMessage.Builder, EDS10ProtocolBuffer.TriggerMessageOrBuilder>(
+                  getShortPress(),
+                  getParentForChildren(),
+                  isClean());
+          shortPress_ = null;
+        }
+        return shortPressBuilder_;
+      }
+
+      private EDS10ProtocolBuffer.TriggerMessage longPress_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.TriggerMessage, EDS10ProtocolBuffer.TriggerMessage.Builder, EDS10ProtocolBuffer.TriggerMessageOrBuilder> longPressBuilder_;
+      /**
+       * <pre>
+       * What action should occur on long/high
+       * </pre>
+       *
+       * <code>.TriggerMessage long_press = 6;</code>
+       */
+      public boolean hasLongPress() {
+        return longPressBuilder_ != null || longPress_ != null;
+      }
+      /**
+       * <pre>
+       * What action should occur on long/high
+       * </pre>
+       *
+       * <code>.TriggerMessage long_press = 6;</code>
+       */
+      public EDS10ProtocolBuffer.TriggerMessage getLongPress() {
+        if (longPressBuilder_ == null) {
+          return longPress_ == null ? EDS10ProtocolBuffer.TriggerMessage.getDefaultInstance() : longPress_;
+        } else {
+          return longPressBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * What action should occur on long/high
+       * </pre>
+       *
+       * <code>.TriggerMessage long_press = 6;</code>
+       */
+      public Builder setLongPress(EDS10ProtocolBuffer.TriggerMessage value) {
+        if (longPressBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          longPress_ = value;
+          onChanged();
+        } else {
+          longPressBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * What action should occur on long/high
+       * </pre>
+       *
+       * <code>.TriggerMessage long_press = 6;</code>
+       */
+      public Builder setLongPress(
+          EDS10ProtocolBuffer.TriggerMessage.Builder builderForValue) {
+        if (longPressBuilder_ == null) {
+          longPress_ = builderForValue.build();
+          onChanged();
+        } else {
+          longPressBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * What action should occur on long/high
+       * </pre>
+       *
+       * <code>.TriggerMessage long_press = 6;</code>
+       */
+      public Builder mergeLongPress(EDS10ProtocolBuffer.TriggerMessage value) {
+        if (longPressBuilder_ == null) {
+          if (longPress_ != null) {
+            longPress_ =
+              EDS10ProtocolBuffer.TriggerMessage.newBuilder(longPress_).mergeFrom(value).buildPartial();
+          } else {
+            longPress_ = value;
+          }
+          onChanged();
+        } else {
+          longPressBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * What action should occur on long/high
+       * </pre>
+       *
+       * <code>.TriggerMessage long_press = 6;</code>
+       */
+      public Builder clearLongPress() {
+        if (longPressBuilder_ == null) {
+          longPress_ = null;
+          onChanged();
+        } else {
+          longPress_ = null;
+          longPressBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * What action should occur on long/high
+       * </pre>
+       *
+       * <code>.TriggerMessage long_press = 6;</code>
+       */
+      public EDS10ProtocolBuffer.TriggerMessage.Builder getLongPressBuilder() {
+        
+        onChanged();
+        return getLongPressFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * What action should occur on long/high
+       * </pre>
+       *
+       * <code>.TriggerMessage long_press = 6;</code>
+       */
+      public EDS10ProtocolBuffer.TriggerMessageOrBuilder getLongPressOrBuilder() {
+        if (longPressBuilder_ != null) {
+          return longPressBuilder_.getMessageOrBuilder();
+        } else {
+          return longPress_ == null ?
+              EDS10ProtocolBuffer.TriggerMessage.getDefaultInstance() : longPress_;
+        }
+      }
+      /**
+       * <pre>
+       * What action should occur on long/high
+       * </pre>
+       *
+       * <code>.TriggerMessage long_press = 6;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.TriggerMessage, EDS10ProtocolBuffer.TriggerMessage.Builder, EDS10ProtocolBuffer.TriggerMessageOrBuilder> 
+          getLongPressFieldBuilder() {
+        if (longPressBuilder_ == null) {
+          longPressBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.TriggerMessage, EDS10ProtocolBuffer.TriggerMessage.Builder, EDS10ProtocolBuffer.TriggerMessageOrBuilder>(
+                  getLongPress(),
+                  getParentForChildren(),
+                  isClean());
+          longPress_ = null;
+        }
+        return longPressBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:DALIInputMessage)
+    }
+
+    // @@protoc_insertion_point(class_scope:DALIInputMessage)
+    private static final EDS10ProtocolBuffer.DALIInputMessage DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.DALIInputMessage();
+    }
+
+    public static EDS10ProtocolBuffer.DALIInputMessage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<DALIInputMessage>
+        PARSER = new com.google.protobuf.AbstractParser<DALIInputMessage>() {
+      @java.lang.Override
+      public DALIInputMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DALIInputMessage(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<DALIInputMessage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DALIInputMessage> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public EDS10ProtocolBuffer.DALIInputMessage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface IOIRMessageOrBuilder extends
       // @@protoc_insertion_point(interface_extends:IOIRMessage)
       com.google.protobuf.MessageOrBuilder {
@@ -15063,104 +17742,259 @@ public final class EDS10ProtocolBuffer {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * Under which Profile is this Sensor active?
+     * </pre>
+     *
      * <code>uint32 profile = 1;</code>
      */
     int getProfile();
 
     /**
+     * <pre>
+     * The index for this Sensor
+     * </pre>
+     *
      * <code>uint32 index = 2;</code>
      */
     int getIndex();
 
     /**
+     * <pre>
+     * The eDALI Address of this Sensor (assumes address of "L" (Light) component with "M" (Motion) at L + 1)
+     * </pre>
+     *
      * <code>uint32 sensor_address = 3;</code>
      */
     int getSensorAddress();
 
     /**
+     * <pre>
+     * The DALI Line this Sensor is on
+     * </pre>
+     *
      * <code>uint32 sensor_dali_line = 4;</code>
      */
     int getSensorDaliLine();
 
     /**
+     * <pre>
+     * The DALI Address to query for Group-based control
+     * </pre>
+     *
      * <code>uint32 address_query = 5;</code>
      */
     int getAddressQuery();
 
     /**
+     * <pre>
+     * The DALI Line (mask) to control
+     * </pre>
+     *
      * <code>uint32 control_dali_line = 6;</code>
      */
     int getControlDaliLine();
 
     /**
+     * <pre>
+     * The DALI Group Address to control
+     * </pre>
+     *
      * <code>uint32 control_group = 7;</code>
      */
     int getControlGroup();
 
     /**
+     * <pre>
+     * The Lux level to maintain during Daylight Harvesting
+     * </pre>
+     *
      * <code>uint32 light_setpoint = 8;</code>
      */
     int getLightSetpoint();
 
     /**
+     * <pre>
+     * The Arc level to set during the Warning Period
+     * </pre>
+     *
      * <code>uint32 warning_setpoint = 9;</code>
      */
     int getWarningSetpoint();
 
     /**
+     * <pre>
+     * Is this Sensor used for motion detection only? If False, Daylight Harvesting will be in effect
+     * </pre>
+     *
      * <code>uint32 motion_only = 10;</code>
      */
     int getMotionOnly();
 
     /**
+     * <pre>
+     * How long after the last occupancy detection before the Sensor will activate the Warning Period
+     * </pre>
+     *
      * <code>uint32 timeout_values = 11;</code>
      */
     int getTimeoutValues();
 
     /**
+     * <pre>
+     * How long after entering the Warning Period before the Sensor will activate the Disable Period
+     * </pre>
+     *
      * <code>uint32 warning_values = 12;</code>
      */
     int getWarningValues();
 
     /**
+     * <pre>
+     * How long after a complete timeout (after the Warning Period) should the Sensor wait before starting detection again?
+     * </pre>
+     *
      * <code>uint32 disable_values = 13;</code>
      */
     int getDisableValues();
 
     /**
+     * <pre>
+     * The first Input button used for "Two-Button Programming"
+     * </pre>
+     *
      * <code>uint32 input_1_pm = 14;</code>
      */
     int getInput1Pm();
 
     /**
+     * <pre>
+     * The second Input button used for "Two-Button Programming:
+     * </pre>
+     *
      * <code>uint32 input_2_pm = 15;</code>
      */
     int getInput2Pm();
 
     /**
+     * <pre>
+     * Used to keep track of the Motion Sensor state
+     * </pre>
+     *
      * <code>uint32 sensor_states = 16;</code>
      */
     int getSensorStates();
 
     /**
+     * <pre>
+     * A Bitmask of grouped Sensors
+     * </pre>
+     *
      * <code>uint32 motion_sensors = 17;</code>
      */
     int getMotionSensors();
 
     /**
+     * <pre>
+     * Used to keep track of the Light (Lux) Sensor state
+     * </pre>
+     *
      * <code>uint32 lux_sensors = 18;</code>
      */
     int getLuxSensors();
 
     /**
+     * <pre>
+     * Used to keep track of the Control Group's state
+     * </pre>
+     *
      * <code>uint32 off_flag = 19;</code>
      */
     int getOffFlag();
 
     /**
+     * <pre>
+     * Set to 'True' when the Firmware receives a SensorMessage with this Index
+     * </pre>
+     *
      * <code>bool is_programmed = 20;</code>
      */
     boolean getIsProgrammed();
+
+    /**
+     * <pre>
+     * The action to perform upon initial detection
+     * </pre>
+     *
+     * <code>.TriggerMessage detection_trigger = 21;</code>
+     */
+    boolean hasDetectionTrigger();
+    /**
+     * <pre>
+     * The action to perform upon initial detection
+     * </pre>
+     *
+     * <code>.TriggerMessage detection_trigger = 21;</code>
+     */
+    EDS10ProtocolBuffer.TriggerMessage getDetectionTrigger();
+    /**
+     * <pre>
+     * The action to perform upon initial detection
+     * </pre>
+     *
+     * <code>.TriggerMessage detection_trigger = 21;</code>
+     */
+    EDS10ProtocolBuffer.TriggerMessageOrBuilder getDetectionTriggerOrBuilder();
+
+    /**
+     * <pre>
+     * The action to perform upon transitioning to the Warning Period
+     * </pre>
+     *
+     * <code>.TriggerMessage warning_trigger = 22;</code>
+     */
+    boolean hasWarningTrigger();
+    /**
+     * <pre>
+     * The action to perform upon transitioning to the Warning Period
+     * </pre>
+     *
+     * <code>.TriggerMessage warning_trigger = 22;</code>
+     */
+    EDS10ProtocolBuffer.TriggerMessage getWarningTrigger();
+    /**
+     * <pre>
+     * The action to perform upon transitioning to the Warning Period
+     * </pre>
+     *
+     * <code>.TriggerMessage warning_trigger = 22;</code>
+     */
+    EDS10ProtocolBuffer.TriggerMessageOrBuilder getWarningTriggerOrBuilder();
+
+    /**
+     * <pre>
+     * The action to perform upon transitioning to the Idle (disable) Period
+     * </pre>
+     *
+     * <code>.TriggerMessage idle_trigger = 23;</code>
+     */
+    boolean hasIdleTrigger();
+    /**
+     * <pre>
+     * The action to perform upon transitioning to the Idle (disable) Period
+     * </pre>
+     *
+     * <code>.TriggerMessage idle_trigger = 23;</code>
+     */
+    EDS10ProtocolBuffer.TriggerMessage getIdleTrigger();
+    /**
+     * <pre>
+     * The action to perform upon transitioning to the Idle (disable) Period
+     * </pre>
+     *
+     * <code>.TriggerMessage idle_trigger = 23;</code>
+     */
+    EDS10ProtocolBuffer.TriggerMessageOrBuilder getIdleTriggerOrBuilder();
   }
   /**
    * <pre>
@@ -15325,6 +18159,45 @@ public final class EDS10ProtocolBuffer {
               isProgrammed_ = input.readBool();
               break;
             }
+            case 170: {
+              EDS10ProtocolBuffer.TriggerMessage.Builder subBuilder = null;
+              if (detectionTrigger_ != null) {
+                subBuilder = detectionTrigger_.toBuilder();
+              }
+              detectionTrigger_ = input.readMessage(EDS10ProtocolBuffer.TriggerMessage.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(detectionTrigger_);
+                detectionTrigger_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 178: {
+              EDS10ProtocolBuffer.TriggerMessage.Builder subBuilder = null;
+              if (warningTrigger_ != null) {
+                subBuilder = warningTrigger_.toBuilder();
+              }
+              warningTrigger_ = input.readMessage(EDS10ProtocolBuffer.TriggerMessage.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(warningTrigger_);
+                warningTrigger_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 186: {
+              EDS10ProtocolBuffer.TriggerMessage.Builder subBuilder = null;
+              if (idleTrigger_ != null) {
+                subBuilder = idleTrigger_.toBuilder();
+              }
+              idleTrigger_ = input.readMessage(EDS10ProtocolBuffer.TriggerMessage.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(idleTrigger_);
+                idleTrigger_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
             default: {
               if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -15360,6 +18233,10 @@ public final class EDS10ProtocolBuffer {
     public static final int PROFILE_FIELD_NUMBER = 1;
     private int profile_;
     /**
+     * <pre>
+     * Under which Profile is this Sensor active?
+     * </pre>
+     *
      * <code>uint32 profile = 1;</code>
      */
     public int getProfile() {
@@ -15369,6 +18246,10 @@ public final class EDS10ProtocolBuffer {
     public static final int INDEX_FIELD_NUMBER = 2;
     private int index_;
     /**
+     * <pre>
+     * The index for this Sensor
+     * </pre>
+     *
      * <code>uint32 index = 2;</code>
      */
     public int getIndex() {
@@ -15378,6 +18259,10 @@ public final class EDS10ProtocolBuffer {
     public static final int SENSOR_ADDRESS_FIELD_NUMBER = 3;
     private int sensorAddress_;
     /**
+     * <pre>
+     * The eDALI Address of this Sensor (assumes address of "L" (Light) component with "M" (Motion) at L + 1)
+     * </pre>
+     *
      * <code>uint32 sensor_address = 3;</code>
      */
     public int getSensorAddress() {
@@ -15387,6 +18272,10 @@ public final class EDS10ProtocolBuffer {
     public static final int SENSOR_DALI_LINE_FIELD_NUMBER = 4;
     private int sensorDaliLine_;
     /**
+     * <pre>
+     * The DALI Line this Sensor is on
+     * </pre>
+     *
      * <code>uint32 sensor_dali_line = 4;</code>
      */
     public int getSensorDaliLine() {
@@ -15396,6 +18285,10 @@ public final class EDS10ProtocolBuffer {
     public static final int ADDRESS_QUERY_FIELD_NUMBER = 5;
     private int addressQuery_;
     /**
+     * <pre>
+     * The DALI Address to query for Group-based control
+     * </pre>
+     *
      * <code>uint32 address_query = 5;</code>
      */
     public int getAddressQuery() {
@@ -15405,6 +18298,10 @@ public final class EDS10ProtocolBuffer {
     public static final int CONTROL_DALI_LINE_FIELD_NUMBER = 6;
     private int controlDaliLine_;
     /**
+     * <pre>
+     * The DALI Line (mask) to control
+     * </pre>
+     *
      * <code>uint32 control_dali_line = 6;</code>
      */
     public int getControlDaliLine() {
@@ -15414,6 +18311,10 @@ public final class EDS10ProtocolBuffer {
     public static final int CONTROL_GROUP_FIELD_NUMBER = 7;
     private int controlGroup_;
     /**
+     * <pre>
+     * The DALI Group Address to control
+     * </pre>
+     *
      * <code>uint32 control_group = 7;</code>
      */
     public int getControlGroup() {
@@ -15423,6 +18324,10 @@ public final class EDS10ProtocolBuffer {
     public static final int LIGHT_SETPOINT_FIELD_NUMBER = 8;
     private int lightSetpoint_;
     /**
+     * <pre>
+     * The Lux level to maintain during Daylight Harvesting
+     * </pre>
+     *
      * <code>uint32 light_setpoint = 8;</code>
      */
     public int getLightSetpoint() {
@@ -15432,6 +18337,10 @@ public final class EDS10ProtocolBuffer {
     public static final int WARNING_SETPOINT_FIELD_NUMBER = 9;
     private int warningSetpoint_;
     /**
+     * <pre>
+     * The Arc level to set during the Warning Period
+     * </pre>
+     *
      * <code>uint32 warning_setpoint = 9;</code>
      */
     public int getWarningSetpoint() {
@@ -15441,6 +18350,10 @@ public final class EDS10ProtocolBuffer {
     public static final int MOTION_ONLY_FIELD_NUMBER = 10;
     private int motionOnly_;
     /**
+     * <pre>
+     * Is this Sensor used for motion detection only? If False, Daylight Harvesting will be in effect
+     * </pre>
+     *
      * <code>uint32 motion_only = 10;</code>
      */
     public int getMotionOnly() {
@@ -15450,6 +18363,10 @@ public final class EDS10ProtocolBuffer {
     public static final int TIMEOUT_VALUES_FIELD_NUMBER = 11;
     private int timeoutValues_;
     /**
+     * <pre>
+     * How long after the last occupancy detection before the Sensor will activate the Warning Period
+     * </pre>
+     *
      * <code>uint32 timeout_values = 11;</code>
      */
     public int getTimeoutValues() {
@@ -15459,6 +18376,10 @@ public final class EDS10ProtocolBuffer {
     public static final int WARNING_VALUES_FIELD_NUMBER = 12;
     private int warningValues_;
     /**
+     * <pre>
+     * How long after entering the Warning Period before the Sensor will activate the Disable Period
+     * </pre>
+     *
      * <code>uint32 warning_values = 12;</code>
      */
     public int getWarningValues() {
@@ -15468,6 +18389,10 @@ public final class EDS10ProtocolBuffer {
     public static final int DISABLE_VALUES_FIELD_NUMBER = 13;
     private int disableValues_;
     /**
+     * <pre>
+     * How long after a complete timeout (after the Warning Period) should the Sensor wait before starting detection again?
+     * </pre>
+     *
      * <code>uint32 disable_values = 13;</code>
      */
     public int getDisableValues() {
@@ -15477,6 +18402,10 @@ public final class EDS10ProtocolBuffer {
     public static final int INPUT_1_PM_FIELD_NUMBER = 14;
     private int input1Pm_;
     /**
+     * <pre>
+     * The first Input button used for "Two-Button Programming"
+     * </pre>
+     *
      * <code>uint32 input_1_pm = 14;</code>
      */
     public int getInput1Pm() {
@@ -15486,6 +18415,10 @@ public final class EDS10ProtocolBuffer {
     public static final int INPUT_2_PM_FIELD_NUMBER = 15;
     private int input2Pm_;
     /**
+     * <pre>
+     * The second Input button used for "Two-Button Programming:
+     * </pre>
+     *
      * <code>uint32 input_2_pm = 15;</code>
      */
     public int getInput2Pm() {
@@ -15495,6 +18428,10 @@ public final class EDS10ProtocolBuffer {
     public static final int SENSOR_STATES_FIELD_NUMBER = 16;
     private int sensorStates_;
     /**
+     * <pre>
+     * Used to keep track of the Motion Sensor state
+     * </pre>
+     *
      * <code>uint32 sensor_states = 16;</code>
      */
     public int getSensorStates() {
@@ -15504,6 +18441,10 @@ public final class EDS10ProtocolBuffer {
     public static final int MOTION_SENSORS_FIELD_NUMBER = 17;
     private int motionSensors_;
     /**
+     * <pre>
+     * A Bitmask of grouped Sensors
+     * </pre>
+     *
      * <code>uint32 motion_sensors = 17;</code>
      */
     public int getMotionSensors() {
@@ -15513,6 +18454,10 @@ public final class EDS10ProtocolBuffer {
     public static final int LUX_SENSORS_FIELD_NUMBER = 18;
     private int luxSensors_;
     /**
+     * <pre>
+     * Used to keep track of the Light (Lux) Sensor state
+     * </pre>
+     *
      * <code>uint32 lux_sensors = 18;</code>
      */
     public int getLuxSensors() {
@@ -15522,6 +18467,10 @@ public final class EDS10ProtocolBuffer {
     public static final int OFF_FLAG_FIELD_NUMBER = 19;
     private int offFlag_;
     /**
+     * <pre>
+     * Used to keep track of the Control Group's state
+     * </pre>
+     *
      * <code>uint32 off_flag = 19;</code>
      */
     public int getOffFlag() {
@@ -15531,10 +18480,113 @@ public final class EDS10ProtocolBuffer {
     public static final int IS_PROGRAMMED_FIELD_NUMBER = 20;
     private boolean isProgrammed_;
     /**
+     * <pre>
+     * Set to 'True' when the Firmware receives a SensorMessage with this Index
+     * </pre>
+     *
      * <code>bool is_programmed = 20;</code>
      */
     public boolean getIsProgrammed() {
       return isProgrammed_;
+    }
+
+    public static final int DETECTION_TRIGGER_FIELD_NUMBER = 21;
+    private EDS10ProtocolBuffer.TriggerMessage detectionTrigger_;
+    /**
+     * <pre>
+     * The action to perform upon initial detection
+     * </pre>
+     *
+     * <code>.TriggerMessage detection_trigger = 21;</code>
+     */
+    public boolean hasDetectionTrigger() {
+      return detectionTrigger_ != null;
+    }
+    /**
+     * <pre>
+     * The action to perform upon initial detection
+     * </pre>
+     *
+     * <code>.TriggerMessage detection_trigger = 21;</code>
+     */
+    public EDS10ProtocolBuffer.TriggerMessage getDetectionTrigger() {
+      return detectionTrigger_ == null ? EDS10ProtocolBuffer.TriggerMessage.getDefaultInstance() : detectionTrigger_;
+    }
+    /**
+     * <pre>
+     * The action to perform upon initial detection
+     * </pre>
+     *
+     * <code>.TriggerMessage detection_trigger = 21;</code>
+     */
+    public EDS10ProtocolBuffer.TriggerMessageOrBuilder getDetectionTriggerOrBuilder() {
+      return getDetectionTrigger();
+    }
+
+    public static final int WARNING_TRIGGER_FIELD_NUMBER = 22;
+    private EDS10ProtocolBuffer.TriggerMessage warningTrigger_;
+    /**
+     * <pre>
+     * The action to perform upon transitioning to the Warning Period
+     * </pre>
+     *
+     * <code>.TriggerMessage warning_trigger = 22;</code>
+     */
+    public boolean hasWarningTrigger() {
+      return warningTrigger_ != null;
+    }
+    /**
+     * <pre>
+     * The action to perform upon transitioning to the Warning Period
+     * </pre>
+     *
+     * <code>.TriggerMessage warning_trigger = 22;</code>
+     */
+    public EDS10ProtocolBuffer.TriggerMessage getWarningTrigger() {
+      return warningTrigger_ == null ? EDS10ProtocolBuffer.TriggerMessage.getDefaultInstance() : warningTrigger_;
+    }
+    /**
+     * <pre>
+     * The action to perform upon transitioning to the Warning Period
+     * </pre>
+     *
+     * <code>.TriggerMessage warning_trigger = 22;</code>
+     */
+    public EDS10ProtocolBuffer.TriggerMessageOrBuilder getWarningTriggerOrBuilder() {
+      return getWarningTrigger();
+    }
+
+    public static final int IDLE_TRIGGER_FIELD_NUMBER = 23;
+    private EDS10ProtocolBuffer.TriggerMessage idleTrigger_;
+    /**
+     * <pre>
+     * The action to perform upon transitioning to the Idle (disable) Period
+     * </pre>
+     *
+     * <code>.TriggerMessage idle_trigger = 23;</code>
+     */
+    public boolean hasIdleTrigger() {
+      return idleTrigger_ != null;
+    }
+    /**
+     * <pre>
+     * The action to perform upon transitioning to the Idle (disable) Period
+     * </pre>
+     *
+     * <code>.TriggerMessage idle_trigger = 23;</code>
+     */
+    public EDS10ProtocolBuffer.TriggerMessage getIdleTrigger() {
+      return idleTrigger_ == null ? EDS10ProtocolBuffer.TriggerMessage.getDefaultInstance() : idleTrigger_;
+    }
+    /**
+     * <pre>
+     * The action to perform upon transitioning to the Idle (disable) Period
+     * </pre>
+     *
+     * <code>.TriggerMessage idle_trigger = 23;</code>
+     */
+    public EDS10ProtocolBuffer.TriggerMessageOrBuilder getIdleTriggerOrBuilder() {
+      return getIdleTrigger();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -15610,6 +18662,15 @@ public final class EDS10ProtocolBuffer {
       }
       if (isProgrammed_ != false) {
         output.writeBool(20, isProgrammed_);
+      }
+      if (detectionTrigger_ != null) {
+        output.writeMessage(21, getDetectionTrigger());
+      }
+      if (warningTrigger_ != null) {
+        output.writeMessage(22, getWarningTrigger());
+      }
+      if (idleTrigger_ != null) {
+        output.writeMessage(23, getIdleTrigger());
       }
       unknownFields.writeTo(output);
     }
@@ -15700,6 +18761,18 @@ public final class EDS10ProtocolBuffer {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(20, isProgrammed_);
       }
+      if (detectionTrigger_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(21, getDetectionTrigger());
+      }
+      if (warningTrigger_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(22, getWarningTrigger());
+      }
+      if (idleTrigger_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(23, getIdleTrigger());
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -15756,6 +18829,21 @@ public final class EDS10ProtocolBuffer {
           == other.getOffFlag());
       result = result && (getIsProgrammed()
           == other.getIsProgrammed());
+      result = result && (hasDetectionTrigger() == other.hasDetectionTrigger());
+      if (hasDetectionTrigger()) {
+        result = result && getDetectionTrigger()
+            .equals(other.getDetectionTrigger());
+      }
+      result = result && (hasWarningTrigger() == other.hasWarningTrigger());
+      if (hasWarningTrigger()) {
+        result = result && getWarningTrigger()
+            .equals(other.getWarningTrigger());
+      }
+      result = result && (hasIdleTrigger() == other.hasIdleTrigger());
+      if (hasIdleTrigger()) {
+        result = result && getIdleTrigger()
+            .equals(other.getIdleTrigger());
+      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -15808,6 +18896,18 @@ public final class EDS10ProtocolBuffer {
       hash = (37 * hash) + IS_PROGRAMMED_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getIsProgrammed());
+      if (hasDetectionTrigger()) {
+        hash = (37 * hash) + DETECTION_TRIGGER_FIELD_NUMBER;
+        hash = (53 * hash) + getDetectionTrigger().hashCode();
+      }
+      if (hasWarningTrigger()) {
+        hash = (37 * hash) + WARNING_TRIGGER_FIELD_NUMBER;
+        hash = (53 * hash) + getWarningTrigger().hashCode();
+      }
+      if (hasIdleTrigger()) {
+        hash = (37 * hash) + IDLE_TRIGGER_FIELD_NUMBER;
+        hash = (53 * hash) + getIdleTrigger().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -15985,6 +19085,24 @@ public final class EDS10ProtocolBuffer {
 
         isProgrammed_ = false;
 
+        if (detectionTriggerBuilder_ == null) {
+          detectionTrigger_ = null;
+        } else {
+          detectionTrigger_ = null;
+          detectionTriggerBuilder_ = null;
+        }
+        if (warningTriggerBuilder_ == null) {
+          warningTrigger_ = null;
+        } else {
+          warningTrigger_ = null;
+          warningTriggerBuilder_ = null;
+        }
+        if (idleTriggerBuilder_ == null) {
+          idleTrigger_ = null;
+        } else {
+          idleTrigger_ = null;
+          idleTriggerBuilder_ = null;
+        }
         return this;
       }
 
@@ -16031,6 +19149,21 @@ public final class EDS10ProtocolBuffer {
         result.luxSensors_ = luxSensors_;
         result.offFlag_ = offFlag_;
         result.isProgrammed_ = isProgrammed_;
+        if (detectionTriggerBuilder_ == null) {
+          result.detectionTrigger_ = detectionTrigger_;
+        } else {
+          result.detectionTrigger_ = detectionTriggerBuilder_.build();
+        }
+        if (warningTriggerBuilder_ == null) {
+          result.warningTrigger_ = warningTrigger_;
+        } else {
+          result.warningTrigger_ = warningTriggerBuilder_.build();
+        }
+        if (idleTriggerBuilder_ == null) {
+          result.idleTrigger_ = idleTrigger_;
+        } else {
+          result.idleTrigger_ = idleTriggerBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -16139,6 +19272,15 @@ public final class EDS10ProtocolBuffer {
         if (other.getIsProgrammed() != false) {
           setIsProgrammed(other.getIsProgrammed());
         }
+        if (other.hasDetectionTrigger()) {
+          mergeDetectionTrigger(other.getDetectionTrigger());
+        }
+        if (other.hasWarningTrigger()) {
+          mergeWarningTrigger(other.getWarningTrigger());
+        }
+        if (other.hasIdleTrigger()) {
+          mergeIdleTrigger(other.getIdleTrigger());
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -16170,12 +19312,20 @@ public final class EDS10ProtocolBuffer {
 
       private int profile_ ;
       /**
+       * <pre>
+       * Under which Profile is this Sensor active?
+       * </pre>
+       *
        * <code>uint32 profile = 1;</code>
        */
       public int getProfile() {
         return profile_;
       }
       /**
+       * <pre>
+       * Under which Profile is this Sensor active?
+       * </pre>
+       *
        * <code>uint32 profile = 1;</code>
        */
       public Builder setProfile(int value) {
@@ -16185,6 +19335,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Under which Profile is this Sensor active?
+       * </pre>
+       *
        * <code>uint32 profile = 1;</code>
        */
       public Builder clearProfile() {
@@ -16196,12 +19350,20 @@ public final class EDS10ProtocolBuffer {
 
       private int index_ ;
       /**
+       * <pre>
+       * The index for this Sensor
+       * </pre>
+       *
        * <code>uint32 index = 2;</code>
        */
       public int getIndex() {
         return index_;
       }
       /**
+       * <pre>
+       * The index for this Sensor
+       * </pre>
+       *
        * <code>uint32 index = 2;</code>
        */
       public Builder setIndex(int value) {
@@ -16211,6 +19373,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * The index for this Sensor
+       * </pre>
+       *
        * <code>uint32 index = 2;</code>
        */
       public Builder clearIndex() {
@@ -16222,12 +19388,20 @@ public final class EDS10ProtocolBuffer {
 
       private int sensorAddress_ ;
       /**
+       * <pre>
+       * The eDALI Address of this Sensor (assumes address of "L" (Light) component with "M" (Motion) at L + 1)
+       * </pre>
+       *
        * <code>uint32 sensor_address = 3;</code>
        */
       public int getSensorAddress() {
         return sensorAddress_;
       }
       /**
+       * <pre>
+       * The eDALI Address of this Sensor (assumes address of "L" (Light) component with "M" (Motion) at L + 1)
+       * </pre>
+       *
        * <code>uint32 sensor_address = 3;</code>
        */
       public Builder setSensorAddress(int value) {
@@ -16237,6 +19411,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * The eDALI Address of this Sensor (assumes address of "L" (Light) component with "M" (Motion) at L + 1)
+       * </pre>
+       *
        * <code>uint32 sensor_address = 3;</code>
        */
       public Builder clearSensorAddress() {
@@ -16248,12 +19426,20 @@ public final class EDS10ProtocolBuffer {
 
       private int sensorDaliLine_ ;
       /**
+       * <pre>
+       * The DALI Line this Sensor is on
+       * </pre>
+       *
        * <code>uint32 sensor_dali_line = 4;</code>
        */
       public int getSensorDaliLine() {
         return sensorDaliLine_;
       }
       /**
+       * <pre>
+       * The DALI Line this Sensor is on
+       * </pre>
+       *
        * <code>uint32 sensor_dali_line = 4;</code>
        */
       public Builder setSensorDaliLine(int value) {
@@ -16263,6 +19449,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * The DALI Line this Sensor is on
+       * </pre>
+       *
        * <code>uint32 sensor_dali_line = 4;</code>
        */
       public Builder clearSensorDaliLine() {
@@ -16274,12 +19464,20 @@ public final class EDS10ProtocolBuffer {
 
       private int addressQuery_ ;
       /**
+       * <pre>
+       * The DALI Address to query for Group-based control
+       * </pre>
+       *
        * <code>uint32 address_query = 5;</code>
        */
       public int getAddressQuery() {
         return addressQuery_;
       }
       /**
+       * <pre>
+       * The DALI Address to query for Group-based control
+       * </pre>
+       *
        * <code>uint32 address_query = 5;</code>
        */
       public Builder setAddressQuery(int value) {
@@ -16289,6 +19487,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * The DALI Address to query for Group-based control
+       * </pre>
+       *
        * <code>uint32 address_query = 5;</code>
        */
       public Builder clearAddressQuery() {
@@ -16300,12 +19502,20 @@ public final class EDS10ProtocolBuffer {
 
       private int controlDaliLine_ ;
       /**
+       * <pre>
+       * The DALI Line (mask) to control
+       * </pre>
+       *
        * <code>uint32 control_dali_line = 6;</code>
        */
       public int getControlDaliLine() {
         return controlDaliLine_;
       }
       /**
+       * <pre>
+       * The DALI Line (mask) to control
+       * </pre>
+       *
        * <code>uint32 control_dali_line = 6;</code>
        */
       public Builder setControlDaliLine(int value) {
@@ -16315,6 +19525,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * The DALI Line (mask) to control
+       * </pre>
+       *
        * <code>uint32 control_dali_line = 6;</code>
        */
       public Builder clearControlDaliLine() {
@@ -16326,12 +19540,20 @@ public final class EDS10ProtocolBuffer {
 
       private int controlGroup_ ;
       /**
+       * <pre>
+       * The DALI Group Address to control
+       * </pre>
+       *
        * <code>uint32 control_group = 7;</code>
        */
       public int getControlGroup() {
         return controlGroup_;
       }
       /**
+       * <pre>
+       * The DALI Group Address to control
+       * </pre>
+       *
        * <code>uint32 control_group = 7;</code>
        */
       public Builder setControlGroup(int value) {
@@ -16341,6 +19563,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * The DALI Group Address to control
+       * </pre>
+       *
        * <code>uint32 control_group = 7;</code>
        */
       public Builder clearControlGroup() {
@@ -16352,12 +19578,20 @@ public final class EDS10ProtocolBuffer {
 
       private int lightSetpoint_ ;
       /**
+       * <pre>
+       * The Lux level to maintain during Daylight Harvesting
+       * </pre>
+       *
        * <code>uint32 light_setpoint = 8;</code>
        */
       public int getLightSetpoint() {
         return lightSetpoint_;
       }
       /**
+       * <pre>
+       * The Lux level to maintain during Daylight Harvesting
+       * </pre>
+       *
        * <code>uint32 light_setpoint = 8;</code>
        */
       public Builder setLightSetpoint(int value) {
@@ -16367,6 +19601,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * The Lux level to maintain during Daylight Harvesting
+       * </pre>
+       *
        * <code>uint32 light_setpoint = 8;</code>
        */
       public Builder clearLightSetpoint() {
@@ -16378,12 +19616,20 @@ public final class EDS10ProtocolBuffer {
 
       private int warningSetpoint_ ;
       /**
+       * <pre>
+       * The Arc level to set during the Warning Period
+       * </pre>
+       *
        * <code>uint32 warning_setpoint = 9;</code>
        */
       public int getWarningSetpoint() {
         return warningSetpoint_;
       }
       /**
+       * <pre>
+       * The Arc level to set during the Warning Period
+       * </pre>
+       *
        * <code>uint32 warning_setpoint = 9;</code>
        */
       public Builder setWarningSetpoint(int value) {
@@ -16393,6 +19639,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * The Arc level to set during the Warning Period
+       * </pre>
+       *
        * <code>uint32 warning_setpoint = 9;</code>
        */
       public Builder clearWarningSetpoint() {
@@ -16404,12 +19654,20 @@ public final class EDS10ProtocolBuffer {
 
       private int motionOnly_ ;
       /**
+       * <pre>
+       * Is this Sensor used for motion detection only? If False, Daylight Harvesting will be in effect
+       * </pre>
+       *
        * <code>uint32 motion_only = 10;</code>
        */
       public int getMotionOnly() {
         return motionOnly_;
       }
       /**
+       * <pre>
+       * Is this Sensor used for motion detection only? If False, Daylight Harvesting will be in effect
+       * </pre>
+       *
        * <code>uint32 motion_only = 10;</code>
        */
       public Builder setMotionOnly(int value) {
@@ -16419,6 +19677,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Is this Sensor used for motion detection only? If False, Daylight Harvesting will be in effect
+       * </pre>
+       *
        * <code>uint32 motion_only = 10;</code>
        */
       public Builder clearMotionOnly() {
@@ -16430,12 +19692,20 @@ public final class EDS10ProtocolBuffer {
 
       private int timeoutValues_ ;
       /**
+       * <pre>
+       * How long after the last occupancy detection before the Sensor will activate the Warning Period
+       * </pre>
+       *
        * <code>uint32 timeout_values = 11;</code>
        */
       public int getTimeoutValues() {
         return timeoutValues_;
       }
       /**
+       * <pre>
+       * How long after the last occupancy detection before the Sensor will activate the Warning Period
+       * </pre>
+       *
        * <code>uint32 timeout_values = 11;</code>
        */
       public Builder setTimeoutValues(int value) {
@@ -16445,6 +19715,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * How long after the last occupancy detection before the Sensor will activate the Warning Period
+       * </pre>
+       *
        * <code>uint32 timeout_values = 11;</code>
        */
       public Builder clearTimeoutValues() {
@@ -16456,12 +19730,20 @@ public final class EDS10ProtocolBuffer {
 
       private int warningValues_ ;
       /**
+       * <pre>
+       * How long after entering the Warning Period before the Sensor will activate the Disable Period
+       * </pre>
+       *
        * <code>uint32 warning_values = 12;</code>
        */
       public int getWarningValues() {
         return warningValues_;
       }
       /**
+       * <pre>
+       * How long after entering the Warning Period before the Sensor will activate the Disable Period
+       * </pre>
+       *
        * <code>uint32 warning_values = 12;</code>
        */
       public Builder setWarningValues(int value) {
@@ -16471,6 +19753,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * How long after entering the Warning Period before the Sensor will activate the Disable Period
+       * </pre>
+       *
        * <code>uint32 warning_values = 12;</code>
        */
       public Builder clearWarningValues() {
@@ -16482,12 +19768,20 @@ public final class EDS10ProtocolBuffer {
 
       private int disableValues_ ;
       /**
+       * <pre>
+       * How long after a complete timeout (after the Warning Period) should the Sensor wait before starting detection again?
+       * </pre>
+       *
        * <code>uint32 disable_values = 13;</code>
        */
       public int getDisableValues() {
         return disableValues_;
       }
       /**
+       * <pre>
+       * How long after a complete timeout (after the Warning Period) should the Sensor wait before starting detection again?
+       * </pre>
+       *
        * <code>uint32 disable_values = 13;</code>
        */
       public Builder setDisableValues(int value) {
@@ -16497,6 +19791,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * How long after a complete timeout (after the Warning Period) should the Sensor wait before starting detection again?
+       * </pre>
+       *
        * <code>uint32 disable_values = 13;</code>
        */
       public Builder clearDisableValues() {
@@ -16508,12 +19806,20 @@ public final class EDS10ProtocolBuffer {
 
       private int input1Pm_ ;
       /**
+       * <pre>
+       * The first Input button used for "Two-Button Programming"
+       * </pre>
+       *
        * <code>uint32 input_1_pm = 14;</code>
        */
       public int getInput1Pm() {
         return input1Pm_;
       }
       /**
+       * <pre>
+       * The first Input button used for "Two-Button Programming"
+       * </pre>
+       *
        * <code>uint32 input_1_pm = 14;</code>
        */
       public Builder setInput1Pm(int value) {
@@ -16523,6 +19829,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * The first Input button used for "Two-Button Programming"
+       * </pre>
+       *
        * <code>uint32 input_1_pm = 14;</code>
        */
       public Builder clearInput1Pm() {
@@ -16534,12 +19844,20 @@ public final class EDS10ProtocolBuffer {
 
       private int input2Pm_ ;
       /**
+       * <pre>
+       * The second Input button used for "Two-Button Programming:
+       * </pre>
+       *
        * <code>uint32 input_2_pm = 15;</code>
        */
       public int getInput2Pm() {
         return input2Pm_;
       }
       /**
+       * <pre>
+       * The second Input button used for "Two-Button Programming:
+       * </pre>
+       *
        * <code>uint32 input_2_pm = 15;</code>
        */
       public Builder setInput2Pm(int value) {
@@ -16549,6 +19867,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * The second Input button used for "Two-Button Programming:
+       * </pre>
+       *
        * <code>uint32 input_2_pm = 15;</code>
        */
       public Builder clearInput2Pm() {
@@ -16560,12 +19882,20 @@ public final class EDS10ProtocolBuffer {
 
       private int sensorStates_ ;
       /**
+       * <pre>
+       * Used to keep track of the Motion Sensor state
+       * </pre>
+       *
        * <code>uint32 sensor_states = 16;</code>
        */
       public int getSensorStates() {
         return sensorStates_;
       }
       /**
+       * <pre>
+       * Used to keep track of the Motion Sensor state
+       * </pre>
+       *
        * <code>uint32 sensor_states = 16;</code>
        */
       public Builder setSensorStates(int value) {
@@ -16575,6 +19905,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Used to keep track of the Motion Sensor state
+       * </pre>
+       *
        * <code>uint32 sensor_states = 16;</code>
        */
       public Builder clearSensorStates() {
@@ -16586,12 +19920,20 @@ public final class EDS10ProtocolBuffer {
 
       private int motionSensors_ ;
       /**
+       * <pre>
+       * A Bitmask of grouped Sensors
+       * </pre>
+       *
        * <code>uint32 motion_sensors = 17;</code>
        */
       public int getMotionSensors() {
         return motionSensors_;
       }
       /**
+       * <pre>
+       * A Bitmask of grouped Sensors
+       * </pre>
+       *
        * <code>uint32 motion_sensors = 17;</code>
        */
       public Builder setMotionSensors(int value) {
@@ -16601,6 +19943,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * A Bitmask of grouped Sensors
+       * </pre>
+       *
        * <code>uint32 motion_sensors = 17;</code>
        */
       public Builder clearMotionSensors() {
@@ -16612,12 +19958,20 @@ public final class EDS10ProtocolBuffer {
 
       private int luxSensors_ ;
       /**
+       * <pre>
+       * Used to keep track of the Light (Lux) Sensor state
+       * </pre>
+       *
        * <code>uint32 lux_sensors = 18;</code>
        */
       public int getLuxSensors() {
         return luxSensors_;
       }
       /**
+       * <pre>
+       * Used to keep track of the Light (Lux) Sensor state
+       * </pre>
+       *
        * <code>uint32 lux_sensors = 18;</code>
        */
       public Builder setLuxSensors(int value) {
@@ -16627,6 +19981,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Used to keep track of the Light (Lux) Sensor state
+       * </pre>
+       *
        * <code>uint32 lux_sensors = 18;</code>
        */
       public Builder clearLuxSensors() {
@@ -16638,12 +19996,20 @@ public final class EDS10ProtocolBuffer {
 
       private int offFlag_ ;
       /**
+       * <pre>
+       * Used to keep track of the Control Group's state
+       * </pre>
+       *
        * <code>uint32 off_flag = 19;</code>
        */
       public int getOffFlag() {
         return offFlag_;
       }
       /**
+       * <pre>
+       * Used to keep track of the Control Group's state
+       * </pre>
+       *
        * <code>uint32 off_flag = 19;</code>
        */
       public Builder setOffFlag(int value) {
@@ -16653,6 +20019,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Used to keep track of the Control Group's state
+       * </pre>
+       *
        * <code>uint32 off_flag = 19;</code>
        */
       public Builder clearOffFlag() {
@@ -16664,12 +20034,20 @@ public final class EDS10ProtocolBuffer {
 
       private boolean isProgrammed_ ;
       /**
+       * <pre>
+       * Set to 'True' when the Firmware receives a SensorMessage with this Index
+       * </pre>
+       *
        * <code>bool is_programmed = 20;</code>
        */
       public boolean getIsProgrammed() {
         return isProgrammed_;
       }
       /**
+       * <pre>
+       * Set to 'True' when the Firmware receives a SensorMessage with this Index
+       * </pre>
+       *
        * <code>bool is_programmed = 20;</code>
        */
       public Builder setIsProgrammed(boolean value) {
@@ -16679,6 +20057,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Set to 'True' when the Firmware receives a SensorMessage with this Index
+       * </pre>
+       *
        * <code>bool is_programmed = 20;</code>
        */
       public Builder clearIsProgrammed() {
@@ -16686,6 +20068,465 @@ public final class EDS10ProtocolBuffer {
         isProgrammed_ = false;
         onChanged();
         return this;
+      }
+
+      private EDS10ProtocolBuffer.TriggerMessage detectionTrigger_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.TriggerMessage, EDS10ProtocolBuffer.TriggerMessage.Builder, EDS10ProtocolBuffer.TriggerMessageOrBuilder> detectionTriggerBuilder_;
+      /**
+       * <pre>
+       * The action to perform upon initial detection
+       * </pre>
+       *
+       * <code>.TriggerMessage detection_trigger = 21;</code>
+       */
+      public boolean hasDetectionTrigger() {
+        return detectionTriggerBuilder_ != null || detectionTrigger_ != null;
+      }
+      /**
+       * <pre>
+       * The action to perform upon initial detection
+       * </pre>
+       *
+       * <code>.TriggerMessage detection_trigger = 21;</code>
+       */
+      public EDS10ProtocolBuffer.TriggerMessage getDetectionTrigger() {
+        if (detectionTriggerBuilder_ == null) {
+          return detectionTrigger_ == null ? EDS10ProtocolBuffer.TriggerMessage.getDefaultInstance() : detectionTrigger_;
+        } else {
+          return detectionTriggerBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * The action to perform upon initial detection
+       * </pre>
+       *
+       * <code>.TriggerMessage detection_trigger = 21;</code>
+       */
+      public Builder setDetectionTrigger(EDS10ProtocolBuffer.TriggerMessage value) {
+        if (detectionTriggerBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          detectionTrigger_ = value;
+          onChanged();
+        } else {
+          detectionTriggerBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The action to perform upon initial detection
+       * </pre>
+       *
+       * <code>.TriggerMessage detection_trigger = 21;</code>
+       */
+      public Builder setDetectionTrigger(
+          EDS10ProtocolBuffer.TriggerMessage.Builder builderForValue) {
+        if (detectionTriggerBuilder_ == null) {
+          detectionTrigger_ = builderForValue.build();
+          onChanged();
+        } else {
+          detectionTriggerBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The action to perform upon initial detection
+       * </pre>
+       *
+       * <code>.TriggerMessage detection_trigger = 21;</code>
+       */
+      public Builder mergeDetectionTrigger(EDS10ProtocolBuffer.TriggerMessage value) {
+        if (detectionTriggerBuilder_ == null) {
+          if (detectionTrigger_ != null) {
+            detectionTrigger_ =
+              EDS10ProtocolBuffer.TriggerMessage.newBuilder(detectionTrigger_).mergeFrom(value).buildPartial();
+          } else {
+            detectionTrigger_ = value;
+          }
+          onChanged();
+        } else {
+          detectionTriggerBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The action to perform upon initial detection
+       * </pre>
+       *
+       * <code>.TriggerMessage detection_trigger = 21;</code>
+       */
+      public Builder clearDetectionTrigger() {
+        if (detectionTriggerBuilder_ == null) {
+          detectionTrigger_ = null;
+          onChanged();
+        } else {
+          detectionTrigger_ = null;
+          detectionTriggerBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The action to perform upon initial detection
+       * </pre>
+       *
+       * <code>.TriggerMessage detection_trigger = 21;</code>
+       */
+      public EDS10ProtocolBuffer.TriggerMessage.Builder getDetectionTriggerBuilder() {
+        
+        onChanged();
+        return getDetectionTriggerFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * The action to perform upon initial detection
+       * </pre>
+       *
+       * <code>.TriggerMessage detection_trigger = 21;</code>
+       */
+      public EDS10ProtocolBuffer.TriggerMessageOrBuilder getDetectionTriggerOrBuilder() {
+        if (detectionTriggerBuilder_ != null) {
+          return detectionTriggerBuilder_.getMessageOrBuilder();
+        } else {
+          return detectionTrigger_ == null ?
+              EDS10ProtocolBuffer.TriggerMessage.getDefaultInstance() : detectionTrigger_;
+        }
+      }
+      /**
+       * <pre>
+       * The action to perform upon initial detection
+       * </pre>
+       *
+       * <code>.TriggerMessage detection_trigger = 21;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.TriggerMessage, EDS10ProtocolBuffer.TriggerMessage.Builder, EDS10ProtocolBuffer.TriggerMessageOrBuilder> 
+          getDetectionTriggerFieldBuilder() {
+        if (detectionTriggerBuilder_ == null) {
+          detectionTriggerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.TriggerMessage, EDS10ProtocolBuffer.TriggerMessage.Builder, EDS10ProtocolBuffer.TriggerMessageOrBuilder>(
+                  getDetectionTrigger(),
+                  getParentForChildren(),
+                  isClean());
+          detectionTrigger_ = null;
+        }
+        return detectionTriggerBuilder_;
+      }
+
+      private EDS10ProtocolBuffer.TriggerMessage warningTrigger_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.TriggerMessage, EDS10ProtocolBuffer.TriggerMessage.Builder, EDS10ProtocolBuffer.TriggerMessageOrBuilder> warningTriggerBuilder_;
+      /**
+       * <pre>
+       * The action to perform upon transitioning to the Warning Period
+       * </pre>
+       *
+       * <code>.TriggerMessage warning_trigger = 22;</code>
+       */
+      public boolean hasWarningTrigger() {
+        return warningTriggerBuilder_ != null || warningTrigger_ != null;
+      }
+      /**
+       * <pre>
+       * The action to perform upon transitioning to the Warning Period
+       * </pre>
+       *
+       * <code>.TriggerMessage warning_trigger = 22;</code>
+       */
+      public EDS10ProtocolBuffer.TriggerMessage getWarningTrigger() {
+        if (warningTriggerBuilder_ == null) {
+          return warningTrigger_ == null ? EDS10ProtocolBuffer.TriggerMessage.getDefaultInstance() : warningTrigger_;
+        } else {
+          return warningTriggerBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * The action to perform upon transitioning to the Warning Period
+       * </pre>
+       *
+       * <code>.TriggerMessage warning_trigger = 22;</code>
+       */
+      public Builder setWarningTrigger(EDS10ProtocolBuffer.TriggerMessage value) {
+        if (warningTriggerBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          warningTrigger_ = value;
+          onChanged();
+        } else {
+          warningTriggerBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The action to perform upon transitioning to the Warning Period
+       * </pre>
+       *
+       * <code>.TriggerMessage warning_trigger = 22;</code>
+       */
+      public Builder setWarningTrigger(
+          EDS10ProtocolBuffer.TriggerMessage.Builder builderForValue) {
+        if (warningTriggerBuilder_ == null) {
+          warningTrigger_ = builderForValue.build();
+          onChanged();
+        } else {
+          warningTriggerBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The action to perform upon transitioning to the Warning Period
+       * </pre>
+       *
+       * <code>.TriggerMessage warning_trigger = 22;</code>
+       */
+      public Builder mergeWarningTrigger(EDS10ProtocolBuffer.TriggerMessage value) {
+        if (warningTriggerBuilder_ == null) {
+          if (warningTrigger_ != null) {
+            warningTrigger_ =
+              EDS10ProtocolBuffer.TriggerMessage.newBuilder(warningTrigger_).mergeFrom(value).buildPartial();
+          } else {
+            warningTrigger_ = value;
+          }
+          onChanged();
+        } else {
+          warningTriggerBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The action to perform upon transitioning to the Warning Period
+       * </pre>
+       *
+       * <code>.TriggerMessage warning_trigger = 22;</code>
+       */
+      public Builder clearWarningTrigger() {
+        if (warningTriggerBuilder_ == null) {
+          warningTrigger_ = null;
+          onChanged();
+        } else {
+          warningTrigger_ = null;
+          warningTriggerBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The action to perform upon transitioning to the Warning Period
+       * </pre>
+       *
+       * <code>.TriggerMessage warning_trigger = 22;</code>
+       */
+      public EDS10ProtocolBuffer.TriggerMessage.Builder getWarningTriggerBuilder() {
+        
+        onChanged();
+        return getWarningTriggerFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * The action to perform upon transitioning to the Warning Period
+       * </pre>
+       *
+       * <code>.TriggerMessage warning_trigger = 22;</code>
+       */
+      public EDS10ProtocolBuffer.TriggerMessageOrBuilder getWarningTriggerOrBuilder() {
+        if (warningTriggerBuilder_ != null) {
+          return warningTriggerBuilder_.getMessageOrBuilder();
+        } else {
+          return warningTrigger_ == null ?
+              EDS10ProtocolBuffer.TriggerMessage.getDefaultInstance() : warningTrigger_;
+        }
+      }
+      /**
+       * <pre>
+       * The action to perform upon transitioning to the Warning Period
+       * </pre>
+       *
+       * <code>.TriggerMessage warning_trigger = 22;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.TriggerMessage, EDS10ProtocolBuffer.TriggerMessage.Builder, EDS10ProtocolBuffer.TriggerMessageOrBuilder> 
+          getWarningTriggerFieldBuilder() {
+        if (warningTriggerBuilder_ == null) {
+          warningTriggerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.TriggerMessage, EDS10ProtocolBuffer.TriggerMessage.Builder, EDS10ProtocolBuffer.TriggerMessageOrBuilder>(
+                  getWarningTrigger(),
+                  getParentForChildren(),
+                  isClean());
+          warningTrigger_ = null;
+        }
+        return warningTriggerBuilder_;
+      }
+
+      private EDS10ProtocolBuffer.TriggerMessage idleTrigger_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.TriggerMessage, EDS10ProtocolBuffer.TriggerMessage.Builder, EDS10ProtocolBuffer.TriggerMessageOrBuilder> idleTriggerBuilder_;
+      /**
+       * <pre>
+       * The action to perform upon transitioning to the Idle (disable) Period
+       * </pre>
+       *
+       * <code>.TriggerMessage idle_trigger = 23;</code>
+       */
+      public boolean hasIdleTrigger() {
+        return idleTriggerBuilder_ != null || idleTrigger_ != null;
+      }
+      /**
+       * <pre>
+       * The action to perform upon transitioning to the Idle (disable) Period
+       * </pre>
+       *
+       * <code>.TriggerMessage idle_trigger = 23;</code>
+       */
+      public EDS10ProtocolBuffer.TriggerMessage getIdleTrigger() {
+        if (idleTriggerBuilder_ == null) {
+          return idleTrigger_ == null ? EDS10ProtocolBuffer.TriggerMessage.getDefaultInstance() : idleTrigger_;
+        } else {
+          return idleTriggerBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * The action to perform upon transitioning to the Idle (disable) Period
+       * </pre>
+       *
+       * <code>.TriggerMessage idle_trigger = 23;</code>
+       */
+      public Builder setIdleTrigger(EDS10ProtocolBuffer.TriggerMessage value) {
+        if (idleTriggerBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          idleTrigger_ = value;
+          onChanged();
+        } else {
+          idleTriggerBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The action to perform upon transitioning to the Idle (disable) Period
+       * </pre>
+       *
+       * <code>.TriggerMessage idle_trigger = 23;</code>
+       */
+      public Builder setIdleTrigger(
+          EDS10ProtocolBuffer.TriggerMessage.Builder builderForValue) {
+        if (idleTriggerBuilder_ == null) {
+          idleTrigger_ = builderForValue.build();
+          onChanged();
+        } else {
+          idleTriggerBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The action to perform upon transitioning to the Idle (disable) Period
+       * </pre>
+       *
+       * <code>.TriggerMessage idle_trigger = 23;</code>
+       */
+      public Builder mergeIdleTrigger(EDS10ProtocolBuffer.TriggerMessage value) {
+        if (idleTriggerBuilder_ == null) {
+          if (idleTrigger_ != null) {
+            idleTrigger_ =
+              EDS10ProtocolBuffer.TriggerMessage.newBuilder(idleTrigger_).mergeFrom(value).buildPartial();
+          } else {
+            idleTrigger_ = value;
+          }
+          onChanged();
+        } else {
+          idleTriggerBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The action to perform upon transitioning to the Idle (disable) Period
+       * </pre>
+       *
+       * <code>.TriggerMessage idle_trigger = 23;</code>
+       */
+      public Builder clearIdleTrigger() {
+        if (idleTriggerBuilder_ == null) {
+          idleTrigger_ = null;
+          onChanged();
+        } else {
+          idleTrigger_ = null;
+          idleTriggerBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The action to perform upon transitioning to the Idle (disable) Period
+       * </pre>
+       *
+       * <code>.TriggerMessage idle_trigger = 23;</code>
+       */
+      public EDS10ProtocolBuffer.TriggerMessage.Builder getIdleTriggerBuilder() {
+        
+        onChanged();
+        return getIdleTriggerFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * The action to perform upon transitioning to the Idle (disable) Period
+       * </pre>
+       *
+       * <code>.TriggerMessage idle_trigger = 23;</code>
+       */
+      public EDS10ProtocolBuffer.TriggerMessageOrBuilder getIdleTriggerOrBuilder() {
+        if (idleTriggerBuilder_ != null) {
+          return idleTriggerBuilder_.getMessageOrBuilder();
+        } else {
+          return idleTrigger_ == null ?
+              EDS10ProtocolBuffer.TriggerMessage.getDefaultInstance() : idleTrigger_;
+        }
+      }
+      /**
+       * <pre>
+       * The action to perform upon transitioning to the Idle (disable) Period
+       * </pre>
+       *
+       * <code>.TriggerMessage idle_trigger = 23;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.TriggerMessage, EDS10ProtocolBuffer.TriggerMessage.Builder, EDS10ProtocolBuffer.TriggerMessageOrBuilder> 
+          getIdleTriggerFieldBuilder() {
+        if (idleTriggerBuilder_ == null) {
+          idleTriggerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.TriggerMessage, EDS10ProtocolBuffer.TriggerMessage.Builder, EDS10ProtocolBuffer.TriggerMessageOrBuilder>(
+                  getIdleTrigger(),
+                  getParentForChildren(),
+                  isClean());
+          idleTrigger_ = null;
+        }
+        return idleTriggerBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -22856,6 +26697,937 @@ public final class EDS10ProtocolBuffer {
 
     @java.lang.Override
     public EDS10ProtocolBuffer.OutputMultiMessage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface DALIInputMultiMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:DALIInputMultiMessage)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>uint32 profile = 1;</code>
+     */
+    int getProfile();
+
+    /**
+     * <pre>
+     * To support paginated results (0-9, 10-19, 20-29, 30-39)
+     * </pre>
+     *
+     * <code>uint32 input_index_offset = 2;</code>
+     */
+    int getInputIndexOffset();
+
+    /**
+     * <code>repeated .DALIInputMessage inputs = 3;</code>
+     */
+    java.util.List<EDS10ProtocolBuffer.DALIInputMessage> 
+        getInputsList();
+    /**
+     * <code>repeated .DALIInputMessage inputs = 3;</code>
+     */
+    EDS10ProtocolBuffer.DALIInputMessage getInputs(int index);
+    /**
+     * <code>repeated .DALIInputMessage inputs = 3;</code>
+     */
+    int getInputsCount();
+    /**
+     * <code>repeated .DALIInputMessage inputs = 3;</code>
+     */
+    java.util.List<? extends EDS10ProtocolBuffer.DALIInputMessageOrBuilder> 
+        getInputsOrBuilderList();
+    /**
+     * <code>repeated .DALIInputMessage inputs = 3;</code>
+     */
+    EDS10ProtocolBuffer.DALIInputMessageOrBuilder getInputsOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code DALIInputMultiMessage}
+   */
+  public  static final class DALIInputMultiMessage extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:DALIInputMultiMessage)
+      DALIInputMultiMessageOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use DALIInputMultiMessage.newBuilder() to construct.
+    private DALIInputMultiMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private DALIInputMultiMessage() {
+      profile_ = 0;
+      inputIndexOffset_ = 0;
+      inputs_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DALIInputMultiMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              profile_ = input.readUInt32();
+              break;
+            }
+            case 16: {
+
+              inputIndexOffset_ = input.readUInt32();
+              break;
+            }
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                inputs_ = new java.util.ArrayList<EDS10ProtocolBuffer.DALIInputMessage>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              inputs_.add(
+                  input.readMessage(EDS10ProtocolBuffer.DALIInputMessage.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          inputs_ = java.util.Collections.unmodifiableList(inputs_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.internal_static_DALIInputMultiMessage_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return EDS10ProtocolBuffer.internal_static_DALIInputMultiMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              EDS10ProtocolBuffer.DALIInputMultiMessage.class, EDS10ProtocolBuffer.DALIInputMultiMessage.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int PROFILE_FIELD_NUMBER = 1;
+    private int profile_;
+    /**
+     * <code>uint32 profile = 1;</code>
+     */
+    public int getProfile() {
+      return profile_;
+    }
+
+    public static final int INPUT_INDEX_OFFSET_FIELD_NUMBER = 2;
+    private int inputIndexOffset_;
+    /**
+     * <pre>
+     * To support paginated results (0-9, 10-19, 20-29, 30-39)
+     * </pre>
+     *
+     * <code>uint32 input_index_offset = 2;</code>
+     */
+    public int getInputIndexOffset() {
+      return inputIndexOffset_;
+    }
+
+    public static final int INPUTS_FIELD_NUMBER = 3;
+    private java.util.List<EDS10ProtocolBuffer.DALIInputMessage> inputs_;
+    /**
+     * <code>repeated .DALIInputMessage inputs = 3;</code>
+     */
+    public java.util.List<EDS10ProtocolBuffer.DALIInputMessage> getInputsList() {
+      return inputs_;
+    }
+    /**
+     * <code>repeated .DALIInputMessage inputs = 3;</code>
+     */
+    public java.util.List<? extends EDS10ProtocolBuffer.DALIInputMessageOrBuilder> 
+        getInputsOrBuilderList() {
+      return inputs_;
+    }
+    /**
+     * <code>repeated .DALIInputMessage inputs = 3;</code>
+     */
+    public int getInputsCount() {
+      return inputs_.size();
+    }
+    /**
+     * <code>repeated .DALIInputMessage inputs = 3;</code>
+     */
+    public EDS10ProtocolBuffer.DALIInputMessage getInputs(int index) {
+      return inputs_.get(index);
+    }
+    /**
+     * <code>repeated .DALIInputMessage inputs = 3;</code>
+     */
+    public EDS10ProtocolBuffer.DALIInputMessageOrBuilder getInputsOrBuilder(
+        int index) {
+      return inputs_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (profile_ != 0) {
+        output.writeUInt32(1, profile_);
+      }
+      if (inputIndexOffset_ != 0) {
+        output.writeUInt32(2, inputIndexOffset_);
+      }
+      for (int i = 0; i < inputs_.size(); i++) {
+        output.writeMessage(3, inputs_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (profile_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, profile_);
+      }
+      if (inputIndexOffset_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, inputIndexOffset_);
+      }
+      for (int i = 0; i < inputs_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, inputs_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof EDS10ProtocolBuffer.DALIInputMultiMessage)) {
+        return super.equals(obj);
+      }
+      EDS10ProtocolBuffer.DALIInputMultiMessage other = (EDS10ProtocolBuffer.DALIInputMultiMessage) obj;
+
+      boolean result = true;
+      result = result && (getProfile()
+          == other.getProfile());
+      result = result && (getInputIndexOffset()
+          == other.getInputIndexOffset());
+      result = result && getInputsList()
+          .equals(other.getInputsList());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + PROFILE_FIELD_NUMBER;
+      hash = (53 * hash) + getProfile();
+      hash = (37 * hash) + INPUT_INDEX_OFFSET_FIELD_NUMBER;
+      hash = (53 * hash) + getInputIndexOffset();
+      if (getInputsCount() > 0) {
+        hash = (37 * hash) + INPUTS_FIELD_NUMBER;
+        hash = (53 * hash) + getInputsList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static EDS10ProtocolBuffer.DALIInputMultiMessage parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.DALIInputMultiMessage parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALIInputMultiMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.DALIInputMultiMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALIInputMultiMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.DALIInputMultiMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALIInputMultiMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.DALIInputMultiMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALIInputMultiMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.DALIInputMultiMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALIInputMultiMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.DALIInputMultiMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(EDS10ProtocolBuffer.DALIInputMultiMessage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code DALIInputMultiMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:DALIInputMultiMessage)
+        EDS10ProtocolBuffer.DALIInputMultiMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return EDS10ProtocolBuffer.internal_static_DALIInputMultiMessage_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return EDS10ProtocolBuffer.internal_static_DALIInputMultiMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                EDS10ProtocolBuffer.DALIInputMultiMessage.class, EDS10ProtocolBuffer.DALIInputMultiMessage.Builder.class);
+      }
+
+      // Construct using EDS10ProtocolBuffer.DALIInputMultiMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getInputsFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        profile_ = 0;
+
+        inputIndexOffset_ = 0;
+
+        if (inputsBuilder_ == null) {
+          inputs_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          inputsBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return EDS10ProtocolBuffer.internal_static_DALIInputMultiMessage_descriptor;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.DALIInputMultiMessage getDefaultInstanceForType() {
+        return EDS10ProtocolBuffer.DALIInputMultiMessage.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.DALIInputMultiMessage build() {
+        EDS10ProtocolBuffer.DALIInputMultiMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.DALIInputMultiMessage buildPartial() {
+        EDS10ProtocolBuffer.DALIInputMultiMessage result = new EDS10ProtocolBuffer.DALIInputMultiMessage(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        result.profile_ = profile_;
+        result.inputIndexOffset_ = inputIndexOffset_;
+        if (inputsBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            inputs_ = java.util.Collections.unmodifiableList(inputs_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.inputs_ = inputs_;
+        } else {
+          result.inputs_ = inputsBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof EDS10ProtocolBuffer.DALIInputMultiMessage) {
+          return mergeFrom((EDS10ProtocolBuffer.DALIInputMultiMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(EDS10ProtocolBuffer.DALIInputMultiMessage other) {
+        if (other == EDS10ProtocolBuffer.DALIInputMultiMessage.getDefaultInstance()) return this;
+        if (other.getProfile() != 0) {
+          setProfile(other.getProfile());
+        }
+        if (other.getInputIndexOffset() != 0) {
+          setInputIndexOffset(other.getInputIndexOffset());
+        }
+        if (inputsBuilder_ == null) {
+          if (!other.inputs_.isEmpty()) {
+            if (inputs_.isEmpty()) {
+              inputs_ = other.inputs_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureInputsIsMutable();
+              inputs_.addAll(other.inputs_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.inputs_.isEmpty()) {
+            if (inputsBuilder_.isEmpty()) {
+              inputsBuilder_.dispose();
+              inputsBuilder_ = null;
+              inputs_ = other.inputs_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              inputsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getInputsFieldBuilder() : null;
+            } else {
+              inputsBuilder_.addAllMessages(other.inputs_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        EDS10ProtocolBuffer.DALIInputMultiMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (EDS10ProtocolBuffer.DALIInputMultiMessage) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int profile_ ;
+      /**
+       * <code>uint32 profile = 1;</code>
+       */
+      public int getProfile() {
+        return profile_;
+      }
+      /**
+       * <code>uint32 profile = 1;</code>
+       */
+      public Builder setProfile(int value) {
+        
+        profile_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 profile = 1;</code>
+       */
+      public Builder clearProfile() {
+        
+        profile_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int inputIndexOffset_ ;
+      /**
+       * <pre>
+       * To support paginated results (0-9, 10-19, 20-29, 30-39)
+       * </pre>
+       *
+       * <code>uint32 input_index_offset = 2;</code>
+       */
+      public int getInputIndexOffset() {
+        return inputIndexOffset_;
+      }
+      /**
+       * <pre>
+       * To support paginated results (0-9, 10-19, 20-29, 30-39)
+       * </pre>
+       *
+       * <code>uint32 input_index_offset = 2;</code>
+       */
+      public Builder setInputIndexOffset(int value) {
+        
+        inputIndexOffset_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * To support paginated results (0-9, 10-19, 20-29, 30-39)
+       * </pre>
+       *
+       * <code>uint32 input_index_offset = 2;</code>
+       */
+      public Builder clearInputIndexOffset() {
+        
+        inputIndexOffset_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<EDS10ProtocolBuffer.DALIInputMessage> inputs_ =
+        java.util.Collections.emptyList();
+      private void ensureInputsIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          inputs_ = new java.util.ArrayList<EDS10ProtocolBuffer.DALIInputMessage>(inputs_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          EDS10ProtocolBuffer.DALIInputMessage, EDS10ProtocolBuffer.DALIInputMessage.Builder, EDS10ProtocolBuffer.DALIInputMessageOrBuilder> inputsBuilder_;
+
+      /**
+       * <code>repeated .DALIInputMessage inputs = 3;</code>
+       */
+      public java.util.List<EDS10ProtocolBuffer.DALIInputMessage> getInputsList() {
+        if (inputsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(inputs_);
+        } else {
+          return inputsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .DALIInputMessage inputs = 3;</code>
+       */
+      public int getInputsCount() {
+        if (inputsBuilder_ == null) {
+          return inputs_.size();
+        } else {
+          return inputsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .DALIInputMessage inputs = 3;</code>
+       */
+      public EDS10ProtocolBuffer.DALIInputMessage getInputs(int index) {
+        if (inputsBuilder_ == null) {
+          return inputs_.get(index);
+        } else {
+          return inputsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .DALIInputMessage inputs = 3;</code>
+       */
+      public Builder setInputs(
+          int index, EDS10ProtocolBuffer.DALIInputMessage value) {
+        if (inputsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureInputsIsMutable();
+          inputs_.set(index, value);
+          onChanged();
+        } else {
+          inputsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .DALIInputMessage inputs = 3;</code>
+       */
+      public Builder setInputs(
+          int index, EDS10ProtocolBuffer.DALIInputMessage.Builder builderForValue) {
+        if (inputsBuilder_ == null) {
+          ensureInputsIsMutable();
+          inputs_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          inputsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .DALIInputMessage inputs = 3;</code>
+       */
+      public Builder addInputs(EDS10ProtocolBuffer.DALIInputMessage value) {
+        if (inputsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureInputsIsMutable();
+          inputs_.add(value);
+          onChanged();
+        } else {
+          inputsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .DALIInputMessage inputs = 3;</code>
+       */
+      public Builder addInputs(
+          int index, EDS10ProtocolBuffer.DALIInputMessage value) {
+        if (inputsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureInputsIsMutable();
+          inputs_.add(index, value);
+          onChanged();
+        } else {
+          inputsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .DALIInputMessage inputs = 3;</code>
+       */
+      public Builder addInputs(
+          EDS10ProtocolBuffer.DALIInputMessage.Builder builderForValue) {
+        if (inputsBuilder_ == null) {
+          ensureInputsIsMutable();
+          inputs_.add(builderForValue.build());
+          onChanged();
+        } else {
+          inputsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .DALIInputMessage inputs = 3;</code>
+       */
+      public Builder addInputs(
+          int index, EDS10ProtocolBuffer.DALIInputMessage.Builder builderForValue) {
+        if (inputsBuilder_ == null) {
+          ensureInputsIsMutable();
+          inputs_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          inputsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .DALIInputMessage inputs = 3;</code>
+       */
+      public Builder addAllInputs(
+          java.lang.Iterable<? extends EDS10ProtocolBuffer.DALIInputMessage> values) {
+        if (inputsBuilder_ == null) {
+          ensureInputsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, inputs_);
+          onChanged();
+        } else {
+          inputsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .DALIInputMessage inputs = 3;</code>
+       */
+      public Builder clearInputs() {
+        if (inputsBuilder_ == null) {
+          inputs_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          inputsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .DALIInputMessage inputs = 3;</code>
+       */
+      public Builder removeInputs(int index) {
+        if (inputsBuilder_ == null) {
+          ensureInputsIsMutable();
+          inputs_.remove(index);
+          onChanged();
+        } else {
+          inputsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .DALIInputMessage inputs = 3;</code>
+       */
+      public EDS10ProtocolBuffer.DALIInputMessage.Builder getInputsBuilder(
+          int index) {
+        return getInputsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .DALIInputMessage inputs = 3;</code>
+       */
+      public EDS10ProtocolBuffer.DALIInputMessageOrBuilder getInputsOrBuilder(
+          int index) {
+        if (inputsBuilder_ == null) {
+          return inputs_.get(index);  } else {
+          return inputsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .DALIInputMessage inputs = 3;</code>
+       */
+      public java.util.List<? extends EDS10ProtocolBuffer.DALIInputMessageOrBuilder> 
+           getInputsOrBuilderList() {
+        if (inputsBuilder_ != null) {
+          return inputsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(inputs_);
+        }
+      }
+      /**
+       * <code>repeated .DALIInputMessage inputs = 3;</code>
+       */
+      public EDS10ProtocolBuffer.DALIInputMessage.Builder addInputsBuilder() {
+        return getInputsFieldBuilder().addBuilder(
+            EDS10ProtocolBuffer.DALIInputMessage.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .DALIInputMessage inputs = 3;</code>
+       */
+      public EDS10ProtocolBuffer.DALIInputMessage.Builder addInputsBuilder(
+          int index) {
+        return getInputsFieldBuilder().addBuilder(
+            index, EDS10ProtocolBuffer.DALIInputMessage.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .DALIInputMessage inputs = 3;</code>
+       */
+      public java.util.List<EDS10ProtocolBuffer.DALIInputMessage.Builder> 
+           getInputsBuilderList() {
+        return getInputsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          EDS10ProtocolBuffer.DALIInputMessage, EDS10ProtocolBuffer.DALIInputMessage.Builder, EDS10ProtocolBuffer.DALIInputMessageOrBuilder> 
+          getInputsFieldBuilder() {
+        if (inputsBuilder_ == null) {
+          inputsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              EDS10ProtocolBuffer.DALIInputMessage, EDS10ProtocolBuffer.DALIInputMessage.Builder, EDS10ProtocolBuffer.DALIInputMessageOrBuilder>(
+                  inputs_,
+                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  getParentForChildren(),
+                  isClean());
+          inputs_ = null;
+        }
+        return inputsBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:DALIInputMultiMessage)
+    }
+
+    // @@protoc_insertion_point(class_scope:DALIInputMultiMessage)
+    private static final EDS10ProtocolBuffer.DALIInputMultiMessage DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.DALIInputMultiMessage();
+    }
+
+    public static EDS10ProtocolBuffer.DALIInputMultiMessage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<DALIInputMultiMessage>
+        PARSER = new com.google.protobuf.AbstractParser<DALIInputMultiMessage>() {
+      @java.lang.Override
+      public DALIInputMultiMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DALIInputMultiMessage(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<DALIInputMultiMessage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DALIInputMultiMessage> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public EDS10ProtocolBuffer.DALIInputMultiMessage getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -29660,6 +34432,10 @@ public final class EDS10ProtocolBuffer {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * DEPRECATED: Use 'type' instead
+     * </pre>
+     *
      * <code>uint32 command = 1;</code>
      */
     int getCommand();
@@ -29668,6 +34444,15 @@ public final class EDS10ProtocolBuffer {
      * <code>uint32 index = 2;</code>
      */
     int getIndex();
+
+    /**
+     * <code>.SensorCommandType type = 3;</code>
+     */
+    int getTypeValue();
+    /**
+     * <code>.SensorCommandType type = 3;</code>
+     */
+    EDS10ProtocolBuffer.SensorCommandType getType();
   }
   /**
    * <pre>
@@ -29688,6 +34473,7 @@ public final class EDS10ProtocolBuffer {
     private SensorCommandMessage() {
       command_ = 0;
       index_ = 0;
+      type_ = 0;
     }
 
     @java.lang.Override
@@ -29722,6 +34508,12 @@ public final class EDS10ProtocolBuffer {
             case 16: {
 
               index_ = input.readUInt32();
+              break;
+            }
+            case 24: {
+              int rawValue = input.readEnum();
+
+              type_ = rawValue;
               break;
             }
             default: {
@@ -29759,6 +34551,10 @@ public final class EDS10ProtocolBuffer {
     public static final int COMMAND_FIELD_NUMBER = 1;
     private int command_;
     /**
+     * <pre>
+     * DEPRECATED: Use 'type' instead
+     * </pre>
+     *
      * <code>uint32 command = 1;</code>
      */
     public int getCommand() {
@@ -29772,6 +34568,23 @@ public final class EDS10ProtocolBuffer {
      */
     public int getIndex() {
       return index_;
+    }
+
+    public static final int TYPE_FIELD_NUMBER = 3;
+    private int type_;
+    /**
+     * <code>.SensorCommandType type = 3;</code>
+     */
+    public int getTypeValue() {
+      return type_;
+    }
+    /**
+     * <code>.SensorCommandType type = 3;</code>
+     */
+    public EDS10ProtocolBuffer.SensorCommandType getType() {
+      @SuppressWarnings("deprecation")
+      EDS10ProtocolBuffer.SensorCommandType result = EDS10ProtocolBuffer.SensorCommandType.valueOf(type_);
+      return result == null ? EDS10ProtocolBuffer.SensorCommandType.UNRECOGNIZED : result;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -29794,6 +34607,9 @@ public final class EDS10ProtocolBuffer {
       if (index_ != 0) {
         output.writeUInt32(2, index_);
       }
+      if (type_ != EDS10ProtocolBuffer.SensorCommandType.INITIALISE.getNumber()) {
+        output.writeEnum(3, type_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -29810,6 +34626,10 @@ public final class EDS10ProtocolBuffer {
       if (index_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(2, index_);
+      }
+      if (type_ != EDS10ProtocolBuffer.SensorCommandType.INITIALISE.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(3, type_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -29831,6 +34651,7 @@ public final class EDS10ProtocolBuffer {
           == other.getCommand());
       result = result && (getIndex()
           == other.getIndex());
+      result = result && type_ == other.type_;
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -29846,6 +34667,8 @@ public final class EDS10ProtocolBuffer {
       hash = (53 * hash) + getCommand();
       hash = (37 * hash) + INDEX_FIELD_NUMBER;
       hash = (53 * hash) + getIndex();
+      hash = (37 * hash) + TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + type_;
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -29987,6 +34810,8 @@ public final class EDS10ProtocolBuffer {
 
         index_ = 0;
 
+        type_ = 0;
+
         return this;
       }
 
@@ -30015,6 +34840,7 @@ public final class EDS10ProtocolBuffer {
         EDS10ProtocolBuffer.SensorCommandMessage result = new EDS10ProtocolBuffer.SensorCommandMessage(this);
         result.command_ = command_;
         result.index_ = index_;
+        result.type_ = type_;
         onBuilt();
         return result;
       }
@@ -30069,6 +34895,9 @@ public final class EDS10ProtocolBuffer {
         if (other.getIndex() != 0) {
           setIndex(other.getIndex());
         }
+        if (other.type_ != 0) {
+          setTypeValue(other.getTypeValue());
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -30100,12 +34929,20 @@ public final class EDS10ProtocolBuffer {
 
       private int command_ ;
       /**
+       * <pre>
+       * DEPRECATED: Use 'type' instead
+       * </pre>
+       *
        * <code>uint32 command = 1;</code>
        */
       public int getCommand() {
         return command_;
       }
       /**
+       * <pre>
+       * DEPRECATED: Use 'type' instead
+       * </pre>
+       *
        * <code>uint32 command = 1;</code>
        */
       public Builder setCommand(int value) {
@@ -30115,6 +34952,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * DEPRECATED: Use 'type' instead
+       * </pre>
+       *
        * <code>uint32 command = 1;</code>
        */
       public Builder clearCommand() {
@@ -30146,6 +34987,51 @@ public final class EDS10ProtocolBuffer {
       public Builder clearIndex() {
         
         index_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int type_ = 0;
+      /**
+       * <code>.SensorCommandType type = 3;</code>
+       */
+      public int getTypeValue() {
+        return type_;
+      }
+      /**
+       * <code>.SensorCommandType type = 3;</code>
+       */
+      public Builder setTypeValue(int value) {
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.SensorCommandType type = 3;</code>
+       */
+      public EDS10ProtocolBuffer.SensorCommandType getType() {
+        @SuppressWarnings("deprecation")
+        EDS10ProtocolBuffer.SensorCommandType result = EDS10ProtocolBuffer.SensorCommandType.valueOf(type_);
+        return result == null ? EDS10ProtocolBuffer.SensorCommandType.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.SensorCommandType type = 3;</code>
+       */
+      public Builder setType(EDS10ProtocolBuffer.SensorCommandType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        type_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.SensorCommandType type = 3;</code>
+       */
+      public Builder clearType() {
+        
+        type_ = 0;
         onChanged();
         return this;
       }
@@ -33799,21 +38685,21 @@ public final class EDS10ProtocolBuffer {
 
     /**
      * <pre>
-     * eDALI commmands are manufacturer specific, so we have to take a raw value.
+     * Older eDALI commmands are manufacturer specific, so we have to take a raw value.
      * </pre>
      *
-     * <code>uint32 edali_command = 3;</code>
+     * <code>uint32 frame_25_bit = 3;</code>
      */
-    int getEdaliCommand();
+    int getFrame25Bit();
 
     /**
      * <pre>
-     * eDALI commands can have a reply.
+     * Older eDALI commands can have a reply.
      * </pre>
      *
-     * <code>uint32 edali_command_reply = 4;</code>
+     * <code>uint32 frame_25_bit_reply = 4;</code>
      */
-    int getEdaliCommandReply();
+    int getFrame25BitReply();
 
     /**
      * <code>.DALICommandType command = 5;</code>
@@ -33850,6 +38736,42 @@ public final class EDS10ProtocolBuffer {
      * <code>.Type8CommandType type8 = 8;</code>
      */
     EDS10ProtocolBuffer.Type8CommandType getType8();
+
+    /**
+     * <pre>
+     * Standard DALI Frame data
+     * </pre>
+     *
+     * <code>uint32 frame_16_bit = 11;</code>
+     */
+    int getFrame16Bit();
+
+    /**
+     * <pre>
+     * Standard DALI Frame data with reply
+     * </pre>
+     *
+     * <code>uint32 frame_16_bit_reply = 12;</code>
+     */
+    int getFrame16BitReply();
+
+    /**
+     * <pre>
+     * Standard 24 Bit DALI Frame data
+     * </pre>
+     *
+     * <code>uint32 frame_24_bit = 13;</code>
+     */
+    int getFrame24Bit();
+
+    /**
+     * <pre>
+     * Standard 24 Bit DALI Frame data with reply
+     * </pre>
+     *
+     * <code>uint32 frame_24_bit_reply = 14;</code>
+     */
+    int getFrame24BitReply();
 
     /**
      * <pre>
@@ -33981,6 +38903,26 @@ public final class EDS10ProtocolBuffer {
               paramsCase_ = 10;
               break;
             }
+            case 88: {
+              actionCase_ = 11;
+              action_ = input.readUInt32();
+              break;
+            }
+            case 96: {
+              actionCase_ = 12;
+              action_ = input.readUInt32();
+              break;
+            }
+            case 104: {
+              actionCase_ = 13;
+              action_ = input.readUInt32();
+              break;
+            }
+            case 112: {
+              actionCase_ = 14;
+              action_ = input.readUInt32();
+              break;
+            }
             default: {
               if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -34017,12 +38959,16 @@ public final class EDS10ProtocolBuffer {
     private java.lang.Object action_;
     public enum ActionCase
         implements com.google.protobuf.Internal.EnumLite {
-      EDALI_COMMAND(3),
-      EDALI_COMMAND_REPLY(4),
+      FRAME_25_BIT(3),
+      FRAME_25_BIT_REPLY(4),
       COMMAND(5),
       CUSTOM_COMMAND(6),
       QUERY(7),
       TYPE8(8),
+      FRAME_16_BIT(11),
+      FRAME_16_BIT_REPLY(12),
+      FRAME_24_BIT(13),
+      FRAME_24_BIT_REPLY(14),
       ACTION_NOT_SET(0);
       private final int value;
       private ActionCase(int value) {
@@ -34038,12 +38984,16 @@ public final class EDS10ProtocolBuffer {
 
       public static ActionCase forNumber(int value) {
         switch (value) {
-          case 3: return EDALI_COMMAND;
-          case 4: return EDALI_COMMAND_REPLY;
+          case 3: return FRAME_25_BIT;
+          case 4: return FRAME_25_BIT_REPLY;
           case 5: return COMMAND;
           case 6: return CUSTOM_COMMAND;
           case 7: return QUERY;
           case 8: return TYPE8;
+          case 11: return FRAME_16_BIT;
+          case 12: return FRAME_16_BIT_REPLY;
+          case 13: return FRAME_24_BIT;
+          case 14: return FRAME_24_BIT_REPLY;
           case 0: return ACTION_NOT_SET;
           default: return null;
         }
@@ -34123,30 +39073,30 @@ public final class EDS10ProtocolBuffer {
       return address_;
     }
 
-    public static final int EDALI_COMMAND_FIELD_NUMBER = 3;
+    public static final int FRAME_25_BIT_FIELD_NUMBER = 3;
     /**
      * <pre>
-     * eDALI commmands are manufacturer specific, so we have to take a raw value.
+     * Older eDALI commmands are manufacturer specific, so we have to take a raw value.
      * </pre>
      *
-     * <code>uint32 edali_command = 3;</code>
+     * <code>uint32 frame_25_bit = 3;</code>
      */
-    public int getEdaliCommand() {
+    public int getFrame25Bit() {
       if (actionCase_ == 3) {
         return (java.lang.Integer) action_;
       }
       return 0;
     }
 
-    public static final int EDALI_COMMAND_REPLY_FIELD_NUMBER = 4;
+    public static final int FRAME_25_BIT_REPLY_FIELD_NUMBER = 4;
     /**
      * <pre>
-     * eDALI commands can have a reply.
+     * Older eDALI commands can have a reply.
      * </pre>
      *
-     * <code>uint32 edali_command_reply = 4;</code>
+     * <code>uint32 frame_25_bit_reply = 4;</code>
      */
-    public int getEdaliCommandReply() {
+    public int getFrame25BitReply() {
       if (actionCase_ == 4) {
         return (java.lang.Integer) action_;
       }
@@ -34245,6 +39195,66 @@ public final class EDS10ProtocolBuffer {
       return EDS10ProtocolBuffer.Type8CommandType.ENABLE_DEVICE_TYPE8;
     }
 
+    public static final int FRAME_16_BIT_FIELD_NUMBER = 11;
+    /**
+     * <pre>
+     * Standard DALI Frame data
+     * </pre>
+     *
+     * <code>uint32 frame_16_bit = 11;</code>
+     */
+    public int getFrame16Bit() {
+      if (actionCase_ == 11) {
+        return (java.lang.Integer) action_;
+      }
+      return 0;
+    }
+
+    public static final int FRAME_16_BIT_REPLY_FIELD_NUMBER = 12;
+    /**
+     * <pre>
+     * Standard DALI Frame data with reply
+     * </pre>
+     *
+     * <code>uint32 frame_16_bit_reply = 12;</code>
+     */
+    public int getFrame16BitReply() {
+      if (actionCase_ == 12) {
+        return (java.lang.Integer) action_;
+      }
+      return 0;
+    }
+
+    public static final int FRAME_24_BIT_FIELD_NUMBER = 13;
+    /**
+     * <pre>
+     * Standard 24 Bit DALI Frame data
+     * </pre>
+     *
+     * <code>uint32 frame_24_bit = 13;</code>
+     */
+    public int getFrame24Bit() {
+      if (actionCase_ == 13) {
+        return (java.lang.Integer) action_;
+      }
+      return 0;
+    }
+
+    public static final int FRAME_24_BIT_REPLY_FIELD_NUMBER = 14;
+    /**
+     * <pre>
+     * Standard 24 Bit DALI Frame data with reply
+     * </pre>
+     *
+     * <code>uint32 frame_24_bit_reply = 14;</code>
+     */
+    public int getFrame24BitReply() {
+      if (actionCase_ == 14) {
+        return (java.lang.Integer) action_;
+      }
+      return 0;
+    }
+
     public static final int ARG_FIELD_NUMBER = 9;
     /**
      * <pre>
@@ -34333,6 +39343,22 @@ public final class EDS10ProtocolBuffer {
       if (paramsCase_ == 10) {
         output.writeMessage(10, (EDS10ProtocolBuffer.DTRPayloadMessage) params_);
       }
+      if (actionCase_ == 11) {
+        output.writeUInt32(
+            11, (int)((java.lang.Integer) action_));
+      }
+      if (actionCase_ == 12) {
+        output.writeUInt32(
+            12, (int)((java.lang.Integer) action_));
+      }
+      if (actionCase_ == 13) {
+        output.writeUInt32(
+            13, (int)((java.lang.Integer) action_));
+      }
+      if (actionCase_ == 14) {
+        output.writeUInt32(
+            14, (int)((java.lang.Integer) action_));
+      }
       unknownFields.writeTo(output);
     }
 
@@ -34385,6 +39411,26 @@ public final class EDS10ProtocolBuffer {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(10, (EDS10ProtocolBuffer.DTRPayloadMessage) params_);
       }
+      if (actionCase_ == 11) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(
+              11, (int)((java.lang.Integer) action_));
+      }
+      if (actionCase_ == 12) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(
+              12, (int)((java.lang.Integer) action_));
+      }
+      if (actionCase_ == 13) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(
+              13, (int)((java.lang.Integer) action_));
+      }
+      if (actionCase_ == 14) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(
+              14, (int)((java.lang.Integer) action_));
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -34410,12 +39456,12 @@ public final class EDS10ProtocolBuffer {
       if (!result) return false;
       switch (actionCase_) {
         case 3:
-          result = result && (getEdaliCommand()
-              == other.getEdaliCommand());
+          result = result && (getFrame25Bit()
+              == other.getFrame25Bit());
           break;
         case 4:
-          result = result && (getEdaliCommandReply()
-              == other.getEdaliCommandReply());
+          result = result && (getFrame25BitReply()
+              == other.getFrame25BitReply());
           break;
         case 5:
           result = result && getCommandValue()
@@ -34432,6 +39478,22 @@ public final class EDS10ProtocolBuffer {
         case 8:
           result = result && getType8Value()
               == other.getType8Value();
+          break;
+        case 11:
+          result = result && (getFrame16Bit()
+              == other.getFrame16Bit());
+          break;
+        case 12:
+          result = result && (getFrame16BitReply()
+              == other.getFrame16BitReply());
+          break;
+        case 13:
+          result = result && (getFrame24Bit()
+              == other.getFrame24Bit());
+          break;
+        case 14:
+          result = result && (getFrame24BitReply()
+              == other.getFrame24BitReply());
           break;
         case 0:
         default:
@@ -34468,12 +39530,12 @@ public final class EDS10ProtocolBuffer {
       hash = (53 * hash) + getAddress();
       switch (actionCase_) {
         case 3:
-          hash = (37 * hash) + EDALI_COMMAND_FIELD_NUMBER;
-          hash = (53 * hash) + getEdaliCommand();
+          hash = (37 * hash) + FRAME_25_BIT_FIELD_NUMBER;
+          hash = (53 * hash) + getFrame25Bit();
           break;
         case 4:
-          hash = (37 * hash) + EDALI_COMMAND_REPLY_FIELD_NUMBER;
-          hash = (53 * hash) + getEdaliCommandReply();
+          hash = (37 * hash) + FRAME_25_BIT_REPLY_FIELD_NUMBER;
+          hash = (53 * hash) + getFrame25BitReply();
           break;
         case 5:
           hash = (37 * hash) + COMMAND_FIELD_NUMBER;
@@ -34490,6 +39552,22 @@ public final class EDS10ProtocolBuffer {
         case 8:
           hash = (37 * hash) + TYPE8_FIELD_NUMBER;
           hash = (53 * hash) + getType8Value();
+          break;
+        case 11:
+          hash = (37 * hash) + FRAME_16_BIT_FIELD_NUMBER;
+          hash = (53 * hash) + getFrame16Bit();
+          break;
+        case 12:
+          hash = (37 * hash) + FRAME_16_BIT_REPLY_FIELD_NUMBER;
+          hash = (53 * hash) + getFrame16BitReply();
+          break;
+        case 13:
+          hash = (37 * hash) + FRAME_24_BIT_FIELD_NUMBER;
+          hash = (53 * hash) + getFrame24Bit();
+          break;
+        case 14:
+          hash = (37 * hash) + FRAME_24_BIT_REPLY_FIELD_NUMBER;
+          hash = (53 * hash) + getFrame24BitReply();
           break;
         case 0:
         default:
@@ -34693,6 +39771,18 @@ public final class EDS10ProtocolBuffer {
         if (actionCase_ == 8) {
           result.action_ = action_;
         }
+        if (actionCase_ == 11) {
+          result.action_ = action_;
+        }
+        if (actionCase_ == 12) {
+          result.action_ = action_;
+        }
+        if (actionCase_ == 13) {
+          result.action_ = action_;
+        }
+        if (actionCase_ == 14) {
+          result.action_ = action_;
+        }
         if (paramsCase_ == 9) {
           result.params_ = params_;
         }
@@ -34760,12 +39850,12 @@ public final class EDS10ProtocolBuffer {
           setAddress(other.getAddress());
         }
         switch (other.getActionCase()) {
-          case EDALI_COMMAND: {
-            setEdaliCommand(other.getEdaliCommand());
+          case FRAME_25_BIT: {
+            setFrame25Bit(other.getFrame25Bit());
             break;
           }
-          case EDALI_COMMAND_REPLY: {
-            setEdaliCommandReply(other.getEdaliCommandReply());
+          case FRAME_25_BIT_REPLY: {
+            setFrame25BitReply(other.getFrame25BitReply());
             break;
           }
           case COMMAND: {
@@ -34782,6 +39872,22 @@ public final class EDS10ProtocolBuffer {
           }
           case TYPE8: {
             setType8Value(other.getType8Value());
+            break;
+          }
+          case FRAME_16_BIT: {
+            setFrame16Bit(other.getFrame16Bit());
+            break;
+          }
+          case FRAME_16_BIT_REPLY: {
+            setFrame16BitReply(other.getFrame16BitReply());
+            break;
+          }
+          case FRAME_24_BIT: {
+            setFrame24Bit(other.getFrame24Bit());
+            break;
+          }
+          case FRAME_24_BIT_REPLY: {
+            setFrame24BitReply(other.getFrame24BitReply());
             break;
           }
           case ACTION_NOT_SET: {
@@ -34938,12 +40044,12 @@ public final class EDS10ProtocolBuffer {
 
       /**
        * <pre>
-       * eDALI commmands are manufacturer specific, so we have to take a raw value.
+       * Older eDALI commmands are manufacturer specific, so we have to take a raw value.
        * </pre>
        *
-       * <code>uint32 edali_command = 3;</code>
+       * <code>uint32 frame_25_bit = 3;</code>
        */
-      public int getEdaliCommand() {
+      public int getFrame25Bit() {
         if (actionCase_ == 3) {
           return (java.lang.Integer) action_;
         }
@@ -34951,12 +40057,12 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * eDALI commmands are manufacturer specific, so we have to take a raw value.
+       * Older eDALI commmands are manufacturer specific, so we have to take a raw value.
        * </pre>
        *
-       * <code>uint32 edali_command = 3;</code>
+       * <code>uint32 frame_25_bit = 3;</code>
        */
-      public Builder setEdaliCommand(int value) {
+      public Builder setFrame25Bit(int value) {
         actionCase_ = 3;
         action_ = value;
         onChanged();
@@ -34964,12 +40070,12 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * eDALI commmands are manufacturer specific, so we have to take a raw value.
+       * Older eDALI commmands are manufacturer specific, so we have to take a raw value.
        * </pre>
        *
-       * <code>uint32 edali_command = 3;</code>
+       * <code>uint32 frame_25_bit = 3;</code>
        */
-      public Builder clearEdaliCommand() {
+      public Builder clearFrame25Bit() {
         if (actionCase_ == 3) {
           actionCase_ = 0;
           action_ = null;
@@ -34980,12 +40086,12 @@ public final class EDS10ProtocolBuffer {
 
       /**
        * <pre>
-       * eDALI commands can have a reply.
+       * Older eDALI commands can have a reply.
        * </pre>
        *
-       * <code>uint32 edali_command_reply = 4;</code>
+       * <code>uint32 frame_25_bit_reply = 4;</code>
        */
-      public int getEdaliCommandReply() {
+      public int getFrame25BitReply() {
         if (actionCase_ == 4) {
           return (java.lang.Integer) action_;
         }
@@ -34993,12 +40099,12 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * eDALI commands can have a reply.
+       * Older eDALI commands can have a reply.
        * </pre>
        *
-       * <code>uint32 edali_command_reply = 4;</code>
+       * <code>uint32 frame_25_bit_reply = 4;</code>
        */
-      public Builder setEdaliCommandReply(int value) {
+      public Builder setFrame25BitReply(int value) {
         actionCase_ = 4;
         action_ = value;
         onChanged();
@@ -35006,12 +40112,12 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * eDALI commands can have a reply.
+       * Older eDALI commands can have a reply.
        * </pre>
        *
-       * <code>uint32 edali_command_reply = 4;</code>
+       * <code>uint32 frame_25_bit_reply = 4;</code>
        */
-      public Builder clearEdaliCommandReply() {
+      public Builder clearFrame25BitReply() {
         if (actionCase_ == 4) {
           actionCase_ = 0;
           action_ = null;
@@ -35229,6 +40335,174 @@ public final class EDS10ProtocolBuffer {
        */
       public Builder clearType8() {
         if (actionCase_ == 8) {
+          actionCase_ = 0;
+          action_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <pre>
+       * Standard DALI Frame data
+       * </pre>
+       *
+       * <code>uint32 frame_16_bit = 11;</code>
+       */
+      public int getFrame16Bit() {
+        if (actionCase_ == 11) {
+          return (java.lang.Integer) action_;
+        }
+        return 0;
+      }
+      /**
+       * <pre>
+       * Standard DALI Frame data
+       * </pre>
+       *
+       * <code>uint32 frame_16_bit = 11;</code>
+       */
+      public Builder setFrame16Bit(int value) {
+        actionCase_ = 11;
+        action_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Standard DALI Frame data
+       * </pre>
+       *
+       * <code>uint32 frame_16_bit = 11;</code>
+       */
+      public Builder clearFrame16Bit() {
+        if (actionCase_ == 11) {
+          actionCase_ = 0;
+          action_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <pre>
+       * Standard DALI Frame data with reply
+       * </pre>
+       *
+       * <code>uint32 frame_16_bit_reply = 12;</code>
+       */
+      public int getFrame16BitReply() {
+        if (actionCase_ == 12) {
+          return (java.lang.Integer) action_;
+        }
+        return 0;
+      }
+      /**
+       * <pre>
+       * Standard DALI Frame data with reply
+       * </pre>
+       *
+       * <code>uint32 frame_16_bit_reply = 12;</code>
+       */
+      public Builder setFrame16BitReply(int value) {
+        actionCase_ = 12;
+        action_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Standard DALI Frame data with reply
+       * </pre>
+       *
+       * <code>uint32 frame_16_bit_reply = 12;</code>
+       */
+      public Builder clearFrame16BitReply() {
+        if (actionCase_ == 12) {
+          actionCase_ = 0;
+          action_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <pre>
+       * Standard 24 Bit DALI Frame data
+       * </pre>
+       *
+       * <code>uint32 frame_24_bit = 13;</code>
+       */
+      public int getFrame24Bit() {
+        if (actionCase_ == 13) {
+          return (java.lang.Integer) action_;
+        }
+        return 0;
+      }
+      /**
+       * <pre>
+       * Standard 24 Bit DALI Frame data
+       * </pre>
+       *
+       * <code>uint32 frame_24_bit = 13;</code>
+       */
+      public Builder setFrame24Bit(int value) {
+        actionCase_ = 13;
+        action_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Standard 24 Bit DALI Frame data
+       * </pre>
+       *
+       * <code>uint32 frame_24_bit = 13;</code>
+       */
+      public Builder clearFrame24Bit() {
+        if (actionCase_ == 13) {
+          actionCase_ = 0;
+          action_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <pre>
+       * Standard 24 Bit DALI Frame data with reply
+       * </pre>
+       *
+       * <code>uint32 frame_24_bit_reply = 14;</code>
+       */
+      public int getFrame24BitReply() {
+        if (actionCase_ == 14) {
+          return (java.lang.Integer) action_;
+        }
+        return 0;
+      }
+      /**
+       * <pre>
+       * Standard 24 Bit DALI Frame data with reply
+       * </pre>
+       *
+       * <code>uint32 frame_24_bit_reply = 14;</code>
+       */
+      public Builder setFrame24BitReply(int value) {
+        actionCase_ = 14;
+        action_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Standard 24 Bit DALI Frame data with reply
+       * </pre>
+       *
+       * <code>uint32 frame_24_bit_reply = 14;</code>
+       */
+      public Builder clearFrame24BitReply() {
+        if (actionCase_ == 14) {
           actionCase_ = 0;
           action_ = null;
           onChanged();
@@ -36166,6 +41440,36 @@ public final class EDS10ProtocolBuffer {
      */
     EDS10ProtocolBuffer.PayloadMessageOrBuilder getDataOrBuilder();
 
+    /**
+     * <pre>
+     * New Query Method
+     * </pre>
+     *
+     * <code>.DALIRXStatusFlag dali_flag = 3;</code>
+     */
+    int getDaliFlagValue();
+    /**
+     * <pre>
+     * New Query Method
+     * </pre>
+     *
+     * <code>.DALIRXStatusFlag dali_flag = 3;</code>
+     */
+    EDS10ProtocolBuffer.DALIRXStatusFlag getDaliFlag();
+
+    /**
+     * <code>.PayloadMessage reponse_data = 4;</code>
+     */
+    boolean hasReponseData();
+    /**
+     * <code>.PayloadMessage reponse_data = 4;</code>
+     */
+    EDS10ProtocolBuffer.PayloadMessage getReponseData();
+    /**
+     * <code>.PayloadMessage reponse_data = 4;</code>
+     */
+    EDS10ProtocolBuffer.PayloadMessageOrBuilder getReponseDataOrBuilder();
+
     public EDS10ProtocolBuffer.DALIQueryResponse.PayloadCase getPayloadCase();
   }
   /**
@@ -36185,6 +41489,7 @@ public final class EDS10ProtocolBuffer {
       super(builder);
     }
     private DALIQueryResponse() {
+      daliFlag_ = 0;
     }
 
     @java.lang.Override
@@ -36237,6 +41542,25 @@ public final class EDS10ProtocolBuffer {
                 payload_ = subBuilder.buildPartial();
               }
               payloadCase_ = 2;
+              break;
+            }
+            case 24: {
+              int rawValue = input.readEnum();
+
+              daliFlag_ = rawValue;
+              break;
+            }
+            case 34: {
+              EDS10ProtocolBuffer.PayloadMessage.Builder subBuilder = null;
+              if (reponseData_ != null) {
+                subBuilder = reponseData_.toBuilder();
+              }
+              reponseData_ = input.readMessage(EDS10ProtocolBuffer.PayloadMessage.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(reponseData_);
+                reponseData_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             default: {
@@ -36361,6 +41685,52 @@ public final class EDS10ProtocolBuffer {
       return EDS10ProtocolBuffer.PayloadMessage.getDefaultInstance();
     }
 
+    public static final int DALI_FLAG_FIELD_NUMBER = 3;
+    private int daliFlag_;
+    /**
+     * <pre>
+     * New Query Method
+     * </pre>
+     *
+     * <code>.DALIRXStatusFlag dali_flag = 3;</code>
+     */
+    public int getDaliFlagValue() {
+      return daliFlag_;
+    }
+    /**
+     * <pre>
+     * New Query Method
+     * </pre>
+     *
+     * <code>.DALIRXStatusFlag dali_flag = 3;</code>
+     */
+    public EDS10ProtocolBuffer.DALIRXStatusFlag getDaliFlag() {
+      @SuppressWarnings("deprecation")
+      EDS10ProtocolBuffer.DALIRXStatusFlag result = EDS10ProtocolBuffer.DALIRXStatusFlag.valueOf(daliFlag_);
+      return result == null ? EDS10ProtocolBuffer.DALIRXStatusFlag.UNRECOGNIZED : result;
+    }
+
+    public static final int REPONSE_DATA_FIELD_NUMBER = 4;
+    private EDS10ProtocolBuffer.PayloadMessage reponseData_;
+    /**
+     * <code>.PayloadMessage reponse_data = 4;</code>
+     */
+    public boolean hasReponseData() {
+      return reponseData_ != null;
+    }
+    /**
+     * <code>.PayloadMessage reponse_data = 4;</code>
+     */
+    public EDS10ProtocolBuffer.PayloadMessage getReponseData() {
+      return reponseData_ == null ? EDS10ProtocolBuffer.PayloadMessage.getDefaultInstance() : reponseData_;
+    }
+    /**
+     * <code>.PayloadMessage reponse_data = 4;</code>
+     */
+    public EDS10ProtocolBuffer.PayloadMessageOrBuilder getReponseDataOrBuilder() {
+      return getReponseData();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -36381,6 +41751,12 @@ public final class EDS10ProtocolBuffer {
       if (payloadCase_ == 2) {
         output.writeMessage(2, (EDS10ProtocolBuffer.PayloadMessage) payload_);
       }
+      if (daliFlag_ != EDS10ProtocolBuffer.DALIRXStatusFlag.WAITING.getNumber()) {
+        output.writeEnum(3, daliFlag_);
+      }
+      if (reponseData_ != null) {
+        output.writeMessage(4, getReponseData());
+      }
       unknownFields.writeTo(output);
     }
 
@@ -36398,6 +41774,14 @@ public final class EDS10ProtocolBuffer {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, (EDS10ProtocolBuffer.PayloadMessage) payload_);
       }
+      if (daliFlag_ != EDS10ProtocolBuffer.DALIRXStatusFlag.WAITING.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(3, daliFlag_);
+      }
+      if (reponseData_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getReponseData());
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -36414,6 +41798,12 @@ public final class EDS10ProtocolBuffer {
       EDS10ProtocolBuffer.DALIQueryResponse other = (EDS10ProtocolBuffer.DALIQueryResponse) obj;
 
       boolean result = true;
+      result = result && daliFlag_ == other.daliFlag_;
+      result = result && (hasReponseData() == other.hasReponseData());
+      if (hasReponseData()) {
+        result = result && getReponseData()
+            .equals(other.getReponseData());
+      }
       result = result && getPayloadCase().equals(
           other.getPayloadCase());
       if (!result) return false;
@@ -36440,6 +41830,12 @@ public final class EDS10ProtocolBuffer {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + DALI_FLAG_FIELD_NUMBER;
+      hash = (53 * hash) + daliFlag_;
+      if (hasReponseData()) {
+        hash = (37 * hash) + REPONSE_DATA_FIELD_NUMBER;
+        hash = (53 * hash) + getReponseData().hashCode();
+      }
       switch (payloadCase_) {
         case 1:
           hash = (37 * hash) + STATUS_FLAGS_FIELD_NUMBER;
@@ -36589,6 +41985,14 @@ public final class EDS10ProtocolBuffer {
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        daliFlag_ = 0;
+
+        if (reponseDataBuilder_ == null) {
+          reponseData_ = null;
+        } else {
+          reponseData_ = null;
+          reponseDataBuilder_ = null;
+        }
         payloadCase_ = 0;
         payload_ = null;
         return this;
@@ -36630,6 +42034,12 @@ public final class EDS10ProtocolBuffer {
           } else {
             result.payload_ = dataBuilder_.build();
           }
+        }
+        result.daliFlag_ = daliFlag_;
+        if (reponseDataBuilder_ == null) {
+          result.reponseData_ = reponseData_;
+        } else {
+          result.reponseData_ = reponseDataBuilder_.build();
         }
         result.payloadCase_ = payloadCase_;
         onBuilt();
@@ -36680,6 +42090,12 @@ public final class EDS10ProtocolBuffer {
 
       public Builder mergeFrom(EDS10ProtocolBuffer.DALIQueryResponse other) {
         if (other == EDS10ProtocolBuffer.DALIQueryResponse.getDefaultInstance()) return this;
+        if (other.daliFlag_ != 0) {
+          setDaliFlagValue(other.getDaliFlagValue());
+        }
+        if (other.hasReponseData()) {
+          mergeReponseData(other.getReponseData());
+        }
         switch (other.getPayloadCase()) {
           case STATUS_FLAGS: {
             mergeStatusFlags(other.getStatusFlags());
@@ -37008,6 +42424,188 @@ public final class EDS10ProtocolBuffer {
         onChanged();;
         return dataBuilder_;
       }
+
+      private int daliFlag_ = 0;
+      /**
+       * <pre>
+       * New Query Method
+       * </pre>
+       *
+       * <code>.DALIRXStatusFlag dali_flag = 3;</code>
+       */
+      public int getDaliFlagValue() {
+        return daliFlag_;
+      }
+      /**
+       * <pre>
+       * New Query Method
+       * </pre>
+       *
+       * <code>.DALIRXStatusFlag dali_flag = 3;</code>
+       */
+      public Builder setDaliFlagValue(int value) {
+        daliFlag_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * New Query Method
+       * </pre>
+       *
+       * <code>.DALIRXStatusFlag dali_flag = 3;</code>
+       */
+      public EDS10ProtocolBuffer.DALIRXStatusFlag getDaliFlag() {
+        @SuppressWarnings("deprecation")
+        EDS10ProtocolBuffer.DALIRXStatusFlag result = EDS10ProtocolBuffer.DALIRXStatusFlag.valueOf(daliFlag_);
+        return result == null ? EDS10ProtocolBuffer.DALIRXStatusFlag.UNRECOGNIZED : result;
+      }
+      /**
+       * <pre>
+       * New Query Method
+       * </pre>
+       *
+       * <code>.DALIRXStatusFlag dali_flag = 3;</code>
+       */
+      public Builder setDaliFlag(EDS10ProtocolBuffer.DALIRXStatusFlag value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        daliFlag_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * New Query Method
+       * </pre>
+       *
+       * <code>.DALIRXStatusFlag dali_flag = 3;</code>
+       */
+      public Builder clearDaliFlag() {
+        
+        daliFlag_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private EDS10ProtocolBuffer.PayloadMessage reponseData_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.PayloadMessage, EDS10ProtocolBuffer.PayloadMessage.Builder, EDS10ProtocolBuffer.PayloadMessageOrBuilder> reponseDataBuilder_;
+      /**
+       * <code>.PayloadMessage reponse_data = 4;</code>
+       */
+      public boolean hasReponseData() {
+        return reponseDataBuilder_ != null || reponseData_ != null;
+      }
+      /**
+       * <code>.PayloadMessage reponse_data = 4;</code>
+       */
+      public EDS10ProtocolBuffer.PayloadMessage getReponseData() {
+        if (reponseDataBuilder_ == null) {
+          return reponseData_ == null ? EDS10ProtocolBuffer.PayloadMessage.getDefaultInstance() : reponseData_;
+        } else {
+          return reponseDataBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.PayloadMessage reponse_data = 4;</code>
+       */
+      public Builder setReponseData(EDS10ProtocolBuffer.PayloadMessage value) {
+        if (reponseDataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          reponseData_ = value;
+          onChanged();
+        } else {
+          reponseDataBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.PayloadMessage reponse_data = 4;</code>
+       */
+      public Builder setReponseData(
+          EDS10ProtocolBuffer.PayloadMessage.Builder builderForValue) {
+        if (reponseDataBuilder_ == null) {
+          reponseData_ = builderForValue.build();
+          onChanged();
+        } else {
+          reponseDataBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.PayloadMessage reponse_data = 4;</code>
+       */
+      public Builder mergeReponseData(EDS10ProtocolBuffer.PayloadMessage value) {
+        if (reponseDataBuilder_ == null) {
+          if (reponseData_ != null) {
+            reponseData_ =
+              EDS10ProtocolBuffer.PayloadMessage.newBuilder(reponseData_).mergeFrom(value).buildPartial();
+          } else {
+            reponseData_ = value;
+          }
+          onChanged();
+        } else {
+          reponseDataBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.PayloadMessage reponse_data = 4;</code>
+       */
+      public Builder clearReponseData() {
+        if (reponseDataBuilder_ == null) {
+          reponseData_ = null;
+          onChanged();
+        } else {
+          reponseData_ = null;
+          reponseDataBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.PayloadMessage reponse_data = 4;</code>
+       */
+      public EDS10ProtocolBuffer.PayloadMessage.Builder getReponseDataBuilder() {
+        
+        onChanged();
+        return getReponseDataFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.PayloadMessage reponse_data = 4;</code>
+       */
+      public EDS10ProtocolBuffer.PayloadMessageOrBuilder getReponseDataOrBuilder() {
+        if (reponseDataBuilder_ != null) {
+          return reponseDataBuilder_.getMessageOrBuilder();
+        } else {
+          return reponseData_ == null ?
+              EDS10ProtocolBuffer.PayloadMessage.getDefaultInstance() : reponseData_;
+        }
+      }
+      /**
+       * <code>.PayloadMessage reponse_data = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.PayloadMessage, EDS10ProtocolBuffer.PayloadMessage.Builder, EDS10ProtocolBuffer.PayloadMessageOrBuilder> 
+          getReponseDataFieldBuilder() {
+        if (reponseDataBuilder_ == null) {
+          reponseDataBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.PayloadMessage, EDS10ProtocolBuffer.PayloadMessage.Builder, EDS10ProtocolBuffer.PayloadMessageOrBuilder>(
+                  getReponseData(),
+                  getParentForChildren(),
+                  isClean());
+          reponseData_ = null;
+        }
+        return reponseDataBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -37056,6 +42654,1679 @@ public final class EDS10ProtocolBuffer {
 
     @java.lang.Override
     public EDS10ProtocolBuffer.DALIQueryResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface DALIAddressingMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:DALIAddressingMessage)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * New or All       
+     * </pre>
+     *
+     * <code>.DALIAddressingType type = 1;</code>
+     */
+    int getTypeValue();
+    /**
+     * <pre>
+     * New or All       
+     * </pre>
+     *
+     * <code>.DALIAddressingType type = 1;</code>
+     */
+    EDS10ProtocolBuffer.DALIAddressingType getType();
+
+    /**
+     * <pre>
+     * First Address (TRUE) or Next Address (FALSE)
+     * </pre>
+     *
+     * <code>bool initialisation = 2;</code>
+     */
+    boolean getInitialisation();
+
+    /**
+     * <pre>
+     * Line to Address - Must be singular
+     * </pre>
+     *
+     * <code>uint32 line_mask = 3;</code>
+     */
+    int getLineMask();
+
+    /**
+     * <pre>
+     * 24 Bit DALI (TRUE) or Standard (FALSE)
+     * </pre>
+     *
+     * <code>bool is24Bit = 4;</code>
+     */
+    boolean getIs24Bit();
+
+    /**
+     * <pre>
+     * Response -&gt; Error while Addressing
+     * </pre>
+     *
+     * <code>.DALIAddressingError error = 5;</code>
+     */
+    int getErrorValue();
+    /**
+     * <pre>
+     * Response -&gt; Error while Addressing
+     * </pre>
+     *
+     * <code>.DALIAddressingError error = 5;</code>
+     */
+    EDS10ProtocolBuffer.DALIAddressingError getError();
+
+    /**
+     * <pre>
+     * Response -&gt; Index of Set Address
+     * </pre>
+     *
+     * <code>uint32 index = 6;</code>
+     */
+    int getIndex();
+  }
+  /**
+   * Protobuf type {@code DALIAddressingMessage}
+   */
+  public  static final class DALIAddressingMessage extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:DALIAddressingMessage)
+      DALIAddressingMessageOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use DALIAddressingMessage.newBuilder() to construct.
+    private DALIAddressingMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private DALIAddressingMessage() {
+      type_ = 0;
+      initialisation_ = false;
+      lineMask_ = 0;
+      is24Bit_ = false;
+      error_ = 0;
+      index_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DALIAddressingMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              int rawValue = input.readEnum();
+
+              type_ = rawValue;
+              break;
+            }
+            case 16: {
+
+              initialisation_ = input.readBool();
+              break;
+            }
+            case 24: {
+
+              lineMask_ = input.readUInt32();
+              break;
+            }
+            case 32: {
+
+              is24Bit_ = input.readBool();
+              break;
+            }
+            case 40: {
+              int rawValue = input.readEnum();
+
+              error_ = rawValue;
+              break;
+            }
+            case 48: {
+
+              index_ = input.readUInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.internal_static_DALIAddressingMessage_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return EDS10ProtocolBuffer.internal_static_DALIAddressingMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              EDS10ProtocolBuffer.DALIAddressingMessage.class, EDS10ProtocolBuffer.DALIAddressingMessage.Builder.class);
+    }
+
+    public static final int TYPE_FIELD_NUMBER = 1;
+    private int type_;
+    /**
+     * <pre>
+     * New or All       
+     * </pre>
+     *
+     * <code>.DALIAddressingType type = 1;</code>
+     */
+    public int getTypeValue() {
+      return type_;
+    }
+    /**
+     * <pre>
+     * New or All       
+     * </pre>
+     *
+     * <code>.DALIAddressingType type = 1;</code>
+     */
+    public EDS10ProtocolBuffer.DALIAddressingType getType() {
+      @SuppressWarnings("deprecation")
+      EDS10ProtocolBuffer.DALIAddressingType result = EDS10ProtocolBuffer.DALIAddressingType.valueOf(type_);
+      return result == null ? EDS10ProtocolBuffer.DALIAddressingType.UNRECOGNIZED : result;
+    }
+
+    public static final int INITIALISATION_FIELD_NUMBER = 2;
+    private boolean initialisation_;
+    /**
+     * <pre>
+     * First Address (TRUE) or Next Address (FALSE)
+     * </pre>
+     *
+     * <code>bool initialisation = 2;</code>
+     */
+    public boolean getInitialisation() {
+      return initialisation_;
+    }
+
+    public static final int LINE_MASK_FIELD_NUMBER = 3;
+    private int lineMask_;
+    /**
+     * <pre>
+     * Line to Address - Must be singular
+     * </pre>
+     *
+     * <code>uint32 line_mask = 3;</code>
+     */
+    public int getLineMask() {
+      return lineMask_;
+    }
+
+    public static final int IS24BIT_FIELD_NUMBER = 4;
+    private boolean is24Bit_;
+    /**
+     * <pre>
+     * 24 Bit DALI (TRUE) or Standard (FALSE)
+     * </pre>
+     *
+     * <code>bool is24Bit = 4;</code>
+     */
+    public boolean getIs24Bit() {
+      return is24Bit_;
+    }
+
+    public static final int ERROR_FIELD_NUMBER = 5;
+    private int error_;
+    /**
+     * <pre>
+     * Response -&gt; Error while Addressing
+     * </pre>
+     *
+     * <code>.DALIAddressingError error = 5;</code>
+     */
+    public int getErrorValue() {
+      return error_;
+    }
+    /**
+     * <pre>
+     * Response -&gt; Error while Addressing
+     * </pre>
+     *
+     * <code>.DALIAddressingError error = 5;</code>
+     */
+    public EDS10ProtocolBuffer.DALIAddressingError getError() {
+      @SuppressWarnings("deprecation")
+      EDS10ProtocolBuffer.DALIAddressingError result = EDS10ProtocolBuffer.DALIAddressingError.valueOf(error_);
+      return result == null ? EDS10ProtocolBuffer.DALIAddressingError.UNRECOGNIZED : result;
+    }
+
+    public static final int INDEX_FIELD_NUMBER = 6;
+    private int index_;
+    /**
+     * <pre>
+     * Response -&gt; Index of Set Address
+     * </pre>
+     *
+     * <code>uint32 index = 6;</code>
+     */
+    public int getIndex() {
+      return index_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (type_ != EDS10ProtocolBuffer.DALIAddressingType.ADDRESS_NEW.getNumber()) {
+        output.writeEnum(1, type_);
+      }
+      if (initialisation_ != false) {
+        output.writeBool(2, initialisation_);
+      }
+      if (lineMask_ != 0) {
+        output.writeUInt32(3, lineMask_);
+      }
+      if (is24Bit_ != false) {
+        output.writeBool(4, is24Bit_);
+      }
+      if (error_ != EDS10ProtocolBuffer.DALIAddressingError.NO_ERROR.getNumber()) {
+        output.writeEnum(5, error_);
+      }
+      if (index_ != 0) {
+        output.writeUInt32(6, index_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (type_ != EDS10ProtocolBuffer.DALIAddressingType.ADDRESS_NEW.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, type_);
+      }
+      if (initialisation_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(2, initialisation_);
+      }
+      if (lineMask_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(3, lineMask_);
+      }
+      if (is24Bit_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(4, is24Bit_);
+      }
+      if (error_ != EDS10ProtocolBuffer.DALIAddressingError.NO_ERROR.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(5, error_);
+      }
+      if (index_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(6, index_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof EDS10ProtocolBuffer.DALIAddressingMessage)) {
+        return super.equals(obj);
+      }
+      EDS10ProtocolBuffer.DALIAddressingMessage other = (EDS10ProtocolBuffer.DALIAddressingMessage) obj;
+
+      boolean result = true;
+      result = result && type_ == other.type_;
+      result = result && (getInitialisation()
+          == other.getInitialisation());
+      result = result && (getLineMask()
+          == other.getLineMask());
+      result = result && (getIs24Bit()
+          == other.getIs24Bit());
+      result = result && error_ == other.error_;
+      result = result && (getIndex()
+          == other.getIndex());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + type_;
+      hash = (37 * hash) + INITIALISATION_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getInitialisation());
+      hash = (37 * hash) + LINE_MASK_FIELD_NUMBER;
+      hash = (53 * hash) + getLineMask();
+      hash = (37 * hash) + IS24BIT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIs24Bit());
+      hash = (37 * hash) + ERROR_FIELD_NUMBER;
+      hash = (53 * hash) + error_;
+      hash = (37 * hash) + INDEX_FIELD_NUMBER;
+      hash = (53 * hash) + getIndex();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static EDS10ProtocolBuffer.DALIAddressingMessage parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.DALIAddressingMessage parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALIAddressingMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.DALIAddressingMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALIAddressingMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.DALIAddressingMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALIAddressingMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.DALIAddressingMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALIAddressingMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.DALIAddressingMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALIAddressingMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.DALIAddressingMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(EDS10ProtocolBuffer.DALIAddressingMessage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code DALIAddressingMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:DALIAddressingMessage)
+        EDS10ProtocolBuffer.DALIAddressingMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return EDS10ProtocolBuffer.internal_static_DALIAddressingMessage_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return EDS10ProtocolBuffer.internal_static_DALIAddressingMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                EDS10ProtocolBuffer.DALIAddressingMessage.class, EDS10ProtocolBuffer.DALIAddressingMessage.Builder.class);
+      }
+
+      // Construct using EDS10ProtocolBuffer.DALIAddressingMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        type_ = 0;
+
+        initialisation_ = false;
+
+        lineMask_ = 0;
+
+        is24Bit_ = false;
+
+        error_ = 0;
+
+        index_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return EDS10ProtocolBuffer.internal_static_DALIAddressingMessage_descriptor;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.DALIAddressingMessage getDefaultInstanceForType() {
+        return EDS10ProtocolBuffer.DALIAddressingMessage.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.DALIAddressingMessage build() {
+        EDS10ProtocolBuffer.DALIAddressingMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.DALIAddressingMessage buildPartial() {
+        EDS10ProtocolBuffer.DALIAddressingMessage result = new EDS10ProtocolBuffer.DALIAddressingMessage(this);
+        result.type_ = type_;
+        result.initialisation_ = initialisation_;
+        result.lineMask_ = lineMask_;
+        result.is24Bit_ = is24Bit_;
+        result.error_ = error_;
+        result.index_ = index_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof EDS10ProtocolBuffer.DALIAddressingMessage) {
+          return mergeFrom((EDS10ProtocolBuffer.DALIAddressingMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(EDS10ProtocolBuffer.DALIAddressingMessage other) {
+        if (other == EDS10ProtocolBuffer.DALIAddressingMessage.getDefaultInstance()) return this;
+        if (other.type_ != 0) {
+          setTypeValue(other.getTypeValue());
+        }
+        if (other.getInitialisation() != false) {
+          setInitialisation(other.getInitialisation());
+        }
+        if (other.getLineMask() != 0) {
+          setLineMask(other.getLineMask());
+        }
+        if (other.getIs24Bit() != false) {
+          setIs24Bit(other.getIs24Bit());
+        }
+        if (other.error_ != 0) {
+          setErrorValue(other.getErrorValue());
+        }
+        if (other.getIndex() != 0) {
+          setIndex(other.getIndex());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        EDS10ProtocolBuffer.DALIAddressingMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (EDS10ProtocolBuffer.DALIAddressingMessage) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int type_ = 0;
+      /**
+       * <pre>
+       * New or All       
+       * </pre>
+       *
+       * <code>.DALIAddressingType type = 1;</code>
+       */
+      public int getTypeValue() {
+        return type_;
+      }
+      /**
+       * <pre>
+       * New or All       
+       * </pre>
+       *
+       * <code>.DALIAddressingType type = 1;</code>
+       */
+      public Builder setTypeValue(int value) {
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * New or All       
+       * </pre>
+       *
+       * <code>.DALIAddressingType type = 1;</code>
+       */
+      public EDS10ProtocolBuffer.DALIAddressingType getType() {
+        @SuppressWarnings("deprecation")
+        EDS10ProtocolBuffer.DALIAddressingType result = EDS10ProtocolBuffer.DALIAddressingType.valueOf(type_);
+        return result == null ? EDS10ProtocolBuffer.DALIAddressingType.UNRECOGNIZED : result;
+      }
+      /**
+       * <pre>
+       * New or All       
+       * </pre>
+       *
+       * <code>.DALIAddressingType type = 1;</code>
+       */
+      public Builder setType(EDS10ProtocolBuffer.DALIAddressingType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        type_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * New or All       
+       * </pre>
+       *
+       * <code>.DALIAddressingType type = 1;</code>
+       */
+      public Builder clearType() {
+        
+        type_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private boolean initialisation_ ;
+      /**
+       * <pre>
+       * First Address (TRUE) or Next Address (FALSE)
+       * </pre>
+       *
+       * <code>bool initialisation = 2;</code>
+       */
+      public boolean getInitialisation() {
+        return initialisation_;
+      }
+      /**
+       * <pre>
+       * First Address (TRUE) or Next Address (FALSE)
+       * </pre>
+       *
+       * <code>bool initialisation = 2;</code>
+       */
+      public Builder setInitialisation(boolean value) {
+        
+        initialisation_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * First Address (TRUE) or Next Address (FALSE)
+       * </pre>
+       *
+       * <code>bool initialisation = 2;</code>
+       */
+      public Builder clearInitialisation() {
+        
+        initialisation_ = false;
+        onChanged();
+        return this;
+      }
+
+      private int lineMask_ ;
+      /**
+       * <pre>
+       * Line to Address - Must be singular
+       * </pre>
+       *
+       * <code>uint32 line_mask = 3;</code>
+       */
+      public int getLineMask() {
+        return lineMask_;
+      }
+      /**
+       * <pre>
+       * Line to Address - Must be singular
+       * </pre>
+       *
+       * <code>uint32 line_mask = 3;</code>
+       */
+      public Builder setLineMask(int value) {
+        
+        lineMask_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Line to Address - Must be singular
+       * </pre>
+       *
+       * <code>uint32 line_mask = 3;</code>
+       */
+      public Builder clearLineMask() {
+        
+        lineMask_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private boolean is24Bit_ ;
+      /**
+       * <pre>
+       * 24 Bit DALI (TRUE) or Standard (FALSE)
+       * </pre>
+       *
+       * <code>bool is24Bit = 4;</code>
+       */
+      public boolean getIs24Bit() {
+        return is24Bit_;
+      }
+      /**
+       * <pre>
+       * 24 Bit DALI (TRUE) or Standard (FALSE)
+       * </pre>
+       *
+       * <code>bool is24Bit = 4;</code>
+       */
+      public Builder setIs24Bit(boolean value) {
+        
+        is24Bit_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 24 Bit DALI (TRUE) or Standard (FALSE)
+       * </pre>
+       *
+       * <code>bool is24Bit = 4;</code>
+       */
+      public Builder clearIs24Bit() {
+        
+        is24Bit_ = false;
+        onChanged();
+        return this;
+      }
+
+      private int error_ = 0;
+      /**
+       * <pre>
+       * Response -&gt; Error while Addressing
+       * </pre>
+       *
+       * <code>.DALIAddressingError error = 5;</code>
+       */
+      public int getErrorValue() {
+        return error_;
+      }
+      /**
+       * <pre>
+       * Response -&gt; Error while Addressing
+       * </pre>
+       *
+       * <code>.DALIAddressingError error = 5;</code>
+       */
+      public Builder setErrorValue(int value) {
+        error_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Response -&gt; Error while Addressing
+       * </pre>
+       *
+       * <code>.DALIAddressingError error = 5;</code>
+       */
+      public EDS10ProtocolBuffer.DALIAddressingError getError() {
+        @SuppressWarnings("deprecation")
+        EDS10ProtocolBuffer.DALIAddressingError result = EDS10ProtocolBuffer.DALIAddressingError.valueOf(error_);
+        return result == null ? EDS10ProtocolBuffer.DALIAddressingError.UNRECOGNIZED : result;
+      }
+      /**
+       * <pre>
+       * Response -&gt; Error while Addressing
+       * </pre>
+       *
+       * <code>.DALIAddressingError error = 5;</code>
+       */
+      public Builder setError(EDS10ProtocolBuffer.DALIAddressingError value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        error_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Response -&gt; Error while Addressing
+       * </pre>
+       *
+       * <code>.DALIAddressingError error = 5;</code>
+       */
+      public Builder clearError() {
+        
+        error_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int index_ ;
+      /**
+       * <pre>
+       * Response -&gt; Index of Set Address
+       * </pre>
+       *
+       * <code>uint32 index = 6;</code>
+       */
+      public int getIndex() {
+        return index_;
+      }
+      /**
+       * <pre>
+       * Response -&gt; Index of Set Address
+       * </pre>
+       *
+       * <code>uint32 index = 6;</code>
+       */
+      public Builder setIndex(int value) {
+        
+        index_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Response -&gt; Index of Set Address
+       * </pre>
+       *
+       * <code>uint32 index = 6;</code>
+       */
+      public Builder clearIndex() {
+        
+        index_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:DALIAddressingMessage)
+    }
+
+    // @@protoc_insertion_point(class_scope:DALIAddressingMessage)
+    private static final EDS10ProtocolBuffer.DALIAddressingMessage DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.DALIAddressingMessage();
+    }
+
+    public static EDS10ProtocolBuffer.DALIAddressingMessage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<DALIAddressingMessage>
+        PARSER = new com.google.protobuf.AbstractParser<DALIAddressingMessage>() {
+      @java.lang.Override
+      public DALIAddressingMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DALIAddressingMessage(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<DALIAddressingMessage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DALIAddressingMessage> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public EDS10ProtocolBuffer.DALIAddressingMessage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface DALIRemappingMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:DALIRemappingMessage)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>uint32 from_address = 1;</code>
+     */
+    int getFromAddress();
+
+    /**
+     * <code>uint32 to_address = 2;</code>
+     */
+    int getToAddress();
+
+    /**
+     * <code>uint32 line_mask = 3;</code>
+     */
+    int getLineMask();
+
+    /**
+     * <code>bool is24Bit = 4;</code>
+     */
+    boolean getIs24Bit();
+  }
+  /**
+   * Protobuf type {@code DALIRemappingMessage}
+   */
+  public  static final class DALIRemappingMessage extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:DALIRemappingMessage)
+      DALIRemappingMessageOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use DALIRemappingMessage.newBuilder() to construct.
+    private DALIRemappingMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private DALIRemappingMessage() {
+      fromAddress_ = 0;
+      toAddress_ = 0;
+      lineMask_ = 0;
+      is24Bit_ = false;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DALIRemappingMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              fromAddress_ = input.readUInt32();
+              break;
+            }
+            case 16: {
+
+              toAddress_ = input.readUInt32();
+              break;
+            }
+            case 24: {
+
+              lineMask_ = input.readUInt32();
+              break;
+            }
+            case 32: {
+
+              is24Bit_ = input.readBool();
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.internal_static_DALIRemappingMessage_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return EDS10ProtocolBuffer.internal_static_DALIRemappingMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              EDS10ProtocolBuffer.DALIRemappingMessage.class, EDS10ProtocolBuffer.DALIRemappingMessage.Builder.class);
+    }
+
+    public static final int FROM_ADDRESS_FIELD_NUMBER = 1;
+    private int fromAddress_;
+    /**
+     * <code>uint32 from_address = 1;</code>
+     */
+    public int getFromAddress() {
+      return fromAddress_;
+    }
+
+    public static final int TO_ADDRESS_FIELD_NUMBER = 2;
+    private int toAddress_;
+    /**
+     * <code>uint32 to_address = 2;</code>
+     */
+    public int getToAddress() {
+      return toAddress_;
+    }
+
+    public static final int LINE_MASK_FIELD_NUMBER = 3;
+    private int lineMask_;
+    /**
+     * <code>uint32 line_mask = 3;</code>
+     */
+    public int getLineMask() {
+      return lineMask_;
+    }
+
+    public static final int IS24BIT_FIELD_NUMBER = 4;
+    private boolean is24Bit_;
+    /**
+     * <code>bool is24Bit = 4;</code>
+     */
+    public boolean getIs24Bit() {
+      return is24Bit_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (fromAddress_ != 0) {
+        output.writeUInt32(1, fromAddress_);
+      }
+      if (toAddress_ != 0) {
+        output.writeUInt32(2, toAddress_);
+      }
+      if (lineMask_ != 0) {
+        output.writeUInt32(3, lineMask_);
+      }
+      if (is24Bit_ != false) {
+        output.writeBool(4, is24Bit_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (fromAddress_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, fromAddress_);
+      }
+      if (toAddress_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, toAddress_);
+      }
+      if (lineMask_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(3, lineMask_);
+      }
+      if (is24Bit_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(4, is24Bit_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof EDS10ProtocolBuffer.DALIRemappingMessage)) {
+        return super.equals(obj);
+      }
+      EDS10ProtocolBuffer.DALIRemappingMessage other = (EDS10ProtocolBuffer.DALIRemappingMessage) obj;
+
+      boolean result = true;
+      result = result && (getFromAddress()
+          == other.getFromAddress());
+      result = result && (getToAddress()
+          == other.getToAddress());
+      result = result && (getLineMask()
+          == other.getLineMask());
+      result = result && (getIs24Bit()
+          == other.getIs24Bit());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + FROM_ADDRESS_FIELD_NUMBER;
+      hash = (53 * hash) + getFromAddress();
+      hash = (37 * hash) + TO_ADDRESS_FIELD_NUMBER;
+      hash = (53 * hash) + getToAddress();
+      hash = (37 * hash) + LINE_MASK_FIELD_NUMBER;
+      hash = (53 * hash) + getLineMask();
+      hash = (37 * hash) + IS24BIT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIs24Bit());
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static EDS10ProtocolBuffer.DALIRemappingMessage parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.DALIRemappingMessage parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALIRemappingMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.DALIRemappingMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALIRemappingMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.DALIRemappingMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALIRemappingMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.DALIRemappingMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALIRemappingMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.DALIRemappingMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALIRemappingMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.DALIRemappingMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(EDS10ProtocolBuffer.DALIRemappingMessage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code DALIRemappingMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:DALIRemappingMessage)
+        EDS10ProtocolBuffer.DALIRemappingMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return EDS10ProtocolBuffer.internal_static_DALIRemappingMessage_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return EDS10ProtocolBuffer.internal_static_DALIRemappingMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                EDS10ProtocolBuffer.DALIRemappingMessage.class, EDS10ProtocolBuffer.DALIRemappingMessage.Builder.class);
+      }
+
+      // Construct using EDS10ProtocolBuffer.DALIRemappingMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        fromAddress_ = 0;
+
+        toAddress_ = 0;
+
+        lineMask_ = 0;
+
+        is24Bit_ = false;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return EDS10ProtocolBuffer.internal_static_DALIRemappingMessage_descriptor;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.DALIRemappingMessage getDefaultInstanceForType() {
+        return EDS10ProtocolBuffer.DALIRemappingMessage.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.DALIRemappingMessage build() {
+        EDS10ProtocolBuffer.DALIRemappingMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.DALIRemappingMessage buildPartial() {
+        EDS10ProtocolBuffer.DALIRemappingMessage result = new EDS10ProtocolBuffer.DALIRemappingMessage(this);
+        result.fromAddress_ = fromAddress_;
+        result.toAddress_ = toAddress_;
+        result.lineMask_ = lineMask_;
+        result.is24Bit_ = is24Bit_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof EDS10ProtocolBuffer.DALIRemappingMessage) {
+          return mergeFrom((EDS10ProtocolBuffer.DALIRemappingMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(EDS10ProtocolBuffer.DALIRemappingMessage other) {
+        if (other == EDS10ProtocolBuffer.DALIRemappingMessage.getDefaultInstance()) return this;
+        if (other.getFromAddress() != 0) {
+          setFromAddress(other.getFromAddress());
+        }
+        if (other.getToAddress() != 0) {
+          setToAddress(other.getToAddress());
+        }
+        if (other.getLineMask() != 0) {
+          setLineMask(other.getLineMask());
+        }
+        if (other.getIs24Bit() != false) {
+          setIs24Bit(other.getIs24Bit());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        EDS10ProtocolBuffer.DALIRemappingMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (EDS10ProtocolBuffer.DALIRemappingMessage) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int fromAddress_ ;
+      /**
+       * <code>uint32 from_address = 1;</code>
+       */
+      public int getFromAddress() {
+        return fromAddress_;
+      }
+      /**
+       * <code>uint32 from_address = 1;</code>
+       */
+      public Builder setFromAddress(int value) {
+        
+        fromAddress_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 from_address = 1;</code>
+       */
+      public Builder clearFromAddress() {
+        
+        fromAddress_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int toAddress_ ;
+      /**
+       * <code>uint32 to_address = 2;</code>
+       */
+      public int getToAddress() {
+        return toAddress_;
+      }
+      /**
+       * <code>uint32 to_address = 2;</code>
+       */
+      public Builder setToAddress(int value) {
+        
+        toAddress_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 to_address = 2;</code>
+       */
+      public Builder clearToAddress() {
+        
+        toAddress_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int lineMask_ ;
+      /**
+       * <code>uint32 line_mask = 3;</code>
+       */
+      public int getLineMask() {
+        return lineMask_;
+      }
+      /**
+       * <code>uint32 line_mask = 3;</code>
+       */
+      public Builder setLineMask(int value) {
+        
+        lineMask_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 line_mask = 3;</code>
+       */
+      public Builder clearLineMask() {
+        
+        lineMask_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private boolean is24Bit_ ;
+      /**
+       * <code>bool is24Bit = 4;</code>
+       */
+      public boolean getIs24Bit() {
+        return is24Bit_;
+      }
+      /**
+       * <code>bool is24Bit = 4;</code>
+       */
+      public Builder setIs24Bit(boolean value) {
+        
+        is24Bit_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool is24Bit = 4;</code>
+       */
+      public Builder clearIs24Bit() {
+        
+        is24Bit_ = false;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:DALIRemappingMessage)
+    }
+
+    // @@protoc_insertion_point(class_scope:DALIRemappingMessage)
+    private static final EDS10ProtocolBuffer.DALIRemappingMessage DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.DALIRemappingMessage();
+    }
+
+    public static EDS10ProtocolBuffer.DALIRemappingMessage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<DALIRemappingMessage>
+        PARSER = new com.google.protobuf.AbstractParser<DALIRemappingMessage>() {
+      @java.lang.Override
+      public DALIRemappingMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DALIRemappingMessage(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<DALIRemappingMessage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DALIRemappingMessage> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public EDS10ProtocolBuffer.DALIRemappingMessage getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -39908,6 +47179,32 @@ public final class EDS10ProtocolBuffer {
      * <code>repeated uint32 channel_mapping = 9;</code>
      */
     int getChannelMapping(int index);
+
+    /**
+     * <pre>
+     * Independent or Consecutive
+     * </pre>
+     *
+     * <code>.LineAddressingType line_addressing = 10;</code>
+     */
+    int getLineAddressingValue();
+    /**
+     * <pre>
+     * Independent or Consecutive
+     * </pre>
+     *
+     * <code>.LineAddressingType line_addressing = 10;</code>
+     */
+    EDS10ProtocolBuffer.LineAddressingType getLineAddressing();
+
+    /**
+     * <pre>
+     * Zone Scale Factor - Float 0 to 1.0f
+     * </pre>
+     *
+     * <code>float zone_scale_factor = 11;</code>
+     */
+    float getZoneScaleFactor();
   }
   /**
    * <pre>
@@ -39935,6 +47232,8 @@ public final class EDS10ProtocolBuffer {
       channelColours_ = java.util.Collections.emptyList();
       unscheduledBehaviour_ = 0;
       channelMapping_ = java.util.Collections.emptyList();
+      lineAddressing_ = 0;
+      zoneScaleFactor_ = 0F;
     }
 
     @java.lang.Override
@@ -40037,6 +47336,17 @@ public final class EDS10ProtocolBuffer {
                 channelMapping_.add(input.readUInt32());
               }
               input.popLimit(limit);
+              break;
+            }
+            case 80: {
+              int rawValue = input.readEnum();
+
+              lineAddressing_ = rawValue;
+              break;
+            }
+            case 93: {
+
+              zoneScaleFactor_ = input.readFloat();
               break;
             }
             default: {
@@ -40239,6 +47549,44 @@ public final class EDS10ProtocolBuffer {
     }
     private int channelMappingMemoizedSerializedSize = -1;
 
+    public static final int LINE_ADDRESSING_FIELD_NUMBER = 10;
+    private int lineAddressing_;
+    /**
+     * <pre>
+     * Independent or Consecutive
+     * </pre>
+     *
+     * <code>.LineAddressingType line_addressing = 10;</code>
+     */
+    public int getLineAddressingValue() {
+      return lineAddressing_;
+    }
+    /**
+     * <pre>
+     * Independent or Consecutive
+     * </pre>
+     *
+     * <code>.LineAddressingType line_addressing = 10;</code>
+     */
+    public EDS10ProtocolBuffer.LineAddressingType getLineAddressing() {
+      @SuppressWarnings("deprecation")
+      EDS10ProtocolBuffer.LineAddressingType result = EDS10ProtocolBuffer.LineAddressingType.valueOf(lineAddressing_);
+      return result == null ? EDS10ProtocolBuffer.LineAddressingType.UNRECOGNIZED : result;
+    }
+
+    public static final int ZONE_SCALE_FACTOR_FIELD_NUMBER = 11;
+    private float zoneScaleFactor_;
+    /**
+     * <pre>
+     * Zone Scale Factor - Float 0 to 1.0f
+     * </pre>
+     *
+     * <code>float zone_scale_factor = 11;</code>
+     */
+    public float getZoneScaleFactor() {
+      return zoneScaleFactor_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -40288,6 +47636,12 @@ public final class EDS10ProtocolBuffer {
       }
       for (int i = 0; i < channelMapping_.size(); i++) {
         output.writeUInt32NoTag(channelMapping_.get(i));
+      }
+      if (lineAddressing_ != EDS10ProtocolBuffer.LineAddressingType.INDEPENDENT.getNumber()) {
+        output.writeEnum(10, lineAddressing_);
+      }
+      if (zoneScaleFactor_ != 0F) {
+        output.writeFloat(11, zoneScaleFactor_);
       }
       unknownFields.writeTo(output);
     }
@@ -40354,6 +47708,14 @@ public final class EDS10ProtocolBuffer {
         }
         channelMappingMemoizedSerializedSize = dataSize;
       }
+      if (lineAddressing_ != EDS10ProtocolBuffer.LineAddressingType.INDEPENDENT.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(10, lineAddressing_);
+      }
+      if (zoneScaleFactor_ != 0F) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(11, zoneScaleFactor_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -40387,6 +47749,11 @@ public final class EDS10ProtocolBuffer {
       result = result && unscheduledBehaviour_ == other.unscheduledBehaviour_;
       result = result && getChannelMappingList()
           .equals(other.getChannelMappingList());
+      result = result && lineAddressing_ == other.lineAddressing_;
+      result = result && (
+          java.lang.Float.floatToIntBits(getZoneScaleFactor())
+          == java.lang.Float.floatToIntBits(
+              other.getZoneScaleFactor()));
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -40420,6 +47787,11 @@ public final class EDS10ProtocolBuffer {
         hash = (37 * hash) + CHANNEL_MAPPING_FIELD_NUMBER;
         hash = (53 * hash) + getChannelMappingList().hashCode();
       }
+      hash = (37 * hash) + LINE_ADDRESSING_FIELD_NUMBER;
+      hash = (53 * hash) + lineAddressing_;
+      hash = (37 * hash) + ZONE_SCALE_FACTOR_FIELD_NUMBER;
+      hash = (53 * hash) + java.lang.Float.floatToIntBits(
+          getZoneScaleFactor());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -40575,6 +47947,10 @@ public final class EDS10ProtocolBuffer {
 
         channelMapping_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000100);
+        lineAddressing_ = 0;
+
+        zoneScaleFactor_ = 0F;
+
         return this;
       }
 
@@ -40620,6 +47996,8 @@ public final class EDS10ProtocolBuffer {
           bitField0_ = (bitField0_ & ~0x00000100);
         }
         result.channelMapping_ = channelMapping_;
+        result.lineAddressing_ = lineAddressing_;
+        result.zoneScaleFactor_ = zoneScaleFactor_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -40709,6 +48087,12 @@ public final class EDS10ProtocolBuffer {
             channelMapping_.addAll(other.channelMapping_);
           }
           onChanged();
+        }
+        if (other.lineAddressing_ != 0) {
+          setLineAddressingValue(other.getLineAddressingValue());
+        }
+        if (other.getZoneScaleFactor() != 0F) {
+          setZoneScaleFactor(other.getZoneScaleFactor());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -41181,6 +48565,109 @@ public final class EDS10ProtocolBuffer {
       public Builder clearChannelMapping() {
         channelMapping_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000100);
+        onChanged();
+        return this;
+      }
+
+      private int lineAddressing_ = 0;
+      /**
+       * <pre>
+       * Independent or Consecutive
+       * </pre>
+       *
+       * <code>.LineAddressingType line_addressing = 10;</code>
+       */
+      public int getLineAddressingValue() {
+        return lineAddressing_;
+      }
+      /**
+       * <pre>
+       * Independent or Consecutive
+       * </pre>
+       *
+       * <code>.LineAddressingType line_addressing = 10;</code>
+       */
+      public Builder setLineAddressingValue(int value) {
+        lineAddressing_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Independent or Consecutive
+       * </pre>
+       *
+       * <code>.LineAddressingType line_addressing = 10;</code>
+       */
+      public EDS10ProtocolBuffer.LineAddressingType getLineAddressing() {
+        @SuppressWarnings("deprecation")
+        EDS10ProtocolBuffer.LineAddressingType result = EDS10ProtocolBuffer.LineAddressingType.valueOf(lineAddressing_);
+        return result == null ? EDS10ProtocolBuffer.LineAddressingType.UNRECOGNIZED : result;
+      }
+      /**
+       * <pre>
+       * Independent or Consecutive
+       * </pre>
+       *
+       * <code>.LineAddressingType line_addressing = 10;</code>
+       */
+      public Builder setLineAddressing(EDS10ProtocolBuffer.LineAddressingType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        lineAddressing_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Independent or Consecutive
+       * </pre>
+       *
+       * <code>.LineAddressingType line_addressing = 10;</code>
+       */
+      public Builder clearLineAddressing() {
+        
+        lineAddressing_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private float zoneScaleFactor_ ;
+      /**
+       * <pre>
+       * Zone Scale Factor - Float 0 to 1.0f
+       * </pre>
+       *
+       * <code>float zone_scale_factor = 11;</code>
+       */
+      public float getZoneScaleFactor() {
+        return zoneScaleFactor_;
+      }
+      /**
+       * <pre>
+       * Zone Scale Factor - Float 0 to 1.0f
+       * </pre>
+       *
+       * <code>float zone_scale_factor = 11;</code>
+       */
+      public Builder setZoneScaleFactor(float value) {
+        
+        zoneScaleFactor_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Zone Scale Factor - Float 0 to 1.0f
+       * </pre>
+       *
+       * <code>float zone_scale_factor = 11;</code>
+       */
+      public Builder clearZoneScaleFactor() {
+        
+        zoneScaleFactor_ = 0F;
         onChanged();
         return this;
       }
@@ -42096,6 +49583,31 @@ public final class EDS10ProtocolBuffer {
      */
     EDS10ProtocolBuffer.SpektraColourConfigMessageOrBuilder getColoursOrBuilder(
         int index);
+
+    /**
+     * <pre>
+     * Function specific arguments * 5
+     * </pre>
+     *
+     * <code>repeated uint32 args = 18;</code>
+     */
+    java.util.List<java.lang.Integer> getArgsList();
+    /**
+     * <pre>
+     * Function specific arguments * 5
+     * </pre>
+     *
+     * <code>repeated uint32 args = 18;</code>
+     */
+    int getArgsCount();
+    /**
+     * <pre>
+     * Function specific arguments * 5
+     * </pre>
+     *
+     * <code>repeated uint32 args = 18;</code>
+     */
+    int getArgs(int index);
   }
   /**
    * Protobuf type {@code SpektraSequenceConfigMessage}
@@ -42127,6 +49639,7 @@ public final class EDS10ProtocolBuffer {
       title_ = "";
       hasRandomColourOrder_ = false;
       colours_ = java.util.Collections.emptyList();
+      args_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -42260,6 +49773,27 @@ public final class EDS10ProtocolBuffer {
                   input.readMessage(EDS10ProtocolBuffer.SpektraColourConfigMessage.parser(), extensionRegistry));
               break;
             }
+            case 144: {
+              if (!((mutable_bitField0_ & 0x00020000) == 0x00020000)) {
+                args_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00020000;
+              }
+              args_.add(input.readUInt32());
+              break;
+            }
+            case 146: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00020000) == 0x00020000) && input.getBytesUntilLimit() > 0) {
+                args_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00020000;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                args_.add(input.readUInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
             default: {
               if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -42280,6 +49814,9 @@ public final class EDS10ProtocolBuffer {
         }
         if (((mutable_bitField0_ & 0x00010000) == 0x00010000)) {
           colours_ = java.util.Collections.unmodifiableList(colours_);
+        }
+        if (((mutable_bitField0_ & 0x00020000) == 0x00020000)) {
+          args_ = java.util.Collections.unmodifiableList(args_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -42621,6 +50158,41 @@ public final class EDS10ProtocolBuffer {
       return colours_.get(index);
     }
 
+    public static final int ARGS_FIELD_NUMBER = 18;
+    private java.util.List<java.lang.Integer> args_;
+    /**
+     * <pre>
+     * Function specific arguments * 5
+     * </pre>
+     *
+     * <code>repeated uint32 args = 18;</code>
+     */
+    public java.util.List<java.lang.Integer>
+        getArgsList() {
+      return args_;
+    }
+    /**
+     * <pre>
+     * Function specific arguments * 5
+     * </pre>
+     *
+     * <code>repeated uint32 args = 18;</code>
+     */
+    public int getArgsCount() {
+      return args_.size();
+    }
+    /**
+     * <pre>
+     * Function specific arguments * 5
+     * </pre>
+     *
+     * <code>repeated uint32 args = 18;</code>
+     */
+    public int getArgs(int index) {
+      return args_.get(index);
+    }
+    private int argsMemoizedSerializedSize = -1;
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -42690,6 +50262,13 @@ public final class EDS10ProtocolBuffer {
       }
       for (int i = 0; i < colours_.size(); i++) {
         output.writeMessage(17, colours_.get(i));
+      }
+      if (getArgsList().size() > 0) {
+        output.writeUInt32NoTag(146);
+        output.writeUInt32NoTag(argsMemoizedSerializedSize);
+      }
+      for (int i = 0; i < args_.size(); i++) {
+        output.writeUInt32NoTag(args_.get(i));
       }
       unknownFields.writeTo(output);
     }
@@ -42777,6 +50356,20 @@ public final class EDS10ProtocolBuffer {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(17, colours_.get(i));
       }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < args_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeUInt32SizeNoTag(args_.get(i));
+        }
+        size += dataSize;
+        if (!getArgsList().isEmpty()) {
+          size += 2;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        argsMemoizedSerializedSize = dataSize;
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -42826,6 +50419,8 @@ public final class EDS10ProtocolBuffer {
           == other.getHasRandomColourOrder());
       result = result && getColoursList()
           .equals(other.getColoursList());
+      result = result && getArgsList()
+          .equals(other.getArgsList());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -42875,6 +50470,10 @@ public final class EDS10ProtocolBuffer {
       if (getColoursCount() > 0) {
         hash = (37 * hash) + COLOURS_FIELD_NUMBER;
         hash = (53 * hash) + getColoursList().hashCode();
+      }
+      if (getArgsCount() > 0) {
+        hash = (37 * hash) + ARGS_FIELD_NUMBER;
+        hash = (53 * hash) + getArgsList().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -43048,6 +50647,8 @@ public final class EDS10ProtocolBuffer {
         } else {
           coloursBuilder_.clear();
         }
+        args_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00020000);
         return this;
       }
 
@@ -43105,6 +50706,11 @@ public final class EDS10ProtocolBuffer {
         } else {
           result.colours_ = coloursBuilder_.build();
         }
+        if (((bitField0_ & 0x00020000) == 0x00020000)) {
+          args_ = java.util.Collections.unmodifiableList(args_);
+          bitField0_ = (bitField0_ & ~0x00020000);
+        }
+        result.args_ = args_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -43235,6 +50841,16 @@ public final class EDS10ProtocolBuffer {
               coloursBuilder_.addAllMessages(other.colours_);
             }
           }
+        }
+        if (!other.args_.isEmpty()) {
+          if (args_.isEmpty()) {
+            args_ = other.args_;
+            bitField0_ = (bitField0_ & ~0x00020000);
+          } else {
+            ensureArgsIsMutable();
+            args_.addAll(other.args_);
+          }
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -44307,6 +51923,100 @@ public final class EDS10ProtocolBuffer {
         }
         return coloursBuilder_;
       }
+
+      private java.util.List<java.lang.Integer> args_ = java.util.Collections.emptyList();
+      private void ensureArgsIsMutable() {
+        if (!((bitField0_ & 0x00020000) == 0x00020000)) {
+          args_ = new java.util.ArrayList<java.lang.Integer>(args_);
+          bitField0_ |= 0x00020000;
+         }
+      }
+      /**
+       * <pre>
+       * Function specific arguments * 5
+       * </pre>
+       *
+       * <code>repeated uint32 args = 18;</code>
+       */
+      public java.util.List<java.lang.Integer>
+          getArgsList() {
+        return java.util.Collections.unmodifiableList(args_);
+      }
+      /**
+       * <pre>
+       * Function specific arguments * 5
+       * </pre>
+       *
+       * <code>repeated uint32 args = 18;</code>
+       */
+      public int getArgsCount() {
+        return args_.size();
+      }
+      /**
+       * <pre>
+       * Function specific arguments * 5
+       * </pre>
+       *
+       * <code>repeated uint32 args = 18;</code>
+       */
+      public int getArgs(int index) {
+        return args_.get(index);
+      }
+      /**
+       * <pre>
+       * Function specific arguments * 5
+       * </pre>
+       *
+       * <code>repeated uint32 args = 18;</code>
+       */
+      public Builder setArgs(
+          int index, int value) {
+        ensureArgsIsMutable();
+        args_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Function specific arguments * 5
+       * </pre>
+       *
+       * <code>repeated uint32 args = 18;</code>
+       */
+      public Builder addArgs(int value) {
+        ensureArgsIsMutable();
+        args_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Function specific arguments * 5
+       * </pre>
+       *
+       * <code>repeated uint32 args = 18;</code>
+       */
+      public Builder addAllArgs(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureArgsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, args_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Function specific arguments * 5
+       * </pre>
+       *
+       * <code>repeated uint32 args = 18;</code>
+       */
+      public Builder clearArgs() {
+        args_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00020000);
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -44366,7 +52076,7 @@ public final class EDS10ProtocolBuffer {
 
     /**
      * <pre>
-     * Type (e.g. Sequence or Theme)
+     * Spektra Type (e.g. Sequence or Theme)
      * </pre>
      *
      * <code>.SpektraTargetType type = 1;</code>
@@ -44374,7 +52084,7 @@ public final class EDS10ProtocolBuffer {
     int getTypeValue();
     /**
      * <pre>
-     * Type (e.g. Sequence or Theme)
+     * Spektra Type (e.g. Sequence or Theme)
      * </pre>
      *
      * <code>.SpektraTargetType type = 1;</code>
@@ -44383,7 +52093,7 @@ public final class EDS10ProtocolBuffer {
 
     /**
      * <pre>
-     * Index
+     * Index (i.e. which Sequence or Theme)
      * </pre>
      *
      * <code>uint32 index = 2;</code>
@@ -44529,7 +52239,7 @@ public final class EDS10ProtocolBuffer {
     private int type_;
     /**
      * <pre>
-     * Type (e.g. Sequence or Theme)
+     * Spektra Type (e.g. Sequence or Theme)
      * </pre>
      *
      * <code>.SpektraTargetType type = 1;</code>
@@ -44539,7 +52249,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     * Type (e.g. Sequence or Theme)
+     * Spektra Type (e.g. Sequence or Theme)
      * </pre>
      *
      * <code>.SpektraTargetType type = 1;</code>
@@ -44554,7 +52264,7 @@ public final class EDS10ProtocolBuffer {
     private int index_;
     /**
      * <pre>
-     * Index
+     * Index (i.e. which Sequence or Theme)
      * </pre>
      *
      * <code>uint32 index = 2;</code>
@@ -44966,7 +52676,7 @@ public final class EDS10ProtocolBuffer {
       private int type_ = 0;
       /**
        * <pre>
-       * Type (e.g. Sequence or Theme)
+       * Spektra Type (e.g. Sequence or Theme)
        * </pre>
        *
        * <code>.SpektraTargetType type = 1;</code>
@@ -44976,7 +52686,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * Type (e.g. Sequence or Theme)
+       * Spektra Type (e.g. Sequence or Theme)
        * </pre>
        *
        * <code>.SpektraTargetType type = 1;</code>
@@ -44988,7 +52698,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * Type (e.g. Sequence or Theme)
+       * Spektra Type (e.g. Sequence or Theme)
        * </pre>
        *
        * <code>.SpektraTargetType type = 1;</code>
@@ -45000,7 +52710,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * Type (e.g. Sequence or Theme)
+       * Spektra Type (e.g. Sequence or Theme)
        * </pre>
        *
        * <code>.SpektraTargetType type = 1;</code>
@@ -45016,7 +52726,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * Type (e.g. Sequence or Theme)
+       * Spektra Type (e.g. Sequence or Theme)
        * </pre>
        *
        * <code>.SpektraTargetType type = 1;</code>
@@ -45031,7 +52741,7 @@ public final class EDS10ProtocolBuffer {
       private int index_ ;
       /**
        * <pre>
-       * Index
+       * Index (i.e. which Sequence or Theme)
        * </pre>
        *
        * <code>uint32 index = 2;</code>
@@ -45041,7 +52751,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * Index
+       * Index (i.e. which Sequence or Theme)
        * </pre>
        *
        * <code>uint32 index = 2;</code>
@@ -45054,7 +52764,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * Index
+       * Index (i.e. which Sequence or Theme)
        * </pre>
        *
        * <code>uint32 index = 2;</code>
@@ -45207,6 +52917,1695 @@ public final class EDS10ProtocolBuffer {
 
     @java.lang.Override
     public EDS10ProtocolBuffer.SpektraCalendarMessage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SpektraCalendarDayMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SpektraCalendarDayMessage)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Index of this day (0 to 365, 366 days total)
+     * </pre>
+     *
+     * <code>uint32 day_index = 1;</code>
+     */
+    int getDayIndex();
+
+    /**
+     * <pre>
+     * Spektra Type for this day (e.g. Sequence or Theme)
+     * </pre>
+     *
+     * <code>.SpektraTargetType type = 2;</code>
+     */
+    int getTypeValue();
+    /**
+     * <pre>
+     * Spektra Type for this day (e.g. Sequence or Theme)
+     * </pre>
+     *
+     * <code>.SpektraTargetType type = 2;</code>
+     */
+    EDS10ProtocolBuffer.SpektraTargetType getType();
+
+    /**
+     * <pre>
+     * Index of the specified Type (i.e. which Sequence or Theme)
+     * </pre>
+     *
+     * <code>uint32 target_index = 3;</code>
+     */
+    int getTargetIndex();
+  }
+  /**
+   * Protobuf type {@code SpektraCalendarDayMessage}
+   */
+  public  static final class SpektraCalendarDayMessage extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:SpektraCalendarDayMessage)
+      SpektraCalendarDayMessageOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use SpektraCalendarDayMessage.newBuilder() to construct.
+    private SpektraCalendarDayMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SpektraCalendarDayMessage() {
+      dayIndex_ = 0;
+      type_ = 0;
+      targetIndex_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SpektraCalendarDayMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              dayIndex_ = input.readUInt32();
+              break;
+            }
+            case 16: {
+              int rawValue = input.readEnum();
+
+              type_ = rawValue;
+              break;
+            }
+            case 24: {
+
+              targetIndex_ = input.readUInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.internal_static_SpektraCalendarDayMessage_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return EDS10ProtocolBuffer.internal_static_SpektraCalendarDayMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              EDS10ProtocolBuffer.SpektraCalendarDayMessage.class, EDS10ProtocolBuffer.SpektraCalendarDayMessage.Builder.class);
+    }
+
+    public static final int DAY_INDEX_FIELD_NUMBER = 1;
+    private int dayIndex_;
+    /**
+     * <pre>
+     * Index of this day (0 to 365, 366 days total)
+     * </pre>
+     *
+     * <code>uint32 day_index = 1;</code>
+     */
+    public int getDayIndex() {
+      return dayIndex_;
+    }
+
+    public static final int TYPE_FIELD_NUMBER = 2;
+    private int type_;
+    /**
+     * <pre>
+     * Spektra Type for this day (e.g. Sequence or Theme)
+     * </pre>
+     *
+     * <code>.SpektraTargetType type = 2;</code>
+     */
+    public int getTypeValue() {
+      return type_;
+    }
+    /**
+     * <pre>
+     * Spektra Type for this day (e.g. Sequence or Theme)
+     * </pre>
+     *
+     * <code>.SpektraTargetType type = 2;</code>
+     */
+    public EDS10ProtocolBuffer.SpektraTargetType getType() {
+      @SuppressWarnings("deprecation")
+      EDS10ProtocolBuffer.SpektraTargetType result = EDS10ProtocolBuffer.SpektraTargetType.valueOf(type_);
+      return result == null ? EDS10ProtocolBuffer.SpektraTargetType.UNRECOGNIZED : result;
+    }
+
+    public static final int TARGET_INDEX_FIELD_NUMBER = 3;
+    private int targetIndex_;
+    /**
+     * <pre>
+     * Index of the specified Type (i.e. which Sequence or Theme)
+     * </pre>
+     *
+     * <code>uint32 target_index = 3;</code>
+     */
+    public int getTargetIndex() {
+      return targetIndex_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (dayIndex_ != 0) {
+        output.writeUInt32(1, dayIndex_);
+      }
+      if (type_ != EDS10ProtocolBuffer.SpektraTargetType.SETTINGS.getNumber()) {
+        output.writeEnum(2, type_);
+      }
+      if (targetIndex_ != 0) {
+        output.writeUInt32(3, targetIndex_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (dayIndex_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, dayIndex_);
+      }
+      if (type_ != EDS10ProtocolBuffer.SpektraTargetType.SETTINGS.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(2, type_);
+      }
+      if (targetIndex_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(3, targetIndex_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof EDS10ProtocolBuffer.SpektraCalendarDayMessage)) {
+        return super.equals(obj);
+      }
+      EDS10ProtocolBuffer.SpektraCalendarDayMessage other = (EDS10ProtocolBuffer.SpektraCalendarDayMessage) obj;
+
+      boolean result = true;
+      result = result && (getDayIndex()
+          == other.getDayIndex());
+      result = result && type_ == other.type_;
+      result = result && (getTargetIndex()
+          == other.getTargetIndex());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + DAY_INDEX_FIELD_NUMBER;
+      hash = (53 * hash) + getDayIndex();
+      hash = (37 * hash) + TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + type_;
+      hash = (37 * hash) + TARGET_INDEX_FIELD_NUMBER;
+      hash = (53 * hash) + getTargetIndex();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static EDS10ProtocolBuffer.SpektraCalendarDayMessage parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SpektraCalendarDayMessage parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SpektraCalendarDayMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SpektraCalendarDayMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SpektraCalendarDayMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SpektraCalendarDayMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SpektraCalendarDayMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SpektraCalendarDayMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SpektraCalendarDayMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SpektraCalendarDayMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SpektraCalendarDayMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SpektraCalendarDayMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(EDS10ProtocolBuffer.SpektraCalendarDayMessage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code SpektraCalendarDayMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:SpektraCalendarDayMessage)
+        EDS10ProtocolBuffer.SpektraCalendarDayMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return EDS10ProtocolBuffer.internal_static_SpektraCalendarDayMessage_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return EDS10ProtocolBuffer.internal_static_SpektraCalendarDayMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                EDS10ProtocolBuffer.SpektraCalendarDayMessage.class, EDS10ProtocolBuffer.SpektraCalendarDayMessage.Builder.class);
+      }
+
+      // Construct using EDS10ProtocolBuffer.SpektraCalendarDayMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        dayIndex_ = 0;
+
+        type_ = 0;
+
+        targetIndex_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return EDS10ProtocolBuffer.internal_static_SpektraCalendarDayMessage_descriptor;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SpektraCalendarDayMessage getDefaultInstanceForType() {
+        return EDS10ProtocolBuffer.SpektraCalendarDayMessage.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SpektraCalendarDayMessage build() {
+        EDS10ProtocolBuffer.SpektraCalendarDayMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SpektraCalendarDayMessage buildPartial() {
+        EDS10ProtocolBuffer.SpektraCalendarDayMessage result = new EDS10ProtocolBuffer.SpektraCalendarDayMessage(this);
+        result.dayIndex_ = dayIndex_;
+        result.type_ = type_;
+        result.targetIndex_ = targetIndex_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof EDS10ProtocolBuffer.SpektraCalendarDayMessage) {
+          return mergeFrom((EDS10ProtocolBuffer.SpektraCalendarDayMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(EDS10ProtocolBuffer.SpektraCalendarDayMessage other) {
+        if (other == EDS10ProtocolBuffer.SpektraCalendarDayMessage.getDefaultInstance()) return this;
+        if (other.getDayIndex() != 0) {
+          setDayIndex(other.getDayIndex());
+        }
+        if (other.type_ != 0) {
+          setTypeValue(other.getTypeValue());
+        }
+        if (other.getTargetIndex() != 0) {
+          setTargetIndex(other.getTargetIndex());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        EDS10ProtocolBuffer.SpektraCalendarDayMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (EDS10ProtocolBuffer.SpektraCalendarDayMessage) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int dayIndex_ ;
+      /**
+       * <pre>
+       * Index of this day (0 to 365, 366 days total)
+       * </pre>
+       *
+       * <code>uint32 day_index = 1;</code>
+       */
+      public int getDayIndex() {
+        return dayIndex_;
+      }
+      /**
+       * <pre>
+       * Index of this day (0 to 365, 366 days total)
+       * </pre>
+       *
+       * <code>uint32 day_index = 1;</code>
+       */
+      public Builder setDayIndex(int value) {
+        
+        dayIndex_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Index of this day (0 to 365, 366 days total)
+       * </pre>
+       *
+       * <code>uint32 day_index = 1;</code>
+       */
+      public Builder clearDayIndex() {
+        
+        dayIndex_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int type_ = 0;
+      /**
+       * <pre>
+       * Spektra Type for this day (e.g. Sequence or Theme)
+       * </pre>
+       *
+       * <code>.SpektraTargetType type = 2;</code>
+       */
+      public int getTypeValue() {
+        return type_;
+      }
+      /**
+       * <pre>
+       * Spektra Type for this day (e.g. Sequence or Theme)
+       * </pre>
+       *
+       * <code>.SpektraTargetType type = 2;</code>
+       */
+      public Builder setTypeValue(int value) {
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Spektra Type for this day (e.g. Sequence or Theme)
+       * </pre>
+       *
+       * <code>.SpektraTargetType type = 2;</code>
+       */
+      public EDS10ProtocolBuffer.SpektraTargetType getType() {
+        @SuppressWarnings("deprecation")
+        EDS10ProtocolBuffer.SpektraTargetType result = EDS10ProtocolBuffer.SpektraTargetType.valueOf(type_);
+        return result == null ? EDS10ProtocolBuffer.SpektraTargetType.UNRECOGNIZED : result;
+      }
+      /**
+       * <pre>
+       * Spektra Type for this day (e.g. Sequence or Theme)
+       * </pre>
+       *
+       * <code>.SpektraTargetType type = 2;</code>
+       */
+      public Builder setType(EDS10ProtocolBuffer.SpektraTargetType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        type_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Spektra Type for this day (e.g. Sequence or Theme)
+       * </pre>
+       *
+       * <code>.SpektraTargetType type = 2;</code>
+       */
+      public Builder clearType() {
+        
+        type_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int targetIndex_ ;
+      /**
+       * <pre>
+       * Index of the specified Type (i.e. which Sequence or Theme)
+       * </pre>
+       *
+       * <code>uint32 target_index = 3;</code>
+       */
+      public int getTargetIndex() {
+        return targetIndex_;
+      }
+      /**
+       * <pre>
+       * Index of the specified Type (i.e. which Sequence or Theme)
+       * </pre>
+       *
+       * <code>uint32 target_index = 3;</code>
+       */
+      public Builder setTargetIndex(int value) {
+        
+        targetIndex_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Index of the specified Type (i.e. which Sequence or Theme)
+       * </pre>
+       *
+       * <code>uint32 target_index = 3;</code>
+       */
+      public Builder clearTargetIndex() {
+        
+        targetIndex_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:SpektraCalendarDayMessage)
+    }
+
+    // @@protoc_insertion_point(class_scope:SpektraCalendarDayMessage)
+    private static final EDS10ProtocolBuffer.SpektraCalendarDayMessage DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.SpektraCalendarDayMessage();
+    }
+
+    public static EDS10ProtocolBuffer.SpektraCalendarDayMessage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SpektraCalendarDayMessage>
+        PARSER = new com.google.protobuf.AbstractParser<SpektraCalendarDayMessage>() {
+      @java.lang.Override
+      public SpektraCalendarDayMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SpektraCalendarDayMessage(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SpektraCalendarDayMessage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SpektraCalendarDayMessage> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public EDS10ProtocolBuffer.SpektraCalendarDayMessage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SpektraCalendarOverviewMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SpektraCalendarOverviewMessage)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Offset to start counting days from (0 is the first day of the year)
+     * </pre>
+     *
+     * <code>uint32 day_offset = 1;</code>
+     */
+    int getDayOffset();
+
+    /**
+     * <pre>
+     * Schedule information for each day; supports up to 90 days per Message
+     * </pre>
+     *
+     * <code>repeated .SpektraCalendarDayMessage days = 2;</code>
+     */
+    java.util.List<EDS10ProtocolBuffer.SpektraCalendarDayMessage> 
+        getDaysList();
+    /**
+     * <pre>
+     * Schedule information for each day; supports up to 90 days per Message
+     * </pre>
+     *
+     * <code>repeated .SpektraCalendarDayMessage days = 2;</code>
+     */
+    EDS10ProtocolBuffer.SpektraCalendarDayMessage getDays(int index);
+    /**
+     * <pre>
+     * Schedule information for each day; supports up to 90 days per Message
+     * </pre>
+     *
+     * <code>repeated .SpektraCalendarDayMessage days = 2;</code>
+     */
+    int getDaysCount();
+    /**
+     * <pre>
+     * Schedule information for each day; supports up to 90 days per Message
+     * </pre>
+     *
+     * <code>repeated .SpektraCalendarDayMessage days = 2;</code>
+     */
+    java.util.List<? extends EDS10ProtocolBuffer.SpektraCalendarDayMessageOrBuilder> 
+        getDaysOrBuilderList();
+    /**
+     * <pre>
+     * Schedule information for each day; supports up to 90 days per Message
+     * </pre>
+     *
+     * <code>repeated .SpektraCalendarDayMessage days = 2;</code>
+     */
+    EDS10ProtocolBuffer.SpektraCalendarDayMessageOrBuilder getDaysOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code SpektraCalendarOverviewMessage}
+   */
+  public  static final class SpektraCalendarOverviewMessage extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:SpektraCalendarOverviewMessage)
+      SpektraCalendarOverviewMessageOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use SpektraCalendarOverviewMessage.newBuilder() to construct.
+    private SpektraCalendarOverviewMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SpektraCalendarOverviewMessage() {
+      dayOffset_ = 0;
+      days_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SpektraCalendarOverviewMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              dayOffset_ = input.readUInt32();
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                days_ = new java.util.ArrayList<EDS10ProtocolBuffer.SpektraCalendarDayMessage>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              days_.add(
+                  input.readMessage(EDS10ProtocolBuffer.SpektraCalendarDayMessage.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          days_ = java.util.Collections.unmodifiableList(days_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.internal_static_SpektraCalendarOverviewMessage_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return EDS10ProtocolBuffer.internal_static_SpektraCalendarOverviewMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              EDS10ProtocolBuffer.SpektraCalendarOverviewMessage.class, EDS10ProtocolBuffer.SpektraCalendarOverviewMessage.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int DAY_OFFSET_FIELD_NUMBER = 1;
+    private int dayOffset_;
+    /**
+     * <pre>
+     * Offset to start counting days from (0 is the first day of the year)
+     * </pre>
+     *
+     * <code>uint32 day_offset = 1;</code>
+     */
+    public int getDayOffset() {
+      return dayOffset_;
+    }
+
+    public static final int DAYS_FIELD_NUMBER = 2;
+    private java.util.List<EDS10ProtocolBuffer.SpektraCalendarDayMessage> days_;
+    /**
+     * <pre>
+     * Schedule information for each day; supports up to 90 days per Message
+     * </pre>
+     *
+     * <code>repeated .SpektraCalendarDayMessage days = 2;</code>
+     */
+    public java.util.List<EDS10ProtocolBuffer.SpektraCalendarDayMessage> getDaysList() {
+      return days_;
+    }
+    /**
+     * <pre>
+     * Schedule information for each day; supports up to 90 days per Message
+     * </pre>
+     *
+     * <code>repeated .SpektraCalendarDayMessage days = 2;</code>
+     */
+    public java.util.List<? extends EDS10ProtocolBuffer.SpektraCalendarDayMessageOrBuilder> 
+        getDaysOrBuilderList() {
+      return days_;
+    }
+    /**
+     * <pre>
+     * Schedule information for each day; supports up to 90 days per Message
+     * </pre>
+     *
+     * <code>repeated .SpektraCalendarDayMessage days = 2;</code>
+     */
+    public int getDaysCount() {
+      return days_.size();
+    }
+    /**
+     * <pre>
+     * Schedule information for each day; supports up to 90 days per Message
+     * </pre>
+     *
+     * <code>repeated .SpektraCalendarDayMessage days = 2;</code>
+     */
+    public EDS10ProtocolBuffer.SpektraCalendarDayMessage getDays(int index) {
+      return days_.get(index);
+    }
+    /**
+     * <pre>
+     * Schedule information for each day; supports up to 90 days per Message
+     * </pre>
+     *
+     * <code>repeated .SpektraCalendarDayMessage days = 2;</code>
+     */
+    public EDS10ProtocolBuffer.SpektraCalendarDayMessageOrBuilder getDaysOrBuilder(
+        int index) {
+      return days_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (dayOffset_ != 0) {
+        output.writeUInt32(1, dayOffset_);
+      }
+      for (int i = 0; i < days_.size(); i++) {
+        output.writeMessage(2, days_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (dayOffset_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, dayOffset_);
+      }
+      for (int i = 0; i < days_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, days_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof EDS10ProtocolBuffer.SpektraCalendarOverviewMessage)) {
+        return super.equals(obj);
+      }
+      EDS10ProtocolBuffer.SpektraCalendarOverviewMessage other = (EDS10ProtocolBuffer.SpektraCalendarOverviewMessage) obj;
+
+      boolean result = true;
+      result = result && (getDayOffset()
+          == other.getDayOffset());
+      result = result && getDaysList()
+          .equals(other.getDaysList());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + DAY_OFFSET_FIELD_NUMBER;
+      hash = (53 * hash) + getDayOffset();
+      if (getDaysCount() > 0) {
+        hash = (37 * hash) + DAYS_FIELD_NUMBER;
+        hash = (53 * hash) + getDaysList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static EDS10ProtocolBuffer.SpektraCalendarOverviewMessage parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SpektraCalendarOverviewMessage parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SpektraCalendarOverviewMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SpektraCalendarOverviewMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SpektraCalendarOverviewMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SpektraCalendarOverviewMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SpektraCalendarOverviewMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SpektraCalendarOverviewMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SpektraCalendarOverviewMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SpektraCalendarOverviewMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SpektraCalendarOverviewMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SpektraCalendarOverviewMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(EDS10ProtocolBuffer.SpektraCalendarOverviewMessage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code SpektraCalendarOverviewMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:SpektraCalendarOverviewMessage)
+        EDS10ProtocolBuffer.SpektraCalendarOverviewMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return EDS10ProtocolBuffer.internal_static_SpektraCalendarOverviewMessage_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return EDS10ProtocolBuffer.internal_static_SpektraCalendarOverviewMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                EDS10ProtocolBuffer.SpektraCalendarOverviewMessage.class, EDS10ProtocolBuffer.SpektraCalendarOverviewMessage.Builder.class);
+      }
+
+      // Construct using EDS10ProtocolBuffer.SpektraCalendarOverviewMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getDaysFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        dayOffset_ = 0;
+
+        if (daysBuilder_ == null) {
+          days_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          daysBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return EDS10ProtocolBuffer.internal_static_SpektraCalendarOverviewMessage_descriptor;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SpektraCalendarOverviewMessage getDefaultInstanceForType() {
+        return EDS10ProtocolBuffer.SpektraCalendarOverviewMessage.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SpektraCalendarOverviewMessage build() {
+        EDS10ProtocolBuffer.SpektraCalendarOverviewMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SpektraCalendarOverviewMessage buildPartial() {
+        EDS10ProtocolBuffer.SpektraCalendarOverviewMessage result = new EDS10ProtocolBuffer.SpektraCalendarOverviewMessage(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        result.dayOffset_ = dayOffset_;
+        if (daysBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+            days_ = java.util.Collections.unmodifiableList(days_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.days_ = days_;
+        } else {
+          result.days_ = daysBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof EDS10ProtocolBuffer.SpektraCalendarOverviewMessage) {
+          return mergeFrom((EDS10ProtocolBuffer.SpektraCalendarOverviewMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(EDS10ProtocolBuffer.SpektraCalendarOverviewMessage other) {
+        if (other == EDS10ProtocolBuffer.SpektraCalendarOverviewMessage.getDefaultInstance()) return this;
+        if (other.getDayOffset() != 0) {
+          setDayOffset(other.getDayOffset());
+        }
+        if (daysBuilder_ == null) {
+          if (!other.days_.isEmpty()) {
+            if (days_.isEmpty()) {
+              days_ = other.days_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureDaysIsMutable();
+              days_.addAll(other.days_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.days_.isEmpty()) {
+            if (daysBuilder_.isEmpty()) {
+              daysBuilder_.dispose();
+              daysBuilder_ = null;
+              days_ = other.days_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              daysBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getDaysFieldBuilder() : null;
+            } else {
+              daysBuilder_.addAllMessages(other.days_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        EDS10ProtocolBuffer.SpektraCalendarOverviewMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (EDS10ProtocolBuffer.SpektraCalendarOverviewMessage) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int dayOffset_ ;
+      /**
+       * <pre>
+       * Offset to start counting days from (0 is the first day of the year)
+       * </pre>
+       *
+       * <code>uint32 day_offset = 1;</code>
+       */
+      public int getDayOffset() {
+        return dayOffset_;
+      }
+      /**
+       * <pre>
+       * Offset to start counting days from (0 is the first day of the year)
+       * </pre>
+       *
+       * <code>uint32 day_offset = 1;</code>
+       */
+      public Builder setDayOffset(int value) {
+        
+        dayOffset_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Offset to start counting days from (0 is the first day of the year)
+       * </pre>
+       *
+       * <code>uint32 day_offset = 1;</code>
+       */
+      public Builder clearDayOffset() {
+        
+        dayOffset_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<EDS10ProtocolBuffer.SpektraCalendarDayMessage> days_ =
+        java.util.Collections.emptyList();
+      private void ensureDaysIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          days_ = new java.util.ArrayList<EDS10ProtocolBuffer.SpektraCalendarDayMessage>(days_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          EDS10ProtocolBuffer.SpektraCalendarDayMessage, EDS10ProtocolBuffer.SpektraCalendarDayMessage.Builder, EDS10ProtocolBuffer.SpektraCalendarDayMessageOrBuilder> daysBuilder_;
+
+      /**
+       * <pre>
+       * Schedule information for each day; supports up to 90 days per Message
+       * </pre>
+       *
+       * <code>repeated .SpektraCalendarDayMessage days = 2;</code>
+       */
+      public java.util.List<EDS10ProtocolBuffer.SpektraCalendarDayMessage> getDaysList() {
+        if (daysBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(days_);
+        } else {
+          return daysBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <pre>
+       * Schedule information for each day; supports up to 90 days per Message
+       * </pre>
+       *
+       * <code>repeated .SpektraCalendarDayMessage days = 2;</code>
+       */
+      public int getDaysCount() {
+        if (daysBuilder_ == null) {
+          return days_.size();
+        } else {
+          return daysBuilder_.getCount();
+        }
+      }
+      /**
+       * <pre>
+       * Schedule information for each day; supports up to 90 days per Message
+       * </pre>
+       *
+       * <code>repeated .SpektraCalendarDayMessage days = 2;</code>
+       */
+      public EDS10ProtocolBuffer.SpektraCalendarDayMessage getDays(int index) {
+        if (daysBuilder_ == null) {
+          return days_.get(index);
+        } else {
+          return daysBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <pre>
+       * Schedule information for each day; supports up to 90 days per Message
+       * </pre>
+       *
+       * <code>repeated .SpektraCalendarDayMessage days = 2;</code>
+       */
+      public Builder setDays(
+          int index, EDS10ProtocolBuffer.SpektraCalendarDayMessage value) {
+        if (daysBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDaysIsMutable();
+          days_.set(index, value);
+          onChanged();
+        } else {
+          daysBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Schedule information for each day; supports up to 90 days per Message
+       * </pre>
+       *
+       * <code>repeated .SpektraCalendarDayMessage days = 2;</code>
+       */
+      public Builder setDays(
+          int index, EDS10ProtocolBuffer.SpektraCalendarDayMessage.Builder builderForValue) {
+        if (daysBuilder_ == null) {
+          ensureDaysIsMutable();
+          days_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          daysBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Schedule information for each day; supports up to 90 days per Message
+       * </pre>
+       *
+       * <code>repeated .SpektraCalendarDayMessage days = 2;</code>
+       */
+      public Builder addDays(EDS10ProtocolBuffer.SpektraCalendarDayMessage value) {
+        if (daysBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDaysIsMutable();
+          days_.add(value);
+          onChanged();
+        } else {
+          daysBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Schedule information for each day; supports up to 90 days per Message
+       * </pre>
+       *
+       * <code>repeated .SpektraCalendarDayMessage days = 2;</code>
+       */
+      public Builder addDays(
+          int index, EDS10ProtocolBuffer.SpektraCalendarDayMessage value) {
+        if (daysBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDaysIsMutable();
+          days_.add(index, value);
+          onChanged();
+        } else {
+          daysBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Schedule information for each day; supports up to 90 days per Message
+       * </pre>
+       *
+       * <code>repeated .SpektraCalendarDayMessage days = 2;</code>
+       */
+      public Builder addDays(
+          EDS10ProtocolBuffer.SpektraCalendarDayMessage.Builder builderForValue) {
+        if (daysBuilder_ == null) {
+          ensureDaysIsMutable();
+          days_.add(builderForValue.build());
+          onChanged();
+        } else {
+          daysBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Schedule information for each day; supports up to 90 days per Message
+       * </pre>
+       *
+       * <code>repeated .SpektraCalendarDayMessage days = 2;</code>
+       */
+      public Builder addDays(
+          int index, EDS10ProtocolBuffer.SpektraCalendarDayMessage.Builder builderForValue) {
+        if (daysBuilder_ == null) {
+          ensureDaysIsMutable();
+          days_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          daysBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Schedule information for each day; supports up to 90 days per Message
+       * </pre>
+       *
+       * <code>repeated .SpektraCalendarDayMessage days = 2;</code>
+       */
+      public Builder addAllDays(
+          java.lang.Iterable<? extends EDS10ProtocolBuffer.SpektraCalendarDayMessage> values) {
+        if (daysBuilder_ == null) {
+          ensureDaysIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, days_);
+          onChanged();
+        } else {
+          daysBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Schedule information for each day; supports up to 90 days per Message
+       * </pre>
+       *
+       * <code>repeated .SpektraCalendarDayMessage days = 2;</code>
+       */
+      public Builder clearDays() {
+        if (daysBuilder_ == null) {
+          days_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          daysBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Schedule information for each day; supports up to 90 days per Message
+       * </pre>
+       *
+       * <code>repeated .SpektraCalendarDayMessage days = 2;</code>
+       */
+      public Builder removeDays(int index) {
+        if (daysBuilder_ == null) {
+          ensureDaysIsMutable();
+          days_.remove(index);
+          onChanged();
+        } else {
+          daysBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Schedule information for each day; supports up to 90 days per Message
+       * </pre>
+       *
+       * <code>repeated .SpektraCalendarDayMessage days = 2;</code>
+       */
+      public EDS10ProtocolBuffer.SpektraCalendarDayMessage.Builder getDaysBuilder(
+          int index) {
+        return getDaysFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <pre>
+       * Schedule information for each day; supports up to 90 days per Message
+       * </pre>
+       *
+       * <code>repeated .SpektraCalendarDayMessage days = 2;</code>
+       */
+      public EDS10ProtocolBuffer.SpektraCalendarDayMessageOrBuilder getDaysOrBuilder(
+          int index) {
+        if (daysBuilder_ == null) {
+          return days_.get(index);  } else {
+          return daysBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <pre>
+       * Schedule information for each day; supports up to 90 days per Message
+       * </pre>
+       *
+       * <code>repeated .SpektraCalendarDayMessage days = 2;</code>
+       */
+      public java.util.List<? extends EDS10ProtocolBuffer.SpektraCalendarDayMessageOrBuilder> 
+           getDaysOrBuilderList() {
+        if (daysBuilder_ != null) {
+          return daysBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(days_);
+        }
+      }
+      /**
+       * <pre>
+       * Schedule information for each day; supports up to 90 days per Message
+       * </pre>
+       *
+       * <code>repeated .SpektraCalendarDayMessage days = 2;</code>
+       */
+      public EDS10ProtocolBuffer.SpektraCalendarDayMessage.Builder addDaysBuilder() {
+        return getDaysFieldBuilder().addBuilder(
+            EDS10ProtocolBuffer.SpektraCalendarDayMessage.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * Schedule information for each day; supports up to 90 days per Message
+       * </pre>
+       *
+       * <code>repeated .SpektraCalendarDayMessage days = 2;</code>
+       */
+      public EDS10ProtocolBuffer.SpektraCalendarDayMessage.Builder addDaysBuilder(
+          int index) {
+        return getDaysFieldBuilder().addBuilder(
+            index, EDS10ProtocolBuffer.SpektraCalendarDayMessage.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * Schedule information for each day; supports up to 90 days per Message
+       * </pre>
+       *
+       * <code>repeated .SpektraCalendarDayMessage days = 2;</code>
+       */
+      public java.util.List<EDS10ProtocolBuffer.SpektraCalendarDayMessage.Builder> 
+           getDaysBuilderList() {
+        return getDaysFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          EDS10ProtocolBuffer.SpektraCalendarDayMessage, EDS10ProtocolBuffer.SpektraCalendarDayMessage.Builder, EDS10ProtocolBuffer.SpektraCalendarDayMessageOrBuilder> 
+          getDaysFieldBuilder() {
+        if (daysBuilder_ == null) {
+          daysBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              EDS10ProtocolBuffer.SpektraCalendarDayMessage, EDS10ProtocolBuffer.SpektraCalendarDayMessage.Builder, EDS10ProtocolBuffer.SpektraCalendarDayMessageOrBuilder>(
+                  days_,
+                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  getParentForChildren(),
+                  isClean());
+          days_ = null;
+        }
+        return daysBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:SpektraCalendarOverviewMessage)
+    }
+
+    // @@protoc_insertion_point(class_scope:SpektraCalendarOverviewMessage)
+    private static final EDS10ProtocolBuffer.SpektraCalendarOverviewMessage DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.SpektraCalendarOverviewMessage();
+    }
+
+    public static EDS10ProtocolBuffer.SpektraCalendarOverviewMessage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SpektraCalendarOverviewMessage>
+        PARSER = new com.google.protobuf.AbstractParser<SpektraCalendarOverviewMessage>() {
+      @java.lang.Override
+      public SpektraCalendarOverviewMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SpektraCalendarOverviewMessage(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SpektraCalendarOverviewMessage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SpektraCalendarOverviewMessage> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public EDS10ProtocolBuffer.SpektraCalendarOverviewMessage getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -53007,6 +62406,15 @@ public final class EDS10ProtocolBuffer {
      * <code>uint32 logic_count = 23;</code>
      */
     int getLogicCount();
+
+    /**
+     * <pre>
+     * Number of supported DALI Inputs
+     * </pre>
+     *
+     * <code>uint32 input_dali_count = 24;</code>
+     */
+    int getInputDaliCount();
   }
   /**
    * <pre>
@@ -53048,6 +62456,7 @@ public final class EDS10ProtocolBuffer {
       dmxToDaliCount_ = 0;
       spektraZoneCount_ = 0;
       logicCount_ = 0;
+      inputDaliCount_ = 0;
     }
 
     @java.lang.Override
@@ -53208,6 +62617,11 @@ public final class EDS10ProtocolBuffer {
             case 184: {
 
               logicCount_ = input.readUInt32();
+              break;
+            }
+            case 192: {
+
+              inputDaliCount_ = input.readUInt32();
               break;
             }
             default: {
@@ -53685,6 +63099,19 @@ public final class EDS10ProtocolBuffer {
       return logicCount_;
     }
 
+    public static final int INPUT_DALI_COUNT_FIELD_NUMBER = 24;
+    private int inputDaliCount_;
+    /**
+     * <pre>
+     * Number of supported DALI Inputs
+     * </pre>
+     *
+     * <code>uint32 input_dali_count = 24;</code>
+     */
+    public int getInputDaliCount() {
+      return inputDaliCount_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -53772,6 +63199,9 @@ public final class EDS10ProtocolBuffer {
       }
       if (logicCount_ != 0) {
         output.writeUInt32(23, logicCount_);
+      }
+      if (inputDaliCount_ != 0) {
+        output.writeUInt32(24, inputDaliCount_);
       }
       unknownFields.writeTo(output);
     }
@@ -53879,6 +63309,10 @@ public final class EDS10ProtocolBuffer {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(23, logicCount_);
       }
+      if (inputDaliCount_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(24, inputDaliCount_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -53940,6 +63374,8 @@ public final class EDS10ProtocolBuffer {
           == other.getSpektraZoneCount());
       result = result && (getLogicCount()
           == other.getLogicCount());
+      result = result && (getInputDaliCount()
+          == other.getInputDaliCount());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -53999,6 +63435,8 @@ public final class EDS10ProtocolBuffer {
       hash = (53 * hash) + getSpektraZoneCount();
       hash = (37 * hash) + LOGIC_COUNT_FIELD_NUMBER;
       hash = (53 * hash) + getLogicCount();
+      hash = (37 * hash) + INPUT_DALI_COUNT_FIELD_NUMBER;
+      hash = (53 * hash) + getInputDaliCount();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -54182,6 +63620,8 @@ public final class EDS10ProtocolBuffer {
 
         logicCount_ = 0;
 
+        inputDaliCount_ = 0;
+
         return this;
       }
 
@@ -54237,6 +63677,7 @@ public final class EDS10ProtocolBuffer {
         result.dmxToDaliCount_ = dmxToDaliCount_;
         result.spektraZoneCount_ = spektraZoneCount_;
         result.logicCount_ = logicCount_;
+        result.inputDaliCount_ = inputDaliCount_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -54364,6 +63805,9 @@ public final class EDS10ProtocolBuffer {
         }
         if (other.getLogicCount() != 0) {
           setLogicCount(other.getLogicCount());
+        }
+        if (other.getInputDaliCount() != 0) {
+          setInputDaliCount(other.getInputDaliCount());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -55546,6 +64990,44 @@ public final class EDS10ProtocolBuffer {
       public Builder clearLogicCount() {
         
         logicCount_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int inputDaliCount_ ;
+      /**
+       * <pre>
+       * Number of supported DALI Inputs
+       * </pre>
+       *
+       * <code>uint32 input_dali_count = 24;</code>
+       */
+      public int getInputDaliCount() {
+        return inputDaliCount_;
+      }
+      /**
+       * <pre>
+       * Number of supported DALI Inputs
+       * </pre>
+       *
+       * <code>uint32 input_dali_count = 24;</code>
+       */
+      public Builder setInputDaliCount(int value) {
+        
+        inputDaliCount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Number of supported DALI Inputs
+       * </pre>
+       *
+       * <code>uint32 input_dali_count = 24;</code>
+       */
+      public Builder clearInputDaliCount() {
+        
+        inputDaliCount_ = 0;
         onChanged();
         return this;
       }
@@ -62663,6 +72145,549 @@ public final class EDS10ProtocolBuffer {
 
   }
 
+  public interface AdminDALISensorTypeMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:AdminDALISensorTypeMessage)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Which type of eDALI will the eDIDIO use to decode &amp; encode Sensor packets?
+     * </pre>
+     *
+     * <code>.DALISensorType type = 1;</code>
+     */
+    int getTypeValue();
+    /**
+     * <pre>
+     * Which type of eDALI will the eDIDIO use to decode &amp; encode Sensor packets?
+     * </pre>
+     *
+     * <code>.DALISensorType type = 1;</code>
+     */
+    EDS10ProtocolBuffer.DALISensorType getType();
+  }
+  /**
+   * Protobuf type {@code AdminDALISensorTypeMessage}
+   */
+  public  static final class AdminDALISensorTypeMessage extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:AdminDALISensorTypeMessage)
+      AdminDALISensorTypeMessageOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use AdminDALISensorTypeMessage.newBuilder() to construct.
+    private AdminDALISensorTypeMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private AdminDALISensorTypeMessage() {
+      type_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private AdminDALISensorTypeMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              int rawValue = input.readEnum();
+
+              type_ = rawValue;
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.internal_static_AdminDALISensorTypeMessage_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return EDS10ProtocolBuffer.internal_static_AdminDALISensorTypeMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              EDS10ProtocolBuffer.AdminDALISensorTypeMessage.class, EDS10ProtocolBuffer.AdminDALISensorTypeMessage.Builder.class);
+    }
+
+    public static final int TYPE_FIELD_NUMBER = 1;
+    private int type_;
+    /**
+     * <pre>
+     * Which type of eDALI will the eDIDIO use to decode &amp; encode Sensor packets?
+     * </pre>
+     *
+     * <code>.DALISensorType type = 1;</code>
+     */
+    public int getTypeValue() {
+      return type_;
+    }
+    /**
+     * <pre>
+     * Which type of eDALI will the eDIDIO use to decode &amp; encode Sensor packets?
+     * </pre>
+     *
+     * <code>.DALISensorType type = 1;</code>
+     */
+    public EDS10ProtocolBuffer.DALISensorType getType() {
+      @SuppressWarnings("deprecation")
+      EDS10ProtocolBuffer.DALISensorType result = EDS10ProtocolBuffer.DALISensorType.valueOf(type_);
+      return result == null ? EDS10ProtocolBuffer.DALISensorType.UNRECOGNIZED : result;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (type_ != EDS10ProtocolBuffer.DALISensorType.TRIDONIC_EDALI.getNumber()) {
+        output.writeEnum(1, type_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (type_ != EDS10ProtocolBuffer.DALISensorType.TRIDONIC_EDALI.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, type_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof EDS10ProtocolBuffer.AdminDALISensorTypeMessage)) {
+        return super.equals(obj);
+      }
+      EDS10ProtocolBuffer.AdminDALISensorTypeMessage other = (EDS10ProtocolBuffer.AdminDALISensorTypeMessage) obj;
+
+      boolean result = true;
+      result = result && type_ == other.type_;
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + type_;
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static EDS10ProtocolBuffer.AdminDALISensorTypeMessage parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.AdminDALISensorTypeMessage parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.AdminDALISensorTypeMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.AdminDALISensorTypeMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.AdminDALISensorTypeMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.AdminDALISensorTypeMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.AdminDALISensorTypeMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.AdminDALISensorTypeMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.AdminDALISensorTypeMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.AdminDALISensorTypeMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.AdminDALISensorTypeMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.AdminDALISensorTypeMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(EDS10ProtocolBuffer.AdminDALISensorTypeMessage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code AdminDALISensorTypeMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:AdminDALISensorTypeMessage)
+        EDS10ProtocolBuffer.AdminDALISensorTypeMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return EDS10ProtocolBuffer.internal_static_AdminDALISensorTypeMessage_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return EDS10ProtocolBuffer.internal_static_AdminDALISensorTypeMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                EDS10ProtocolBuffer.AdminDALISensorTypeMessage.class, EDS10ProtocolBuffer.AdminDALISensorTypeMessage.Builder.class);
+      }
+
+      // Construct using EDS10ProtocolBuffer.AdminDALISensorTypeMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        type_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return EDS10ProtocolBuffer.internal_static_AdminDALISensorTypeMessage_descriptor;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.AdminDALISensorTypeMessage getDefaultInstanceForType() {
+        return EDS10ProtocolBuffer.AdminDALISensorTypeMessage.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.AdminDALISensorTypeMessage build() {
+        EDS10ProtocolBuffer.AdminDALISensorTypeMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.AdminDALISensorTypeMessage buildPartial() {
+        EDS10ProtocolBuffer.AdminDALISensorTypeMessage result = new EDS10ProtocolBuffer.AdminDALISensorTypeMessage(this);
+        result.type_ = type_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof EDS10ProtocolBuffer.AdminDALISensorTypeMessage) {
+          return mergeFrom((EDS10ProtocolBuffer.AdminDALISensorTypeMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(EDS10ProtocolBuffer.AdminDALISensorTypeMessage other) {
+        if (other == EDS10ProtocolBuffer.AdminDALISensorTypeMessage.getDefaultInstance()) return this;
+        if (other.type_ != 0) {
+          setTypeValue(other.getTypeValue());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        EDS10ProtocolBuffer.AdminDALISensorTypeMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (EDS10ProtocolBuffer.AdminDALISensorTypeMessage) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int type_ = 0;
+      /**
+       * <pre>
+       * Which type of eDALI will the eDIDIO use to decode &amp; encode Sensor packets?
+       * </pre>
+       *
+       * <code>.DALISensorType type = 1;</code>
+       */
+      public int getTypeValue() {
+        return type_;
+      }
+      /**
+       * <pre>
+       * Which type of eDALI will the eDIDIO use to decode &amp; encode Sensor packets?
+       * </pre>
+       *
+       * <code>.DALISensorType type = 1;</code>
+       */
+      public Builder setTypeValue(int value) {
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Which type of eDALI will the eDIDIO use to decode &amp; encode Sensor packets?
+       * </pre>
+       *
+       * <code>.DALISensorType type = 1;</code>
+       */
+      public EDS10ProtocolBuffer.DALISensorType getType() {
+        @SuppressWarnings("deprecation")
+        EDS10ProtocolBuffer.DALISensorType result = EDS10ProtocolBuffer.DALISensorType.valueOf(type_);
+        return result == null ? EDS10ProtocolBuffer.DALISensorType.UNRECOGNIZED : result;
+      }
+      /**
+       * <pre>
+       * Which type of eDALI will the eDIDIO use to decode &amp; encode Sensor packets?
+       * </pre>
+       *
+       * <code>.DALISensorType type = 1;</code>
+       */
+      public Builder setType(EDS10ProtocolBuffer.DALISensorType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        type_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Which type of eDALI will the eDIDIO use to decode &amp; encode Sensor packets?
+       * </pre>
+       *
+       * <code>.DALISensorType type = 1;</code>
+       */
+      public Builder clearType() {
+        
+        type_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:AdminDALISensorTypeMessage)
+    }
+
+    // @@protoc_insertion_point(class_scope:AdminDALISensorTypeMessage)
+    private static final EDS10ProtocolBuffer.AdminDALISensorTypeMessage DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.AdminDALISensorTypeMessage();
+    }
+
+    public static EDS10ProtocolBuffer.AdminDALISensorTypeMessage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<AdminDALISensorTypeMessage>
+        PARSER = new com.google.protobuf.AbstractParser<AdminDALISensorTypeMessage>() {
+      @java.lang.Override
+      public AdminDALISensorTypeMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new AdminDALISensorTypeMessage(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<AdminDALISensorTypeMessage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AdminDALISensorTypeMessage> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public EDS10ProtocolBuffer.AdminDALISensorTypeMessage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface AdminMessageOrBuilder extends
       // @@protoc_insertion_point(interface_extends:AdminMessage)
       com.google.protobuf.MessageOrBuilder {
@@ -62791,6 +72816,19 @@ public final class EDS10ProtocolBuffer {
      * <code>.UpdateTimeMessage device_time = 9;</code>
      */
     EDS10ProtocolBuffer.UpdateTimeMessageOrBuilder getDeviceTimeOrBuilder();
+
+    /**
+     * <code>.AdminDALISensorTypeMessage dali_sensor_type = 10;</code>
+     */
+    boolean hasDaliSensorType();
+    /**
+     * <code>.AdminDALISensorTypeMessage dali_sensor_type = 10;</code>
+     */
+    EDS10ProtocolBuffer.AdminDALISensorTypeMessage getDaliSensorType();
+    /**
+     * <code>.AdminDALISensorTypeMessage dali_sensor_type = 10;</code>
+     */
+    EDS10ProtocolBuffer.AdminDALISensorTypeMessageOrBuilder getDaliSensorTypeOrBuilder();
 
     public EDS10ProtocolBuffer.AdminMessage.PayloadCase getPayloadCase();
   }
@@ -62945,6 +72983,20 @@ public final class EDS10ProtocolBuffer {
               payloadCase_ = 9;
               break;
             }
+            case 82: {
+              EDS10ProtocolBuffer.AdminDALISensorTypeMessage.Builder subBuilder = null;
+              if (payloadCase_ == 10) {
+                subBuilder = ((EDS10ProtocolBuffer.AdminDALISensorTypeMessage) payload_).toBuilder();
+              }
+              payload_ =
+                  input.readMessage(EDS10ProtocolBuffer.AdminDALISensorTypeMessage.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((EDS10ProtocolBuffer.AdminDALISensorTypeMessage) payload_);
+                payload_ = subBuilder.buildPartial();
+              }
+              payloadCase_ = 10;
+              break;
+            }
             default: {
               if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -62988,6 +73040,7 @@ public final class EDS10ProtocolBuffer {
       DEVICE_STATUS(7),
       CONFIG_STATUS(8),
       DEVICE_TIME(9),
+      DALI_SENSOR_TYPE(10),
       PAYLOAD_NOT_SET(0);
       private final int value;
       private PayloadCase(int value) {
@@ -63010,6 +73063,7 @@ public final class EDS10ProtocolBuffer {
           case 7: return DEVICE_STATUS;
           case 8: return CONFIG_STATUS;
           case 9: return DEVICE_TIME;
+          case 10: return DALI_SENSOR_TYPE;
           case 0: return PAYLOAD_NOT_SET;
           default: return null;
         }
@@ -63257,6 +73311,32 @@ public final class EDS10ProtocolBuffer {
       return EDS10ProtocolBuffer.UpdateTimeMessage.getDefaultInstance();
     }
 
+    public static final int DALI_SENSOR_TYPE_FIELD_NUMBER = 10;
+    /**
+     * <code>.AdminDALISensorTypeMessage dali_sensor_type = 10;</code>
+     */
+    public boolean hasDaliSensorType() {
+      return payloadCase_ == 10;
+    }
+    /**
+     * <code>.AdminDALISensorTypeMessage dali_sensor_type = 10;</code>
+     */
+    public EDS10ProtocolBuffer.AdminDALISensorTypeMessage getDaliSensorType() {
+      if (payloadCase_ == 10) {
+         return (EDS10ProtocolBuffer.AdminDALISensorTypeMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.AdminDALISensorTypeMessage.getDefaultInstance();
+    }
+    /**
+     * <code>.AdminDALISensorTypeMessage dali_sensor_type = 10;</code>
+     */
+    public EDS10ProtocolBuffer.AdminDALISensorTypeMessageOrBuilder getDaliSensorTypeOrBuilder() {
+      if (payloadCase_ == 10) {
+         return (EDS10ProtocolBuffer.AdminDALISensorTypeMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.AdminDALISensorTypeMessage.getDefaultInstance();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -63297,6 +73377,9 @@ public final class EDS10ProtocolBuffer {
       }
       if (payloadCase_ == 9) {
         output.writeMessage(9, (EDS10ProtocolBuffer.UpdateTimeMessage) payload_);
+      }
+      if (payloadCase_ == 10) {
+        output.writeMessage(10, (EDS10ProtocolBuffer.AdminDALISensorTypeMessage) payload_);
       }
       unknownFields.writeTo(output);
     }
@@ -63342,6 +73425,10 @@ public final class EDS10ProtocolBuffer {
       if (payloadCase_ == 9) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(9, (EDS10ProtocolBuffer.UpdateTimeMessage) payload_);
+      }
+      if (payloadCase_ == 10) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(10, (EDS10ProtocolBuffer.AdminDALISensorTypeMessage) payload_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -63393,6 +73480,10 @@ public final class EDS10ProtocolBuffer {
           result = result && getDeviceTime()
               .equals(other.getDeviceTime());
           break;
+        case 10:
+          result = result && getDaliSensorType()
+              .equals(other.getDaliSensorType());
+          break;
         case 0:
         default:
       }
@@ -63439,6 +73530,10 @@ public final class EDS10ProtocolBuffer {
         case 9:
           hash = (37 * hash) + DEVICE_TIME_FIELD_NUMBER;
           hash = (53 * hash) + getDeviceTime().hashCode();
+          break;
+        case 10:
+          hash = (37 * hash) + DALI_SENSOR_TYPE_FIELD_NUMBER;
+          hash = (53 * hash) + getDaliSensorType().hashCode();
           break;
         case 0:
         default:
@@ -63659,6 +73754,13 @@ public final class EDS10ProtocolBuffer {
             result.payload_ = deviceTimeBuilder_.build();
           }
         }
+        if (payloadCase_ == 10) {
+          if (daliSensorTypeBuilder_ == null) {
+            result.payload_ = payload_;
+          } else {
+            result.payload_ = daliSensorTypeBuilder_.build();
+          }
+        }
         result.payloadCase_ = payloadCase_;
         onBuilt();
         return result;
@@ -63741,6 +73843,10 @@ public final class EDS10ProtocolBuffer {
           }
           case DEVICE_TIME: {
             mergeDeviceTime(other.getDeviceTime());
+            break;
+          }
+          case DALI_SENSOR_TYPE: {
+            mergeDaliSensorType(other.getDaliSensorType());
             break;
           }
           case PAYLOAD_NOT_SET: {
@@ -64871,6 +74977,142 @@ public final class EDS10ProtocolBuffer {
         payloadCase_ = 9;
         onChanged();;
         return deviceTimeBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.AdminDALISensorTypeMessage, EDS10ProtocolBuffer.AdminDALISensorTypeMessage.Builder, EDS10ProtocolBuffer.AdminDALISensorTypeMessageOrBuilder> daliSensorTypeBuilder_;
+      /**
+       * <code>.AdminDALISensorTypeMessage dali_sensor_type = 10;</code>
+       */
+      public boolean hasDaliSensorType() {
+        return payloadCase_ == 10;
+      }
+      /**
+       * <code>.AdminDALISensorTypeMessage dali_sensor_type = 10;</code>
+       */
+      public EDS10ProtocolBuffer.AdminDALISensorTypeMessage getDaliSensorType() {
+        if (daliSensorTypeBuilder_ == null) {
+          if (payloadCase_ == 10) {
+            return (EDS10ProtocolBuffer.AdminDALISensorTypeMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.AdminDALISensorTypeMessage.getDefaultInstance();
+        } else {
+          if (payloadCase_ == 10) {
+            return daliSensorTypeBuilder_.getMessage();
+          }
+          return EDS10ProtocolBuffer.AdminDALISensorTypeMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.AdminDALISensorTypeMessage dali_sensor_type = 10;</code>
+       */
+      public Builder setDaliSensorType(EDS10ProtocolBuffer.AdminDALISensorTypeMessage value) {
+        if (daliSensorTypeBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          payload_ = value;
+          onChanged();
+        } else {
+          daliSensorTypeBuilder_.setMessage(value);
+        }
+        payloadCase_ = 10;
+        return this;
+      }
+      /**
+       * <code>.AdminDALISensorTypeMessage dali_sensor_type = 10;</code>
+       */
+      public Builder setDaliSensorType(
+          EDS10ProtocolBuffer.AdminDALISensorTypeMessage.Builder builderForValue) {
+        if (daliSensorTypeBuilder_ == null) {
+          payload_ = builderForValue.build();
+          onChanged();
+        } else {
+          daliSensorTypeBuilder_.setMessage(builderForValue.build());
+        }
+        payloadCase_ = 10;
+        return this;
+      }
+      /**
+       * <code>.AdminDALISensorTypeMessage dali_sensor_type = 10;</code>
+       */
+      public Builder mergeDaliSensorType(EDS10ProtocolBuffer.AdminDALISensorTypeMessage value) {
+        if (daliSensorTypeBuilder_ == null) {
+          if (payloadCase_ == 10 &&
+              payload_ != EDS10ProtocolBuffer.AdminDALISensorTypeMessage.getDefaultInstance()) {
+            payload_ = EDS10ProtocolBuffer.AdminDALISensorTypeMessage.newBuilder((EDS10ProtocolBuffer.AdminDALISensorTypeMessage) payload_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            payload_ = value;
+          }
+          onChanged();
+        } else {
+          if (payloadCase_ == 10) {
+            daliSensorTypeBuilder_.mergeFrom(value);
+          }
+          daliSensorTypeBuilder_.setMessage(value);
+        }
+        payloadCase_ = 10;
+        return this;
+      }
+      /**
+       * <code>.AdminDALISensorTypeMessage dali_sensor_type = 10;</code>
+       */
+      public Builder clearDaliSensorType() {
+        if (daliSensorTypeBuilder_ == null) {
+          if (payloadCase_ == 10) {
+            payloadCase_ = 0;
+            payload_ = null;
+            onChanged();
+          }
+        } else {
+          if (payloadCase_ == 10) {
+            payloadCase_ = 0;
+            payload_ = null;
+          }
+          daliSensorTypeBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.AdminDALISensorTypeMessage dali_sensor_type = 10;</code>
+       */
+      public EDS10ProtocolBuffer.AdminDALISensorTypeMessage.Builder getDaliSensorTypeBuilder() {
+        return getDaliSensorTypeFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.AdminDALISensorTypeMessage dali_sensor_type = 10;</code>
+       */
+      public EDS10ProtocolBuffer.AdminDALISensorTypeMessageOrBuilder getDaliSensorTypeOrBuilder() {
+        if ((payloadCase_ == 10) && (daliSensorTypeBuilder_ != null)) {
+          return daliSensorTypeBuilder_.getMessageOrBuilder();
+        } else {
+          if (payloadCase_ == 10) {
+            return (EDS10ProtocolBuffer.AdminDALISensorTypeMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.AdminDALISensorTypeMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.AdminDALISensorTypeMessage dali_sensor_type = 10;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.AdminDALISensorTypeMessage, EDS10ProtocolBuffer.AdminDALISensorTypeMessage.Builder, EDS10ProtocolBuffer.AdminDALISensorTypeMessageOrBuilder> 
+          getDaliSensorTypeFieldBuilder() {
+        if (daliSensorTypeBuilder_ == null) {
+          if (!(payloadCase_ == 10)) {
+            payload_ = EDS10ProtocolBuffer.AdminDALISensorTypeMessage.getDefaultInstance();
+          }
+          daliSensorTypeBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.AdminDALISensorTypeMessage, EDS10ProtocolBuffer.AdminDALISensorTypeMessage.Builder, EDS10ProtocolBuffer.AdminDALISensorTypeMessageOrBuilder>(
+                  (EDS10ProtocolBuffer.AdminDALISensorTypeMessage) payload_,
+                  getParentForChildren(),
+                  isClean());
+          payload_ = null;
+        }
+        payloadCase_ = 10;
+        onChanged();;
+        return daliSensorTypeBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -68014,6 +78256,8920 @@ public final class EDS10ProtocolBuffer {
 
   }
 
+  public interface SystemLogReadMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SystemLogReadMessage)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Which log to start from
+     * </pre>
+     *
+     * <code>uint32 log_start_address = 1;</code>
+     */
+    int getLogStartAddress();
+
+    /**
+     * <pre>
+     * How many logs requested? Max of 32
+     * </pre>
+     *
+     * <code>uint32 logs_requested = 2;</code>
+     */
+    int getLogsRequested();
+
+    /**
+     * <code>repeated .SystemLogMessage logs = 3;</code>
+     */
+    java.util.List<EDS10ProtocolBuffer.SystemLogMessage> 
+        getLogsList();
+    /**
+     * <code>repeated .SystemLogMessage logs = 3;</code>
+     */
+    EDS10ProtocolBuffer.SystemLogMessage getLogs(int index);
+    /**
+     * <code>repeated .SystemLogMessage logs = 3;</code>
+     */
+    int getLogsCount();
+    /**
+     * <code>repeated .SystemLogMessage logs = 3;</code>
+     */
+    java.util.List<? extends EDS10ProtocolBuffer.SystemLogMessageOrBuilder> 
+        getLogsOrBuilderList();
+    /**
+     * <code>repeated .SystemLogMessage logs = 3;</code>
+     */
+    EDS10ProtocolBuffer.SystemLogMessageOrBuilder getLogsOrBuilder(
+        int index);
+  }
+  /**
+   * <pre>
+   ***** Log Read ****
+   * </pre>
+   *
+   * Protobuf type {@code SystemLogReadMessage}
+   */
+  public  static final class SystemLogReadMessage extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:SystemLogReadMessage)
+      SystemLogReadMessageOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use SystemLogReadMessage.newBuilder() to construct.
+    private SystemLogReadMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SystemLogReadMessage() {
+      logStartAddress_ = 0;
+      logsRequested_ = 0;
+      logs_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SystemLogReadMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              logStartAddress_ = input.readUInt32();
+              break;
+            }
+            case 16: {
+
+              logsRequested_ = input.readUInt32();
+              break;
+            }
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                logs_ = new java.util.ArrayList<EDS10ProtocolBuffer.SystemLogMessage>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              logs_.add(
+                  input.readMessage(EDS10ProtocolBuffer.SystemLogMessage.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          logs_ = java.util.Collections.unmodifiableList(logs_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.internal_static_SystemLogReadMessage_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return EDS10ProtocolBuffer.internal_static_SystemLogReadMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              EDS10ProtocolBuffer.SystemLogReadMessage.class, EDS10ProtocolBuffer.SystemLogReadMessage.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int LOG_START_ADDRESS_FIELD_NUMBER = 1;
+    private int logStartAddress_;
+    /**
+     * <pre>
+     * Which log to start from
+     * </pre>
+     *
+     * <code>uint32 log_start_address = 1;</code>
+     */
+    public int getLogStartAddress() {
+      return logStartAddress_;
+    }
+
+    public static final int LOGS_REQUESTED_FIELD_NUMBER = 2;
+    private int logsRequested_;
+    /**
+     * <pre>
+     * How many logs requested? Max of 32
+     * </pre>
+     *
+     * <code>uint32 logs_requested = 2;</code>
+     */
+    public int getLogsRequested() {
+      return logsRequested_;
+    }
+
+    public static final int LOGS_FIELD_NUMBER = 3;
+    private java.util.List<EDS10ProtocolBuffer.SystemLogMessage> logs_;
+    /**
+     * <code>repeated .SystemLogMessage logs = 3;</code>
+     */
+    public java.util.List<EDS10ProtocolBuffer.SystemLogMessage> getLogsList() {
+      return logs_;
+    }
+    /**
+     * <code>repeated .SystemLogMessage logs = 3;</code>
+     */
+    public java.util.List<? extends EDS10ProtocolBuffer.SystemLogMessageOrBuilder> 
+        getLogsOrBuilderList() {
+      return logs_;
+    }
+    /**
+     * <code>repeated .SystemLogMessage logs = 3;</code>
+     */
+    public int getLogsCount() {
+      return logs_.size();
+    }
+    /**
+     * <code>repeated .SystemLogMessage logs = 3;</code>
+     */
+    public EDS10ProtocolBuffer.SystemLogMessage getLogs(int index) {
+      return logs_.get(index);
+    }
+    /**
+     * <code>repeated .SystemLogMessage logs = 3;</code>
+     */
+    public EDS10ProtocolBuffer.SystemLogMessageOrBuilder getLogsOrBuilder(
+        int index) {
+      return logs_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (logStartAddress_ != 0) {
+        output.writeUInt32(1, logStartAddress_);
+      }
+      if (logsRequested_ != 0) {
+        output.writeUInt32(2, logsRequested_);
+      }
+      for (int i = 0; i < logs_.size(); i++) {
+        output.writeMessage(3, logs_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (logStartAddress_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, logStartAddress_);
+      }
+      if (logsRequested_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, logsRequested_);
+      }
+      for (int i = 0; i < logs_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, logs_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof EDS10ProtocolBuffer.SystemLogReadMessage)) {
+        return super.equals(obj);
+      }
+      EDS10ProtocolBuffer.SystemLogReadMessage other = (EDS10ProtocolBuffer.SystemLogReadMessage) obj;
+
+      boolean result = true;
+      result = result && (getLogStartAddress()
+          == other.getLogStartAddress());
+      result = result && (getLogsRequested()
+          == other.getLogsRequested());
+      result = result && getLogsList()
+          .equals(other.getLogsList());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + LOG_START_ADDRESS_FIELD_NUMBER;
+      hash = (53 * hash) + getLogStartAddress();
+      hash = (37 * hash) + LOGS_REQUESTED_FIELD_NUMBER;
+      hash = (53 * hash) + getLogsRequested();
+      if (getLogsCount() > 0) {
+        hash = (37 * hash) + LOGS_FIELD_NUMBER;
+        hash = (53 * hash) + getLogsList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static EDS10ProtocolBuffer.SystemLogReadMessage parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SystemLogReadMessage parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogReadMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SystemLogReadMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogReadMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SystemLogReadMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogReadMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SystemLogReadMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogReadMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SystemLogReadMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogReadMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SystemLogReadMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(EDS10ProtocolBuffer.SystemLogReadMessage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     ***** Log Read ****
+     * </pre>
+     *
+     * Protobuf type {@code SystemLogReadMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:SystemLogReadMessage)
+        EDS10ProtocolBuffer.SystemLogReadMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return EDS10ProtocolBuffer.internal_static_SystemLogReadMessage_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return EDS10ProtocolBuffer.internal_static_SystemLogReadMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                EDS10ProtocolBuffer.SystemLogReadMessage.class, EDS10ProtocolBuffer.SystemLogReadMessage.Builder.class);
+      }
+
+      // Construct using EDS10ProtocolBuffer.SystemLogReadMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getLogsFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        logStartAddress_ = 0;
+
+        logsRequested_ = 0;
+
+        if (logsBuilder_ == null) {
+          logs_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          logsBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return EDS10ProtocolBuffer.internal_static_SystemLogReadMessage_descriptor;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SystemLogReadMessage getDefaultInstanceForType() {
+        return EDS10ProtocolBuffer.SystemLogReadMessage.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SystemLogReadMessage build() {
+        EDS10ProtocolBuffer.SystemLogReadMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SystemLogReadMessage buildPartial() {
+        EDS10ProtocolBuffer.SystemLogReadMessage result = new EDS10ProtocolBuffer.SystemLogReadMessage(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        result.logStartAddress_ = logStartAddress_;
+        result.logsRequested_ = logsRequested_;
+        if (logsBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            logs_ = java.util.Collections.unmodifiableList(logs_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.logs_ = logs_;
+        } else {
+          result.logs_ = logsBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof EDS10ProtocolBuffer.SystemLogReadMessage) {
+          return mergeFrom((EDS10ProtocolBuffer.SystemLogReadMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(EDS10ProtocolBuffer.SystemLogReadMessage other) {
+        if (other == EDS10ProtocolBuffer.SystemLogReadMessage.getDefaultInstance()) return this;
+        if (other.getLogStartAddress() != 0) {
+          setLogStartAddress(other.getLogStartAddress());
+        }
+        if (other.getLogsRequested() != 0) {
+          setLogsRequested(other.getLogsRequested());
+        }
+        if (logsBuilder_ == null) {
+          if (!other.logs_.isEmpty()) {
+            if (logs_.isEmpty()) {
+              logs_ = other.logs_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureLogsIsMutable();
+              logs_.addAll(other.logs_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.logs_.isEmpty()) {
+            if (logsBuilder_.isEmpty()) {
+              logsBuilder_.dispose();
+              logsBuilder_ = null;
+              logs_ = other.logs_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              logsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getLogsFieldBuilder() : null;
+            } else {
+              logsBuilder_.addAllMessages(other.logs_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        EDS10ProtocolBuffer.SystemLogReadMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (EDS10ProtocolBuffer.SystemLogReadMessage) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int logStartAddress_ ;
+      /**
+       * <pre>
+       * Which log to start from
+       * </pre>
+       *
+       * <code>uint32 log_start_address = 1;</code>
+       */
+      public int getLogStartAddress() {
+        return logStartAddress_;
+      }
+      /**
+       * <pre>
+       * Which log to start from
+       * </pre>
+       *
+       * <code>uint32 log_start_address = 1;</code>
+       */
+      public Builder setLogStartAddress(int value) {
+        
+        logStartAddress_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Which log to start from
+       * </pre>
+       *
+       * <code>uint32 log_start_address = 1;</code>
+       */
+      public Builder clearLogStartAddress() {
+        
+        logStartAddress_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int logsRequested_ ;
+      /**
+       * <pre>
+       * How many logs requested? Max of 32
+       * </pre>
+       *
+       * <code>uint32 logs_requested = 2;</code>
+       */
+      public int getLogsRequested() {
+        return logsRequested_;
+      }
+      /**
+       * <pre>
+       * How many logs requested? Max of 32
+       * </pre>
+       *
+       * <code>uint32 logs_requested = 2;</code>
+       */
+      public Builder setLogsRequested(int value) {
+        
+        logsRequested_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * How many logs requested? Max of 32
+       * </pre>
+       *
+       * <code>uint32 logs_requested = 2;</code>
+       */
+      public Builder clearLogsRequested() {
+        
+        logsRequested_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<EDS10ProtocolBuffer.SystemLogMessage> logs_ =
+        java.util.Collections.emptyList();
+      private void ensureLogsIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          logs_ = new java.util.ArrayList<EDS10ProtocolBuffer.SystemLogMessage>(logs_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          EDS10ProtocolBuffer.SystemLogMessage, EDS10ProtocolBuffer.SystemLogMessage.Builder, EDS10ProtocolBuffer.SystemLogMessageOrBuilder> logsBuilder_;
+
+      /**
+       * <code>repeated .SystemLogMessage logs = 3;</code>
+       */
+      public java.util.List<EDS10ProtocolBuffer.SystemLogMessage> getLogsList() {
+        if (logsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(logs_);
+        } else {
+          return logsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .SystemLogMessage logs = 3;</code>
+       */
+      public int getLogsCount() {
+        if (logsBuilder_ == null) {
+          return logs_.size();
+        } else {
+          return logsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .SystemLogMessage logs = 3;</code>
+       */
+      public EDS10ProtocolBuffer.SystemLogMessage getLogs(int index) {
+        if (logsBuilder_ == null) {
+          return logs_.get(index);
+        } else {
+          return logsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .SystemLogMessage logs = 3;</code>
+       */
+      public Builder setLogs(
+          int index, EDS10ProtocolBuffer.SystemLogMessage value) {
+        if (logsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureLogsIsMutable();
+          logs_.set(index, value);
+          onChanged();
+        } else {
+          logsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SystemLogMessage logs = 3;</code>
+       */
+      public Builder setLogs(
+          int index, EDS10ProtocolBuffer.SystemLogMessage.Builder builderForValue) {
+        if (logsBuilder_ == null) {
+          ensureLogsIsMutable();
+          logs_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          logsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SystemLogMessage logs = 3;</code>
+       */
+      public Builder addLogs(EDS10ProtocolBuffer.SystemLogMessage value) {
+        if (logsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureLogsIsMutable();
+          logs_.add(value);
+          onChanged();
+        } else {
+          logsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SystemLogMessage logs = 3;</code>
+       */
+      public Builder addLogs(
+          int index, EDS10ProtocolBuffer.SystemLogMessage value) {
+        if (logsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureLogsIsMutable();
+          logs_.add(index, value);
+          onChanged();
+        } else {
+          logsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SystemLogMessage logs = 3;</code>
+       */
+      public Builder addLogs(
+          EDS10ProtocolBuffer.SystemLogMessage.Builder builderForValue) {
+        if (logsBuilder_ == null) {
+          ensureLogsIsMutable();
+          logs_.add(builderForValue.build());
+          onChanged();
+        } else {
+          logsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SystemLogMessage logs = 3;</code>
+       */
+      public Builder addLogs(
+          int index, EDS10ProtocolBuffer.SystemLogMessage.Builder builderForValue) {
+        if (logsBuilder_ == null) {
+          ensureLogsIsMutable();
+          logs_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          logsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SystemLogMessage logs = 3;</code>
+       */
+      public Builder addAllLogs(
+          java.lang.Iterable<? extends EDS10ProtocolBuffer.SystemLogMessage> values) {
+        if (logsBuilder_ == null) {
+          ensureLogsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, logs_);
+          onChanged();
+        } else {
+          logsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SystemLogMessage logs = 3;</code>
+       */
+      public Builder clearLogs() {
+        if (logsBuilder_ == null) {
+          logs_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          logsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SystemLogMessage logs = 3;</code>
+       */
+      public Builder removeLogs(int index) {
+        if (logsBuilder_ == null) {
+          ensureLogsIsMutable();
+          logs_.remove(index);
+          onChanged();
+        } else {
+          logsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SystemLogMessage logs = 3;</code>
+       */
+      public EDS10ProtocolBuffer.SystemLogMessage.Builder getLogsBuilder(
+          int index) {
+        return getLogsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .SystemLogMessage logs = 3;</code>
+       */
+      public EDS10ProtocolBuffer.SystemLogMessageOrBuilder getLogsOrBuilder(
+          int index) {
+        if (logsBuilder_ == null) {
+          return logs_.get(index);  } else {
+          return logsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .SystemLogMessage logs = 3;</code>
+       */
+      public java.util.List<? extends EDS10ProtocolBuffer.SystemLogMessageOrBuilder> 
+           getLogsOrBuilderList() {
+        if (logsBuilder_ != null) {
+          return logsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(logs_);
+        }
+      }
+      /**
+       * <code>repeated .SystemLogMessage logs = 3;</code>
+       */
+      public EDS10ProtocolBuffer.SystemLogMessage.Builder addLogsBuilder() {
+        return getLogsFieldBuilder().addBuilder(
+            EDS10ProtocolBuffer.SystemLogMessage.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .SystemLogMessage logs = 3;</code>
+       */
+      public EDS10ProtocolBuffer.SystemLogMessage.Builder addLogsBuilder(
+          int index) {
+        return getLogsFieldBuilder().addBuilder(
+            index, EDS10ProtocolBuffer.SystemLogMessage.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .SystemLogMessage logs = 3;</code>
+       */
+      public java.util.List<EDS10ProtocolBuffer.SystemLogMessage.Builder> 
+           getLogsBuilderList() {
+        return getLogsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          EDS10ProtocolBuffer.SystemLogMessage, EDS10ProtocolBuffer.SystemLogMessage.Builder, EDS10ProtocolBuffer.SystemLogMessageOrBuilder> 
+          getLogsFieldBuilder() {
+        if (logsBuilder_ == null) {
+          logsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              EDS10ProtocolBuffer.SystemLogMessage, EDS10ProtocolBuffer.SystemLogMessage.Builder, EDS10ProtocolBuffer.SystemLogMessageOrBuilder>(
+                  logs_,
+                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  getParentForChildren(),
+                  isClean());
+          logs_ = null;
+        }
+        return logsBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:SystemLogReadMessage)
+    }
+
+    // @@protoc_insertion_point(class_scope:SystemLogReadMessage)
+    private static final EDS10ProtocolBuffer.SystemLogReadMessage DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.SystemLogReadMessage();
+    }
+
+    public static EDS10ProtocolBuffer.SystemLogReadMessage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SystemLogReadMessage>
+        PARSER = new com.google.protobuf.AbstractParser<SystemLogReadMessage>() {
+      @java.lang.Override
+      public SystemLogReadMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SystemLogReadMessage(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SystemLogReadMessage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SystemLogReadMessage> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public EDS10ProtocolBuffer.SystemLogReadMessage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SystemLogMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SystemLogMessage)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Time since boot (From latest power message)
+     * </pre>
+     *
+     * <code>uint32 time_since_boot = 1;</code>
+     */
+    int getTimeSinceBoot();
+
+    /**
+     * <pre>
+     * Startup
+     * </pre>
+     *
+     * <code>.SystemLogBoot boot = 2;</code>
+     */
+    boolean hasBoot();
+    /**
+     * <pre>
+     * Startup
+     * </pre>
+     *
+     * <code>.SystemLogBoot boot = 2;</code>
+     */
+    EDS10ProtocolBuffer.SystemLogBoot getBoot();
+    /**
+     * <pre>
+     * Startup
+     * </pre>
+     *
+     * <code>.SystemLogBoot boot = 2;</code>
+     */
+    EDS10ProtocolBuffer.SystemLogBootOrBuilder getBootOrBuilder();
+
+    /**
+     * <code>.SystemLogNetLink netlink = 3;</code>
+     */
+    boolean hasNetlink();
+    /**
+     * <code>.SystemLogNetLink netlink = 3;</code>
+     */
+    EDS10ProtocolBuffer.SystemLogNetLink getNetlink();
+    /**
+     * <code>.SystemLogNetLink netlink = 3;</code>
+     */
+    EDS10ProtocolBuffer.SystemLogNetLinkOrBuilder getNetlinkOrBuilder();
+
+    /**
+     * <code>.SystemLogNTP ntp = 4;</code>
+     */
+    boolean hasNtp();
+    /**
+     * <code>.SystemLogNTP ntp = 4;</code>
+     */
+    EDS10ProtocolBuffer.SystemLogNTP getNtp();
+    /**
+     * <code>.SystemLogNTP ntp = 4;</code>
+     */
+    EDS10ProtocolBuffer.SystemLogNTPOrBuilder getNtpOrBuilder();
+
+    /**
+     * <code>.SystemLogTrigger trigger = 5;</code>
+     */
+    boolean hasTrigger();
+    /**
+     * <code>.SystemLogTrigger trigger = 5;</code>
+     */
+    EDS10ProtocolBuffer.SystemLogTrigger getTrigger();
+    /**
+     * <code>.SystemLogTrigger trigger = 5;</code>
+     */
+    EDS10ProtocolBuffer.SystemLogTriggerOrBuilder getTriggerOrBuilder();
+
+    /**
+     * <code>.SystemLogSpektra spektra = 6;</code>
+     */
+    boolean hasSpektra();
+    /**
+     * <code>.SystemLogSpektra spektra = 6;</code>
+     */
+    EDS10ProtocolBuffer.SystemLogSpektra getSpektra();
+    /**
+     * <code>.SystemLogSpektra spektra = 6;</code>
+     */
+    EDS10ProtocolBuffer.SystemLogSpektraOrBuilder getSpektraOrBuilder();
+
+    /**
+     * <code>.SystemLogSchedule schedule = 7;</code>
+     */
+    boolean hasSchedule();
+    /**
+     * <code>.SystemLogSchedule schedule = 7;</code>
+     */
+    EDS10ProtocolBuffer.SystemLogSchedule getSchedule();
+    /**
+     * <code>.SystemLogSchedule schedule = 7;</code>
+     */
+    EDS10ProtocolBuffer.SystemLogScheduleOrBuilder getScheduleOrBuilder();
+
+    /**
+     * <code>.SystemLogUserStart userstart = 8;</code>
+     */
+    boolean hasUserstart();
+    /**
+     * <code>.SystemLogUserStart userstart = 8;</code>
+     */
+    EDS10ProtocolBuffer.SystemLogUserStart getUserstart();
+    /**
+     * <code>.SystemLogUserStart userstart = 8;</code>
+     */
+    EDS10ProtocolBuffer.SystemLogUserStartOrBuilder getUserstartOrBuilder();
+
+    public EDS10ProtocolBuffer.SystemLogMessage.PacketCase getPacketCase();
+  }
+  /**
+   * <pre>
+   ***** Log Packet ****
+   * </pre>
+   *
+   * Protobuf type {@code SystemLogMessage}
+   */
+  public  static final class SystemLogMessage extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:SystemLogMessage)
+      SystemLogMessageOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use SystemLogMessage.newBuilder() to construct.
+    private SystemLogMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SystemLogMessage() {
+      timeSinceBoot_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SystemLogMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              timeSinceBoot_ = input.readUInt32();
+              break;
+            }
+            case 18: {
+              EDS10ProtocolBuffer.SystemLogBoot.Builder subBuilder = null;
+              if (packetCase_ == 2) {
+                subBuilder = ((EDS10ProtocolBuffer.SystemLogBoot) packet_).toBuilder();
+              }
+              packet_ =
+                  input.readMessage(EDS10ProtocolBuffer.SystemLogBoot.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((EDS10ProtocolBuffer.SystemLogBoot) packet_);
+                packet_ = subBuilder.buildPartial();
+              }
+              packetCase_ = 2;
+              break;
+            }
+            case 26: {
+              EDS10ProtocolBuffer.SystemLogNetLink.Builder subBuilder = null;
+              if (packetCase_ == 3) {
+                subBuilder = ((EDS10ProtocolBuffer.SystemLogNetLink) packet_).toBuilder();
+              }
+              packet_ =
+                  input.readMessage(EDS10ProtocolBuffer.SystemLogNetLink.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((EDS10ProtocolBuffer.SystemLogNetLink) packet_);
+                packet_ = subBuilder.buildPartial();
+              }
+              packetCase_ = 3;
+              break;
+            }
+            case 34: {
+              EDS10ProtocolBuffer.SystemLogNTP.Builder subBuilder = null;
+              if (packetCase_ == 4) {
+                subBuilder = ((EDS10ProtocolBuffer.SystemLogNTP) packet_).toBuilder();
+              }
+              packet_ =
+                  input.readMessage(EDS10ProtocolBuffer.SystemLogNTP.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((EDS10ProtocolBuffer.SystemLogNTP) packet_);
+                packet_ = subBuilder.buildPartial();
+              }
+              packetCase_ = 4;
+              break;
+            }
+            case 42: {
+              EDS10ProtocolBuffer.SystemLogTrigger.Builder subBuilder = null;
+              if (packetCase_ == 5) {
+                subBuilder = ((EDS10ProtocolBuffer.SystemLogTrigger) packet_).toBuilder();
+              }
+              packet_ =
+                  input.readMessage(EDS10ProtocolBuffer.SystemLogTrigger.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((EDS10ProtocolBuffer.SystemLogTrigger) packet_);
+                packet_ = subBuilder.buildPartial();
+              }
+              packetCase_ = 5;
+              break;
+            }
+            case 50: {
+              EDS10ProtocolBuffer.SystemLogSpektra.Builder subBuilder = null;
+              if (packetCase_ == 6) {
+                subBuilder = ((EDS10ProtocolBuffer.SystemLogSpektra) packet_).toBuilder();
+              }
+              packet_ =
+                  input.readMessage(EDS10ProtocolBuffer.SystemLogSpektra.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((EDS10ProtocolBuffer.SystemLogSpektra) packet_);
+                packet_ = subBuilder.buildPartial();
+              }
+              packetCase_ = 6;
+              break;
+            }
+            case 58: {
+              EDS10ProtocolBuffer.SystemLogSchedule.Builder subBuilder = null;
+              if (packetCase_ == 7) {
+                subBuilder = ((EDS10ProtocolBuffer.SystemLogSchedule) packet_).toBuilder();
+              }
+              packet_ =
+                  input.readMessage(EDS10ProtocolBuffer.SystemLogSchedule.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((EDS10ProtocolBuffer.SystemLogSchedule) packet_);
+                packet_ = subBuilder.buildPartial();
+              }
+              packetCase_ = 7;
+              break;
+            }
+            case 66: {
+              EDS10ProtocolBuffer.SystemLogUserStart.Builder subBuilder = null;
+              if (packetCase_ == 8) {
+                subBuilder = ((EDS10ProtocolBuffer.SystemLogUserStart) packet_).toBuilder();
+              }
+              packet_ =
+                  input.readMessage(EDS10ProtocolBuffer.SystemLogUserStart.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((EDS10ProtocolBuffer.SystemLogUserStart) packet_);
+                packet_ = subBuilder.buildPartial();
+              }
+              packetCase_ = 8;
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.internal_static_SystemLogMessage_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return EDS10ProtocolBuffer.internal_static_SystemLogMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              EDS10ProtocolBuffer.SystemLogMessage.class, EDS10ProtocolBuffer.SystemLogMessage.Builder.class);
+    }
+
+    private int packetCase_ = 0;
+    private java.lang.Object packet_;
+    public enum PacketCase
+        implements com.google.protobuf.Internal.EnumLite {
+      BOOT(2),
+      NETLINK(3),
+      NTP(4),
+      TRIGGER(5),
+      SPEKTRA(6),
+      SCHEDULE(7),
+      USERSTART(8),
+      PACKET_NOT_SET(0);
+      private final int value;
+      private PacketCase(int value) {
+        this.value = value;
+      }
+      /**
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static PacketCase valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static PacketCase forNumber(int value) {
+        switch (value) {
+          case 2: return BOOT;
+          case 3: return NETLINK;
+          case 4: return NTP;
+          case 5: return TRIGGER;
+          case 6: return SPEKTRA;
+          case 7: return SCHEDULE;
+          case 8: return USERSTART;
+          case 0: return PACKET_NOT_SET;
+          default: return null;
+        }
+      }
+      public int getNumber() {
+        return this.value;
+      }
+    };
+
+    public PacketCase
+    getPacketCase() {
+      return PacketCase.forNumber(
+          packetCase_);
+    }
+
+    public static final int TIME_SINCE_BOOT_FIELD_NUMBER = 1;
+    private int timeSinceBoot_;
+    /**
+     * <pre>
+     * Time since boot (From latest power message)
+     * </pre>
+     *
+     * <code>uint32 time_since_boot = 1;</code>
+     */
+    public int getTimeSinceBoot() {
+      return timeSinceBoot_;
+    }
+
+    public static final int BOOT_FIELD_NUMBER = 2;
+    /**
+     * <pre>
+     * Startup
+     * </pre>
+     *
+     * <code>.SystemLogBoot boot = 2;</code>
+     */
+    public boolean hasBoot() {
+      return packetCase_ == 2;
+    }
+    /**
+     * <pre>
+     * Startup
+     * </pre>
+     *
+     * <code>.SystemLogBoot boot = 2;</code>
+     */
+    public EDS10ProtocolBuffer.SystemLogBoot getBoot() {
+      if (packetCase_ == 2) {
+         return (EDS10ProtocolBuffer.SystemLogBoot) packet_;
+      }
+      return EDS10ProtocolBuffer.SystemLogBoot.getDefaultInstance();
+    }
+    /**
+     * <pre>
+     * Startup
+     * </pre>
+     *
+     * <code>.SystemLogBoot boot = 2;</code>
+     */
+    public EDS10ProtocolBuffer.SystemLogBootOrBuilder getBootOrBuilder() {
+      if (packetCase_ == 2) {
+         return (EDS10ProtocolBuffer.SystemLogBoot) packet_;
+      }
+      return EDS10ProtocolBuffer.SystemLogBoot.getDefaultInstance();
+    }
+
+    public static final int NETLINK_FIELD_NUMBER = 3;
+    /**
+     * <code>.SystemLogNetLink netlink = 3;</code>
+     */
+    public boolean hasNetlink() {
+      return packetCase_ == 3;
+    }
+    /**
+     * <code>.SystemLogNetLink netlink = 3;</code>
+     */
+    public EDS10ProtocolBuffer.SystemLogNetLink getNetlink() {
+      if (packetCase_ == 3) {
+         return (EDS10ProtocolBuffer.SystemLogNetLink) packet_;
+      }
+      return EDS10ProtocolBuffer.SystemLogNetLink.getDefaultInstance();
+    }
+    /**
+     * <code>.SystemLogNetLink netlink = 3;</code>
+     */
+    public EDS10ProtocolBuffer.SystemLogNetLinkOrBuilder getNetlinkOrBuilder() {
+      if (packetCase_ == 3) {
+         return (EDS10ProtocolBuffer.SystemLogNetLink) packet_;
+      }
+      return EDS10ProtocolBuffer.SystemLogNetLink.getDefaultInstance();
+    }
+
+    public static final int NTP_FIELD_NUMBER = 4;
+    /**
+     * <code>.SystemLogNTP ntp = 4;</code>
+     */
+    public boolean hasNtp() {
+      return packetCase_ == 4;
+    }
+    /**
+     * <code>.SystemLogNTP ntp = 4;</code>
+     */
+    public EDS10ProtocolBuffer.SystemLogNTP getNtp() {
+      if (packetCase_ == 4) {
+         return (EDS10ProtocolBuffer.SystemLogNTP) packet_;
+      }
+      return EDS10ProtocolBuffer.SystemLogNTP.getDefaultInstance();
+    }
+    /**
+     * <code>.SystemLogNTP ntp = 4;</code>
+     */
+    public EDS10ProtocolBuffer.SystemLogNTPOrBuilder getNtpOrBuilder() {
+      if (packetCase_ == 4) {
+         return (EDS10ProtocolBuffer.SystemLogNTP) packet_;
+      }
+      return EDS10ProtocolBuffer.SystemLogNTP.getDefaultInstance();
+    }
+
+    public static final int TRIGGER_FIELD_NUMBER = 5;
+    /**
+     * <code>.SystemLogTrigger trigger = 5;</code>
+     */
+    public boolean hasTrigger() {
+      return packetCase_ == 5;
+    }
+    /**
+     * <code>.SystemLogTrigger trigger = 5;</code>
+     */
+    public EDS10ProtocolBuffer.SystemLogTrigger getTrigger() {
+      if (packetCase_ == 5) {
+         return (EDS10ProtocolBuffer.SystemLogTrigger) packet_;
+      }
+      return EDS10ProtocolBuffer.SystemLogTrigger.getDefaultInstance();
+    }
+    /**
+     * <code>.SystemLogTrigger trigger = 5;</code>
+     */
+    public EDS10ProtocolBuffer.SystemLogTriggerOrBuilder getTriggerOrBuilder() {
+      if (packetCase_ == 5) {
+         return (EDS10ProtocolBuffer.SystemLogTrigger) packet_;
+      }
+      return EDS10ProtocolBuffer.SystemLogTrigger.getDefaultInstance();
+    }
+
+    public static final int SPEKTRA_FIELD_NUMBER = 6;
+    /**
+     * <code>.SystemLogSpektra spektra = 6;</code>
+     */
+    public boolean hasSpektra() {
+      return packetCase_ == 6;
+    }
+    /**
+     * <code>.SystemLogSpektra spektra = 6;</code>
+     */
+    public EDS10ProtocolBuffer.SystemLogSpektra getSpektra() {
+      if (packetCase_ == 6) {
+         return (EDS10ProtocolBuffer.SystemLogSpektra) packet_;
+      }
+      return EDS10ProtocolBuffer.SystemLogSpektra.getDefaultInstance();
+    }
+    /**
+     * <code>.SystemLogSpektra spektra = 6;</code>
+     */
+    public EDS10ProtocolBuffer.SystemLogSpektraOrBuilder getSpektraOrBuilder() {
+      if (packetCase_ == 6) {
+         return (EDS10ProtocolBuffer.SystemLogSpektra) packet_;
+      }
+      return EDS10ProtocolBuffer.SystemLogSpektra.getDefaultInstance();
+    }
+
+    public static final int SCHEDULE_FIELD_NUMBER = 7;
+    /**
+     * <code>.SystemLogSchedule schedule = 7;</code>
+     */
+    public boolean hasSchedule() {
+      return packetCase_ == 7;
+    }
+    /**
+     * <code>.SystemLogSchedule schedule = 7;</code>
+     */
+    public EDS10ProtocolBuffer.SystemLogSchedule getSchedule() {
+      if (packetCase_ == 7) {
+         return (EDS10ProtocolBuffer.SystemLogSchedule) packet_;
+      }
+      return EDS10ProtocolBuffer.SystemLogSchedule.getDefaultInstance();
+    }
+    /**
+     * <code>.SystemLogSchedule schedule = 7;</code>
+     */
+    public EDS10ProtocolBuffer.SystemLogScheduleOrBuilder getScheduleOrBuilder() {
+      if (packetCase_ == 7) {
+         return (EDS10ProtocolBuffer.SystemLogSchedule) packet_;
+      }
+      return EDS10ProtocolBuffer.SystemLogSchedule.getDefaultInstance();
+    }
+
+    public static final int USERSTART_FIELD_NUMBER = 8;
+    /**
+     * <code>.SystemLogUserStart userstart = 8;</code>
+     */
+    public boolean hasUserstart() {
+      return packetCase_ == 8;
+    }
+    /**
+     * <code>.SystemLogUserStart userstart = 8;</code>
+     */
+    public EDS10ProtocolBuffer.SystemLogUserStart getUserstart() {
+      if (packetCase_ == 8) {
+         return (EDS10ProtocolBuffer.SystemLogUserStart) packet_;
+      }
+      return EDS10ProtocolBuffer.SystemLogUserStart.getDefaultInstance();
+    }
+    /**
+     * <code>.SystemLogUserStart userstart = 8;</code>
+     */
+    public EDS10ProtocolBuffer.SystemLogUserStartOrBuilder getUserstartOrBuilder() {
+      if (packetCase_ == 8) {
+         return (EDS10ProtocolBuffer.SystemLogUserStart) packet_;
+      }
+      return EDS10ProtocolBuffer.SystemLogUserStart.getDefaultInstance();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (timeSinceBoot_ != 0) {
+        output.writeUInt32(1, timeSinceBoot_);
+      }
+      if (packetCase_ == 2) {
+        output.writeMessage(2, (EDS10ProtocolBuffer.SystemLogBoot) packet_);
+      }
+      if (packetCase_ == 3) {
+        output.writeMessage(3, (EDS10ProtocolBuffer.SystemLogNetLink) packet_);
+      }
+      if (packetCase_ == 4) {
+        output.writeMessage(4, (EDS10ProtocolBuffer.SystemLogNTP) packet_);
+      }
+      if (packetCase_ == 5) {
+        output.writeMessage(5, (EDS10ProtocolBuffer.SystemLogTrigger) packet_);
+      }
+      if (packetCase_ == 6) {
+        output.writeMessage(6, (EDS10ProtocolBuffer.SystemLogSpektra) packet_);
+      }
+      if (packetCase_ == 7) {
+        output.writeMessage(7, (EDS10ProtocolBuffer.SystemLogSchedule) packet_);
+      }
+      if (packetCase_ == 8) {
+        output.writeMessage(8, (EDS10ProtocolBuffer.SystemLogUserStart) packet_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (timeSinceBoot_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, timeSinceBoot_);
+      }
+      if (packetCase_ == 2) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, (EDS10ProtocolBuffer.SystemLogBoot) packet_);
+      }
+      if (packetCase_ == 3) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, (EDS10ProtocolBuffer.SystemLogNetLink) packet_);
+      }
+      if (packetCase_ == 4) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, (EDS10ProtocolBuffer.SystemLogNTP) packet_);
+      }
+      if (packetCase_ == 5) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, (EDS10ProtocolBuffer.SystemLogTrigger) packet_);
+      }
+      if (packetCase_ == 6) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, (EDS10ProtocolBuffer.SystemLogSpektra) packet_);
+      }
+      if (packetCase_ == 7) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(7, (EDS10ProtocolBuffer.SystemLogSchedule) packet_);
+      }
+      if (packetCase_ == 8) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, (EDS10ProtocolBuffer.SystemLogUserStart) packet_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof EDS10ProtocolBuffer.SystemLogMessage)) {
+        return super.equals(obj);
+      }
+      EDS10ProtocolBuffer.SystemLogMessage other = (EDS10ProtocolBuffer.SystemLogMessage) obj;
+
+      boolean result = true;
+      result = result && (getTimeSinceBoot()
+          == other.getTimeSinceBoot());
+      result = result && getPacketCase().equals(
+          other.getPacketCase());
+      if (!result) return false;
+      switch (packetCase_) {
+        case 2:
+          result = result && getBoot()
+              .equals(other.getBoot());
+          break;
+        case 3:
+          result = result && getNetlink()
+              .equals(other.getNetlink());
+          break;
+        case 4:
+          result = result && getNtp()
+              .equals(other.getNtp());
+          break;
+        case 5:
+          result = result && getTrigger()
+              .equals(other.getTrigger());
+          break;
+        case 6:
+          result = result && getSpektra()
+              .equals(other.getSpektra());
+          break;
+        case 7:
+          result = result && getSchedule()
+              .equals(other.getSchedule());
+          break;
+        case 8:
+          result = result && getUserstart()
+              .equals(other.getUserstart());
+          break;
+        case 0:
+        default:
+      }
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TIME_SINCE_BOOT_FIELD_NUMBER;
+      hash = (53 * hash) + getTimeSinceBoot();
+      switch (packetCase_) {
+        case 2:
+          hash = (37 * hash) + BOOT_FIELD_NUMBER;
+          hash = (53 * hash) + getBoot().hashCode();
+          break;
+        case 3:
+          hash = (37 * hash) + NETLINK_FIELD_NUMBER;
+          hash = (53 * hash) + getNetlink().hashCode();
+          break;
+        case 4:
+          hash = (37 * hash) + NTP_FIELD_NUMBER;
+          hash = (53 * hash) + getNtp().hashCode();
+          break;
+        case 5:
+          hash = (37 * hash) + TRIGGER_FIELD_NUMBER;
+          hash = (53 * hash) + getTrigger().hashCode();
+          break;
+        case 6:
+          hash = (37 * hash) + SPEKTRA_FIELD_NUMBER;
+          hash = (53 * hash) + getSpektra().hashCode();
+          break;
+        case 7:
+          hash = (37 * hash) + SCHEDULE_FIELD_NUMBER;
+          hash = (53 * hash) + getSchedule().hashCode();
+          break;
+        case 8:
+          hash = (37 * hash) + USERSTART_FIELD_NUMBER;
+          hash = (53 * hash) + getUserstart().hashCode();
+          break;
+        case 0:
+        default:
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static EDS10ProtocolBuffer.SystemLogMessage parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SystemLogMessage parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SystemLogMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SystemLogMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SystemLogMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SystemLogMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SystemLogMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(EDS10ProtocolBuffer.SystemLogMessage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     ***** Log Packet ****
+     * </pre>
+     *
+     * Protobuf type {@code SystemLogMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:SystemLogMessage)
+        EDS10ProtocolBuffer.SystemLogMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return EDS10ProtocolBuffer.internal_static_SystemLogMessage_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return EDS10ProtocolBuffer.internal_static_SystemLogMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                EDS10ProtocolBuffer.SystemLogMessage.class, EDS10ProtocolBuffer.SystemLogMessage.Builder.class);
+      }
+
+      // Construct using EDS10ProtocolBuffer.SystemLogMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        timeSinceBoot_ = 0;
+
+        packetCase_ = 0;
+        packet_ = null;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return EDS10ProtocolBuffer.internal_static_SystemLogMessage_descriptor;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SystemLogMessage getDefaultInstanceForType() {
+        return EDS10ProtocolBuffer.SystemLogMessage.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SystemLogMessage build() {
+        EDS10ProtocolBuffer.SystemLogMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SystemLogMessage buildPartial() {
+        EDS10ProtocolBuffer.SystemLogMessage result = new EDS10ProtocolBuffer.SystemLogMessage(this);
+        result.timeSinceBoot_ = timeSinceBoot_;
+        if (packetCase_ == 2) {
+          if (bootBuilder_ == null) {
+            result.packet_ = packet_;
+          } else {
+            result.packet_ = bootBuilder_.build();
+          }
+        }
+        if (packetCase_ == 3) {
+          if (netlinkBuilder_ == null) {
+            result.packet_ = packet_;
+          } else {
+            result.packet_ = netlinkBuilder_.build();
+          }
+        }
+        if (packetCase_ == 4) {
+          if (ntpBuilder_ == null) {
+            result.packet_ = packet_;
+          } else {
+            result.packet_ = ntpBuilder_.build();
+          }
+        }
+        if (packetCase_ == 5) {
+          if (triggerBuilder_ == null) {
+            result.packet_ = packet_;
+          } else {
+            result.packet_ = triggerBuilder_.build();
+          }
+        }
+        if (packetCase_ == 6) {
+          if (spektraBuilder_ == null) {
+            result.packet_ = packet_;
+          } else {
+            result.packet_ = spektraBuilder_.build();
+          }
+        }
+        if (packetCase_ == 7) {
+          if (scheduleBuilder_ == null) {
+            result.packet_ = packet_;
+          } else {
+            result.packet_ = scheduleBuilder_.build();
+          }
+        }
+        if (packetCase_ == 8) {
+          if (userstartBuilder_ == null) {
+            result.packet_ = packet_;
+          } else {
+            result.packet_ = userstartBuilder_.build();
+          }
+        }
+        result.packetCase_ = packetCase_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof EDS10ProtocolBuffer.SystemLogMessage) {
+          return mergeFrom((EDS10ProtocolBuffer.SystemLogMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(EDS10ProtocolBuffer.SystemLogMessage other) {
+        if (other == EDS10ProtocolBuffer.SystemLogMessage.getDefaultInstance()) return this;
+        if (other.getTimeSinceBoot() != 0) {
+          setTimeSinceBoot(other.getTimeSinceBoot());
+        }
+        switch (other.getPacketCase()) {
+          case BOOT: {
+            mergeBoot(other.getBoot());
+            break;
+          }
+          case NETLINK: {
+            mergeNetlink(other.getNetlink());
+            break;
+          }
+          case NTP: {
+            mergeNtp(other.getNtp());
+            break;
+          }
+          case TRIGGER: {
+            mergeTrigger(other.getTrigger());
+            break;
+          }
+          case SPEKTRA: {
+            mergeSpektra(other.getSpektra());
+            break;
+          }
+          case SCHEDULE: {
+            mergeSchedule(other.getSchedule());
+            break;
+          }
+          case USERSTART: {
+            mergeUserstart(other.getUserstart());
+            break;
+          }
+          case PACKET_NOT_SET: {
+            break;
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        EDS10ProtocolBuffer.SystemLogMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (EDS10ProtocolBuffer.SystemLogMessage) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int packetCase_ = 0;
+      private java.lang.Object packet_;
+      public PacketCase
+          getPacketCase() {
+        return PacketCase.forNumber(
+            packetCase_);
+      }
+
+      public Builder clearPacket() {
+        packetCase_ = 0;
+        packet_ = null;
+        onChanged();
+        return this;
+      }
+
+
+      private int timeSinceBoot_ ;
+      /**
+       * <pre>
+       * Time since boot (From latest power message)
+       * </pre>
+       *
+       * <code>uint32 time_since_boot = 1;</code>
+       */
+      public int getTimeSinceBoot() {
+        return timeSinceBoot_;
+      }
+      /**
+       * <pre>
+       * Time since boot (From latest power message)
+       * </pre>
+       *
+       * <code>uint32 time_since_boot = 1;</code>
+       */
+      public Builder setTimeSinceBoot(int value) {
+        
+        timeSinceBoot_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Time since boot (From latest power message)
+       * </pre>
+       *
+       * <code>uint32 time_since_boot = 1;</code>
+       */
+      public Builder clearTimeSinceBoot() {
+        
+        timeSinceBoot_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.SystemLogBoot, EDS10ProtocolBuffer.SystemLogBoot.Builder, EDS10ProtocolBuffer.SystemLogBootOrBuilder> bootBuilder_;
+      /**
+       * <pre>
+       * Startup
+       * </pre>
+       *
+       * <code>.SystemLogBoot boot = 2;</code>
+       */
+      public boolean hasBoot() {
+        return packetCase_ == 2;
+      }
+      /**
+       * <pre>
+       * Startup
+       * </pre>
+       *
+       * <code>.SystemLogBoot boot = 2;</code>
+       */
+      public EDS10ProtocolBuffer.SystemLogBoot getBoot() {
+        if (bootBuilder_ == null) {
+          if (packetCase_ == 2) {
+            return (EDS10ProtocolBuffer.SystemLogBoot) packet_;
+          }
+          return EDS10ProtocolBuffer.SystemLogBoot.getDefaultInstance();
+        } else {
+          if (packetCase_ == 2) {
+            return bootBuilder_.getMessage();
+          }
+          return EDS10ProtocolBuffer.SystemLogBoot.getDefaultInstance();
+        }
+      }
+      /**
+       * <pre>
+       * Startup
+       * </pre>
+       *
+       * <code>.SystemLogBoot boot = 2;</code>
+       */
+      public Builder setBoot(EDS10ProtocolBuffer.SystemLogBoot value) {
+        if (bootBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          packet_ = value;
+          onChanged();
+        } else {
+          bootBuilder_.setMessage(value);
+        }
+        packetCase_ = 2;
+        return this;
+      }
+      /**
+       * <pre>
+       * Startup
+       * </pre>
+       *
+       * <code>.SystemLogBoot boot = 2;</code>
+       */
+      public Builder setBoot(
+          EDS10ProtocolBuffer.SystemLogBoot.Builder builderForValue) {
+        if (bootBuilder_ == null) {
+          packet_ = builderForValue.build();
+          onChanged();
+        } else {
+          bootBuilder_.setMessage(builderForValue.build());
+        }
+        packetCase_ = 2;
+        return this;
+      }
+      /**
+       * <pre>
+       * Startup
+       * </pre>
+       *
+       * <code>.SystemLogBoot boot = 2;</code>
+       */
+      public Builder mergeBoot(EDS10ProtocolBuffer.SystemLogBoot value) {
+        if (bootBuilder_ == null) {
+          if (packetCase_ == 2 &&
+              packet_ != EDS10ProtocolBuffer.SystemLogBoot.getDefaultInstance()) {
+            packet_ = EDS10ProtocolBuffer.SystemLogBoot.newBuilder((EDS10ProtocolBuffer.SystemLogBoot) packet_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            packet_ = value;
+          }
+          onChanged();
+        } else {
+          if (packetCase_ == 2) {
+            bootBuilder_.mergeFrom(value);
+          }
+          bootBuilder_.setMessage(value);
+        }
+        packetCase_ = 2;
+        return this;
+      }
+      /**
+       * <pre>
+       * Startup
+       * </pre>
+       *
+       * <code>.SystemLogBoot boot = 2;</code>
+       */
+      public Builder clearBoot() {
+        if (bootBuilder_ == null) {
+          if (packetCase_ == 2) {
+            packetCase_ = 0;
+            packet_ = null;
+            onChanged();
+          }
+        } else {
+          if (packetCase_ == 2) {
+            packetCase_ = 0;
+            packet_ = null;
+          }
+          bootBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Startup
+       * </pre>
+       *
+       * <code>.SystemLogBoot boot = 2;</code>
+       */
+      public EDS10ProtocolBuffer.SystemLogBoot.Builder getBootBuilder() {
+        return getBootFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * Startup
+       * </pre>
+       *
+       * <code>.SystemLogBoot boot = 2;</code>
+       */
+      public EDS10ProtocolBuffer.SystemLogBootOrBuilder getBootOrBuilder() {
+        if ((packetCase_ == 2) && (bootBuilder_ != null)) {
+          return bootBuilder_.getMessageOrBuilder();
+        } else {
+          if (packetCase_ == 2) {
+            return (EDS10ProtocolBuffer.SystemLogBoot) packet_;
+          }
+          return EDS10ProtocolBuffer.SystemLogBoot.getDefaultInstance();
+        }
+      }
+      /**
+       * <pre>
+       * Startup
+       * </pre>
+       *
+       * <code>.SystemLogBoot boot = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.SystemLogBoot, EDS10ProtocolBuffer.SystemLogBoot.Builder, EDS10ProtocolBuffer.SystemLogBootOrBuilder> 
+          getBootFieldBuilder() {
+        if (bootBuilder_ == null) {
+          if (!(packetCase_ == 2)) {
+            packet_ = EDS10ProtocolBuffer.SystemLogBoot.getDefaultInstance();
+          }
+          bootBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.SystemLogBoot, EDS10ProtocolBuffer.SystemLogBoot.Builder, EDS10ProtocolBuffer.SystemLogBootOrBuilder>(
+                  (EDS10ProtocolBuffer.SystemLogBoot) packet_,
+                  getParentForChildren(),
+                  isClean());
+          packet_ = null;
+        }
+        packetCase_ = 2;
+        onChanged();;
+        return bootBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.SystemLogNetLink, EDS10ProtocolBuffer.SystemLogNetLink.Builder, EDS10ProtocolBuffer.SystemLogNetLinkOrBuilder> netlinkBuilder_;
+      /**
+       * <code>.SystemLogNetLink netlink = 3;</code>
+       */
+      public boolean hasNetlink() {
+        return packetCase_ == 3;
+      }
+      /**
+       * <code>.SystemLogNetLink netlink = 3;</code>
+       */
+      public EDS10ProtocolBuffer.SystemLogNetLink getNetlink() {
+        if (netlinkBuilder_ == null) {
+          if (packetCase_ == 3) {
+            return (EDS10ProtocolBuffer.SystemLogNetLink) packet_;
+          }
+          return EDS10ProtocolBuffer.SystemLogNetLink.getDefaultInstance();
+        } else {
+          if (packetCase_ == 3) {
+            return netlinkBuilder_.getMessage();
+          }
+          return EDS10ProtocolBuffer.SystemLogNetLink.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.SystemLogNetLink netlink = 3;</code>
+       */
+      public Builder setNetlink(EDS10ProtocolBuffer.SystemLogNetLink value) {
+        if (netlinkBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          packet_ = value;
+          onChanged();
+        } else {
+          netlinkBuilder_.setMessage(value);
+        }
+        packetCase_ = 3;
+        return this;
+      }
+      /**
+       * <code>.SystemLogNetLink netlink = 3;</code>
+       */
+      public Builder setNetlink(
+          EDS10ProtocolBuffer.SystemLogNetLink.Builder builderForValue) {
+        if (netlinkBuilder_ == null) {
+          packet_ = builderForValue.build();
+          onChanged();
+        } else {
+          netlinkBuilder_.setMessage(builderForValue.build());
+        }
+        packetCase_ = 3;
+        return this;
+      }
+      /**
+       * <code>.SystemLogNetLink netlink = 3;</code>
+       */
+      public Builder mergeNetlink(EDS10ProtocolBuffer.SystemLogNetLink value) {
+        if (netlinkBuilder_ == null) {
+          if (packetCase_ == 3 &&
+              packet_ != EDS10ProtocolBuffer.SystemLogNetLink.getDefaultInstance()) {
+            packet_ = EDS10ProtocolBuffer.SystemLogNetLink.newBuilder((EDS10ProtocolBuffer.SystemLogNetLink) packet_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            packet_ = value;
+          }
+          onChanged();
+        } else {
+          if (packetCase_ == 3) {
+            netlinkBuilder_.mergeFrom(value);
+          }
+          netlinkBuilder_.setMessage(value);
+        }
+        packetCase_ = 3;
+        return this;
+      }
+      /**
+       * <code>.SystemLogNetLink netlink = 3;</code>
+       */
+      public Builder clearNetlink() {
+        if (netlinkBuilder_ == null) {
+          if (packetCase_ == 3) {
+            packetCase_ = 0;
+            packet_ = null;
+            onChanged();
+          }
+        } else {
+          if (packetCase_ == 3) {
+            packetCase_ = 0;
+            packet_ = null;
+          }
+          netlinkBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.SystemLogNetLink netlink = 3;</code>
+       */
+      public EDS10ProtocolBuffer.SystemLogNetLink.Builder getNetlinkBuilder() {
+        return getNetlinkFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.SystemLogNetLink netlink = 3;</code>
+       */
+      public EDS10ProtocolBuffer.SystemLogNetLinkOrBuilder getNetlinkOrBuilder() {
+        if ((packetCase_ == 3) && (netlinkBuilder_ != null)) {
+          return netlinkBuilder_.getMessageOrBuilder();
+        } else {
+          if (packetCase_ == 3) {
+            return (EDS10ProtocolBuffer.SystemLogNetLink) packet_;
+          }
+          return EDS10ProtocolBuffer.SystemLogNetLink.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.SystemLogNetLink netlink = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.SystemLogNetLink, EDS10ProtocolBuffer.SystemLogNetLink.Builder, EDS10ProtocolBuffer.SystemLogNetLinkOrBuilder> 
+          getNetlinkFieldBuilder() {
+        if (netlinkBuilder_ == null) {
+          if (!(packetCase_ == 3)) {
+            packet_ = EDS10ProtocolBuffer.SystemLogNetLink.getDefaultInstance();
+          }
+          netlinkBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.SystemLogNetLink, EDS10ProtocolBuffer.SystemLogNetLink.Builder, EDS10ProtocolBuffer.SystemLogNetLinkOrBuilder>(
+                  (EDS10ProtocolBuffer.SystemLogNetLink) packet_,
+                  getParentForChildren(),
+                  isClean());
+          packet_ = null;
+        }
+        packetCase_ = 3;
+        onChanged();;
+        return netlinkBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.SystemLogNTP, EDS10ProtocolBuffer.SystemLogNTP.Builder, EDS10ProtocolBuffer.SystemLogNTPOrBuilder> ntpBuilder_;
+      /**
+       * <code>.SystemLogNTP ntp = 4;</code>
+       */
+      public boolean hasNtp() {
+        return packetCase_ == 4;
+      }
+      /**
+       * <code>.SystemLogNTP ntp = 4;</code>
+       */
+      public EDS10ProtocolBuffer.SystemLogNTP getNtp() {
+        if (ntpBuilder_ == null) {
+          if (packetCase_ == 4) {
+            return (EDS10ProtocolBuffer.SystemLogNTP) packet_;
+          }
+          return EDS10ProtocolBuffer.SystemLogNTP.getDefaultInstance();
+        } else {
+          if (packetCase_ == 4) {
+            return ntpBuilder_.getMessage();
+          }
+          return EDS10ProtocolBuffer.SystemLogNTP.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.SystemLogNTP ntp = 4;</code>
+       */
+      public Builder setNtp(EDS10ProtocolBuffer.SystemLogNTP value) {
+        if (ntpBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          packet_ = value;
+          onChanged();
+        } else {
+          ntpBuilder_.setMessage(value);
+        }
+        packetCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>.SystemLogNTP ntp = 4;</code>
+       */
+      public Builder setNtp(
+          EDS10ProtocolBuffer.SystemLogNTP.Builder builderForValue) {
+        if (ntpBuilder_ == null) {
+          packet_ = builderForValue.build();
+          onChanged();
+        } else {
+          ntpBuilder_.setMessage(builderForValue.build());
+        }
+        packetCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>.SystemLogNTP ntp = 4;</code>
+       */
+      public Builder mergeNtp(EDS10ProtocolBuffer.SystemLogNTP value) {
+        if (ntpBuilder_ == null) {
+          if (packetCase_ == 4 &&
+              packet_ != EDS10ProtocolBuffer.SystemLogNTP.getDefaultInstance()) {
+            packet_ = EDS10ProtocolBuffer.SystemLogNTP.newBuilder((EDS10ProtocolBuffer.SystemLogNTP) packet_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            packet_ = value;
+          }
+          onChanged();
+        } else {
+          if (packetCase_ == 4) {
+            ntpBuilder_.mergeFrom(value);
+          }
+          ntpBuilder_.setMessage(value);
+        }
+        packetCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>.SystemLogNTP ntp = 4;</code>
+       */
+      public Builder clearNtp() {
+        if (ntpBuilder_ == null) {
+          if (packetCase_ == 4) {
+            packetCase_ = 0;
+            packet_ = null;
+            onChanged();
+          }
+        } else {
+          if (packetCase_ == 4) {
+            packetCase_ = 0;
+            packet_ = null;
+          }
+          ntpBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.SystemLogNTP ntp = 4;</code>
+       */
+      public EDS10ProtocolBuffer.SystemLogNTP.Builder getNtpBuilder() {
+        return getNtpFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.SystemLogNTP ntp = 4;</code>
+       */
+      public EDS10ProtocolBuffer.SystemLogNTPOrBuilder getNtpOrBuilder() {
+        if ((packetCase_ == 4) && (ntpBuilder_ != null)) {
+          return ntpBuilder_.getMessageOrBuilder();
+        } else {
+          if (packetCase_ == 4) {
+            return (EDS10ProtocolBuffer.SystemLogNTP) packet_;
+          }
+          return EDS10ProtocolBuffer.SystemLogNTP.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.SystemLogNTP ntp = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.SystemLogNTP, EDS10ProtocolBuffer.SystemLogNTP.Builder, EDS10ProtocolBuffer.SystemLogNTPOrBuilder> 
+          getNtpFieldBuilder() {
+        if (ntpBuilder_ == null) {
+          if (!(packetCase_ == 4)) {
+            packet_ = EDS10ProtocolBuffer.SystemLogNTP.getDefaultInstance();
+          }
+          ntpBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.SystemLogNTP, EDS10ProtocolBuffer.SystemLogNTP.Builder, EDS10ProtocolBuffer.SystemLogNTPOrBuilder>(
+                  (EDS10ProtocolBuffer.SystemLogNTP) packet_,
+                  getParentForChildren(),
+                  isClean());
+          packet_ = null;
+        }
+        packetCase_ = 4;
+        onChanged();;
+        return ntpBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.SystemLogTrigger, EDS10ProtocolBuffer.SystemLogTrigger.Builder, EDS10ProtocolBuffer.SystemLogTriggerOrBuilder> triggerBuilder_;
+      /**
+       * <code>.SystemLogTrigger trigger = 5;</code>
+       */
+      public boolean hasTrigger() {
+        return packetCase_ == 5;
+      }
+      /**
+       * <code>.SystemLogTrigger trigger = 5;</code>
+       */
+      public EDS10ProtocolBuffer.SystemLogTrigger getTrigger() {
+        if (triggerBuilder_ == null) {
+          if (packetCase_ == 5) {
+            return (EDS10ProtocolBuffer.SystemLogTrigger) packet_;
+          }
+          return EDS10ProtocolBuffer.SystemLogTrigger.getDefaultInstance();
+        } else {
+          if (packetCase_ == 5) {
+            return triggerBuilder_.getMessage();
+          }
+          return EDS10ProtocolBuffer.SystemLogTrigger.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.SystemLogTrigger trigger = 5;</code>
+       */
+      public Builder setTrigger(EDS10ProtocolBuffer.SystemLogTrigger value) {
+        if (triggerBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          packet_ = value;
+          onChanged();
+        } else {
+          triggerBuilder_.setMessage(value);
+        }
+        packetCase_ = 5;
+        return this;
+      }
+      /**
+       * <code>.SystemLogTrigger trigger = 5;</code>
+       */
+      public Builder setTrigger(
+          EDS10ProtocolBuffer.SystemLogTrigger.Builder builderForValue) {
+        if (triggerBuilder_ == null) {
+          packet_ = builderForValue.build();
+          onChanged();
+        } else {
+          triggerBuilder_.setMessage(builderForValue.build());
+        }
+        packetCase_ = 5;
+        return this;
+      }
+      /**
+       * <code>.SystemLogTrigger trigger = 5;</code>
+       */
+      public Builder mergeTrigger(EDS10ProtocolBuffer.SystemLogTrigger value) {
+        if (triggerBuilder_ == null) {
+          if (packetCase_ == 5 &&
+              packet_ != EDS10ProtocolBuffer.SystemLogTrigger.getDefaultInstance()) {
+            packet_ = EDS10ProtocolBuffer.SystemLogTrigger.newBuilder((EDS10ProtocolBuffer.SystemLogTrigger) packet_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            packet_ = value;
+          }
+          onChanged();
+        } else {
+          if (packetCase_ == 5) {
+            triggerBuilder_.mergeFrom(value);
+          }
+          triggerBuilder_.setMessage(value);
+        }
+        packetCase_ = 5;
+        return this;
+      }
+      /**
+       * <code>.SystemLogTrigger trigger = 5;</code>
+       */
+      public Builder clearTrigger() {
+        if (triggerBuilder_ == null) {
+          if (packetCase_ == 5) {
+            packetCase_ = 0;
+            packet_ = null;
+            onChanged();
+          }
+        } else {
+          if (packetCase_ == 5) {
+            packetCase_ = 0;
+            packet_ = null;
+          }
+          triggerBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.SystemLogTrigger trigger = 5;</code>
+       */
+      public EDS10ProtocolBuffer.SystemLogTrigger.Builder getTriggerBuilder() {
+        return getTriggerFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.SystemLogTrigger trigger = 5;</code>
+       */
+      public EDS10ProtocolBuffer.SystemLogTriggerOrBuilder getTriggerOrBuilder() {
+        if ((packetCase_ == 5) && (triggerBuilder_ != null)) {
+          return triggerBuilder_.getMessageOrBuilder();
+        } else {
+          if (packetCase_ == 5) {
+            return (EDS10ProtocolBuffer.SystemLogTrigger) packet_;
+          }
+          return EDS10ProtocolBuffer.SystemLogTrigger.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.SystemLogTrigger trigger = 5;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.SystemLogTrigger, EDS10ProtocolBuffer.SystemLogTrigger.Builder, EDS10ProtocolBuffer.SystemLogTriggerOrBuilder> 
+          getTriggerFieldBuilder() {
+        if (triggerBuilder_ == null) {
+          if (!(packetCase_ == 5)) {
+            packet_ = EDS10ProtocolBuffer.SystemLogTrigger.getDefaultInstance();
+          }
+          triggerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.SystemLogTrigger, EDS10ProtocolBuffer.SystemLogTrigger.Builder, EDS10ProtocolBuffer.SystemLogTriggerOrBuilder>(
+                  (EDS10ProtocolBuffer.SystemLogTrigger) packet_,
+                  getParentForChildren(),
+                  isClean());
+          packet_ = null;
+        }
+        packetCase_ = 5;
+        onChanged();;
+        return triggerBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.SystemLogSpektra, EDS10ProtocolBuffer.SystemLogSpektra.Builder, EDS10ProtocolBuffer.SystemLogSpektraOrBuilder> spektraBuilder_;
+      /**
+       * <code>.SystemLogSpektra spektra = 6;</code>
+       */
+      public boolean hasSpektra() {
+        return packetCase_ == 6;
+      }
+      /**
+       * <code>.SystemLogSpektra spektra = 6;</code>
+       */
+      public EDS10ProtocolBuffer.SystemLogSpektra getSpektra() {
+        if (spektraBuilder_ == null) {
+          if (packetCase_ == 6) {
+            return (EDS10ProtocolBuffer.SystemLogSpektra) packet_;
+          }
+          return EDS10ProtocolBuffer.SystemLogSpektra.getDefaultInstance();
+        } else {
+          if (packetCase_ == 6) {
+            return spektraBuilder_.getMessage();
+          }
+          return EDS10ProtocolBuffer.SystemLogSpektra.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.SystemLogSpektra spektra = 6;</code>
+       */
+      public Builder setSpektra(EDS10ProtocolBuffer.SystemLogSpektra value) {
+        if (spektraBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          packet_ = value;
+          onChanged();
+        } else {
+          spektraBuilder_.setMessage(value);
+        }
+        packetCase_ = 6;
+        return this;
+      }
+      /**
+       * <code>.SystemLogSpektra spektra = 6;</code>
+       */
+      public Builder setSpektra(
+          EDS10ProtocolBuffer.SystemLogSpektra.Builder builderForValue) {
+        if (spektraBuilder_ == null) {
+          packet_ = builderForValue.build();
+          onChanged();
+        } else {
+          spektraBuilder_.setMessage(builderForValue.build());
+        }
+        packetCase_ = 6;
+        return this;
+      }
+      /**
+       * <code>.SystemLogSpektra spektra = 6;</code>
+       */
+      public Builder mergeSpektra(EDS10ProtocolBuffer.SystemLogSpektra value) {
+        if (spektraBuilder_ == null) {
+          if (packetCase_ == 6 &&
+              packet_ != EDS10ProtocolBuffer.SystemLogSpektra.getDefaultInstance()) {
+            packet_ = EDS10ProtocolBuffer.SystemLogSpektra.newBuilder((EDS10ProtocolBuffer.SystemLogSpektra) packet_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            packet_ = value;
+          }
+          onChanged();
+        } else {
+          if (packetCase_ == 6) {
+            spektraBuilder_.mergeFrom(value);
+          }
+          spektraBuilder_.setMessage(value);
+        }
+        packetCase_ = 6;
+        return this;
+      }
+      /**
+       * <code>.SystemLogSpektra spektra = 6;</code>
+       */
+      public Builder clearSpektra() {
+        if (spektraBuilder_ == null) {
+          if (packetCase_ == 6) {
+            packetCase_ = 0;
+            packet_ = null;
+            onChanged();
+          }
+        } else {
+          if (packetCase_ == 6) {
+            packetCase_ = 0;
+            packet_ = null;
+          }
+          spektraBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.SystemLogSpektra spektra = 6;</code>
+       */
+      public EDS10ProtocolBuffer.SystemLogSpektra.Builder getSpektraBuilder() {
+        return getSpektraFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.SystemLogSpektra spektra = 6;</code>
+       */
+      public EDS10ProtocolBuffer.SystemLogSpektraOrBuilder getSpektraOrBuilder() {
+        if ((packetCase_ == 6) && (spektraBuilder_ != null)) {
+          return spektraBuilder_.getMessageOrBuilder();
+        } else {
+          if (packetCase_ == 6) {
+            return (EDS10ProtocolBuffer.SystemLogSpektra) packet_;
+          }
+          return EDS10ProtocolBuffer.SystemLogSpektra.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.SystemLogSpektra spektra = 6;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.SystemLogSpektra, EDS10ProtocolBuffer.SystemLogSpektra.Builder, EDS10ProtocolBuffer.SystemLogSpektraOrBuilder> 
+          getSpektraFieldBuilder() {
+        if (spektraBuilder_ == null) {
+          if (!(packetCase_ == 6)) {
+            packet_ = EDS10ProtocolBuffer.SystemLogSpektra.getDefaultInstance();
+          }
+          spektraBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.SystemLogSpektra, EDS10ProtocolBuffer.SystemLogSpektra.Builder, EDS10ProtocolBuffer.SystemLogSpektraOrBuilder>(
+                  (EDS10ProtocolBuffer.SystemLogSpektra) packet_,
+                  getParentForChildren(),
+                  isClean());
+          packet_ = null;
+        }
+        packetCase_ = 6;
+        onChanged();;
+        return spektraBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.SystemLogSchedule, EDS10ProtocolBuffer.SystemLogSchedule.Builder, EDS10ProtocolBuffer.SystemLogScheduleOrBuilder> scheduleBuilder_;
+      /**
+       * <code>.SystemLogSchedule schedule = 7;</code>
+       */
+      public boolean hasSchedule() {
+        return packetCase_ == 7;
+      }
+      /**
+       * <code>.SystemLogSchedule schedule = 7;</code>
+       */
+      public EDS10ProtocolBuffer.SystemLogSchedule getSchedule() {
+        if (scheduleBuilder_ == null) {
+          if (packetCase_ == 7) {
+            return (EDS10ProtocolBuffer.SystemLogSchedule) packet_;
+          }
+          return EDS10ProtocolBuffer.SystemLogSchedule.getDefaultInstance();
+        } else {
+          if (packetCase_ == 7) {
+            return scheduleBuilder_.getMessage();
+          }
+          return EDS10ProtocolBuffer.SystemLogSchedule.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.SystemLogSchedule schedule = 7;</code>
+       */
+      public Builder setSchedule(EDS10ProtocolBuffer.SystemLogSchedule value) {
+        if (scheduleBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          packet_ = value;
+          onChanged();
+        } else {
+          scheduleBuilder_.setMessage(value);
+        }
+        packetCase_ = 7;
+        return this;
+      }
+      /**
+       * <code>.SystemLogSchedule schedule = 7;</code>
+       */
+      public Builder setSchedule(
+          EDS10ProtocolBuffer.SystemLogSchedule.Builder builderForValue) {
+        if (scheduleBuilder_ == null) {
+          packet_ = builderForValue.build();
+          onChanged();
+        } else {
+          scheduleBuilder_.setMessage(builderForValue.build());
+        }
+        packetCase_ = 7;
+        return this;
+      }
+      /**
+       * <code>.SystemLogSchedule schedule = 7;</code>
+       */
+      public Builder mergeSchedule(EDS10ProtocolBuffer.SystemLogSchedule value) {
+        if (scheduleBuilder_ == null) {
+          if (packetCase_ == 7 &&
+              packet_ != EDS10ProtocolBuffer.SystemLogSchedule.getDefaultInstance()) {
+            packet_ = EDS10ProtocolBuffer.SystemLogSchedule.newBuilder((EDS10ProtocolBuffer.SystemLogSchedule) packet_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            packet_ = value;
+          }
+          onChanged();
+        } else {
+          if (packetCase_ == 7) {
+            scheduleBuilder_.mergeFrom(value);
+          }
+          scheduleBuilder_.setMessage(value);
+        }
+        packetCase_ = 7;
+        return this;
+      }
+      /**
+       * <code>.SystemLogSchedule schedule = 7;</code>
+       */
+      public Builder clearSchedule() {
+        if (scheduleBuilder_ == null) {
+          if (packetCase_ == 7) {
+            packetCase_ = 0;
+            packet_ = null;
+            onChanged();
+          }
+        } else {
+          if (packetCase_ == 7) {
+            packetCase_ = 0;
+            packet_ = null;
+          }
+          scheduleBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.SystemLogSchedule schedule = 7;</code>
+       */
+      public EDS10ProtocolBuffer.SystemLogSchedule.Builder getScheduleBuilder() {
+        return getScheduleFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.SystemLogSchedule schedule = 7;</code>
+       */
+      public EDS10ProtocolBuffer.SystemLogScheduleOrBuilder getScheduleOrBuilder() {
+        if ((packetCase_ == 7) && (scheduleBuilder_ != null)) {
+          return scheduleBuilder_.getMessageOrBuilder();
+        } else {
+          if (packetCase_ == 7) {
+            return (EDS10ProtocolBuffer.SystemLogSchedule) packet_;
+          }
+          return EDS10ProtocolBuffer.SystemLogSchedule.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.SystemLogSchedule schedule = 7;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.SystemLogSchedule, EDS10ProtocolBuffer.SystemLogSchedule.Builder, EDS10ProtocolBuffer.SystemLogScheduleOrBuilder> 
+          getScheduleFieldBuilder() {
+        if (scheduleBuilder_ == null) {
+          if (!(packetCase_ == 7)) {
+            packet_ = EDS10ProtocolBuffer.SystemLogSchedule.getDefaultInstance();
+          }
+          scheduleBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.SystemLogSchedule, EDS10ProtocolBuffer.SystemLogSchedule.Builder, EDS10ProtocolBuffer.SystemLogScheduleOrBuilder>(
+                  (EDS10ProtocolBuffer.SystemLogSchedule) packet_,
+                  getParentForChildren(),
+                  isClean());
+          packet_ = null;
+        }
+        packetCase_ = 7;
+        onChanged();;
+        return scheduleBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.SystemLogUserStart, EDS10ProtocolBuffer.SystemLogUserStart.Builder, EDS10ProtocolBuffer.SystemLogUserStartOrBuilder> userstartBuilder_;
+      /**
+       * <code>.SystemLogUserStart userstart = 8;</code>
+       */
+      public boolean hasUserstart() {
+        return packetCase_ == 8;
+      }
+      /**
+       * <code>.SystemLogUserStart userstart = 8;</code>
+       */
+      public EDS10ProtocolBuffer.SystemLogUserStart getUserstart() {
+        if (userstartBuilder_ == null) {
+          if (packetCase_ == 8) {
+            return (EDS10ProtocolBuffer.SystemLogUserStart) packet_;
+          }
+          return EDS10ProtocolBuffer.SystemLogUserStart.getDefaultInstance();
+        } else {
+          if (packetCase_ == 8) {
+            return userstartBuilder_.getMessage();
+          }
+          return EDS10ProtocolBuffer.SystemLogUserStart.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.SystemLogUserStart userstart = 8;</code>
+       */
+      public Builder setUserstart(EDS10ProtocolBuffer.SystemLogUserStart value) {
+        if (userstartBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          packet_ = value;
+          onChanged();
+        } else {
+          userstartBuilder_.setMessage(value);
+        }
+        packetCase_ = 8;
+        return this;
+      }
+      /**
+       * <code>.SystemLogUserStart userstart = 8;</code>
+       */
+      public Builder setUserstart(
+          EDS10ProtocolBuffer.SystemLogUserStart.Builder builderForValue) {
+        if (userstartBuilder_ == null) {
+          packet_ = builderForValue.build();
+          onChanged();
+        } else {
+          userstartBuilder_.setMessage(builderForValue.build());
+        }
+        packetCase_ = 8;
+        return this;
+      }
+      /**
+       * <code>.SystemLogUserStart userstart = 8;</code>
+       */
+      public Builder mergeUserstart(EDS10ProtocolBuffer.SystemLogUserStart value) {
+        if (userstartBuilder_ == null) {
+          if (packetCase_ == 8 &&
+              packet_ != EDS10ProtocolBuffer.SystemLogUserStart.getDefaultInstance()) {
+            packet_ = EDS10ProtocolBuffer.SystemLogUserStart.newBuilder((EDS10ProtocolBuffer.SystemLogUserStart) packet_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            packet_ = value;
+          }
+          onChanged();
+        } else {
+          if (packetCase_ == 8) {
+            userstartBuilder_.mergeFrom(value);
+          }
+          userstartBuilder_.setMessage(value);
+        }
+        packetCase_ = 8;
+        return this;
+      }
+      /**
+       * <code>.SystemLogUserStart userstart = 8;</code>
+       */
+      public Builder clearUserstart() {
+        if (userstartBuilder_ == null) {
+          if (packetCase_ == 8) {
+            packetCase_ = 0;
+            packet_ = null;
+            onChanged();
+          }
+        } else {
+          if (packetCase_ == 8) {
+            packetCase_ = 0;
+            packet_ = null;
+          }
+          userstartBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.SystemLogUserStart userstart = 8;</code>
+       */
+      public EDS10ProtocolBuffer.SystemLogUserStart.Builder getUserstartBuilder() {
+        return getUserstartFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.SystemLogUserStart userstart = 8;</code>
+       */
+      public EDS10ProtocolBuffer.SystemLogUserStartOrBuilder getUserstartOrBuilder() {
+        if ((packetCase_ == 8) && (userstartBuilder_ != null)) {
+          return userstartBuilder_.getMessageOrBuilder();
+        } else {
+          if (packetCase_ == 8) {
+            return (EDS10ProtocolBuffer.SystemLogUserStart) packet_;
+          }
+          return EDS10ProtocolBuffer.SystemLogUserStart.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.SystemLogUserStart userstart = 8;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.SystemLogUserStart, EDS10ProtocolBuffer.SystemLogUserStart.Builder, EDS10ProtocolBuffer.SystemLogUserStartOrBuilder> 
+          getUserstartFieldBuilder() {
+        if (userstartBuilder_ == null) {
+          if (!(packetCase_ == 8)) {
+            packet_ = EDS10ProtocolBuffer.SystemLogUserStart.getDefaultInstance();
+          }
+          userstartBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.SystemLogUserStart, EDS10ProtocolBuffer.SystemLogUserStart.Builder, EDS10ProtocolBuffer.SystemLogUserStartOrBuilder>(
+                  (EDS10ProtocolBuffer.SystemLogUserStart) packet_,
+                  getParentForChildren(),
+                  isClean());
+          packet_ = null;
+        }
+        packetCase_ = 8;
+        onChanged();;
+        return userstartBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:SystemLogMessage)
+    }
+
+    // @@protoc_insertion_point(class_scope:SystemLogMessage)
+    private static final EDS10ProtocolBuffer.SystemLogMessage DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.SystemLogMessage();
+    }
+
+    public static EDS10ProtocolBuffer.SystemLogMessage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SystemLogMessage>
+        PARSER = new com.google.protobuf.AbstractParser<SystemLogMessage>() {
+      @java.lang.Override
+      public SystemLogMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SystemLogMessage(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SystemLogMessage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SystemLogMessage> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public EDS10ProtocolBuffer.SystemLogMessage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SystemLogBootOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SystemLogBoot)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.TimeClockMessage timeclock = 1;</code>
+     */
+    boolean hasTimeclock();
+    /**
+     * <code>.TimeClockMessage timeclock = 1;</code>
+     */
+    EDS10ProtocolBuffer.TimeClockMessage getTimeclock();
+    /**
+     * <code>.TimeClockMessage timeclock = 1;</code>
+     */
+    EDS10ProtocolBuffer.TimeClockMessageOrBuilder getTimeclockOrBuilder();
+
+    /**
+     * <code>uint32 flags = 2;</code>
+     */
+    int getFlags();
+  }
+  /**
+   * <pre>
+   ***** Log Types ****
+   * </pre>
+   *
+   * Protobuf type {@code SystemLogBoot}
+   */
+  public  static final class SystemLogBoot extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:SystemLogBoot)
+      SystemLogBootOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use SystemLogBoot.newBuilder() to construct.
+    private SystemLogBoot(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SystemLogBoot() {
+      flags_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SystemLogBoot(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              EDS10ProtocolBuffer.TimeClockMessage.Builder subBuilder = null;
+              if (timeclock_ != null) {
+                subBuilder = timeclock_.toBuilder();
+              }
+              timeclock_ = input.readMessage(EDS10ProtocolBuffer.TimeClockMessage.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(timeclock_);
+                timeclock_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 16: {
+
+              flags_ = input.readUInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.internal_static_SystemLogBoot_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return EDS10ProtocolBuffer.internal_static_SystemLogBoot_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              EDS10ProtocolBuffer.SystemLogBoot.class, EDS10ProtocolBuffer.SystemLogBoot.Builder.class);
+    }
+
+    public static final int TIMECLOCK_FIELD_NUMBER = 1;
+    private EDS10ProtocolBuffer.TimeClockMessage timeclock_;
+    /**
+     * <code>.TimeClockMessage timeclock = 1;</code>
+     */
+    public boolean hasTimeclock() {
+      return timeclock_ != null;
+    }
+    /**
+     * <code>.TimeClockMessage timeclock = 1;</code>
+     */
+    public EDS10ProtocolBuffer.TimeClockMessage getTimeclock() {
+      return timeclock_ == null ? EDS10ProtocolBuffer.TimeClockMessage.getDefaultInstance() : timeclock_;
+    }
+    /**
+     * <code>.TimeClockMessage timeclock = 1;</code>
+     */
+    public EDS10ProtocolBuffer.TimeClockMessageOrBuilder getTimeclockOrBuilder() {
+      return getTimeclock();
+    }
+
+    public static final int FLAGS_FIELD_NUMBER = 2;
+    private int flags_;
+    /**
+     * <code>uint32 flags = 2;</code>
+     */
+    public int getFlags() {
+      return flags_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (timeclock_ != null) {
+        output.writeMessage(1, getTimeclock());
+      }
+      if (flags_ != 0) {
+        output.writeUInt32(2, flags_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (timeclock_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getTimeclock());
+      }
+      if (flags_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, flags_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof EDS10ProtocolBuffer.SystemLogBoot)) {
+        return super.equals(obj);
+      }
+      EDS10ProtocolBuffer.SystemLogBoot other = (EDS10ProtocolBuffer.SystemLogBoot) obj;
+
+      boolean result = true;
+      result = result && (hasTimeclock() == other.hasTimeclock());
+      if (hasTimeclock()) {
+        result = result && getTimeclock()
+            .equals(other.getTimeclock());
+      }
+      result = result && (getFlags()
+          == other.getFlags());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasTimeclock()) {
+        hash = (37 * hash) + TIMECLOCK_FIELD_NUMBER;
+        hash = (53 * hash) + getTimeclock().hashCode();
+      }
+      hash = (37 * hash) + FLAGS_FIELD_NUMBER;
+      hash = (53 * hash) + getFlags();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static EDS10ProtocolBuffer.SystemLogBoot parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SystemLogBoot parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogBoot parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SystemLogBoot parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogBoot parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SystemLogBoot parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogBoot parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SystemLogBoot parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogBoot parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SystemLogBoot parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogBoot parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SystemLogBoot parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(EDS10ProtocolBuffer.SystemLogBoot prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     ***** Log Types ****
+     * </pre>
+     *
+     * Protobuf type {@code SystemLogBoot}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:SystemLogBoot)
+        EDS10ProtocolBuffer.SystemLogBootOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return EDS10ProtocolBuffer.internal_static_SystemLogBoot_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return EDS10ProtocolBuffer.internal_static_SystemLogBoot_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                EDS10ProtocolBuffer.SystemLogBoot.class, EDS10ProtocolBuffer.SystemLogBoot.Builder.class);
+      }
+
+      // Construct using EDS10ProtocolBuffer.SystemLogBoot.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (timeclockBuilder_ == null) {
+          timeclock_ = null;
+        } else {
+          timeclock_ = null;
+          timeclockBuilder_ = null;
+        }
+        flags_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return EDS10ProtocolBuffer.internal_static_SystemLogBoot_descriptor;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SystemLogBoot getDefaultInstanceForType() {
+        return EDS10ProtocolBuffer.SystemLogBoot.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SystemLogBoot build() {
+        EDS10ProtocolBuffer.SystemLogBoot result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SystemLogBoot buildPartial() {
+        EDS10ProtocolBuffer.SystemLogBoot result = new EDS10ProtocolBuffer.SystemLogBoot(this);
+        if (timeclockBuilder_ == null) {
+          result.timeclock_ = timeclock_;
+        } else {
+          result.timeclock_ = timeclockBuilder_.build();
+        }
+        result.flags_ = flags_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof EDS10ProtocolBuffer.SystemLogBoot) {
+          return mergeFrom((EDS10ProtocolBuffer.SystemLogBoot)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(EDS10ProtocolBuffer.SystemLogBoot other) {
+        if (other == EDS10ProtocolBuffer.SystemLogBoot.getDefaultInstance()) return this;
+        if (other.hasTimeclock()) {
+          mergeTimeclock(other.getTimeclock());
+        }
+        if (other.getFlags() != 0) {
+          setFlags(other.getFlags());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        EDS10ProtocolBuffer.SystemLogBoot parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (EDS10ProtocolBuffer.SystemLogBoot) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private EDS10ProtocolBuffer.TimeClockMessage timeclock_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.TimeClockMessage, EDS10ProtocolBuffer.TimeClockMessage.Builder, EDS10ProtocolBuffer.TimeClockMessageOrBuilder> timeclockBuilder_;
+      /**
+       * <code>.TimeClockMessage timeclock = 1;</code>
+       */
+      public boolean hasTimeclock() {
+        return timeclockBuilder_ != null || timeclock_ != null;
+      }
+      /**
+       * <code>.TimeClockMessage timeclock = 1;</code>
+       */
+      public EDS10ProtocolBuffer.TimeClockMessage getTimeclock() {
+        if (timeclockBuilder_ == null) {
+          return timeclock_ == null ? EDS10ProtocolBuffer.TimeClockMessage.getDefaultInstance() : timeclock_;
+        } else {
+          return timeclockBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.TimeClockMessage timeclock = 1;</code>
+       */
+      public Builder setTimeclock(EDS10ProtocolBuffer.TimeClockMessage value) {
+        if (timeclockBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          timeclock_ = value;
+          onChanged();
+        } else {
+          timeclockBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.TimeClockMessage timeclock = 1;</code>
+       */
+      public Builder setTimeclock(
+          EDS10ProtocolBuffer.TimeClockMessage.Builder builderForValue) {
+        if (timeclockBuilder_ == null) {
+          timeclock_ = builderForValue.build();
+          onChanged();
+        } else {
+          timeclockBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.TimeClockMessage timeclock = 1;</code>
+       */
+      public Builder mergeTimeclock(EDS10ProtocolBuffer.TimeClockMessage value) {
+        if (timeclockBuilder_ == null) {
+          if (timeclock_ != null) {
+            timeclock_ =
+              EDS10ProtocolBuffer.TimeClockMessage.newBuilder(timeclock_).mergeFrom(value).buildPartial();
+          } else {
+            timeclock_ = value;
+          }
+          onChanged();
+        } else {
+          timeclockBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.TimeClockMessage timeclock = 1;</code>
+       */
+      public Builder clearTimeclock() {
+        if (timeclockBuilder_ == null) {
+          timeclock_ = null;
+          onChanged();
+        } else {
+          timeclock_ = null;
+          timeclockBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.TimeClockMessage timeclock = 1;</code>
+       */
+      public EDS10ProtocolBuffer.TimeClockMessage.Builder getTimeclockBuilder() {
+        
+        onChanged();
+        return getTimeclockFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.TimeClockMessage timeclock = 1;</code>
+       */
+      public EDS10ProtocolBuffer.TimeClockMessageOrBuilder getTimeclockOrBuilder() {
+        if (timeclockBuilder_ != null) {
+          return timeclockBuilder_.getMessageOrBuilder();
+        } else {
+          return timeclock_ == null ?
+              EDS10ProtocolBuffer.TimeClockMessage.getDefaultInstance() : timeclock_;
+        }
+      }
+      /**
+       * <code>.TimeClockMessage timeclock = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.TimeClockMessage, EDS10ProtocolBuffer.TimeClockMessage.Builder, EDS10ProtocolBuffer.TimeClockMessageOrBuilder> 
+          getTimeclockFieldBuilder() {
+        if (timeclockBuilder_ == null) {
+          timeclockBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.TimeClockMessage, EDS10ProtocolBuffer.TimeClockMessage.Builder, EDS10ProtocolBuffer.TimeClockMessageOrBuilder>(
+                  getTimeclock(),
+                  getParentForChildren(),
+                  isClean());
+          timeclock_ = null;
+        }
+        return timeclockBuilder_;
+      }
+
+      private int flags_ ;
+      /**
+       * <code>uint32 flags = 2;</code>
+       */
+      public int getFlags() {
+        return flags_;
+      }
+      /**
+       * <code>uint32 flags = 2;</code>
+       */
+      public Builder setFlags(int value) {
+        
+        flags_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 flags = 2;</code>
+       */
+      public Builder clearFlags() {
+        
+        flags_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:SystemLogBoot)
+    }
+
+    // @@protoc_insertion_point(class_scope:SystemLogBoot)
+    private static final EDS10ProtocolBuffer.SystemLogBoot DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.SystemLogBoot();
+    }
+
+    public static EDS10ProtocolBuffer.SystemLogBoot getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SystemLogBoot>
+        PARSER = new com.google.protobuf.AbstractParser<SystemLogBoot>() {
+      @java.lang.Override
+      public SystemLogBoot parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SystemLogBoot(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SystemLogBoot> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SystemLogBoot> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public EDS10ProtocolBuffer.SystemLogBoot getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SystemLogNetLinkOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SystemLogNetLink)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>bool is_linked = 1;</code>
+     */
+    boolean getIsLinked();
+  }
+  /**
+   * Protobuf type {@code SystemLogNetLink}
+   */
+  public  static final class SystemLogNetLink extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:SystemLogNetLink)
+      SystemLogNetLinkOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use SystemLogNetLink.newBuilder() to construct.
+    private SystemLogNetLink(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SystemLogNetLink() {
+      isLinked_ = false;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SystemLogNetLink(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              isLinked_ = input.readBool();
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.internal_static_SystemLogNetLink_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return EDS10ProtocolBuffer.internal_static_SystemLogNetLink_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              EDS10ProtocolBuffer.SystemLogNetLink.class, EDS10ProtocolBuffer.SystemLogNetLink.Builder.class);
+    }
+
+    public static final int IS_LINKED_FIELD_NUMBER = 1;
+    private boolean isLinked_;
+    /**
+     * <code>bool is_linked = 1;</code>
+     */
+    public boolean getIsLinked() {
+      return isLinked_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (isLinked_ != false) {
+        output.writeBool(1, isLinked_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (isLinked_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(1, isLinked_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof EDS10ProtocolBuffer.SystemLogNetLink)) {
+        return super.equals(obj);
+      }
+      EDS10ProtocolBuffer.SystemLogNetLink other = (EDS10ProtocolBuffer.SystemLogNetLink) obj;
+
+      boolean result = true;
+      result = result && (getIsLinked()
+          == other.getIsLinked());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + IS_LINKED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsLinked());
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static EDS10ProtocolBuffer.SystemLogNetLink parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SystemLogNetLink parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogNetLink parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SystemLogNetLink parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogNetLink parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SystemLogNetLink parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogNetLink parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SystemLogNetLink parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogNetLink parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SystemLogNetLink parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogNetLink parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SystemLogNetLink parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(EDS10ProtocolBuffer.SystemLogNetLink prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code SystemLogNetLink}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:SystemLogNetLink)
+        EDS10ProtocolBuffer.SystemLogNetLinkOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return EDS10ProtocolBuffer.internal_static_SystemLogNetLink_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return EDS10ProtocolBuffer.internal_static_SystemLogNetLink_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                EDS10ProtocolBuffer.SystemLogNetLink.class, EDS10ProtocolBuffer.SystemLogNetLink.Builder.class);
+      }
+
+      // Construct using EDS10ProtocolBuffer.SystemLogNetLink.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        isLinked_ = false;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return EDS10ProtocolBuffer.internal_static_SystemLogNetLink_descriptor;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SystemLogNetLink getDefaultInstanceForType() {
+        return EDS10ProtocolBuffer.SystemLogNetLink.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SystemLogNetLink build() {
+        EDS10ProtocolBuffer.SystemLogNetLink result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SystemLogNetLink buildPartial() {
+        EDS10ProtocolBuffer.SystemLogNetLink result = new EDS10ProtocolBuffer.SystemLogNetLink(this);
+        result.isLinked_ = isLinked_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof EDS10ProtocolBuffer.SystemLogNetLink) {
+          return mergeFrom((EDS10ProtocolBuffer.SystemLogNetLink)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(EDS10ProtocolBuffer.SystemLogNetLink other) {
+        if (other == EDS10ProtocolBuffer.SystemLogNetLink.getDefaultInstance()) return this;
+        if (other.getIsLinked() != false) {
+          setIsLinked(other.getIsLinked());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        EDS10ProtocolBuffer.SystemLogNetLink parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (EDS10ProtocolBuffer.SystemLogNetLink) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private boolean isLinked_ ;
+      /**
+       * <code>bool is_linked = 1;</code>
+       */
+      public boolean getIsLinked() {
+        return isLinked_;
+      }
+      /**
+       * <code>bool is_linked = 1;</code>
+       */
+      public Builder setIsLinked(boolean value) {
+        
+        isLinked_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool is_linked = 1;</code>
+       */
+      public Builder clearIsLinked() {
+        
+        isLinked_ = false;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:SystemLogNetLink)
+    }
+
+    // @@protoc_insertion_point(class_scope:SystemLogNetLink)
+    private static final EDS10ProtocolBuffer.SystemLogNetLink DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.SystemLogNetLink();
+    }
+
+    public static EDS10ProtocolBuffer.SystemLogNetLink getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SystemLogNetLink>
+        PARSER = new com.google.protobuf.AbstractParser<SystemLogNetLink>() {
+      @java.lang.Override
+      public SystemLogNetLink parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SystemLogNetLink(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SystemLogNetLink> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SystemLogNetLink> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public EDS10ProtocolBuffer.SystemLogNetLink getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SystemLogNTPOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SystemLogNTP)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.TimeClockMessage timeclock = 1;</code>
+     */
+    boolean hasTimeclock();
+    /**
+     * <code>.TimeClockMessage timeclock = 1;</code>
+     */
+    EDS10ProtocolBuffer.TimeClockMessage getTimeclock();
+    /**
+     * <code>.TimeClockMessage timeclock = 1;</code>
+     */
+    EDS10ProtocolBuffer.TimeClockMessageOrBuilder getTimeclockOrBuilder();
+  }
+  /**
+   * Protobuf type {@code SystemLogNTP}
+   */
+  public  static final class SystemLogNTP extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:SystemLogNTP)
+      SystemLogNTPOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use SystemLogNTP.newBuilder() to construct.
+    private SystemLogNTP(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SystemLogNTP() {
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SystemLogNTP(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              EDS10ProtocolBuffer.TimeClockMessage.Builder subBuilder = null;
+              if (timeclock_ != null) {
+                subBuilder = timeclock_.toBuilder();
+              }
+              timeclock_ = input.readMessage(EDS10ProtocolBuffer.TimeClockMessage.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(timeclock_);
+                timeclock_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.internal_static_SystemLogNTP_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return EDS10ProtocolBuffer.internal_static_SystemLogNTP_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              EDS10ProtocolBuffer.SystemLogNTP.class, EDS10ProtocolBuffer.SystemLogNTP.Builder.class);
+    }
+
+    public static final int TIMECLOCK_FIELD_NUMBER = 1;
+    private EDS10ProtocolBuffer.TimeClockMessage timeclock_;
+    /**
+     * <code>.TimeClockMessage timeclock = 1;</code>
+     */
+    public boolean hasTimeclock() {
+      return timeclock_ != null;
+    }
+    /**
+     * <code>.TimeClockMessage timeclock = 1;</code>
+     */
+    public EDS10ProtocolBuffer.TimeClockMessage getTimeclock() {
+      return timeclock_ == null ? EDS10ProtocolBuffer.TimeClockMessage.getDefaultInstance() : timeclock_;
+    }
+    /**
+     * <code>.TimeClockMessage timeclock = 1;</code>
+     */
+    public EDS10ProtocolBuffer.TimeClockMessageOrBuilder getTimeclockOrBuilder() {
+      return getTimeclock();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (timeclock_ != null) {
+        output.writeMessage(1, getTimeclock());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (timeclock_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getTimeclock());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof EDS10ProtocolBuffer.SystemLogNTP)) {
+        return super.equals(obj);
+      }
+      EDS10ProtocolBuffer.SystemLogNTP other = (EDS10ProtocolBuffer.SystemLogNTP) obj;
+
+      boolean result = true;
+      result = result && (hasTimeclock() == other.hasTimeclock());
+      if (hasTimeclock()) {
+        result = result && getTimeclock()
+            .equals(other.getTimeclock());
+      }
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasTimeclock()) {
+        hash = (37 * hash) + TIMECLOCK_FIELD_NUMBER;
+        hash = (53 * hash) + getTimeclock().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static EDS10ProtocolBuffer.SystemLogNTP parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SystemLogNTP parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogNTP parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SystemLogNTP parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogNTP parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SystemLogNTP parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogNTP parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SystemLogNTP parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogNTP parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SystemLogNTP parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogNTP parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SystemLogNTP parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(EDS10ProtocolBuffer.SystemLogNTP prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code SystemLogNTP}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:SystemLogNTP)
+        EDS10ProtocolBuffer.SystemLogNTPOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return EDS10ProtocolBuffer.internal_static_SystemLogNTP_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return EDS10ProtocolBuffer.internal_static_SystemLogNTP_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                EDS10ProtocolBuffer.SystemLogNTP.class, EDS10ProtocolBuffer.SystemLogNTP.Builder.class);
+      }
+
+      // Construct using EDS10ProtocolBuffer.SystemLogNTP.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (timeclockBuilder_ == null) {
+          timeclock_ = null;
+        } else {
+          timeclock_ = null;
+          timeclockBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return EDS10ProtocolBuffer.internal_static_SystemLogNTP_descriptor;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SystemLogNTP getDefaultInstanceForType() {
+        return EDS10ProtocolBuffer.SystemLogNTP.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SystemLogNTP build() {
+        EDS10ProtocolBuffer.SystemLogNTP result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SystemLogNTP buildPartial() {
+        EDS10ProtocolBuffer.SystemLogNTP result = new EDS10ProtocolBuffer.SystemLogNTP(this);
+        if (timeclockBuilder_ == null) {
+          result.timeclock_ = timeclock_;
+        } else {
+          result.timeclock_ = timeclockBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof EDS10ProtocolBuffer.SystemLogNTP) {
+          return mergeFrom((EDS10ProtocolBuffer.SystemLogNTP)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(EDS10ProtocolBuffer.SystemLogNTP other) {
+        if (other == EDS10ProtocolBuffer.SystemLogNTP.getDefaultInstance()) return this;
+        if (other.hasTimeclock()) {
+          mergeTimeclock(other.getTimeclock());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        EDS10ProtocolBuffer.SystemLogNTP parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (EDS10ProtocolBuffer.SystemLogNTP) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private EDS10ProtocolBuffer.TimeClockMessage timeclock_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.TimeClockMessage, EDS10ProtocolBuffer.TimeClockMessage.Builder, EDS10ProtocolBuffer.TimeClockMessageOrBuilder> timeclockBuilder_;
+      /**
+       * <code>.TimeClockMessage timeclock = 1;</code>
+       */
+      public boolean hasTimeclock() {
+        return timeclockBuilder_ != null || timeclock_ != null;
+      }
+      /**
+       * <code>.TimeClockMessage timeclock = 1;</code>
+       */
+      public EDS10ProtocolBuffer.TimeClockMessage getTimeclock() {
+        if (timeclockBuilder_ == null) {
+          return timeclock_ == null ? EDS10ProtocolBuffer.TimeClockMessage.getDefaultInstance() : timeclock_;
+        } else {
+          return timeclockBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.TimeClockMessage timeclock = 1;</code>
+       */
+      public Builder setTimeclock(EDS10ProtocolBuffer.TimeClockMessage value) {
+        if (timeclockBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          timeclock_ = value;
+          onChanged();
+        } else {
+          timeclockBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.TimeClockMessage timeclock = 1;</code>
+       */
+      public Builder setTimeclock(
+          EDS10ProtocolBuffer.TimeClockMessage.Builder builderForValue) {
+        if (timeclockBuilder_ == null) {
+          timeclock_ = builderForValue.build();
+          onChanged();
+        } else {
+          timeclockBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.TimeClockMessage timeclock = 1;</code>
+       */
+      public Builder mergeTimeclock(EDS10ProtocolBuffer.TimeClockMessage value) {
+        if (timeclockBuilder_ == null) {
+          if (timeclock_ != null) {
+            timeclock_ =
+              EDS10ProtocolBuffer.TimeClockMessage.newBuilder(timeclock_).mergeFrom(value).buildPartial();
+          } else {
+            timeclock_ = value;
+          }
+          onChanged();
+        } else {
+          timeclockBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.TimeClockMessage timeclock = 1;</code>
+       */
+      public Builder clearTimeclock() {
+        if (timeclockBuilder_ == null) {
+          timeclock_ = null;
+          onChanged();
+        } else {
+          timeclock_ = null;
+          timeclockBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.TimeClockMessage timeclock = 1;</code>
+       */
+      public EDS10ProtocolBuffer.TimeClockMessage.Builder getTimeclockBuilder() {
+        
+        onChanged();
+        return getTimeclockFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.TimeClockMessage timeclock = 1;</code>
+       */
+      public EDS10ProtocolBuffer.TimeClockMessageOrBuilder getTimeclockOrBuilder() {
+        if (timeclockBuilder_ != null) {
+          return timeclockBuilder_.getMessageOrBuilder();
+        } else {
+          return timeclock_ == null ?
+              EDS10ProtocolBuffer.TimeClockMessage.getDefaultInstance() : timeclock_;
+        }
+      }
+      /**
+       * <code>.TimeClockMessage timeclock = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.TimeClockMessage, EDS10ProtocolBuffer.TimeClockMessage.Builder, EDS10ProtocolBuffer.TimeClockMessageOrBuilder> 
+          getTimeclockFieldBuilder() {
+        if (timeclockBuilder_ == null) {
+          timeclockBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.TimeClockMessage, EDS10ProtocolBuffer.TimeClockMessage.Builder, EDS10ProtocolBuffer.TimeClockMessageOrBuilder>(
+                  getTimeclock(),
+                  getParentForChildren(),
+                  isClean());
+          timeclock_ = null;
+        }
+        return timeclockBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:SystemLogNTP)
+    }
+
+    // @@protoc_insertion_point(class_scope:SystemLogNTP)
+    private static final EDS10ProtocolBuffer.SystemLogNTP DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.SystemLogNTP();
+    }
+
+    public static EDS10ProtocolBuffer.SystemLogNTP getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SystemLogNTP>
+        PARSER = new com.google.protobuf.AbstractParser<SystemLogNTP>() {
+      @java.lang.Override
+      public SystemLogNTP parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SystemLogNTP(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SystemLogNTP> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SystemLogNTP> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public EDS10ProtocolBuffer.SystemLogNTP getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SystemLogTriggerOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SystemLogTrigger)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.TriggerMessage trigger = 1;</code>
+     */
+    boolean hasTrigger();
+    /**
+     * <code>.TriggerMessage trigger = 1;</code>
+     */
+    EDS10ProtocolBuffer.TriggerMessage getTrigger();
+    /**
+     * <code>.TriggerMessage trigger = 1;</code>
+     */
+    EDS10ProtocolBuffer.TriggerMessageOrBuilder getTriggerOrBuilder();
+
+    /**
+     * <code>.ReadType source = 2;</code>
+     */
+    int getSourceValue();
+    /**
+     * <code>.ReadType source = 2;</code>
+     */
+    EDS10ProtocolBuffer.ReadType getSource();
+  }
+  /**
+   * Protobuf type {@code SystemLogTrigger}
+   */
+  public  static final class SystemLogTrigger extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:SystemLogTrigger)
+      SystemLogTriggerOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use SystemLogTrigger.newBuilder() to construct.
+    private SystemLogTrigger(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SystemLogTrigger() {
+      source_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SystemLogTrigger(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              EDS10ProtocolBuffer.TriggerMessage.Builder subBuilder = null;
+              if (trigger_ != null) {
+                subBuilder = trigger_.toBuilder();
+              }
+              trigger_ = input.readMessage(EDS10ProtocolBuffer.TriggerMessage.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(trigger_);
+                trigger_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 16: {
+              int rawValue = input.readEnum();
+
+              source_ = rawValue;
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.internal_static_SystemLogTrigger_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return EDS10ProtocolBuffer.internal_static_SystemLogTrigger_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              EDS10ProtocolBuffer.SystemLogTrigger.class, EDS10ProtocolBuffer.SystemLogTrigger.Builder.class);
+    }
+
+    public static final int TRIGGER_FIELD_NUMBER = 1;
+    private EDS10ProtocolBuffer.TriggerMessage trigger_;
+    /**
+     * <code>.TriggerMessage trigger = 1;</code>
+     */
+    public boolean hasTrigger() {
+      return trigger_ != null;
+    }
+    /**
+     * <code>.TriggerMessage trigger = 1;</code>
+     */
+    public EDS10ProtocolBuffer.TriggerMessage getTrigger() {
+      return trigger_ == null ? EDS10ProtocolBuffer.TriggerMessage.getDefaultInstance() : trigger_;
+    }
+    /**
+     * <code>.TriggerMessage trigger = 1;</code>
+     */
+    public EDS10ProtocolBuffer.TriggerMessageOrBuilder getTriggerOrBuilder() {
+      return getTrigger();
+    }
+
+    public static final int SOURCE_FIELD_NUMBER = 2;
+    private int source_;
+    /**
+     * <code>.ReadType source = 2;</code>
+     */
+    public int getSourceValue() {
+      return source_;
+    }
+    /**
+     * <code>.ReadType source = 2;</code>
+     */
+    public EDS10ProtocolBuffer.ReadType getSource() {
+      @SuppressWarnings("deprecation")
+      EDS10ProtocolBuffer.ReadType result = EDS10ProtocolBuffer.ReadType.valueOf(source_);
+      return result == null ? EDS10ProtocolBuffer.ReadType.UNRECOGNIZED : result;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (trigger_ != null) {
+        output.writeMessage(1, getTrigger());
+      }
+      if (source_ != EDS10ProtocolBuffer.ReadType.INPUTS.getNumber()) {
+        output.writeEnum(2, source_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (trigger_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getTrigger());
+      }
+      if (source_ != EDS10ProtocolBuffer.ReadType.INPUTS.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(2, source_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof EDS10ProtocolBuffer.SystemLogTrigger)) {
+        return super.equals(obj);
+      }
+      EDS10ProtocolBuffer.SystemLogTrigger other = (EDS10ProtocolBuffer.SystemLogTrigger) obj;
+
+      boolean result = true;
+      result = result && (hasTrigger() == other.hasTrigger());
+      if (hasTrigger()) {
+        result = result && getTrigger()
+            .equals(other.getTrigger());
+      }
+      result = result && source_ == other.source_;
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasTrigger()) {
+        hash = (37 * hash) + TRIGGER_FIELD_NUMBER;
+        hash = (53 * hash) + getTrigger().hashCode();
+      }
+      hash = (37 * hash) + SOURCE_FIELD_NUMBER;
+      hash = (53 * hash) + source_;
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static EDS10ProtocolBuffer.SystemLogTrigger parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SystemLogTrigger parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogTrigger parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SystemLogTrigger parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogTrigger parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SystemLogTrigger parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogTrigger parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SystemLogTrigger parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogTrigger parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SystemLogTrigger parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogTrigger parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SystemLogTrigger parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(EDS10ProtocolBuffer.SystemLogTrigger prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code SystemLogTrigger}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:SystemLogTrigger)
+        EDS10ProtocolBuffer.SystemLogTriggerOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return EDS10ProtocolBuffer.internal_static_SystemLogTrigger_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return EDS10ProtocolBuffer.internal_static_SystemLogTrigger_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                EDS10ProtocolBuffer.SystemLogTrigger.class, EDS10ProtocolBuffer.SystemLogTrigger.Builder.class);
+      }
+
+      // Construct using EDS10ProtocolBuffer.SystemLogTrigger.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (triggerBuilder_ == null) {
+          trigger_ = null;
+        } else {
+          trigger_ = null;
+          triggerBuilder_ = null;
+        }
+        source_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return EDS10ProtocolBuffer.internal_static_SystemLogTrigger_descriptor;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SystemLogTrigger getDefaultInstanceForType() {
+        return EDS10ProtocolBuffer.SystemLogTrigger.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SystemLogTrigger build() {
+        EDS10ProtocolBuffer.SystemLogTrigger result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SystemLogTrigger buildPartial() {
+        EDS10ProtocolBuffer.SystemLogTrigger result = new EDS10ProtocolBuffer.SystemLogTrigger(this);
+        if (triggerBuilder_ == null) {
+          result.trigger_ = trigger_;
+        } else {
+          result.trigger_ = triggerBuilder_.build();
+        }
+        result.source_ = source_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof EDS10ProtocolBuffer.SystemLogTrigger) {
+          return mergeFrom((EDS10ProtocolBuffer.SystemLogTrigger)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(EDS10ProtocolBuffer.SystemLogTrigger other) {
+        if (other == EDS10ProtocolBuffer.SystemLogTrigger.getDefaultInstance()) return this;
+        if (other.hasTrigger()) {
+          mergeTrigger(other.getTrigger());
+        }
+        if (other.source_ != 0) {
+          setSourceValue(other.getSourceValue());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        EDS10ProtocolBuffer.SystemLogTrigger parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (EDS10ProtocolBuffer.SystemLogTrigger) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private EDS10ProtocolBuffer.TriggerMessage trigger_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.TriggerMessage, EDS10ProtocolBuffer.TriggerMessage.Builder, EDS10ProtocolBuffer.TriggerMessageOrBuilder> triggerBuilder_;
+      /**
+       * <code>.TriggerMessage trigger = 1;</code>
+       */
+      public boolean hasTrigger() {
+        return triggerBuilder_ != null || trigger_ != null;
+      }
+      /**
+       * <code>.TriggerMessage trigger = 1;</code>
+       */
+      public EDS10ProtocolBuffer.TriggerMessage getTrigger() {
+        if (triggerBuilder_ == null) {
+          return trigger_ == null ? EDS10ProtocolBuffer.TriggerMessage.getDefaultInstance() : trigger_;
+        } else {
+          return triggerBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.TriggerMessage trigger = 1;</code>
+       */
+      public Builder setTrigger(EDS10ProtocolBuffer.TriggerMessage value) {
+        if (triggerBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          trigger_ = value;
+          onChanged();
+        } else {
+          triggerBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.TriggerMessage trigger = 1;</code>
+       */
+      public Builder setTrigger(
+          EDS10ProtocolBuffer.TriggerMessage.Builder builderForValue) {
+        if (triggerBuilder_ == null) {
+          trigger_ = builderForValue.build();
+          onChanged();
+        } else {
+          triggerBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.TriggerMessage trigger = 1;</code>
+       */
+      public Builder mergeTrigger(EDS10ProtocolBuffer.TriggerMessage value) {
+        if (triggerBuilder_ == null) {
+          if (trigger_ != null) {
+            trigger_ =
+              EDS10ProtocolBuffer.TriggerMessage.newBuilder(trigger_).mergeFrom(value).buildPartial();
+          } else {
+            trigger_ = value;
+          }
+          onChanged();
+        } else {
+          triggerBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.TriggerMessage trigger = 1;</code>
+       */
+      public Builder clearTrigger() {
+        if (triggerBuilder_ == null) {
+          trigger_ = null;
+          onChanged();
+        } else {
+          trigger_ = null;
+          triggerBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.TriggerMessage trigger = 1;</code>
+       */
+      public EDS10ProtocolBuffer.TriggerMessage.Builder getTriggerBuilder() {
+        
+        onChanged();
+        return getTriggerFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.TriggerMessage trigger = 1;</code>
+       */
+      public EDS10ProtocolBuffer.TriggerMessageOrBuilder getTriggerOrBuilder() {
+        if (triggerBuilder_ != null) {
+          return triggerBuilder_.getMessageOrBuilder();
+        } else {
+          return trigger_ == null ?
+              EDS10ProtocolBuffer.TriggerMessage.getDefaultInstance() : trigger_;
+        }
+      }
+      /**
+       * <code>.TriggerMessage trigger = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.TriggerMessage, EDS10ProtocolBuffer.TriggerMessage.Builder, EDS10ProtocolBuffer.TriggerMessageOrBuilder> 
+          getTriggerFieldBuilder() {
+        if (triggerBuilder_ == null) {
+          triggerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.TriggerMessage, EDS10ProtocolBuffer.TriggerMessage.Builder, EDS10ProtocolBuffer.TriggerMessageOrBuilder>(
+                  getTrigger(),
+                  getParentForChildren(),
+                  isClean());
+          trigger_ = null;
+        }
+        return triggerBuilder_;
+      }
+
+      private int source_ = 0;
+      /**
+       * <code>.ReadType source = 2;</code>
+       */
+      public int getSourceValue() {
+        return source_;
+      }
+      /**
+       * <code>.ReadType source = 2;</code>
+       */
+      public Builder setSourceValue(int value) {
+        source_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.ReadType source = 2;</code>
+       */
+      public EDS10ProtocolBuffer.ReadType getSource() {
+        @SuppressWarnings("deprecation")
+        EDS10ProtocolBuffer.ReadType result = EDS10ProtocolBuffer.ReadType.valueOf(source_);
+        return result == null ? EDS10ProtocolBuffer.ReadType.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.ReadType source = 2;</code>
+       */
+      public Builder setSource(EDS10ProtocolBuffer.ReadType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        source_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.ReadType source = 2;</code>
+       */
+      public Builder clearSource() {
+        
+        source_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:SystemLogTrigger)
+    }
+
+    // @@protoc_insertion_point(class_scope:SystemLogTrigger)
+    private static final EDS10ProtocolBuffer.SystemLogTrigger DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.SystemLogTrigger();
+    }
+
+    public static EDS10ProtocolBuffer.SystemLogTrigger getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SystemLogTrigger>
+        PARSER = new com.google.protobuf.AbstractParser<SystemLogTrigger>() {
+      @java.lang.Override
+      public SystemLogTrigger parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SystemLogTrigger(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SystemLogTrigger> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SystemLogTrigger> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public EDS10ProtocolBuffer.SystemLogTrigger getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SystemLogSpektraOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SystemLogSpektra)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.SpektraActionType action = 1;</code>
+     */
+    int getActionValue();
+    /**
+     * <code>.SpektraActionType action = 1;</code>
+     */
+    EDS10ProtocolBuffer.SpektraActionType getAction();
+
+    /**
+     * <code>.SpektraTargetType type = 2;</code>
+     */
+    int getTypeValue();
+    /**
+     * <code>.SpektraTargetType type = 2;</code>
+     */
+    EDS10ProtocolBuffer.SpektraTargetType getType();
+
+    /**
+     * <code>uint32 index = 3;</code>
+     */
+    int getIndex();
+  }
+  /**
+   * Protobuf type {@code SystemLogSpektra}
+   */
+  public  static final class SystemLogSpektra extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:SystemLogSpektra)
+      SystemLogSpektraOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use SystemLogSpektra.newBuilder() to construct.
+    private SystemLogSpektra(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SystemLogSpektra() {
+      action_ = 0;
+      type_ = 0;
+      index_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SystemLogSpektra(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              int rawValue = input.readEnum();
+
+              action_ = rawValue;
+              break;
+            }
+            case 16: {
+              int rawValue = input.readEnum();
+
+              type_ = rawValue;
+              break;
+            }
+            case 24: {
+
+              index_ = input.readUInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.internal_static_SystemLogSpektra_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return EDS10ProtocolBuffer.internal_static_SystemLogSpektra_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              EDS10ProtocolBuffer.SystemLogSpektra.class, EDS10ProtocolBuffer.SystemLogSpektra.Builder.class);
+    }
+
+    public static final int ACTION_FIELD_NUMBER = 1;
+    private int action_;
+    /**
+     * <code>.SpektraActionType action = 1;</code>
+     */
+    public int getActionValue() {
+      return action_;
+    }
+    /**
+     * <code>.SpektraActionType action = 1;</code>
+     */
+    public EDS10ProtocolBuffer.SpektraActionType getAction() {
+      @SuppressWarnings("deprecation")
+      EDS10ProtocolBuffer.SpektraActionType result = EDS10ProtocolBuffer.SpektraActionType.valueOf(action_);
+      return result == null ? EDS10ProtocolBuffer.SpektraActionType.UNRECOGNIZED : result;
+    }
+
+    public static final int TYPE_FIELD_NUMBER = 2;
+    private int type_;
+    /**
+     * <code>.SpektraTargetType type = 2;</code>
+     */
+    public int getTypeValue() {
+      return type_;
+    }
+    /**
+     * <code>.SpektraTargetType type = 2;</code>
+     */
+    public EDS10ProtocolBuffer.SpektraTargetType getType() {
+      @SuppressWarnings("deprecation")
+      EDS10ProtocolBuffer.SpektraTargetType result = EDS10ProtocolBuffer.SpektraTargetType.valueOf(type_);
+      return result == null ? EDS10ProtocolBuffer.SpektraTargetType.UNRECOGNIZED : result;
+    }
+
+    public static final int INDEX_FIELD_NUMBER = 3;
+    private int index_;
+    /**
+     * <code>uint32 index = 3;</code>
+     */
+    public int getIndex() {
+      return index_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (action_ != EDS10ProtocolBuffer.SpektraActionType.START.getNumber()) {
+        output.writeEnum(1, action_);
+      }
+      if (type_ != EDS10ProtocolBuffer.SpektraTargetType.SETTINGS.getNumber()) {
+        output.writeEnum(2, type_);
+      }
+      if (index_ != 0) {
+        output.writeUInt32(3, index_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (action_ != EDS10ProtocolBuffer.SpektraActionType.START.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, action_);
+      }
+      if (type_ != EDS10ProtocolBuffer.SpektraTargetType.SETTINGS.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(2, type_);
+      }
+      if (index_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(3, index_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof EDS10ProtocolBuffer.SystemLogSpektra)) {
+        return super.equals(obj);
+      }
+      EDS10ProtocolBuffer.SystemLogSpektra other = (EDS10ProtocolBuffer.SystemLogSpektra) obj;
+
+      boolean result = true;
+      result = result && action_ == other.action_;
+      result = result && type_ == other.type_;
+      result = result && (getIndex()
+          == other.getIndex());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ACTION_FIELD_NUMBER;
+      hash = (53 * hash) + action_;
+      hash = (37 * hash) + TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + type_;
+      hash = (37 * hash) + INDEX_FIELD_NUMBER;
+      hash = (53 * hash) + getIndex();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static EDS10ProtocolBuffer.SystemLogSpektra parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SystemLogSpektra parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogSpektra parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SystemLogSpektra parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogSpektra parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SystemLogSpektra parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogSpektra parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SystemLogSpektra parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogSpektra parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SystemLogSpektra parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogSpektra parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SystemLogSpektra parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(EDS10ProtocolBuffer.SystemLogSpektra prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code SystemLogSpektra}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:SystemLogSpektra)
+        EDS10ProtocolBuffer.SystemLogSpektraOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return EDS10ProtocolBuffer.internal_static_SystemLogSpektra_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return EDS10ProtocolBuffer.internal_static_SystemLogSpektra_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                EDS10ProtocolBuffer.SystemLogSpektra.class, EDS10ProtocolBuffer.SystemLogSpektra.Builder.class);
+      }
+
+      // Construct using EDS10ProtocolBuffer.SystemLogSpektra.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        action_ = 0;
+
+        type_ = 0;
+
+        index_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return EDS10ProtocolBuffer.internal_static_SystemLogSpektra_descriptor;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SystemLogSpektra getDefaultInstanceForType() {
+        return EDS10ProtocolBuffer.SystemLogSpektra.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SystemLogSpektra build() {
+        EDS10ProtocolBuffer.SystemLogSpektra result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SystemLogSpektra buildPartial() {
+        EDS10ProtocolBuffer.SystemLogSpektra result = new EDS10ProtocolBuffer.SystemLogSpektra(this);
+        result.action_ = action_;
+        result.type_ = type_;
+        result.index_ = index_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof EDS10ProtocolBuffer.SystemLogSpektra) {
+          return mergeFrom((EDS10ProtocolBuffer.SystemLogSpektra)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(EDS10ProtocolBuffer.SystemLogSpektra other) {
+        if (other == EDS10ProtocolBuffer.SystemLogSpektra.getDefaultInstance()) return this;
+        if (other.action_ != 0) {
+          setActionValue(other.getActionValue());
+        }
+        if (other.type_ != 0) {
+          setTypeValue(other.getTypeValue());
+        }
+        if (other.getIndex() != 0) {
+          setIndex(other.getIndex());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        EDS10ProtocolBuffer.SystemLogSpektra parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (EDS10ProtocolBuffer.SystemLogSpektra) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int action_ = 0;
+      /**
+       * <code>.SpektraActionType action = 1;</code>
+       */
+      public int getActionValue() {
+        return action_;
+      }
+      /**
+       * <code>.SpektraActionType action = 1;</code>
+       */
+      public Builder setActionValue(int value) {
+        action_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.SpektraActionType action = 1;</code>
+       */
+      public EDS10ProtocolBuffer.SpektraActionType getAction() {
+        @SuppressWarnings("deprecation")
+        EDS10ProtocolBuffer.SpektraActionType result = EDS10ProtocolBuffer.SpektraActionType.valueOf(action_);
+        return result == null ? EDS10ProtocolBuffer.SpektraActionType.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.SpektraActionType action = 1;</code>
+       */
+      public Builder setAction(EDS10ProtocolBuffer.SpektraActionType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        action_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.SpektraActionType action = 1;</code>
+       */
+      public Builder clearAction() {
+        
+        action_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int type_ = 0;
+      /**
+       * <code>.SpektraTargetType type = 2;</code>
+       */
+      public int getTypeValue() {
+        return type_;
+      }
+      /**
+       * <code>.SpektraTargetType type = 2;</code>
+       */
+      public Builder setTypeValue(int value) {
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.SpektraTargetType type = 2;</code>
+       */
+      public EDS10ProtocolBuffer.SpektraTargetType getType() {
+        @SuppressWarnings("deprecation")
+        EDS10ProtocolBuffer.SpektraTargetType result = EDS10ProtocolBuffer.SpektraTargetType.valueOf(type_);
+        return result == null ? EDS10ProtocolBuffer.SpektraTargetType.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.SpektraTargetType type = 2;</code>
+       */
+      public Builder setType(EDS10ProtocolBuffer.SpektraTargetType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        type_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.SpektraTargetType type = 2;</code>
+       */
+      public Builder clearType() {
+        
+        type_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int index_ ;
+      /**
+       * <code>uint32 index = 3;</code>
+       */
+      public int getIndex() {
+        return index_;
+      }
+      /**
+       * <code>uint32 index = 3;</code>
+       */
+      public Builder setIndex(int value) {
+        
+        index_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 index = 3;</code>
+       */
+      public Builder clearIndex() {
+        
+        index_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:SystemLogSpektra)
+    }
+
+    // @@protoc_insertion_point(class_scope:SystemLogSpektra)
+    private static final EDS10ProtocolBuffer.SystemLogSpektra DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.SystemLogSpektra();
+    }
+
+    public static EDS10ProtocolBuffer.SystemLogSpektra getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SystemLogSpektra>
+        PARSER = new com.google.protobuf.AbstractParser<SystemLogSpektra>() {
+      @java.lang.Override
+      public SystemLogSpektra parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SystemLogSpektra(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SystemLogSpektra> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SystemLogSpektra> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public EDS10ProtocolBuffer.SystemLogSpektra getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SystemLogScheduleOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SystemLogSchedule)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>uint32 index = 1;</code>
+     */
+    int getIndex();
+
+    /**
+     * <code>uint32 isStart = 2;</code>
+     */
+    int getIsStart();
+
+    /**
+     * <code>uint32 second = 3;</code>
+     */
+    int getSecond();
+
+    /**
+     * <code>uint32 minute = 4;</code>
+     */
+    int getMinute();
+
+    /**
+     * <code>uint32 hour = 5;</code>
+     */
+    int getHour();
+  }
+  /**
+   * Protobuf type {@code SystemLogSchedule}
+   */
+  public  static final class SystemLogSchedule extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:SystemLogSchedule)
+      SystemLogScheduleOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use SystemLogSchedule.newBuilder() to construct.
+    private SystemLogSchedule(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SystemLogSchedule() {
+      index_ = 0;
+      isStart_ = 0;
+      second_ = 0;
+      minute_ = 0;
+      hour_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SystemLogSchedule(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              index_ = input.readUInt32();
+              break;
+            }
+            case 16: {
+
+              isStart_ = input.readUInt32();
+              break;
+            }
+            case 24: {
+
+              second_ = input.readUInt32();
+              break;
+            }
+            case 32: {
+
+              minute_ = input.readUInt32();
+              break;
+            }
+            case 40: {
+
+              hour_ = input.readUInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.internal_static_SystemLogSchedule_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return EDS10ProtocolBuffer.internal_static_SystemLogSchedule_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              EDS10ProtocolBuffer.SystemLogSchedule.class, EDS10ProtocolBuffer.SystemLogSchedule.Builder.class);
+    }
+
+    public static final int INDEX_FIELD_NUMBER = 1;
+    private int index_;
+    /**
+     * <code>uint32 index = 1;</code>
+     */
+    public int getIndex() {
+      return index_;
+    }
+
+    public static final int ISSTART_FIELD_NUMBER = 2;
+    private int isStart_;
+    /**
+     * <code>uint32 isStart = 2;</code>
+     */
+    public int getIsStart() {
+      return isStart_;
+    }
+
+    public static final int SECOND_FIELD_NUMBER = 3;
+    private int second_;
+    /**
+     * <code>uint32 second = 3;</code>
+     */
+    public int getSecond() {
+      return second_;
+    }
+
+    public static final int MINUTE_FIELD_NUMBER = 4;
+    private int minute_;
+    /**
+     * <code>uint32 minute = 4;</code>
+     */
+    public int getMinute() {
+      return minute_;
+    }
+
+    public static final int HOUR_FIELD_NUMBER = 5;
+    private int hour_;
+    /**
+     * <code>uint32 hour = 5;</code>
+     */
+    public int getHour() {
+      return hour_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (index_ != 0) {
+        output.writeUInt32(1, index_);
+      }
+      if (isStart_ != 0) {
+        output.writeUInt32(2, isStart_);
+      }
+      if (second_ != 0) {
+        output.writeUInt32(3, second_);
+      }
+      if (minute_ != 0) {
+        output.writeUInt32(4, minute_);
+      }
+      if (hour_ != 0) {
+        output.writeUInt32(5, hour_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (index_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, index_);
+      }
+      if (isStart_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, isStart_);
+      }
+      if (second_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(3, second_);
+      }
+      if (minute_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(4, minute_);
+      }
+      if (hour_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(5, hour_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof EDS10ProtocolBuffer.SystemLogSchedule)) {
+        return super.equals(obj);
+      }
+      EDS10ProtocolBuffer.SystemLogSchedule other = (EDS10ProtocolBuffer.SystemLogSchedule) obj;
+
+      boolean result = true;
+      result = result && (getIndex()
+          == other.getIndex());
+      result = result && (getIsStart()
+          == other.getIsStart());
+      result = result && (getSecond()
+          == other.getSecond());
+      result = result && (getMinute()
+          == other.getMinute());
+      result = result && (getHour()
+          == other.getHour());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + INDEX_FIELD_NUMBER;
+      hash = (53 * hash) + getIndex();
+      hash = (37 * hash) + ISSTART_FIELD_NUMBER;
+      hash = (53 * hash) + getIsStart();
+      hash = (37 * hash) + SECOND_FIELD_NUMBER;
+      hash = (53 * hash) + getSecond();
+      hash = (37 * hash) + MINUTE_FIELD_NUMBER;
+      hash = (53 * hash) + getMinute();
+      hash = (37 * hash) + HOUR_FIELD_NUMBER;
+      hash = (53 * hash) + getHour();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static EDS10ProtocolBuffer.SystemLogSchedule parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SystemLogSchedule parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogSchedule parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SystemLogSchedule parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogSchedule parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SystemLogSchedule parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogSchedule parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SystemLogSchedule parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogSchedule parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SystemLogSchedule parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogSchedule parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SystemLogSchedule parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(EDS10ProtocolBuffer.SystemLogSchedule prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code SystemLogSchedule}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:SystemLogSchedule)
+        EDS10ProtocolBuffer.SystemLogScheduleOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return EDS10ProtocolBuffer.internal_static_SystemLogSchedule_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return EDS10ProtocolBuffer.internal_static_SystemLogSchedule_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                EDS10ProtocolBuffer.SystemLogSchedule.class, EDS10ProtocolBuffer.SystemLogSchedule.Builder.class);
+      }
+
+      // Construct using EDS10ProtocolBuffer.SystemLogSchedule.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        index_ = 0;
+
+        isStart_ = 0;
+
+        second_ = 0;
+
+        minute_ = 0;
+
+        hour_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return EDS10ProtocolBuffer.internal_static_SystemLogSchedule_descriptor;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SystemLogSchedule getDefaultInstanceForType() {
+        return EDS10ProtocolBuffer.SystemLogSchedule.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SystemLogSchedule build() {
+        EDS10ProtocolBuffer.SystemLogSchedule result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SystemLogSchedule buildPartial() {
+        EDS10ProtocolBuffer.SystemLogSchedule result = new EDS10ProtocolBuffer.SystemLogSchedule(this);
+        result.index_ = index_;
+        result.isStart_ = isStart_;
+        result.second_ = second_;
+        result.minute_ = minute_;
+        result.hour_ = hour_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof EDS10ProtocolBuffer.SystemLogSchedule) {
+          return mergeFrom((EDS10ProtocolBuffer.SystemLogSchedule)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(EDS10ProtocolBuffer.SystemLogSchedule other) {
+        if (other == EDS10ProtocolBuffer.SystemLogSchedule.getDefaultInstance()) return this;
+        if (other.getIndex() != 0) {
+          setIndex(other.getIndex());
+        }
+        if (other.getIsStart() != 0) {
+          setIsStart(other.getIsStart());
+        }
+        if (other.getSecond() != 0) {
+          setSecond(other.getSecond());
+        }
+        if (other.getMinute() != 0) {
+          setMinute(other.getMinute());
+        }
+        if (other.getHour() != 0) {
+          setHour(other.getHour());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        EDS10ProtocolBuffer.SystemLogSchedule parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (EDS10ProtocolBuffer.SystemLogSchedule) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int index_ ;
+      /**
+       * <code>uint32 index = 1;</code>
+       */
+      public int getIndex() {
+        return index_;
+      }
+      /**
+       * <code>uint32 index = 1;</code>
+       */
+      public Builder setIndex(int value) {
+        
+        index_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 index = 1;</code>
+       */
+      public Builder clearIndex() {
+        
+        index_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int isStart_ ;
+      /**
+       * <code>uint32 isStart = 2;</code>
+       */
+      public int getIsStart() {
+        return isStart_;
+      }
+      /**
+       * <code>uint32 isStart = 2;</code>
+       */
+      public Builder setIsStart(int value) {
+        
+        isStart_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 isStart = 2;</code>
+       */
+      public Builder clearIsStart() {
+        
+        isStart_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int second_ ;
+      /**
+       * <code>uint32 second = 3;</code>
+       */
+      public int getSecond() {
+        return second_;
+      }
+      /**
+       * <code>uint32 second = 3;</code>
+       */
+      public Builder setSecond(int value) {
+        
+        second_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 second = 3;</code>
+       */
+      public Builder clearSecond() {
+        
+        second_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int minute_ ;
+      /**
+       * <code>uint32 minute = 4;</code>
+       */
+      public int getMinute() {
+        return minute_;
+      }
+      /**
+       * <code>uint32 minute = 4;</code>
+       */
+      public Builder setMinute(int value) {
+        
+        minute_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 minute = 4;</code>
+       */
+      public Builder clearMinute() {
+        
+        minute_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int hour_ ;
+      /**
+       * <code>uint32 hour = 5;</code>
+       */
+      public int getHour() {
+        return hour_;
+      }
+      /**
+       * <code>uint32 hour = 5;</code>
+       */
+      public Builder setHour(int value) {
+        
+        hour_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 hour = 5;</code>
+       */
+      public Builder clearHour() {
+        
+        hour_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:SystemLogSchedule)
+    }
+
+    // @@protoc_insertion_point(class_scope:SystemLogSchedule)
+    private static final EDS10ProtocolBuffer.SystemLogSchedule DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.SystemLogSchedule();
+    }
+
+    public static EDS10ProtocolBuffer.SystemLogSchedule getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SystemLogSchedule>
+        PARSER = new com.google.protobuf.AbstractParser<SystemLogSchedule>() {
+      @java.lang.Override
+      public SystemLogSchedule parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SystemLogSchedule(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SystemLogSchedule> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SystemLogSchedule> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public EDS10ProtocolBuffer.SystemLogSchedule getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SystemLogUserStartOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SystemLogUserStart)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.TimeClockMessage timeclock = 1;</code>
+     */
+    boolean hasTimeclock();
+    /**
+     * <code>.TimeClockMessage timeclock = 1;</code>
+     */
+    EDS10ProtocolBuffer.TimeClockMessage getTimeclock();
+    /**
+     * <code>.TimeClockMessage timeclock = 1;</code>
+     */
+    EDS10ProtocolBuffer.TimeClockMessageOrBuilder getTimeclockOrBuilder();
+  }
+  /**
+   * Protobuf type {@code SystemLogUserStart}
+   */
+  public  static final class SystemLogUserStart extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:SystemLogUserStart)
+      SystemLogUserStartOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use SystemLogUserStart.newBuilder() to construct.
+    private SystemLogUserStart(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SystemLogUserStart() {
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SystemLogUserStart(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              EDS10ProtocolBuffer.TimeClockMessage.Builder subBuilder = null;
+              if (timeclock_ != null) {
+                subBuilder = timeclock_.toBuilder();
+              }
+              timeclock_ = input.readMessage(EDS10ProtocolBuffer.TimeClockMessage.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(timeclock_);
+                timeclock_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.internal_static_SystemLogUserStart_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return EDS10ProtocolBuffer.internal_static_SystemLogUserStart_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              EDS10ProtocolBuffer.SystemLogUserStart.class, EDS10ProtocolBuffer.SystemLogUserStart.Builder.class);
+    }
+
+    public static final int TIMECLOCK_FIELD_NUMBER = 1;
+    private EDS10ProtocolBuffer.TimeClockMessage timeclock_;
+    /**
+     * <code>.TimeClockMessage timeclock = 1;</code>
+     */
+    public boolean hasTimeclock() {
+      return timeclock_ != null;
+    }
+    /**
+     * <code>.TimeClockMessage timeclock = 1;</code>
+     */
+    public EDS10ProtocolBuffer.TimeClockMessage getTimeclock() {
+      return timeclock_ == null ? EDS10ProtocolBuffer.TimeClockMessage.getDefaultInstance() : timeclock_;
+    }
+    /**
+     * <code>.TimeClockMessage timeclock = 1;</code>
+     */
+    public EDS10ProtocolBuffer.TimeClockMessageOrBuilder getTimeclockOrBuilder() {
+      return getTimeclock();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (timeclock_ != null) {
+        output.writeMessage(1, getTimeclock());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (timeclock_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getTimeclock());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof EDS10ProtocolBuffer.SystemLogUserStart)) {
+        return super.equals(obj);
+      }
+      EDS10ProtocolBuffer.SystemLogUserStart other = (EDS10ProtocolBuffer.SystemLogUserStart) obj;
+
+      boolean result = true;
+      result = result && (hasTimeclock() == other.hasTimeclock());
+      if (hasTimeclock()) {
+        result = result && getTimeclock()
+            .equals(other.getTimeclock());
+      }
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasTimeclock()) {
+        hash = (37 * hash) + TIMECLOCK_FIELD_NUMBER;
+        hash = (53 * hash) + getTimeclock().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static EDS10ProtocolBuffer.SystemLogUserStart parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SystemLogUserStart parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogUserStart parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SystemLogUserStart parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogUserStart parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SystemLogUserStart parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogUserStart parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SystemLogUserStart parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogUserStart parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SystemLogUserStart parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemLogUserStart parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SystemLogUserStart parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(EDS10ProtocolBuffer.SystemLogUserStart prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code SystemLogUserStart}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:SystemLogUserStart)
+        EDS10ProtocolBuffer.SystemLogUserStartOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return EDS10ProtocolBuffer.internal_static_SystemLogUserStart_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return EDS10ProtocolBuffer.internal_static_SystemLogUserStart_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                EDS10ProtocolBuffer.SystemLogUserStart.class, EDS10ProtocolBuffer.SystemLogUserStart.Builder.class);
+      }
+
+      // Construct using EDS10ProtocolBuffer.SystemLogUserStart.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (timeclockBuilder_ == null) {
+          timeclock_ = null;
+        } else {
+          timeclock_ = null;
+          timeclockBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return EDS10ProtocolBuffer.internal_static_SystemLogUserStart_descriptor;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SystemLogUserStart getDefaultInstanceForType() {
+        return EDS10ProtocolBuffer.SystemLogUserStart.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SystemLogUserStart build() {
+        EDS10ProtocolBuffer.SystemLogUserStart result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SystemLogUserStart buildPartial() {
+        EDS10ProtocolBuffer.SystemLogUserStart result = new EDS10ProtocolBuffer.SystemLogUserStart(this);
+        if (timeclockBuilder_ == null) {
+          result.timeclock_ = timeclock_;
+        } else {
+          result.timeclock_ = timeclockBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof EDS10ProtocolBuffer.SystemLogUserStart) {
+          return mergeFrom((EDS10ProtocolBuffer.SystemLogUserStart)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(EDS10ProtocolBuffer.SystemLogUserStart other) {
+        if (other == EDS10ProtocolBuffer.SystemLogUserStart.getDefaultInstance()) return this;
+        if (other.hasTimeclock()) {
+          mergeTimeclock(other.getTimeclock());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        EDS10ProtocolBuffer.SystemLogUserStart parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (EDS10ProtocolBuffer.SystemLogUserStart) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private EDS10ProtocolBuffer.TimeClockMessage timeclock_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.TimeClockMessage, EDS10ProtocolBuffer.TimeClockMessage.Builder, EDS10ProtocolBuffer.TimeClockMessageOrBuilder> timeclockBuilder_;
+      /**
+       * <code>.TimeClockMessage timeclock = 1;</code>
+       */
+      public boolean hasTimeclock() {
+        return timeclockBuilder_ != null || timeclock_ != null;
+      }
+      /**
+       * <code>.TimeClockMessage timeclock = 1;</code>
+       */
+      public EDS10ProtocolBuffer.TimeClockMessage getTimeclock() {
+        if (timeclockBuilder_ == null) {
+          return timeclock_ == null ? EDS10ProtocolBuffer.TimeClockMessage.getDefaultInstance() : timeclock_;
+        } else {
+          return timeclockBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.TimeClockMessage timeclock = 1;</code>
+       */
+      public Builder setTimeclock(EDS10ProtocolBuffer.TimeClockMessage value) {
+        if (timeclockBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          timeclock_ = value;
+          onChanged();
+        } else {
+          timeclockBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.TimeClockMessage timeclock = 1;</code>
+       */
+      public Builder setTimeclock(
+          EDS10ProtocolBuffer.TimeClockMessage.Builder builderForValue) {
+        if (timeclockBuilder_ == null) {
+          timeclock_ = builderForValue.build();
+          onChanged();
+        } else {
+          timeclockBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.TimeClockMessage timeclock = 1;</code>
+       */
+      public Builder mergeTimeclock(EDS10ProtocolBuffer.TimeClockMessage value) {
+        if (timeclockBuilder_ == null) {
+          if (timeclock_ != null) {
+            timeclock_ =
+              EDS10ProtocolBuffer.TimeClockMessage.newBuilder(timeclock_).mergeFrom(value).buildPartial();
+          } else {
+            timeclock_ = value;
+          }
+          onChanged();
+        } else {
+          timeclockBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.TimeClockMessage timeclock = 1;</code>
+       */
+      public Builder clearTimeclock() {
+        if (timeclockBuilder_ == null) {
+          timeclock_ = null;
+          onChanged();
+        } else {
+          timeclock_ = null;
+          timeclockBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.TimeClockMessage timeclock = 1;</code>
+       */
+      public EDS10ProtocolBuffer.TimeClockMessage.Builder getTimeclockBuilder() {
+        
+        onChanged();
+        return getTimeclockFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.TimeClockMessage timeclock = 1;</code>
+       */
+      public EDS10ProtocolBuffer.TimeClockMessageOrBuilder getTimeclockOrBuilder() {
+        if (timeclockBuilder_ != null) {
+          return timeclockBuilder_.getMessageOrBuilder();
+        } else {
+          return timeclock_ == null ?
+              EDS10ProtocolBuffer.TimeClockMessage.getDefaultInstance() : timeclock_;
+        }
+      }
+      /**
+       * <code>.TimeClockMessage timeclock = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.TimeClockMessage, EDS10ProtocolBuffer.TimeClockMessage.Builder, EDS10ProtocolBuffer.TimeClockMessageOrBuilder> 
+          getTimeclockFieldBuilder() {
+        if (timeclockBuilder_ == null) {
+          timeclockBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.TimeClockMessage, EDS10ProtocolBuffer.TimeClockMessage.Builder, EDS10ProtocolBuffer.TimeClockMessageOrBuilder>(
+                  getTimeclock(),
+                  getParentForChildren(),
+                  isClean());
+          timeclock_ = null;
+        }
+        return timeclockBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:SystemLogUserStart)
+    }
+
+    // @@protoc_insertion_point(class_scope:SystemLogUserStart)
+    private static final EDS10ProtocolBuffer.SystemLogUserStart DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.SystemLogUserStart();
+    }
+
+    public static EDS10ProtocolBuffer.SystemLogUserStart getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SystemLogUserStart>
+        PARSER = new com.google.protobuf.AbstractParser<SystemLogUserStart>() {
+      @java.lang.Override
+      public SystemLogUserStart parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SystemLogUserStart(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SystemLogUserStart> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SystemLogUserStart> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public EDS10ProtocolBuffer.SystemLogUserStart getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SystemMetaDataReadMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SystemMetaDataReadMessage)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Max 24 Inputs
+     * </pre>
+     *
+     * <code>repeated uint32 input_press_counter = 1;</code>
+     */
+    java.util.List<java.lang.Integer> getInputPressCounterList();
+    /**
+     * <pre>
+     * Max 24 Inputs
+     * </pre>
+     *
+     * <code>repeated uint32 input_press_counter = 1;</code>
+     */
+    int getInputPressCounterCount();
+    /**
+     * <pre>
+     * Max 24 Inputs
+     * </pre>
+     *
+     * <code>repeated uint32 input_press_counter = 1;</code>
+     */
+    int getInputPressCounter(int index);
+
+    /**
+     * <pre>
+     * Max 32 Lists
+     * </pre>
+     *
+     * <code>repeated uint32 list_start_counter = 2;</code>
+     */
+    java.util.List<java.lang.Integer> getListStartCounterList();
+    /**
+     * <pre>
+     * Max 32 Lists
+     * </pre>
+     *
+     * <code>repeated uint32 list_start_counter = 2;</code>
+     */
+    int getListStartCounterCount();
+    /**
+     * <pre>
+     * Max 32 Lists
+     * </pre>
+     *
+     * <code>repeated uint32 list_start_counter = 2;</code>
+     */
+    int getListStartCounter(int index);
+
+    /**
+     * <pre>
+     * Max 10 Alarms
+     * </pre>
+     *
+     * <code>repeated uint32 schedules_counter = 3;</code>
+     */
+    java.util.List<java.lang.Integer> getSchedulesCounterList();
+    /**
+     * <pre>
+     * Max 10 Alarms
+     * </pre>
+     *
+     * <code>repeated uint32 schedules_counter = 3;</code>
+     */
+    int getSchedulesCounterCount();
+    /**
+     * <pre>
+     * Max 10 Alarms
+     * </pre>
+     *
+     * <code>repeated uint32 schedules_counter = 3;</code>
+     */
+    int getSchedulesCounter(int index);
+
+    /**
+     * <code>uint32 screen_on_time = 4;</code>
+     */
+    int getScreenOnTime();
+
+    /**
+     * <code>uint32 screen_dim_time = 5;</code>
+     */
+    int getScreenDimTime();
+
+    /**
+     * <code>uint32 screen_saver_time = 6;</code>
+     */
+    int getScreenSaverTime();
+
+    /**
+     * <code>uint32 reboot_counter = 7;</code>
+     */
+    int getRebootCounter();
+  }
+  /**
+   * Protobuf type {@code SystemMetaDataReadMessage}
+   */
+  public  static final class SystemMetaDataReadMessage extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:SystemMetaDataReadMessage)
+      SystemMetaDataReadMessageOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use SystemMetaDataReadMessage.newBuilder() to construct.
+    private SystemMetaDataReadMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SystemMetaDataReadMessage() {
+      inputPressCounter_ = java.util.Collections.emptyList();
+      listStartCounter_ = java.util.Collections.emptyList();
+      schedulesCounter_ = java.util.Collections.emptyList();
+      screenOnTime_ = 0;
+      screenDimTime_ = 0;
+      screenSaverTime_ = 0;
+      rebootCounter_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SystemMetaDataReadMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                inputPressCounter_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              inputPressCounter_.add(input.readUInt32());
+              break;
+            }
+            case 10: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001) && input.getBytesUntilLimit() > 0) {
+                inputPressCounter_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                inputPressCounter_.add(input.readUInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 16: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                listStartCounter_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              listStartCounter_.add(input.readUInt32());
+              break;
+            }
+            case 18: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002) && input.getBytesUntilLimit() > 0) {
+                listStartCounter_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                listStartCounter_.add(input.readUInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 24: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                schedulesCounter_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              schedulesCounter_.add(input.readUInt32());
+              break;
+            }
+            case 26: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004) && input.getBytesUntilLimit() > 0) {
+                schedulesCounter_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                schedulesCounter_.add(input.readUInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 32: {
+
+              screenOnTime_ = input.readUInt32();
+              break;
+            }
+            case 40: {
+
+              screenDimTime_ = input.readUInt32();
+              break;
+            }
+            case 48: {
+
+              screenSaverTime_ = input.readUInt32();
+              break;
+            }
+            case 56: {
+
+              rebootCounter_ = input.readUInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          inputPressCounter_ = java.util.Collections.unmodifiableList(inputPressCounter_);
+        }
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          listStartCounter_ = java.util.Collections.unmodifiableList(listStartCounter_);
+        }
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          schedulesCounter_ = java.util.Collections.unmodifiableList(schedulesCounter_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.internal_static_SystemMetaDataReadMessage_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return EDS10ProtocolBuffer.internal_static_SystemMetaDataReadMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              EDS10ProtocolBuffer.SystemMetaDataReadMessage.class, EDS10ProtocolBuffer.SystemMetaDataReadMessage.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int INPUT_PRESS_COUNTER_FIELD_NUMBER = 1;
+    private java.util.List<java.lang.Integer> inputPressCounter_;
+    /**
+     * <pre>
+     * Max 24 Inputs
+     * </pre>
+     *
+     * <code>repeated uint32 input_press_counter = 1;</code>
+     */
+    public java.util.List<java.lang.Integer>
+        getInputPressCounterList() {
+      return inputPressCounter_;
+    }
+    /**
+     * <pre>
+     * Max 24 Inputs
+     * </pre>
+     *
+     * <code>repeated uint32 input_press_counter = 1;</code>
+     */
+    public int getInputPressCounterCount() {
+      return inputPressCounter_.size();
+    }
+    /**
+     * <pre>
+     * Max 24 Inputs
+     * </pre>
+     *
+     * <code>repeated uint32 input_press_counter = 1;</code>
+     */
+    public int getInputPressCounter(int index) {
+      return inputPressCounter_.get(index);
+    }
+    private int inputPressCounterMemoizedSerializedSize = -1;
+
+    public static final int LIST_START_COUNTER_FIELD_NUMBER = 2;
+    private java.util.List<java.lang.Integer> listStartCounter_;
+    /**
+     * <pre>
+     * Max 32 Lists
+     * </pre>
+     *
+     * <code>repeated uint32 list_start_counter = 2;</code>
+     */
+    public java.util.List<java.lang.Integer>
+        getListStartCounterList() {
+      return listStartCounter_;
+    }
+    /**
+     * <pre>
+     * Max 32 Lists
+     * </pre>
+     *
+     * <code>repeated uint32 list_start_counter = 2;</code>
+     */
+    public int getListStartCounterCount() {
+      return listStartCounter_.size();
+    }
+    /**
+     * <pre>
+     * Max 32 Lists
+     * </pre>
+     *
+     * <code>repeated uint32 list_start_counter = 2;</code>
+     */
+    public int getListStartCounter(int index) {
+      return listStartCounter_.get(index);
+    }
+    private int listStartCounterMemoizedSerializedSize = -1;
+
+    public static final int SCHEDULES_COUNTER_FIELD_NUMBER = 3;
+    private java.util.List<java.lang.Integer> schedulesCounter_;
+    /**
+     * <pre>
+     * Max 10 Alarms
+     * </pre>
+     *
+     * <code>repeated uint32 schedules_counter = 3;</code>
+     */
+    public java.util.List<java.lang.Integer>
+        getSchedulesCounterList() {
+      return schedulesCounter_;
+    }
+    /**
+     * <pre>
+     * Max 10 Alarms
+     * </pre>
+     *
+     * <code>repeated uint32 schedules_counter = 3;</code>
+     */
+    public int getSchedulesCounterCount() {
+      return schedulesCounter_.size();
+    }
+    /**
+     * <pre>
+     * Max 10 Alarms
+     * </pre>
+     *
+     * <code>repeated uint32 schedules_counter = 3;</code>
+     */
+    public int getSchedulesCounter(int index) {
+      return schedulesCounter_.get(index);
+    }
+    private int schedulesCounterMemoizedSerializedSize = -1;
+
+    public static final int SCREEN_ON_TIME_FIELD_NUMBER = 4;
+    private int screenOnTime_;
+    /**
+     * <code>uint32 screen_on_time = 4;</code>
+     */
+    public int getScreenOnTime() {
+      return screenOnTime_;
+    }
+
+    public static final int SCREEN_DIM_TIME_FIELD_NUMBER = 5;
+    private int screenDimTime_;
+    /**
+     * <code>uint32 screen_dim_time = 5;</code>
+     */
+    public int getScreenDimTime() {
+      return screenDimTime_;
+    }
+
+    public static final int SCREEN_SAVER_TIME_FIELD_NUMBER = 6;
+    private int screenSaverTime_;
+    /**
+     * <code>uint32 screen_saver_time = 6;</code>
+     */
+    public int getScreenSaverTime() {
+      return screenSaverTime_;
+    }
+
+    public static final int REBOOT_COUNTER_FIELD_NUMBER = 7;
+    private int rebootCounter_;
+    /**
+     * <code>uint32 reboot_counter = 7;</code>
+     */
+    public int getRebootCounter() {
+      return rebootCounter_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (getInputPressCounterList().size() > 0) {
+        output.writeUInt32NoTag(10);
+        output.writeUInt32NoTag(inputPressCounterMemoizedSerializedSize);
+      }
+      for (int i = 0; i < inputPressCounter_.size(); i++) {
+        output.writeUInt32NoTag(inputPressCounter_.get(i));
+      }
+      if (getListStartCounterList().size() > 0) {
+        output.writeUInt32NoTag(18);
+        output.writeUInt32NoTag(listStartCounterMemoizedSerializedSize);
+      }
+      for (int i = 0; i < listStartCounter_.size(); i++) {
+        output.writeUInt32NoTag(listStartCounter_.get(i));
+      }
+      if (getSchedulesCounterList().size() > 0) {
+        output.writeUInt32NoTag(26);
+        output.writeUInt32NoTag(schedulesCounterMemoizedSerializedSize);
+      }
+      for (int i = 0; i < schedulesCounter_.size(); i++) {
+        output.writeUInt32NoTag(schedulesCounter_.get(i));
+      }
+      if (screenOnTime_ != 0) {
+        output.writeUInt32(4, screenOnTime_);
+      }
+      if (screenDimTime_ != 0) {
+        output.writeUInt32(5, screenDimTime_);
+      }
+      if (screenSaverTime_ != 0) {
+        output.writeUInt32(6, screenSaverTime_);
+      }
+      if (rebootCounter_ != 0) {
+        output.writeUInt32(7, rebootCounter_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      {
+        int dataSize = 0;
+        for (int i = 0; i < inputPressCounter_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeUInt32SizeNoTag(inputPressCounter_.get(i));
+        }
+        size += dataSize;
+        if (!getInputPressCounterList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        inputPressCounterMemoizedSerializedSize = dataSize;
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < listStartCounter_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeUInt32SizeNoTag(listStartCounter_.get(i));
+        }
+        size += dataSize;
+        if (!getListStartCounterList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        listStartCounterMemoizedSerializedSize = dataSize;
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < schedulesCounter_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeUInt32SizeNoTag(schedulesCounter_.get(i));
+        }
+        size += dataSize;
+        if (!getSchedulesCounterList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        schedulesCounterMemoizedSerializedSize = dataSize;
+      }
+      if (screenOnTime_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(4, screenOnTime_);
+      }
+      if (screenDimTime_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(5, screenDimTime_);
+      }
+      if (screenSaverTime_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(6, screenSaverTime_);
+      }
+      if (rebootCounter_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(7, rebootCounter_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof EDS10ProtocolBuffer.SystemMetaDataReadMessage)) {
+        return super.equals(obj);
+      }
+      EDS10ProtocolBuffer.SystemMetaDataReadMessage other = (EDS10ProtocolBuffer.SystemMetaDataReadMessage) obj;
+
+      boolean result = true;
+      result = result && getInputPressCounterList()
+          .equals(other.getInputPressCounterList());
+      result = result && getListStartCounterList()
+          .equals(other.getListStartCounterList());
+      result = result && getSchedulesCounterList()
+          .equals(other.getSchedulesCounterList());
+      result = result && (getScreenOnTime()
+          == other.getScreenOnTime());
+      result = result && (getScreenDimTime()
+          == other.getScreenDimTime());
+      result = result && (getScreenSaverTime()
+          == other.getScreenSaverTime());
+      result = result && (getRebootCounter()
+          == other.getRebootCounter());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getInputPressCounterCount() > 0) {
+        hash = (37 * hash) + INPUT_PRESS_COUNTER_FIELD_NUMBER;
+        hash = (53 * hash) + getInputPressCounterList().hashCode();
+      }
+      if (getListStartCounterCount() > 0) {
+        hash = (37 * hash) + LIST_START_COUNTER_FIELD_NUMBER;
+        hash = (53 * hash) + getListStartCounterList().hashCode();
+      }
+      if (getSchedulesCounterCount() > 0) {
+        hash = (37 * hash) + SCHEDULES_COUNTER_FIELD_NUMBER;
+        hash = (53 * hash) + getSchedulesCounterList().hashCode();
+      }
+      hash = (37 * hash) + SCREEN_ON_TIME_FIELD_NUMBER;
+      hash = (53 * hash) + getScreenOnTime();
+      hash = (37 * hash) + SCREEN_DIM_TIME_FIELD_NUMBER;
+      hash = (53 * hash) + getScreenDimTime();
+      hash = (37 * hash) + SCREEN_SAVER_TIME_FIELD_NUMBER;
+      hash = (53 * hash) + getScreenSaverTime();
+      hash = (37 * hash) + REBOOT_COUNTER_FIELD_NUMBER;
+      hash = (53 * hash) + getRebootCounter();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static EDS10ProtocolBuffer.SystemMetaDataReadMessage parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SystemMetaDataReadMessage parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemMetaDataReadMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SystemMetaDataReadMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemMetaDataReadMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SystemMetaDataReadMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemMetaDataReadMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SystemMetaDataReadMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemMetaDataReadMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SystemMetaDataReadMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SystemMetaDataReadMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SystemMetaDataReadMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(EDS10ProtocolBuffer.SystemMetaDataReadMessage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code SystemMetaDataReadMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:SystemMetaDataReadMessage)
+        EDS10ProtocolBuffer.SystemMetaDataReadMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return EDS10ProtocolBuffer.internal_static_SystemMetaDataReadMessage_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return EDS10ProtocolBuffer.internal_static_SystemMetaDataReadMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                EDS10ProtocolBuffer.SystemMetaDataReadMessage.class, EDS10ProtocolBuffer.SystemMetaDataReadMessage.Builder.class);
+      }
+
+      // Construct using EDS10ProtocolBuffer.SystemMetaDataReadMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        inputPressCounter_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        listStartCounter_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        schedulesCounter_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        screenOnTime_ = 0;
+
+        screenDimTime_ = 0;
+
+        screenSaverTime_ = 0;
+
+        rebootCounter_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return EDS10ProtocolBuffer.internal_static_SystemMetaDataReadMessage_descriptor;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SystemMetaDataReadMessage getDefaultInstanceForType() {
+        return EDS10ProtocolBuffer.SystemMetaDataReadMessage.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SystemMetaDataReadMessage build() {
+        EDS10ProtocolBuffer.SystemMetaDataReadMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SystemMetaDataReadMessage buildPartial() {
+        EDS10ProtocolBuffer.SystemMetaDataReadMessage result = new EDS10ProtocolBuffer.SystemMetaDataReadMessage(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          inputPressCounter_ = java.util.Collections.unmodifiableList(inputPressCounter_);
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.inputPressCounter_ = inputPressCounter_;
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          listStartCounter_ = java.util.Collections.unmodifiableList(listStartCounter_);
+          bitField0_ = (bitField0_ & ~0x00000002);
+        }
+        result.listStartCounter_ = listStartCounter_;
+        if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          schedulesCounter_ = java.util.Collections.unmodifiableList(schedulesCounter_);
+          bitField0_ = (bitField0_ & ~0x00000004);
+        }
+        result.schedulesCounter_ = schedulesCounter_;
+        result.screenOnTime_ = screenOnTime_;
+        result.screenDimTime_ = screenDimTime_;
+        result.screenSaverTime_ = screenSaverTime_;
+        result.rebootCounter_ = rebootCounter_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof EDS10ProtocolBuffer.SystemMetaDataReadMessage) {
+          return mergeFrom((EDS10ProtocolBuffer.SystemMetaDataReadMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(EDS10ProtocolBuffer.SystemMetaDataReadMessage other) {
+        if (other == EDS10ProtocolBuffer.SystemMetaDataReadMessage.getDefaultInstance()) return this;
+        if (!other.inputPressCounter_.isEmpty()) {
+          if (inputPressCounter_.isEmpty()) {
+            inputPressCounter_ = other.inputPressCounter_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureInputPressCounterIsMutable();
+            inputPressCounter_.addAll(other.inputPressCounter_);
+          }
+          onChanged();
+        }
+        if (!other.listStartCounter_.isEmpty()) {
+          if (listStartCounter_.isEmpty()) {
+            listStartCounter_ = other.listStartCounter_;
+            bitField0_ = (bitField0_ & ~0x00000002);
+          } else {
+            ensureListStartCounterIsMutable();
+            listStartCounter_.addAll(other.listStartCounter_);
+          }
+          onChanged();
+        }
+        if (!other.schedulesCounter_.isEmpty()) {
+          if (schedulesCounter_.isEmpty()) {
+            schedulesCounter_ = other.schedulesCounter_;
+            bitField0_ = (bitField0_ & ~0x00000004);
+          } else {
+            ensureSchedulesCounterIsMutable();
+            schedulesCounter_.addAll(other.schedulesCounter_);
+          }
+          onChanged();
+        }
+        if (other.getScreenOnTime() != 0) {
+          setScreenOnTime(other.getScreenOnTime());
+        }
+        if (other.getScreenDimTime() != 0) {
+          setScreenDimTime(other.getScreenDimTime());
+        }
+        if (other.getScreenSaverTime() != 0) {
+          setScreenSaverTime(other.getScreenSaverTime());
+        }
+        if (other.getRebootCounter() != 0) {
+          setRebootCounter(other.getRebootCounter());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        EDS10ProtocolBuffer.SystemMetaDataReadMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (EDS10ProtocolBuffer.SystemMetaDataReadMessage) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<java.lang.Integer> inputPressCounter_ = java.util.Collections.emptyList();
+      private void ensureInputPressCounterIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          inputPressCounter_ = new java.util.ArrayList<java.lang.Integer>(inputPressCounter_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+      /**
+       * <pre>
+       * Max 24 Inputs
+       * </pre>
+       *
+       * <code>repeated uint32 input_press_counter = 1;</code>
+       */
+      public java.util.List<java.lang.Integer>
+          getInputPressCounterList() {
+        return java.util.Collections.unmodifiableList(inputPressCounter_);
+      }
+      /**
+       * <pre>
+       * Max 24 Inputs
+       * </pre>
+       *
+       * <code>repeated uint32 input_press_counter = 1;</code>
+       */
+      public int getInputPressCounterCount() {
+        return inputPressCounter_.size();
+      }
+      /**
+       * <pre>
+       * Max 24 Inputs
+       * </pre>
+       *
+       * <code>repeated uint32 input_press_counter = 1;</code>
+       */
+      public int getInputPressCounter(int index) {
+        return inputPressCounter_.get(index);
+      }
+      /**
+       * <pre>
+       * Max 24 Inputs
+       * </pre>
+       *
+       * <code>repeated uint32 input_press_counter = 1;</code>
+       */
+      public Builder setInputPressCounter(
+          int index, int value) {
+        ensureInputPressCounterIsMutable();
+        inputPressCounter_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Max 24 Inputs
+       * </pre>
+       *
+       * <code>repeated uint32 input_press_counter = 1;</code>
+       */
+      public Builder addInputPressCounter(int value) {
+        ensureInputPressCounterIsMutable();
+        inputPressCounter_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Max 24 Inputs
+       * </pre>
+       *
+       * <code>repeated uint32 input_press_counter = 1;</code>
+       */
+      public Builder addAllInputPressCounter(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureInputPressCounterIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, inputPressCounter_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Max 24 Inputs
+       * </pre>
+       *
+       * <code>repeated uint32 input_press_counter = 1;</code>
+       */
+      public Builder clearInputPressCounter() {
+        inputPressCounter_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<java.lang.Integer> listStartCounter_ = java.util.Collections.emptyList();
+      private void ensureListStartCounterIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          listStartCounter_ = new java.util.ArrayList<java.lang.Integer>(listStartCounter_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+      /**
+       * <pre>
+       * Max 32 Lists
+       * </pre>
+       *
+       * <code>repeated uint32 list_start_counter = 2;</code>
+       */
+      public java.util.List<java.lang.Integer>
+          getListStartCounterList() {
+        return java.util.Collections.unmodifiableList(listStartCounter_);
+      }
+      /**
+       * <pre>
+       * Max 32 Lists
+       * </pre>
+       *
+       * <code>repeated uint32 list_start_counter = 2;</code>
+       */
+      public int getListStartCounterCount() {
+        return listStartCounter_.size();
+      }
+      /**
+       * <pre>
+       * Max 32 Lists
+       * </pre>
+       *
+       * <code>repeated uint32 list_start_counter = 2;</code>
+       */
+      public int getListStartCounter(int index) {
+        return listStartCounter_.get(index);
+      }
+      /**
+       * <pre>
+       * Max 32 Lists
+       * </pre>
+       *
+       * <code>repeated uint32 list_start_counter = 2;</code>
+       */
+      public Builder setListStartCounter(
+          int index, int value) {
+        ensureListStartCounterIsMutable();
+        listStartCounter_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Max 32 Lists
+       * </pre>
+       *
+       * <code>repeated uint32 list_start_counter = 2;</code>
+       */
+      public Builder addListStartCounter(int value) {
+        ensureListStartCounterIsMutable();
+        listStartCounter_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Max 32 Lists
+       * </pre>
+       *
+       * <code>repeated uint32 list_start_counter = 2;</code>
+       */
+      public Builder addAllListStartCounter(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureListStartCounterIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, listStartCounter_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Max 32 Lists
+       * </pre>
+       *
+       * <code>repeated uint32 list_start_counter = 2;</code>
+       */
+      public Builder clearListStartCounter() {
+        listStartCounter_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<java.lang.Integer> schedulesCounter_ = java.util.Collections.emptyList();
+      private void ensureSchedulesCounterIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          schedulesCounter_ = new java.util.ArrayList<java.lang.Integer>(schedulesCounter_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+      /**
+       * <pre>
+       * Max 10 Alarms
+       * </pre>
+       *
+       * <code>repeated uint32 schedules_counter = 3;</code>
+       */
+      public java.util.List<java.lang.Integer>
+          getSchedulesCounterList() {
+        return java.util.Collections.unmodifiableList(schedulesCounter_);
+      }
+      /**
+       * <pre>
+       * Max 10 Alarms
+       * </pre>
+       *
+       * <code>repeated uint32 schedules_counter = 3;</code>
+       */
+      public int getSchedulesCounterCount() {
+        return schedulesCounter_.size();
+      }
+      /**
+       * <pre>
+       * Max 10 Alarms
+       * </pre>
+       *
+       * <code>repeated uint32 schedules_counter = 3;</code>
+       */
+      public int getSchedulesCounter(int index) {
+        return schedulesCounter_.get(index);
+      }
+      /**
+       * <pre>
+       * Max 10 Alarms
+       * </pre>
+       *
+       * <code>repeated uint32 schedules_counter = 3;</code>
+       */
+      public Builder setSchedulesCounter(
+          int index, int value) {
+        ensureSchedulesCounterIsMutable();
+        schedulesCounter_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Max 10 Alarms
+       * </pre>
+       *
+       * <code>repeated uint32 schedules_counter = 3;</code>
+       */
+      public Builder addSchedulesCounter(int value) {
+        ensureSchedulesCounterIsMutable();
+        schedulesCounter_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Max 10 Alarms
+       * </pre>
+       *
+       * <code>repeated uint32 schedules_counter = 3;</code>
+       */
+      public Builder addAllSchedulesCounter(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureSchedulesCounterIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, schedulesCounter_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Max 10 Alarms
+       * </pre>
+       *
+       * <code>repeated uint32 schedules_counter = 3;</code>
+       */
+      public Builder clearSchedulesCounter() {
+        schedulesCounter_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+
+      private int screenOnTime_ ;
+      /**
+       * <code>uint32 screen_on_time = 4;</code>
+       */
+      public int getScreenOnTime() {
+        return screenOnTime_;
+      }
+      /**
+       * <code>uint32 screen_on_time = 4;</code>
+       */
+      public Builder setScreenOnTime(int value) {
+        
+        screenOnTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 screen_on_time = 4;</code>
+       */
+      public Builder clearScreenOnTime() {
+        
+        screenOnTime_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int screenDimTime_ ;
+      /**
+       * <code>uint32 screen_dim_time = 5;</code>
+       */
+      public int getScreenDimTime() {
+        return screenDimTime_;
+      }
+      /**
+       * <code>uint32 screen_dim_time = 5;</code>
+       */
+      public Builder setScreenDimTime(int value) {
+        
+        screenDimTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 screen_dim_time = 5;</code>
+       */
+      public Builder clearScreenDimTime() {
+        
+        screenDimTime_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int screenSaverTime_ ;
+      /**
+       * <code>uint32 screen_saver_time = 6;</code>
+       */
+      public int getScreenSaverTime() {
+        return screenSaverTime_;
+      }
+      /**
+       * <code>uint32 screen_saver_time = 6;</code>
+       */
+      public Builder setScreenSaverTime(int value) {
+        
+        screenSaverTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 screen_saver_time = 6;</code>
+       */
+      public Builder clearScreenSaverTime() {
+        
+        screenSaverTime_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int rebootCounter_ ;
+      /**
+       * <code>uint32 reboot_counter = 7;</code>
+       */
+      public int getRebootCounter() {
+        return rebootCounter_;
+      }
+      /**
+       * <code>uint32 reboot_counter = 7;</code>
+       */
+      public Builder setRebootCounter(int value) {
+        
+        rebootCounter_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 reboot_counter = 7;</code>
+       */
+      public Builder clearRebootCounter() {
+        
+        rebootCounter_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:SystemMetaDataReadMessage)
+    }
+
+    // @@protoc_insertion_point(class_scope:SystemMetaDataReadMessage)
+    private static final EDS10ProtocolBuffer.SystemMetaDataReadMessage DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.SystemMetaDataReadMessage();
+    }
+
+    public static EDS10ProtocolBuffer.SystemMetaDataReadMessage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SystemMetaDataReadMessage>
+        PARSER = new com.google.protobuf.AbstractParser<SystemMetaDataReadMessage>() {
+      @java.lang.Override
+      public SystemMetaDataReadMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SystemMetaDataReadMessage(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SystemMetaDataReadMessage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SystemMetaDataReadMessage> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public EDS10ProtocolBuffer.SystemMetaDataReadMessage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface TriggerEventOrBuilder extends
       // @@protoc_insertion_point(interface_extends:TriggerEvent)
       com.google.protobuf.MessageOrBuilder {
@@ -71106,6 +90262,97 @@ public final class EDS10ProtocolBuffer {
      */
     EDS10ProtocolBuffer.DeviceStateMessageOrBuilder getDeviceStateMessageOrBuilder();
 
+    /**
+     * <code>.SpektraCalendarDayMessage spektra_calendar_day = 48;</code>
+     */
+    boolean hasSpektraCalendarDay();
+    /**
+     * <code>.SpektraCalendarDayMessage spektra_calendar_day = 48;</code>
+     */
+    EDS10ProtocolBuffer.SpektraCalendarDayMessage getSpektraCalendarDay();
+    /**
+     * <code>.SpektraCalendarDayMessage spektra_calendar_day = 48;</code>
+     */
+    EDS10ProtocolBuffer.SpektraCalendarDayMessageOrBuilder getSpektraCalendarDayOrBuilder();
+
+    /**
+     * <code>.SpektraCalendarOverviewMessage spektra_calendar_overview = 49;</code>
+     */
+    boolean hasSpektraCalendarOverview();
+    /**
+     * <code>.SpektraCalendarOverviewMessage spektra_calendar_overview = 49;</code>
+     */
+    EDS10ProtocolBuffer.SpektraCalendarOverviewMessage getSpektraCalendarOverview();
+    /**
+     * <code>.SpektraCalendarOverviewMessage spektra_calendar_overview = 49;</code>
+     */
+    EDS10ProtocolBuffer.SpektraCalendarOverviewMessageOrBuilder getSpektraCalendarOverviewOrBuilder();
+
+    /**
+     * <code>.DALIInputMultiMessage inputs_dali = 50;</code>
+     */
+    boolean hasInputsDali();
+    /**
+     * <code>.DALIInputMultiMessage inputs_dali = 50;</code>
+     */
+    EDS10ProtocolBuffer.DALIInputMultiMessage getInputsDali();
+    /**
+     * <code>.DALIInputMultiMessage inputs_dali = 50;</code>
+     */
+    EDS10ProtocolBuffer.DALIInputMultiMessageOrBuilder getInputsDaliOrBuilder();
+
+    /**
+     * <code>.SystemLogReadMessage logs_read = 51;</code>
+     */
+    boolean hasLogsRead();
+    /**
+     * <code>.SystemLogReadMessage logs_read = 51;</code>
+     */
+    EDS10ProtocolBuffer.SystemLogReadMessage getLogsRead();
+    /**
+     * <code>.SystemLogReadMessage logs_read = 51;</code>
+     */
+    EDS10ProtocolBuffer.SystemLogReadMessageOrBuilder getLogsReadOrBuilder();
+
+    /**
+     * <code>.SystemMetaDataReadMessage metadata_read = 52;</code>
+     */
+    boolean hasMetadataRead();
+    /**
+     * <code>.SystemMetaDataReadMessage metadata_read = 52;</code>
+     */
+    EDS10ProtocolBuffer.SystemMetaDataReadMessage getMetadataRead();
+    /**
+     * <code>.SystemMetaDataReadMessage metadata_read = 52;</code>
+     */
+    EDS10ProtocolBuffer.SystemMetaDataReadMessageOrBuilder getMetadataReadOrBuilder();
+
+    /**
+     * <code>.DALIAddressingMessage dali_addressing_message = 53;</code>
+     */
+    boolean hasDaliAddressingMessage();
+    /**
+     * <code>.DALIAddressingMessage dali_addressing_message = 53;</code>
+     */
+    EDS10ProtocolBuffer.DALIAddressingMessage getDaliAddressingMessage();
+    /**
+     * <code>.DALIAddressingMessage dali_addressing_message = 53;</code>
+     */
+    EDS10ProtocolBuffer.DALIAddressingMessageOrBuilder getDaliAddressingMessageOrBuilder();
+
+    /**
+     * <code>.DALIRemappingMessage dali_remapping_message = 54;</code>
+     */
+    boolean hasDaliRemappingMessage();
+    /**
+     * <code>.DALIRemappingMessage dali_remapping_message = 54;</code>
+     */
+    EDS10ProtocolBuffer.DALIRemappingMessage getDaliRemappingMessage();
+    /**
+     * <code>.DALIRemappingMessage dali_remapping_message = 54;</code>
+     */
+    EDS10ProtocolBuffer.DALIRemappingMessageOrBuilder getDaliRemappingMessageOrBuilder();
+
     public EDS10ProtocolBuffer.EdidioMessage.PayloadCase getPayloadCase();
   }
   /**
@@ -71774,6 +91021,104 @@ public final class EDS10ProtocolBuffer {
               payloadCase_ = 47;
               break;
             }
+            case 386: {
+              EDS10ProtocolBuffer.SpektraCalendarDayMessage.Builder subBuilder = null;
+              if (payloadCase_ == 48) {
+                subBuilder = ((EDS10ProtocolBuffer.SpektraCalendarDayMessage) payload_).toBuilder();
+              }
+              payload_ =
+                  input.readMessage(EDS10ProtocolBuffer.SpektraCalendarDayMessage.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((EDS10ProtocolBuffer.SpektraCalendarDayMessage) payload_);
+                payload_ = subBuilder.buildPartial();
+              }
+              payloadCase_ = 48;
+              break;
+            }
+            case 394: {
+              EDS10ProtocolBuffer.SpektraCalendarOverviewMessage.Builder subBuilder = null;
+              if (payloadCase_ == 49) {
+                subBuilder = ((EDS10ProtocolBuffer.SpektraCalendarOverviewMessage) payload_).toBuilder();
+              }
+              payload_ =
+                  input.readMessage(EDS10ProtocolBuffer.SpektraCalendarOverviewMessage.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((EDS10ProtocolBuffer.SpektraCalendarOverviewMessage) payload_);
+                payload_ = subBuilder.buildPartial();
+              }
+              payloadCase_ = 49;
+              break;
+            }
+            case 402: {
+              EDS10ProtocolBuffer.DALIInputMultiMessage.Builder subBuilder = null;
+              if (payloadCase_ == 50) {
+                subBuilder = ((EDS10ProtocolBuffer.DALIInputMultiMessage) payload_).toBuilder();
+              }
+              payload_ =
+                  input.readMessage(EDS10ProtocolBuffer.DALIInputMultiMessage.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((EDS10ProtocolBuffer.DALIInputMultiMessage) payload_);
+                payload_ = subBuilder.buildPartial();
+              }
+              payloadCase_ = 50;
+              break;
+            }
+            case 410: {
+              EDS10ProtocolBuffer.SystemLogReadMessage.Builder subBuilder = null;
+              if (payloadCase_ == 51) {
+                subBuilder = ((EDS10ProtocolBuffer.SystemLogReadMessage) payload_).toBuilder();
+              }
+              payload_ =
+                  input.readMessage(EDS10ProtocolBuffer.SystemLogReadMessage.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((EDS10ProtocolBuffer.SystemLogReadMessage) payload_);
+                payload_ = subBuilder.buildPartial();
+              }
+              payloadCase_ = 51;
+              break;
+            }
+            case 418: {
+              EDS10ProtocolBuffer.SystemMetaDataReadMessage.Builder subBuilder = null;
+              if (payloadCase_ == 52) {
+                subBuilder = ((EDS10ProtocolBuffer.SystemMetaDataReadMessage) payload_).toBuilder();
+              }
+              payload_ =
+                  input.readMessage(EDS10ProtocolBuffer.SystemMetaDataReadMessage.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((EDS10ProtocolBuffer.SystemMetaDataReadMessage) payload_);
+                payload_ = subBuilder.buildPartial();
+              }
+              payloadCase_ = 52;
+              break;
+            }
+            case 426: {
+              EDS10ProtocolBuffer.DALIAddressingMessage.Builder subBuilder = null;
+              if (payloadCase_ == 53) {
+                subBuilder = ((EDS10ProtocolBuffer.DALIAddressingMessage) payload_).toBuilder();
+              }
+              payload_ =
+                  input.readMessage(EDS10ProtocolBuffer.DALIAddressingMessage.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((EDS10ProtocolBuffer.DALIAddressingMessage) payload_);
+                payload_ = subBuilder.buildPartial();
+              }
+              payloadCase_ = 53;
+              break;
+            }
+            case 434: {
+              EDS10ProtocolBuffer.DALIRemappingMessage.Builder subBuilder = null;
+              if (payloadCase_ == 54) {
+                subBuilder = ((EDS10ProtocolBuffer.DALIRemappingMessage) payload_).toBuilder();
+              }
+              payload_ =
+                  input.readMessage(EDS10ProtocolBuffer.DALIRemappingMessage.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((EDS10ProtocolBuffer.DALIRemappingMessage) payload_);
+                payload_ = subBuilder.buildPartial();
+              }
+              payloadCase_ = 54;
+              break;
+            }
             default: {
               if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -71854,6 +91199,13 @@ public final class EDS10ProtocolBuffer {
       LOGIC_MESSAGE(45),
       SECURE_LOGIN(46),
       DEVICE_STATE_MESSAGE(47),
+      SPEKTRA_CALENDAR_DAY(48),
+      SPEKTRA_CALENDAR_OVERVIEW(49),
+      INPUTS_DALI(50),
+      LOGS_READ(51),
+      METADATA_READ(52),
+      DALI_ADDRESSING_MESSAGE(53),
+      DALI_REMAPPING_MESSAGE(54),
       PAYLOAD_NOT_SET(0);
       private final int value;
       private PayloadCase(int value) {
@@ -71913,6 +91265,13 @@ public final class EDS10ProtocolBuffer {
           case 45: return LOGIC_MESSAGE;
           case 46: return SECURE_LOGIN;
           case 47: return DEVICE_STATE_MESSAGE;
+          case 48: return SPEKTRA_CALENDAR_DAY;
+          case 49: return SPEKTRA_CALENDAR_OVERVIEW;
+          case 50: return INPUTS_DALI;
+          case 51: return LOGS_READ;
+          case 52: return METADATA_READ;
+          case 53: return DALI_ADDRESSING_MESSAGE;
+          case 54: return DALI_REMAPPING_MESSAGE;
           case 0: return PAYLOAD_NOT_SET;
           default: return null;
         }
@@ -73109,6 +92468,188 @@ public final class EDS10ProtocolBuffer {
       return EDS10ProtocolBuffer.DeviceStateMessage.getDefaultInstance();
     }
 
+    public static final int SPEKTRA_CALENDAR_DAY_FIELD_NUMBER = 48;
+    /**
+     * <code>.SpektraCalendarDayMessage spektra_calendar_day = 48;</code>
+     */
+    public boolean hasSpektraCalendarDay() {
+      return payloadCase_ == 48;
+    }
+    /**
+     * <code>.SpektraCalendarDayMessage spektra_calendar_day = 48;</code>
+     */
+    public EDS10ProtocolBuffer.SpektraCalendarDayMessage getSpektraCalendarDay() {
+      if (payloadCase_ == 48) {
+         return (EDS10ProtocolBuffer.SpektraCalendarDayMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.SpektraCalendarDayMessage.getDefaultInstance();
+    }
+    /**
+     * <code>.SpektraCalendarDayMessage spektra_calendar_day = 48;</code>
+     */
+    public EDS10ProtocolBuffer.SpektraCalendarDayMessageOrBuilder getSpektraCalendarDayOrBuilder() {
+      if (payloadCase_ == 48) {
+         return (EDS10ProtocolBuffer.SpektraCalendarDayMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.SpektraCalendarDayMessage.getDefaultInstance();
+    }
+
+    public static final int SPEKTRA_CALENDAR_OVERVIEW_FIELD_NUMBER = 49;
+    /**
+     * <code>.SpektraCalendarOverviewMessage spektra_calendar_overview = 49;</code>
+     */
+    public boolean hasSpektraCalendarOverview() {
+      return payloadCase_ == 49;
+    }
+    /**
+     * <code>.SpektraCalendarOverviewMessage spektra_calendar_overview = 49;</code>
+     */
+    public EDS10ProtocolBuffer.SpektraCalendarOverviewMessage getSpektraCalendarOverview() {
+      if (payloadCase_ == 49) {
+         return (EDS10ProtocolBuffer.SpektraCalendarOverviewMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.SpektraCalendarOverviewMessage.getDefaultInstance();
+    }
+    /**
+     * <code>.SpektraCalendarOverviewMessage spektra_calendar_overview = 49;</code>
+     */
+    public EDS10ProtocolBuffer.SpektraCalendarOverviewMessageOrBuilder getSpektraCalendarOverviewOrBuilder() {
+      if (payloadCase_ == 49) {
+         return (EDS10ProtocolBuffer.SpektraCalendarOverviewMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.SpektraCalendarOverviewMessage.getDefaultInstance();
+    }
+
+    public static final int INPUTS_DALI_FIELD_NUMBER = 50;
+    /**
+     * <code>.DALIInputMultiMessage inputs_dali = 50;</code>
+     */
+    public boolean hasInputsDali() {
+      return payloadCase_ == 50;
+    }
+    /**
+     * <code>.DALIInputMultiMessage inputs_dali = 50;</code>
+     */
+    public EDS10ProtocolBuffer.DALIInputMultiMessage getInputsDali() {
+      if (payloadCase_ == 50) {
+         return (EDS10ProtocolBuffer.DALIInputMultiMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.DALIInputMultiMessage.getDefaultInstance();
+    }
+    /**
+     * <code>.DALIInputMultiMessage inputs_dali = 50;</code>
+     */
+    public EDS10ProtocolBuffer.DALIInputMultiMessageOrBuilder getInputsDaliOrBuilder() {
+      if (payloadCase_ == 50) {
+         return (EDS10ProtocolBuffer.DALIInputMultiMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.DALIInputMultiMessage.getDefaultInstance();
+    }
+
+    public static final int LOGS_READ_FIELD_NUMBER = 51;
+    /**
+     * <code>.SystemLogReadMessage logs_read = 51;</code>
+     */
+    public boolean hasLogsRead() {
+      return payloadCase_ == 51;
+    }
+    /**
+     * <code>.SystemLogReadMessage logs_read = 51;</code>
+     */
+    public EDS10ProtocolBuffer.SystemLogReadMessage getLogsRead() {
+      if (payloadCase_ == 51) {
+         return (EDS10ProtocolBuffer.SystemLogReadMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.SystemLogReadMessage.getDefaultInstance();
+    }
+    /**
+     * <code>.SystemLogReadMessage logs_read = 51;</code>
+     */
+    public EDS10ProtocolBuffer.SystemLogReadMessageOrBuilder getLogsReadOrBuilder() {
+      if (payloadCase_ == 51) {
+         return (EDS10ProtocolBuffer.SystemLogReadMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.SystemLogReadMessage.getDefaultInstance();
+    }
+
+    public static final int METADATA_READ_FIELD_NUMBER = 52;
+    /**
+     * <code>.SystemMetaDataReadMessage metadata_read = 52;</code>
+     */
+    public boolean hasMetadataRead() {
+      return payloadCase_ == 52;
+    }
+    /**
+     * <code>.SystemMetaDataReadMessage metadata_read = 52;</code>
+     */
+    public EDS10ProtocolBuffer.SystemMetaDataReadMessage getMetadataRead() {
+      if (payloadCase_ == 52) {
+         return (EDS10ProtocolBuffer.SystemMetaDataReadMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.SystemMetaDataReadMessage.getDefaultInstance();
+    }
+    /**
+     * <code>.SystemMetaDataReadMessage metadata_read = 52;</code>
+     */
+    public EDS10ProtocolBuffer.SystemMetaDataReadMessageOrBuilder getMetadataReadOrBuilder() {
+      if (payloadCase_ == 52) {
+         return (EDS10ProtocolBuffer.SystemMetaDataReadMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.SystemMetaDataReadMessage.getDefaultInstance();
+    }
+
+    public static final int DALI_ADDRESSING_MESSAGE_FIELD_NUMBER = 53;
+    /**
+     * <code>.DALIAddressingMessage dali_addressing_message = 53;</code>
+     */
+    public boolean hasDaliAddressingMessage() {
+      return payloadCase_ == 53;
+    }
+    /**
+     * <code>.DALIAddressingMessage dali_addressing_message = 53;</code>
+     */
+    public EDS10ProtocolBuffer.DALIAddressingMessage getDaliAddressingMessage() {
+      if (payloadCase_ == 53) {
+         return (EDS10ProtocolBuffer.DALIAddressingMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.DALIAddressingMessage.getDefaultInstance();
+    }
+    /**
+     * <code>.DALIAddressingMessage dali_addressing_message = 53;</code>
+     */
+    public EDS10ProtocolBuffer.DALIAddressingMessageOrBuilder getDaliAddressingMessageOrBuilder() {
+      if (payloadCase_ == 53) {
+         return (EDS10ProtocolBuffer.DALIAddressingMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.DALIAddressingMessage.getDefaultInstance();
+    }
+
+    public static final int DALI_REMAPPING_MESSAGE_FIELD_NUMBER = 54;
+    /**
+     * <code>.DALIRemappingMessage dali_remapping_message = 54;</code>
+     */
+    public boolean hasDaliRemappingMessage() {
+      return payloadCase_ == 54;
+    }
+    /**
+     * <code>.DALIRemappingMessage dali_remapping_message = 54;</code>
+     */
+    public EDS10ProtocolBuffer.DALIRemappingMessage getDaliRemappingMessage() {
+      if (payloadCase_ == 54) {
+         return (EDS10ProtocolBuffer.DALIRemappingMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.DALIRemappingMessage.getDefaultInstance();
+    }
+    /**
+     * <code>.DALIRemappingMessage dali_remapping_message = 54;</code>
+     */
+    public EDS10ProtocolBuffer.DALIRemappingMessageOrBuilder getDaliRemappingMessageOrBuilder() {
+      if (payloadCase_ == 54) {
+         return (EDS10ProtocolBuffer.DALIRemappingMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.DALIRemappingMessage.getDefaultInstance();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -73257,6 +92798,27 @@ public final class EDS10ProtocolBuffer {
       }
       if (payloadCase_ == 47) {
         output.writeMessage(47, (EDS10ProtocolBuffer.DeviceStateMessage) payload_);
+      }
+      if (payloadCase_ == 48) {
+        output.writeMessage(48, (EDS10ProtocolBuffer.SpektraCalendarDayMessage) payload_);
+      }
+      if (payloadCase_ == 49) {
+        output.writeMessage(49, (EDS10ProtocolBuffer.SpektraCalendarOverviewMessage) payload_);
+      }
+      if (payloadCase_ == 50) {
+        output.writeMessage(50, (EDS10ProtocolBuffer.DALIInputMultiMessage) payload_);
+      }
+      if (payloadCase_ == 51) {
+        output.writeMessage(51, (EDS10ProtocolBuffer.SystemLogReadMessage) payload_);
+      }
+      if (payloadCase_ == 52) {
+        output.writeMessage(52, (EDS10ProtocolBuffer.SystemMetaDataReadMessage) payload_);
+      }
+      if (payloadCase_ == 53) {
+        output.writeMessage(53, (EDS10ProtocolBuffer.DALIAddressingMessage) payload_);
+      }
+      if (payloadCase_ == 54) {
+        output.writeMessage(54, (EDS10ProtocolBuffer.DALIRemappingMessage) payload_);
       }
       unknownFields.writeTo(output);
     }
@@ -73446,6 +93008,34 @@ public final class EDS10ProtocolBuffer {
       if (payloadCase_ == 47) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(47, (EDS10ProtocolBuffer.DeviceStateMessage) payload_);
+      }
+      if (payloadCase_ == 48) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(48, (EDS10ProtocolBuffer.SpektraCalendarDayMessage) payload_);
+      }
+      if (payloadCase_ == 49) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(49, (EDS10ProtocolBuffer.SpektraCalendarOverviewMessage) payload_);
+      }
+      if (payloadCase_ == 50) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(50, (EDS10ProtocolBuffer.DALIInputMultiMessage) payload_);
+      }
+      if (payloadCase_ == 51) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(51, (EDS10ProtocolBuffer.SystemLogReadMessage) payload_);
+      }
+      if (payloadCase_ == 52) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(52, (EDS10ProtocolBuffer.SystemMetaDataReadMessage) payload_);
+      }
+      if (payloadCase_ == 53) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(53, (EDS10ProtocolBuffer.DALIAddressingMessage) payload_);
+      }
+      if (payloadCase_ == 54) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(54, (EDS10ProtocolBuffer.DALIRemappingMessage) payload_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -73645,6 +93235,34 @@ public final class EDS10ProtocolBuffer {
           result = result && getDeviceStateMessage()
               .equals(other.getDeviceStateMessage());
           break;
+        case 48:
+          result = result && getSpektraCalendarDay()
+              .equals(other.getSpektraCalendarDay());
+          break;
+        case 49:
+          result = result && getSpektraCalendarOverview()
+              .equals(other.getSpektraCalendarOverview());
+          break;
+        case 50:
+          result = result && getInputsDali()
+              .equals(other.getInputsDali());
+          break;
+        case 51:
+          result = result && getLogsRead()
+              .equals(other.getLogsRead());
+          break;
+        case 52:
+          result = result && getMetadataRead()
+              .equals(other.getMetadataRead());
+          break;
+        case 53:
+          result = result && getDaliAddressingMessage()
+              .equals(other.getDaliAddressingMessage());
+          break;
+        case 54:
+          result = result && getDaliRemappingMessage()
+              .equals(other.getDaliRemappingMessage());
+          break;
         case 0:
         default:
       }
@@ -73837,6 +93455,34 @@ public final class EDS10ProtocolBuffer {
         case 47:
           hash = (37 * hash) + DEVICE_STATE_MESSAGE_FIELD_NUMBER;
           hash = (53 * hash) + getDeviceStateMessage().hashCode();
+          break;
+        case 48:
+          hash = (37 * hash) + SPEKTRA_CALENDAR_DAY_FIELD_NUMBER;
+          hash = (53 * hash) + getSpektraCalendarDay().hashCode();
+          break;
+        case 49:
+          hash = (37 * hash) + SPEKTRA_CALENDAR_OVERVIEW_FIELD_NUMBER;
+          hash = (53 * hash) + getSpektraCalendarOverview().hashCode();
+          break;
+        case 50:
+          hash = (37 * hash) + INPUTS_DALI_FIELD_NUMBER;
+          hash = (53 * hash) + getInputsDali().hashCode();
+          break;
+        case 51:
+          hash = (37 * hash) + LOGS_READ_FIELD_NUMBER;
+          hash = (53 * hash) + getLogsRead().hashCode();
+          break;
+        case 52:
+          hash = (37 * hash) + METADATA_READ_FIELD_NUMBER;
+          hash = (53 * hash) + getMetadataRead().hashCode();
+          break;
+        case 53:
+          hash = (37 * hash) + DALI_ADDRESSING_MESSAGE_FIELD_NUMBER;
+          hash = (53 * hash) + getDaliAddressingMessage().hashCode();
+          break;
+        case 54:
+          hash = (37 * hash) + DALI_REMAPPING_MESSAGE_FIELD_NUMBER;
+          hash = (53 * hash) + getDaliRemappingMessage().hashCode();
           break;
         case 0:
         default:
@@ -74317,6 +93963,55 @@ public final class EDS10ProtocolBuffer {
             result.payload_ = deviceStateMessageBuilder_.build();
           }
         }
+        if (payloadCase_ == 48) {
+          if (spektraCalendarDayBuilder_ == null) {
+            result.payload_ = payload_;
+          } else {
+            result.payload_ = spektraCalendarDayBuilder_.build();
+          }
+        }
+        if (payloadCase_ == 49) {
+          if (spektraCalendarOverviewBuilder_ == null) {
+            result.payload_ = payload_;
+          } else {
+            result.payload_ = spektraCalendarOverviewBuilder_.build();
+          }
+        }
+        if (payloadCase_ == 50) {
+          if (inputsDaliBuilder_ == null) {
+            result.payload_ = payload_;
+          } else {
+            result.payload_ = inputsDaliBuilder_.build();
+          }
+        }
+        if (payloadCase_ == 51) {
+          if (logsReadBuilder_ == null) {
+            result.payload_ = payload_;
+          } else {
+            result.payload_ = logsReadBuilder_.build();
+          }
+        }
+        if (payloadCase_ == 52) {
+          if (metadataReadBuilder_ == null) {
+            result.payload_ = payload_;
+          } else {
+            result.payload_ = metadataReadBuilder_.build();
+          }
+        }
+        if (payloadCase_ == 53) {
+          if (daliAddressingMessageBuilder_ == null) {
+            result.payload_ = payload_;
+          } else {
+            result.payload_ = daliAddressingMessageBuilder_.build();
+          }
+        }
+        if (payloadCase_ == 54) {
+          if (daliRemappingMessageBuilder_ == null) {
+            result.payload_ = payload_;
+          } else {
+            result.payload_ = daliRemappingMessageBuilder_.build();
+          }
+        }
         result.payloadCase_ = payloadCase_;
         onBuilt();
         return result;
@@ -74544,6 +94239,34 @@ public final class EDS10ProtocolBuffer {
           }
           case DEVICE_STATE_MESSAGE: {
             mergeDeviceStateMessage(other.getDeviceStateMessage());
+            break;
+          }
+          case SPEKTRA_CALENDAR_DAY: {
+            mergeSpektraCalendarDay(other.getSpektraCalendarDay());
+            break;
+          }
+          case SPEKTRA_CALENDAR_OVERVIEW: {
+            mergeSpektraCalendarOverview(other.getSpektraCalendarOverview());
+            break;
+          }
+          case INPUTS_DALI: {
+            mergeInputsDali(other.getInputsDali());
+            break;
+          }
+          case LOGS_READ: {
+            mergeLogsRead(other.getLogsRead());
+            break;
+          }
+          case METADATA_READ: {
+            mergeMetadataRead(other.getMetadataRead());
+            break;
+          }
+          case DALI_ADDRESSING_MESSAGE: {
+            mergeDaliAddressingMessage(other.getDaliAddressingMessage());
+            break;
+          }
+          case DALI_REMAPPING_MESSAGE: {
+            mergeDaliRemappingMessage(other.getDaliRemappingMessage());
             break;
           }
           case PAYLOAD_NOT_SET: {
@@ -80687,6 +100410,958 @@ public final class EDS10ProtocolBuffer {
         onChanged();;
         return deviceStateMessageBuilder_;
       }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.SpektraCalendarDayMessage, EDS10ProtocolBuffer.SpektraCalendarDayMessage.Builder, EDS10ProtocolBuffer.SpektraCalendarDayMessageOrBuilder> spektraCalendarDayBuilder_;
+      /**
+       * <code>.SpektraCalendarDayMessage spektra_calendar_day = 48;</code>
+       */
+      public boolean hasSpektraCalendarDay() {
+        return payloadCase_ == 48;
+      }
+      /**
+       * <code>.SpektraCalendarDayMessage spektra_calendar_day = 48;</code>
+       */
+      public EDS10ProtocolBuffer.SpektraCalendarDayMessage getSpektraCalendarDay() {
+        if (spektraCalendarDayBuilder_ == null) {
+          if (payloadCase_ == 48) {
+            return (EDS10ProtocolBuffer.SpektraCalendarDayMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.SpektraCalendarDayMessage.getDefaultInstance();
+        } else {
+          if (payloadCase_ == 48) {
+            return spektraCalendarDayBuilder_.getMessage();
+          }
+          return EDS10ProtocolBuffer.SpektraCalendarDayMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.SpektraCalendarDayMessage spektra_calendar_day = 48;</code>
+       */
+      public Builder setSpektraCalendarDay(EDS10ProtocolBuffer.SpektraCalendarDayMessage value) {
+        if (spektraCalendarDayBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          payload_ = value;
+          onChanged();
+        } else {
+          spektraCalendarDayBuilder_.setMessage(value);
+        }
+        payloadCase_ = 48;
+        return this;
+      }
+      /**
+       * <code>.SpektraCalendarDayMessage spektra_calendar_day = 48;</code>
+       */
+      public Builder setSpektraCalendarDay(
+          EDS10ProtocolBuffer.SpektraCalendarDayMessage.Builder builderForValue) {
+        if (spektraCalendarDayBuilder_ == null) {
+          payload_ = builderForValue.build();
+          onChanged();
+        } else {
+          spektraCalendarDayBuilder_.setMessage(builderForValue.build());
+        }
+        payloadCase_ = 48;
+        return this;
+      }
+      /**
+       * <code>.SpektraCalendarDayMessage spektra_calendar_day = 48;</code>
+       */
+      public Builder mergeSpektraCalendarDay(EDS10ProtocolBuffer.SpektraCalendarDayMessage value) {
+        if (spektraCalendarDayBuilder_ == null) {
+          if (payloadCase_ == 48 &&
+              payload_ != EDS10ProtocolBuffer.SpektraCalendarDayMessage.getDefaultInstance()) {
+            payload_ = EDS10ProtocolBuffer.SpektraCalendarDayMessage.newBuilder((EDS10ProtocolBuffer.SpektraCalendarDayMessage) payload_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            payload_ = value;
+          }
+          onChanged();
+        } else {
+          if (payloadCase_ == 48) {
+            spektraCalendarDayBuilder_.mergeFrom(value);
+          }
+          spektraCalendarDayBuilder_.setMessage(value);
+        }
+        payloadCase_ = 48;
+        return this;
+      }
+      /**
+       * <code>.SpektraCalendarDayMessage spektra_calendar_day = 48;</code>
+       */
+      public Builder clearSpektraCalendarDay() {
+        if (spektraCalendarDayBuilder_ == null) {
+          if (payloadCase_ == 48) {
+            payloadCase_ = 0;
+            payload_ = null;
+            onChanged();
+          }
+        } else {
+          if (payloadCase_ == 48) {
+            payloadCase_ = 0;
+            payload_ = null;
+          }
+          spektraCalendarDayBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.SpektraCalendarDayMessage spektra_calendar_day = 48;</code>
+       */
+      public EDS10ProtocolBuffer.SpektraCalendarDayMessage.Builder getSpektraCalendarDayBuilder() {
+        return getSpektraCalendarDayFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.SpektraCalendarDayMessage spektra_calendar_day = 48;</code>
+       */
+      public EDS10ProtocolBuffer.SpektraCalendarDayMessageOrBuilder getSpektraCalendarDayOrBuilder() {
+        if ((payloadCase_ == 48) && (spektraCalendarDayBuilder_ != null)) {
+          return spektraCalendarDayBuilder_.getMessageOrBuilder();
+        } else {
+          if (payloadCase_ == 48) {
+            return (EDS10ProtocolBuffer.SpektraCalendarDayMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.SpektraCalendarDayMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.SpektraCalendarDayMessage spektra_calendar_day = 48;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.SpektraCalendarDayMessage, EDS10ProtocolBuffer.SpektraCalendarDayMessage.Builder, EDS10ProtocolBuffer.SpektraCalendarDayMessageOrBuilder> 
+          getSpektraCalendarDayFieldBuilder() {
+        if (spektraCalendarDayBuilder_ == null) {
+          if (!(payloadCase_ == 48)) {
+            payload_ = EDS10ProtocolBuffer.SpektraCalendarDayMessage.getDefaultInstance();
+          }
+          spektraCalendarDayBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.SpektraCalendarDayMessage, EDS10ProtocolBuffer.SpektraCalendarDayMessage.Builder, EDS10ProtocolBuffer.SpektraCalendarDayMessageOrBuilder>(
+                  (EDS10ProtocolBuffer.SpektraCalendarDayMessage) payload_,
+                  getParentForChildren(),
+                  isClean());
+          payload_ = null;
+        }
+        payloadCase_ = 48;
+        onChanged();;
+        return spektraCalendarDayBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.SpektraCalendarOverviewMessage, EDS10ProtocolBuffer.SpektraCalendarOverviewMessage.Builder, EDS10ProtocolBuffer.SpektraCalendarOverviewMessageOrBuilder> spektraCalendarOverviewBuilder_;
+      /**
+       * <code>.SpektraCalendarOverviewMessage spektra_calendar_overview = 49;</code>
+       */
+      public boolean hasSpektraCalendarOverview() {
+        return payloadCase_ == 49;
+      }
+      /**
+       * <code>.SpektraCalendarOverviewMessage spektra_calendar_overview = 49;</code>
+       */
+      public EDS10ProtocolBuffer.SpektraCalendarOverviewMessage getSpektraCalendarOverview() {
+        if (spektraCalendarOverviewBuilder_ == null) {
+          if (payloadCase_ == 49) {
+            return (EDS10ProtocolBuffer.SpektraCalendarOverviewMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.SpektraCalendarOverviewMessage.getDefaultInstance();
+        } else {
+          if (payloadCase_ == 49) {
+            return spektraCalendarOverviewBuilder_.getMessage();
+          }
+          return EDS10ProtocolBuffer.SpektraCalendarOverviewMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.SpektraCalendarOverviewMessage spektra_calendar_overview = 49;</code>
+       */
+      public Builder setSpektraCalendarOverview(EDS10ProtocolBuffer.SpektraCalendarOverviewMessage value) {
+        if (spektraCalendarOverviewBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          payload_ = value;
+          onChanged();
+        } else {
+          spektraCalendarOverviewBuilder_.setMessage(value);
+        }
+        payloadCase_ = 49;
+        return this;
+      }
+      /**
+       * <code>.SpektraCalendarOverviewMessage spektra_calendar_overview = 49;</code>
+       */
+      public Builder setSpektraCalendarOverview(
+          EDS10ProtocolBuffer.SpektraCalendarOverviewMessage.Builder builderForValue) {
+        if (spektraCalendarOverviewBuilder_ == null) {
+          payload_ = builderForValue.build();
+          onChanged();
+        } else {
+          spektraCalendarOverviewBuilder_.setMessage(builderForValue.build());
+        }
+        payloadCase_ = 49;
+        return this;
+      }
+      /**
+       * <code>.SpektraCalendarOverviewMessage spektra_calendar_overview = 49;</code>
+       */
+      public Builder mergeSpektraCalendarOverview(EDS10ProtocolBuffer.SpektraCalendarOverviewMessage value) {
+        if (spektraCalendarOverviewBuilder_ == null) {
+          if (payloadCase_ == 49 &&
+              payload_ != EDS10ProtocolBuffer.SpektraCalendarOverviewMessage.getDefaultInstance()) {
+            payload_ = EDS10ProtocolBuffer.SpektraCalendarOverviewMessage.newBuilder((EDS10ProtocolBuffer.SpektraCalendarOverviewMessage) payload_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            payload_ = value;
+          }
+          onChanged();
+        } else {
+          if (payloadCase_ == 49) {
+            spektraCalendarOverviewBuilder_.mergeFrom(value);
+          }
+          spektraCalendarOverviewBuilder_.setMessage(value);
+        }
+        payloadCase_ = 49;
+        return this;
+      }
+      /**
+       * <code>.SpektraCalendarOverviewMessage spektra_calendar_overview = 49;</code>
+       */
+      public Builder clearSpektraCalendarOverview() {
+        if (spektraCalendarOverviewBuilder_ == null) {
+          if (payloadCase_ == 49) {
+            payloadCase_ = 0;
+            payload_ = null;
+            onChanged();
+          }
+        } else {
+          if (payloadCase_ == 49) {
+            payloadCase_ = 0;
+            payload_ = null;
+          }
+          spektraCalendarOverviewBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.SpektraCalendarOverviewMessage spektra_calendar_overview = 49;</code>
+       */
+      public EDS10ProtocolBuffer.SpektraCalendarOverviewMessage.Builder getSpektraCalendarOverviewBuilder() {
+        return getSpektraCalendarOverviewFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.SpektraCalendarOverviewMessage spektra_calendar_overview = 49;</code>
+       */
+      public EDS10ProtocolBuffer.SpektraCalendarOverviewMessageOrBuilder getSpektraCalendarOverviewOrBuilder() {
+        if ((payloadCase_ == 49) && (spektraCalendarOverviewBuilder_ != null)) {
+          return spektraCalendarOverviewBuilder_.getMessageOrBuilder();
+        } else {
+          if (payloadCase_ == 49) {
+            return (EDS10ProtocolBuffer.SpektraCalendarOverviewMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.SpektraCalendarOverviewMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.SpektraCalendarOverviewMessage spektra_calendar_overview = 49;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.SpektraCalendarOverviewMessage, EDS10ProtocolBuffer.SpektraCalendarOverviewMessage.Builder, EDS10ProtocolBuffer.SpektraCalendarOverviewMessageOrBuilder> 
+          getSpektraCalendarOverviewFieldBuilder() {
+        if (spektraCalendarOverviewBuilder_ == null) {
+          if (!(payloadCase_ == 49)) {
+            payload_ = EDS10ProtocolBuffer.SpektraCalendarOverviewMessage.getDefaultInstance();
+          }
+          spektraCalendarOverviewBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.SpektraCalendarOverviewMessage, EDS10ProtocolBuffer.SpektraCalendarOverviewMessage.Builder, EDS10ProtocolBuffer.SpektraCalendarOverviewMessageOrBuilder>(
+                  (EDS10ProtocolBuffer.SpektraCalendarOverviewMessage) payload_,
+                  getParentForChildren(),
+                  isClean());
+          payload_ = null;
+        }
+        payloadCase_ = 49;
+        onChanged();;
+        return spektraCalendarOverviewBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.DALIInputMultiMessage, EDS10ProtocolBuffer.DALIInputMultiMessage.Builder, EDS10ProtocolBuffer.DALIInputMultiMessageOrBuilder> inputsDaliBuilder_;
+      /**
+       * <code>.DALIInputMultiMessage inputs_dali = 50;</code>
+       */
+      public boolean hasInputsDali() {
+        return payloadCase_ == 50;
+      }
+      /**
+       * <code>.DALIInputMultiMessage inputs_dali = 50;</code>
+       */
+      public EDS10ProtocolBuffer.DALIInputMultiMessage getInputsDali() {
+        if (inputsDaliBuilder_ == null) {
+          if (payloadCase_ == 50) {
+            return (EDS10ProtocolBuffer.DALIInputMultiMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.DALIInputMultiMessage.getDefaultInstance();
+        } else {
+          if (payloadCase_ == 50) {
+            return inputsDaliBuilder_.getMessage();
+          }
+          return EDS10ProtocolBuffer.DALIInputMultiMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.DALIInputMultiMessage inputs_dali = 50;</code>
+       */
+      public Builder setInputsDali(EDS10ProtocolBuffer.DALIInputMultiMessage value) {
+        if (inputsDaliBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          payload_ = value;
+          onChanged();
+        } else {
+          inputsDaliBuilder_.setMessage(value);
+        }
+        payloadCase_ = 50;
+        return this;
+      }
+      /**
+       * <code>.DALIInputMultiMessage inputs_dali = 50;</code>
+       */
+      public Builder setInputsDali(
+          EDS10ProtocolBuffer.DALIInputMultiMessage.Builder builderForValue) {
+        if (inputsDaliBuilder_ == null) {
+          payload_ = builderForValue.build();
+          onChanged();
+        } else {
+          inputsDaliBuilder_.setMessage(builderForValue.build());
+        }
+        payloadCase_ = 50;
+        return this;
+      }
+      /**
+       * <code>.DALIInputMultiMessage inputs_dali = 50;</code>
+       */
+      public Builder mergeInputsDali(EDS10ProtocolBuffer.DALIInputMultiMessage value) {
+        if (inputsDaliBuilder_ == null) {
+          if (payloadCase_ == 50 &&
+              payload_ != EDS10ProtocolBuffer.DALIInputMultiMessage.getDefaultInstance()) {
+            payload_ = EDS10ProtocolBuffer.DALIInputMultiMessage.newBuilder((EDS10ProtocolBuffer.DALIInputMultiMessage) payload_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            payload_ = value;
+          }
+          onChanged();
+        } else {
+          if (payloadCase_ == 50) {
+            inputsDaliBuilder_.mergeFrom(value);
+          }
+          inputsDaliBuilder_.setMessage(value);
+        }
+        payloadCase_ = 50;
+        return this;
+      }
+      /**
+       * <code>.DALIInputMultiMessage inputs_dali = 50;</code>
+       */
+      public Builder clearInputsDali() {
+        if (inputsDaliBuilder_ == null) {
+          if (payloadCase_ == 50) {
+            payloadCase_ = 0;
+            payload_ = null;
+            onChanged();
+          }
+        } else {
+          if (payloadCase_ == 50) {
+            payloadCase_ = 0;
+            payload_ = null;
+          }
+          inputsDaliBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.DALIInputMultiMessage inputs_dali = 50;</code>
+       */
+      public EDS10ProtocolBuffer.DALIInputMultiMessage.Builder getInputsDaliBuilder() {
+        return getInputsDaliFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.DALIInputMultiMessage inputs_dali = 50;</code>
+       */
+      public EDS10ProtocolBuffer.DALIInputMultiMessageOrBuilder getInputsDaliOrBuilder() {
+        if ((payloadCase_ == 50) && (inputsDaliBuilder_ != null)) {
+          return inputsDaliBuilder_.getMessageOrBuilder();
+        } else {
+          if (payloadCase_ == 50) {
+            return (EDS10ProtocolBuffer.DALIInputMultiMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.DALIInputMultiMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.DALIInputMultiMessage inputs_dali = 50;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.DALIInputMultiMessage, EDS10ProtocolBuffer.DALIInputMultiMessage.Builder, EDS10ProtocolBuffer.DALIInputMultiMessageOrBuilder> 
+          getInputsDaliFieldBuilder() {
+        if (inputsDaliBuilder_ == null) {
+          if (!(payloadCase_ == 50)) {
+            payload_ = EDS10ProtocolBuffer.DALIInputMultiMessage.getDefaultInstance();
+          }
+          inputsDaliBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.DALIInputMultiMessage, EDS10ProtocolBuffer.DALIInputMultiMessage.Builder, EDS10ProtocolBuffer.DALIInputMultiMessageOrBuilder>(
+                  (EDS10ProtocolBuffer.DALIInputMultiMessage) payload_,
+                  getParentForChildren(),
+                  isClean());
+          payload_ = null;
+        }
+        payloadCase_ = 50;
+        onChanged();;
+        return inputsDaliBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.SystemLogReadMessage, EDS10ProtocolBuffer.SystemLogReadMessage.Builder, EDS10ProtocolBuffer.SystemLogReadMessageOrBuilder> logsReadBuilder_;
+      /**
+       * <code>.SystemLogReadMessage logs_read = 51;</code>
+       */
+      public boolean hasLogsRead() {
+        return payloadCase_ == 51;
+      }
+      /**
+       * <code>.SystemLogReadMessage logs_read = 51;</code>
+       */
+      public EDS10ProtocolBuffer.SystemLogReadMessage getLogsRead() {
+        if (logsReadBuilder_ == null) {
+          if (payloadCase_ == 51) {
+            return (EDS10ProtocolBuffer.SystemLogReadMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.SystemLogReadMessage.getDefaultInstance();
+        } else {
+          if (payloadCase_ == 51) {
+            return logsReadBuilder_.getMessage();
+          }
+          return EDS10ProtocolBuffer.SystemLogReadMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.SystemLogReadMessage logs_read = 51;</code>
+       */
+      public Builder setLogsRead(EDS10ProtocolBuffer.SystemLogReadMessage value) {
+        if (logsReadBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          payload_ = value;
+          onChanged();
+        } else {
+          logsReadBuilder_.setMessage(value);
+        }
+        payloadCase_ = 51;
+        return this;
+      }
+      /**
+       * <code>.SystemLogReadMessage logs_read = 51;</code>
+       */
+      public Builder setLogsRead(
+          EDS10ProtocolBuffer.SystemLogReadMessage.Builder builderForValue) {
+        if (logsReadBuilder_ == null) {
+          payload_ = builderForValue.build();
+          onChanged();
+        } else {
+          logsReadBuilder_.setMessage(builderForValue.build());
+        }
+        payloadCase_ = 51;
+        return this;
+      }
+      /**
+       * <code>.SystemLogReadMessage logs_read = 51;</code>
+       */
+      public Builder mergeLogsRead(EDS10ProtocolBuffer.SystemLogReadMessage value) {
+        if (logsReadBuilder_ == null) {
+          if (payloadCase_ == 51 &&
+              payload_ != EDS10ProtocolBuffer.SystemLogReadMessage.getDefaultInstance()) {
+            payload_ = EDS10ProtocolBuffer.SystemLogReadMessage.newBuilder((EDS10ProtocolBuffer.SystemLogReadMessage) payload_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            payload_ = value;
+          }
+          onChanged();
+        } else {
+          if (payloadCase_ == 51) {
+            logsReadBuilder_.mergeFrom(value);
+          }
+          logsReadBuilder_.setMessage(value);
+        }
+        payloadCase_ = 51;
+        return this;
+      }
+      /**
+       * <code>.SystemLogReadMessage logs_read = 51;</code>
+       */
+      public Builder clearLogsRead() {
+        if (logsReadBuilder_ == null) {
+          if (payloadCase_ == 51) {
+            payloadCase_ = 0;
+            payload_ = null;
+            onChanged();
+          }
+        } else {
+          if (payloadCase_ == 51) {
+            payloadCase_ = 0;
+            payload_ = null;
+          }
+          logsReadBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.SystemLogReadMessage logs_read = 51;</code>
+       */
+      public EDS10ProtocolBuffer.SystemLogReadMessage.Builder getLogsReadBuilder() {
+        return getLogsReadFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.SystemLogReadMessage logs_read = 51;</code>
+       */
+      public EDS10ProtocolBuffer.SystemLogReadMessageOrBuilder getLogsReadOrBuilder() {
+        if ((payloadCase_ == 51) && (logsReadBuilder_ != null)) {
+          return logsReadBuilder_.getMessageOrBuilder();
+        } else {
+          if (payloadCase_ == 51) {
+            return (EDS10ProtocolBuffer.SystemLogReadMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.SystemLogReadMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.SystemLogReadMessage logs_read = 51;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.SystemLogReadMessage, EDS10ProtocolBuffer.SystemLogReadMessage.Builder, EDS10ProtocolBuffer.SystemLogReadMessageOrBuilder> 
+          getLogsReadFieldBuilder() {
+        if (logsReadBuilder_ == null) {
+          if (!(payloadCase_ == 51)) {
+            payload_ = EDS10ProtocolBuffer.SystemLogReadMessage.getDefaultInstance();
+          }
+          logsReadBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.SystemLogReadMessage, EDS10ProtocolBuffer.SystemLogReadMessage.Builder, EDS10ProtocolBuffer.SystemLogReadMessageOrBuilder>(
+                  (EDS10ProtocolBuffer.SystemLogReadMessage) payload_,
+                  getParentForChildren(),
+                  isClean());
+          payload_ = null;
+        }
+        payloadCase_ = 51;
+        onChanged();;
+        return logsReadBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.SystemMetaDataReadMessage, EDS10ProtocolBuffer.SystemMetaDataReadMessage.Builder, EDS10ProtocolBuffer.SystemMetaDataReadMessageOrBuilder> metadataReadBuilder_;
+      /**
+       * <code>.SystemMetaDataReadMessage metadata_read = 52;</code>
+       */
+      public boolean hasMetadataRead() {
+        return payloadCase_ == 52;
+      }
+      /**
+       * <code>.SystemMetaDataReadMessage metadata_read = 52;</code>
+       */
+      public EDS10ProtocolBuffer.SystemMetaDataReadMessage getMetadataRead() {
+        if (metadataReadBuilder_ == null) {
+          if (payloadCase_ == 52) {
+            return (EDS10ProtocolBuffer.SystemMetaDataReadMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.SystemMetaDataReadMessage.getDefaultInstance();
+        } else {
+          if (payloadCase_ == 52) {
+            return metadataReadBuilder_.getMessage();
+          }
+          return EDS10ProtocolBuffer.SystemMetaDataReadMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.SystemMetaDataReadMessage metadata_read = 52;</code>
+       */
+      public Builder setMetadataRead(EDS10ProtocolBuffer.SystemMetaDataReadMessage value) {
+        if (metadataReadBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          payload_ = value;
+          onChanged();
+        } else {
+          metadataReadBuilder_.setMessage(value);
+        }
+        payloadCase_ = 52;
+        return this;
+      }
+      /**
+       * <code>.SystemMetaDataReadMessage metadata_read = 52;</code>
+       */
+      public Builder setMetadataRead(
+          EDS10ProtocolBuffer.SystemMetaDataReadMessage.Builder builderForValue) {
+        if (metadataReadBuilder_ == null) {
+          payload_ = builderForValue.build();
+          onChanged();
+        } else {
+          metadataReadBuilder_.setMessage(builderForValue.build());
+        }
+        payloadCase_ = 52;
+        return this;
+      }
+      /**
+       * <code>.SystemMetaDataReadMessage metadata_read = 52;</code>
+       */
+      public Builder mergeMetadataRead(EDS10ProtocolBuffer.SystemMetaDataReadMessage value) {
+        if (metadataReadBuilder_ == null) {
+          if (payloadCase_ == 52 &&
+              payload_ != EDS10ProtocolBuffer.SystemMetaDataReadMessage.getDefaultInstance()) {
+            payload_ = EDS10ProtocolBuffer.SystemMetaDataReadMessage.newBuilder((EDS10ProtocolBuffer.SystemMetaDataReadMessage) payload_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            payload_ = value;
+          }
+          onChanged();
+        } else {
+          if (payloadCase_ == 52) {
+            metadataReadBuilder_.mergeFrom(value);
+          }
+          metadataReadBuilder_.setMessage(value);
+        }
+        payloadCase_ = 52;
+        return this;
+      }
+      /**
+       * <code>.SystemMetaDataReadMessage metadata_read = 52;</code>
+       */
+      public Builder clearMetadataRead() {
+        if (metadataReadBuilder_ == null) {
+          if (payloadCase_ == 52) {
+            payloadCase_ = 0;
+            payload_ = null;
+            onChanged();
+          }
+        } else {
+          if (payloadCase_ == 52) {
+            payloadCase_ = 0;
+            payload_ = null;
+          }
+          metadataReadBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.SystemMetaDataReadMessage metadata_read = 52;</code>
+       */
+      public EDS10ProtocolBuffer.SystemMetaDataReadMessage.Builder getMetadataReadBuilder() {
+        return getMetadataReadFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.SystemMetaDataReadMessage metadata_read = 52;</code>
+       */
+      public EDS10ProtocolBuffer.SystemMetaDataReadMessageOrBuilder getMetadataReadOrBuilder() {
+        if ((payloadCase_ == 52) && (metadataReadBuilder_ != null)) {
+          return metadataReadBuilder_.getMessageOrBuilder();
+        } else {
+          if (payloadCase_ == 52) {
+            return (EDS10ProtocolBuffer.SystemMetaDataReadMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.SystemMetaDataReadMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.SystemMetaDataReadMessage metadata_read = 52;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.SystemMetaDataReadMessage, EDS10ProtocolBuffer.SystemMetaDataReadMessage.Builder, EDS10ProtocolBuffer.SystemMetaDataReadMessageOrBuilder> 
+          getMetadataReadFieldBuilder() {
+        if (metadataReadBuilder_ == null) {
+          if (!(payloadCase_ == 52)) {
+            payload_ = EDS10ProtocolBuffer.SystemMetaDataReadMessage.getDefaultInstance();
+          }
+          metadataReadBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.SystemMetaDataReadMessage, EDS10ProtocolBuffer.SystemMetaDataReadMessage.Builder, EDS10ProtocolBuffer.SystemMetaDataReadMessageOrBuilder>(
+                  (EDS10ProtocolBuffer.SystemMetaDataReadMessage) payload_,
+                  getParentForChildren(),
+                  isClean());
+          payload_ = null;
+        }
+        payloadCase_ = 52;
+        onChanged();;
+        return metadataReadBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.DALIAddressingMessage, EDS10ProtocolBuffer.DALIAddressingMessage.Builder, EDS10ProtocolBuffer.DALIAddressingMessageOrBuilder> daliAddressingMessageBuilder_;
+      /**
+       * <code>.DALIAddressingMessage dali_addressing_message = 53;</code>
+       */
+      public boolean hasDaliAddressingMessage() {
+        return payloadCase_ == 53;
+      }
+      /**
+       * <code>.DALIAddressingMessage dali_addressing_message = 53;</code>
+       */
+      public EDS10ProtocolBuffer.DALIAddressingMessage getDaliAddressingMessage() {
+        if (daliAddressingMessageBuilder_ == null) {
+          if (payloadCase_ == 53) {
+            return (EDS10ProtocolBuffer.DALIAddressingMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.DALIAddressingMessage.getDefaultInstance();
+        } else {
+          if (payloadCase_ == 53) {
+            return daliAddressingMessageBuilder_.getMessage();
+          }
+          return EDS10ProtocolBuffer.DALIAddressingMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.DALIAddressingMessage dali_addressing_message = 53;</code>
+       */
+      public Builder setDaliAddressingMessage(EDS10ProtocolBuffer.DALIAddressingMessage value) {
+        if (daliAddressingMessageBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          payload_ = value;
+          onChanged();
+        } else {
+          daliAddressingMessageBuilder_.setMessage(value);
+        }
+        payloadCase_ = 53;
+        return this;
+      }
+      /**
+       * <code>.DALIAddressingMessage dali_addressing_message = 53;</code>
+       */
+      public Builder setDaliAddressingMessage(
+          EDS10ProtocolBuffer.DALIAddressingMessage.Builder builderForValue) {
+        if (daliAddressingMessageBuilder_ == null) {
+          payload_ = builderForValue.build();
+          onChanged();
+        } else {
+          daliAddressingMessageBuilder_.setMessage(builderForValue.build());
+        }
+        payloadCase_ = 53;
+        return this;
+      }
+      /**
+       * <code>.DALIAddressingMessage dali_addressing_message = 53;</code>
+       */
+      public Builder mergeDaliAddressingMessage(EDS10ProtocolBuffer.DALIAddressingMessage value) {
+        if (daliAddressingMessageBuilder_ == null) {
+          if (payloadCase_ == 53 &&
+              payload_ != EDS10ProtocolBuffer.DALIAddressingMessage.getDefaultInstance()) {
+            payload_ = EDS10ProtocolBuffer.DALIAddressingMessage.newBuilder((EDS10ProtocolBuffer.DALIAddressingMessage) payload_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            payload_ = value;
+          }
+          onChanged();
+        } else {
+          if (payloadCase_ == 53) {
+            daliAddressingMessageBuilder_.mergeFrom(value);
+          }
+          daliAddressingMessageBuilder_.setMessage(value);
+        }
+        payloadCase_ = 53;
+        return this;
+      }
+      /**
+       * <code>.DALIAddressingMessage dali_addressing_message = 53;</code>
+       */
+      public Builder clearDaliAddressingMessage() {
+        if (daliAddressingMessageBuilder_ == null) {
+          if (payloadCase_ == 53) {
+            payloadCase_ = 0;
+            payload_ = null;
+            onChanged();
+          }
+        } else {
+          if (payloadCase_ == 53) {
+            payloadCase_ = 0;
+            payload_ = null;
+          }
+          daliAddressingMessageBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.DALIAddressingMessage dali_addressing_message = 53;</code>
+       */
+      public EDS10ProtocolBuffer.DALIAddressingMessage.Builder getDaliAddressingMessageBuilder() {
+        return getDaliAddressingMessageFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.DALIAddressingMessage dali_addressing_message = 53;</code>
+       */
+      public EDS10ProtocolBuffer.DALIAddressingMessageOrBuilder getDaliAddressingMessageOrBuilder() {
+        if ((payloadCase_ == 53) && (daliAddressingMessageBuilder_ != null)) {
+          return daliAddressingMessageBuilder_.getMessageOrBuilder();
+        } else {
+          if (payloadCase_ == 53) {
+            return (EDS10ProtocolBuffer.DALIAddressingMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.DALIAddressingMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.DALIAddressingMessage dali_addressing_message = 53;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.DALIAddressingMessage, EDS10ProtocolBuffer.DALIAddressingMessage.Builder, EDS10ProtocolBuffer.DALIAddressingMessageOrBuilder> 
+          getDaliAddressingMessageFieldBuilder() {
+        if (daliAddressingMessageBuilder_ == null) {
+          if (!(payloadCase_ == 53)) {
+            payload_ = EDS10ProtocolBuffer.DALIAddressingMessage.getDefaultInstance();
+          }
+          daliAddressingMessageBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.DALIAddressingMessage, EDS10ProtocolBuffer.DALIAddressingMessage.Builder, EDS10ProtocolBuffer.DALIAddressingMessageOrBuilder>(
+                  (EDS10ProtocolBuffer.DALIAddressingMessage) payload_,
+                  getParentForChildren(),
+                  isClean());
+          payload_ = null;
+        }
+        payloadCase_ = 53;
+        onChanged();;
+        return daliAddressingMessageBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.DALIRemappingMessage, EDS10ProtocolBuffer.DALIRemappingMessage.Builder, EDS10ProtocolBuffer.DALIRemappingMessageOrBuilder> daliRemappingMessageBuilder_;
+      /**
+       * <code>.DALIRemappingMessage dali_remapping_message = 54;</code>
+       */
+      public boolean hasDaliRemappingMessage() {
+        return payloadCase_ == 54;
+      }
+      /**
+       * <code>.DALIRemappingMessage dali_remapping_message = 54;</code>
+       */
+      public EDS10ProtocolBuffer.DALIRemappingMessage getDaliRemappingMessage() {
+        if (daliRemappingMessageBuilder_ == null) {
+          if (payloadCase_ == 54) {
+            return (EDS10ProtocolBuffer.DALIRemappingMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.DALIRemappingMessage.getDefaultInstance();
+        } else {
+          if (payloadCase_ == 54) {
+            return daliRemappingMessageBuilder_.getMessage();
+          }
+          return EDS10ProtocolBuffer.DALIRemappingMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.DALIRemappingMessage dali_remapping_message = 54;</code>
+       */
+      public Builder setDaliRemappingMessage(EDS10ProtocolBuffer.DALIRemappingMessage value) {
+        if (daliRemappingMessageBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          payload_ = value;
+          onChanged();
+        } else {
+          daliRemappingMessageBuilder_.setMessage(value);
+        }
+        payloadCase_ = 54;
+        return this;
+      }
+      /**
+       * <code>.DALIRemappingMessage dali_remapping_message = 54;</code>
+       */
+      public Builder setDaliRemappingMessage(
+          EDS10ProtocolBuffer.DALIRemappingMessage.Builder builderForValue) {
+        if (daliRemappingMessageBuilder_ == null) {
+          payload_ = builderForValue.build();
+          onChanged();
+        } else {
+          daliRemappingMessageBuilder_.setMessage(builderForValue.build());
+        }
+        payloadCase_ = 54;
+        return this;
+      }
+      /**
+       * <code>.DALIRemappingMessage dali_remapping_message = 54;</code>
+       */
+      public Builder mergeDaliRemappingMessage(EDS10ProtocolBuffer.DALIRemappingMessage value) {
+        if (daliRemappingMessageBuilder_ == null) {
+          if (payloadCase_ == 54 &&
+              payload_ != EDS10ProtocolBuffer.DALIRemappingMessage.getDefaultInstance()) {
+            payload_ = EDS10ProtocolBuffer.DALIRemappingMessage.newBuilder((EDS10ProtocolBuffer.DALIRemappingMessage) payload_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            payload_ = value;
+          }
+          onChanged();
+        } else {
+          if (payloadCase_ == 54) {
+            daliRemappingMessageBuilder_.mergeFrom(value);
+          }
+          daliRemappingMessageBuilder_.setMessage(value);
+        }
+        payloadCase_ = 54;
+        return this;
+      }
+      /**
+       * <code>.DALIRemappingMessage dali_remapping_message = 54;</code>
+       */
+      public Builder clearDaliRemappingMessage() {
+        if (daliRemappingMessageBuilder_ == null) {
+          if (payloadCase_ == 54) {
+            payloadCase_ = 0;
+            payload_ = null;
+            onChanged();
+          }
+        } else {
+          if (payloadCase_ == 54) {
+            payloadCase_ = 0;
+            payload_ = null;
+          }
+          daliRemappingMessageBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.DALIRemappingMessage dali_remapping_message = 54;</code>
+       */
+      public EDS10ProtocolBuffer.DALIRemappingMessage.Builder getDaliRemappingMessageBuilder() {
+        return getDaliRemappingMessageFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.DALIRemappingMessage dali_remapping_message = 54;</code>
+       */
+      public EDS10ProtocolBuffer.DALIRemappingMessageOrBuilder getDaliRemappingMessageOrBuilder() {
+        if ((payloadCase_ == 54) && (daliRemappingMessageBuilder_ != null)) {
+          return daliRemappingMessageBuilder_.getMessageOrBuilder();
+        } else {
+          if (payloadCase_ == 54) {
+            return (EDS10ProtocolBuffer.DALIRemappingMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.DALIRemappingMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.DALIRemappingMessage dali_remapping_message = 54;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.DALIRemappingMessage, EDS10ProtocolBuffer.DALIRemappingMessage.Builder, EDS10ProtocolBuffer.DALIRemappingMessageOrBuilder> 
+          getDaliRemappingMessageFieldBuilder() {
+        if (daliRemappingMessageBuilder_ == null) {
+          if (!(payloadCase_ == 54)) {
+            payload_ = EDS10ProtocolBuffer.DALIRemappingMessage.getDefaultInstance();
+          }
+          daliRemappingMessageBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.DALIRemappingMessage, EDS10ProtocolBuffer.DALIRemappingMessage.Builder, EDS10ProtocolBuffer.DALIRemappingMessageOrBuilder>(
+                  (EDS10ProtocolBuffer.DALIRemappingMessage) payload_,
+                  getParentForChildren(),
+                  isClean());
+          payload_ = null;
+        }
+        payloadCase_ = 54;
+        onChanged();;
+        return daliRemappingMessageBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -80786,6 +101461,11 @@ public final class EDS10ProtocolBuffer {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_IOOutputMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_DALIInputMessage_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_DALIInputMessage_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_IOIRMessage_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -80825,6 +101505,11 @@ public final class EDS10ProtocolBuffer {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_OutputMultiMessage_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_DALIInputMultiMessage_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_DALIInputMultiMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_IRMultiMessage_descriptor;
   private static final 
@@ -80911,6 +101596,16 @@ public final class EDS10ProtocolBuffer {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_DALIQueryResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_DALIAddressingMessage_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_DALIAddressingMessage_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_DALIRemappingMessage_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_DALIRemappingMessage_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_DMXMessage_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -80945,6 +101640,16 @@ public final class EDS10ProtocolBuffer {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_SpektraCalendarMessage_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_SpektraCalendarDayMessage_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_SpektraCalendarDayMessage_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_SpektraCalendarOverviewMessage_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_SpektraCalendarOverviewMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_SpektraThemeConfigMessage_descriptor;
   private static final 
@@ -81031,6 +101736,11 @@ public final class EDS10ProtocolBuffer {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_AdminSecureLoginMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_AdminDALISensorTypeMessage_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_AdminDALISensorTypeMessage_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_AdminMessage_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -81055,6 +101765,56 @@ public final class EDS10ProtocolBuffer {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_FirmwareChunkMessage_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_SystemLogReadMessage_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_SystemLogReadMessage_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_SystemLogMessage_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_SystemLogMessage_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_SystemLogBoot_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_SystemLogBoot_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_SystemLogNetLink_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_SystemLogNetLink_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_SystemLogNTP_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_SystemLogNTP_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_SystemLogTrigger_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_SystemLogTrigger_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_SystemLogSpektra_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_SystemLogSpektra_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_SystemLogSchedule_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_SystemLogSchedule_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_SystemLogUserStart_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_SystemLogUserStart_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_SystemMetaDataReadMessage_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_SystemMetaDataReadMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_TriggerEvent_descriptor;
   private static final 
@@ -81085,7 +101845,7 @@ public final class EDS10ProtocolBuffer {
       "loat_data\030\002 \001(\002H\000\022\023\n\013string_data\030\003 \001(\tB\006" +
       "\n\004data\"Y\n\nAytMessage\022\025\n\rtimesinceboot\030\001 " +
       "\001(\r\022\023\n\013temperature\030\002 \001(\002\022\037\n\004time\030\003 \001(\0132\021" +
-      ".TimeClockMessage\"\301\002\n\022DeviceStateMessage" +
+      ".TimeClockMessage\"\333\002\n\022DeviceStateMessage" +
       "\022\016\n\006uptime\030\001 \001(\r\022\014\n\004temp\030\002 \001(\002\022\014\n\004vbat\030\003" +
       " \001(\002\022 \n\005clock\030\004 \001(\0132\021.TimeClockMessage\022\022" +
       "\n\nnext_alarm\030\005 \001(\r\022*\n\017next_alarm_time\030\006 " +
@@ -81093,437 +101853,541 @@ public final class EDS10ProtocolBuffer {
       "\001(\r\022\023\n\013list_states\030\010 \003(\r\022\026\n\016burn_in_stat" +
       "es\030\t \003(\r\022\025\n\rsensor_states\030\n \003(\r\022\023\n\013zone_" +
       "states\030\013 \003(\r\022\031\n\021zone_sleep_states\030\014 \003(\r\022" +
-      "\024\n\014zone_indexes\030\r \003(\r\"\207\001\n\016TriggerMessage" +
-      "\022\032\n\004type\030\001 \001(\0162\014.TriggerType\022\014\n\004zone\030\002 \001" +
-      "(\r\022\021\n\tline_mask\030\003 \001(\r\022\024\n\014target_index\030\004 " +
-      "\001(\r\022\r\n\005value\030\005 \001(\r\022\023\n\013query_index\030\006 \001(\r\"" +
-      ".\n\020TimeClockMessage\022\014\n\004date\030\001 \001(\r\022\014\n\004tim" +
-      "e\030\002 \001(\r\"S\n\021BurnInBitsMessage\022\023\n\013light_st" +
-      "ate\030\001 \001(\r\022\024\n\014running_flag\030\002 \001(\r\022\023\n\013enabl" +
-      "e_flag\030\003 \001(\r\"\227\001\n\016IOInputMessage\022\r\n\005index" +
-      "\030\001 \001(\r\022+\n\014button_state\030\002 \001(\0162\025.TriggerOp" +
-      "erationType\022$\n\013short_press\030\003 \001(\0132\017.Trigg" +
-      "erMessage\022#\n\nlong_press\030\004 \001(\0132\017.TriggerM" +
-      "essage\"|\n\017IOOutputMessage\022\r\n\005index\030\001 \001(\r" +
-      "\022\025\n\rinitial_level\030\002 \001(\r\022\036\n\026time_trigger_" +
-      "is_active\030\003 \001(\r\022#\n\004type\030\004 \001(\0162\025.TriggerO" +
-      "perationType\"L\n\013IOIRMessage\022\r\n\005index\030\001 \001" +
-      "(\r\022\037\n\006action\030\002 \001(\0132\017.TriggerMessage\022\r\n\005c" +
-      "odes\030\003 \001(\r\"\316\003\n\rSensorMessage\022\017\n\007profile\030" +
-      "\001 \001(\r\022\r\n\005index\030\002 \001(\r\022\026\n\016sensor_address\030\003" +
-      " \001(\r\022\030\n\020sensor_dali_line\030\004 \001(\r\022\025\n\raddres" +
-      "s_query\030\005 \001(\r\022\031\n\021control_dali_line\030\006 \001(\r" +
-      "\022\025\n\rcontrol_group\030\007 \001(\r\022\026\n\016light_setpoin" +
-      "t\030\010 \001(\r\022\030\n\020warning_setpoint\030\t \001(\r\022\023\n\013mot" +
-      "ion_only\030\n \001(\r\022\026\n\016timeout_values\030\013 \001(\r\022\026" +
-      "\n\016warning_values\030\014 \001(\r\022\026\n\016disable_values" +
-      "\030\r \001(\r\022\022\n\ninput_1_pm\030\016 \001(\r\022\022\n\ninput_2_pm" +
-      "\030\017 \001(\r\022\025\n\rsensor_states\030\020 \001(\r\022\026\n\016motion_" +
-      "sensors\030\021 \001(\r\022\023\n\013lux_sensors\030\022 \001(\r\022\020\n\010of" +
-      "f_flag\030\023 \001(\r\022\025\n\ris_programmed\030\024 \001(\010\"\\\n\017L" +
-      "istStepMessage\022\022\n\nstep_index\030\001 \001(\r\022\037\n\006ac" +
-      "tion\030\002 \001(\0132\017.TriggerMessage\022\024\n\014time_seco" +
-      "nds\030\003 \001(\r\"\274\003\n\014AlarmMessage\022\r\n\005index\030\001 \001(" +
-      "\r\022\017\n\007enabled\030\002 \001(\010\022%\n\nstart_time\030\003 \001(\0132\021" +
-      ".TimeClockMessage\022#\n\010end_time\030\004 \001(\0132\021.Ti" +
-      "meClockMessage\022&\n\rstart_trigger\030\005 \001(\0132\017." +
-      "TriggerMessage\022$\n\013end_trigger\030\006 \001(\0132\017.Tr" +
-      "iggerMessage\022$\n\013astro_start\030\007 \001(\0162\017.Alar" +
-      "mAstroType\022\"\n\tastro_end\030\010 \001(\0162\017.AlarmAst" +
-      "roType\022 \n\006repeat\030\t \001(\0162\020.AlarmRepeatType" +
-      "\022\032\n\022repeat_day_bitmask\030\n \001(\r\022\034\n\024repeat_m" +
-      "onth_bitmask\030\013 \001(\r\022\016\n\006yearly\030\014 \001(\010\022\036\n\026st" +
-      "art_offset_is_before\030\r \001(\010\022\034\n\024end_offset" +
-      "_is_before\030\016 \001(\010\"\231\001\n\rBurnInMessage\022\r\n\005in" +
-      "dex\030\001 \001(\r\022\014\n\004line\030\002 \001(\r\022\017\n\007address\030\003 \001(\r" +
-      "\022\025\n\rquery_address\030\004 \001(\r\022\014\n\004time\030\005 \001(\r\022\021\n" +
-      "\tremaining\030\006 \001(\r\022\"\n\006states\030\007 \001(\0132\022.BurnI" +
-      "nBitsMessage\":\n\026ExternalTriggerMessage\022 " +
-      "\n\007trigger\030\001 \001(\0132\017.TriggerMessage\"E\n\021Inpu" +
-      "tMultiMessage\022\017\n\007profile\030\001 \001(\r\022\037\n\006inputs" +
-      "\030\002 \003(\0132\017.IOInputMessage\"H\n\022OutputMultiMe" +
-      "ssage\022\017\n\007profile\030\001 \001(\r\022!\n\007outputs\030\002 \003(\0132" +
-      "\020.IOOutputMessage\"<\n\016IRMultiMessage\022\017\n\007p" +
-      "rofile\030\001 \001(\r\022\031\n\003irs\030\002 \003(\0132\014.IOIRMessage\"" +
-      "o\n\013ListMessage\022\022\n\nlist_index\030\001 \001(\r\022\036\n\004st" +
-      "ep\030\002 \003(\0132\020.ListStepMessage\022\022\n\nlist_state" +
-      "\030\003 \001(\r\022\030\n\020total_step_count\030\004 \001(\r\"d\n\023Exte" +
-      "ndedListMessage\022\022\n\nlist_index\030\001 \001(\r\022\031\n\021s" +
-      "tep_index_offset\030\002 \001(\r\022\036\n\004step\030\003 \003(\0132\020.L" +
-      "istStepMessage\"1\n\021AlarmMultiMessage\022\034\n\005a" +
-      "larm\030\001 \003(\0132\r.AlarmMessage\"4\n\022BurnInMulti" +
-      "Message\022\036\n\006burnin\030\001 \003(\0132\016.BurnInMessage\"" +
-      "\347\001\n\014LogicMessage\022\r\n\005index\030\001 \001(\r\022\017\n\007enabl" +
-      "ed\030\002 \001(\010\022*\n\021comparison_object\030\003 \001(\0132\017.Tr" +
-      "iggerMessage\022\030\n\020comparison_value\030\004 \001(\r\022-" +
-      "\n\017comparison_type\030\005 \001(\0162\024.LogicCompariso" +
-      "nType\022 \n\007actionA\030\006 \001(\0132\017.TriggerMessage\022" +
-      " \n\007actionB\030\007 \001(\0132\017.TriggerMessage\"1\n\021Log" +
-      "icMultiMessage\022\034\n\005logic\030\001 \003(\0132\r.LogicMes" +
-      "sage\"6\n\024SensorCommandMessage\022\017\n\007command\030" +
-      "\001 \001(\r\022\r\n\005index\030\002 \001(\r\"\'\n\024ChangeProfileMes" +
-      "sage\022\017\n\007profile\030\001 \001(\r\"*\n\017IdentifyMessage" +
-      "\022\013\n\003MAC\030\001 \001(\004\022\n\n\002IP\030\002 \001(\004\"4\n\021UpdateTimeM" +
-      "essage\022\037\n\004time\030\001 \001(\0132\021.TimeClockMessage\"" +
-      "e\n\021ReadDeviceMessage\022\017\n\007profile\030\001 \001(\r\022\027\n" +
-      "\004type\030\002 \001(\0162\t.ReadType\022\r\n\005index\030\003 \001(\r\022\027\n" +
-      "\017secondary_index\030\004 \001(\r\".\n\033SecureDeviceSe" +
-      "ttingsMessage\022\017\n\007payload\030\001 \001(\t\" \n\021DTRPay" +
-      "loadMessage\022\013\n\003dtr\030\001 \003(\r\"\313\002\n\013DALIMessage" +
-      "\022\021\n\tline_mask\030\001 \001(\r\022\017\n\007address\030\002 \001(\r\022\027\n\r" +
-      "edali_command\030\003 \001(\rH\000\022\035\n\023edali_command_r" +
+      "\024\n\014zone_indexes\030\r \003(\r\022\030\n\020dali_input_stat" +
+      "e\030\016 \001(\004\"\207\001\n\016TriggerMessage\022\032\n\004type\030\001 \001(\016" +
+      "2\014.TriggerType\022\014\n\004zone\030\002 \001(\r\022\021\n\tline_mas" +
+      "k\030\003 \001(\r\022\024\n\014target_index\030\004 \001(\r\022\r\n\005value\030\005" +
+      " \001(\r\022\023\n\013query_index\030\006 \001(\r\".\n\020TimeClockMe" +
+      "ssage\022\014\n\004date\030\001 \001(\r\022\014\n\004time\030\002 \001(\r\"S\n\021Bur" +
+      "nInBitsMessage\022\023\n\013light_state\030\001 \001(\r\022\024\n\014r" +
+      "unning_flag\030\002 \001(\r\022\023\n\013enable_flag\030\003 \001(\r\"\227" +
+      "\001\n\016IOInputMessage\022\r\n\005index\030\001 \001(\r\022+\n\014butt" +
+      "on_state\030\002 \001(\0162\025.TriggerOperationType\022$\n" +
+      "\013short_press\030\003 \001(\0132\017.TriggerMessage\022#\n\nl" +
+      "ong_press\030\004 \001(\0132\017.TriggerMessage\"|\n\017IOOu" +
+      "tputMessage\022\r\n\005index\030\001 \001(\r\022\025\n\rinitial_le" +
+      "vel\030\002 \001(\r\022\036\n\026time_trigger_is_active\030\003 \001(" +
+      "\r\022#\n\004type\030\004 \001(\0162\025.TriggerOperationType\"\275" +
+      "\001\n\020DALIInputMessage\022\r\n\005index\030\001 \001(\r\022\017\n\007ad" +
+      "dress\030\002 \001(\r\022\021\n\tdali_line\030\003 \001(\r\022+\n\014button" +
+      "_state\030\004 \001(\0162\025.TriggerOperationType\022$\n\013s" +
+      "hort_press\030\005 \001(\0132\017.TriggerMessage\022#\n\nlon" +
+      "g_press\030\006 \001(\0132\017.TriggerMessage\"L\n\013IOIRMe" +
+      "ssage\022\r\n\005index\030\001 \001(\r\022\037\n\006action\030\002 \001(\0132\017.T" +
+      "riggerMessage\022\r\n\005codes\030\003 \001(\r\"\313\004\n\rSensorM" +
+      "essage\022\017\n\007profile\030\001 \001(\r\022\r\n\005index\030\002 \001(\r\022\026" +
+      "\n\016sensor_address\030\003 \001(\r\022\030\n\020sensor_dali_li" +
+      "ne\030\004 \001(\r\022\025\n\raddress_query\030\005 \001(\r\022\031\n\021contr" +
+      "ol_dali_line\030\006 \001(\r\022\025\n\rcontrol_group\030\007 \001(" +
+      "\r\022\026\n\016light_setpoint\030\010 \001(\r\022\030\n\020warning_set" +
+      "point\030\t \001(\r\022\023\n\013motion_only\030\n \001(\r\022\026\n\016time" +
+      "out_values\030\013 \001(\r\022\026\n\016warning_values\030\014 \001(\r" +
+      "\022\026\n\016disable_values\030\r \001(\r\022\022\n\ninput_1_pm\030\016" +
+      " \001(\r\022\022\n\ninput_2_pm\030\017 \001(\r\022\025\n\rsensor_state" +
+      "s\030\020 \001(\r\022\026\n\016motion_sensors\030\021 \001(\r\022\023\n\013lux_s" +
+      "ensors\030\022 \001(\r\022\020\n\010off_flag\030\023 \001(\r\022\025\n\ris_pro" +
+      "grammed\030\024 \001(\010\022*\n\021detection_trigger\030\025 \001(\013" +
+      "2\017.TriggerMessage\022(\n\017warning_trigger\030\026 \001" +
+      "(\0132\017.TriggerMessage\022%\n\014idle_trigger\030\027 \001(" +
+      "\0132\017.TriggerMessage\"\\\n\017ListStepMessage\022\022\n" +
+      "\nstep_index\030\001 \001(\r\022\037\n\006action\030\002 \001(\0132\017.Trig" +
+      "gerMessage\022\024\n\014time_seconds\030\003 \001(\r\"\274\003\n\014Ala" +
+      "rmMessage\022\r\n\005index\030\001 \001(\r\022\017\n\007enabled\030\002 \001(" +
+      "\010\022%\n\nstart_time\030\003 \001(\0132\021.TimeClockMessage" +
+      "\022#\n\010end_time\030\004 \001(\0132\021.TimeClockMessage\022&\n" +
+      "\rstart_trigger\030\005 \001(\0132\017.TriggerMessage\022$\n" +
+      "\013end_trigger\030\006 \001(\0132\017.TriggerMessage\022$\n\013a" +
+      "stro_start\030\007 \001(\0162\017.AlarmAstroType\022\"\n\tast" +
+      "ro_end\030\010 \001(\0162\017.AlarmAstroType\022 \n\006repeat\030" +
+      "\t \001(\0162\020.AlarmRepeatType\022\032\n\022repeat_day_bi" +
+      "tmask\030\n \001(\r\022\034\n\024repeat_month_bitmask\030\013 \001(" +
+      "\r\022\016\n\006yearly\030\014 \001(\010\022\036\n\026start_offset_is_bef" +
+      "ore\030\r \001(\010\022\034\n\024end_offset_is_before\030\016 \001(\010\"" +
+      "\231\001\n\rBurnInMessage\022\r\n\005index\030\001 \001(\r\022\014\n\004line" +
+      "\030\002 \001(\r\022\017\n\007address\030\003 \001(\r\022\025\n\rquery_address" +
+      "\030\004 \001(\r\022\014\n\004time\030\005 \001(\r\022\021\n\tremaining\030\006 \001(\r\022" +
+      "\"\n\006states\030\007 \001(\0132\022.BurnInBitsMessage\":\n\026E" +
+      "xternalTriggerMessage\022 \n\007trigger\030\001 \001(\0132\017" +
+      ".TriggerMessage\"E\n\021InputMultiMessage\022\017\n\007" +
+      "profile\030\001 \001(\r\022\037\n\006inputs\030\002 \003(\0132\017.IOInputM" +
+      "essage\"H\n\022OutputMultiMessage\022\017\n\007profile\030" +
+      "\001 \001(\r\022!\n\007outputs\030\002 \003(\0132\020.IOOutputMessage" +
+      "\"g\n\025DALIInputMultiMessage\022\017\n\007profile\030\001 \001" +
+      "(\r\022\032\n\022input_index_offset\030\002 \001(\r\022!\n\006inputs" +
+      "\030\003 \003(\0132\021.DALIInputMessage\"<\n\016IRMultiMess" +
+      "age\022\017\n\007profile\030\001 \001(\r\022\031\n\003irs\030\002 \003(\0132\014.IOIR" +
+      "Message\"o\n\013ListMessage\022\022\n\nlist_index\030\001 \001" +
+      "(\r\022\036\n\004step\030\002 \003(\0132\020.ListStepMessage\022\022\n\nli" +
+      "st_state\030\003 \001(\r\022\030\n\020total_step_count\030\004 \001(\r" +
+      "\"d\n\023ExtendedListMessage\022\022\n\nlist_index\030\001 " +
+      "\001(\r\022\031\n\021step_index_offset\030\002 \001(\r\022\036\n\004step\030\003" +
+      " \003(\0132\020.ListStepMessage\"1\n\021AlarmMultiMess" +
+      "age\022\034\n\005alarm\030\001 \003(\0132\r.AlarmMessage\"4\n\022Bur" +
+      "nInMultiMessage\022\036\n\006burnin\030\001 \003(\0132\016.BurnIn" +
+      "Message\"\347\001\n\014LogicMessage\022\r\n\005index\030\001 \001(\r\022" +
+      "\017\n\007enabled\030\002 \001(\010\022*\n\021comparison_object\030\003 " +
+      "\001(\0132\017.TriggerMessage\022\030\n\020comparison_value" +
+      "\030\004 \001(\r\022-\n\017comparison_type\030\005 \001(\0162\024.LogicC" +
+      "omparisonType\022 \n\007actionA\030\006 \001(\0132\017.Trigger" +
+      "Message\022 \n\007actionB\030\007 \001(\0132\017.TriggerMessag" +
+      "e\"1\n\021LogicMultiMessage\022\034\n\005logic\030\001 \003(\0132\r." +
+      "LogicMessage\"X\n\024SensorCommandMessage\022\017\n\007" +
+      "command\030\001 \001(\r\022\r\n\005index\030\002 \001(\r\022 \n\004type\030\003 \001" +
+      "(\0162\022.SensorCommandType\"\'\n\024ChangeProfileM" +
+      "essage\022\017\n\007profile\030\001 \001(\r\"*\n\017IdentifyMessa" +
+      "ge\022\013\n\003MAC\030\001 \001(\004\022\n\n\002IP\030\002 \001(\004\"4\n\021UpdateTim" +
+      "eMessage\022\037\n\004time\030\001 \001(\0132\021.TimeClockMessag" +
+      "e\"e\n\021ReadDeviceMessage\022\017\n\007profile\030\001 \001(\r\022" +
+      "\027\n\004type\030\002 \001(\0162\t.ReadType\022\r\n\005index\030\003 \001(\r\022" +
+      "\027\n\017secondary_index\030\004 \001(\r\".\n\033SecureDevice" +
+      "SettingsMessage\022\017\n\007payload\030\001 \001(\t\" \n\021DTRP" +
+      "ayloadMessage\022\013\n\003dtr\030\001 \003(\r\"\265\003\n\013DALIMessa" +
+      "ge\022\021\n\tline_mask\030\001 \001(\r\022\017\n\007address\030\002 \001(\r\022\026" +
+      "\n\014frame_25_bit\030\003 \001(\rH\000\022\034\n\022frame_25_bit_r" +
       "eply\030\004 \001(\rH\000\022#\n\007command\030\005 \001(\0162\020.DALIComm" +
       "andTypeH\000\0220\n\016custom_command\030\006 \001(\0162\026.Cust" +
       "omDALICommandTypeH\000\022\037\n\005query\030\007 \001(\0162\016.DAL" +
       "IQueryTypeH\000\022\"\n\005type8\030\010 \001(\0162\021.Type8Comma" +
-      "ndTypeH\000\022\r\n\003arg\030\t \001(\rH\001\022!\n\003dtr\030\n \001(\0132\022.D" +
-      "TRPayloadMessageH\001B\010\n\006actionB\010\n\006params\"7" +
-      "\n\025DALIStatusFlagMessage\022\036\n\005flags\030\001 \003(\0162\017" +
-      ".DALIStatusType\"o\n\021DALIQueryResponse\022.\n\014" +
-      "status_flags\030\001 \001(\0132\026.DALIStatusFlagMessa" +
-      "geH\000\022\037\n\004data\030\002 \001(\0132\017.PayloadMessageH\000B\t\n" +
-      "\007payload\"|\n\nDMXMessage\022\014\n\004zone\030\001 \001(\r\022\025\n\r" +
-      "universe_mask\030\002 \001(\r\022\017\n\007channel\030\003 \001(\r\022\016\n\006" +
-      "repeat\030\004 \001(\r\022\r\n\005level\030\005 \003(\r\022\031\n\021fade_time" +
-      "_by_10ms\030\006 \001(\r\"o\n\nRDMMessage\022\025\n\runiverse" +
-      "_mask\030\001 \001(\r\022\013\n\003uid\030\002 \001(\004\022\013\n\003pid\030\003 \001(\r\022\016\n" +
-      "\006getset\030\004 \001(\r\022\022\n\ndatalength\030\005 \001(\r\022\014\n\004dat" +
-      "a\030\006 \003(\r\"P\n\022RDMResponseMessage\022\013\n\003uid\030\001 \001" +
-      "(\004\022\013\n\003pid\030\002 \001(\r\022\022\n\ndatalength\030\003 \001(\r\022\014\n\004d" +
-      "ata\030\004 \003(\r\"\226\002\n\025SpektraSettingMessage\022\014\n\004z" +
-      "one\030\001 \001(\r\022\025\n\rstart_address\030\002 \001(\r\022\035\n\025line" +
-      "_or_universe_mask\030\003 \001(\r\022\020\n\010protocol\030\004 \001(" +
-      "\r\022\030\n\020number_of_lights\030\005 \001(\r\022\032\n\022channels_" +
-      "per_light\030\006 \001(\r\022\027\n\017channel_colours\030\007 \003(\r" +
-      "\022?\n\025unscheduled_behaviour\030\010 \001(\0162 .Spektr" +
-      "aUnscheduledBehaviourType\022\027\n\017channel_map" +
-      "ping\030\t \003(\r\"3\n\032SpektraColourConfigMessage" +
-      "\022\025\n\rchannel_value\030\001 \003(\r\"\332\003\n\034SpektraSeque" +
-      "nceConfigMessage\022\r\n\005index\030\001 \001(\r\022\014\n\004type\030" +
-      "\002 \001(\r\022*\n\ntransition\030\003 \001(\0162\026.SpektraTrans" +
-      "itionType\022\031\n\021fade_time_by_10ms\030\004 \001(\r\022\027\n\017" +
-      "time_per_colour\030\005 \001(\r\022\034\n\024time_per_colour" +
-      "_unit\030\006 \001(\r\022\025\n\rtime_per_step\030\007 \001(\r\022\032\n\022ti" +
-      "me_per_step_unit\030\010 \001(\r\022\r\n\005range\030\t \001(\r\022\016\n" +
-      "\006colour\030\n \003(\004\022\032\n\022is_randomised_type\030\013 \001(" +
-      "\r\022\031\n\021random_types_mask\030\014 \001(\r\022\034\n\024is_rever" +
-      "se_direction\030\r \001(\r\022\032\n\022is_cycle_direction" +
-      "\030\016 \001(\r\022\r\n\005title\030\017 \001(\t\022\037\n\027has_random_colo" +
-      "ur_order\030\020 \001(\010\022,\n\007colours\030\021 \003(\0132\033.Spektr" +
-      "aColourConfigMessage\"W\n\026SpektraCalendarM" +
-      "essage\022 \n\004type\030\001 \001(\0162\022.SpektraTargetType" +
-      "\022\r\n\005index\030\002 \001(\r\022\014\n\004days\030\003 \003(\010\"w\n\031Spektra" +
-      "ThemeConfigMessage\022\r\n\005index\030\001 \001(\r\022\016\n\006col" +
-      "our\030\002 \003(\004\022\r\n\005title\030\003 \001(\t\022,\n\007colours\030\004 \003(" +
-      "\0132\033.SpektraColourConfigMessage\"E\n\022Spektr" +
-      "aReadMessage\022 \n\004type\030\001 \001(\0162\022.SpektraTarg" +
-      "etType\022\r\n\005index\030\002 \001(\r\"z\n\025SpektraControlM" +
-      "essage\022 \n\004type\030\001 \001(\0162\022.SpektraTargetType" +
-      "\022\014\n\004zone\030\002 \001(\r\022\r\n\005index\030\003 \001(\r\022\"\n\006action\030" +
-      "\004 \001(\0162\022.SpektraActionType\"\272\001\n\024DMXTransla" +
-      "tionObject\022\017\n\007line_in\030\001 \001(\r\022\020\n\010line_out\030" +
-      "\002 \001(\r\022\031\n\021dmx_start_address\030\003 \001(\r\022\025\n\rchan" +
-      "nel_count\030\004 \001(\r\022\022\n\ndali_array\030\005 \003(\r\022\026\n\016a" +
-      "ffected_input\030\007 \001(\r\022\020\n\010blocking\030\010 \001(\010\022\017\n" +
-      "\007enabled\030\t \001(\010\"?\n\026DMXProtocolTranslation" +
-      "\022%\n\006object\030\001 \003(\0132\025.DMXTranslationObject\"" +
-      "%\n\021InputStateMessage\022\020\n\010use_mask\030\001 \001(\010\"8" +
-      "\n\022InputStateResponse\022\016\n\006inputs\030\001 \003(\r\022\022\n\n" +
-      "input_mask\030\002 \001(\r\"@\n\022LevelCacheResponse\022\016" +
-      "\n\006levels\030\001 \003(\r\022\014\n\004line\030\002 \001(\r\022\014\n\004page\030\003 \001" +
-      "(\r\"H\n\022JoinedRoomsMessage\022\r\n\005pairs\030\001 \003(\r\022" +
-      "\016\n\006joined\030\002 \001(\010\022\023\n\013clear_joins\030\003 \001(\010\"\271\004\n" +
-      "\034DiagnosticSystemInfoResponse\022\020\n\010firmwar" +
-      "e\030\001 \001(\t\022\020\n\010hardware\030\002 \001(\t\022\r\n\005error\030\003 \001(\t" +
-      "\022\023\n\013input_count\030\004 \001(\r\022\024\n\014output_count\030\005 " +
-      "\001(\r\022\020\n\010ir_count\030\006 \001(\r\022\027\n\017list_step_count" +
-      "\030\007 \001(\r\022\022\n\nlist_count\030\010 \001(\r\022\023\n\013alarm_coun" +
-      "t\030\t \001(\r\022\024\n\014burnin_count\030\n \001(\r\022\031\n\021spektra" +
-      "_seq_count\030\013 \001(\r\022\036\n\026spektra_seq_step_cou" +
-      "nt\030\014 \001(\r\022\033\n\023spektra_theme_count\030\r \001(\r\022\034\n" +
-      "\024spektra_static_count\030\016 \001(\r\022\025\n\rproto_ver" +
-      "sion\030\017 \001(\r\022\022\n\nline_count\030\020 \001(\r\022\030\n\005lines\030" +
-      "\021 \003(\0162\t.LineType\022\025\n\rprofile_count\030\022 \001(\r\022" +
-      "\031\n\021preset_code_count\030\023 \001(\r\022\030\n\020user_level" +
-      "_count\030\024 \001(\r\022\031\n\021dmx_to_dali_count\030\025 \001(\r\022" +
-      "\032\n\022spektra_zone_count\030\026 \001(\r\022\023\n\013logic_cou" +
-      "nt\030\027 \001(\r\"U\n\021DiagnosticMessage\022$\n\004type\030\001 " +
-      "\001(\0162\026.DiagnosticMessageType\022\014\n\004page\030\002 \001(" +
-      "\r\022\014\n\004line\030\003 \001(\r\"\362\001\n\035AdminProjectProperti" +
-      "esMessage\022\023\n\013device_name\030\002 \001(\t\022\024\n\014projec" +
-      "t_name\030\003 \001(\t\022\021\n\tlongitude\030\004 \001(\002\022\020\n\010latit" +
-      "ude\030\005 \001(\002\022\024\n\014local_offset\030\006 \001(\002\022\030\n\020dayli" +
-      "ght_savings\030\007 \001(\010\022\036\n\026daylight_savings_st" +
-      "art\030\010 \001(\r\022\034\n\024daylight_savings_end\030\t \001(\r\022" +
-      "\023\n\013poll_active\030\n \001(\010\"\244\001\n\030AdminConfigStat" +
-      "usMessage\022\023\n\013list_status\030\001 \003(\r\022\026\n\016burn_i" +
-      "n_status\030\002 \003(\r\022\024\n\014alarm_status\030\003 \001(\r\022.\n\023" +
-      "alarm_time_from_reg\030\004 \001(\0132\021.TimeClockMes" +
-      "sage\022\025\n\rsensor_status\030\005 \003(\r\"w\n\035AdminNetw" +
-      "orkPropertiesMessage\022\014\n\004DHCP\030\001 \001(\010\022\n\n\002IP" +
-      "\030\002 \001(\t\022\013\n\003MAC\030\003 \001(\t\022\017\n\007gateway\030\004 \001(\t\022\021\n\t" +
-      "NTPServer\030\005 \001(\t\022\013\n\003NTP\030\006 \001(\010\"7\n\033AdminCon" +
-      "trollerLinesMessage\022\030\n\005lines\030\001 \003(\0162\t.Lin" +
-      "eType\"@\n\030AdminDeviceStatusMessage\022\023\n\013tem" +
-      "perature\030\001 \001(\002\022\017\n\007battery\030\002 \001(\002\"I\n\027Admin" +
-      "SecureLoginMessage\022\020\n\010username\030\001 \001(\t\022\016\n\006" +
-      "cnonce\030\002 \001(\t\022\014\n\004hash\030\003 \003(\r\"\313\003\n\014AdminMess" +
-      "age\022\"\n\007command\030\001 \001(\0162\021.AdminCommandType\022" +
-      "\"\n\006target\030\002 \001(\0162\022.AdminPropertyType\022\037\n\004d" +
-      "ata\030\003 \001(\0132\017.PayloadMessageH\000\022<\n\022network_" +
-      "properties\030\004 \001(\0132\036.AdminNetworkPropertie" +
-      "sMessageH\000\022<\n\022project_properties\030\005 \001(\0132\036" +
-      ".AdminProjectPropertiesMessageH\000\0228\n\020cont" +
-      "roller_lines\030\006 \001(\0132\034.AdminControllerLine" +
-      "sMessageH\000\0222\n\rdevice_status\030\007 \001(\0132\031.Admi" +
-      "nDeviceStatusMessageH\000\0222\n\rconfig_status\030" +
-      "\010 \001(\0132\031.AdminConfigStatusMessageH\000\022)\n\013de" +
-      "vice_time\030\t \001(\0132\022.UpdateTimeMessageH\000B\t\n" +
-      "\007payload\"K\n\013DataMessage\022\022\n\nidentifier\030\001 " +
-      "\001(\r\022\013\n\003seq\030\002 \001(\r\022\r\n\005count\030\003 \001(\r\022\014\n\004data\030" +
-      "\004 \003(\r\"\332\001\n\023FirmwareMetaMessage\022\030\n\020firmwar" +
-      "e_version\030\001 \001(\r\022\025\n\rfirmware_date\030\002 \001(\r\022\034" +
-      "\n\024firmware_date_upload\030\003 \001(\r\022\031\n\021firmware" +
-      "_checksum\030\004 \001(\r\022\034\n\024firmware_chunk_count\030" +
-      "\005 \001(\r\022\035\n\025firmware_base_address\030\006 \001(\r\022\034\n\024" +
-      "firmware_end_address\030\007 \001(\r\";\n\026FirmwareCo" +
-      "ntrolMessage\022!\n\003cmd\030\001 \001(\0162\024.FirmwareComm" +
-      "andType\"d\n\024FirmwareChunkMessage\022\030\n\020firmw" +
-      "are_address\030\001 \001(\r\022\023\n\013total_bytes\030\002 \001(\r\022\035" +
-      "\n\007payload\030\003 \001(\0132\014.DataMessage\"\233\001\n\014Trigge" +
-      "rEvent\022\032\n\004type\030\001 \001(\0162\014.TriggerType\022\017\n\005le" +
-      "vel\030\002 \001(\rH\000\022(\n\014dali_command\030\003 \001(\0162\020.DALI" +
-      "CommandTypeH\000\022\026\n\016target_address\030\004 \001(\r\022\021\n" +
-      "\tline_mask\030\005 \001(\rB\t\n\007payload\"\321\001\n\014EventMes" +
-      "sage\022\031\n\005event\030\001 \001(\0162\n.EventType\022 \n\007trigg" +
-      "er\030\002 \001(\0132\r.TriggerEventH\000\022%\n\006inputs\030\003 \001(" +
-      "\0132\023.InputStateResponseH\000\022\"\n\007payload\030\004 \001(" +
-      "\0132\017.PayloadMessageH\000\022+\n\014joined_rooms\030\005 \001" +
-      "(\0132\023.JoinedRoomsMessageH\000B\014\n\nevent_data\"" +
-      "\336\017\n\rEdidioMessage\022\022\n\nmessage_id\030\001 \001(\r\022\032\n" +
-      "\003ack\030\002 \001(\0132\013.AckMessageH\000\022$\n\006inputs\030\003 \001(" +
-      "\0132\022.InputMultiMessageH\000\022&\n\007outputs\030\004 \001(\013" +
-      "2\023.OutputMultiMessageH\000\022\036\n\003irs\030\005 \001(\0132\017.I" +
-      "RMultiMessageH\000\022 \n\006sensor\030\006 \001(\0132\016.Sensor" +
-      "MessageH\000\022\034\n\004list\030\010 \001(\0132\014.ListMessageH\000\022" +
-      "\036\n\005alarm\030\n \001(\0132\r.AlarmMessageH\000\022$\n\006alarm" +
-      "s\030\013 \001(\0132\022.AlarmMultiMessageH\000\022\'\n\010burn_in" +
-      "s\030\014 \001(\0132\023.BurnInMultiMessageH\000\022/\n\016sensor" +
-      "_command\030\r \001(\0132\025.SensorCommandMessageH\000\022" +
-      "/\n\016change_profile\030\016 \001(\0132\025.ChangeProfileM" +
-      "essageH\000\022,\n\020identify_message\030\017 \001(\0132\020.Ide" +
-      "ntifyMessageH\000\022)\n\013update_time\030\020 \001(\0132\022.Up" +
-      "dateTimeMessageH\000\022)\n\013read_device\030\021 \001(\0132\022" +
-      ".ReadDeviceMessageH\000\022$\n\014dali_message\030\022 \001" +
-      "(\0132\014.DALIMessageH\000\022(\n\ndali_query\030\023 \001(\0132\022" +
-      ".DALIQueryResponseH\000\022\"\n\013dmx_message\030\024 \001(" +
-      "\0132\013.DMXMessageH\000\0223\n\020external_trigger\030\025 \001" +
-      "(\0132\027.ExternalTriggerMessageH\000\0222\n\020spektra" +
-      "_settings\030\026 \001(\0132\026.SpektraSettingMessageH" +
-      "\000\0229\n\020spektra_sequence\030\027 \001(\0132\035.SpektraSeq" +
-      "uenceConfigMessageH\000\0223\n\020spektra_calendar" +
-      "\030\030 \001(\0132\027.SpektraCalendarMessageH\000\0223\n\rspe" +
-      "ktra_theme\030\031 \001(\0132\032.SpektraThemeConfigMes" +
-      "sageH\000\022+\n\014spektra_read\030\032 \001(\0132\023.SpektraRe" +
-      "adMessageH\000\0221\n\017spektra_control\030\033 \001(\0132\026.S" +
-      "pektraControlMessageH\000\0221\n\016dmx_translator" +
-      "\030\034 \001(\0132\027.DMXProtocolTranslationH\000\022+\n\rinp" +
-      "ut_request\030\035 \001(\0132\022.InputStateMessageH\000\022-" +
-      "\n\016input_response\030\036 \001(\0132\023.InputStateRespo" +
-      "nseH\000\0224\n\013diag_system\030\037 \001(\0132\035.DiagnosticS" +
-      "ystemInfoResponseH\000\022*\n\014diag_message\030  \001(" +
-      "\0132\022.DiagnosticMessageH\000\022&\n\radmin_message" +
-      "\030! \001(\0132\r.AdminMessageH\000\022\036\n\005event\030\" \001(\0132\r" +
-      ".EventMessageH\000\022>\n\026secure_device_setting" +
-      "s\030# \001(\0132\034.SecureDeviceSettingsMessageH\000\022" +
-      ",\n\014firmware_new\030$ \001(\0132\024.FirmwareMetaMess" +
-      "ageH\000\0223\n\020firmware_control\030% \001(\0132\027.Firmwa" +
-      "reControlMessageH\000\022/\n\016firmware_chunk\030& \001" +
-      "(\0132\025.FirmwareChunkMessageH\000\0223\n\024level_cac" +
-      "he_response\030\' \001(\0132\023.LevelCacheResponseH\000" +
-      "\022+\n\014joined_rooms\030( \001(\0132\023.JoinedRoomsMess" +
-      "ageH\000\022-\n\rlist_extended\030) \001(\0132\024.ExtendedL" +
-      "istMessageH\000\022\"\n\013ayt_message\030* \001(\0132\013.AytM" +
-      "essageH\000\022\"\n\013rdm_message\030+ \001(\0132\013.RDMMessa" +
-      "geH\000\0223\n\024rdm_response_message\030, \001(\0132\023.RDM" +
-      "ResponseMessageH\000\022+\n\rlogic_message\030- \001(\013" +
-      "2\022.LogicMultiMessageH\000\0220\n\014secure_login\030." +
-      " \001(\0132\030.AdminSecureLoginMessageH\000\0223\n\024devi" +
-      "ce_state_message\030/ \001(\0132\023.DeviceStateMess" +
-      "ageH\000B\t\n\007payload*\217\001\n\024TriggerOperationTyp" +
-      "e\022\r\n\tMOMENTARY\020\000\022\014\n\010LATCHING\020\001\022\024\n\020MOMENT" +
-      "ARY_OUTPUT\020\002\022\023\n\017LATCHING_OUTPUT\020\003\022\027\n\022MOM" +
-      "ENTARY_DISABLED\020\200\001\022\026\n\021LATCHING_DISABLED\020" +
-      "\201\001*\203\010\n\013TriggerType\022\014\n\010DALI_ARC\020\000\022\020\n\014DALI" +
-      "_COMMAND\020\001\022\032\n\026DMX_CHANNELS_SPLIT_LOW\020\002\022\033" +
-      "\n\027DMX_CHANNELS_SPLIT_HIGH\020\003\022$\n DMX_MULTI" +
-      "CAST_CHANNELS_SPLIT_LOW\020\004\022%\n!DMX_MULTICA" +
-      "ST_CHANNELS_SPLIT_HIGH\020\005\022\021\n\rDMX_BROADCAS" +
-      "T\020\006\022\t\n\005DIDIO\020\007\022\024\n\020FADE_UP_WITH_MIN\020\010\022\016\n\n" +
-      "LIST_START\020\t\022\031\n\025LIST_START_CONTINUOUS\020\n\022" +
-      "\r\n\tLIST_STOP\020\013\022\025\n\021SPEKTRA_START_SEQ\020\014\022\024\n" +
-      "\020SPEKTRA_STOP_SEQ\020\r\022\021\n\rSPEKTRA_THEME\020\016\022\022" +
-      "\n\016SPEKTRA_STATIC\020\017\022\024\n\020SPEKTRA_SCHEDULE\020\020" +
-      "\022\016\n\nLINK_START\020\021\022\r\n\tLINK_STOP\020\022\022\020\n\014DISAB" +
-      "LE_BURN\020\023\022\017\n\013ENABLE_BURN\020\024\022\016\n\nON_OFF_TOG" +
-      "\020\025\022\017\n\013MIN_MAX_TOG\020\026\022\020\n\014ENABLE_INPUT\020\027\022\021\n" +
-      "\rDISABLE_INPUT\020\030\022\024\n\020ENABLE_TOG_INPUT\020\031\022\016" +
-      "\n\nOUTPUT_TOG\020\032\022\017\n\013OUTPUT_HIGH\020\033\022\016\n\nOUTPU" +
-      "T_LOW\020\034\022\017\n\013OUTPUT_TRIG\020\035\022\022\n\016PROFILE_CHAN" +
-      "GE\020\036\022\023\n\017FADE_LONG_PRESS\020\037\022\n\n\006SYNCRO\020 \022\017\n" +
-      "\013PRESET_CODE\020!\022\017\n\013CUSTOM_CODE\020\"\022\021\n\rSPEKT" +
-      "RA_SLEEP\020#\022\022\n\016SPEKTRA_RESUME\020$\022\020\n\014DEVICE" +
-      "_RESET\020%\022\017\n\013DEVICE_SAVE\020&\022\030\n\024USER_LEVEL_" +
-      "STORE_NEW\020\'\022\032\n\026USER_LEVEL_SET_DEFAULT\020(\022" +
-      "\025\n\021USER_LEVEL_RECALL\020)\022\r\n\tROOM_JOIN\020+\022\017\n" +
-      "\013ROOM_UNJOIN\020,\022\023\n\017TYPE8_TC_WARMER\020-\022\023\n\017T" +
-      "YPE8_TC_COOLER\020.\022\023\n\017TYPE8_TC_ACTUAL\020/\022\023\n" +
-      "\017LOGIC_OPERATION\0200\022\020\n\014ALARM_ENABLE\0201\022\021\n\r" +
-      "ALARM_DISABLE\0202\022\017\n\nNO_COMMAND\020\376\001*\255\001\n\010Rea" +
-      "dType\022\n\n\006INPUTS\020\000\022\013\n\007OUTPUTS\020\001\022\006\n\002IR\020\002\022\n" +
-      "\n\006SENSOR\020\003\022\010\n\004LIST\020\005\022\n\n\006ALARMS\020\007\022\013\n\007BURN" +
-      "_IN\020\010\022\013\n\007PROJECT\020\t\022\013\n\007NETWORK\020\n\022\n\n\006DEVIC" +
-      "E\020\013\022\r\n\tPOLL_DATA\020\014\022\021\n\rLIST_EXTENDED\020\r\022\t\n" +
-      "\005LOGIC\020\016*\214\001\n\017AlarmRepeatType\022\023\n\017ALARM_NO" +
-      "_REPEAT\020\000\022\026\n\022ALARM_REPEAT_DAILY\020\001\022\031\n\025ALA" +
-      "RM_REPEAT_WORK_DAY\020\002\022\027\n\023ALARM_REPEAT_WEE" +
-      "KLY\020\003\022\030\n\024ALARM_REPEAT_MONTHLY\020\004*I\n\016Alarm" +
-      "AstroType\022\022\n\016ALARM_NO_ASTRO\020\000\022\021\n\rALARM_S" +
-      "UNRUSE\020\001\022\020\n\014ALARM_SUNSET\020\002*T\n\021SpektraTar" +
-      "getType\022\014\n\010SETTINGS\020\000\022\014\n\010SEQUENCE\020\001\022\t\n\005T" +
-      "HEME\020\002\022\n\n\006STATIC\020\003\022\014\n\010CALENDAR\020\004*=\n\021Spek" +
-      "traActionType\022\t\n\005START\020\000\022\010\n\004STOP\020\001\022\t\n\005PA" +
-      "USE\020\002\022\010\n\004SAVE\020\003*}\n\037SpektraUnscheduledBeh" +
-      "aviourType\022 \n\034RUN_RANDOM_COLOURED_SEQUEN" +
-      "CE\020\000\022\022\n\016RUN_SEQUENCE_1\020\001\022\023\n\017RESUME_PREVI" +
-      "OUS\020\002\022\017\n\nDO_NOTHING\020\376\001*\256\002\n\016AckMessageTyp" +
-      "e\022\021\n\rDECODE_FAILED\020\000\022\027\n\023INDEX_OUT_OF_BOU" +
-      "NDS\020\001\022\023\n\017UNEXPECTED_TYPE\020\002\022\021\n\rENCODE_FAI" +
-      "LED\020\003\022\020\n\014KEY_MISMATCH\020\004\022\013\n\007SUCCESS\020\005\022\022\n\016" +
-      "INVALID_PARAMS\020\006\022\026\n\022UNEXPECTED_COMMAND\020\007" +
-      "\022\030\n\024COMMUNICATION_FAILED\020\010\022\031\n\025COMMUNICAT" +
-      "ION_TIMEOUT\020\t\022\021\n\rDATA_TOO_LONG\020\n\022\023\n\017UNEX" +
-      "PECTED_CASE\020\013\022\016\n\nSLOTS_FULL\020\014\022\020\n\014UNAUTHO" +
-      "RISED\020\r*\323\004\n\020Type8CommandType\022\027\n\023ENABLE_D" +
-      "EVICE_TYPE8\020\000\022\024\n\020SET_TEMP_X_COORD\020\001\022\024\n\020S" +
-      "ET_TEMP_Y_COORD\020\002\022\014\n\010ACTIVATE\020\003\022\023\n\017X_COO" +
-      "RD_STEP_UP\020\004\022\025\n\021X_COORD_STEP_DOWN\020\005\022\023\n\017Y" +
-      "_COORD_STEP_UP\020\006\022\025\n\021Y_COORD_STEP_DOWN\020\007\022" +
-      "\037\n\033SET_TEMP_COLOUR_TEMPERATURE\020\010\022\"\n\036COLO" +
-      "UR_TEMPERATURE_STEP_COOLER\020\t\022\"\n\036COLOUR_T" +
-      "EMPERATURE_STEP_WARMER\020\n\022\033\n\027SET_TEMP_PRI" +
-      "_N_DIMLEVEL\020\013\022\031\n\025SET_TEMP_RGB_DIMLEVEL\020\014" +
-      "\022\031\n\025SET_TEMP_WAF_DIMLEVEL\020\r\022\033\n\027SET_TEMP_" +
-      "RGBWAF_CONTROL\020\016\022\031\n\025COPY_REPORT_TEMPORAR" +
-      "Y\020\017\022\022\n\016STORE_TY_PRI_N\020\020\022\030\n\024STORE_XY_COOR" +
-      "D_PRI_N\020\021\022\"\n\036STORE_COLOUR_TEMPERATURE_LI" +
-      "MIT\020\022\022\036\n\032STORE_GEAR_FEATURES_STATUS\020\023\022\032\n" +
-      "\026ASSIGN_COLOR_LINKED_CH\020\024\022\022\n\016START_AUTO_" +
-      "CAL\020\025*\373\001\n\016Type8QueryType\022$\n TYPE8_QUERY_" +
-      "GEAR_FEATURES_STATUS\020\000\022\035\n\031TYPE8_QUERY_CO" +
-      "LOUR_STATUS\020\001\022$\n TYPE8_QUERY_COLOUR_TYPE" +
-      "_FEATURES\020\002\022\034\n\030TYPE8_QUERY_COLOUR_VALUE\020" +
-      "\003\022\036\n\032TYPE8_QUERY_RGBWAF_CONTROL\020\004\022\037\n\033TYP" +
-      "E8_QUERY_ASSIGNED_COLOUR\020\005\022\037\n\033TYPE8_QUER" +
-      "Y_EXT_VERSION_NUM\020\006*H\n\010LineType\022\016\n\nLINE_" +
-      "EMPTY\020\000\022\r\n\tLINE_DALI\020\001\022\014\n\010LINE_DMX\020\002\022\017\n\013" +
-      "LINE_DMX_IN\020\003*w\n\tEventType\022\014\n\010REGISTER\020\000" +
-      "\022\021\n\rTRIGGER_EVENT\020\001\022\017\n\013INPUT_EVENT\020\002\022\020\n\014" +
-      "SENSOR_EVENT\020\003\022\021\n\rCONTROL_EVENT\020\004\022\023\n\017ROO" +
-      "M_JOIN_EVENT\020\005*\306\t\n\rDALIQueryType\022\023\n\017DALI" +
-      "_QUERY_NULL\020\000\022\026\n\021DALI_QUERY_STATUS\020\220\001\022\027\n" +
-      "\022DALI_QUERY_BALLAST\020\221\001\022\034\n\027DALI_QUERY_LAM" +
-      "P_FAILURE\020\222\001\022\035\n\030DALI_QUERY_LAMP_POWER_ON" +
-      "\020\223\001\022\033\n\026DALI_QUERY_LIMIT_ERROR\020\224\001\022\033\n\026DALI" +
-      "_QUERY_RESET_STATE\020\225\001\022%\n DALI_QUERY_MISS" +
-      "ING_SHORT_ADDRESS\020\226\001\022\036\n\031DALI_QUERY_VERSI" +
-      "ON_NUMBER\020\227\001\022\024\n\017DALI_QUERY_DTR0\020\230\001\022\033\n\026DA" +
-      "LI_QUERY_DEVICE_TYPE\020\231\001\022\034\n\027DALI_QUERY_PH" +
-      "YSICAL_MIN\020\232\001\022\035\n\030DALI_QUERY_POWER_FAILUR" +
-      "E\020\233\001\022\024\n\017DALI_QUERY_DTR1\020\234\001\022\024\n\017DALI_QUERY" +
-      "_DTR2\020\235\001\022\036\n\031DALI_QUERY_OPERATING_MODE\020\236\001" +
-      "\022 \n\033DALI_QUERY_LIGHTSOURCE_TYPE\020\237\001\022\034\n\027DA" +
-      "LI_QUERY_ACTUAL_LEVEL\020\240\001\022\031\n\024DALI_QUERY_M" +
-      "AX_LEVEL\020\241\001\022\031\n\024DALI_QUERY_MIN_LEVEL\020\242\001\022\036" +
-      "\n\031DALI_QUERY_POWER_ON_LEVEL\020\243\001\022$\n\037DALI_Q" +
-      "UERY_SYSTEM_FAILURE_LEVEL\020\244\001\022!\n\034DALI_QUE" +
-      "RY_FADETIME_FADERATE\020\245\001\022*\n%DALI_QUERY_MA" +
-      "NUFACTURER_SPECIFIC_MODE\020\246\001\022 \n\033DALI_QUER" +
-      "Y_NEXT_DEVICE_TYPE\020\247\001\022\"\n\035DALI_QUERY_EXTE" +
-      "NDED_FADE_TIME\020\250\001\022$\n\037DALI_QUERY_CONTROL_" +
-      "GEAR_FAILURE\020\252\001\022\035\n\030DALI_QUERY_SCENE_X_LE" +
-      "VEL\020\260\001\022\032\n\025DALI_QUERY_GROUPS_0_7\020\300\001\022\033\n\026DA" +
-      "LI_QUERY_GROUPS_8_15\020\301\001\022 \n\033DALI_QUERY_RA" +
-      "NDOM_ADDRESS_H\020\302\001\022 \n\033DALI_QUERY_RANDOM_A" +
-      "DDRESS_M\020\303\001\022 \n\033DALI_QUERY_RANDOM_ADDRESS" +
-      "_L\020\304\001\022\034\n\027DALI_QUERY_READ_DTR_0_1\020\305\001\022 \n\033D" +
-      "ALI_QUERY_APP_EXT_COMMANDS\020\340\001\022\"\n\035DALI_QU" +
-      "ERY_EXT_VERSION_NUMBER\020\377\001\022\027\n\022DALI_QUERY_" +
-      "COMPARE\020\204\002\022$\n\037DALI_QUERY_VERIFY_SHORT_AD" +
-      "DRESS\020\214\002\022\035\n\030DALI_QUERY_SHORT_ADDRESS\020\215\002*" +
-      "\335\007\n\017DALICommandType\022\014\n\010DALI_OFF\020\000\022\020\n\014DAL" +
-      "I_FADE_UP\020\001\022\022\n\016DALI_FADE_DOWN\020\002\022\020\n\014DALI_" +
-      "STEP_UP\020\003\022\022\n\016DALI_STEP_DOWN\020\004\022\022\n\016DALI_MA" +
-      "X_LEVEL\020\005\022\022\n\016DALI_MIN_LEVEL\020\006\022\026\n\022DALI_ST" +
-      "EP_DOWN_OFF\020\007\022\023\n\017DALI_ON_STEP_UP\020\010\022\030\n\024DA" +
-      "LI_ENABLE_DAPC_SEQ\020\t\022!\n\035DALI_RECALL_LAST" +
-      "_ACTIVE_LEVEL\020\n\022\027\n\023DALI_RECALL_SCENE_X\020\020" +
-      "\022\016\n\nDALI_RESET\020 \022 \n\034DALI_STORE_ACTUAL_LE" +
-      "VEL_DTR0\020!\022\035\n\031DALI_SAVE_PERSISTENT_VARS\020" +
-      "\"\022\033\n\027DALI_SET_OPERATING_MODE\020#\022\032\n\026DALI_R" +
-      "ESET_MEMORY_BANK\020$\022\030\n\024DALI_IDENTIFY_DEVI" +
-      "CE\020%\022\026\n\022DALI_SET_MAX_LEVEL\020*\022\026\n\022DALI_SET" +
-      "_MIN_LEVEL\020+\022!\n\035DALI_SET_SYSTEM_FAILURE_" +
-      "LEVEL\020,\022\033\n\027DALI_SET_POWER_ON_LEVEL\020-\022\026\n\022" +
-      "DALI_SET_FADE_TIME\020.\022\026\n\022DALI_SET_FADE_RA" +
-      "TE\020/\022\032\n\026DALI_SET_EXT_FADE_TIME\0200\022\024\n\020DALI" +
-      "_SET_SCENE_X\020@\022\034\n\030DALI_REMOVE_FROM_SCENE" +
-      "_X\020P\022\027\n\023DALI_ADD_TO_GROUP_X\020`\022\034\n\030DALI_RE",
-      "MOVE_FROM_GROUP_X\020p\022\033\n\026DALI_SET_SHORT_AD" +
-      "DRESS\020\200\001\022\035\n\030DALI_ENABLE_WRITE_MEMORY\020\201\001\022" +
-      "\023\n\016DALI_TERMINATE\020\377\001\022\024\n\017DALI_INITIALISE\020" +
-      "\202\002\022\023\n\016DALI_RANDOMISE\020\203\002\022\022\n\rDALI_WITHDRAW" +
-      "\020\205\002\022\027\n\022DALI_SEARCH_ADDR_H\020\210\002\022\027\n\022DALI_SEA" +
-      "RCH_ADDR_M\020\211\002\022\027\n\022DALI_SEARCH_ADDR_L\020\212\002\022\037" +
-      "\n\032DALI_PROGRAM_SHORT_ADDRESS\020\213\002*\250\001\n\025Cust" +
-      "omDALICommandType\022\022\n\016DALI_ARC_LEVEL\020\000\022\023\n" +
-      "\017DALI_DAPC_LEVEL\020\001\022\030\n\024DALI_GROUP_ARC_LEV" +
-      "EL\020\002\022\030\n\024DALI_BROADCAST_SCENE\020\003\022\027\n\023DALI_S" +
-      "CENE_ON_GROUP\020\004\022\031\n\025DALI_SCENE_ON_ADDRESS" +
-      "\020\005*\311\003\n\021AdminPropertyType\022\017\n\013DEVICE_NAME\020" +
-      "\000\022\020\n\014PROJECT_NAME\020\001\022\r\n\tLONGITUDE\020\002\022\014\n\010LA" +
-      "TITUDE\020\003\022\024\n\020LOCAL_UTC_OFFSET\020\004\022\024\n\020DAYLIG" +
-      "HT_SAVINGS\020\005\022\017\n\013POLL_ACTIVE\020\006\022\020\n\014DHCP_EN" +
-      "ABLED\020\007\022\013\n\007IP_ADDR\020\010\022\014\n\010MAC_ADDR\020\t\022\016\n\nGA" +
-      "TEWAY_IP\020\n\022\026\n\022NETWORK_PROPERTIES\020\013\022\025\n\021SY" +
-      "STEM_PROPERTIES\020\014\022\024\n\020CONTROLLER_LINES\020\r\022" +
-      "\024\n\020EEPROM_FULL_CHIP\020\016\022\017\n\013CONFIG_DATA\020\017\022\020" +
-      "\n\014SPEKTRA_DATA\020\020\022\021\n\rDEVICE_STATUS\020\021\022\021\n\rC" +
-      "ONFIG_STATUS\020\022\022\017\n\013DEVICE_TIME\020\023\022\017\n\013NTP_D" +
-      "ETAILS\020\024\022\025\n\021TRIDONIC_MSENSORS\020\025\022\022\n\016SECUR" +
-      "E_SESSION\020\026\022\t\n\005NONCE\020\027*D\n\020AdminCommandTy" +
-      "pe\022\007\n\003SET\020\000\022\007\n\003GET\020\001\022\007\n\003ADD\020\002\022\n\n\006REMOVE\020" +
-      "\003\022\t\n\005RESET\020\004*\265\001\n\016DALIStatusType\022\014\n\010LAMP_" +
-      "OFF\020\000\022\030\n\024CONTROL_GEAR_FAILURE\020\001\022\020\n\014LAMP_" +
-      "FAILURE\020\003\022\013\n\007LAMP_ON\020\007\022\017\n\013LIMIT_ERROR\020\017\022" +
-      "\020\n\014FADE_RUNNING\020\037\022\017\n\013RESET_STATE\020?\022\021\n\rSH" +
-      "ORT_ADDRESS\020\177\022\025\n\020POWER_CYCLE_SEEN\020\377\001*\213\001\n" +
-      "\025DiagnosticMessageType\022\032\n\026DIAGNOSTIC_SYS" +
-      "TEM_INFO\020\000\022\033\n\027DIAGNOSTIC_INPUT_STATUS\020\001\022" +
-      "\024\n\020DALI_LEVEL_CACHE\020\002\022\023\n\017DMX_LEVEL_CACHE" +
-      "\020\003\022\016\n\nROOM_JOINS\020\004*z\n\023FirmwareCommandTyp" +
-      "e\022\014\n\010FW_READY\020\000\022\014\n\010FW_APPLY\020\001\022\r\n\tFW_VERI" +
-      "FY\020\002\022\024\n\020FW_VERIFY_FAILED\020\003\022\025\n\021FW_VERIFY_" +
-      "SUCCESS\020\004\022\013\n\007FW_READ\020\005*?\n\025SpektraTransit" +
-      "ionType\022\t\n\005BLEND\020\000\022\010\n\004SNAP\020\001\022\021\n\rFADE_TO_" +
-      "BLACK\020\002*\234\001\n\tLogicType\022\016\n\nDALI_LEVEL\020\000\022\017\n" +
-      "\013INPUT_STATE\020\001\022\020\n\014LIST_RUNNING\020\002\022\026\n\022OCCU" +
-      "PANCY_DETECTED\020\003\022\017\n\013DMX_PRESENT\020\004\022\017\n\013CAL" +
-      "_WEEKDAY\020\005\022\r\n\tCAL_MONTH\020\006\022\023\n\017ALARM_SCHED" +
-      "ULED\020\007*\200\001\n\023LogicComparisonType\022\r\n\tLESS_T" +
-      "HAN\020\000\022\027\n\023LESS_THAN_OR_EQUALS\020\001\022\n\n\006EQUALS" +
-      "\020\002\022\r\n\tMORE_THAN\020\003\022\027\n\023MORE_THAN_OR_EQUALS" +
-      "\020\004\022\r\n\tNOT_EQUAL\020\005b\006proto3"
+      "ndTypeH\000\022\026\n\014frame_16_bit\030\013 \001(\rH\000\022\034\n\022fram" +
+      "e_16_bit_reply\030\014 \001(\rH\000\022\026\n\014frame_24_bit\030\r" +
+      " \001(\rH\000\022\034\n\022frame_24_bit_reply\030\016 \001(\rH\000\022\r\n\003" +
+      "arg\030\t \001(\rH\001\022!\n\003dtr\030\n \001(\0132\022.DTRPayloadMes" +
+      "sageH\001B\010\n\006actionB\010\n\006params\"7\n\025DALIStatus" +
+      "FlagMessage\022\036\n\005flags\030\001 \003(\0162\017.DALIStatusT" +
+      "ype\"\274\001\n\021DALIQueryResponse\022.\n\014status_flag" +
+      "s\030\001 \001(\0132\026.DALIStatusFlagMessageH\000\022\037\n\004dat" +
+      "a\030\002 \001(\0132\017.PayloadMessageH\000\022$\n\tdali_flag\030" +
+      "\003 \001(\0162\021.DALIRXStatusFlag\022%\n\014reponse_data" +
+      "\030\004 \001(\0132\017.PayloadMessageB\t\n\007payload\"\252\001\n\025D" +
+      "ALIAddressingMessage\022!\n\004type\030\001 \001(\0162\023.DAL" +
+      "IAddressingType\022\026\n\016initialisation\030\002 \001(\010\022" +
+      "\021\n\tline_mask\030\003 \001(\r\022\017\n\007is24Bit\030\004 \001(\010\022#\n\005e" +
+      "rror\030\005 \001(\0162\024.DALIAddressingError\022\r\n\005inde" +
+      "x\030\006 \001(\r\"d\n\024DALIRemappingMessage\022\024\n\014from_" +
+      "address\030\001 \001(\r\022\022\n\nto_address\030\002 \001(\r\022\021\n\tlin" +
+      "e_mask\030\003 \001(\r\022\017\n\007is24Bit\030\004 \001(\010\"|\n\nDMXMess" +
+      "age\022\014\n\004zone\030\001 \001(\r\022\025\n\runiverse_mask\030\002 \001(\r" +
+      "\022\017\n\007channel\030\003 \001(\r\022\016\n\006repeat\030\004 \001(\r\022\r\n\005lev" +
+      "el\030\005 \003(\r\022\031\n\021fade_time_by_10ms\030\006 \001(\r\"o\n\nR" +
+      "DMMessage\022\025\n\runiverse_mask\030\001 \001(\r\022\013\n\003uid\030" +
+      "\002 \001(\004\022\013\n\003pid\030\003 \001(\r\022\016\n\006getset\030\004 \001(\r\022\022\n\nda" +
+      "talength\030\005 \001(\r\022\014\n\004data\030\006 \003(\r\"P\n\022RDMRespo" +
+      "nseMessage\022\013\n\003uid\030\001 \001(\004\022\013\n\003pid\030\002 \001(\r\022\022\n\n" +
+      "datalength\030\003 \001(\r\022\014\n\004data\030\004 \003(\r\"\337\002\n\025Spekt" +
+      "raSettingMessage\022\014\n\004zone\030\001 \001(\r\022\025\n\rstart_" +
+      "address\030\002 \001(\r\022\035\n\025line_or_universe_mask\030\003" +
+      " \001(\r\022\020\n\010protocol\030\004 \001(\r\022\030\n\020number_of_ligh" +
+      "ts\030\005 \001(\r\022\032\n\022channels_per_light\030\006 \001(\r\022\027\n\017" +
+      "channel_colours\030\007 \003(\r\022?\n\025unscheduled_beh" +
+      "aviour\030\010 \001(\0162 .SpektraUnscheduledBehavio" +
+      "urType\022\027\n\017channel_mapping\030\t \003(\r\022,\n\017line_" +
+      "addressing\030\n \001(\0162\023.LineAddressingType\022\031\n" +
+      "\021zone_scale_factor\030\013 \001(\002\"3\n\032SpektraColou" +
+      "rConfigMessage\022\025\n\rchannel_value\030\001 \003(\r\"\350\003" +
+      "\n\034SpektraSequenceConfigMessage\022\r\n\005index\030" +
+      "\001 \001(\r\022\014\n\004type\030\002 \001(\r\022*\n\ntransition\030\003 \001(\0162" +
+      "\026.SpektraTransitionType\022\031\n\021fade_time_by_" +
+      "10ms\030\004 \001(\r\022\027\n\017time_per_colour\030\005 \001(\r\022\034\n\024t" +
+      "ime_per_colour_unit\030\006 \001(\r\022\025\n\rtime_per_st" +
+      "ep\030\007 \001(\r\022\032\n\022time_per_step_unit\030\010 \001(\r\022\r\n\005" +
+      "range\030\t \001(\r\022\016\n\006colour\030\n \003(\004\022\032\n\022is_random" +
+      "ised_type\030\013 \001(\r\022\031\n\021random_types_mask\030\014 \001" +
+      "(\r\022\034\n\024is_reverse_direction\030\r \001(\r\022\032\n\022is_c" +
+      "ycle_direction\030\016 \001(\r\022\r\n\005title\030\017 \001(\t\022\037\n\027h" +
+      "as_random_colour_order\030\020 \001(\010\022,\n\007colours\030" +
+      "\021 \003(\0132\033.SpektraColourConfigMessage\022\014\n\004ar" +
+      "gs\030\022 \003(\r\"W\n\026SpektraCalendarMessage\022 \n\004ty" +
+      "pe\030\001 \001(\0162\022.SpektraTargetType\022\r\n\005index\030\002 " +
+      "\001(\r\022\014\n\004days\030\003 \003(\010\"f\n\031SpektraCalendarDayM" +
+      "essage\022\021\n\tday_index\030\001 \001(\r\022 \n\004type\030\002 \001(\0162" +
+      "\022.SpektraTargetType\022\024\n\014target_index\030\003 \001(" +
+      "\r\"^\n\036SpektraCalendarOverviewMessage\022\022\n\nd" +
+      "ay_offset\030\001 \001(\r\022(\n\004days\030\002 \003(\0132\032.SpektraC" +
+      "alendarDayMessage\"w\n\031SpektraThemeConfigM" +
+      "essage\022\r\n\005index\030\001 \001(\r\022\016\n\006colour\030\002 \003(\004\022\r\n" +
+      "\005title\030\003 \001(\t\022,\n\007colours\030\004 \003(\0132\033.SpektraC" +
+      "olourConfigMessage\"E\n\022SpektraReadMessage" +
+      "\022 \n\004type\030\001 \001(\0162\022.SpektraTargetType\022\r\n\005in" +
+      "dex\030\002 \001(\r\"z\n\025SpektraControlMessage\022 \n\004ty" +
+      "pe\030\001 \001(\0162\022.SpektraTargetType\022\014\n\004zone\030\002 \001" +
+      "(\r\022\r\n\005index\030\003 \001(\r\022\"\n\006action\030\004 \001(\0162\022.Spek" +
+      "traActionType\"\272\001\n\024DMXTranslationObject\022\017" +
+      "\n\007line_in\030\001 \001(\r\022\020\n\010line_out\030\002 \001(\r\022\031\n\021dmx" +
+      "_start_address\030\003 \001(\r\022\025\n\rchannel_count\030\004 " +
+      "\001(\r\022\022\n\ndali_array\030\005 \003(\r\022\026\n\016affected_inpu" +
+      "t\030\007 \001(\r\022\020\n\010blocking\030\010 \001(\010\022\017\n\007enabled\030\t \001" +
+      "(\010\"?\n\026DMXProtocolTranslation\022%\n\006object\030\001" +
+      " \003(\0132\025.DMXTranslationObject\"%\n\021InputStat" +
+      "eMessage\022\020\n\010use_mask\030\001 \001(\010\"8\n\022InputState" +
+      "Response\022\016\n\006inputs\030\001 \003(\r\022\022\n\ninput_mask\030\002" +
+      " \001(\r\"@\n\022LevelCacheResponse\022\016\n\006levels\030\001 \003" +
+      "(\r\022\014\n\004line\030\002 \001(\r\022\014\n\004page\030\003 \001(\r\"H\n\022Joined" +
+      "RoomsMessage\022\r\n\005pairs\030\001 \003(\r\022\016\n\006joined\030\002 " +
+      "\001(\010\022\023\n\013clear_joins\030\003 \001(\010\"\323\004\n\034DiagnosticS" +
+      "ystemInfoResponse\022\020\n\010firmware\030\001 \001(\t\022\020\n\010h" +
+      "ardware\030\002 \001(\t\022\r\n\005error\030\003 \001(\t\022\023\n\013input_co" +
+      "unt\030\004 \001(\r\022\024\n\014output_count\030\005 \001(\r\022\020\n\010ir_co" +
+      "unt\030\006 \001(\r\022\027\n\017list_step_count\030\007 \001(\r\022\022\n\nli" +
+      "st_count\030\010 \001(\r\022\023\n\013alarm_count\030\t \001(\r\022\024\n\014b" +
+      "urnin_count\030\n \001(\r\022\031\n\021spektra_seq_count\030\013" +
+      " \001(\r\022\036\n\026spektra_seq_step_count\030\014 \001(\r\022\033\n\023" +
+      "spektra_theme_count\030\r \001(\r\022\034\n\024spektra_sta" +
+      "tic_count\030\016 \001(\r\022\025\n\rproto_version\030\017 \001(\r\022\022" +
+      "\n\nline_count\030\020 \001(\r\022\030\n\005lines\030\021 \003(\0162\t.Line" +
+      "Type\022\025\n\rprofile_count\030\022 \001(\r\022\031\n\021preset_co" +
+      "de_count\030\023 \001(\r\022\030\n\020user_level_count\030\024 \001(\r" +
+      "\022\031\n\021dmx_to_dali_count\030\025 \001(\r\022\032\n\022spektra_z" +
+      "one_count\030\026 \001(\r\022\023\n\013logic_count\030\027 \001(\r\022\030\n\020" +
+      "input_dali_count\030\030 \001(\r\"U\n\021DiagnosticMess" +
+      "age\022$\n\004type\030\001 \001(\0162\026.DiagnosticMessageTyp" +
+      "e\022\014\n\004page\030\002 \001(\r\022\014\n\004line\030\003 \001(\r\"\362\001\n\035AdminP" +
+      "rojectPropertiesMessage\022\023\n\013device_name\030\002" +
+      " \001(\t\022\024\n\014project_name\030\003 \001(\t\022\021\n\tlongitude\030" +
+      "\004 \001(\002\022\020\n\010latitude\030\005 \001(\002\022\024\n\014local_offset\030" +
+      "\006 \001(\002\022\030\n\020daylight_savings\030\007 \001(\010\022\036\n\026dayli" +
+      "ght_savings_start\030\010 \001(\r\022\034\n\024daylight_savi" +
+      "ngs_end\030\t \001(\r\022\023\n\013poll_active\030\n \001(\010\"\244\001\n\030A" +
+      "dminConfigStatusMessage\022\023\n\013list_status\030\001" +
+      " \003(\r\022\026\n\016burn_in_status\030\002 \003(\r\022\024\n\014alarm_st" +
+      "atus\030\003 \001(\r\022.\n\023alarm_time_from_reg\030\004 \001(\0132" +
+      "\021.TimeClockMessage\022\025\n\rsensor_status\030\005 \003(" +
+      "\r\"w\n\035AdminNetworkPropertiesMessage\022\014\n\004DH" +
+      "CP\030\001 \001(\010\022\n\n\002IP\030\002 \001(\t\022\013\n\003MAC\030\003 \001(\t\022\017\n\007gat" +
+      "eway\030\004 \001(\t\022\021\n\tNTPServer\030\005 \001(\t\022\013\n\003NTP\030\006 \001" +
+      "(\010\"7\n\033AdminControllerLinesMessage\022\030\n\005lin" +
+      "es\030\001 \003(\0162\t.LineType\"@\n\030AdminDeviceStatus" +
+      "Message\022\023\n\013temperature\030\001 \001(\002\022\017\n\007battery\030" +
+      "\002 \001(\002\"I\n\027AdminSecureLoginMessage\022\020\n\010user" +
+      "name\030\001 \001(\t\022\016\n\006cnonce\030\002 \001(\t\022\014\n\004hash\030\003 \003(\r" +
+      "\";\n\032AdminDALISensorTypeMessage\022\035\n\004type\030\001" +
+      " \001(\0162\017.DALISensorType\"\204\004\n\014AdminMessage\022\"" +
+      "\n\007command\030\001 \001(\0162\021.AdminCommandType\022\"\n\006ta" +
+      "rget\030\002 \001(\0162\022.AdminPropertyType\022\037\n\004data\030\003" +
+      " \001(\0132\017.PayloadMessageH\000\022<\n\022network_prope" +
+      "rties\030\004 \001(\0132\036.AdminNetworkPropertiesMess" +
+      "ageH\000\022<\n\022project_properties\030\005 \001(\0132\036.Admi" +
+      "nProjectPropertiesMessageH\000\0228\n\020controlle" +
+      "r_lines\030\006 \001(\0132\034.AdminControllerLinesMess" +
+      "ageH\000\0222\n\rdevice_status\030\007 \001(\0132\031.AdminDevi" +
+      "ceStatusMessageH\000\0222\n\rconfig_status\030\010 \001(\013" +
+      "2\031.AdminConfigStatusMessageH\000\022)\n\013device_" +
+      "time\030\t \001(\0132\022.UpdateTimeMessageH\000\0227\n\020dali" +
+      "_sensor_type\030\n \001(\0132\033.AdminDALISensorType" +
+      "MessageH\000B\t\n\007payload\"K\n\013DataMessage\022\022\n\ni" +
+      "dentifier\030\001 \001(\r\022\013\n\003seq\030\002 \001(\r\022\r\n\005count\030\003 " +
+      "\001(\r\022\014\n\004data\030\004 \003(\r\"\332\001\n\023FirmwareMetaMessag" +
+      "e\022\030\n\020firmware_version\030\001 \001(\r\022\025\n\rfirmware_" +
+      "date\030\002 \001(\r\022\034\n\024firmware_date_upload\030\003 \001(\r" +
+      "\022\031\n\021firmware_checksum\030\004 \001(\r\022\034\n\024firmware_" +
+      "chunk_count\030\005 \001(\r\022\035\n\025firmware_base_addre" +
+      "ss\030\006 \001(\r\022\034\n\024firmware_end_address\030\007 \001(\r\";" +
+      "\n\026FirmwareControlMessage\022!\n\003cmd\030\001 \001(\0162\024." +
+      "FirmwareCommandType\"d\n\024FirmwareChunkMess" +
+      "age\022\030\n\020firmware_address\030\001 \001(\r\022\023\n\013total_b" +
+      "ytes\030\002 \001(\r\022\035\n\007payload\030\003 \001(\0132\014.DataMessag" +
+      "e\"j\n\024SystemLogReadMessage\022\031\n\021log_start_a" +
+      "ddress\030\001 \001(\r\022\026\n\016logs_requested\030\002 \001(\r\022\037\n\004" +
+      "logs\030\003 \003(\0132\021.SystemLogMessage\"\267\002\n\020System" +
+      "LogMessage\022\027\n\017time_since_boot\030\001 \001(\r\022\036\n\004b" +
+      "oot\030\002 \001(\0132\016.SystemLogBootH\000\022$\n\007netlink\030\003" +
+      " \001(\0132\021.SystemLogNetLinkH\000\022\034\n\003ntp\030\004 \001(\0132\r" +
+      ".SystemLogNTPH\000\022$\n\007trigger\030\005 \001(\0132\021.Syste" +
+      "mLogTriggerH\000\022$\n\007spektra\030\006 \001(\0132\021.SystemL" +
+      "ogSpektraH\000\022&\n\010schedule\030\007 \001(\0132\022.SystemLo" +
+      "gScheduleH\000\022(\n\tuserstart\030\010 \001(\0132\023.SystemL" +
+      "ogUserStartH\000B\010\n\006packet\"D\n\rSystemLogBoot" +
+      "\022$\n\ttimeclock\030\001 \001(\0132\021.TimeClockMessage\022\r" +
+      "\n\005flags\030\002 \001(\r\"%\n\020SystemLogNetLink\022\021\n\tis_" +
+      "linked\030\001 \001(\010\"4\n\014SystemLogNTP\022$\n\ttimecloc" +
+      "k\030\001 \001(\0132\021.TimeClockMessage\"O\n\020SystemLogT" +
+      "rigger\022 \n\007trigger\030\001 \001(\0132\017.TriggerMessage" +
+      "\022\031\n\006source\030\002 \001(\0162\t.ReadType\"g\n\020SystemLog" +
+      "Spektra\022\"\n\006action\030\001 \001(\0162\022.SpektraActionT" +
+      "ype\022 \n\004type\030\002 \001(\0162\022.SpektraTargetType\022\r\n" +
+      "\005index\030\003 \001(\r\"a\n\021SystemLogSchedule\022\r\n\005ind" +
+      "ex\030\001 \001(\r\022\017\n\007isStart\030\002 \001(\r\022\016\n\006second\030\003 \001(" +
+      "\r\022\016\n\006minute\030\004 \001(\r\022\014\n\004hour\030\005 \001(\r\":\n\022Syste" +
+      "mLogUserStart\022$\n\ttimeclock\030\001 \001(\0132\021.TimeC" +
+      "lockMessage\"\323\001\n\031SystemMetaDataReadMessag" +
+      "e\022\033\n\023input_press_counter\030\001 \003(\r\022\032\n\022list_s" +
+      "tart_counter\030\002 \003(\r\022\031\n\021schedules_counter\030" +
+      "\003 \003(\r\022\026\n\016screen_on_time\030\004 \001(\r\022\027\n\017screen_" +
+      "dim_time\030\005 \001(\r\022\031\n\021screen_saver_time\030\006 \001(" +
+      "\r\022\026\n\016reboot_counter\030\007 \001(\r\"\233\001\n\014TriggerEve" +
+      "nt\022\032\n\004type\030\001 \001(\0162\014.TriggerType\022\017\n\005level\030" +
+      "\002 \001(\rH\000\022(\n\014dali_command\030\003 \001(\0162\020.DALIComm" +
+      "andTypeH\000\022\026\n\016target_address\030\004 \001(\r\022\021\n\tlin" +
+      "e_mask\030\005 \001(\rB\t\n\007payload\"\321\001\n\014EventMessage" +
+      "\022\031\n\005event\030\001 \001(\0162\n.EventType\022 \n\007trigger\030\002" +
+      " \001(\0132\r.TriggerEventH\000\022%\n\006inputs\030\003 \001(\0132\023." +
+      "InputStateResponseH\000\022\"\n\007payload\030\004 \001(\0132\017." +
+      "PayloadMessageH\000\022+\n\014joined_rooms\030\005 \001(\0132\023" +
+      ".JoinedRoomsMessageH\000B\014\n\nevent_data\"\344\022\n\r" +
+      "EdidioMessage\022\022\n\nmessage_id\030\001 \001(\r\022\032\n\003ack" +
+      "\030\002 \001(\0132\013.AckMessageH\000\022$\n\006inputs\030\003 \001(\0132\022." +
+      "InputMultiMessageH\000\022&\n\007outputs\030\004 \001(\0132\023.O" +
+      "utputMultiMessageH\000\022\036\n\003irs\030\005 \001(\0132\017.IRMul" +
+      "tiMessageH\000\022 \n\006sensor\030\006 \001(\0132\016.SensorMess" +
+      "ageH\000\022\034\n\004list\030\010 \001(\0132\014.ListMessageH\000\022\036\n\005a" +
+      "larm\030\n \001(\0132\r.AlarmMessageH\000\022$\n\006alarms\030\013 " +
+      "\001(\0132\022.AlarmMultiMessageH\000\022\'\n\010burn_ins\030\014 " +
+      "\001(\0132\023.BurnInMultiMessageH\000\022/\n\016sensor_com" +
+      "mand\030\r \001(\0132\025.SensorCommandMessageH\000\022/\n\016c" +
+      "hange_profile\030\016 \001(\0132\025.ChangeProfileMessa" +
+      "geH\000\022,\n\020identify_message\030\017 \001(\0132\020.Identif" +
+      "yMessageH\000\022)\n\013update_time\030\020 \001(\0132\022.Update" +
+      "TimeMessageH\000\022)\n\013read_device\030\021 \001(\0132\022.Rea" +
+      "dDeviceMessageH\000\022$\n\014dali_message\030\022 \001(\0132\014" +
+      ".DALIMessageH\000\022(\n\ndali_query\030\023 \001(\0132\022.DAL" +
+      "IQueryResponseH\000\022\"\n\013dmx_message\030\024 \001(\0132\013." +
+      "DMXMessageH\000\0223\n\020external_trigger\030\025 \001(\0132\027" +
+      ".ExternalTriggerMessageH\000\0222\n\020spektra_set" +
+      "tings\030\026 \001(\0132\026.SpektraSettingMessageH\000\0229\n" +
+      "\020spektra_sequence\030\027 \001(\0132\035.SpektraSequenc" +
+      "eConfigMessageH\000\0223\n\020spektra_calendar\030\030 \001" +
+      "(\0132\027.SpektraCalendarMessageH\000\0223\n\rspektra" +
+      "_theme\030\031 \001(\0132\032.SpektraThemeConfigMessage" +
+      "H\000\022+\n\014spektra_read\030\032 \001(\0132\023.SpektraReadMe" +
+      "ssageH\000\0221\n\017spektra_control\030\033 \001(\0132\026.Spekt" +
+      "raControlMessageH\000\0221\n\016dmx_translator\030\034 \001" +
+      "(\0132\027.DMXProtocolTranslationH\000\022+\n\rinput_r" +
+      "equest\030\035 \001(\0132\022.InputStateMessageH\000\022-\n\016in" +
+      "put_response\030\036 \001(\0132\023.InputStateResponseH" +
+      "\000\0224\n\013diag_system\030\037 \001(\0132\035.DiagnosticSyste" +
+      "mInfoResponseH\000\022*\n\014diag_message\030  \001(\0132\022." +
+      "DiagnosticMessageH\000\022&\n\radmin_message\030! \001" +
+      "(\0132\r.AdminMessageH\000\022\036\n\005event\030\" \001(\0132\r.Eve" +
+      "ntMessageH\000\022>\n\026secure_device_settings\030# " +
+      "\001(\0132\034.SecureDeviceSettingsMessageH\000\022,\n\014f" +
+      "irmware_new\030$ \001(\0132\024.FirmwareMetaMessageH" +
+      "\000\0223\n\020firmware_control\030% \001(\0132\027.FirmwareCo" +
+      "ntrolMessageH\000\022/\n\016firmware_chunk\030& \001(\0132\025" +
+      ".FirmwareChunkMessageH\000\0223\n\024level_cache_r" +
+      "esponse\030\' \001(\0132\023.LevelCacheResponseH\000\022+\n\014" +
+      "joined_rooms\030( \001(\0132\023.JoinedRoomsMessageH" +
+      "\000\022-\n\rlist_extended\030) \001(\0132\024.ExtendedListM" +
+      "essageH\000\022\"\n\013ayt_message\030* \001(\0132\013.AytMessa" +
+      "geH\000\022\"\n\013rdm_message\030+ \001(\0132\013.RDMMessageH\000" +
+      "\0223\n\024rdm_response_message\030, \001(\0132\023.RDMResp" +
+      "onseMessageH\000\022+\n\rlogic_message\030- \001(\0132\022.L" +
+      "ogicMultiMessageH\000\0220\n\014secure_login\030. \001(\013" +
+      "2\030.AdminSecureLoginMessageH\000\0223\n\024device_s" +
+      "tate_message\030/ \001(\0132\023.DeviceStateMessageH" +
+      "\000\022:\n\024spektra_calendar_day\0300 \001(\0132\032.Spektr" +
+      "aCalendarDayMessageH\000\022D\n\031spektra_calenda" +
+      "r_overview\0301 \001(\0132\037.SpektraCalendarOvervi" +
+      "ewMessageH\000\022-\n\013inputs_dali\0302 \001(\0132\026.DALII" +
+      "nputMultiMessageH\000\022*\n\tlogs_read\0303 \001(\0132\025." +
+      "SystemLogReadMessageH\000\0223\n\rmetadata_read\030" +
+      "4 \001(\0132\032.SystemMetaDataReadMessageH\000\0229\n\027d" +
+      "ali_addressing_message\0305 \001(\0132\026.DALIAddre" +
+      "ssingMessageH\000\0227\n\026dali_remapping_message" +
+      "\0306 \001(\0132\025.DALIRemappingMessageH\000B\t\n\007paylo" +
+      "ad*\233\001\n\024TriggerOperationType\022\r\n\tMOMENTARY" +
+      "\020\000\022\014\n\010LATCHING\020\001\022\024\n\020MOMENTARY_OUTPUT\020\002\022\023" +
+      "\n\017LATCHING_OUTPUT\020\003\022\n\n\006ROTARY\020\004\022\027\n\022MOMEN" +
+      "TARY_DISABLED\020\200\001\022\026\n\021LATCHING_DISABLED\020\201\001" +
+      "*\231\013\n\013TriggerType\022\014\n\010DALI_ARC\020\000\022\020\n\014DALI_C" +
+      "OMMAND\020\001\022\032\n\026DMX_CHANNELS_SPLIT_LOW\020\002\022\033\n\027" +
+      "DMX_CHANNELS_SPLIT_HIGH\020\003\022$\n DMX_MULTICA" +
+      "ST_CHANNELS_SPLIT_LOW\020\004\022%\n!DMX_MULTICAST" +
+      "_CHANNELS_SPLIT_HIGH\020\005\022\021\n\rDMX_BROADCAST\020" +
+      "\006\022\t\n\005DIDIO\020\007\022\024\n\020FADE_UP_WITH_MIN\020\010\022\016\n\nLI" +
+      "ST_START\020\t\022\031\n\025LIST_START_CONTINUOUS\020\n\022\r\n" +
+      "\tLIST_STOP\020\013\022\025\n\021SPEKTRA_START_SEQ\020\014\022\024\n\020S" +
+      "PEKTRA_STOP_SEQ\020\r\022\021\n\rSPEKTRA_THEME\020\016\022\022\n\016" +
+      "SPEKTRA_STATIC\020\017\022\024\n\020SPEKTRA_SCHEDULE\020\020\022\016" +
+      "\n\nLINK_START\020\021\022\r\n\tLINK_STOP\020\022\022\020\n\014DISABLE" +
+      "_BURN\020\023\022\017\n\013ENABLE_BURN\020\024\022\016\n\nON_OFF_TOG\020\025" +
+      "\022\017\n\013MIN_MAX_TOG\020\026\022\020\n\014ENABLE_INPUT\020\027\022\021\n\rD" +
+      "ISABLE_INPUT\020\030\022\024\n\020ENABLE_TOG_INPUT\020\031\022\016\n\n" +
+      "OUTPUT_TOG\020\032\022\017\n\013OUTPUT_HIGH\020\033\022\016\n\nOUTPUT_" +
+      "LOW\020\034\022\017\n\013OUTPUT_TRIG\020\035\022\022\n\016PROFILE_CHANGE" +
+      "\020\036\022\023\n\017FADE_LONG_PRESS\020\037\022\n\n\006SYNCRO\020 \022\017\n\013P" +
+      "RESET_CODE\020!\022\017\n\013CUSTOM_CODE\020\"\022\021\n\rSPEKTRA" +
+      "_SLEEP\020#\022\022\n\016SPEKTRA_RESUME\020$\022\020\n\014DEVICE_R" +
+      "ESET\020%\022\017\n\013DEVICE_SAVE\020&\022\030\n\024USER_LEVEL_ST" +
+      "ORE_NEW\020\'\022\032\n\026USER_LEVEL_SET_DEFAULT\020(\022\025\n" +
+      "\021USER_LEVEL_RECALL\020)\022\r\n\tROOM_JOIN\020+\022\017\n\013R" +
+      "OOM_UNJOIN\020,\022\023\n\017TYPE8_TC_WARMER\020-\022\023\n\017TYP" +
+      "E8_TC_COOLER\020.\022\023\n\017TYPE8_TC_ACTUAL\020/\022\023\n\017L" +
+      "OGIC_OPERATION\0200\022\020\n\014ALARM_ENABLE\0201\022\021\n\rAL" +
+      "ARM_DISABLE\0202\022 \n\034DALI_CONTROL_SENSOR_OVE" +
+      "RRIDE\0203\022$\n DALI_CONTROL_SENSOR_TEMP_DISA" +
+      "BLE\0204\022\036\n\032DALI_CONTROL_SENSOR_RESUME\0205\022\025\n" +
+      "\021DALI_ARC_OVERRIDE\0206\022\031\n\025DALI_COMMAND_OVE" +
+      "RRIDE\0207\022\035\n\031FADE_UP_WITH_MIN_OVERRIDE\0208\022\027" +
+      "\n\023ON_OFF_TOG_OVERRIDE\0209\022\030\n\024MIN_MAX_TOG_O" +
+      "VERRIDE\020:\022\017\n\013MAX_OFF_TOG\020;\022\030\n\024MAX_OFF_TO" +
+      "G_OVERRIDE\020<\022\034\n\030FADE_LONG_PRESS_OVERRIDE" +
+      "\020=\022\036\n\032USER_LEVEL_RECALL_OVERRIDE\020>\022\024\n\020DM" +
+      "X_ZONE_FADE_UP\020?\022\026\n\022DMX_ZONE_FADE_DOWN\020@" +
+      "\022\021\n\rLOGGING_LEVEL\020A\022\017\n\nNO_COMMAND\020\376\001*\276\001\n" +
+      "\010ReadType\022\n\n\006INPUTS\020\000\022\013\n\007OUTPUTS\020\001\022\006\n\002IR" +
+      "\020\002\022\n\n\006SENSOR\020\003\022\010\n\004LIST\020\005\022\n\n\006ALARMS\020\007\022\013\n\007" +
+      "BURN_IN\020\010\022\013\n\007PROJECT\020\t\022\013\n\007NETWORK\020\n\022\n\n\006D" +
+      "EVICE\020\013\022\r\n\tPOLL_DATA\020\014\022\021\n\rLIST_EXTENDED\020" +
+      "\r\022\t\n\005LOGIC\020\016\022\017\n\013DALI_INPUTS\020\017*\214\001\n\017AlarmR" +
+      "epeatType\022\023\n\017ALARM_NO_REPEAT\020\000\022\026\n\022ALARM_" +
+      "REPEAT_DAILY\020\001\022\031\n\025ALARM_REPEAT_WORK_DAY\020" +
+      "\002\022\027\n\023ALARM_REPEAT_WEEKLY\020\003\022\030\n\024ALARM_REPE" +
+      "AT_MONTHLY\020\004*I\n\016AlarmAstroType\022\022\n\016ALARM_" +
+      "NO_ASTRO\020\000\022\021\n\rALARM_SUNRUSE\020\001\022\020\n\014ALARM_S" +
+      "UNSET\020\002*T\n\021SpektraTargetType\022\014\n\010SETTINGS" +
+      "\020\000\022\014\n\010SEQUENCE\020\001\022\t\n\005THEME\020\002\022\n\n\006STATIC\020\003\022" +
+      "\014\n\010CALENDAR\020\004*=\n\021SpektraActionType\022\t\n\005ST" +
+      "ART\020\000\022\010\n\004STOP\020\001\022\t\n\005PAUSE\020\002\022\010\n\004SAVE\020\003*}\n\037" +
+      "SpektraUnscheduledBehaviourType\022 \n\034RUN_R" +
+      "ANDOM_COLOURED_SEQUENCE\020\000\022\022\n\016RUN_SEQUENC",
+      "E_1\020\001\022\023\n\017RESUME_PREVIOUS\020\002\022\017\n\nDO_NOTHING" +
+      "\020\376\001*6\n\022LineAddressingType\022\017\n\013INDEPENDENT" +
+      "\020\000\022\017\n\013CONSECUTIVE\020\001*\327\002\n\016AckMessageType\022\021" +
+      "\n\rDECODE_FAILED\020\000\022\027\n\023INDEX_OUT_OF_BOUNDS" +
+      "\020\001\022\023\n\017UNEXPECTED_TYPE\020\002\022\021\n\rENCODE_FAILED" +
+      "\020\003\022\020\n\014KEY_MISMATCH\020\004\022\013\n\007SUCCESS\020\005\022\022\n\016INV" +
+      "ALID_PARAMS\020\006\022\026\n\022UNEXPECTED_COMMAND\020\007\022\030\n" +
+      "\024COMMUNICATION_FAILED\020\010\022\031\n\025COMMUNICATION" +
+      "_TIMEOUT\020\t\022\021\n\rDATA_TOO_LONG\020\n\022\023\n\017UNEXPEC" +
+      "TED_CASE\020\013\022\016\n\nSLOTS_FULL\020\014\022\020\n\014UNAUTHORIS" +
+      "ED\020\r\022\023\n\017PARTIAL_SUCCESS\020\016\022\022\n\016COMMAND_FAI" +
+      "LED\020\017*\323\004\n\020Type8CommandType\022\027\n\023ENABLE_DEV" +
+      "ICE_TYPE8\020\000\022\024\n\020SET_TEMP_X_COORD\020\001\022\024\n\020SET" +
+      "_TEMP_Y_COORD\020\002\022\014\n\010ACTIVATE\020\003\022\023\n\017X_COORD" +
+      "_STEP_UP\020\004\022\025\n\021X_COORD_STEP_DOWN\020\005\022\023\n\017Y_C" +
+      "OORD_STEP_UP\020\006\022\025\n\021Y_COORD_STEP_DOWN\020\007\022\037\n" +
+      "\033SET_TEMP_COLOUR_TEMPERATURE\020\010\022\"\n\036COLOUR" +
+      "_TEMPERATURE_STEP_COOLER\020\t\022\"\n\036COLOUR_TEM" +
+      "PERATURE_STEP_WARMER\020\n\022\033\n\027SET_TEMP_PRI_N" +
+      "_DIMLEVEL\020\013\022\031\n\025SET_TEMP_RGB_DIMLEVEL\020\014\022\031" +
+      "\n\025SET_TEMP_WAF_DIMLEVEL\020\r\022\033\n\027SET_TEMP_RG" +
+      "BWAF_CONTROL\020\016\022\031\n\025COPY_REPORT_TEMPORARY\020" +
+      "\017\022\022\n\016STORE_TY_PRI_N\020\020\022\030\n\024STORE_XY_COORD_" +
+      "PRI_N\020\021\022\"\n\036STORE_COLOUR_TEMPERATURE_LIMI" +
+      "T\020\022\022\036\n\032STORE_GEAR_FEATURES_STATUS\020\023\022\032\n\026A" +
+      "SSIGN_COLOR_LINKED_CH\020\024\022\022\n\016START_AUTO_CA" +
+      "L\020\025*\373\001\n\016Type8QueryType\022$\n TYPE8_QUERY_GE" +
+      "AR_FEATURES_STATUS\020\000\022\035\n\031TYPE8_QUERY_COLO" +
+      "UR_STATUS\020\001\022$\n TYPE8_QUERY_COLOUR_TYPE_F" +
+      "EATURES\020\002\022\034\n\030TYPE8_QUERY_COLOUR_VALUE\020\003\022" +
+      "\036\n\032TYPE8_QUERY_RGBWAF_CONTROL\020\004\022\037\n\033TYPE8" +
+      "_QUERY_ASSIGNED_COLOUR\020\005\022\037\n\033TYPE8_QUERY_" +
+      "EXT_VERSION_NUM\020\006*H\n\010LineType\022\016\n\nLINE_EM" +
+      "PTY\020\000\022\r\n\tLINE_DALI\020\001\022\014\n\010LINE_DMX\020\002\022\017\n\013LI" +
+      "NE_DMX_IN\020\003*w\n\tEventType\022\014\n\010REGISTER\020\000\022\021" +
+      "\n\rTRIGGER_EVENT\020\001\022\017\n\013INPUT_EVENT\020\002\022\020\n\014SE" +
+      "NSOR_EVENT\020\003\022\021\n\rCONTROL_EVENT\020\004\022\023\n\017ROOM_" +
+      "JOIN_EVENT\020\005*\306\t\n\rDALIQueryType\022\023\n\017DALI_Q" +
+      "UERY_NULL\020\000\022\026\n\021DALI_QUERY_STATUS\020\220\001\022\027\n\022D" +
+      "ALI_QUERY_BALLAST\020\221\001\022\034\n\027DALI_QUERY_LAMP_" +
+      "FAILURE\020\222\001\022\035\n\030DALI_QUERY_LAMP_POWER_ON\020\223" +
+      "\001\022\033\n\026DALI_QUERY_LIMIT_ERROR\020\224\001\022\033\n\026DALI_Q" +
+      "UERY_RESET_STATE\020\225\001\022%\n DALI_QUERY_MISSIN" +
+      "G_SHORT_ADDRESS\020\226\001\022\036\n\031DALI_QUERY_VERSION" +
+      "_NUMBER\020\227\001\022\024\n\017DALI_QUERY_DTR0\020\230\001\022\033\n\026DALI" +
+      "_QUERY_DEVICE_TYPE\020\231\001\022\034\n\027DALI_QUERY_PHYS" +
+      "ICAL_MIN\020\232\001\022\035\n\030DALI_QUERY_POWER_FAILURE\020" +
+      "\233\001\022\024\n\017DALI_QUERY_DTR1\020\234\001\022\024\n\017DALI_QUERY_D" +
+      "TR2\020\235\001\022\036\n\031DALI_QUERY_OPERATING_MODE\020\236\001\022 " +
+      "\n\033DALI_QUERY_LIGHTSOURCE_TYPE\020\237\001\022\034\n\027DALI" +
+      "_QUERY_ACTUAL_LEVEL\020\240\001\022\031\n\024DALI_QUERY_MAX" +
+      "_LEVEL\020\241\001\022\031\n\024DALI_QUERY_MIN_LEVEL\020\242\001\022\036\n\031" +
+      "DALI_QUERY_POWER_ON_LEVEL\020\243\001\022$\n\037DALI_QUE" +
+      "RY_SYSTEM_FAILURE_LEVEL\020\244\001\022!\n\034DALI_QUERY" +
+      "_FADETIME_FADERATE\020\245\001\022*\n%DALI_QUERY_MANU" +
+      "FACTURER_SPECIFIC_MODE\020\246\001\022 \n\033DALI_QUERY_" +
+      "NEXT_DEVICE_TYPE\020\247\001\022\"\n\035DALI_QUERY_EXTEND" +
+      "ED_FADE_TIME\020\250\001\022$\n\037DALI_QUERY_CONTROL_GE" +
+      "AR_FAILURE\020\252\001\022\035\n\030DALI_QUERY_SCENE_X_LEVE" +
+      "L\020\260\001\022\032\n\025DALI_QUERY_GROUPS_0_7\020\300\001\022\033\n\026DALI" +
+      "_QUERY_GROUPS_8_15\020\301\001\022 \n\033DALI_QUERY_RAND" +
+      "OM_ADDRESS_H\020\302\001\022 \n\033DALI_QUERY_RANDOM_ADD" +
+      "RESS_M\020\303\001\022 \n\033DALI_QUERY_RANDOM_ADDRESS_L" +
+      "\020\304\001\022\034\n\027DALI_QUERY_READ_DTR_0_1\020\305\001\022 \n\033DAL" +
+      "I_QUERY_APP_EXT_COMMANDS\020\340\001\022\"\n\035DALI_QUER" +
+      "Y_EXT_VERSION_NUMBER\020\377\001\022\027\n\022DALI_QUERY_CO" +
+      "MPARE\020\204\002\022$\n\037DALI_QUERY_VERIFY_SHORT_ADDR" +
+      "ESS\020\214\002\022\035\n\030DALI_QUERY_SHORT_ADDRESS\020\215\002*\335\007" +
+      "\n\017DALICommandType\022\014\n\010DALI_OFF\020\000\022\020\n\014DALI_" +
+      "FADE_UP\020\001\022\022\n\016DALI_FADE_DOWN\020\002\022\020\n\014DALI_ST" +
+      "EP_UP\020\003\022\022\n\016DALI_STEP_DOWN\020\004\022\022\n\016DALI_MAX_" +
+      "LEVEL\020\005\022\022\n\016DALI_MIN_LEVEL\020\006\022\026\n\022DALI_STEP" +
+      "_DOWN_OFF\020\007\022\023\n\017DALI_ON_STEP_UP\020\010\022\030\n\024DALI" +
+      "_ENABLE_DAPC_SEQ\020\t\022!\n\035DALI_RECALL_LAST_A" +
+      "CTIVE_LEVEL\020\n\022\027\n\023DALI_RECALL_SCENE_X\020\020\022\016" +
+      "\n\nDALI_RESET\020 \022 \n\034DALI_STORE_ACTUAL_LEVE" +
+      "L_DTR0\020!\022\035\n\031DALI_SAVE_PERSISTENT_VARS\020\"\022" +
+      "\033\n\027DALI_SET_OPERATING_MODE\020#\022\032\n\026DALI_RES" +
+      "ET_MEMORY_BANK\020$\022\030\n\024DALI_IDENTIFY_DEVICE" +
+      "\020%\022\026\n\022DALI_SET_MAX_LEVEL\020*\022\026\n\022DALI_SET_M" +
+      "IN_LEVEL\020+\022!\n\035DALI_SET_SYSTEM_FAILURE_LE" +
+      "VEL\020,\022\033\n\027DALI_SET_POWER_ON_LEVEL\020-\022\026\n\022DA" +
+      "LI_SET_FADE_TIME\020.\022\026\n\022DALI_SET_FADE_RATE" +
+      "\020/\022\032\n\026DALI_SET_EXT_FADE_TIME\0200\022\024\n\020DALI_S" +
+      "ET_SCENE_X\020@\022\034\n\030DALI_REMOVE_FROM_SCENE_X" +
+      "\020P\022\027\n\023DALI_ADD_TO_GROUP_X\020`\022\034\n\030DALI_REMO" +
+      "VE_FROM_GROUP_X\020p\022\033\n\026DALI_SET_SHORT_ADDR" +
+      "ESS\020\200\001\022\035\n\030DALI_ENABLE_WRITE_MEMORY\020\201\001\022\023\n" +
+      "\016DALI_TERMINATE\020\377\001\022\024\n\017DALI_INITIALISE\020\202\002" +
+      "\022\023\n\016DALI_RANDOMISE\020\203\002\022\022\n\rDALI_WITHDRAW\020\205" +
+      "\002\022\027\n\022DALI_SEARCH_ADDR_H\020\210\002\022\027\n\022DALI_SEARC" +
+      "H_ADDR_M\020\211\002\022\027\n\022DALI_SEARCH_ADDR_L\020\212\002\022\037\n\032" +
+      "DALI_PROGRAM_SHORT_ADDRESS\020\213\002*\250\001\n\025Custom" +
+      "DALICommandType\022\022\n\016DALI_ARC_LEVEL\020\000\022\023\n\017D" +
+      "ALI_DAPC_LEVEL\020\001\022\030\n\024DALI_GROUP_ARC_LEVEL" +
+      "\020\002\022\030\n\024DALI_BROADCAST_SCENE\020\003\022\027\n\023DALI_SCE" +
+      "NE_ON_GROUP\020\004\022\031\n\025DALI_SCENE_ON_ADDRESS\020\005" +
+      "*\206\004\n\021AdminPropertyType\022\017\n\013DEVICE_NAME\020\000\022" +
+      "\020\n\014PROJECT_NAME\020\001\022\r\n\tLONGITUDE\020\002\022\014\n\010LATI" +
+      "TUDE\020\003\022\024\n\020LOCAL_UTC_OFFSET\020\004\022\024\n\020DAYLIGHT" +
+      "_SAVINGS\020\005\022\017\n\013POLL_ACTIVE\020\006\022\020\n\014DHCP_ENAB" +
+      "LED\020\007\022\013\n\007IP_ADDR\020\010\022\014\n\010MAC_ADDR\020\t\022\016\n\nGATE" +
+      "WAY_IP\020\n\022\026\n\022NETWORK_PROPERTIES\020\013\022\025\n\021SYST" +
+      "EM_PROPERTIES\020\014\022\024\n\020CONTROLLER_LINES\020\r\022\024\n" +
+      "\020EEPROM_FULL_CHIP\020\016\022\017\n\013CONFIG_DATA\020\017\022\020\n\014" +
+      "SPEKTRA_DATA\020\020\022\021\n\rDEVICE_STATUS\020\021\022\021\n\rCON" +
+      "FIG_STATUS\020\022\022\017\n\013DEVICE_TIME\020\023\022\017\n\013NTP_DET" +
+      "AILS\020\024\022\025\n\021TRIDONIC_MSENSORS\020\025\022\022\n\016SECURE_" +
+      "SESSION\020\026\022\t\n\005NONCE\020\027\022\024\n\020DALI_SENSOR_TYPE" +
+      "\020\030\022\021\n\rDEVICE_REBOOT\020\031\022\022\n\016SYSTEM_LOGGING\020" +
+      "\032*M\n\020AdminCommandType\022\007\n\003SET\020\000\022\007\n\003GET\020\001\022" +
+      "\007\n\003ADD\020\002\022\n\n\006REMOVE\020\003\022\t\n\005RESET\020\004\022\007\n\003RUN\020\005" +
+      "*\265\001\n\016DALIStatusType\022\014\n\010LAMP_OFF\020\000\022\030\n\024CON" +
+      "TROL_GEAR_FAILURE\020\001\022\020\n\014LAMP_FAILURE\020\002\022\013\n" +
+      "\007LAMP_ON\020\004\022\017\n\013LIMIT_ERROR\020\010\022\020\n\014FADE_RUNN" +
+      "ING\020\020\022\017\n\013RESET_STATE\020 \022\021\n\rSHORT_ADDRESS\020" +
+      "@\022\025\n\020POWER_CYCLE_SEEN\020\200\001*\210\002\n\020DALIRXStatu" +
+      "sFlag\022\013\n\007WAITING\020\000\022\023\n\017RECEIVING_FRAME\020\001\022" +
+      "\025\n\021NO_RECEIVED_FRAME\020\002\022\030\n\024RECEIVED_8_BIT" +
+      "_FRAME\020\003\022\031\n\025RECEIVED_16_BIT_FRAME\020\004\022\031\n\025R" +
+      "ECEIVED_24_BIT_FRAME\020\005\022\032\n\026RECEIVED_PARTI" +
+      "AL_FRAME\020\006\022\010\n\004IDLE\020\007\022\017\n\013CALIBRATION\020\010\022\030\n" +
+      "\023ERROR_WHILE_SENDING\020\376\001\022\032\n\025ERROR_WHILE_R" +
+      "ECEIVING\020\377\001*\213\001\n\025DiagnosticMessageType\022\032\n" +
+      "\026DIAGNOSTIC_SYSTEM_INFO\020\000\022\033\n\027DIAGNOSTIC_" +
+      "INPUT_STATUS\020\001\022\024\n\020DALI_LEVEL_CACHE\020\002\022\023\n\017" +
+      "DMX_LEVEL_CACHE\020\003\022\016\n\nROOM_JOINS\020\004*z\n\023Fir" +
+      "mwareCommandType\022\014\n\010FW_READY\020\000\022\014\n\010FW_APP" +
+      "LY\020\001\022\r\n\tFW_VERIFY\020\002\022\024\n\020FW_VERIFY_FAILED\020" +
+      "\003\022\025\n\021FW_VERIFY_SUCCESS\020\004\022\013\n\007FW_READ\020\005*?\n" +
+      "\025SpektraTransitionType\022\t\n\005BLEND\020\000\022\010\n\004SNA" +
+      "P\020\001\022\021\n\rFADE_TO_BLACK\020\002*\234\001\n\tLogicType\022\016\n\n" +
+      "DALI_LEVEL\020\000\022\017\n\013INPUT_STATE\020\001\022\020\n\014LIST_RU" +
+      "NNING\020\002\022\026\n\022OCCUPANCY_DETECTED\020\003\022\017\n\013DMX_P" +
+      "RESENT\020\004\022\017\n\013CAL_WEEKDAY\020\005\022\r\n\tCAL_MONTH\020\006" +
+      "\022\023\n\017ALARM_SCHEDULED\020\007*\200\001\n\023LogicCompariso" +
+      "nType\022\r\n\tLESS_THAN\020\000\022\027\n\023LESS_THAN_OR_EQU" +
+      "ALS\020\001\022\n\n\006EQUALS\020\002\022\r\n\tMORE_THAN\020\003\022\027\n\023MORE" +
+      "_THAN_OR_EQUALS\020\004\022\r\n\tNOT_EQUAL\020\005*8\n\016DALI" +
+      "SensorType\022\022\n\016TRIDONIC_EDALI\020\000\022\022\n\016STANDA" +
+      "RD_EDALI\020\001*G\n\021SensorCommandType\022\016\n\nINITI" +
+      "ALISE\020\000\022\010\n\004MUTE\020\001\022\n\n\006UNMUTE\020\002\022\014\n\010OVERRID" +
+      "E\020\003*b\n\rSystemLogType\022\010\n\004BOOT\020\000\022\014\n\010NET_LI" +
+      "NK\020\001\022\007\n\003NTP\020\002\022\013\n\007TRIGGER\020\003\022\013\n\007SPEKTRA\020\004\022" +
+      "\014\n\010SCHEDULE\020\005\022\010\n\004USER\020\006*N\n\023DALIAddressin" +
+      "gError\022\014\n\010NO_ERROR\020\000\022\n\n\006VERIFY\020\001\022\n\n\006SEAR" +
+      "CH\020\002\022\021\n\rNO_NEW_DEVICE\020\003*8\n\022DALIAddressin" +
+      "gType\022\017\n\013ADDRESS_NEW\020\000\022\021\n\rREADDRESS_ALL\020" +
+      "\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -81560,7 +102424,7 @@ public final class EDS10ProtocolBuffer {
     internal_static_DeviceStateMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DeviceStateMessage_descriptor,
-        new java.lang.String[] { "Uptime", "Temp", "Vbat", "Clock", "NextAlarm", "NextAlarmTime", "InputState", "ListStates", "BurnInStates", "SensorStates", "ZoneStates", "ZoneSleepStates", "ZoneIndexes", });
+        new java.lang.String[] { "Uptime", "Temp", "Vbat", "Clock", "NextAlarm", "NextAlarmTime", "InputState", "ListStates", "BurnInStates", "SensorStates", "ZoneStates", "ZoneSleepStates", "ZoneIndexes", "DaliInputState", });
     internal_static_TriggerMessage_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_TriggerMessage_fieldAccessorTable = new
@@ -81591,348 +102455,450 @@ public final class EDS10ProtocolBuffer {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_IOOutputMessage_descriptor,
         new java.lang.String[] { "Index", "InitialLevel", "TimeTriggerIsActive", "Type", });
-    internal_static_IOIRMessage_descriptor =
+    internal_static_DALIInputMessage_descriptor =
       getDescriptor().getMessageTypes().get(9);
+    internal_static_DALIInputMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_DALIInputMessage_descriptor,
+        new java.lang.String[] { "Index", "Address", "DaliLine", "ButtonState", "ShortPress", "LongPress", });
+    internal_static_IOIRMessage_descriptor =
+      getDescriptor().getMessageTypes().get(10);
     internal_static_IOIRMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_IOIRMessage_descriptor,
         new java.lang.String[] { "Index", "Action", "Codes", });
     internal_static_SensorMessage_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_SensorMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SensorMessage_descriptor,
-        new java.lang.String[] { "Profile", "Index", "SensorAddress", "SensorDaliLine", "AddressQuery", "ControlDaliLine", "ControlGroup", "LightSetpoint", "WarningSetpoint", "MotionOnly", "TimeoutValues", "WarningValues", "DisableValues", "Input1Pm", "Input2Pm", "SensorStates", "MotionSensors", "LuxSensors", "OffFlag", "IsProgrammed", });
+        new java.lang.String[] { "Profile", "Index", "SensorAddress", "SensorDaliLine", "AddressQuery", "ControlDaliLine", "ControlGroup", "LightSetpoint", "WarningSetpoint", "MotionOnly", "TimeoutValues", "WarningValues", "DisableValues", "Input1Pm", "Input2Pm", "SensorStates", "MotionSensors", "LuxSensors", "OffFlag", "IsProgrammed", "DetectionTrigger", "WarningTrigger", "IdleTrigger", });
     internal_static_ListStepMessage_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(12);
     internal_static_ListStepMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ListStepMessage_descriptor,
         new java.lang.String[] { "StepIndex", "Action", "TimeSeconds", });
     internal_static_AlarmMessage_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(13);
     internal_static_AlarmMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AlarmMessage_descriptor,
         new java.lang.String[] { "Index", "Enabled", "StartTime", "EndTime", "StartTrigger", "EndTrigger", "AstroStart", "AstroEnd", "Repeat", "RepeatDayBitmask", "RepeatMonthBitmask", "Yearly", "StartOffsetIsBefore", "EndOffsetIsBefore", });
     internal_static_BurnInMessage_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(14);
     internal_static_BurnInMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_BurnInMessage_descriptor,
         new java.lang.String[] { "Index", "Line", "Address", "QueryAddress", "Time", "Remaining", "States", });
     internal_static_ExternalTriggerMessage_descriptor =
-      getDescriptor().getMessageTypes().get(14);
+      getDescriptor().getMessageTypes().get(15);
     internal_static_ExternalTriggerMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ExternalTriggerMessage_descriptor,
         new java.lang.String[] { "Trigger", });
     internal_static_InputMultiMessage_descriptor =
-      getDescriptor().getMessageTypes().get(15);
+      getDescriptor().getMessageTypes().get(16);
     internal_static_InputMultiMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InputMultiMessage_descriptor,
         new java.lang.String[] { "Profile", "Inputs", });
     internal_static_OutputMultiMessage_descriptor =
-      getDescriptor().getMessageTypes().get(16);
+      getDescriptor().getMessageTypes().get(17);
     internal_static_OutputMultiMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_OutputMultiMessage_descriptor,
         new java.lang.String[] { "Profile", "Outputs", });
+    internal_static_DALIInputMultiMessage_descriptor =
+      getDescriptor().getMessageTypes().get(18);
+    internal_static_DALIInputMultiMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_DALIInputMultiMessage_descriptor,
+        new java.lang.String[] { "Profile", "InputIndexOffset", "Inputs", });
     internal_static_IRMultiMessage_descriptor =
-      getDescriptor().getMessageTypes().get(17);
+      getDescriptor().getMessageTypes().get(19);
     internal_static_IRMultiMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_IRMultiMessage_descriptor,
         new java.lang.String[] { "Profile", "Irs", });
     internal_static_ListMessage_descriptor =
-      getDescriptor().getMessageTypes().get(18);
+      getDescriptor().getMessageTypes().get(20);
     internal_static_ListMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ListMessage_descriptor,
         new java.lang.String[] { "ListIndex", "Step", "ListState", "TotalStepCount", });
     internal_static_ExtendedListMessage_descriptor =
-      getDescriptor().getMessageTypes().get(19);
+      getDescriptor().getMessageTypes().get(21);
     internal_static_ExtendedListMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ExtendedListMessage_descriptor,
         new java.lang.String[] { "ListIndex", "StepIndexOffset", "Step", });
     internal_static_AlarmMultiMessage_descriptor =
-      getDescriptor().getMessageTypes().get(20);
+      getDescriptor().getMessageTypes().get(22);
     internal_static_AlarmMultiMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AlarmMultiMessage_descriptor,
         new java.lang.String[] { "Alarm", });
     internal_static_BurnInMultiMessage_descriptor =
-      getDescriptor().getMessageTypes().get(21);
+      getDescriptor().getMessageTypes().get(23);
     internal_static_BurnInMultiMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_BurnInMultiMessage_descriptor,
         new java.lang.String[] { "Burnin", });
     internal_static_LogicMessage_descriptor =
-      getDescriptor().getMessageTypes().get(22);
+      getDescriptor().getMessageTypes().get(24);
     internal_static_LogicMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_LogicMessage_descriptor,
         new java.lang.String[] { "Index", "Enabled", "ComparisonObject", "ComparisonValue", "ComparisonType", "ActionA", "ActionB", });
     internal_static_LogicMultiMessage_descriptor =
-      getDescriptor().getMessageTypes().get(23);
+      getDescriptor().getMessageTypes().get(25);
     internal_static_LogicMultiMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_LogicMultiMessage_descriptor,
         new java.lang.String[] { "Logic", });
     internal_static_SensorCommandMessage_descriptor =
-      getDescriptor().getMessageTypes().get(24);
+      getDescriptor().getMessageTypes().get(26);
     internal_static_SensorCommandMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SensorCommandMessage_descriptor,
-        new java.lang.String[] { "Command", "Index", });
+        new java.lang.String[] { "Command", "Index", "Type", });
     internal_static_ChangeProfileMessage_descriptor =
-      getDescriptor().getMessageTypes().get(25);
+      getDescriptor().getMessageTypes().get(27);
     internal_static_ChangeProfileMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ChangeProfileMessage_descriptor,
         new java.lang.String[] { "Profile", });
     internal_static_IdentifyMessage_descriptor =
-      getDescriptor().getMessageTypes().get(26);
+      getDescriptor().getMessageTypes().get(28);
     internal_static_IdentifyMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_IdentifyMessage_descriptor,
         new java.lang.String[] { "MAC", "IP", });
     internal_static_UpdateTimeMessage_descriptor =
-      getDescriptor().getMessageTypes().get(27);
+      getDescriptor().getMessageTypes().get(29);
     internal_static_UpdateTimeMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UpdateTimeMessage_descriptor,
         new java.lang.String[] { "Time", });
     internal_static_ReadDeviceMessage_descriptor =
-      getDescriptor().getMessageTypes().get(28);
+      getDescriptor().getMessageTypes().get(30);
     internal_static_ReadDeviceMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ReadDeviceMessage_descriptor,
         new java.lang.String[] { "Profile", "Type", "Index", "SecondaryIndex", });
     internal_static_SecureDeviceSettingsMessage_descriptor =
-      getDescriptor().getMessageTypes().get(29);
+      getDescriptor().getMessageTypes().get(31);
     internal_static_SecureDeviceSettingsMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SecureDeviceSettingsMessage_descriptor,
         new java.lang.String[] { "Payload", });
     internal_static_DTRPayloadMessage_descriptor =
-      getDescriptor().getMessageTypes().get(30);
+      getDescriptor().getMessageTypes().get(32);
     internal_static_DTRPayloadMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DTRPayloadMessage_descriptor,
         new java.lang.String[] { "Dtr", });
     internal_static_DALIMessage_descriptor =
-      getDescriptor().getMessageTypes().get(31);
+      getDescriptor().getMessageTypes().get(33);
     internal_static_DALIMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DALIMessage_descriptor,
-        new java.lang.String[] { "LineMask", "Address", "EdaliCommand", "EdaliCommandReply", "Command", "CustomCommand", "Query", "Type8", "Arg", "Dtr", "Action", "Params", });
+        new java.lang.String[] { "LineMask", "Address", "Frame25Bit", "Frame25BitReply", "Command", "CustomCommand", "Query", "Type8", "Frame16Bit", "Frame16BitReply", "Frame24Bit", "Frame24BitReply", "Arg", "Dtr", "Action", "Params", });
     internal_static_DALIStatusFlagMessage_descriptor =
-      getDescriptor().getMessageTypes().get(32);
+      getDescriptor().getMessageTypes().get(34);
     internal_static_DALIStatusFlagMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DALIStatusFlagMessage_descriptor,
         new java.lang.String[] { "Flags", });
     internal_static_DALIQueryResponse_descriptor =
-      getDescriptor().getMessageTypes().get(33);
+      getDescriptor().getMessageTypes().get(35);
     internal_static_DALIQueryResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DALIQueryResponse_descriptor,
-        new java.lang.String[] { "StatusFlags", "Data", "Payload", });
+        new java.lang.String[] { "StatusFlags", "Data", "DaliFlag", "ReponseData", "Payload", });
+    internal_static_DALIAddressingMessage_descriptor =
+      getDescriptor().getMessageTypes().get(36);
+    internal_static_DALIAddressingMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_DALIAddressingMessage_descriptor,
+        new java.lang.String[] { "Type", "Initialisation", "LineMask", "Is24Bit", "Error", "Index", });
+    internal_static_DALIRemappingMessage_descriptor =
+      getDescriptor().getMessageTypes().get(37);
+    internal_static_DALIRemappingMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_DALIRemappingMessage_descriptor,
+        new java.lang.String[] { "FromAddress", "ToAddress", "LineMask", "Is24Bit", });
     internal_static_DMXMessage_descriptor =
-      getDescriptor().getMessageTypes().get(34);
+      getDescriptor().getMessageTypes().get(38);
     internal_static_DMXMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DMXMessage_descriptor,
         new java.lang.String[] { "Zone", "UniverseMask", "Channel", "Repeat", "Level", "FadeTimeBy10Ms", });
     internal_static_RDMMessage_descriptor =
-      getDescriptor().getMessageTypes().get(35);
+      getDescriptor().getMessageTypes().get(39);
     internal_static_RDMMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_RDMMessage_descriptor,
         new java.lang.String[] { "UniverseMask", "Uid", "Pid", "Getset", "Datalength", "Data", });
     internal_static_RDMResponseMessage_descriptor =
-      getDescriptor().getMessageTypes().get(36);
+      getDescriptor().getMessageTypes().get(40);
     internal_static_RDMResponseMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_RDMResponseMessage_descriptor,
         new java.lang.String[] { "Uid", "Pid", "Datalength", "Data", });
     internal_static_SpektraSettingMessage_descriptor =
-      getDescriptor().getMessageTypes().get(37);
+      getDescriptor().getMessageTypes().get(41);
     internal_static_SpektraSettingMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SpektraSettingMessage_descriptor,
-        new java.lang.String[] { "Zone", "StartAddress", "LineOrUniverseMask", "Protocol", "NumberOfLights", "ChannelsPerLight", "ChannelColours", "UnscheduledBehaviour", "ChannelMapping", });
+        new java.lang.String[] { "Zone", "StartAddress", "LineOrUniverseMask", "Protocol", "NumberOfLights", "ChannelsPerLight", "ChannelColours", "UnscheduledBehaviour", "ChannelMapping", "LineAddressing", "ZoneScaleFactor", });
     internal_static_SpektraColourConfigMessage_descriptor =
-      getDescriptor().getMessageTypes().get(38);
+      getDescriptor().getMessageTypes().get(42);
     internal_static_SpektraColourConfigMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SpektraColourConfigMessage_descriptor,
         new java.lang.String[] { "ChannelValue", });
     internal_static_SpektraSequenceConfigMessage_descriptor =
-      getDescriptor().getMessageTypes().get(39);
+      getDescriptor().getMessageTypes().get(43);
     internal_static_SpektraSequenceConfigMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SpektraSequenceConfigMessage_descriptor,
-        new java.lang.String[] { "Index", "Type", "Transition", "FadeTimeBy10Ms", "TimePerColour", "TimePerColourUnit", "TimePerStep", "TimePerStepUnit", "Range", "Colour", "IsRandomisedType", "RandomTypesMask", "IsReverseDirection", "IsCycleDirection", "Title", "HasRandomColourOrder", "Colours", });
+        new java.lang.String[] { "Index", "Type", "Transition", "FadeTimeBy10Ms", "TimePerColour", "TimePerColourUnit", "TimePerStep", "TimePerStepUnit", "Range", "Colour", "IsRandomisedType", "RandomTypesMask", "IsReverseDirection", "IsCycleDirection", "Title", "HasRandomColourOrder", "Colours", "Args", });
     internal_static_SpektraCalendarMessage_descriptor =
-      getDescriptor().getMessageTypes().get(40);
+      getDescriptor().getMessageTypes().get(44);
     internal_static_SpektraCalendarMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SpektraCalendarMessage_descriptor,
         new java.lang.String[] { "Type", "Index", "Days", });
+    internal_static_SpektraCalendarDayMessage_descriptor =
+      getDescriptor().getMessageTypes().get(45);
+    internal_static_SpektraCalendarDayMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_SpektraCalendarDayMessage_descriptor,
+        new java.lang.String[] { "DayIndex", "Type", "TargetIndex", });
+    internal_static_SpektraCalendarOverviewMessage_descriptor =
+      getDescriptor().getMessageTypes().get(46);
+    internal_static_SpektraCalendarOverviewMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_SpektraCalendarOverviewMessage_descriptor,
+        new java.lang.String[] { "DayOffset", "Days", });
     internal_static_SpektraThemeConfigMessage_descriptor =
-      getDescriptor().getMessageTypes().get(41);
+      getDescriptor().getMessageTypes().get(47);
     internal_static_SpektraThemeConfigMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SpektraThemeConfigMessage_descriptor,
         new java.lang.String[] { "Index", "Colour", "Title", "Colours", });
     internal_static_SpektraReadMessage_descriptor =
-      getDescriptor().getMessageTypes().get(42);
+      getDescriptor().getMessageTypes().get(48);
     internal_static_SpektraReadMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SpektraReadMessage_descriptor,
         new java.lang.String[] { "Type", "Index", });
     internal_static_SpektraControlMessage_descriptor =
-      getDescriptor().getMessageTypes().get(43);
+      getDescriptor().getMessageTypes().get(49);
     internal_static_SpektraControlMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SpektraControlMessage_descriptor,
         new java.lang.String[] { "Type", "Zone", "Index", "Action", });
     internal_static_DMXTranslationObject_descriptor =
-      getDescriptor().getMessageTypes().get(44);
+      getDescriptor().getMessageTypes().get(50);
     internal_static_DMXTranslationObject_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DMXTranslationObject_descriptor,
         new java.lang.String[] { "LineIn", "LineOut", "DmxStartAddress", "ChannelCount", "DaliArray", "AffectedInput", "Blocking", "Enabled", });
     internal_static_DMXProtocolTranslation_descriptor =
-      getDescriptor().getMessageTypes().get(45);
+      getDescriptor().getMessageTypes().get(51);
     internal_static_DMXProtocolTranslation_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DMXProtocolTranslation_descriptor,
         new java.lang.String[] { "Object", });
     internal_static_InputStateMessage_descriptor =
-      getDescriptor().getMessageTypes().get(46);
+      getDescriptor().getMessageTypes().get(52);
     internal_static_InputStateMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InputStateMessage_descriptor,
         new java.lang.String[] { "UseMask", });
     internal_static_InputStateResponse_descriptor =
-      getDescriptor().getMessageTypes().get(47);
+      getDescriptor().getMessageTypes().get(53);
     internal_static_InputStateResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InputStateResponse_descriptor,
         new java.lang.String[] { "Inputs", "InputMask", });
     internal_static_LevelCacheResponse_descriptor =
-      getDescriptor().getMessageTypes().get(48);
+      getDescriptor().getMessageTypes().get(54);
     internal_static_LevelCacheResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_LevelCacheResponse_descriptor,
         new java.lang.String[] { "Levels", "Line", "Page", });
     internal_static_JoinedRoomsMessage_descriptor =
-      getDescriptor().getMessageTypes().get(49);
+      getDescriptor().getMessageTypes().get(55);
     internal_static_JoinedRoomsMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_JoinedRoomsMessage_descriptor,
         new java.lang.String[] { "Pairs", "Joined", "ClearJoins", });
     internal_static_DiagnosticSystemInfoResponse_descriptor =
-      getDescriptor().getMessageTypes().get(50);
+      getDescriptor().getMessageTypes().get(56);
     internal_static_DiagnosticSystemInfoResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DiagnosticSystemInfoResponse_descriptor,
-        new java.lang.String[] { "Firmware", "Hardware", "Error", "InputCount", "OutputCount", "IrCount", "ListStepCount", "ListCount", "AlarmCount", "BurninCount", "SpektraSeqCount", "SpektraSeqStepCount", "SpektraThemeCount", "SpektraStaticCount", "ProtoVersion", "LineCount", "Lines", "ProfileCount", "PresetCodeCount", "UserLevelCount", "DmxToDaliCount", "SpektraZoneCount", "LogicCount", });
+        new java.lang.String[] { "Firmware", "Hardware", "Error", "InputCount", "OutputCount", "IrCount", "ListStepCount", "ListCount", "AlarmCount", "BurninCount", "SpektraSeqCount", "SpektraSeqStepCount", "SpektraThemeCount", "SpektraStaticCount", "ProtoVersion", "LineCount", "Lines", "ProfileCount", "PresetCodeCount", "UserLevelCount", "DmxToDaliCount", "SpektraZoneCount", "LogicCount", "InputDaliCount", });
     internal_static_DiagnosticMessage_descriptor =
-      getDescriptor().getMessageTypes().get(51);
+      getDescriptor().getMessageTypes().get(57);
     internal_static_DiagnosticMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DiagnosticMessage_descriptor,
         new java.lang.String[] { "Type", "Page", "Line", });
     internal_static_AdminProjectPropertiesMessage_descriptor =
-      getDescriptor().getMessageTypes().get(52);
+      getDescriptor().getMessageTypes().get(58);
     internal_static_AdminProjectPropertiesMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminProjectPropertiesMessage_descriptor,
         new java.lang.String[] { "DeviceName", "ProjectName", "Longitude", "Latitude", "LocalOffset", "DaylightSavings", "DaylightSavingsStart", "DaylightSavingsEnd", "PollActive", });
     internal_static_AdminConfigStatusMessage_descriptor =
-      getDescriptor().getMessageTypes().get(53);
+      getDescriptor().getMessageTypes().get(59);
     internal_static_AdminConfigStatusMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminConfigStatusMessage_descriptor,
         new java.lang.String[] { "ListStatus", "BurnInStatus", "AlarmStatus", "AlarmTimeFromReg", "SensorStatus", });
     internal_static_AdminNetworkPropertiesMessage_descriptor =
-      getDescriptor().getMessageTypes().get(54);
+      getDescriptor().getMessageTypes().get(60);
     internal_static_AdminNetworkPropertiesMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminNetworkPropertiesMessage_descriptor,
         new java.lang.String[] { "DHCP", "IP", "MAC", "Gateway", "NTPServer", "NTP", });
     internal_static_AdminControllerLinesMessage_descriptor =
-      getDescriptor().getMessageTypes().get(55);
+      getDescriptor().getMessageTypes().get(61);
     internal_static_AdminControllerLinesMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminControllerLinesMessage_descriptor,
         new java.lang.String[] { "Lines", });
     internal_static_AdminDeviceStatusMessage_descriptor =
-      getDescriptor().getMessageTypes().get(56);
+      getDescriptor().getMessageTypes().get(62);
     internal_static_AdminDeviceStatusMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminDeviceStatusMessage_descriptor,
         new java.lang.String[] { "Temperature", "Battery", });
     internal_static_AdminSecureLoginMessage_descriptor =
-      getDescriptor().getMessageTypes().get(57);
+      getDescriptor().getMessageTypes().get(63);
     internal_static_AdminSecureLoginMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminSecureLoginMessage_descriptor,
         new java.lang.String[] { "Username", "Cnonce", "Hash", });
+    internal_static_AdminDALISensorTypeMessage_descriptor =
+      getDescriptor().getMessageTypes().get(64);
+    internal_static_AdminDALISensorTypeMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_AdminDALISensorTypeMessage_descriptor,
+        new java.lang.String[] { "Type", });
     internal_static_AdminMessage_descriptor =
-      getDescriptor().getMessageTypes().get(58);
+      getDescriptor().getMessageTypes().get(65);
     internal_static_AdminMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminMessage_descriptor,
-        new java.lang.String[] { "Command", "Target", "Data", "NetworkProperties", "ProjectProperties", "ControllerLines", "DeviceStatus", "ConfigStatus", "DeviceTime", "Payload", });
+        new java.lang.String[] { "Command", "Target", "Data", "NetworkProperties", "ProjectProperties", "ControllerLines", "DeviceStatus", "ConfigStatus", "DeviceTime", "DaliSensorType", "Payload", });
     internal_static_DataMessage_descriptor =
-      getDescriptor().getMessageTypes().get(59);
+      getDescriptor().getMessageTypes().get(66);
     internal_static_DataMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DataMessage_descriptor,
         new java.lang.String[] { "Identifier", "Seq", "Count", "Data", });
     internal_static_FirmwareMetaMessage_descriptor =
-      getDescriptor().getMessageTypes().get(60);
+      getDescriptor().getMessageTypes().get(67);
     internal_static_FirmwareMetaMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_FirmwareMetaMessage_descriptor,
         new java.lang.String[] { "FirmwareVersion", "FirmwareDate", "FirmwareDateUpload", "FirmwareChecksum", "FirmwareChunkCount", "FirmwareBaseAddress", "FirmwareEndAddress", });
     internal_static_FirmwareControlMessage_descriptor =
-      getDescriptor().getMessageTypes().get(61);
+      getDescriptor().getMessageTypes().get(68);
     internal_static_FirmwareControlMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_FirmwareControlMessage_descriptor,
         new java.lang.String[] { "Cmd", });
     internal_static_FirmwareChunkMessage_descriptor =
-      getDescriptor().getMessageTypes().get(62);
+      getDescriptor().getMessageTypes().get(69);
     internal_static_FirmwareChunkMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_FirmwareChunkMessage_descriptor,
         new java.lang.String[] { "FirmwareAddress", "TotalBytes", "Payload", });
+    internal_static_SystemLogReadMessage_descriptor =
+      getDescriptor().getMessageTypes().get(70);
+    internal_static_SystemLogReadMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_SystemLogReadMessage_descriptor,
+        new java.lang.String[] { "LogStartAddress", "LogsRequested", "Logs", });
+    internal_static_SystemLogMessage_descriptor =
+      getDescriptor().getMessageTypes().get(71);
+    internal_static_SystemLogMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_SystemLogMessage_descriptor,
+        new java.lang.String[] { "TimeSinceBoot", "Boot", "Netlink", "Ntp", "Trigger", "Spektra", "Schedule", "Userstart", "Packet", });
+    internal_static_SystemLogBoot_descriptor =
+      getDescriptor().getMessageTypes().get(72);
+    internal_static_SystemLogBoot_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_SystemLogBoot_descriptor,
+        new java.lang.String[] { "Timeclock", "Flags", });
+    internal_static_SystemLogNetLink_descriptor =
+      getDescriptor().getMessageTypes().get(73);
+    internal_static_SystemLogNetLink_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_SystemLogNetLink_descriptor,
+        new java.lang.String[] { "IsLinked", });
+    internal_static_SystemLogNTP_descriptor =
+      getDescriptor().getMessageTypes().get(74);
+    internal_static_SystemLogNTP_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_SystemLogNTP_descriptor,
+        new java.lang.String[] { "Timeclock", });
+    internal_static_SystemLogTrigger_descriptor =
+      getDescriptor().getMessageTypes().get(75);
+    internal_static_SystemLogTrigger_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_SystemLogTrigger_descriptor,
+        new java.lang.String[] { "Trigger", "Source", });
+    internal_static_SystemLogSpektra_descriptor =
+      getDescriptor().getMessageTypes().get(76);
+    internal_static_SystemLogSpektra_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_SystemLogSpektra_descriptor,
+        new java.lang.String[] { "Action", "Type", "Index", });
+    internal_static_SystemLogSchedule_descriptor =
+      getDescriptor().getMessageTypes().get(77);
+    internal_static_SystemLogSchedule_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_SystemLogSchedule_descriptor,
+        new java.lang.String[] { "Index", "IsStart", "Second", "Minute", "Hour", });
+    internal_static_SystemLogUserStart_descriptor =
+      getDescriptor().getMessageTypes().get(78);
+    internal_static_SystemLogUserStart_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_SystemLogUserStart_descriptor,
+        new java.lang.String[] { "Timeclock", });
+    internal_static_SystemMetaDataReadMessage_descriptor =
+      getDescriptor().getMessageTypes().get(79);
+    internal_static_SystemMetaDataReadMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_SystemMetaDataReadMessage_descriptor,
+        new java.lang.String[] { "InputPressCounter", "ListStartCounter", "SchedulesCounter", "ScreenOnTime", "ScreenDimTime", "ScreenSaverTime", "RebootCounter", });
     internal_static_TriggerEvent_descriptor =
-      getDescriptor().getMessageTypes().get(63);
+      getDescriptor().getMessageTypes().get(80);
     internal_static_TriggerEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_TriggerEvent_descriptor,
         new java.lang.String[] { "Type", "Level", "DaliCommand", "TargetAddress", "LineMask", "Payload", });
     internal_static_EventMessage_descriptor =
-      getDescriptor().getMessageTypes().get(64);
+      getDescriptor().getMessageTypes().get(81);
     internal_static_EventMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_EventMessage_descriptor,
         new java.lang.String[] { "Event", "Trigger", "Inputs", "Payload", "JoinedRooms", "EventData", });
     internal_static_EdidioMessage_descriptor =
-      getDescriptor().getMessageTypes().get(65);
+      getDescriptor().getMessageTypes().get(82);
     internal_static_EdidioMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_EdidioMessage_descriptor,
-        new java.lang.String[] { "MessageId", "Ack", "Inputs", "Outputs", "Irs", "Sensor", "List", "Alarm", "Alarms", "BurnIns", "SensorCommand", "ChangeProfile", "IdentifyMessage", "UpdateTime", "ReadDevice", "DaliMessage", "DaliQuery", "DmxMessage", "ExternalTrigger", "SpektraSettings", "SpektraSequence", "SpektraCalendar", "SpektraTheme", "SpektraRead", "SpektraControl", "DmxTranslator", "InputRequest", "InputResponse", "DiagSystem", "DiagMessage", "AdminMessage", "Event", "SecureDeviceSettings", "FirmwareNew", "FirmwareControl", "FirmwareChunk", "LevelCacheResponse", "JoinedRooms", "ListExtended", "AytMessage", "RdmMessage", "RdmResponseMessage", "LogicMessage", "SecureLogin", "DeviceStateMessage", "Payload", });
+        new java.lang.String[] { "MessageId", "Ack", "Inputs", "Outputs", "Irs", "Sensor", "List", "Alarm", "Alarms", "BurnIns", "SensorCommand", "ChangeProfile", "IdentifyMessage", "UpdateTime", "ReadDevice", "DaliMessage", "DaliQuery", "DmxMessage", "ExternalTrigger", "SpektraSettings", "SpektraSequence", "SpektraCalendar", "SpektraTheme", "SpektraRead", "SpektraControl", "DmxTranslator", "InputRequest", "InputResponse", "DiagSystem", "DiagMessage", "AdminMessage", "Event", "SecureDeviceSettings", "FirmwareNew", "FirmwareControl", "FirmwareChunk", "LevelCacheResponse", "JoinedRooms", "ListExtended", "AytMessage", "RdmMessage", "RdmResponseMessage", "LogicMessage", "SecureLogin", "DeviceStateMessage", "SpektraCalendarDay", "SpektraCalendarOverview", "InputsDali", "LogsRead", "MetadataRead", "DaliAddressingMessage", "DaliRemappingMessage", "Payload", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

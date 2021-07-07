@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x1a\x65\x44S10_ProtocolBuffer.proto\".\n\nAckMessage\x12 \n\x07payload\x18\x01 \x01(\x0e\x32\x0f.AckMessageType\"X\n\x0ePayloadMessage\x12\x13\n\tuint_data\x18\x01 \x01(\rH\x00\x12\x14\n\nfloat_data\x18\x02 \x01(\x02H\x00\x12\x13\n\x0bstring_data\x18\x03 \x01(\tB\x06\n\x04\x64\x61ta\"Y\n\nAytMessage\x12\x15\n\rtimesinceboot\x18\x01 \x01(\r\x12\x13\n\x0btemperature\x18\x02 \x01(\x02\x12\x1f\n\x04time\x18\x03 \x01(\x0b\x32\x11.TimeClockMessage\"\xc1\x02\n\x12\x44\x65viceStateMessage\x12\x0e\n\x06uptime\x18\x01 \x01(\r\x12\x0c\n\x04temp\x18\x02 \x01(\x02\x12\x0c\n\x04vbat\x18\x03 \x01(\x02\x12 \n\x05\x63lock\x18\x04 \x01(\x0b\x32\x11.TimeClockMessage\x12\x12\n\nnext_alarm\x18\x05 \x01(\r\x12*\n\x0fnext_alarm_time\x18\x06 \x01(\x0b\x32\x11.TimeClockMessage\x12\x13\n\x0binput_state\x18\x07 \x01(\r\x12\x13\n\x0blist_states\x18\x08 \x03(\r\x12\x16\n\x0e\x62urn_in_states\x18\t \x03(\r\x12\x15\n\rsensor_states\x18\n \x03(\r\x12\x13\n\x0bzone_states\x18\x0b \x03(\r\x12\x19\n\x11zone_sleep_states\x18\x0c \x03(\r\x12\x14\n\x0czone_indexes\x18\r \x03(\r\"\x87\x01\n\x0eTriggerMessage\x12\x1a\n\x04type\x18\x01 \x01(\x0e\x32\x0c.TriggerType\x12\x0c\n\x04zone\x18\x02 \x01(\r\x12\x11\n\tline_mask\x18\x03 \x01(\r\x12\x14\n\x0ctarget_index\x18\x04 \x01(\r\x12\r\n\x05value\x18\x05 \x01(\r\x12\x13\n\x0bquery_index\x18\x06 \x01(\r\".\n\x10TimeClockMessage\x12\x0c\n\x04\x64\x61te\x18\x01 \x01(\r\x12\x0c\n\x04time\x18\x02 \x01(\r\"S\n\x11\x42urnInBitsMessage\x12\x13\n\x0blight_state\x18\x01 \x01(\r\x12\x14\n\x0crunning_flag\x18\x02 \x01(\r\x12\x13\n\x0b\x65nable_flag\x18\x03 \x01(\r\"\x97\x01\n\x0eIOInputMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12+\n\x0c\x62utton_state\x18\x02 \x01(\x0e\x32\x15.TriggerOperationType\x12$\n\x0bshort_press\x18\x03 \x01(\x0b\x32\x0f.TriggerMessage\x12#\n\nlong_press\x18\x04 \x01(\x0b\x32\x0f.TriggerMessage\"|\n\x0fIOOutputMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12\x15\n\rinitial_level\x18\x02 \x01(\r\x12\x1e\n\x16time_trigger_is_active\x18\x03 \x01(\r\x12#\n\x04type\x18\x04 \x01(\x0e\x32\x15.TriggerOperationType\"L\n\x0bIOIRMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12\x1f\n\x06\x61\x63tion\x18\x02 \x01(\x0b\x32\x0f.TriggerMessage\x12\r\n\x05\x63odes\x18\x03 \x01(\r\"\xce\x03\n\rSensorMessage\x12\x0f\n\x07profile\x18\x01 \x01(\r\x12\r\n\x05index\x18\x02 \x01(\r\x12\x16\n\x0esensor_address\x18\x03 \x01(\r\x12\x18\n\x10sensor_dali_line\x18\x04 \x01(\r\x12\x15\n\raddress_query\x18\x05 \x01(\r\x12\x19\n\x11\x63ontrol_dali_line\x18\x06 \x01(\r\x12\x15\n\rcontrol_group\x18\x07 \x01(\r\x12\x16\n\x0elight_setpoint\x18\x08 \x01(\r\x12\x18\n\x10warning_setpoint\x18\t \x01(\r\x12\x13\n\x0bmotion_only\x18\n \x01(\r\x12\x16\n\x0etimeout_values\x18\x0b \x01(\r\x12\x16\n\x0ewarning_values\x18\x0c \x01(\r\x12\x16\n\x0e\x64isable_values\x18\r \x01(\r\x12\x12\n\ninput_1_pm\x18\x0e \x01(\r\x12\x12\n\ninput_2_pm\x18\x0f \x01(\r\x12\x15\n\rsensor_states\x18\x10 \x01(\r\x12\x16\n\x0emotion_sensors\x18\x11 \x01(\r\x12\x13\n\x0blux_sensors\x18\x12 \x01(\r\x12\x10\n\x08off_flag\x18\x13 \x01(\r\x12\x15\n\ris_programmed\x18\x14 \x01(\x08\"\\\n\x0fListStepMessage\x12\x12\n\nstep_index\x18\x01 \x01(\r\x12\x1f\n\x06\x61\x63tion\x18\x02 \x01(\x0b\x32\x0f.TriggerMessage\x12\x14\n\x0ctime_seconds\x18\x03 \x01(\r\"\xbc\x03\n\x0c\x41larmMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0f\n\x07\x65nabled\x18\x02 \x01(\x08\x12%\n\nstart_time\x18\x03 \x01(\x0b\x32\x11.TimeClockMessage\x12#\n\x08\x65nd_time\x18\x04 \x01(\x0b\x32\x11.TimeClockMessage\x12&\n\rstart_trigger\x18\x05 \x01(\x0b\x32\x0f.TriggerMessage\x12$\n\x0b\x65nd_trigger\x18\x06 \x01(\x0b\x32\x0f.TriggerMessage\x12$\n\x0b\x61stro_start\x18\x07 \x01(\x0e\x32\x0f.AlarmAstroType\x12\"\n\tastro_end\x18\x08 \x01(\x0e\x32\x0f.AlarmAstroType\x12 \n\x06repeat\x18\t \x01(\x0e\x32\x10.AlarmRepeatType\x12\x1a\n\x12repeat_day_bitmask\x18\n \x01(\r\x12\x1c\n\x14repeat_month_bitmask\x18\x0b \x01(\r\x12\x0e\n\x06yearly\x18\x0c \x01(\x08\x12\x1e\n\x16start_offset_is_before\x18\r \x01(\x08\x12\x1c\n\x14\x65nd_offset_is_before\x18\x0e \x01(\x08\"\x99\x01\n\rBurnInMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0c\n\x04line\x18\x02 \x01(\r\x12\x0f\n\x07\x61\x64\x64ress\x18\x03 \x01(\r\x12\x15\n\rquery_address\x18\x04 \x01(\r\x12\x0c\n\x04time\x18\x05 \x01(\r\x12\x11\n\tremaining\x18\x06 \x01(\r\x12\"\n\x06states\x18\x07 \x01(\x0b\x32\x12.BurnInBitsMessage\":\n\x16\x45xternalTriggerMessage\x12 \n\x07trigger\x18\x01 \x01(\x0b\x32\x0f.TriggerMessage\"E\n\x11InputMultiMessage\x12\x0f\n\x07profile\x18\x01 \x01(\r\x12\x1f\n\x06inputs\x18\x02 \x03(\x0b\x32\x0f.IOInputMessage\"H\n\x12OutputMultiMessage\x12\x0f\n\x07profile\x18\x01 \x01(\r\x12!\n\x07outputs\x18\x02 \x03(\x0b\x32\x10.IOOutputMessage\"<\n\x0eIRMultiMessage\x12\x0f\n\x07profile\x18\x01 \x01(\r\x12\x19\n\x03irs\x18\x02 \x03(\x0b\x32\x0c.IOIRMessage\"o\n\x0bListMessage\x12\x12\n\nlist_index\x18\x01 \x01(\r\x12\x1e\n\x04step\x18\x02 \x03(\x0b\x32\x10.ListStepMessage\x12\x12\n\nlist_state\x18\x03 \x01(\r\x12\x18\n\x10total_step_count\x18\x04 \x01(\r\"d\n\x13\x45xtendedListMessage\x12\x12\n\nlist_index\x18\x01 \x01(\r\x12\x19\n\x11step_index_offset\x18\x02 \x01(\r\x12\x1e\n\x04step\x18\x03 \x03(\x0b\x32\x10.ListStepMessage\"1\n\x11\x41larmMultiMessage\x12\x1c\n\x05\x61larm\x18\x01 \x03(\x0b\x32\r.AlarmMessage\"4\n\x12\x42urnInMultiMessage\x12\x1e\n\x06\x62urnin\x18\x01 \x03(\x0b\x32\x0e.BurnInMessage\"\xe7\x01\n\x0cLogicMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0f\n\x07\x65nabled\x18\x02 \x01(\x08\x12*\n\x11\x63omparison_object\x18\x03 \x01(\x0b\x32\x0f.TriggerMessage\x12\x18\n\x10\x63omparison_value\x18\x04 \x01(\r\x12-\n\x0f\x63omparison_type\x18\x05 \x01(\x0e\x32\x14.LogicComparisonType\x12 \n\x07\x61\x63tionA\x18\x06 \x01(\x0b\x32\x0f.TriggerMessage\x12 \n\x07\x61\x63tionB\x18\x07 \x01(\x0b\x32\x0f.TriggerMessage\"1\n\x11LogicMultiMessage\x12\x1c\n\x05logic\x18\x01 \x03(\x0b\x32\r.LogicMessage\"6\n\x14SensorCommandMessage\x12\x0f\n\x07\x63ommand\x18\x01 \x01(\r\x12\r\n\x05index\x18\x02 \x01(\r\"\'\n\x14\x43hangeProfileMessage\x12\x0f\n\x07profile\x18\x01 \x01(\r\"*\n\x0fIdentifyMessage\x12\x0b\n\x03MAC\x18\x01 \x01(\x04\x12\n\n\x02IP\x18\x02 \x01(\x04\"4\n\x11UpdateTimeMessage\x12\x1f\n\x04time\x18\x01 \x01(\x0b\x32\x11.TimeClockMessage\"e\n\x11ReadDeviceMessage\x12\x0f\n\x07profile\x18\x01 \x01(\r\x12\x17\n\x04type\x18\x02 \x01(\x0e\x32\t.ReadType\x12\r\n\x05index\x18\x03 \x01(\r\x12\x17\n\x0fsecondary_index\x18\x04 \x01(\r\".\n\x1bSecureDeviceSettingsMessage\x12\x0f\n\x07payload\x18\x01 \x01(\t\" \n\x11\x44TRPayloadMessage\x12\x0b\n\x03\x64tr\x18\x01 \x03(\r\"\xcb\x02\n\x0b\x44\x41LIMessage\x12\x11\n\tline_mask\x18\x01 \x01(\r\x12\x0f\n\x07\x61\x64\x64ress\x18\x02 \x01(\r\x12\x17\n\redali_command\x18\x03 \x01(\rH\x00\x12\x1d\n\x13\x65\x64\x61li_command_reply\x18\x04 \x01(\rH\x00\x12#\n\x07\x63ommand\x18\x05 \x01(\x0e\x32\x10.DALICommandTypeH\x00\x12\x30\n\x0e\x63ustom_command\x18\x06 \x01(\x0e\x32\x16.CustomDALICommandTypeH\x00\x12\x1f\n\x05query\x18\x07 \x01(\x0e\x32\x0e.DALIQueryTypeH\x00\x12\"\n\x05type8\x18\x08 \x01(\x0e\x32\x11.Type8CommandTypeH\x00\x12\r\n\x03\x61rg\x18\t \x01(\rH\x01\x12!\n\x03\x64tr\x18\n \x01(\x0b\x32\x12.DTRPayloadMessageH\x01\x42\x08\n\x06\x61\x63tionB\x08\n\x06params\"7\n\x15\x44\x41LIStatusFlagMessage\x12\x1e\n\x05\x66lags\x18\x01 \x03(\x0e\x32\x0f.DALIStatusType\"o\n\x11\x44\x41LIQueryResponse\x12.\n\x0cstatus_flags\x18\x01 \x01(\x0b\x32\x16.DALIStatusFlagMessageH\x00\x12\x1f\n\x04\x64\x61ta\x18\x02 \x01(\x0b\x32\x0f.PayloadMessageH\x00\x42\t\n\x07payload\"|\n\nDMXMessage\x12\x0c\n\x04zone\x18\x01 \x01(\r\x12\x15\n\runiverse_mask\x18\x02 \x01(\r\x12\x0f\n\x07\x63hannel\x18\x03 \x01(\r\x12\x0e\n\x06repeat\x18\x04 \x01(\r\x12\r\n\x05level\x18\x05 \x03(\r\x12\x19\n\x11\x66\x61\x64\x65_time_by_10ms\x18\x06 \x01(\r\"o\n\nRDMMessage\x12\x15\n\runiverse_mask\x18\x01 \x01(\r\x12\x0b\n\x03uid\x18\x02 \x01(\x04\x12\x0b\n\x03pid\x18\x03 \x01(\r\x12\x0e\n\x06getset\x18\x04 \x01(\r\x12\x12\n\ndatalength\x18\x05 \x01(\r\x12\x0c\n\x04\x64\x61ta\x18\x06 \x03(\r\"P\n\x12RDMResponseMessage\x12\x0b\n\x03uid\x18\x01 \x01(\x04\x12\x0b\n\x03pid\x18\x02 \x01(\r\x12\x12\n\ndatalength\x18\x03 \x01(\r\x12\x0c\n\x04\x64\x61ta\x18\x04 \x03(\r\"\x96\x02\n\x15SpektraSettingMessage\x12\x0c\n\x04zone\x18\x01 \x01(\r\x12\x15\n\rstart_address\x18\x02 \x01(\r\x12\x1d\n\x15line_or_universe_mask\x18\x03 \x01(\r\x12\x10\n\x08protocol\x18\x04 \x01(\r\x12\x18\n\x10number_of_lights\x18\x05 \x01(\r\x12\x1a\n\x12\x63hannels_per_light\x18\x06 \x01(\r\x12\x17\n\x0f\x63hannel_colours\x18\x07 \x03(\r\x12?\n\x15unscheduled_behaviour\x18\x08 \x01(\x0e\x32 .SpektraUnscheduledBehaviourType\x12\x17\n\x0f\x63hannel_mapping\x18\t \x03(\r\"3\n\x1aSpektraColourConfigMessage\x12\x15\n\rchannel_value\x18\x01 \x03(\r\"\xda\x03\n\x1cSpektraSequenceConfigMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0c\n\x04type\x18\x02 \x01(\r\x12*\n\ntransition\x18\x03 \x01(\x0e\x32\x16.SpektraTransitionType\x12\x19\n\x11\x66\x61\x64\x65_time_by_10ms\x18\x04 \x01(\r\x12\x17\n\x0ftime_per_colour\x18\x05 \x01(\r\x12\x1c\n\x14time_per_colour_unit\x18\x06 \x01(\r\x12\x15\n\rtime_per_step\x18\x07 \x01(\r\x12\x1a\n\x12time_per_step_unit\x18\x08 \x01(\r\x12\r\n\x05range\x18\t \x01(\r\x12\x0e\n\x06\x63olour\x18\n \x03(\x04\x12\x1a\n\x12is_randomised_type\x18\x0b \x01(\r\x12\x19\n\x11random_types_mask\x18\x0c \x01(\r\x12\x1c\n\x14is_reverse_direction\x18\r \x01(\r\x12\x1a\n\x12is_cycle_direction\x18\x0e \x01(\r\x12\r\n\x05title\x18\x0f \x01(\t\x12\x1f\n\x17has_random_colour_order\x18\x10 \x01(\x08\x12,\n\x07\x63olours\x18\x11 \x03(\x0b\x32\x1b.SpektraColourConfigMessage\"W\n\x16SpektraCalendarMessage\x12 \n\x04type\x18\x01 \x01(\x0e\x32\x12.SpektraTargetType\x12\r\n\x05index\x18\x02 \x01(\r\x12\x0c\n\x04\x64\x61ys\x18\x03 \x03(\x08\"w\n\x19SpektraThemeConfigMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0e\n\x06\x63olour\x18\x02 \x03(\x04\x12\r\n\x05title\x18\x03 \x01(\t\x12,\n\x07\x63olours\x18\x04 \x03(\x0b\x32\x1b.SpektraColourConfigMessage\"E\n\x12SpektraReadMessage\x12 \n\x04type\x18\x01 \x01(\x0e\x32\x12.SpektraTargetType\x12\r\n\x05index\x18\x02 \x01(\r\"z\n\x15SpektraControlMessage\x12 \n\x04type\x18\x01 \x01(\x0e\x32\x12.SpektraTargetType\x12\x0c\n\x04zone\x18\x02 \x01(\r\x12\r\n\x05index\x18\x03 \x01(\r\x12\"\n\x06\x61\x63tion\x18\x04 \x01(\x0e\x32\x12.SpektraActionType\"\xba\x01\n\x14\x44MXTranslationObject\x12\x0f\n\x07line_in\x18\x01 \x01(\r\x12\x10\n\x08line_out\x18\x02 \x01(\r\x12\x19\n\x11\x64mx_start_address\x18\x03 \x01(\r\x12\x15\n\rchannel_count\x18\x04 \x01(\r\x12\x12\n\ndali_array\x18\x05 \x03(\r\x12\x16\n\x0e\x61\x66\x66\x65\x63ted_input\x18\x07 \x01(\r\x12\x10\n\x08\x62locking\x18\x08 \x01(\x08\x12\x0f\n\x07\x65nabled\x18\t \x01(\x08\"?\n\x16\x44MXProtocolTranslation\x12%\n\x06object\x18\x01 \x03(\x0b\x32\x15.DMXTranslationObject\"%\n\x11InputStateMessage\x12\x10\n\x08use_mask\x18\x01 \x01(\x08\"8\n\x12InputStateResponse\x12\x0e\n\x06inputs\x18\x01 \x03(\r\x12\x12\n\ninput_mask\x18\x02 \x01(\r\"@\n\x12LevelCacheResponse\x12\x0e\n\x06levels\x18\x01 \x03(\r\x12\x0c\n\x04line\x18\x02 \x01(\r\x12\x0c\n\x04page\x18\x03 \x01(\r\"H\n\x12JoinedRoomsMessage\x12\r\n\x05pairs\x18\x01 \x03(\r\x12\x0e\n\x06joined\x18\x02 \x01(\x08\x12\x13\n\x0b\x63lear_joins\x18\x03 \x01(\x08\"\xb9\x04\n\x1c\x44iagnosticSystemInfoResponse\x12\x10\n\x08\x66irmware\x18\x01 \x01(\t\x12\x10\n\x08hardware\x18\x02 \x01(\t\x12\r\n\x05\x65rror\x18\x03 \x01(\t\x12\x13\n\x0binput_count\x18\x04 \x01(\r\x12\x14\n\x0coutput_count\x18\x05 \x01(\r\x12\x10\n\x08ir_count\x18\x06 \x01(\r\x12\x17\n\x0flist_step_count\x18\x07 \x01(\r\x12\x12\n\nlist_count\x18\x08 \x01(\r\x12\x13\n\x0b\x61larm_count\x18\t \x01(\r\x12\x14\n\x0c\x62urnin_count\x18\n \x01(\r\x12\x19\n\x11spektra_seq_count\x18\x0b \x01(\r\x12\x1e\n\x16spektra_seq_step_count\x18\x0c \x01(\r\x12\x1b\n\x13spektra_theme_count\x18\r \x01(\r\x12\x1c\n\x14spektra_static_count\x18\x0e \x01(\r\x12\x15\n\rproto_version\x18\x0f \x01(\r\x12\x12\n\nline_count\x18\x10 \x01(\r\x12\x18\n\x05lines\x18\x11 \x03(\x0e\x32\t.LineType\x12\x15\n\rprofile_count\x18\x12 \x01(\r\x12\x19\n\x11preset_code_count\x18\x13 \x01(\r\x12\x18\n\x10user_level_count\x18\x14 \x01(\r\x12\x19\n\x11\x64mx_to_dali_count\x18\x15 \x01(\r\x12\x1a\n\x12spektra_zone_count\x18\x16 \x01(\r\x12\x13\n\x0blogic_count\x18\x17 \x01(\r\"U\n\x11\x44iagnosticMessage\x12$\n\x04type\x18\x01 \x01(\x0e\x32\x16.DiagnosticMessageType\x12\x0c\n\x04page\x18\x02 \x01(\r\x12\x0c\n\x04line\x18\x03 \x01(\r\"\xf2\x01\n\x1d\x41\x64minProjectPropertiesMessage\x12\x13\n\x0b\x64\x65vice_name\x18\x02 \x01(\t\x12\x14\n\x0cproject_name\x18\x03 \x01(\t\x12\x11\n\tlongitude\x18\x04 \x01(\x02\x12\x10\n\x08latitude\x18\x05 \x01(\x02\x12\x14\n\x0clocal_offset\x18\x06 \x01(\x02\x12\x18\n\x10\x64\x61ylight_savings\x18\x07 \x01(\x08\x12\x1e\n\x16\x64\x61ylight_savings_start\x18\x08 \x01(\r\x12\x1c\n\x14\x64\x61ylight_savings_end\x18\t \x01(\r\x12\x13\n\x0bpoll_active\x18\n \x01(\x08\"\xa4\x01\n\x18\x41\x64minConfigStatusMessage\x12\x13\n\x0blist_status\x18\x01 \x03(\r\x12\x16\n\x0e\x62urn_in_status\x18\x02 \x03(\r\x12\x14\n\x0c\x61larm_status\x18\x03 \x01(\r\x12.\n\x13\x61larm_time_from_reg\x18\x04 \x01(\x0b\x32\x11.TimeClockMessage\x12\x15\n\rsensor_status\x18\x05 \x03(\r\"w\n\x1d\x41\x64minNetworkPropertiesMessage\x12\x0c\n\x04\x44HCP\x18\x01 \x01(\x08\x12\n\n\x02IP\x18\x02 \x01(\t\x12\x0b\n\x03MAC\x18\x03 \x01(\t\x12\x0f\n\x07gateway\x18\x04 \x01(\t\x12\x11\n\tNTPServer\x18\x05 \x01(\t\x12\x0b\n\x03NTP\x18\x06 \x01(\x08\"7\n\x1b\x41\x64minControllerLinesMessage\x12\x18\n\x05lines\x18\x01 \x03(\x0e\x32\t.LineType\"@\n\x18\x41\x64minDeviceStatusMessage\x12\x13\n\x0btemperature\x18\x01 \x01(\x02\x12\x0f\n\x07\x62\x61ttery\x18\x02 \x01(\x02\"I\n\x17\x41\x64minSecureLoginMessage\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x0e\n\x06\x63nonce\x18\x02 \x01(\t\x12\x0c\n\x04hash\x18\x03 \x03(\r\"\xcb\x03\n\x0c\x41\x64minMessage\x12\"\n\x07\x63ommand\x18\x01 \x01(\x0e\x32\x11.AdminCommandType\x12\"\n\x06target\x18\x02 \x01(\x0e\x32\x12.AdminPropertyType\x12\x1f\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x0f.PayloadMessageH\x00\x12<\n\x12network_properties\x18\x04 \x01(\x0b\x32\x1e.AdminNetworkPropertiesMessageH\x00\x12<\n\x12project_properties\x18\x05 \x01(\x0b\x32\x1e.AdminProjectPropertiesMessageH\x00\x12\x38\n\x10\x63ontroller_lines\x18\x06 \x01(\x0b\x32\x1c.AdminControllerLinesMessageH\x00\x12\x32\n\rdevice_status\x18\x07 \x01(\x0b\x32\x19.AdminDeviceStatusMessageH\x00\x12\x32\n\rconfig_status\x18\x08 \x01(\x0b\x32\x19.AdminConfigStatusMessageH\x00\x12)\n\x0b\x64\x65vice_time\x18\t \x01(\x0b\x32\x12.UpdateTimeMessageH\x00\x42\t\n\x07payload\"K\n\x0b\x44\x61taMessage\x12\x12\n\nidentifier\x18\x01 \x01(\r\x12\x0b\n\x03seq\x18\x02 \x01(\r\x12\r\n\x05\x63ount\x18\x03 \x01(\r\x12\x0c\n\x04\x64\x61ta\x18\x04 \x03(\r\"\xda\x01\n\x13\x46irmwareMetaMessage\x12\x18\n\x10\x66irmware_version\x18\x01 \x01(\r\x12\x15\n\rfirmware_date\x18\x02 \x01(\r\x12\x1c\n\x14\x66irmware_date_upload\x18\x03 \x01(\r\x12\x19\n\x11\x66irmware_checksum\x18\x04 \x01(\r\x12\x1c\n\x14\x66irmware_chunk_count\x18\x05 \x01(\r\x12\x1d\n\x15\x66irmware_base_address\x18\x06 \x01(\r\x12\x1c\n\x14\x66irmware_end_address\x18\x07 \x01(\r\";\n\x16\x46irmwareControlMessage\x12!\n\x03\x63md\x18\x01 \x01(\x0e\x32\x14.FirmwareCommandType\"d\n\x14\x46irmwareChunkMessage\x12\x18\n\x10\x66irmware_address\x18\x01 \x01(\r\x12\x13\n\x0btotal_bytes\x18\x02 \x01(\r\x12\x1d\n\x07payload\x18\x03 \x01(\x0b\x32\x0c.DataMessage\"\x9b\x01\n\x0cTriggerEvent\x12\x1a\n\x04type\x18\x01 \x01(\x0e\x32\x0c.TriggerType\x12\x0f\n\x05level\x18\x02 \x01(\rH\x00\x12(\n\x0c\x64\x61li_command\x18\x03 \x01(\x0e\x32\x10.DALICommandTypeH\x00\x12\x16\n\x0etarget_address\x18\x04 \x01(\r\x12\x11\n\tline_mask\x18\x05 \x01(\rB\t\n\x07payload\"\xd1\x01\n\x0c\x45ventMessage\x12\x19\n\x05\x65vent\x18\x01 \x01(\x0e\x32\n.EventType\x12 \n\x07trigger\x18\x02 \x01(\x0b\x32\r.TriggerEventH\x00\x12%\n\x06inputs\x18\x03 \x01(\x0b\x32\x13.InputStateResponseH\x00\x12\"\n\x07payload\x18\x04 \x01(\x0b\x32\x0f.PayloadMessageH\x00\x12+\n\x0cjoined_rooms\x18\x05 \x01(\x0b\x32\x13.JoinedRoomsMessageH\x00\x42\x0c\n\nevent_data\"\xde\x0f\n\rEdidioMessage\x12\x12\n\nmessage_id\x18\x01 \x01(\r\x12\x1a\n\x03\x61\x63k\x18\x02 \x01(\x0b\x32\x0b.AckMessageH\x00\x12$\n\x06inputs\x18\x03 \x01(\x0b\x32\x12.InputMultiMessageH\x00\x12&\n\x07outputs\x18\x04 \x01(\x0b\x32\x13.OutputMultiMessageH\x00\x12\x1e\n\x03irs\x18\x05 \x01(\x0b\x32\x0f.IRMultiMessageH\x00\x12 \n\x06sensor\x18\x06 \x01(\x0b\x32\x0e.SensorMessageH\x00\x12\x1c\n\x04list\x18\x08 \x01(\x0b\x32\x0c.ListMessageH\x00\x12\x1e\n\x05\x61larm\x18\n \x01(\x0b\x32\r.AlarmMessageH\x00\x12$\n\x06\x61larms\x18\x0b \x01(\x0b\x32\x12.AlarmMultiMessageH\x00\x12\'\n\x08\x62urn_ins\x18\x0c \x01(\x0b\x32\x13.BurnInMultiMessageH\x00\x12/\n\x0esensor_command\x18\r \x01(\x0b\x32\x15.SensorCommandMessageH\x00\x12/\n\x0e\x63hange_profile\x18\x0e \x01(\x0b\x32\x15.ChangeProfileMessageH\x00\x12,\n\x10identify_message\x18\x0f \x01(\x0b\x32\x10.IdentifyMessageH\x00\x12)\n\x0bupdate_time\x18\x10 \x01(\x0b\x32\x12.UpdateTimeMessageH\x00\x12)\n\x0bread_device\x18\x11 \x01(\x0b\x32\x12.ReadDeviceMessageH\x00\x12$\n\x0c\x64\x61li_message\x18\x12 \x01(\x0b\x32\x0c.DALIMessageH\x00\x12(\n\ndali_query\x18\x13 \x01(\x0b\x32\x12.DALIQueryResponseH\x00\x12\"\n\x0b\x64mx_message\x18\x14 \x01(\x0b\x32\x0b.DMXMessageH\x00\x12\x33\n\x10\x65xternal_trigger\x18\x15 \x01(\x0b\x32\x17.ExternalTriggerMessageH\x00\x12\x32\n\x10spektra_settings\x18\x16 \x01(\x0b\x32\x16.SpektraSettingMessageH\x00\x12\x39\n\x10spektra_sequence\x18\x17 \x01(\x0b\x32\x1d.SpektraSequenceConfigMessageH\x00\x12\x33\n\x10spektra_calendar\x18\x18 \x01(\x0b\x32\x17.SpektraCalendarMessageH\x00\x12\x33\n\rspektra_theme\x18\x19 \x01(\x0b\x32\x1a.SpektraThemeConfigMessageH\x00\x12+\n\x0cspektra_read\x18\x1a \x01(\x0b\x32\x13.SpektraReadMessageH\x00\x12\x31\n\x0fspektra_control\x18\x1b \x01(\x0b\x32\x16.SpektraControlMessageH\x00\x12\x31\n\x0e\x64mx_translator\x18\x1c \x01(\x0b\x32\x17.DMXProtocolTranslationH\x00\x12+\n\rinput_request\x18\x1d \x01(\x0b\x32\x12.InputStateMessageH\x00\x12-\n\x0einput_response\x18\x1e \x01(\x0b\x32\x13.InputStateResponseH\x00\x12\x34\n\x0b\x64iag_system\x18\x1f \x01(\x0b\x32\x1d.DiagnosticSystemInfoResponseH\x00\x12*\n\x0c\x64iag_message\x18  \x01(\x0b\x32\x12.DiagnosticMessageH\x00\x12&\n\radmin_message\x18! \x01(\x0b\x32\r.AdminMessageH\x00\x12\x1e\n\x05\x65vent\x18\" \x01(\x0b\x32\r.EventMessageH\x00\x12>\n\x16secure_device_settings\x18# \x01(\x0b\x32\x1c.SecureDeviceSettingsMessageH\x00\x12,\n\x0c\x66irmware_new\x18$ \x01(\x0b\x32\x14.FirmwareMetaMessageH\x00\x12\x33\n\x10\x66irmware_control\x18% \x01(\x0b\x32\x17.FirmwareControlMessageH\x00\x12/\n\x0e\x66irmware_chunk\x18& \x01(\x0b\x32\x15.FirmwareChunkMessageH\x00\x12\x33\n\x14level_cache_response\x18\' \x01(\x0b\x32\x13.LevelCacheResponseH\x00\x12+\n\x0cjoined_rooms\x18( \x01(\x0b\x32\x13.JoinedRoomsMessageH\x00\x12-\n\rlist_extended\x18) \x01(\x0b\x32\x14.ExtendedListMessageH\x00\x12\"\n\x0b\x61yt_message\x18* \x01(\x0b\x32\x0b.AytMessageH\x00\x12\"\n\x0brdm_message\x18+ \x01(\x0b\x32\x0b.RDMMessageH\x00\x12\x33\n\x14rdm_response_message\x18, \x01(\x0b\x32\x13.RDMResponseMessageH\x00\x12+\n\rlogic_message\x18- \x01(\x0b\x32\x12.LogicMultiMessageH\x00\x12\x30\n\x0csecure_login\x18. \x01(\x0b\x32\x18.AdminSecureLoginMessageH\x00\x12\x33\n\x14\x64\x65vice_state_message\x18/ \x01(\x0b\x32\x13.DeviceStateMessageH\x00\x42\t\n\x07payload*\x8f\x01\n\x14TriggerOperationType\x12\r\n\tMOMENTARY\x10\x00\x12\x0c\n\x08LATCHING\x10\x01\x12\x14\n\x10MOMENTARY_OUTPUT\x10\x02\x12\x13\n\x0fLATCHING_OUTPUT\x10\x03\x12\x17\n\x12MOMENTARY_DISABLED\x10\x80\x01\x12\x16\n\x11LATCHING_DISABLED\x10\x81\x01*\x83\x08\n\x0bTriggerType\x12\x0c\n\x08\x44\x41LI_ARC\x10\x00\x12\x10\n\x0c\x44\x41LI_COMMAND\x10\x01\x12\x1a\n\x16\x44MX_CHANNELS_SPLIT_LOW\x10\x02\x12\x1b\n\x17\x44MX_CHANNELS_SPLIT_HIGH\x10\x03\x12$\n DMX_MULTICAST_CHANNELS_SPLIT_LOW\x10\x04\x12%\n!DMX_MULTICAST_CHANNELS_SPLIT_HIGH\x10\x05\x12\x11\n\rDMX_BROADCAST\x10\x06\x12\t\n\x05\x44IDIO\x10\x07\x12\x14\n\x10\x46\x41\x44\x45_UP_WITH_MIN\x10\x08\x12\x0e\n\nLIST_START\x10\t\x12\x19\n\x15LIST_START_CONTINUOUS\x10\n\x12\r\n\tLIST_STOP\x10\x0b\x12\x15\n\x11SPEKTRA_START_SEQ\x10\x0c\x12\x14\n\x10SPEKTRA_STOP_SEQ\x10\r\x12\x11\n\rSPEKTRA_THEME\x10\x0e\x12\x12\n\x0eSPEKTRA_STATIC\x10\x0f\x12\x14\n\x10SPEKTRA_SCHEDULE\x10\x10\x12\x0e\n\nLINK_START\x10\x11\x12\r\n\tLINK_STOP\x10\x12\x12\x10\n\x0c\x44ISABLE_BURN\x10\x13\x12\x0f\n\x0b\x45NABLE_BURN\x10\x14\x12\x0e\n\nON_OFF_TOG\x10\x15\x12\x0f\n\x0bMIN_MAX_TOG\x10\x16\x12\x10\n\x0c\x45NABLE_INPUT\x10\x17\x12\x11\n\rDISABLE_INPUT\x10\x18\x12\x14\n\x10\x45NABLE_TOG_INPUT\x10\x19\x12\x0e\n\nOUTPUT_TOG\x10\x1a\x12\x0f\n\x0bOUTPUT_HIGH\x10\x1b\x12\x0e\n\nOUTPUT_LOW\x10\x1c\x12\x0f\n\x0bOUTPUT_TRIG\x10\x1d\x12\x12\n\x0ePROFILE_CHANGE\x10\x1e\x12\x13\n\x0f\x46\x41\x44\x45_LONG_PRESS\x10\x1f\x12\n\n\x06SYNCRO\x10 \x12\x0f\n\x0bPRESET_CODE\x10!\x12\x0f\n\x0b\x43USTOM_CODE\x10\"\x12\x11\n\rSPEKTRA_SLEEP\x10#\x12\x12\n\x0eSPEKTRA_RESUME\x10$\x12\x10\n\x0c\x44\x45VICE_RESET\x10%\x12\x0f\n\x0b\x44\x45VICE_SAVE\x10&\x12\x18\n\x14USER_LEVEL_STORE_NEW\x10\'\x12\x1a\n\x16USER_LEVEL_SET_DEFAULT\x10(\x12\x15\n\x11USER_LEVEL_RECALL\x10)\x12\r\n\tROOM_JOIN\x10+\x12\x0f\n\x0bROOM_UNJOIN\x10,\x12\x13\n\x0fTYPE8_TC_WARMER\x10-\x12\x13\n\x0fTYPE8_TC_COOLER\x10.\x12\x13\n\x0fTYPE8_TC_ACTUAL\x10/\x12\x13\n\x0fLOGIC_OPERATION\x10\x30\x12\x10\n\x0c\x41LARM_ENABLE\x10\x31\x12\x11\n\rALARM_DISABLE\x10\x32\x12\x0f\n\nNO_COMMAND\x10\xfe\x01*\xad\x01\n\x08ReadType\x12\n\n\x06INPUTS\x10\x00\x12\x0b\n\x07OUTPUTS\x10\x01\x12\x06\n\x02IR\x10\x02\x12\n\n\x06SENSOR\x10\x03\x12\x08\n\x04LIST\x10\x05\x12\n\n\x06\x41LARMS\x10\x07\x12\x0b\n\x07\x42URN_IN\x10\x08\x12\x0b\n\x07PROJECT\x10\t\x12\x0b\n\x07NETWORK\x10\n\x12\n\n\x06\x44\x45VICE\x10\x0b\x12\r\n\tPOLL_DATA\x10\x0c\x12\x11\n\rLIST_EXTENDED\x10\r\x12\t\n\x05LOGIC\x10\x0e*\x8c\x01\n\x0f\x41larmRepeatType\x12\x13\n\x0f\x41LARM_NO_REPEAT\x10\x00\x12\x16\n\x12\x41LARM_REPEAT_DAILY\x10\x01\x12\x19\n\x15\x41LARM_REPEAT_WORK_DAY\x10\x02\x12\x17\n\x13\x41LARM_REPEAT_WEEKLY\x10\x03\x12\x18\n\x14\x41LARM_REPEAT_MONTHLY\x10\x04*I\n\x0e\x41larmAstroType\x12\x12\n\x0e\x41LARM_NO_ASTRO\x10\x00\x12\x11\n\rALARM_SUNRUSE\x10\x01\x12\x10\n\x0c\x41LARM_SUNSET\x10\x02*T\n\x11SpektraTargetType\x12\x0c\n\x08SETTINGS\x10\x00\x12\x0c\n\x08SEQUENCE\x10\x01\x12\t\n\x05THEME\x10\x02\x12\n\n\x06STATIC\x10\x03\x12\x0c\n\x08\x43\x41LENDAR\x10\x04*=\n\x11SpektraActionType\x12\t\n\x05START\x10\x00\x12\x08\n\x04STOP\x10\x01\x12\t\n\x05PAUSE\x10\x02\x12\x08\n\x04SAVE\x10\x03*}\n\x1fSpektraUnscheduledBehaviourType\x12 \n\x1cRUN_RANDOM_COLOURED_SEQUENCE\x10\x00\x12\x12\n\x0eRUN_SEQUENCE_1\x10\x01\x12\x13\n\x0fRESUME_PREVIOUS\x10\x02\x12\x0f\n\nDO_NOTHING\x10\xfe\x01*\xae\x02\n\x0e\x41\x63kMessageType\x12\x11\n\rDECODE_FAILED\x10\x00\x12\x17\n\x13INDEX_OUT_OF_BOUNDS\x10\x01\x12\x13\n\x0fUNEXPECTED_TYPE\x10\x02\x12\x11\n\rENCODE_FAILED\x10\x03\x12\x10\n\x0cKEY_MISMATCH\x10\x04\x12\x0b\n\x07SUCCESS\x10\x05\x12\x12\n\x0eINVALID_PARAMS\x10\x06\x12\x16\n\x12UNEXPECTED_COMMAND\x10\x07\x12\x18\n\x14\x43OMMUNICATION_FAILED\x10\x08\x12\x19\n\x15\x43OMMUNICATION_TIMEOUT\x10\t\x12\x11\n\rDATA_TOO_LONG\x10\n\x12\x13\n\x0fUNEXPECTED_CASE\x10\x0b\x12\x0e\n\nSLOTS_FULL\x10\x0c\x12\x10\n\x0cUNAUTHORISED\x10\r*\xd3\x04\n\x10Type8CommandType\x12\x17\n\x13\x45NABLE_DEVICE_TYPE8\x10\x00\x12\x14\n\x10SET_TEMP_X_COORD\x10\x01\x12\x14\n\x10SET_TEMP_Y_COORD\x10\x02\x12\x0c\n\x08\x41\x43TIVATE\x10\x03\x12\x13\n\x0fX_COORD_STEP_UP\x10\x04\x12\x15\n\x11X_COORD_STEP_DOWN\x10\x05\x12\x13\n\x0fY_COORD_STEP_UP\x10\x06\x12\x15\n\x11Y_COORD_STEP_DOWN\x10\x07\x12\x1f\n\x1bSET_TEMP_COLOUR_TEMPERATURE\x10\x08\x12\"\n\x1e\x43OLOUR_TEMPERATURE_STEP_COOLER\x10\t\x12\"\n\x1e\x43OLOUR_TEMPERATURE_STEP_WARMER\x10\n\x12\x1b\n\x17SET_TEMP_PRI_N_DIMLEVEL\x10\x0b\x12\x19\n\x15SET_TEMP_RGB_DIMLEVEL\x10\x0c\x12\x19\n\x15SET_TEMP_WAF_DIMLEVEL\x10\r\x12\x1b\n\x17SET_TEMP_RGBWAF_CONTROL\x10\x0e\x12\x19\n\x15\x43OPY_REPORT_TEMPORARY\x10\x0f\x12\x12\n\x0eSTORE_TY_PRI_N\x10\x10\x12\x18\n\x14STORE_XY_COORD_PRI_N\x10\x11\x12\"\n\x1eSTORE_COLOUR_TEMPERATURE_LIMIT\x10\x12\x12\x1e\n\x1aSTORE_GEAR_FEATURES_STATUS\x10\x13\x12\x1a\n\x16\x41SSIGN_COLOR_LINKED_CH\x10\x14\x12\x12\n\x0eSTART_AUTO_CAL\x10\x15*\xfb\x01\n\x0eType8QueryType\x12$\n TYPE8_QUERY_GEAR_FEATURES_STATUS\x10\x00\x12\x1d\n\x19TYPE8_QUERY_COLOUR_STATUS\x10\x01\x12$\n TYPE8_QUERY_COLOUR_TYPE_FEATURES\x10\x02\x12\x1c\n\x18TYPE8_QUERY_COLOUR_VALUE\x10\x03\x12\x1e\n\x1aTYPE8_QUERY_RGBWAF_CONTROL\x10\x04\x12\x1f\n\x1bTYPE8_QUERY_ASSIGNED_COLOUR\x10\x05\x12\x1f\n\x1bTYPE8_QUERY_EXT_VERSION_NUM\x10\x06*H\n\x08LineType\x12\x0e\n\nLINE_EMPTY\x10\x00\x12\r\n\tLINE_DALI\x10\x01\x12\x0c\n\x08LINE_DMX\x10\x02\x12\x0f\n\x0bLINE_DMX_IN\x10\x03*w\n\tEventType\x12\x0c\n\x08REGISTER\x10\x00\x12\x11\n\rTRIGGER_EVENT\x10\x01\x12\x0f\n\x0bINPUT_EVENT\x10\x02\x12\x10\n\x0cSENSOR_EVENT\x10\x03\x12\x11\n\rCONTROL_EVENT\x10\x04\x12\x13\n\x0fROOM_JOIN_EVENT\x10\x05*\xc6\t\n\rDALIQueryType\x12\x13\n\x0f\x44\x41LI_QUERY_NULL\x10\x00\x12\x16\n\x11\x44\x41LI_QUERY_STATUS\x10\x90\x01\x12\x17\n\x12\x44\x41LI_QUERY_BALLAST\x10\x91\x01\x12\x1c\n\x17\x44\x41LI_QUERY_LAMP_FAILURE\x10\x92\x01\x12\x1d\n\x18\x44\x41LI_QUERY_LAMP_POWER_ON\x10\x93\x01\x12\x1b\n\x16\x44\x41LI_QUERY_LIMIT_ERROR\x10\x94\x01\x12\x1b\n\x16\x44\x41LI_QUERY_RESET_STATE\x10\x95\x01\x12%\n DALI_QUERY_MISSING_SHORT_ADDRESS\x10\x96\x01\x12\x1e\n\x19\x44\x41LI_QUERY_VERSION_NUMBER\x10\x97\x01\x12\x14\n\x0f\x44\x41LI_QUERY_DTR0\x10\x98\x01\x12\x1b\n\x16\x44\x41LI_QUERY_DEVICE_TYPE\x10\x99\x01\x12\x1c\n\x17\x44\x41LI_QUERY_PHYSICAL_MIN\x10\x9a\x01\x12\x1d\n\x18\x44\x41LI_QUERY_POWER_FAILURE\x10\x9b\x01\x12\x14\n\x0f\x44\x41LI_QUERY_DTR1\x10\x9c\x01\x12\x14\n\x0f\x44\x41LI_QUERY_DTR2\x10\x9d\x01\x12\x1e\n\x19\x44\x41LI_QUERY_OPERATING_MODE\x10\x9e\x01\x12 \n\x1b\x44\x41LI_QUERY_LIGHTSOURCE_TYPE\x10\x9f\x01\x12\x1c\n\x17\x44\x41LI_QUERY_ACTUAL_LEVEL\x10\xa0\x01\x12\x19\n\x14\x44\x41LI_QUERY_MAX_LEVEL\x10\xa1\x01\x12\x19\n\x14\x44\x41LI_QUERY_MIN_LEVEL\x10\xa2\x01\x12\x1e\n\x19\x44\x41LI_QUERY_POWER_ON_LEVEL\x10\xa3\x01\x12$\n\x1f\x44\x41LI_QUERY_SYSTEM_FAILURE_LEVEL\x10\xa4\x01\x12!\n\x1c\x44\x41LI_QUERY_FADETIME_FADERATE\x10\xa5\x01\x12*\n%DALI_QUERY_MANUFACTURER_SPECIFIC_MODE\x10\xa6\x01\x12 \n\x1b\x44\x41LI_QUERY_NEXT_DEVICE_TYPE\x10\xa7\x01\x12\"\n\x1d\x44\x41LI_QUERY_EXTENDED_FADE_TIME\x10\xa8\x01\x12$\n\x1f\x44\x41LI_QUERY_CONTROL_GEAR_FAILURE\x10\xaa\x01\x12\x1d\n\x18\x44\x41LI_QUERY_SCENE_X_LEVEL\x10\xb0\x01\x12\x1a\n\x15\x44\x41LI_QUERY_GROUPS_0_7\x10\xc0\x01\x12\x1b\n\x16\x44\x41LI_QUERY_GROUPS_8_15\x10\xc1\x01\x12 \n\x1b\x44\x41LI_QUERY_RANDOM_ADDRESS_H\x10\xc2\x01\x12 \n\x1b\x44\x41LI_QUERY_RANDOM_ADDRESS_M\x10\xc3\x01\x12 \n\x1b\x44\x41LI_QUERY_RANDOM_ADDRESS_L\x10\xc4\x01\x12\x1c\n\x17\x44\x41LI_QUERY_READ_DTR_0_1\x10\xc5\x01\x12 \n\x1b\x44\x41LI_QUERY_APP_EXT_COMMANDS\x10\xe0\x01\x12\"\n\x1d\x44\x41LI_QUERY_EXT_VERSION_NUMBER\x10\xff\x01\x12\x17\n\x12\x44\x41LI_QUERY_COMPARE\x10\x84\x02\x12$\n\x1f\x44\x41LI_QUERY_VERIFY_SHORT_ADDRESS\x10\x8c\x02\x12\x1d\n\x18\x44\x41LI_QUERY_SHORT_ADDRESS\x10\x8d\x02*\xdd\x07\n\x0f\x44\x41LICommandType\x12\x0c\n\x08\x44\x41LI_OFF\x10\x00\x12\x10\n\x0c\x44\x41LI_FADE_UP\x10\x01\x12\x12\n\x0e\x44\x41LI_FADE_DOWN\x10\x02\x12\x10\n\x0c\x44\x41LI_STEP_UP\x10\x03\x12\x12\n\x0e\x44\x41LI_STEP_DOWN\x10\x04\x12\x12\n\x0e\x44\x41LI_MAX_LEVEL\x10\x05\x12\x12\n\x0e\x44\x41LI_MIN_LEVEL\x10\x06\x12\x16\n\x12\x44\x41LI_STEP_DOWN_OFF\x10\x07\x12\x13\n\x0f\x44\x41LI_ON_STEP_UP\x10\x08\x12\x18\n\x14\x44\x41LI_ENABLE_DAPC_SEQ\x10\t\x12!\n\x1d\x44\x41LI_RECALL_LAST_ACTIVE_LEVEL\x10\n\x12\x17\n\x13\x44\x41LI_RECALL_SCENE_X\x10\x10\x12\x0e\n\nDALI_RESET\x10 \x12 \n\x1c\x44\x41LI_STORE_ACTUAL_LEVEL_DTR0\x10!\x12\x1d\n\x19\x44\x41LI_SAVE_PERSISTENT_VARS\x10\"\x12\x1b\n\x17\x44\x41LI_SET_OPERATING_MODE\x10#\x12\x1a\n\x16\x44\x41LI_RESET_MEMORY_BANK\x10$\x12\x18\n\x14\x44\x41LI_IDENTIFY_DEVICE\x10%\x12\x16\n\x12\x44\x41LI_SET_MAX_LEVEL\x10*\x12\x16\n\x12\x44\x41LI_SET_MIN_LEVEL\x10+\x12!\n\x1d\x44\x41LI_SET_SYSTEM_FAILURE_LEVEL\x10,\x12\x1b\n\x17\x44\x41LI_SET_POWER_ON_LEVEL\x10-\x12\x16\n\x12\x44\x41LI_SET_FADE_TIME\x10.\x12\x16\n\x12\x44\x41LI_SET_FADE_RATE\x10/\x12\x1a\n\x16\x44\x41LI_SET_EXT_FADE_TIME\x10\x30\x12\x14\n\x10\x44\x41LI_SET_SCENE_X\x10@\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_SCENE_X\x10P\x12\x17\n\x13\x44\x41LI_ADD_TO_GROUP_X\x10`\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_GROUP_X\x10p\x12\x1b\n\x16\x44\x41LI_SET_SHORT_ADDRESS\x10\x80\x01\x12\x1d\n\x18\x44\x41LI_ENABLE_WRITE_MEMORY\x10\x81\x01\x12\x13\n\x0e\x44\x41LI_TERMINATE\x10\xff\x01\x12\x14\n\x0f\x44\x41LI_INITIALISE\x10\x82\x02\x12\x13\n\x0e\x44\x41LI_RANDOMISE\x10\x83\x02\x12\x12\n\rDALI_WITHDRAW\x10\x85\x02\x12\x17\n\x12\x44\x41LI_SEARCH_ADDR_H\x10\x88\x02\x12\x17\n\x12\x44\x41LI_SEARCH_ADDR_M\x10\x89\x02\x12\x17\n\x12\x44\x41LI_SEARCH_ADDR_L\x10\x8a\x02\x12\x1f\n\x1a\x44\x41LI_PROGRAM_SHORT_ADDRESS\x10\x8b\x02*\xa8\x01\n\x15\x43ustomDALICommandType\x12\x12\n\x0e\x44\x41LI_ARC_LEVEL\x10\x00\x12\x13\n\x0f\x44\x41LI_DAPC_LEVEL\x10\x01\x12\x18\n\x14\x44\x41LI_GROUP_ARC_LEVEL\x10\x02\x12\x18\n\x14\x44\x41LI_BROADCAST_SCENE\x10\x03\x12\x17\n\x13\x44\x41LI_SCENE_ON_GROUP\x10\x04\x12\x19\n\x15\x44\x41LI_SCENE_ON_ADDRESS\x10\x05*\xc9\x03\n\x11\x41\x64minPropertyType\x12\x0f\n\x0b\x44\x45VICE_NAME\x10\x00\x12\x10\n\x0cPROJECT_NAME\x10\x01\x12\r\n\tLONGITUDE\x10\x02\x12\x0c\n\x08LATITUDE\x10\x03\x12\x14\n\x10LOCAL_UTC_OFFSET\x10\x04\x12\x14\n\x10\x44\x41YLIGHT_SAVINGS\x10\x05\x12\x0f\n\x0bPOLL_ACTIVE\x10\x06\x12\x10\n\x0c\x44HCP_ENABLED\x10\x07\x12\x0b\n\x07IP_ADDR\x10\x08\x12\x0c\n\x08MAC_ADDR\x10\t\x12\x0e\n\nGATEWAY_IP\x10\n\x12\x16\n\x12NETWORK_PROPERTIES\x10\x0b\x12\x15\n\x11SYSTEM_PROPERTIES\x10\x0c\x12\x14\n\x10\x43ONTROLLER_LINES\x10\r\x12\x14\n\x10\x45\x45PROM_FULL_CHIP\x10\x0e\x12\x0f\n\x0b\x43ONFIG_DATA\x10\x0f\x12\x10\n\x0cSPEKTRA_DATA\x10\x10\x12\x11\n\rDEVICE_STATUS\x10\x11\x12\x11\n\rCONFIG_STATUS\x10\x12\x12\x0f\n\x0b\x44\x45VICE_TIME\x10\x13\x12\x0f\n\x0bNTP_DETAILS\x10\x14\x12\x15\n\x11TRIDONIC_MSENSORS\x10\x15\x12\x12\n\x0eSECURE_SESSION\x10\x16\x12\t\n\x05NONCE\x10\x17*D\n\x10\x41\x64minCommandType\x12\x07\n\x03SET\x10\x00\x12\x07\n\x03GET\x10\x01\x12\x07\n\x03\x41\x44\x44\x10\x02\x12\n\n\x06REMOVE\x10\x03\x12\t\n\x05RESET\x10\x04*\xb5\x01\n\x0e\x44\x41LIStatusType\x12\x0c\n\x08LAMP_OFF\x10\x00\x12\x18\n\x14\x43ONTROL_GEAR_FAILURE\x10\x01\x12\x10\n\x0cLAMP_FAILURE\x10\x03\x12\x0b\n\x07LAMP_ON\x10\x07\x12\x0f\n\x0bLIMIT_ERROR\x10\x0f\x12\x10\n\x0c\x46\x41\x44\x45_RUNNING\x10\x1f\x12\x0f\n\x0bRESET_STATE\x10?\x12\x11\n\rSHORT_ADDRESS\x10\x7f\x12\x15\n\x10POWER_CYCLE_SEEN\x10\xff\x01*\x8b\x01\n\x15\x44iagnosticMessageType\x12\x1a\n\x16\x44IAGNOSTIC_SYSTEM_INFO\x10\x00\x12\x1b\n\x17\x44IAGNOSTIC_INPUT_STATUS\x10\x01\x12\x14\n\x10\x44\x41LI_LEVEL_CACHE\x10\x02\x12\x13\n\x0f\x44MX_LEVEL_CACHE\x10\x03\x12\x0e\n\nROOM_JOINS\x10\x04*z\n\x13\x46irmwareCommandType\x12\x0c\n\x08\x46W_READY\x10\x00\x12\x0c\n\x08\x46W_APPLY\x10\x01\x12\r\n\tFW_VERIFY\x10\x02\x12\x14\n\x10\x46W_VERIFY_FAILED\x10\x03\x12\x15\n\x11\x46W_VERIFY_SUCCESS\x10\x04\x12\x0b\n\x07\x46W_READ\x10\x05*?\n\x15SpektraTransitionType\x12\t\n\x05\x42LEND\x10\x00\x12\x08\n\x04SNAP\x10\x01\x12\x11\n\rFADE_TO_BLACK\x10\x02*\x9c\x01\n\tLogicType\x12\x0e\n\nDALI_LEVEL\x10\x00\x12\x0f\n\x0bINPUT_STATE\x10\x01\x12\x10\n\x0cLIST_RUNNING\x10\x02\x12\x16\n\x12OCCUPANCY_DETECTED\x10\x03\x12\x0f\n\x0b\x44MX_PRESENT\x10\x04\x12\x0f\n\x0b\x43\x41L_WEEKDAY\x10\x05\x12\r\n\tCAL_MONTH\x10\x06\x12\x13\n\x0f\x41LARM_SCHEDULED\x10\x07*\x80\x01\n\x13LogicComparisonType\x12\r\n\tLESS_THAN\x10\x00\x12\x17\n\x13LESS_THAN_OR_EQUALS\x10\x01\x12\n\n\x06\x45QUALS\x10\x02\x12\r\n\tMORE_THAN\x10\x03\x12\x17\n\x13MORE_THAN_OR_EQUALS\x10\x04\x12\r\n\tNOT_EQUAL\x10\x05\x62\x06proto3')
+  serialized_pb=_b('\n\x1a\x65\x44S10_ProtocolBuffer.proto\".\n\nAckMessage\x12 \n\x07payload\x18\x01 \x01(\x0e\x32\x0f.AckMessageType\"X\n\x0ePayloadMessage\x12\x13\n\tuint_data\x18\x01 \x01(\rH\x00\x12\x14\n\nfloat_data\x18\x02 \x01(\x02H\x00\x12\x13\n\x0bstring_data\x18\x03 \x01(\tB\x06\n\x04\x64\x61ta\"Y\n\nAytMessage\x12\x15\n\rtimesinceboot\x18\x01 \x01(\r\x12\x13\n\x0btemperature\x18\x02 \x01(\x02\x12\x1f\n\x04time\x18\x03 \x01(\x0b\x32\x11.TimeClockMessage\"\xdb\x02\n\x12\x44\x65viceStateMessage\x12\x0e\n\x06uptime\x18\x01 \x01(\r\x12\x0c\n\x04temp\x18\x02 \x01(\x02\x12\x0c\n\x04vbat\x18\x03 \x01(\x02\x12 \n\x05\x63lock\x18\x04 \x01(\x0b\x32\x11.TimeClockMessage\x12\x12\n\nnext_alarm\x18\x05 \x01(\r\x12*\n\x0fnext_alarm_time\x18\x06 \x01(\x0b\x32\x11.TimeClockMessage\x12\x13\n\x0binput_state\x18\x07 \x01(\r\x12\x13\n\x0blist_states\x18\x08 \x03(\r\x12\x16\n\x0e\x62urn_in_states\x18\t \x03(\r\x12\x15\n\rsensor_states\x18\n \x03(\r\x12\x13\n\x0bzone_states\x18\x0b \x03(\r\x12\x19\n\x11zone_sleep_states\x18\x0c \x03(\r\x12\x14\n\x0czone_indexes\x18\r \x03(\r\x12\x18\n\x10\x64\x61li_input_state\x18\x0e \x01(\x04\"\x87\x01\n\x0eTriggerMessage\x12\x1a\n\x04type\x18\x01 \x01(\x0e\x32\x0c.TriggerType\x12\x0c\n\x04zone\x18\x02 \x01(\r\x12\x11\n\tline_mask\x18\x03 \x01(\r\x12\x14\n\x0ctarget_index\x18\x04 \x01(\r\x12\r\n\x05value\x18\x05 \x01(\r\x12\x13\n\x0bquery_index\x18\x06 \x01(\r\".\n\x10TimeClockMessage\x12\x0c\n\x04\x64\x61te\x18\x01 \x01(\r\x12\x0c\n\x04time\x18\x02 \x01(\r\"S\n\x11\x42urnInBitsMessage\x12\x13\n\x0blight_state\x18\x01 \x01(\r\x12\x14\n\x0crunning_flag\x18\x02 \x01(\r\x12\x13\n\x0b\x65nable_flag\x18\x03 \x01(\r\"\x97\x01\n\x0eIOInputMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12+\n\x0c\x62utton_state\x18\x02 \x01(\x0e\x32\x15.TriggerOperationType\x12$\n\x0bshort_press\x18\x03 \x01(\x0b\x32\x0f.TriggerMessage\x12#\n\nlong_press\x18\x04 \x01(\x0b\x32\x0f.TriggerMessage\"|\n\x0fIOOutputMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12\x15\n\rinitial_level\x18\x02 \x01(\r\x12\x1e\n\x16time_trigger_is_active\x18\x03 \x01(\r\x12#\n\x04type\x18\x04 \x01(\x0e\x32\x15.TriggerOperationType\"\xbd\x01\n\x10\x44\x41LIInputMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0f\n\x07\x61\x64\x64ress\x18\x02 \x01(\r\x12\x11\n\tdali_line\x18\x03 \x01(\r\x12+\n\x0c\x62utton_state\x18\x04 \x01(\x0e\x32\x15.TriggerOperationType\x12$\n\x0bshort_press\x18\x05 \x01(\x0b\x32\x0f.TriggerMessage\x12#\n\nlong_press\x18\x06 \x01(\x0b\x32\x0f.TriggerMessage\"L\n\x0bIOIRMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12\x1f\n\x06\x61\x63tion\x18\x02 \x01(\x0b\x32\x0f.TriggerMessage\x12\r\n\x05\x63odes\x18\x03 \x01(\r\"\xcb\x04\n\rSensorMessage\x12\x0f\n\x07profile\x18\x01 \x01(\r\x12\r\n\x05index\x18\x02 \x01(\r\x12\x16\n\x0esensor_address\x18\x03 \x01(\r\x12\x18\n\x10sensor_dali_line\x18\x04 \x01(\r\x12\x15\n\raddress_query\x18\x05 \x01(\r\x12\x19\n\x11\x63ontrol_dali_line\x18\x06 \x01(\r\x12\x15\n\rcontrol_group\x18\x07 \x01(\r\x12\x16\n\x0elight_setpoint\x18\x08 \x01(\r\x12\x18\n\x10warning_setpoint\x18\t \x01(\r\x12\x13\n\x0bmotion_only\x18\n \x01(\r\x12\x16\n\x0etimeout_values\x18\x0b \x01(\r\x12\x16\n\x0ewarning_values\x18\x0c \x01(\r\x12\x16\n\x0e\x64isable_values\x18\r \x01(\r\x12\x12\n\ninput_1_pm\x18\x0e \x01(\r\x12\x12\n\ninput_2_pm\x18\x0f \x01(\r\x12\x15\n\rsensor_states\x18\x10 \x01(\r\x12\x16\n\x0emotion_sensors\x18\x11 \x01(\r\x12\x13\n\x0blux_sensors\x18\x12 \x01(\r\x12\x10\n\x08off_flag\x18\x13 \x01(\r\x12\x15\n\ris_programmed\x18\x14 \x01(\x08\x12*\n\x11\x64\x65tection_trigger\x18\x15 \x01(\x0b\x32\x0f.TriggerMessage\x12(\n\x0fwarning_trigger\x18\x16 \x01(\x0b\x32\x0f.TriggerMessage\x12%\n\x0cidle_trigger\x18\x17 \x01(\x0b\x32\x0f.TriggerMessage\"\\\n\x0fListStepMessage\x12\x12\n\nstep_index\x18\x01 \x01(\r\x12\x1f\n\x06\x61\x63tion\x18\x02 \x01(\x0b\x32\x0f.TriggerMessage\x12\x14\n\x0ctime_seconds\x18\x03 \x01(\r\"\xbc\x03\n\x0c\x41larmMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0f\n\x07\x65nabled\x18\x02 \x01(\x08\x12%\n\nstart_time\x18\x03 \x01(\x0b\x32\x11.TimeClockMessage\x12#\n\x08\x65nd_time\x18\x04 \x01(\x0b\x32\x11.TimeClockMessage\x12&\n\rstart_trigger\x18\x05 \x01(\x0b\x32\x0f.TriggerMessage\x12$\n\x0b\x65nd_trigger\x18\x06 \x01(\x0b\x32\x0f.TriggerMessage\x12$\n\x0b\x61stro_start\x18\x07 \x01(\x0e\x32\x0f.AlarmAstroType\x12\"\n\tastro_end\x18\x08 \x01(\x0e\x32\x0f.AlarmAstroType\x12 \n\x06repeat\x18\t \x01(\x0e\x32\x10.AlarmRepeatType\x12\x1a\n\x12repeat_day_bitmask\x18\n \x01(\r\x12\x1c\n\x14repeat_month_bitmask\x18\x0b \x01(\r\x12\x0e\n\x06yearly\x18\x0c \x01(\x08\x12\x1e\n\x16start_offset_is_before\x18\r \x01(\x08\x12\x1c\n\x14\x65nd_offset_is_before\x18\x0e \x01(\x08\"\x99\x01\n\rBurnInMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0c\n\x04line\x18\x02 \x01(\r\x12\x0f\n\x07\x61\x64\x64ress\x18\x03 \x01(\r\x12\x15\n\rquery_address\x18\x04 \x01(\r\x12\x0c\n\x04time\x18\x05 \x01(\r\x12\x11\n\tremaining\x18\x06 \x01(\r\x12\"\n\x06states\x18\x07 \x01(\x0b\x32\x12.BurnInBitsMessage\":\n\x16\x45xternalTriggerMessage\x12 \n\x07trigger\x18\x01 \x01(\x0b\x32\x0f.TriggerMessage\"E\n\x11InputMultiMessage\x12\x0f\n\x07profile\x18\x01 \x01(\r\x12\x1f\n\x06inputs\x18\x02 \x03(\x0b\x32\x0f.IOInputMessage\"H\n\x12OutputMultiMessage\x12\x0f\n\x07profile\x18\x01 \x01(\r\x12!\n\x07outputs\x18\x02 \x03(\x0b\x32\x10.IOOutputMessage\"g\n\x15\x44\x41LIInputMultiMessage\x12\x0f\n\x07profile\x18\x01 \x01(\r\x12\x1a\n\x12input_index_offset\x18\x02 \x01(\r\x12!\n\x06inputs\x18\x03 \x03(\x0b\x32\x11.DALIInputMessage\"<\n\x0eIRMultiMessage\x12\x0f\n\x07profile\x18\x01 \x01(\r\x12\x19\n\x03irs\x18\x02 \x03(\x0b\x32\x0c.IOIRMessage\"o\n\x0bListMessage\x12\x12\n\nlist_index\x18\x01 \x01(\r\x12\x1e\n\x04step\x18\x02 \x03(\x0b\x32\x10.ListStepMessage\x12\x12\n\nlist_state\x18\x03 \x01(\r\x12\x18\n\x10total_step_count\x18\x04 \x01(\r\"d\n\x13\x45xtendedListMessage\x12\x12\n\nlist_index\x18\x01 \x01(\r\x12\x19\n\x11step_index_offset\x18\x02 \x01(\r\x12\x1e\n\x04step\x18\x03 \x03(\x0b\x32\x10.ListStepMessage\"1\n\x11\x41larmMultiMessage\x12\x1c\n\x05\x61larm\x18\x01 \x03(\x0b\x32\r.AlarmMessage\"4\n\x12\x42urnInMultiMessage\x12\x1e\n\x06\x62urnin\x18\x01 \x03(\x0b\x32\x0e.BurnInMessage\"\xe7\x01\n\x0cLogicMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0f\n\x07\x65nabled\x18\x02 \x01(\x08\x12*\n\x11\x63omparison_object\x18\x03 \x01(\x0b\x32\x0f.TriggerMessage\x12\x18\n\x10\x63omparison_value\x18\x04 \x01(\r\x12-\n\x0f\x63omparison_type\x18\x05 \x01(\x0e\x32\x14.LogicComparisonType\x12 \n\x07\x61\x63tionA\x18\x06 \x01(\x0b\x32\x0f.TriggerMessage\x12 \n\x07\x61\x63tionB\x18\x07 \x01(\x0b\x32\x0f.TriggerMessage\"1\n\x11LogicMultiMessage\x12\x1c\n\x05logic\x18\x01 \x03(\x0b\x32\r.LogicMessage\"X\n\x14SensorCommandMessage\x12\x0f\n\x07\x63ommand\x18\x01 \x01(\r\x12\r\n\x05index\x18\x02 \x01(\r\x12 \n\x04type\x18\x03 \x01(\x0e\x32\x12.SensorCommandType\"\'\n\x14\x43hangeProfileMessage\x12\x0f\n\x07profile\x18\x01 \x01(\r\"*\n\x0fIdentifyMessage\x12\x0b\n\x03MAC\x18\x01 \x01(\x04\x12\n\n\x02IP\x18\x02 \x01(\x04\"4\n\x11UpdateTimeMessage\x12\x1f\n\x04time\x18\x01 \x01(\x0b\x32\x11.TimeClockMessage\"e\n\x11ReadDeviceMessage\x12\x0f\n\x07profile\x18\x01 \x01(\r\x12\x17\n\x04type\x18\x02 \x01(\x0e\x32\t.ReadType\x12\r\n\x05index\x18\x03 \x01(\r\x12\x17\n\x0fsecondary_index\x18\x04 \x01(\r\".\n\x1bSecureDeviceSettingsMessage\x12\x0f\n\x07payload\x18\x01 \x01(\t\" \n\x11\x44TRPayloadMessage\x12\x0b\n\x03\x64tr\x18\x01 \x03(\r\"\xb5\x03\n\x0b\x44\x41LIMessage\x12\x11\n\tline_mask\x18\x01 \x01(\r\x12\x0f\n\x07\x61\x64\x64ress\x18\x02 \x01(\r\x12\x16\n\x0c\x66rame_25_bit\x18\x03 \x01(\rH\x00\x12\x1c\n\x12\x66rame_25_bit_reply\x18\x04 \x01(\rH\x00\x12#\n\x07\x63ommand\x18\x05 \x01(\x0e\x32\x10.DALICommandTypeH\x00\x12\x30\n\x0e\x63ustom_command\x18\x06 \x01(\x0e\x32\x16.CustomDALICommandTypeH\x00\x12\x1f\n\x05query\x18\x07 \x01(\x0e\x32\x0e.DALIQueryTypeH\x00\x12\"\n\x05type8\x18\x08 \x01(\x0e\x32\x11.Type8CommandTypeH\x00\x12\x16\n\x0c\x66rame_16_bit\x18\x0b \x01(\rH\x00\x12\x1c\n\x12\x66rame_16_bit_reply\x18\x0c \x01(\rH\x00\x12\x16\n\x0c\x66rame_24_bit\x18\r \x01(\rH\x00\x12\x1c\n\x12\x66rame_24_bit_reply\x18\x0e \x01(\rH\x00\x12\r\n\x03\x61rg\x18\t \x01(\rH\x01\x12!\n\x03\x64tr\x18\n \x01(\x0b\x32\x12.DTRPayloadMessageH\x01\x42\x08\n\x06\x61\x63tionB\x08\n\x06params\"7\n\x15\x44\x41LIStatusFlagMessage\x12\x1e\n\x05\x66lags\x18\x01 \x03(\x0e\x32\x0f.DALIStatusType\"\xbc\x01\n\x11\x44\x41LIQueryResponse\x12.\n\x0cstatus_flags\x18\x01 \x01(\x0b\x32\x16.DALIStatusFlagMessageH\x00\x12\x1f\n\x04\x64\x61ta\x18\x02 \x01(\x0b\x32\x0f.PayloadMessageH\x00\x12$\n\tdali_flag\x18\x03 \x01(\x0e\x32\x11.DALIRXStatusFlag\x12%\n\x0creponse_data\x18\x04 \x01(\x0b\x32\x0f.PayloadMessageB\t\n\x07payload\"\xaa\x01\n\x15\x44\x41LIAddressingMessage\x12!\n\x04type\x18\x01 \x01(\x0e\x32\x13.DALIAddressingType\x12\x16\n\x0einitialisation\x18\x02 \x01(\x08\x12\x11\n\tline_mask\x18\x03 \x01(\r\x12\x0f\n\x07is24Bit\x18\x04 \x01(\x08\x12#\n\x05\x65rror\x18\x05 \x01(\x0e\x32\x14.DALIAddressingError\x12\r\n\x05index\x18\x06 \x01(\r\"d\n\x14\x44\x41LIRemappingMessage\x12\x14\n\x0c\x66rom_address\x18\x01 \x01(\r\x12\x12\n\nto_address\x18\x02 \x01(\r\x12\x11\n\tline_mask\x18\x03 \x01(\r\x12\x0f\n\x07is24Bit\x18\x04 \x01(\x08\"|\n\nDMXMessage\x12\x0c\n\x04zone\x18\x01 \x01(\r\x12\x15\n\runiverse_mask\x18\x02 \x01(\r\x12\x0f\n\x07\x63hannel\x18\x03 \x01(\r\x12\x0e\n\x06repeat\x18\x04 \x01(\r\x12\r\n\x05level\x18\x05 \x03(\r\x12\x19\n\x11\x66\x61\x64\x65_time_by_10ms\x18\x06 \x01(\r\"o\n\nRDMMessage\x12\x15\n\runiverse_mask\x18\x01 \x01(\r\x12\x0b\n\x03uid\x18\x02 \x01(\x04\x12\x0b\n\x03pid\x18\x03 \x01(\r\x12\x0e\n\x06getset\x18\x04 \x01(\r\x12\x12\n\ndatalength\x18\x05 \x01(\r\x12\x0c\n\x04\x64\x61ta\x18\x06 \x03(\r\"P\n\x12RDMResponseMessage\x12\x0b\n\x03uid\x18\x01 \x01(\x04\x12\x0b\n\x03pid\x18\x02 \x01(\r\x12\x12\n\ndatalength\x18\x03 \x01(\r\x12\x0c\n\x04\x64\x61ta\x18\x04 \x03(\r\"\xdf\x02\n\x15SpektraSettingMessage\x12\x0c\n\x04zone\x18\x01 \x01(\r\x12\x15\n\rstart_address\x18\x02 \x01(\r\x12\x1d\n\x15line_or_universe_mask\x18\x03 \x01(\r\x12\x10\n\x08protocol\x18\x04 \x01(\r\x12\x18\n\x10number_of_lights\x18\x05 \x01(\r\x12\x1a\n\x12\x63hannels_per_light\x18\x06 \x01(\r\x12\x17\n\x0f\x63hannel_colours\x18\x07 \x03(\r\x12?\n\x15unscheduled_behaviour\x18\x08 \x01(\x0e\x32 .SpektraUnscheduledBehaviourType\x12\x17\n\x0f\x63hannel_mapping\x18\t \x03(\r\x12,\n\x0fline_addressing\x18\n \x01(\x0e\x32\x13.LineAddressingType\x12\x19\n\x11zone_scale_factor\x18\x0b \x01(\x02\"3\n\x1aSpektraColourConfigMessage\x12\x15\n\rchannel_value\x18\x01 \x03(\r\"\xe8\x03\n\x1cSpektraSequenceConfigMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0c\n\x04type\x18\x02 \x01(\r\x12*\n\ntransition\x18\x03 \x01(\x0e\x32\x16.SpektraTransitionType\x12\x19\n\x11\x66\x61\x64\x65_time_by_10ms\x18\x04 \x01(\r\x12\x17\n\x0ftime_per_colour\x18\x05 \x01(\r\x12\x1c\n\x14time_per_colour_unit\x18\x06 \x01(\r\x12\x15\n\rtime_per_step\x18\x07 \x01(\r\x12\x1a\n\x12time_per_step_unit\x18\x08 \x01(\r\x12\r\n\x05range\x18\t \x01(\r\x12\x0e\n\x06\x63olour\x18\n \x03(\x04\x12\x1a\n\x12is_randomised_type\x18\x0b \x01(\r\x12\x19\n\x11random_types_mask\x18\x0c \x01(\r\x12\x1c\n\x14is_reverse_direction\x18\r \x01(\r\x12\x1a\n\x12is_cycle_direction\x18\x0e \x01(\r\x12\r\n\x05title\x18\x0f \x01(\t\x12\x1f\n\x17has_random_colour_order\x18\x10 \x01(\x08\x12,\n\x07\x63olours\x18\x11 \x03(\x0b\x32\x1b.SpektraColourConfigMessage\x12\x0c\n\x04\x61rgs\x18\x12 \x03(\r\"W\n\x16SpektraCalendarMessage\x12 \n\x04type\x18\x01 \x01(\x0e\x32\x12.SpektraTargetType\x12\r\n\x05index\x18\x02 \x01(\r\x12\x0c\n\x04\x64\x61ys\x18\x03 \x03(\x08\"f\n\x19SpektraCalendarDayMessage\x12\x11\n\tday_index\x18\x01 \x01(\r\x12 \n\x04type\x18\x02 \x01(\x0e\x32\x12.SpektraTargetType\x12\x14\n\x0ctarget_index\x18\x03 \x01(\r\"^\n\x1eSpektraCalendarOverviewMessage\x12\x12\n\nday_offset\x18\x01 \x01(\r\x12(\n\x04\x64\x61ys\x18\x02 \x03(\x0b\x32\x1a.SpektraCalendarDayMessage\"w\n\x19SpektraThemeConfigMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0e\n\x06\x63olour\x18\x02 \x03(\x04\x12\r\n\x05title\x18\x03 \x01(\t\x12,\n\x07\x63olours\x18\x04 \x03(\x0b\x32\x1b.SpektraColourConfigMessage\"E\n\x12SpektraReadMessage\x12 \n\x04type\x18\x01 \x01(\x0e\x32\x12.SpektraTargetType\x12\r\n\x05index\x18\x02 \x01(\r\"z\n\x15SpektraControlMessage\x12 \n\x04type\x18\x01 \x01(\x0e\x32\x12.SpektraTargetType\x12\x0c\n\x04zone\x18\x02 \x01(\r\x12\r\n\x05index\x18\x03 \x01(\r\x12\"\n\x06\x61\x63tion\x18\x04 \x01(\x0e\x32\x12.SpektraActionType\"\xba\x01\n\x14\x44MXTranslationObject\x12\x0f\n\x07line_in\x18\x01 \x01(\r\x12\x10\n\x08line_out\x18\x02 \x01(\r\x12\x19\n\x11\x64mx_start_address\x18\x03 \x01(\r\x12\x15\n\rchannel_count\x18\x04 \x01(\r\x12\x12\n\ndali_array\x18\x05 \x03(\r\x12\x16\n\x0e\x61\x66\x66\x65\x63ted_input\x18\x07 \x01(\r\x12\x10\n\x08\x62locking\x18\x08 \x01(\x08\x12\x0f\n\x07\x65nabled\x18\t \x01(\x08\"?\n\x16\x44MXProtocolTranslation\x12%\n\x06object\x18\x01 \x03(\x0b\x32\x15.DMXTranslationObject\"%\n\x11InputStateMessage\x12\x10\n\x08use_mask\x18\x01 \x01(\x08\"8\n\x12InputStateResponse\x12\x0e\n\x06inputs\x18\x01 \x03(\r\x12\x12\n\ninput_mask\x18\x02 \x01(\r\"@\n\x12LevelCacheResponse\x12\x0e\n\x06levels\x18\x01 \x03(\r\x12\x0c\n\x04line\x18\x02 \x01(\r\x12\x0c\n\x04page\x18\x03 \x01(\r\"H\n\x12JoinedRoomsMessage\x12\r\n\x05pairs\x18\x01 \x03(\r\x12\x0e\n\x06joined\x18\x02 \x01(\x08\x12\x13\n\x0b\x63lear_joins\x18\x03 \x01(\x08\"\xd3\x04\n\x1c\x44iagnosticSystemInfoResponse\x12\x10\n\x08\x66irmware\x18\x01 \x01(\t\x12\x10\n\x08hardware\x18\x02 \x01(\t\x12\r\n\x05\x65rror\x18\x03 \x01(\t\x12\x13\n\x0binput_count\x18\x04 \x01(\r\x12\x14\n\x0coutput_count\x18\x05 \x01(\r\x12\x10\n\x08ir_count\x18\x06 \x01(\r\x12\x17\n\x0flist_step_count\x18\x07 \x01(\r\x12\x12\n\nlist_count\x18\x08 \x01(\r\x12\x13\n\x0b\x61larm_count\x18\t \x01(\r\x12\x14\n\x0c\x62urnin_count\x18\n \x01(\r\x12\x19\n\x11spektra_seq_count\x18\x0b \x01(\r\x12\x1e\n\x16spektra_seq_step_count\x18\x0c \x01(\r\x12\x1b\n\x13spektra_theme_count\x18\r \x01(\r\x12\x1c\n\x14spektra_static_count\x18\x0e \x01(\r\x12\x15\n\rproto_version\x18\x0f \x01(\r\x12\x12\n\nline_count\x18\x10 \x01(\r\x12\x18\n\x05lines\x18\x11 \x03(\x0e\x32\t.LineType\x12\x15\n\rprofile_count\x18\x12 \x01(\r\x12\x19\n\x11preset_code_count\x18\x13 \x01(\r\x12\x18\n\x10user_level_count\x18\x14 \x01(\r\x12\x19\n\x11\x64mx_to_dali_count\x18\x15 \x01(\r\x12\x1a\n\x12spektra_zone_count\x18\x16 \x01(\r\x12\x13\n\x0blogic_count\x18\x17 \x01(\r\x12\x18\n\x10input_dali_count\x18\x18 \x01(\r\"U\n\x11\x44iagnosticMessage\x12$\n\x04type\x18\x01 \x01(\x0e\x32\x16.DiagnosticMessageType\x12\x0c\n\x04page\x18\x02 \x01(\r\x12\x0c\n\x04line\x18\x03 \x01(\r\"\xf2\x01\n\x1d\x41\x64minProjectPropertiesMessage\x12\x13\n\x0b\x64\x65vice_name\x18\x02 \x01(\t\x12\x14\n\x0cproject_name\x18\x03 \x01(\t\x12\x11\n\tlongitude\x18\x04 \x01(\x02\x12\x10\n\x08latitude\x18\x05 \x01(\x02\x12\x14\n\x0clocal_offset\x18\x06 \x01(\x02\x12\x18\n\x10\x64\x61ylight_savings\x18\x07 \x01(\x08\x12\x1e\n\x16\x64\x61ylight_savings_start\x18\x08 \x01(\r\x12\x1c\n\x14\x64\x61ylight_savings_end\x18\t \x01(\r\x12\x13\n\x0bpoll_active\x18\n \x01(\x08\"\xa4\x01\n\x18\x41\x64minConfigStatusMessage\x12\x13\n\x0blist_status\x18\x01 \x03(\r\x12\x16\n\x0e\x62urn_in_status\x18\x02 \x03(\r\x12\x14\n\x0c\x61larm_status\x18\x03 \x01(\r\x12.\n\x13\x61larm_time_from_reg\x18\x04 \x01(\x0b\x32\x11.TimeClockMessage\x12\x15\n\rsensor_status\x18\x05 \x03(\r\"w\n\x1d\x41\x64minNetworkPropertiesMessage\x12\x0c\n\x04\x44HCP\x18\x01 \x01(\x08\x12\n\n\x02IP\x18\x02 \x01(\t\x12\x0b\n\x03MAC\x18\x03 \x01(\t\x12\x0f\n\x07gateway\x18\x04 \x01(\t\x12\x11\n\tNTPServer\x18\x05 \x01(\t\x12\x0b\n\x03NTP\x18\x06 \x01(\x08\"7\n\x1b\x41\x64minControllerLinesMessage\x12\x18\n\x05lines\x18\x01 \x03(\x0e\x32\t.LineType\"@\n\x18\x41\x64minDeviceStatusMessage\x12\x13\n\x0btemperature\x18\x01 \x01(\x02\x12\x0f\n\x07\x62\x61ttery\x18\x02 \x01(\x02\"I\n\x17\x41\x64minSecureLoginMessage\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x0e\n\x06\x63nonce\x18\x02 \x01(\t\x12\x0c\n\x04hash\x18\x03 \x03(\r\";\n\x1a\x41\x64minDALISensorTypeMessage\x12\x1d\n\x04type\x18\x01 \x01(\x0e\x32\x0f.DALISensorType\"\x84\x04\n\x0c\x41\x64minMessage\x12\"\n\x07\x63ommand\x18\x01 \x01(\x0e\x32\x11.AdminCommandType\x12\"\n\x06target\x18\x02 \x01(\x0e\x32\x12.AdminPropertyType\x12\x1f\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x0f.PayloadMessageH\x00\x12<\n\x12network_properties\x18\x04 \x01(\x0b\x32\x1e.AdminNetworkPropertiesMessageH\x00\x12<\n\x12project_properties\x18\x05 \x01(\x0b\x32\x1e.AdminProjectPropertiesMessageH\x00\x12\x38\n\x10\x63ontroller_lines\x18\x06 \x01(\x0b\x32\x1c.AdminControllerLinesMessageH\x00\x12\x32\n\rdevice_status\x18\x07 \x01(\x0b\x32\x19.AdminDeviceStatusMessageH\x00\x12\x32\n\rconfig_status\x18\x08 \x01(\x0b\x32\x19.AdminConfigStatusMessageH\x00\x12)\n\x0b\x64\x65vice_time\x18\t \x01(\x0b\x32\x12.UpdateTimeMessageH\x00\x12\x37\n\x10\x64\x61li_sensor_type\x18\n \x01(\x0b\x32\x1b.AdminDALISensorTypeMessageH\x00\x42\t\n\x07payload\"K\n\x0b\x44\x61taMessage\x12\x12\n\nidentifier\x18\x01 \x01(\r\x12\x0b\n\x03seq\x18\x02 \x01(\r\x12\r\n\x05\x63ount\x18\x03 \x01(\r\x12\x0c\n\x04\x64\x61ta\x18\x04 \x03(\r\"\xda\x01\n\x13\x46irmwareMetaMessage\x12\x18\n\x10\x66irmware_version\x18\x01 \x01(\r\x12\x15\n\rfirmware_date\x18\x02 \x01(\r\x12\x1c\n\x14\x66irmware_date_upload\x18\x03 \x01(\r\x12\x19\n\x11\x66irmware_checksum\x18\x04 \x01(\r\x12\x1c\n\x14\x66irmware_chunk_count\x18\x05 \x01(\r\x12\x1d\n\x15\x66irmware_base_address\x18\x06 \x01(\r\x12\x1c\n\x14\x66irmware_end_address\x18\x07 \x01(\r\";\n\x16\x46irmwareControlMessage\x12!\n\x03\x63md\x18\x01 \x01(\x0e\x32\x14.FirmwareCommandType\"d\n\x14\x46irmwareChunkMessage\x12\x18\n\x10\x66irmware_address\x18\x01 \x01(\r\x12\x13\n\x0btotal_bytes\x18\x02 \x01(\r\x12\x1d\n\x07payload\x18\x03 \x01(\x0b\x32\x0c.DataMessage\"j\n\x14SystemLogReadMessage\x12\x19\n\x11log_start_address\x18\x01 \x01(\r\x12\x16\n\x0elogs_requested\x18\x02 \x01(\r\x12\x1f\n\x04logs\x18\x03 \x03(\x0b\x32\x11.SystemLogMessage\"\xb7\x02\n\x10SystemLogMessage\x12\x17\n\x0ftime_since_boot\x18\x01 \x01(\r\x12\x1e\n\x04\x62oot\x18\x02 \x01(\x0b\x32\x0e.SystemLogBootH\x00\x12$\n\x07netlink\x18\x03 \x01(\x0b\x32\x11.SystemLogNetLinkH\x00\x12\x1c\n\x03ntp\x18\x04 \x01(\x0b\x32\r.SystemLogNTPH\x00\x12$\n\x07trigger\x18\x05 \x01(\x0b\x32\x11.SystemLogTriggerH\x00\x12$\n\x07spektra\x18\x06 \x01(\x0b\x32\x11.SystemLogSpektraH\x00\x12&\n\x08schedule\x18\x07 \x01(\x0b\x32\x12.SystemLogScheduleH\x00\x12(\n\tuserstart\x18\x08 \x01(\x0b\x32\x13.SystemLogUserStartH\x00\x42\x08\n\x06packet\"D\n\rSystemLogBoot\x12$\n\ttimeclock\x18\x01 \x01(\x0b\x32\x11.TimeClockMessage\x12\r\n\x05\x66lags\x18\x02 \x01(\r\"%\n\x10SystemLogNetLink\x12\x11\n\tis_linked\x18\x01 \x01(\x08\"4\n\x0cSystemLogNTP\x12$\n\ttimeclock\x18\x01 \x01(\x0b\x32\x11.TimeClockMessage\"O\n\x10SystemLogTrigger\x12 \n\x07trigger\x18\x01 \x01(\x0b\x32\x0f.TriggerMessage\x12\x19\n\x06source\x18\x02 \x01(\x0e\x32\t.ReadType\"g\n\x10SystemLogSpektra\x12\"\n\x06\x61\x63tion\x18\x01 \x01(\x0e\x32\x12.SpektraActionType\x12 \n\x04type\x18\x02 \x01(\x0e\x32\x12.SpektraTargetType\x12\r\n\x05index\x18\x03 \x01(\r\"a\n\x11SystemLogSchedule\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0f\n\x07isStart\x18\x02 \x01(\r\x12\x0e\n\x06second\x18\x03 \x01(\r\x12\x0e\n\x06minute\x18\x04 \x01(\r\x12\x0c\n\x04hour\x18\x05 \x01(\r\":\n\x12SystemLogUserStart\x12$\n\ttimeclock\x18\x01 \x01(\x0b\x32\x11.TimeClockMessage\"\xd3\x01\n\x19SystemMetaDataReadMessage\x12\x1b\n\x13input_press_counter\x18\x01 \x03(\r\x12\x1a\n\x12list_start_counter\x18\x02 \x03(\r\x12\x19\n\x11schedules_counter\x18\x03 \x03(\r\x12\x16\n\x0escreen_on_time\x18\x04 \x01(\r\x12\x17\n\x0fscreen_dim_time\x18\x05 \x01(\r\x12\x19\n\x11screen_saver_time\x18\x06 \x01(\r\x12\x16\n\x0ereboot_counter\x18\x07 \x01(\r\"\x9b\x01\n\x0cTriggerEvent\x12\x1a\n\x04type\x18\x01 \x01(\x0e\x32\x0c.TriggerType\x12\x0f\n\x05level\x18\x02 \x01(\rH\x00\x12(\n\x0c\x64\x61li_command\x18\x03 \x01(\x0e\x32\x10.DALICommandTypeH\x00\x12\x16\n\x0etarget_address\x18\x04 \x01(\r\x12\x11\n\tline_mask\x18\x05 \x01(\rB\t\n\x07payload\"\xd1\x01\n\x0c\x45ventMessage\x12\x19\n\x05\x65vent\x18\x01 \x01(\x0e\x32\n.EventType\x12 \n\x07trigger\x18\x02 \x01(\x0b\x32\r.TriggerEventH\x00\x12%\n\x06inputs\x18\x03 \x01(\x0b\x32\x13.InputStateResponseH\x00\x12\"\n\x07payload\x18\x04 \x01(\x0b\x32\x0f.PayloadMessageH\x00\x12+\n\x0cjoined_rooms\x18\x05 \x01(\x0b\x32\x13.JoinedRoomsMessageH\x00\x42\x0c\n\nevent_data\"\xe4\x12\n\rEdidioMessage\x12\x12\n\nmessage_id\x18\x01 \x01(\r\x12\x1a\n\x03\x61\x63k\x18\x02 \x01(\x0b\x32\x0b.AckMessageH\x00\x12$\n\x06inputs\x18\x03 \x01(\x0b\x32\x12.InputMultiMessageH\x00\x12&\n\x07outputs\x18\x04 \x01(\x0b\x32\x13.OutputMultiMessageH\x00\x12\x1e\n\x03irs\x18\x05 \x01(\x0b\x32\x0f.IRMultiMessageH\x00\x12 \n\x06sensor\x18\x06 \x01(\x0b\x32\x0e.SensorMessageH\x00\x12\x1c\n\x04list\x18\x08 \x01(\x0b\x32\x0c.ListMessageH\x00\x12\x1e\n\x05\x61larm\x18\n \x01(\x0b\x32\r.AlarmMessageH\x00\x12$\n\x06\x61larms\x18\x0b \x01(\x0b\x32\x12.AlarmMultiMessageH\x00\x12\'\n\x08\x62urn_ins\x18\x0c \x01(\x0b\x32\x13.BurnInMultiMessageH\x00\x12/\n\x0esensor_command\x18\r \x01(\x0b\x32\x15.SensorCommandMessageH\x00\x12/\n\x0e\x63hange_profile\x18\x0e \x01(\x0b\x32\x15.ChangeProfileMessageH\x00\x12,\n\x10identify_message\x18\x0f \x01(\x0b\x32\x10.IdentifyMessageH\x00\x12)\n\x0bupdate_time\x18\x10 \x01(\x0b\x32\x12.UpdateTimeMessageH\x00\x12)\n\x0bread_device\x18\x11 \x01(\x0b\x32\x12.ReadDeviceMessageH\x00\x12$\n\x0c\x64\x61li_message\x18\x12 \x01(\x0b\x32\x0c.DALIMessageH\x00\x12(\n\ndali_query\x18\x13 \x01(\x0b\x32\x12.DALIQueryResponseH\x00\x12\"\n\x0b\x64mx_message\x18\x14 \x01(\x0b\x32\x0b.DMXMessageH\x00\x12\x33\n\x10\x65xternal_trigger\x18\x15 \x01(\x0b\x32\x17.ExternalTriggerMessageH\x00\x12\x32\n\x10spektra_settings\x18\x16 \x01(\x0b\x32\x16.SpektraSettingMessageH\x00\x12\x39\n\x10spektra_sequence\x18\x17 \x01(\x0b\x32\x1d.SpektraSequenceConfigMessageH\x00\x12\x33\n\x10spektra_calendar\x18\x18 \x01(\x0b\x32\x17.SpektraCalendarMessageH\x00\x12\x33\n\rspektra_theme\x18\x19 \x01(\x0b\x32\x1a.SpektraThemeConfigMessageH\x00\x12+\n\x0cspektra_read\x18\x1a \x01(\x0b\x32\x13.SpektraReadMessageH\x00\x12\x31\n\x0fspektra_control\x18\x1b \x01(\x0b\x32\x16.SpektraControlMessageH\x00\x12\x31\n\x0e\x64mx_translator\x18\x1c \x01(\x0b\x32\x17.DMXProtocolTranslationH\x00\x12+\n\rinput_request\x18\x1d \x01(\x0b\x32\x12.InputStateMessageH\x00\x12-\n\x0einput_response\x18\x1e \x01(\x0b\x32\x13.InputStateResponseH\x00\x12\x34\n\x0b\x64iag_system\x18\x1f \x01(\x0b\x32\x1d.DiagnosticSystemInfoResponseH\x00\x12*\n\x0c\x64iag_message\x18  \x01(\x0b\x32\x12.DiagnosticMessageH\x00\x12&\n\radmin_message\x18! \x01(\x0b\x32\r.AdminMessageH\x00\x12\x1e\n\x05\x65vent\x18\" \x01(\x0b\x32\r.EventMessageH\x00\x12>\n\x16secure_device_settings\x18# \x01(\x0b\x32\x1c.SecureDeviceSettingsMessageH\x00\x12,\n\x0c\x66irmware_new\x18$ \x01(\x0b\x32\x14.FirmwareMetaMessageH\x00\x12\x33\n\x10\x66irmware_control\x18% \x01(\x0b\x32\x17.FirmwareControlMessageH\x00\x12/\n\x0e\x66irmware_chunk\x18& \x01(\x0b\x32\x15.FirmwareChunkMessageH\x00\x12\x33\n\x14level_cache_response\x18\' \x01(\x0b\x32\x13.LevelCacheResponseH\x00\x12+\n\x0cjoined_rooms\x18( \x01(\x0b\x32\x13.JoinedRoomsMessageH\x00\x12-\n\rlist_extended\x18) \x01(\x0b\x32\x14.ExtendedListMessageH\x00\x12\"\n\x0b\x61yt_message\x18* \x01(\x0b\x32\x0b.AytMessageH\x00\x12\"\n\x0brdm_message\x18+ \x01(\x0b\x32\x0b.RDMMessageH\x00\x12\x33\n\x14rdm_response_message\x18, \x01(\x0b\x32\x13.RDMResponseMessageH\x00\x12+\n\rlogic_message\x18- \x01(\x0b\x32\x12.LogicMultiMessageH\x00\x12\x30\n\x0csecure_login\x18. \x01(\x0b\x32\x18.AdminSecureLoginMessageH\x00\x12\x33\n\x14\x64\x65vice_state_message\x18/ \x01(\x0b\x32\x13.DeviceStateMessageH\x00\x12:\n\x14spektra_calendar_day\x18\x30 \x01(\x0b\x32\x1a.SpektraCalendarDayMessageH\x00\x12\x44\n\x19spektra_calendar_overview\x18\x31 \x01(\x0b\x32\x1f.SpektraCalendarOverviewMessageH\x00\x12-\n\x0binputs_dali\x18\x32 \x01(\x0b\x32\x16.DALIInputMultiMessageH\x00\x12*\n\tlogs_read\x18\x33 \x01(\x0b\x32\x15.SystemLogReadMessageH\x00\x12\x33\n\rmetadata_read\x18\x34 \x01(\x0b\x32\x1a.SystemMetaDataReadMessageH\x00\x12\x39\n\x17\x64\x61li_addressing_message\x18\x35 \x01(\x0b\x32\x16.DALIAddressingMessageH\x00\x12\x37\n\x16\x64\x61li_remapping_message\x18\x36 \x01(\x0b\x32\x15.DALIRemappingMessageH\x00\x42\t\n\x07payload*\x9b\x01\n\x14TriggerOperationType\x12\r\n\tMOMENTARY\x10\x00\x12\x0c\n\x08LATCHING\x10\x01\x12\x14\n\x10MOMENTARY_OUTPUT\x10\x02\x12\x13\n\x0fLATCHING_OUTPUT\x10\x03\x12\n\n\x06ROTARY\x10\x04\x12\x17\n\x12MOMENTARY_DISABLED\x10\x80\x01\x12\x16\n\x11LATCHING_DISABLED\x10\x81\x01*\x99\x0b\n\x0bTriggerType\x12\x0c\n\x08\x44\x41LI_ARC\x10\x00\x12\x10\n\x0c\x44\x41LI_COMMAND\x10\x01\x12\x1a\n\x16\x44MX_CHANNELS_SPLIT_LOW\x10\x02\x12\x1b\n\x17\x44MX_CHANNELS_SPLIT_HIGH\x10\x03\x12$\n DMX_MULTICAST_CHANNELS_SPLIT_LOW\x10\x04\x12%\n!DMX_MULTICAST_CHANNELS_SPLIT_HIGH\x10\x05\x12\x11\n\rDMX_BROADCAST\x10\x06\x12\t\n\x05\x44IDIO\x10\x07\x12\x14\n\x10\x46\x41\x44\x45_UP_WITH_MIN\x10\x08\x12\x0e\n\nLIST_START\x10\t\x12\x19\n\x15LIST_START_CONTINUOUS\x10\n\x12\r\n\tLIST_STOP\x10\x0b\x12\x15\n\x11SPEKTRA_START_SEQ\x10\x0c\x12\x14\n\x10SPEKTRA_STOP_SEQ\x10\r\x12\x11\n\rSPEKTRA_THEME\x10\x0e\x12\x12\n\x0eSPEKTRA_STATIC\x10\x0f\x12\x14\n\x10SPEKTRA_SCHEDULE\x10\x10\x12\x0e\n\nLINK_START\x10\x11\x12\r\n\tLINK_STOP\x10\x12\x12\x10\n\x0c\x44ISABLE_BURN\x10\x13\x12\x0f\n\x0b\x45NABLE_BURN\x10\x14\x12\x0e\n\nON_OFF_TOG\x10\x15\x12\x0f\n\x0bMIN_MAX_TOG\x10\x16\x12\x10\n\x0c\x45NABLE_INPUT\x10\x17\x12\x11\n\rDISABLE_INPUT\x10\x18\x12\x14\n\x10\x45NABLE_TOG_INPUT\x10\x19\x12\x0e\n\nOUTPUT_TOG\x10\x1a\x12\x0f\n\x0bOUTPUT_HIGH\x10\x1b\x12\x0e\n\nOUTPUT_LOW\x10\x1c\x12\x0f\n\x0bOUTPUT_TRIG\x10\x1d\x12\x12\n\x0ePROFILE_CHANGE\x10\x1e\x12\x13\n\x0f\x46\x41\x44\x45_LONG_PRESS\x10\x1f\x12\n\n\x06SYNCRO\x10 \x12\x0f\n\x0bPRESET_CODE\x10!\x12\x0f\n\x0b\x43USTOM_CODE\x10\"\x12\x11\n\rSPEKTRA_SLEEP\x10#\x12\x12\n\x0eSPEKTRA_RESUME\x10$\x12\x10\n\x0c\x44\x45VICE_RESET\x10%\x12\x0f\n\x0b\x44\x45VICE_SAVE\x10&\x12\x18\n\x14USER_LEVEL_STORE_NEW\x10\'\x12\x1a\n\x16USER_LEVEL_SET_DEFAULT\x10(\x12\x15\n\x11USER_LEVEL_RECALL\x10)\x12\r\n\tROOM_JOIN\x10+\x12\x0f\n\x0bROOM_UNJOIN\x10,\x12\x13\n\x0fTYPE8_TC_WARMER\x10-\x12\x13\n\x0fTYPE8_TC_COOLER\x10.\x12\x13\n\x0fTYPE8_TC_ACTUAL\x10/\x12\x13\n\x0fLOGIC_OPERATION\x10\x30\x12\x10\n\x0c\x41LARM_ENABLE\x10\x31\x12\x11\n\rALARM_DISABLE\x10\x32\x12 \n\x1c\x44\x41LI_CONTROL_SENSOR_OVERRIDE\x10\x33\x12$\n DALI_CONTROL_SENSOR_TEMP_DISABLE\x10\x34\x12\x1e\n\x1a\x44\x41LI_CONTROL_SENSOR_RESUME\x10\x35\x12\x15\n\x11\x44\x41LI_ARC_OVERRIDE\x10\x36\x12\x19\n\x15\x44\x41LI_COMMAND_OVERRIDE\x10\x37\x12\x1d\n\x19\x46\x41\x44\x45_UP_WITH_MIN_OVERRIDE\x10\x38\x12\x17\n\x13ON_OFF_TOG_OVERRIDE\x10\x39\x12\x18\n\x14MIN_MAX_TOG_OVERRIDE\x10:\x12\x0f\n\x0bMAX_OFF_TOG\x10;\x12\x18\n\x14MAX_OFF_TOG_OVERRIDE\x10<\x12\x1c\n\x18\x46\x41\x44\x45_LONG_PRESS_OVERRIDE\x10=\x12\x1e\n\x1aUSER_LEVEL_RECALL_OVERRIDE\x10>\x12\x14\n\x10\x44MX_ZONE_FADE_UP\x10?\x12\x16\n\x12\x44MX_ZONE_FADE_DOWN\x10@\x12\x11\n\rLOGGING_LEVEL\x10\x41\x12\x0f\n\nNO_COMMAND\x10\xfe\x01*\xbe\x01\n\x08ReadType\x12\n\n\x06INPUTS\x10\x00\x12\x0b\n\x07OUTPUTS\x10\x01\x12\x06\n\x02IR\x10\x02\x12\n\n\x06SENSOR\x10\x03\x12\x08\n\x04LIST\x10\x05\x12\n\n\x06\x41LARMS\x10\x07\x12\x0b\n\x07\x42URN_IN\x10\x08\x12\x0b\n\x07PROJECT\x10\t\x12\x0b\n\x07NETWORK\x10\n\x12\n\n\x06\x44\x45VICE\x10\x0b\x12\r\n\tPOLL_DATA\x10\x0c\x12\x11\n\rLIST_EXTENDED\x10\r\x12\t\n\x05LOGIC\x10\x0e\x12\x0f\n\x0b\x44\x41LI_INPUTS\x10\x0f*\x8c\x01\n\x0f\x41larmRepeatType\x12\x13\n\x0f\x41LARM_NO_REPEAT\x10\x00\x12\x16\n\x12\x41LARM_REPEAT_DAILY\x10\x01\x12\x19\n\x15\x41LARM_REPEAT_WORK_DAY\x10\x02\x12\x17\n\x13\x41LARM_REPEAT_WEEKLY\x10\x03\x12\x18\n\x14\x41LARM_REPEAT_MONTHLY\x10\x04*I\n\x0e\x41larmAstroType\x12\x12\n\x0e\x41LARM_NO_ASTRO\x10\x00\x12\x11\n\rALARM_SUNRUSE\x10\x01\x12\x10\n\x0c\x41LARM_SUNSET\x10\x02*T\n\x11SpektraTargetType\x12\x0c\n\x08SETTINGS\x10\x00\x12\x0c\n\x08SEQUENCE\x10\x01\x12\t\n\x05THEME\x10\x02\x12\n\n\x06STATIC\x10\x03\x12\x0c\n\x08\x43\x41LENDAR\x10\x04*=\n\x11SpektraActionType\x12\t\n\x05START\x10\x00\x12\x08\n\x04STOP\x10\x01\x12\t\n\x05PAUSE\x10\x02\x12\x08\n\x04SAVE\x10\x03*}\n\x1fSpektraUnscheduledBehaviourType\x12 \n\x1cRUN_RANDOM_COLOURED_SEQUENCE\x10\x00\x12\x12\n\x0eRUN_SEQUENCE_1\x10\x01\x12\x13\n\x0fRESUME_PREVIOUS\x10\x02\x12\x0f\n\nDO_NOTHING\x10\xfe\x01*6\n\x12LineAddressingType\x12\x0f\n\x0bINDEPENDENT\x10\x00\x12\x0f\n\x0b\x43ONSECUTIVE\x10\x01*\xd7\x02\n\x0e\x41\x63kMessageType\x12\x11\n\rDECODE_FAILED\x10\x00\x12\x17\n\x13INDEX_OUT_OF_BOUNDS\x10\x01\x12\x13\n\x0fUNEXPECTED_TYPE\x10\x02\x12\x11\n\rENCODE_FAILED\x10\x03\x12\x10\n\x0cKEY_MISMATCH\x10\x04\x12\x0b\n\x07SUCCESS\x10\x05\x12\x12\n\x0eINVALID_PARAMS\x10\x06\x12\x16\n\x12UNEXPECTED_COMMAND\x10\x07\x12\x18\n\x14\x43OMMUNICATION_FAILED\x10\x08\x12\x19\n\x15\x43OMMUNICATION_TIMEOUT\x10\t\x12\x11\n\rDATA_TOO_LONG\x10\n\x12\x13\n\x0fUNEXPECTED_CASE\x10\x0b\x12\x0e\n\nSLOTS_FULL\x10\x0c\x12\x10\n\x0cUNAUTHORISED\x10\r\x12\x13\n\x0fPARTIAL_SUCCESS\x10\x0e\x12\x12\n\x0e\x43OMMAND_FAILED\x10\x0f*\xd3\x04\n\x10Type8CommandType\x12\x17\n\x13\x45NABLE_DEVICE_TYPE8\x10\x00\x12\x14\n\x10SET_TEMP_X_COORD\x10\x01\x12\x14\n\x10SET_TEMP_Y_COORD\x10\x02\x12\x0c\n\x08\x41\x43TIVATE\x10\x03\x12\x13\n\x0fX_COORD_STEP_UP\x10\x04\x12\x15\n\x11X_COORD_STEP_DOWN\x10\x05\x12\x13\n\x0fY_COORD_STEP_UP\x10\x06\x12\x15\n\x11Y_COORD_STEP_DOWN\x10\x07\x12\x1f\n\x1bSET_TEMP_COLOUR_TEMPERATURE\x10\x08\x12\"\n\x1e\x43OLOUR_TEMPERATURE_STEP_COOLER\x10\t\x12\"\n\x1e\x43OLOUR_TEMPERATURE_STEP_WARMER\x10\n\x12\x1b\n\x17SET_TEMP_PRI_N_DIMLEVEL\x10\x0b\x12\x19\n\x15SET_TEMP_RGB_DIMLEVEL\x10\x0c\x12\x19\n\x15SET_TEMP_WAF_DIMLEVEL\x10\r\x12\x1b\n\x17SET_TEMP_RGBWAF_CONTROL\x10\x0e\x12\x19\n\x15\x43OPY_REPORT_TEMPORARY\x10\x0f\x12\x12\n\x0eSTORE_TY_PRI_N\x10\x10\x12\x18\n\x14STORE_XY_COORD_PRI_N\x10\x11\x12\"\n\x1eSTORE_COLOUR_TEMPERATURE_LIMIT\x10\x12\x12\x1e\n\x1aSTORE_GEAR_FEATURES_STATUS\x10\x13\x12\x1a\n\x16\x41SSIGN_COLOR_LINKED_CH\x10\x14\x12\x12\n\x0eSTART_AUTO_CAL\x10\x15*\xfb\x01\n\x0eType8QueryType\x12$\n TYPE8_QUERY_GEAR_FEATURES_STATUS\x10\x00\x12\x1d\n\x19TYPE8_QUERY_COLOUR_STATUS\x10\x01\x12$\n TYPE8_QUERY_COLOUR_TYPE_FEATURES\x10\x02\x12\x1c\n\x18TYPE8_QUERY_COLOUR_VALUE\x10\x03\x12\x1e\n\x1aTYPE8_QUERY_RGBWAF_CONTROL\x10\x04\x12\x1f\n\x1bTYPE8_QUERY_ASSIGNED_COLOUR\x10\x05\x12\x1f\n\x1bTYPE8_QUERY_EXT_VERSION_NUM\x10\x06*H\n\x08LineType\x12\x0e\n\nLINE_EMPTY\x10\x00\x12\r\n\tLINE_DALI\x10\x01\x12\x0c\n\x08LINE_DMX\x10\x02\x12\x0f\n\x0bLINE_DMX_IN\x10\x03*w\n\tEventType\x12\x0c\n\x08REGISTER\x10\x00\x12\x11\n\rTRIGGER_EVENT\x10\x01\x12\x0f\n\x0bINPUT_EVENT\x10\x02\x12\x10\n\x0cSENSOR_EVENT\x10\x03\x12\x11\n\rCONTROL_EVENT\x10\x04\x12\x13\n\x0fROOM_JOIN_EVENT\x10\x05*\xc6\t\n\rDALIQueryType\x12\x13\n\x0f\x44\x41LI_QUERY_NULL\x10\x00\x12\x16\n\x11\x44\x41LI_QUERY_STATUS\x10\x90\x01\x12\x17\n\x12\x44\x41LI_QUERY_BALLAST\x10\x91\x01\x12\x1c\n\x17\x44\x41LI_QUERY_LAMP_FAILURE\x10\x92\x01\x12\x1d\n\x18\x44\x41LI_QUERY_LAMP_POWER_ON\x10\x93\x01\x12\x1b\n\x16\x44\x41LI_QUERY_LIMIT_ERROR\x10\x94\x01\x12\x1b\n\x16\x44\x41LI_QUERY_RESET_STATE\x10\x95\x01\x12%\n DALI_QUERY_MISSING_SHORT_ADDRESS\x10\x96\x01\x12\x1e\n\x19\x44\x41LI_QUERY_VERSION_NUMBER\x10\x97\x01\x12\x14\n\x0f\x44\x41LI_QUERY_DTR0\x10\x98\x01\x12\x1b\n\x16\x44\x41LI_QUERY_DEVICE_TYPE\x10\x99\x01\x12\x1c\n\x17\x44\x41LI_QUERY_PHYSICAL_MIN\x10\x9a\x01\x12\x1d\n\x18\x44\x41LI_QUERY_POWER_FAILURE\x10\x9b\x01\x12\x14\n\x0f\x44\x41LI_QUERY_DTR1\x10\x9c\x01\x12\x14\n\x0f\x44\x41LI_QUERY_DTR2\x10\x9d\x01\x12\x1e\n\x19\x44\x41LI_QUERY_OPERATING_MODE\x10\x9e\x01\x12 \n\x1b\x44\x41LI_QUERY_LIGHTSOURCE_TYPE\x10\x9f\x01\x12\x1c\n\x17\x44\x41LI_QUERY_ACTUAL_LEVEL\x10\xa0\x01\x12\x19\n\x14\x44\x41LI_QUERY_MAX_LEVEL\x10\xa1\x01\x12\x19\n\x14\x44\x41LI_QUERY_MIN_LEVEL\x10\xa2\x01\x12\x1e\n\x19\x44\x41LI_QUERY_POWER_ON_LEVEL\x10\xa3\x01\x12$\n\x1f\x44\x41LI_QUERY_SYSTEM_FAILURE_LEVEL\x10\xa4\x01\x12!\n\x1c\x44\x41LI_QUERY_FADETIME_FADERATE\x10\xa5\x01\x12*\n%DALI_QUERY_MANUFACTURER_SPECIFIC_MODE\x10\xa6\x01\x12 \n\x1b\x44\x41LI_QUERY_NEXT_DEVICE_TYPE\x10\xa7\x01\x12\"\n\x1d\x44\x41LI_QUERY_EXTENDED_FADE_TIME\x10\xa8\x01\x12$\n\x1f\x44\x41LI_QUERY_CONTROL_GEAR_FAILURE\x10\xaa\x01\x12\x1d\n\x18\x44\x41LI_QUERY_SCENE_X_LEVEL\x10\xb0\x01\x12\x1a\n\x15\x44\x41LI_QUERY_GROUPS_0_7\x10\xc0\x01\x12\x1b\n\x16\x44\x41LI_QUERY_GROUPS_8_15\x10\xc1\x01\x12 \n\x1b\x44\x41LI_QUERY_RANDOM_ADDRESS_H\x10\xc2\x01\x12 \n\x1b\x44\x41LI_QUERY_RANDOM_ADDRESS_M\x10\xc3\x01\x12 \n\x1b\x44\x41LI_QUERY_RANDOM_ADDRESS_L\x10\xc4\x01\x12\x1c\n\x17\x44\x41LI_QUERY_READ_DTR_0_1\x10\xc5\x01\x12 \n\x1b\x44\x41LI_QUERY_APP_EXT_COMMANDS\x10\xe0\x01\x12\"\n\x1d\x44\x41LI_QUERY_EXT_VERSION_NUMBER\x10\xff\x01\x12\x17\n\x12\x44\x41LI_QUERY_COMPARE\x10\x84\x02\x12$\n\x1f\x44\x41LI_QUERY_VERIFY_SHORT_ADDRESS\x10\x8c\x02\x12\x1d\n\x18\x44\x41LI_QUERY_SHORT_ADDRESS\x10\x8d\x02*\xdd\x07\n\x0f\x44\x41LICommandType\x12\x0c\n\x08\x44\x41LI_OFF\x10\x00\x12\x10\n\x0c\x44\x41LI_FADE_UP\x10\x01\x12\x12\n\x0e\x44\x41LI_FADE_DOWN\x10\x02\x12\x10\n\x0c\x44\x41LI_STEP_UP\x10\x03\x12\x12\n\x0e\x44\x41LI_STEP_DOWN\x10\x04\x12\x12\n\x0e\x44\x41LI_MAX_LEVEL\x10\x05\x12\x12\n\x0e\x44\x41LI_MIN_LEVEL\x10\x06\x12\x16\n\x12\x44\x41LI_STEP_DOWN_OFF\x10\x07\x12\x13\n\x0f\x44\x41LI_ON_STEP_UP\x10\x08\x12\x18\n\x14\x44\x41LI_ENABLE_DAPC_SEQ\x10\t\x12!\n\x1d\x44\x41LI_RECALL_LAST_ACTIVE_LEVEL\x10\n\x12\x17\n\x13\x44\x41LI_RECALL_SCENE_X\x10\x10\x12\x0e\n\nDALI_RESET\x10 \x12 \n\x1c\x44\x41LI_STORE_ACTUAL_LEVEL_DTR0\x10!\x12\x1d\n\x19\x44\x41LI_SAVE_PERSISTENT_VARS\x10\"\x12\x1b\n\x17\x44\x41LI_SET_OPERATING_MODE\x10#\x12\x1a\n\x16\x44\x41LI_RESET_MEMORY_BANK\x10$\x12\x18\n\x14\x44\x41LI_IDENTIFY_DEVICE\x10%\x12\x16\n\x12\x44\x41LI_SET_MAX_LEVEL\x10*\x12\x16\n\x12\x44\x41LI_SET_MIN_LEVEL\x10+\x12!\n\x1d\x44\x41LI_SET_SYSTEM_FAILURE_LEVEL\x10,\x12\x1b\n\x17\x44\x41LI_SET_POWER_ON_LEVEL\x10-\x12\x16\n\x12\x44\x41LI_SET_FADE_TIME\x10.\x12\x16\n\x12\x44\x41LI_SET_FADE_RATE\x10/\x12\x1a\n\x16\x44\x41LI_SET_EXT_FADE_TIME\x10\x30\x12\x14\n\x10\x44\x41LI_SET_SCENE_X\x10@\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_SCENE_X\x10P\x12\x17\n\x13\x44\x41LI_ADD_TO_GROUP_X\x10`\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_GROUP_X\x10p\x12\x1b\n\x16\x44\x41LI_SET_SHORT_ADDRESS\x10\x80\x01\x12\x1d\n\x18\x44\x41LI_ENABLE_WRITE_MEMORY\x10\x81\x01\x12\x13\n\x0e\x44\x41LI_TERMINATE\x10\xff\x01\x12\x14\n\x0f\x44\x41LI_INITIALISE\x10\x82\x02\x12\x13\n\x0e\x44\x41LI_RANDOMISE\x10\x83\x02\x12\x12\n\rDALI_WITHDRAW\x10\x85\x02\x12\x17\n\x12\x44\x41LI_SEARCH_ADDR_H\x10\x88\x02\x12\x17\n\x12\x44\x41LI_SEARCH_ADDR_M\x10\x89\x02\x12\x17\n\x12\x44\x41LI_SEARCH_ADDR_L\x10\x8a\x02\x12\x1f\n\x1a\x44\x41LI_PROGRAM_SHORT_ADDRESS\x10\x8b\x02*\xa8\x01\n\x15\x43ustomDALICommandType\x12\x12\n\x0e\x44\x41LI_ARC_LEVEL\x10\x00\x12\x13\n\x0f\x44\x41LI_DAPC_LEVEL\x10\x01\x12\x18\n\x14\x44\x41LI_GROUP_ARC_LEVEL\x10\x02\x12\x18\n\x14\x44\x41LI_BROADCAST_SCENE\x10\x03\x12\x17\n\x13\x44\x41LI_SCENE_ON_GROUP\x10\x04\x12\x19\n\x15\x44\x41LI_SCENE_ON_ADDRESS\x10\x05*\x86\x04\n\x11\x41\x64minPropertyType\x12\x0f\n\x0b\x44\x45VICE_NAME\x10\x00\x12\x10\n\x0cPROJECT_NAME\x10\x01\x12\r\n\tLONGITUDE\x10\x02\x12\x0c\n\x08LATITUDE\x10\x03\x12\x14\n\x10LOCAL_UTC_OFFSET\x10\x04\x12\x14\n\x10\x44\x41YLIGHT_SAVINGS\x10\x05\x12\x0f\n\x0bPOLL_ACTIVE\x10\x06\x12\x10\n\x0c\x44HCP_ENABLED\x10\x07\x12\x0b\n\x07IP_ADDR\x10\x08\x12\x0c\n\x08MAC_ADDR\x10\t\x12\x0e\n\nGATEWAY_IP\x10\n\x12\x16\n\x12NETWORK_PROPERTIES\x10\x0b\x12\x15\n\x11SYSTEM_PROPERTIES\x10\x0c\x12\x14\n\x10\x43ONTROLLER_LINES\x10\r\x12\x14\n\x10\x45\x45PROM_FULL_CHIP\x10\x0e\x12\x0f\n\x0b\x43ONFIG_DATA\x10\x0f\x12\x10\n\x0cSPEKTRA_DATA\x10\x10\x12\x11\n\rDEVICE_STATUS\x10\x11\x12\x11\n\rCONFIG_STATUS\x10\x12\x12\x0f\n\x0b\x44\x45VICE_TIME\x10\x13\x12\x0f\n\x0bNTP_DETAILS\x10\x14\x12\x15\n\x11TRIDONIC_MSENSORS\x10\x15\x12\x12\n\x0eSECURE_SESSION\x10\x16\x12\t\n\x05NONCE\x10\x17\x12\x14\n\x10\x44\x41LI_SENSOR_TYPE\x10\x18\x12\x11\n\rDEVICE_REBOOT\x10\x19\x12\x12\n\x0eSYSTEM_LOGGING\x10\x1a*M\n\x10\x41\x64minCommandType\x12\x07\n\x03SET\x10\x00\x12\x07\n\x03GET\x10\x01\x12\x07\n\x03\x41\x44\x44\x10\x02\x12\n\n\x06REMOVE\x10\x03\x12\t\n\x05RESET\x10\x04\x12\x07\n\x03RUN\x10\x05*\xb5\x01\n\x0e\x44\x41LIStatusType\x12\x0c\n\x08LAMP_OFF\x10\x00\x12\x18\n\x14\x43ONTROL_GEAR_FAILURE\x10\x01\x12\x10\n\x0cLAMP_FAILURE\x10\x02\x12\x0b\n\x07LAMP_ON\x10\x04\x12\x0f\n\x0bLIMIT_ERROR\x10\x08\x12\x10\n\x0c\x46\x41\x44\x45_RUNNING\x10\x10\x12\x0f\n\x0bRESET_STATE\x10 \x12\x11\n\rSHORT_ADDRESS\x10@\x12\x15\n\x10POWER_CYCLE_SEEN\x10\x80\x01*\x88\x02\n\x10\x44\x41LIRXStatusFlag\x12\x0b\n\x07WAITING\x10\x00\x12\x13\n\x0fRECEIVING_FRAME\x10\x01\x12\x15\n\x11NO_RECEIVED_FRAME\x10\x02\x12\x18\n\x14RECEIVED_8_BIT_FRAME\x10\x03\x12\x19\n\x15RECEIVED_16_BIT_FRAME\x10\x04\x12\x19\n\x15RECEIVED_24_BIT_FRAME\x10\x05\x12\x1a\n\x16RECEIVED_PARTIAL_FRAME\x10\x06\x12\x08\n\x04IDLE\x10\x07\x12\x0f\n\x0b\x43\x41LIBRATION\x10\x08\x12\x18\n\x13\x45RROR_WHILE_SENDING\x10\xfe\x01\x12\x1a\n\x15\x45RROR_WHILE_RECEIVING\x10\xff\x01*\x8b\x01\n\x15\x44iagnosticMessageType\x12\x1a\n\x16\x44IAGNOSTIC_SYSTEM_INFO\x10\x00\x12\x1b\n\x17\x44IAGNOSTIC_INPUT_STATUS\x10\x01\x12\x14\n\x10\x44\x41LI_LEVEL_CACHE\x10\x02\x12\x13\n\x0f\x44MX_LEVEL_CACHE\x10\x03\x12\x0e\n\nROOM_JOINS\x10\x04*z\n\x13\x46irmwareCommandType\x12\x0c\n\x08\x46W_READY\x10\x00\x12\x0c\n\x08\x46W_APPLY\x10\x01\x12\r\n\tFW_VERIFY\x10\x02\x12\x14\n\x10\x46W_VERIFY_FAILED\x10\x03\x12\x15\n\x11\x46W_VERIFY_SUCCESS\x10\x04\x12\x0b\n\x07\x46W_READ\x10\x05*?\n\x15SpektraTransitionType\x12\t\n\x05\x42LEND\x10\x00\x12\x08\n\x04SNAP\x10\x01\x12\x11\n\rFADE_TO_BLACK\x10\x02*\x9c\x01\n\tLogicType\x12\x0e\n\nDALI_LEVEL\x10\x00\x12\x0f\n\x0bINPUT_STATE\x10\x01\x12\x10\n\x0cLIST_RUNNING\x10\x02\x12\x16\n\x12OCCUPANCY_DETECTED\x10\x03\x12\x0f\n\x0b\x44MX_PRESENT\x10\x04\x12\x0f\n\x0b\x43\x41L_WEEKDAY\x10\x05\x12\r\n\tCAL_MONTH\x10\x06\x12\x13\n\x0f\x41LARM_SCHEDULED\x10\x07*\x80\x01\n\x13LogicComparisonType\x12\r\n\tLESS_THAN\x10\x00\x12\x17\n\x13LESS_THAN_OR_EQUALS\x10\x01\x12\n\n\x06\x45QUALS\x10\x02\x12\r\n\tMORE_THAN\x10\x03\x12\x17\n\x13MORE_THAN_OR_EQUALS\x10\x04\x12\r\n\tNOT_EQUAL\x10\x05*8\n\x0e\x44\x41LISensorType\x12\x12\n\x0eTRIDONIC_EDALI\x10\x00\x12\x12\n\x0eSTANDARD_EDALI\x10\x01*G\n\x11SensorCommandType\x12\x0e\n\nINITIALISE\x10\x00\x12\x08\n\x04MUTE\x10\x01\x12\n\n\x06UNMUTE\x10\x02\x12\x0c\n\x08OVERRIDE\x10\x03*b\n\rSystemLogType\x12\x08\n\x04\x42OOT\x10\x00\x12\x0c\n\x08NET_LINK\x10\x01\x12\x07\n\x03NTP\x10\x02\x12\x0b\n\x07TRIGGER\x10\x03\x12\x0b\n\x07SPEKTRA\x10\x04\x12\x0c\n\x08SCHEDULE\x10\x05\x12\x08\n\x04USER\x10\x06*N\n\x13\x44\x41LIAddressingError\x12\x0c\n\x08NO_ERROR\x10\x00\x12\n\n\x06VERIFY\x10\x01\x12\n\n\x06SEARCH\x10\x02\x12\x11\n\rNO_NEW_DEVICE\x10\x03*8\n\x12\x44\x41LIAddressingType\x12\x0f\n\x0b\x41\x44\x44RESS_NEW\x10\x00\x12\x11\n\rREADDRESS_ALL\x10\x01\x62\x06proto3')
 )
 
 _TRIGGEROPERATIONTYPE = _descriptor.EnumDescriptor(
@@ -46,18 +46,22 @@ _TRIGGEROPERATIONTYPE = _descriptor.EnumDescriptor(
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='MOMENTARY_DISABLED', index=4, number=128,
+      name='ROTARY', index=4, number=4,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='LATCHING_DISABLED', index=5, number=129,
+      name='MOMENTARY_DISABLED', index=5, number=128,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='LATCHING_DISABLED', index=6, number=129,
       serialized_options=None,
       type=None),
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=10859,
-  serialized_end=11002,
+  serialized_start=13765,
+  serialized_end=13920,
 )
 _sym_db.RegisterEnumDescriptor(_TRIGGEROPERATIONTYPE)
 
@@ -269,14 +273,74 @@ _TRIGGERTYPE = _descriptor.EnumDescriptor(
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='NO_COMMAND', index=50, number=254,
+      name='DALI_CONTROL_SENSOR_OVERRIDE', index=50, number=51,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='DALI_CONTROL_SENSOR_TEMP_DISABLE', index=51, number=52,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='DALI_CONTROL_SENSOR_RESUME', index=52, number=53,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='DALI_ARC_OVERRIDE', index=53, number=54,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='DALI_COMMAND_OVERRIDE', index=54, number=55,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='FADE_UP_WITH_MIN_OVERRIDE', index=55, number=56,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='ON_OFF_TOG_OVERRIDE', index=56, number=57,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='MIN_MAX_TOG_OVERRIDE', index=57, number=58,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='MAX_OFF_TOG', index=58, number=59,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='MAX_OFF_TOG_OVERRIDE', index=59, number=60,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='FADE_LONG_PRESS_OVERRIDE', index=60, number=61,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='USER_LEVEL_RECALL_OVERRIDE', index=61, number=62,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='DMX_ZONE_FADE_UP', index=62, number=63,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='DMX_ZONE_FADE_DOWN', index=63, number=64,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='LOGGING_LEVEL', index=64, number=65,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='NO_COMMAND', index=65, number=254,
       serialized_options=None,
       type=None),
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=11005,
-  serialized_end=12032,
+  serialized_start=13923,
+  serialized_end=15356,
 )
 _sym_db.RegisterEnumDescriptor(_TRIGGERTYPE)
 
@@ -339,11 +403,15 @@ _READTYPE = _descriptor.EnumDescriptor(
       name='LOGIC', index=12, number=14,
       serialized_options=None,
       type=None),
+    _descriptor.EnumValueDescriptor(
+      name='DALI_INPUTS', index=13, number=15,
+      serialized_options=None,
+      type=None),
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=12035,
-  serialized_end=12208,
+  serialized_start=15359,
+  serialized_end=15549,
 )
 _sym_db.RegisterEnumDescriptor(_READTYPE)
 
@@ -377,8 +445,8 @@ _ALARMREPEATTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=12211,
-  serialized_end=12351,
+  serialized_start=15552,
+  serialized_end=15692,
 )
 _sym_db.RegisterEnumDescriptor(_ALARMREPEATTYPE)
 
@@ -404,8 +472,8 @@ _ALARMASTROTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=12353,
-  serialized_end=12426,
+  serialized_start=15694,
+  serialized_end=15767,
 )
 _sym_db.RegisterEnumDescriptor(_ALARMASTROTYPE)
 
@@ -439,8 +507,8 @@ _SPEKTRATARGETTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=12428,
-  serialized_end=12512,
+  serialized_start=15769,
+  serialized_end=15853,
 )
 _sym_db.RegisterEnumDescriptor(_SPEKTRATARGETTYPE)
 
@@ -470,8 +538,8 @@ _SPEKTRAACTIONTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=12514,
-  serialized_end=12575,
+  serialized_start=15855,
+  serialized_end=15916,
 )
 _sym_db.RegisterEnumDescriptor(_SPEKTRAACTIONTYPE)
 
@@ -501,12 +569,35 @@ _SPEKTRAUNSCHEDULEDBEHAVIOURTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=12577,
-  serialized_end=12702,
+  serialized_start=15918,
+  serialized_end=16043,
 )
 _sym_db.RegisterEnumDescriptor(_SPEKTRAUNSCHEDULEDBEHAVIOURTYPE)
 
 SpektraUnscheduledBehaviourType = enum_type_wrapper.EnumTypeWrapper(_SPEKTRAUNSCHEDULEDBEHAVIOURTYPE)
+_LINEADDRESSINGTYPE = _descriptor.EnumDescriptor(
+  name='LineAddressingType',
+  full_name='LineAddressingType',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='INDEPENDENT', index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='CONSECUTIVE', index=1, number=1,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=16045,
+  serialized_end=16099,
+)
+_sym_db.RegisterEnumDescriptor(_LINEADDRESSINGTYPE)
+
+LineAddressingType = enum_type_wrapper.EnumTypeWrapper(_LINEADDRESSINGTYPE)
 _ACKMESSAGETYPE = _descriptor.EnumDescriptor(
   name='AckMessageType',
   full_name='AckMessageType',
@@ -569,11 +660,19 @@ _ACKMESSAGETYPE = _descriptor.EnumDescriptor(
       name='UNAUTHORISED', index=13, number=13,
       serialized_options=None,
       type=None),
+    _descriptor.EnumValueDescriptor(
+      name='PARTIAL_SUCCESS', index=14, number=14,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='COMMAND_FAILED', index=15, number=15,
+      serialized_options=None,
+      type=None),
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=12705,
-  serialized_end=13007,
+  serialized_start=16102,
+  serialized_end=16445,
 )
 _sym_db.RegisterEnumDescriptor(_ACKMESSAGETYPE)
 
@@ -675,8 +774,8 @@ _TYPE8COMMANDTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=13010,
-  serialized_end=13605,
+  serialized_start=16448,
+  serialized_end=17043,
 )
 _sym_db.RegisterEnumDescriptor(_TYPE8COMMANDTYPE)
 
@@ -718,8 +817,8 @@ _TYPE8QUERYTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=13608,
-  serialized_end=13859,
+  serialized_start=17046,
+  serialized_end=17297,
 )
 _sym_db.RegisterEnumDescriptor(_TYPE8QUERYTYPE)
 
@@ -749,8 +848,8 @@ _LINETYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=13861,
-  serialized_end=13933,
+  serialized_start=17299,
+  serialized_end=17371,
 )
 _sym_db.RegisterEnumDescriptor(_LINETYPE)
 
@@ -788,8 +887,8 @@ _EVENTTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=13935,
-  serialized_end=14054,
+  serialized_start=17373,
+  serialized_end=17492,
 )
 _sym_db.RegisterEnumDescriptor(_EVENTTYPE)
 
@@ -959,8 +1058,8 @@ _DALIQUERYTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=14057,
-  serialized_end=15279,
+  serialized_start=17495,
+  serialized_end=18717,
 )
 _sym_db.RegisterEnumDescriptor(_DALIQUERYTYPE)
 
@@ -1130,8 +1229,8 @@ _DALICOMMANDTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=15282,
-  serialized_end=16271,
+  serialized_start=18720,
+  serialized_end=19709,
 )
 _sym_db.RegisterEnumDescriptor(_DALICOMMANDTYPE)
 
@@ -1169,8 +1268,8 @@ _CUSTOMDALICOMMANDTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=16274,
-  serialized_end=16442,
+  serialized_start=19712,
+  serialized_end=19880,
 )
 _sym_db.RegisterEnumDescriptor(_CUSTOMDALICOMMANDTYPE)
 
@@ -1277,11 +1376,23 @@ _ADMINPROPERTYTYPE = _descriptor.EnumDescriptor(
       name='NONCE', index=23, number=23,
       serialized_options=None,
       type=None),
+    _descriptor.EnumValueDescriptor(
+      name='DALI_SENSOR_TYPE', index=24, number=24,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='DEVICE_REBOOT', index=25, number=25,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='SYSTEM_LOGGING', index=26, number=26,
+      serialized_options=None,
+      type=None),
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=16445,
-  serialized_end=16902,
+  serialized_start=19883,
+  serialized_end=20401,
 )
 _sym_db.RegisterEnumDescriptor(_ADMINPROPERTYTYPE)
 
@@ -1312,11 +1423,15 @@ _ADMINCOMMANDTYPE = _descriptor.EnumDescriptor(
       name='RESET', index=4, number=4,
       serialized_options=None,
       type=None),
+    _descriptor.EnumValueDescriptor(
+      name='RUN', index=5, number=5,
+      serialized_options=None,
+      type=None),
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=16904,
-  serialized_end=16972,
+  serialized_start=20403,
+  serialized_end=20480,
 )
 _sym_db.RegisterEnumDescriptor(_ADMINCOMMANDTYPE)
 
@@ -1336,42 +1451,101 @@ _DALISTATUSTYPE = _descriptor.EnumDescriptor(
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='LAMP_FAILURE', index=2, number=3,
+      name='LAMP_FAILURE', index=2, number=2,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='LAMP_ON', index=3, number=7,
+      name='LAMP_ON', index=3, number=4,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='LIMIT_ERROR', index=4, number=15,
+      name='LIMIT_ERROR', index=4, number=8,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='FADE_RUNNING', index=5, number=31,
+      name='FADE_RUNNING', index=5, number=16,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='RESET_STATE', index=6, number=63,
+      name='RESET_STATE', index=6, number=32,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='SHORT_ADDRESS', index=7, number=127,
+      name='SHORT_ADDRESS', index=7, number=64,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='POWER_CYCLE_SEEN', index=8, number=255,
+      name='POWER_CYCLE_SEEN', index=8, number=128,
       serialized_options=None,
       type=None),
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=16975,
-  serialized_end=17156,
+  serialized_start=20483,
+  serialized_end=20664,
 )
 _sym_db.RegisterEnumDescriptor(_DALISTATUSTYPE)
 
 DALIStatusType = enum_type_wrapper.EnumTypeWrapper(_DALISTATUSTYPE)
+_DALIRXSTATUSFLAG = _descriptor.EnumDescriptor(
+  name='DALIRXStatusFlag',
+  full_name='DALIRXStatusFlag',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='WAITING', index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='RECEIVING_FRAME', index=1, number=1,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='NO_RECEIVED_FRAME', index=2, number=2,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='RECEIVED_8_BIT_FRAME', index=3, number=3,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='RECEIVED_16_BIT_FRAME', index=4, number=4,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='RECEIVED_24_BIT_FRAME', index=5, number=5,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='RECEIVED_PARTIAL_FRAME', index=6, number=6,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='IDLE', index=7, number=7,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='CALIBRATION', index=8, number=8,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='ERROR_WHILE_SENDING', index=9, number=254,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='ERROR_WHILE_RECEIVING', index=10, number=255,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=20667,
+  serialized_end=20931,
+)
+_sym_db.RegisterEnumDescriptor(_DALIRXSTATUSFLAG)
+
+DALIRXStatusFlag = enum_type_wrapper.EnumTypeWrapper(_DALIRXSTATUSFLAG)
 _DIAGNOSTICMESSAGETYPE = _descriptor.EnumDescriptor(
   name='DiagnosticMessageType',
   full_name='DiagnosticMessageType',
@@ -1401,8 +1575,8 @@ _DIAGNOSTICMESSAGETYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=17159,
-  serialized_end=17298,
+  serialized_start=20934,
+  serialized_end=21073,
 )
 _sym_db.RegisterEnumDescriptor(_DIAGNOSTICMESSAGETYPE)
 
@@ -1440,8 +1614,8 @@ _FIRMWARECOMMANDTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=17300,
-  serialized_end=17422,
+  serialized_start=21075,
+  serialized_end=21197,
 )
 _sym_db.RegisterEnumDescriptor(_FIRMWARECOMMANDTYPE)
 
@@ -1467,8 +1641,8 @@ _SPEKTRATRANSITIONTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=17424,
-  serialized_end=17487,
+  serialized_start=21199,
+  serialized_end=21262,
 )
 _sym_db.RegisterEnumDescriptor(_SPEKTRATRANSITIONTYPE)
 
@@ -1514,8 +1688,8 @@ _LOGICTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=17490,
-  serialized_end=17646,
+  serialized_start=21265,
+  serialized_end=21421,
 )
 _sym_db.RegisterEnumDescriptor(_LOGICTYPE)
 
@@ -1553,16 +1727,168 @@ _LOGICCOMPARISONTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=17649,
-  serialized_end=17777,
+  serialized_start=21424,
+  serialized_end=21552,
 )
 _sym_db.RegisterEnumDescriptor(_LOGICCOMPARISONTYPE)
 
 LogicComparisonType = enum_type_wrapper.EnumTypeWrapper(_LOGICCOMPARISONTYPE)
+_DALISENSORTYPE = _descriptor.EnumDescriptor(
+  name='DALISensorType',
+  full_name='DALISensorType',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='TRIDONIC_EDALI', index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='STANDARD_EDALI', index=1, number=1,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=21554,
+  serialized_end=21610,
+)
+_sym_db.RegisterEnumDescriptor(_DALISENSORTYPE)
+
+DALISensorType = enum_type_wrapper.EnumTypeWrapper(_DALISENSORTYPE)
+_SENSORCOMMANDTYPE = _descriptor.EnumDescriptor(
+  name='SensorCommandType',
+  full_name='SensorCommandType',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='INITIALISE', index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='MUTE', index=1, number=1,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='UNMUTE', index=2, number=2,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='OVERRIDE', index=3, number=3,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=21612,
+  serialized_end=21683,
+)
+_sym_db.RegisterEnumDescriptor(_SENSORCOMMANDTYPE)
+
+SensorCommandType = enum_type_wrapper.EnumTypeWrapper(_SENSORCOMMANDTYPE)
+_SYSTEMLOGTYPE = _descriptor.EnumDescriptor(
+  name='SystemLogType',
+  full_name='SystemLogType',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='BOOT', index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='NET_LINK', index=1, number=1,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='NTP', index=2, number=2,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='TRIGGER', index=3, number=3,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='SPEKTRA', index=4, number=4,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='SCHEDULE', index=5, number=5,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='USER', index=6, number=6,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=21685,
+  serialized_end=21783,
+)
+_sym_db.RegisterEnumDescriptor(_SYSTEMLOGTYPE)
+
+SystemLogType = enum_type_wrapper.EnumTypeWrapper(_SYSTEMLOGTYPE)
+_DALIADDRESSINGERROR = _descriptor.EnumDescriptor(
+  name='DALIAddressingError',
+  full_name='DALIAddressingError',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='NO_ERROR', index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='VERIFY', index=1, number=1,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='SEARCH', index=2, number=2,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='NO_NEW_DEVICE', index=3, number=3,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=21785,
+  serialized_end=21863,
+)
+_sym_db.RegisterEnumDescriptor(_DALIADDRESSINGERROR)
+
+DALIAddressingError = enum_type_wrapper.EnumTypeWrapper(_DALIADDRESSINGERROR)
+_DALIADDRESSINGTYPE = _descriptor.EnumDescriptor(
+  name='DALIAddressingType',
+  full_name='DALIAddressingType',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='ADDRESS_NEW', index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='READDRESS_ALL', index=1, number=1,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=21865,
+  serialized_end=21921,
+)
+_sym_db.RegisterEnumDescriptor(_DALIADDRESSINGTYPE)
+
+DALIAddressingType = enum_type_wrapper.EnumTypeWrapper(_DALIADDRESSINGTYPE)
 MOMENTARY = 0
 LATCHING = 1
 MOMENTARY_OUTPUT = 2
 LATCHING_OUTPUT = 3
+ROTARY = 4
 MOMENTARY_DISABLED = 128
 LATCHING_DISABLED = 129
 DALI_ARC = 0
@@ -1615,6 +1941,21 @@ TYPE8_TC_ACTUAL = 47
 LOGIC_OPERATION = 48
 ALARM_ENABLE = 49
 ALARM_DISABLE = 50
+DALI_CONTROL_SENSOR_OVERRIDE = 51
+DALI_CONTROL_SENSOR_TEMP_DISABLE = 52
+DALI_CONTROL_SENSOR_RESUME = 53
+DALI_ARC_OVERRIDE = 54
+DALI_COMMAND_OVERRIDE = 55
+FADE_UP_WITH_MIN_OVERRIDE = 56
+ON_OFF_TOG_OVERRIDE = 57
+MIN_MAX_TOG_OVERRIDE = 58
+MAX_OFF_TOG = 59
+MAX_OFF_TOG_OVERRIDE = 60
+FADE_LONG_PRESS_OVERRIDE = 61
+USER_LEVEL_RECALL_OVERRIDE = 62
+DMX_ZONE_FADE_UP = 63
+DMX_ZONE_FADE_DOWN = 64
+LOGGING_LEVEL = 65
 NO_COMMAND = 254
 INPUTS = 0
 OUTPUTS = 1
@@ -1629,6 +1970,7 @@ DEVICE = 11
 POLL_DATA = 12
 LIST_EXTENDED = 13
 LOGIC = 14
+DALI_INPUTS = 15
 ALARM_NO_REPEAT = 0
 ALARM_REPEAT_DAILY = 1
 ALARM_REPEAT_WORK_DAY = 2
@@ -1650,6 +1992,8 @@ RUN_RANDOM_COLOURED_SEQUENCE = 0
 RUN_SEQUENCE_1 = 1
 RESUME_PREVIOUS = 2
 DO_NOTHING = 254
+INDEPENDENT = 0
+CONSECUTIVE = 1
 DECODE_FAILED = 0
 INDEX_OUT_OF_BOUNDS = 1
 UNEXPECTED_TYPE = 2
@@ -1664,6 +2008,8 @@ DATA_TOO_LONG = 10
 UNEXPECTED_CASE = 11
 SLOTS_FULL = 12
 UNAUTHORISED = 13
+PARTIAL_SUCCESS = 14
+COMMAND_FAILED = 15
 ENABLE_DEVICE_TYPE8 = 0
 SET_TEMP_X_COORD = 1
 SET_TEMP_Y_COORD = 2
@@ -1811,20 +2157,35 @@ NTP_DETAILS = 20
 TRIDONIC_MSENSORS = 21
 SECURE_SESSION = 22
 NONCE = 23
+DALI_SENSOR_TYPE = 24
+DEVICE_REBOOT = 25
+SYSTEM_LOGGING = 26
 SET = 0
 GET = 1
 ADD = 2
 REMOVE = 3
 RESET = 4
+RUN = 5
 LAMP_OFF = 0
 CONTROL_GEAR_FAILURE = 1
-LAMP_FAILURE = 3
-LAMP_ON = 7
-LIMIT_ERROR = 15
-FADE_RUNNING = 31
-RESET_STATE = 63
-SHORT_ADDRESS = 127
-POWER_CYCLE_SEEN = 255
+LAMP_FAILURE = 2
+LAMP_ON = 4
+LIMIT_ERROR = 8
+FADE_RUNNING = 16
+RESET_STATE = 32
+SHORT_ADDRESS = 64
+POWER_CYCLE_SEEN = 128
+WAITING = 0
+RECEIVING_FRAME = 1
+NO_RECEIVED_FRAME = 2
+RECEIVED_8_BIT_FRAME = 3
+RECEIVED_16_BIT_FRAME = 4
+RECEIVED_24_BIT_FRAME = 5
+RECEIVED_PARTIAL_FRAME = 6
+IDLE = 7
+CALIBRATION = 8
+ERROR_WHILE_SENDING = 254
+ERROR_WHILE_RECEIVING = 255
 DIAGNOSTIC_SYSTEM_INFO = 0
 DIAGNOSTIC_INPUT_STATUS = 1
 DALI_LEVEL_CACHE = 2
@@ -1853,6 +2214,25 @@ EQUALS = 2
 MORE_THAN = 3
 MORE_THAN_OR_EQUALS = 4
 NOT_EQUAL = 5
+TRIDONIC_EDALI = 0
+STANDARD_EDALI = 1
+INITIALISE = 0
+MUTE = 1
+UNMUTE = 2
+OVERRIDE = 3
+BOOT = 0
+NET_LINK = 1
+NTP = 2
+TRIGGER = 3
+SPEKTRA = 4
+SCHEDULE = 5
+USER = 6
+NO_ERROR = 0
+VERIFY = 1
+SEARCH = 2
+NO_NEW_DEVICE = 3
+ADDRESS_NEW = 0
+READDRESS_ALL = 1
 
 
 
@@ -2078,6 +2458,13 @@ _DEVICESTATEMESSAGE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='dali_input_state', full_name='DeviceStateMessage.dali_input_state', index=13,
+      number=14, type=4, cpp_type=4, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -2091,7 +2478,7 @@ _DEVICESTATEMESSAGE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=260,
-  serialized_end=581,
+  serialized_end=607,
 )
 
 
@@ -2156,8 +2543,8 @@ _TRIGGERMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=584,
-  serialized_end=719,
+  serialized_start=610,
+  serialized_end=745,
 )
 
 
@@ -2194,8 +2581,8 @@ _TIMECLOCKMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=721,
-  serialized_end=767,
+  serialized_start=747,
+  serialized_end=793,
 )
 
 
@@ -2239,8 +2626,8 @@ _BURNINBITSMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=769,
-  serialized_end=852,
+  serialized_start=795,
+  serialized_end=878,
 )
 
 
@@ -2291,8 +2678,8 @@ _IOINPUTMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=855,
-  serialized_end=1006,
+  serialized_start=881,
+  serialized_end=1032,
 )
 
 
@@ -2343,8 +2730,74 @@ _IOOUTPUTMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1008,
-  serialized_end=1132,
+  serialized_start=1034,
+  serialized_end=1158,
+)
+
+
+_DALIINPUTMESSAGE = _descriptor.Descriptor(
+  name='DALIInputMessage',
+  full_name='DALIInputMessage',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='index', full_name='DALIInputMessage.index', index=0,
+      number=1, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='address', full_name='DALIInputMessage.address', index=1,
+      number=2, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='dali_line', full_name='DALIInputMessage.dali_line', index=2,
+      number=3, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='button_state', full_name='DALIInputMessage.button_state', index=3,
+      number=4, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='short_press', full_name='DALIInputMessage.short_press', index=4,
+      number=5, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='long_press', full_name='DALIInputMessage.long_press', index=5,
+      number=6, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1161,
+  serialized_end=1350,
 )
 
 
@@ -2388,8 +2841,8 @@ _IOIRMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1134,
-  serialized_end=1210,
+  serialized_start=1352,
+  serialized_end=1428,
 )
 
 
@@ -2540,6 +2993,27 @@ _SENSORMESSAGE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='detection_trigger', full_name='SensorMessage.detection_trigger', index=20,
+      number=21, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='warning_trigger', full_name='SensorMessage.warning_trigger', index=21,
+      number=22, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='idle_trigger', full_name='SensorMessage.idle_trigger', index=22,
+      number=23, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -2552,8 +3026,8 @@ _SENSORMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1213,
-  serialized_end=1675,
+  serialized_start=1431,
+  serialized_end=2018,
 )
 
 
@@ -2597,8 +3071,8 @@ _LISTSTEPMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1677,
-  serialized_end=1769,
+  serialized_start=2020,
+  serialized_end=2112,
 )
 
 
@@ -2719,8 +3193,8 @@ _ALARMMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1772,
-  serialized_end=2216,
+  serialized_start=2115,
+  serialized_end=2559,
 )
 
 
@@ -2792,8 +3266,8 @@ _BURNINMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2219,
-  serialized_end=2372,
+  serialized_start=2562,
+  serialized_end=2715,
 )
 
 
@@ -2823,8 +3297,8 @@ _EXTERNALTRIGGERMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2374,
-  serialized_end=2432,
+  serialized_start=2717,
+  serialized_end=2775,
 )
 
 
@@ -2861,8 +3335,8 @@ _INPUTMULTIMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2434,
-  serialized_end=2503,
+  serialized_start=2777,
+  serialized_end=2846,
 )
 
 
@@ -2899,8 +3373,53 @@ _OUTPUTMULTIMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2505,
-  serialized_end=2577,
+  serialized_start=2848,
+  serialized_end=2920,
+)
+
+
+_DALIINPUTMULTIMESSAGE = _descriptor.Descriptor(
+  name='DALIInputMultiMessage',
+  full_name='DALIInputMultiMessage',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='profile', full_name='DALIInputMultiMessage.profile', index=0,
+      number=1, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='input_index_offset', full_name='DALIInputMultiMessage.input_index_offset', index=1,
+      number=2, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='inputs', full_name='DALIInputMultiMessage.inputs', index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2922,
+  serialized_end=3025,
 )
 
 
@@ -2937,8 +3456,8 @@ _IRMULTIMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2579,
-  serialized_end=2639,
+  serialized_start=3027,
+  serialized_end=3087,
 )
 
 
@@ -2989,8 +3508,8 @@ _LISTMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2641,
-  serialized_end=2752,
+  serialized_start=3089,
+  serialized_end=3200,
 )
 
 
@@ -3034,8 +3553,8 @@ _EXTENDEDLISTMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2754,
-  serialized_end=2854,
+  serialized_start=3202,
+  serialized_end=3302,
 )
 
 
@@ -3065,8 +3584,8 @@ _ALARMMULTIMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2856,
-  serialized_end=2905,
+  serialized_start=3304,
+  serialized_end=3353,
 )
 
 
@@ -3096,8 +3615,8 @@ _BURNINMULTIMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2907,
-  serialized_end=2959,
+  serialized_start=3355,
+  serialized_end=3407,
 )
 
 
@@ -3169,8 +3688,8 @@ _LOGICMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2962,
-  serialized_end=3193,
+  serialized_start=3410,
+  serialized_end=3641,
 )
 
 
@@ -3200,8 +3719,8 @@ _LOGICMULTIMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3195,
-  serialized_end=3244,
+  serialized_start=3643,
+  serialized_end=3692,
 )
 
 
@@ -3226,6 +3745,13 @@ _SENSORCOMMANDMESSAGE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='type', full_name='SensorCommandMessage.type', index=2,
+      number=3, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -3238,8 +3764,8 @@ _SENSORCOMMANDMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3246,
-  serialized_end=3300,
+  serialized_start=3694,
+  serialized_end=3782,
 )
 
 
@@ -3269,8 +3795,8 @@ _CHANGEPROFILEMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3302,
-  serialized_end=3341,
+  serialized_start=3784,
+  serialized_end=3823,
 )
 
 
@@ -3307,8 +3833,8 @@ _IDENTIFYMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3343,
-  serialized_end=3385,
+  serialized_start=3825,
+  serialized_end=3867,
 )
 
 
@@ -3338,8 +3864,8 @@ _UPDATETIMEMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3387,
-  serialized_end=3439,
+  serialized_start=3869,
+  serialized_end=3921,
 )
 
 
@@ -3390,8 +3916,8 @@ _READDEVICEMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3441,
-  serialized_end=3542,
+  serialized_start=3923,
+  serialized_end=4024,
 )
 
 
@@ -3421,8 +3947,8 @@ _SECUREDEVICESETTINGSMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3544,
-  serialized_end=3590,
+  serialized_start=4026,
+  serialized_end=4072,
 )
 
 
@@ -3452,8 +3978,8 @@ _DTRPAYLOADMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3592,
-  serialized_end=3624,
+  serialized_start=4074,
+  serialized_end=4106,
 )
 
 
@@ -3479,14 +4005,14 @@ _DALIMESSAGE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='edali_command', full_name='DALIMessage.edali_command', index=2,
+      name='frame_25_bit', full_name='DALIMessage.frame_25_bit', index=2,
       number=3, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='edali_command_reply', full_name='DALIMessage.edali_command_reply', index=3,
+      name='frame_25_bit_reply', full_name='DALIMessage.frame_25_bit_reply', index=3,
       number=4, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -3521,14 +4047,42 @@ _DALIMESSAGE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='arg', full_name='DALIMessage.arg', index=8,
+      name='frame_16_bit', full_name='DALIMessage.frame_16_bit', index=8,
+      number=11, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='frame_16_bit_reply', full_name='DALIMessage.frame_16_bit_reply', index=9,
+      number=12, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='frame_24_bit', full_name='DALIMessage.frame_24_bit', index=10,
+      number=13, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='frame_24_bit_reply', full_name='DALIMessage.frame_24_bit_reply', index=11,
+      number=14, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='arg', full_name='DALIMessage.arg', index=12,
       number=9, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='dtr', full_name='DALIMessage.dtr', index=9,
+      name='dtr', full_name='DALIMessage.dtr', index=13,
       number=10, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -3552,8 +4106,8 @@ _DALIMESSAGE = _descriptor.Descriptor(
       name='params', full_name='DALIMessage.params',
       index=1, containing_type=None, fields=[]),
   ],
-  serialized_start=3627,
-  serialized_end=3958,
+  serialized_start=4109,
+  serialized_end=4546,
 )
 
 
@@ -3583,8 +4137,8 @@ _DALISTATUSFLAGMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3960,
-  serialized_end=4015,
+  serialized_start=4548,
+  serialized_end=4603,
 )
 
 
@@ -3609,6 +4163,20 @@ _DALIQUERYRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='dali_flag', full_name='DALIQueryResponse.dali_flag', index=2,
+      number=3, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='reponse_data', full_name='DALIQueryResponse.reponse_data', index=3,
+      number=4, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -3624,8 +4192,126 @@ _DALIQUERYRESPONSE = _descriptor.Descriptor(
       name='payload', full_name='DALIQueryResponse.payload',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=4017,
-  serialized_end=4128,
+  serialized_start=4606,
+  serialized_end=4794,
+)
+
+
+_DALIADDRESSINGMESSAGE = _descriptor.Descriptor(
+  name='DALIAddressingMessage',
+  full_name='DALIAddressingMessage',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='type', full_name='DALIAddressingMessage.type', index=0,
+      number=1, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='initialisation', full_name='DALIAddressingMessage.initialisation', index=1,
+      number=2, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='line_mask', full_name='DALIAddressingMessage.line_mask', index=2,
+      number=3, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='is24Bit', full_name='DALIAddressingMessage.is24Bit', index=3,
+      number=4, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='error', full_name='DALIAddressingMessage.error', index=4,
+      number=5, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='index', full_name='DALIAddressingMessage.index', index=5,
+      number=6, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=4797,
+  serialized_end=4967,
+)
+
+
+_DALIREMAPPINGMESSAGE = _descriptor.Descriptor(
+  name='DALIRemappingMessage',
+  full_name='DALIRemappingMessage',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='from_address', full_name='DALIRemappingMessage.from_address', index=0,
+      number=1, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='to_address', full_name='DALIRemappingMessage.to_address', index=1,
+      number=2, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='line_mask', full_name='DALIRemappingMessage.line_mask', index=2,
+      number=3, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='is24Bit', full_name='DALIRemappingMessage.is24Bit', index=3,
+      number=4, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=4969,
+  serialized_end=5069,
 )
 
 
@@ -3690,8 +4376,8 @@ _DMXMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4130,
-  serialized_end=4254,
+  serialized_start=5071,
+  serialized_end=5195,
 )
 
 
@@ -3756,8 +4442,8 @@ _RDMMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4256,
-  serialized_end=4367,
+  serialized_start=5197,
+  serialized_end=5308,
 )
 
 
@@ -3808,8 +4494,8 @@ _RDMRESPONSEMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4369,
-  serialized_end=4449,
+  serialized_start=5310,
+  serialized_end=5390,
 )
 
 
@@ -3883,6 +4569,20 @@ _SPEKTRASETTINGMESSAGE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='line_addressing', full_name='SpektraSettingMessage.line_addressing', index=9,
+      number=10, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='zone_scale_factor', full_name='SpektraSettingMessage.zone_scale_factor', index=10,
+      number=11, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -3895,8 +4595,8 @@ _SPEKTRASETTINGMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4452,
-  serialized_end=4730,
+  serialized_start=5393,
+  serialized_end=5744,
 )
 
 
@@ -3926,8 +4626,8 @@ _SPEKTRACOLOURCONFIGMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4732,
-  serialized_end=4783,
+  serialized_start=5746,
+  serialized_end=5797,
 )
 
 
@@ -4057,6 +4757,13 @@ _SPEKTRASEQUENCECONFIGMESSAGE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='args', full_name='SpektraSequenceConfigMessage.args', index=17,
+      number=18, type=13, cpp_type=3, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -4069,8 +4776,8 @@ _SPEKTRASEQUENCECONFIGMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4786,
-  serialized_end=5260,
+  serialized_start=5800,
+  serialized_end=6288,
 )
 
 
@@ -4114,8 +4821,91 @@ _SPEKTRACALENDARMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5262,
-  serialized_end=5349,
+  serialized_start=6290,
+  serialized_end=6377,
+)
+
+
+_SPEKTRACALENDARDAYMESSAGE = _descriptor.Descriptor(
+  name='SpektraCalendarDayMessage',
+  full_name='SpektraCalendarDayMessage',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='day_index', full_name='SpektraCalendarDayMessage.day_index', index=0,
+      number=1, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='type', full_name='SpektraCalendarDayMessage.type', index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='target_index', full_name='SpektraCalendarDayMessage.target_index', index=2,
+      number=3, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=6379,
+  serialized_end=6481,
+)
+
+
+_SPEKTRACALENDAROVERVIEWMESSAGE = _descriptor.Descriptor(
+  name='SpektraCalendarOverviewMessage',
+  full_name='SpektraCalendarOverviewMessage',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='day_offset', full_name='SpektraCalendarOverviewMessage.day_offset', index=0,
+      number=1, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='days', full_name='SpektraCalendarOverviewMessage.days', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=6483,
+  serialized_end=6577,
 )
 
 
@@ -4166,8 +4956,8 @@ _SPEKTRATHEMECONFIGMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5351,
-  serialized_end=5470,
+  serialized_start=6579,
+  serialized_end=6698,
 )
 
 
@@ -4204,8 +4994,8 @@ _SPEKTRAREADMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5472,
-  serialized_end=5541,
+  serialized_start=6700,
+  serialized_end=6769,
 )
 
 
@@ -4256,8 +5046,8 @@ _SPEKTRACONTROLMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5543,
-  serialized_end=5665,
+  serialized_start=6771,
+  serialized_end=6893,
 )
 
 
@@ -4336,8 +5126,8 @@ _DMXTRANSLATIONOBJECT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5668,
-  serialized_end=5854,
+  serialized_start=6896,
+  serialized_end=7082,
 )
 
 
@@ -4367,8 +5157,8 @@ _DMXPROTOCOLTRANSLATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5856,
-  serialized_end=5919,
+  serialized_start=7084,
+  serialized_end=7147,
 )
 
 
@@ -4398,8 +5188,8 @@ _INPUTSTATEMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5921,
-  serialized_end=5958,
+  serialized_start=7149,
+  serialized_end=7186,
 )
 
 
@@ -4436,8 +5226,8 @@ _INPUTSTATERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5960,
-  serialized_end=6016,
+  serialized_start=7188,
+  serialized_end=7244,
 )
 
 
@@ -4481,8 +5271,8 @@ _LEVELCACHERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6018,
-  serialized_end=6082,
+  serialized_start=7246,
+  serialized_end=7310,
 )
 
 
@@ -4526,8 +5316,8 @@ _JOINEDROOMSMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6084,
-  serialized_end=6156,
+  serialized_start=7312,
+  serialized_end=7384,
 )
 
 
@@ -4699,6 +5489,13 @@ _DIAGNOSTICSYSTEMINFORESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='input_dali_count', full_name='DiagnosticSystemInfoResponse.input_dali_count', index=23,
+      number=24, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -4711,8 +5508,8 @@ _DIAGNOSTICSYSTEMINFORESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6159,
-  serialized_end=6728,
+  serialized_start=7387,
+  serialized_end=7982,
 )
 
 
@@ -4756,8 +5553,8 @@ _DIAGNOSTICMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6730,
-  serialized_end=6815,
+  serialized_start=7984,
+  serialized_end=8069,
 )
 
 
@@ -4843,8 +5640,8 @@ _ADMINPROJECTPROPERTIESMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6818,
-  serialized_end=7060,
+  serialized_start=8072,
+  serialized_end=8314,
 )
 
 
@@ -4902,8 +5699,8 @@ _ADMINCONFIGSTATUSMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7063,
-  serialized_end=7227,
+  serialized_start=8317,
+  serialized_end=8481,
 )
 
 
@@ -4968,8 +5765,8 @@ _ADMINNETWORKPROPERTIESMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7229,
-  serialized_end=7348,
+  serialized_start=8483,
+  serialized_end=8602,
 )
 
 
@@ -4999,8 +5796,8 @@ _ADMINCONTROLLERLINESMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7350,
-  serialized_end=7405,
+  serialized_start=8604,
+  serialized_end=8659,
 )
 
 
@@ -5037,8 +5834,8 @@ _ADMINDEVICESTATUSMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7407,
-  serialized_end=7471,
+  serialized_start=8661,
+  serialized_end=8725,
 )
 
 
@@ -5082,8 +5879,39 @@ _ADMINSECURELOGINMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7473,
-  serialized_end=7546,
+  serialized_start=8727,
+  serialized_end=8800,
+)
+
+
+_ADMINDALISENSORTYPEMESSAGE = _descriptor.Descriptor(
+  name='AdminDALISensorTypeMessage',
+  full_name='AdminDALISensorTypeMessage',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='type', full_name='AdminDALISensorTypeMessage.type', index=0,
+      number=1, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=8802,
+  serialized_end=8861,
 )
 
 
@@ -5157,6 +5985,13 @@ _ADMINMESSAGE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='dali_sensor_type', full_name='AdminMessage.dali_sensor_type', index=9,
+      number=10, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -5172,8 +6007,8 @@ _ADMINMESSAGE = _descriptor.Descriptor(
       name='payload', full_name='AdminMessage.payload',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=7549,
-  serialized_end=8008,
+  serialized_start=8864,
+  serialized_end=9380,
 )
 
 
@@ -5224,8 +6059,8 @@ _DATAMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8010,
-  serialized_end=8085,
+  serialized_start=9382,
+  serialized_end=9457,
 )
 
 
@@ -5297,8 +6132,8 @@ _FIRMWAREMETAMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8088,
-  serialized_end=8306,
+  serialized_start=9460,
+  serialized_end=9678,
 )
 
 
@@ -5328,8 +6163,8 @@ _FIRMWARECONTROLMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8308,
-  serialized_end=8367,
+  serialized_start=9680,
+  serialized_end=9739,
 )
 
 
@@ -5373,8 +6208,482 @@ _FIRMWARECHUNKMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8369,
-  serialized_end=8469,
+  serialized_start=9741,
+  serialized_end=9841,
+)
+
+
+_SYSTEMLOGREADMESSAGE = _descriptor.Descriptor(
+  name='SystemLogReadMessage',
+  full_name='SystemLogReadMessage',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='log_start_address', full_name='SystemLogReadMessage.log_start_address', index=0,
+      number=1, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='logs_requested', full_name='SystemLogReadMessage.logs_requested', index=1,
+      number=2, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='logs', full_name='SystemLogReadMessage.logs', index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=9843,
+  serialized_end=9949,
+)
+
+
+_SYSTEMLOGMESSAGE = _descriptor.Descriptor(
+  name='SystemLogMessage',
+  full_name='SystemLogMessage',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='time_since_boot', full_name='SystemLogMessage.time_since_boot', index=0,
+      number=1, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='boot', full_name='SystemLogMessage.boot', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='netlink', full_name='SystemLogMessage.netlink', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='ntp', full_name='SystemLogMessage.ntp', index=3,
+      number=4, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='trigger', full_name='SystemLogMessage.trigger', index=4,
+      number=5, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='spektra', full_name='SystemLogMessage.spektra', index=5,
+      number=6, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='schedule', full_name='SystemLogMessage.schedule', index=6,
+      number=7, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='userstart', full_name='SystemLogMessage.userstart', index=7,
+      number=8, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='packet', full_name='SystemLogMessage.packet',
+      index=0, containing_type=None, fields=[]),
+  ],
+  serialized_start=9952,
+  serialized_end=10263,
+)
+
+
+_SYSTEMLOGBOOT = _descriptor.Descriptor(
+  name='SystemLogBoot',
+  full_name='SystemLogBoot',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='timeclock', full_name='SystemLogBoot.timeclock', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='flags', full_name='SystemLogBoot.flags', index=1,
+      number=2, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=10265,
+  serialized_end=10333,
+)
+
+
+_SYSTEMLOGNETLINK = _descriptor.Descriptor(
+  name='SystemLogNetLink',
+  full_name='SystemLogNetLink',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='is_linked', full_name='SystemLogNetLink.is_linked', index=0,
+      number=1, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=10335,
+  serialized_end=10372,
+)
+
+
+_SYSTEMLOGNTP = _descriptor.Descriptor(
+  name='SystemLogNTP',
+  full_name='SystemLogNTP',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='timeclock', full_name='SystemLogNTP.timeclock', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=10374,
+  serialized_end=10426,
+)
+
+
+_SYSTEMLOGTRIGGER = _descriptor.Descriptor(
+  name='SystemLogTrigger',
+  full_name='SystemLogTrigger',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='trigger', full_name='SystemLogTrigger.trigger', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='source', full_name='SystemLogTrigger.source', index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=10428,
+  serialized_end=10507,
+)
+
+
+_SYSTEMLOGSPEKTRA = _descriptor.Descriptor(
+  name='SystemLogSpektra',
+  full_name='SystemLogSpektra',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='action', full_name='SystemLogSpektra.action', index=0,
+      number=1, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='type', full_name='SystemLogSpektra.type', index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='index', full_name='SystemLogSpektra.index', index=2,
+      number=3, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=10509,
+  serialized_end=10612,
+)
+
+
+_SYSTEMLOGSCHEDULE = _descriptor.Descriptor(
+  name='SystemLogSchedule',
+  full_name='SystemLogSchedule',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='index', full_name='SystemLogSchedule.index', index=0,
+      number=1, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='isStart', full_name='SystemLogSchedule.isStart', index=1,
+      number=2, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='second', full_name='SystemLogSchedule.second', index=2,
+      number=3, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='minute', full_name='SystemLogSchedule.minute', index=3,
+      number=4, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='hour', full_name='SystemLogSchedule.hour', index=4,
+      number=5, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=10614,
+  serialized_end=10711,
+)
+
+
+_SYSTEMLOGUSERSTART = _descriptor.Descriptor(
+  name='SystemLogUserStart',
+  full_name='SystemLogUserStart',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='timeclock', full_name='SystemLogUserStart.timeclock', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=10713,
+  serialized_end=10771,
+)
+
+
+_SYSTEMMETADATAREADMESSAGE = _descriptor.Descriptor(
+  name='SystemMetaDataReadMessage',
+  full_name='SystemMetaDataReadMessage',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='input_press_counter', full_name='SystemMetaDataReadMessage.input_press_counter', index=0,
+      number=1, type=13, cpp_type=3, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='list_start_counter', full_name='SystemMetaDataReadMessage.list_start_counter', index=1,
+      number=2, type=13, cpp_type=3, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='schedules_counter', full_name='SystemMetaDataReadMessage.schedules_counter', index=2,
+      number=3, type=13, cpp_type=3, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='screen_on_time', full_name='SystemMetaDataReadMessage.screen_on_time', index=3,
+      number=4, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='screen_dim_time', full_name='SystemMetaDataReadMessage.screen_dim_time', index=4,
+      number=5, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='screen_saver_time', full_name='SystemMetaDataReadMessage.screen_saver_time', index=5,
+      number=6, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='reboot_counter', full_name='SystemMetaDataReadMessage.reboot_counter', index=6,
+      number=7, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=10774,
+  serialized_end=10985,
 )
 
 
@@ -5435,8 +6744,8 @@ _TRIGGEREVENT = _descriptor.Descriptor(
       name='payload', full_name='TriggerEvent.payload',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=8472,
-  serialized_end=8627,
+  serialized_start=10988,
+  serialized_end=11143,
 )
 
 
@@ -5497,8 +6806,8 @@ _EVENTMESSAGE = _descriptor.Descriptor(
       name='event_data', full_name='EventMessage.event_data',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=8630,
-  serialized_end=8839,
+  serialized_start=11146,
+  serialized_end=11355,
 )
 
 
@@ -5824,6 +7133,55 @@ _EDIDIOMESSAGE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='spektra_calendar_day', full_name='EdidioMessage.spektra_calendar_day', index=45,
+      number=48, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='spektra_calendar_overview', full_name='EdidioMessage.spektra_calendar_overview', index=46,
+      number=49, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='inputs_dali', full_name='EdidioMessage.inputs_dali', index=47,
+      number=50, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='logs_read', full_name='EdidioMessage.logs_read', index=48,
+      number=51, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='metadata_read', full_name='EdidioMessage.metadata_read', index=49,
+      number=52, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='dali_addressing_message', full_name='EdidioMessage.dali_addressing_message', index=50,
+      number=53, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='dali_remapping_message', full_name='EdidioMessage.dali_remapping_message', index=51,
+      number=54, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -5839,8 +7197,8 @@ _EDIDIOMESSAGE = _descriptor.Descriptor(
       name='payload', full_name='EdidioMessage.payload',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=8842,
-  serialized_end=10856,
+  serialized_start=11358,
+  serialized_end=13762,
 )
 
 _ACKMESSAGE.fields_by_name['payload'].enum_type = _ACKMESSAGETYPE
@@ -5858,7 +7216,13 @@ _IOINPUTMESSAGE.fields_by_name['button_state'].enum_type = _TRIGGEROPERATIONTYPE
 _IOINPUTMESSAGE.fields_by_name['short_press'].message_type = _TRIGGERMESSAGE
 _IOINPUTMESSAGE.fields_by_name['long_press'].message_type = _TRIGGERMESSAGE
 _IOOUTPUTMESSAGE.fields_by_name['type'].enum_type = _TRIGGEROPERATIONTYPE
+_DALIINPUTMESSAGE.fields_by_name['button_state'].enum_type = _TRIGGEROPERATIONTYPE
+_DALIINPUTMESSAGE.fields_by_name['short_press'].message_type = _TRIGGERMESSAGE
+_DALIINPUTMESSAGE.fields_by_name['long_press'].message_type = _TRIGGERMESSAGE
 _IOIRMESSAGE.fields_by_name['action'].message_type = _TRIGGERMESSAGE
+_SENSORMESSAGE.fields_by_name['detection_trigger'].message_type = _TRIGGERMESSAGE
+_SENSORMESSAGE.fields_by_name['warning_trigger'].message_type = _TRIGGERMESSAGE
+_SENSORMESSAGE.fields_by_name['idle_trigger'].message_type = _TRIGGERMESSAGE
 _LISTSTEPMESSAGE.fields_by_name['action'].message_type = _TRIGGERMESSAGE
 _ALARMMESSAGE.fields_by_name['start_time'].message_type = _TIMECLOCKMESSAGE
 _ALARMMESSAGE.fields_by_name['end_time'].message_type = _TIMECLOCKMESSAGE
@@ -5871,6 +7235,7 @@ _BURNINMESSAGE.fields_by_name['states'].message_type = _BURNINBITSMESSAGE
 _EXTERNALTRIGGERMESSAGE.fields_by_name['trigger'].message_type = _TRIGGERMESSAGE
 _INPUTMULTIMESSAGE.fields_by_name['inputs'].message_type = _IOINPUTMESSAGE
 _OUTPUTMULTIMESSAGE.fields_by_name['outputs'].message_type = _IOOUTPUTMESSAGE
+_DALIINPUTMULTIMESSAGE.fields_by_name['inputs'].message_type = _DALIINPUTMESSAGE
 _IRMULTIMESSAGE.fields_by_name['irs'].message_type = _IOIRMESSAGE
 _LISTMESSAGE.fields_by_name['step'].message_type = _LISTSTEPMESSAGE
 _EXTENDEDLISTMESSAGE.fields_by_name['step'].message_type = _LISTSTEPMESSAGE
@@ -5881,6 +7246,7 @@ _LOGICMESSAGE.fields_by_name['comparison_type'].enum_type = _LOGICCOMPARISONTYPE
 _LOGICMESSAGE.fields_by_name['actionA'].message_type = _TRIGGERMESSAGE
 _LOGICMESSAGE.fields_by_name['actionB'].message_type = _TRIGGERMESSAGE
 _LOGICMULTIMESSAGE.fields_by_name['logic'].message_type = _LOGICMESSAGE
+_SENSORCOMMANDMESSAGE.fields_by_name['type'].enum_type = _SENSORCOMMANDTYPE
 _UPDATETIMEMESSAGE.fields_by_name['time'].message_type = _TIMECLOCKMESSAGE
 _READDEVICEMESSAGE.fields_by_name['type'].enum_type = _READTYPE
 _DALIMESSAGE.fields_by_name['command'].enum_type = _DALICOMMANDTYPE
@@ -5889,11 +7255,11 @@ _DALIMESSAGE.fields_by_name['query'].enum_type = _DALIQUERYTYPE
 _DALIMESSAGE.fields_by_name['type8'].enum_type = _TYPE8COMMANDTYPE
 _DALIMESSAGE.fields_by_name['dtr'].message_type = _DTRPAYLOADMESSAGE
 _DALIMESSAGE.oneofs_by_name['action'].fields.append(
-  _DALIMESSAGE.fields_by_name['edali_command'])
-_DALIMESSAGE.fields_by_name['edali_command'].containing_oneof = _DALIMESSAGE.oneofs_by_name['action']
+  _DALIMESSAGE.fields_by_name['frame_25_bit'])
+_DALIMESSAGE.fields_by_name['frame_25_bit'].containing_oneof = _DALIMESSAGE.oneofs_by_name['action']
 _DALIMESSAGE.oneofs_by_name['action'].fields.append(
-  _DALIMESSAGE.fields_by_name['edali_command_reply'])
-_DALIMESSAGE.fields_by_name['edali_command_reply'].containing_oneof = _DALIMESSAGE.oneofs_by_name['action']
+  _DALIMESSAGE.fields_by_name['frame_25_bit_reply'])
+_DALIMESSAGE.fields_by_name['frame_25_bit_reply'].containing_oneof = _DALIMESSAGE.oneofs_by_name['action']
 _DALIMESSAGE.oneofs_by_name['action'].fields.append(
   _DALIMESSAGE.fields_by_name['command'])
 _DALIMESSAGE.fields_by_name['command'].containing_oneof = _DALIMESSAGE.oneofs_by_name['action']
@@ -5906,6 +7272,18 @@ _DALIMESSAGE.fields_by_name['query'].containing_oneof = _DALIMESSAGE.oneofs_by_n
 _DALIMESSAGE.oneofs_by_name['action'].fields.append(
   _DALIMESSAGE.fields_by_name['type8'])
 _DALIMESSAGE.fields_by_name['type8'].containing_oneof = _DALIMESSAGE.oneofs_by_name['action']
+_DALIMESSAGE.oneofs_by_name['action'].fields.append(
+  _DALIMESSAGE.fields_by_name['frame_16_bit'])
+_DALIMESSAGE.fields_by_name['frame_16_bit'].containing_oneof = _DALIMESSAGE.oneofs_by_name['action']
+_DALIMESSAGE.oneofs_by_name['action'].fields.append(
+  _DALIMESSAGE.fields_by_name['frame_16_bit_reply'])
+_DALIMESSAGE.fields_by_name['frame_16_bit_reply'].containing_oneof = _DALIMESSAGE.oneofs_by_name['action']
+_DALIMESSAGE.oneofs_by_name['action'].fields.append(
+  _DALIMESSAGE.fields_by_name['frame_24_bit'])
+_DALIMESSAGE.fields_by_name['frame_24_bit'].containing_oneof = _DALIMESSAGE.oneofs_by_name['action']
+_DALIMESSAGE.oneofs_by_name['action'].fields.append(
+  _DALIMESSAGE.fields_by_name['frame_24_bit_reply'])
+_DALIMESSAGE.fields_by_name['frame_24_bit_reply'].containing_oneof = _DALIMESSAGE.oneofs_by_name['action']
 _DALIMESSAGE.oneofs_by_name['params'].fields.append(
   _DALIMESSAGE.fields_by_name['arg'])
 _DALIMESSAGE.fields_by_name['arg'].containing_oneof = _DALIMESSAGE.oneofs_by_name['params']
@@ -5915,16 +7293,23 @@ _DALIMESSAGE.fields_by_name['dtr'].containing_oneof = _DALIMESSAGE.oneofs_by_nam
 _DALISTATUSFLAGMESSAGE.fields_by_name['flags'].enum_type = _DALISTATUSTYPE
 _DALIQUERYRESPONSE.fields_by_name['status_flags'].message_type = _DALISTATUSFLAGMESSAGE
 _DALIQUERYRESPONSE.fields_by_name['data'].message_type = _PAYLOADMESSAGE
+_DALIQUERYRESPONSE.fields_by_name['dali_flag'].enum_type = _DALIRXSTATUSFLAG
+_DALIQUERYRESPONSE.fields_by_name['reponse_data'].message_type = _PAYLOADMESSAGE
 _DALIQUERYRESPONSE.oneofs_by_name['payload'].fields.append(
   _DALIQUERYRESPONSE.fields_by_name['status_flags'])
 _DALIQUERYRESPONSE.fields_by_name['status_flags'].containing_oneof = _DALIQUERYRESPONSE.oneofs_by_name['payload']
 _DALIQUERYRESPONSE.oneofs_by_name['payload'].fields.append(
   _DALIQUERYRESPONSE.fields_by_name['data'])
 _DALIQUERYRESPONSE.fields_by_name['data'].containing_oneof = _DALIQUERYRESPONSE.oneofs_by_name['payload']
+_DALIADDRESSINGMESSAGE.fields_by_name['type'].enum_type = _DALIADDRESSINGTYPE
+_DALIADDRESSINGMESSAGE.fields_by_name['error'].enum_type = _DALIADDRESSINGERROR
 _SPEKTRASETTINGMESSAGE.fields_by_name['unscheduled_behaviour'].enum_type = _SPEKTRAUNSCHEDULEDBEHAVIOURTYPE
+_SPEKTRASETTINGMESSAGE.fields_by_name['line_addressing'].enum_type = _LINEADDRESSINGTYPE
 _SPEKTRASEQUENCECONFIGMESSAGE.fields_by_name['transition'].enum_type = _SPEKTRATRANSITIONTYPE
 _SPEKTRASEQUENCECONFIGMESSAGE.fields_by_name['colours'].message_type = _SPEKTRACOLOURCONFIGMESSAGE
 _SPEKTRACALENDARMESSAGE.fields_by_name['type'].enum_type = _SPEKTRATARGETTYPE
+_SPEKTRACALENDARDAYMESSAGE.fields_by_name['type'].enum_type = _SPEKTRATARGETTYPE
+_SPEKTRACALENDAROVERVIEWMESSAGE.fields_by_name['days'].message_type = _SPEKTRACALENDARDAYMESSAGE
 _SPEKTRATHEMECONFIGMESSAGE.fields_by_name['colours'].message_type = _SPEKTRACOLOURCONFIGMESSAGE
 _SPEKTRAREADMESSAGE.fields_by_name['type'].enum_type = _SPEKTRATARGETTYPE
 _SPEKTRACONTROLMESSAGE.fields_by_name['type'].enum_type = _SPEKTRATARGETTYPE
@@ -5934,6 +7319,7 @@ _DIAGNOSTICSYSTEMINFORESPONSE.fields_by_name['lines'].enum_type = _LINETYPE
 _DIAGNOSTICMESSAGE.fields_by_name['type'].enum_type = _DIAGNOSTICMESSAGETYPE
 _ADMINCONFIGSTATUSMESSAGE.fields_by_name['alarm_time_from_reg'].message_type = _TIMECLOCKMESSAGE
 _ADMINCONTROLLERLINESMESSAGE.fields_by_name['lines'].enum_type = _LINETYPE
+_ADMINDALISENSORTYPEMESSAGE.fields_by_name['type'].enum_type = _DALISENSORTYPE
 _ADMINMESSAGE.fields_by_name['command'].enum_type = _ADMINCOMMANDTYPE
 _ADMINMESSAGE.fields_by_name['target'].enum_type = _ADMINPROPERTYTYPE
 _ADMINMESSAGE.fields_by_name['data'].message_type = _PAYLOADMESSAGE
@@ -5943,6 +7329,7 @@ _ADMINMESSAGE.fields_by_name['controller_lines'].message_type = _ADMINCONTROLLER
 _ADMINMESSAGE.fields_by_name['device_status'].message_type = _ADMINDEVICESTATUSMESSAGE
 _ADMINMESSAGE.fields_by_name['config_status'].message_type = _ADMINCONFIGSTATUSMESSAGE
 _ADMINMESSAGE.fields_by_name['device_time'].message_type = _UPDATETIMEMESSAGE
+_ADMINMESSAGE.fields_by_name['dali_sensor_type'].message_type = _ADMINDALISENSORTYPEMESSAGE
 _ADMINMESSAGE.oneofs_by_name['payload'].fields.append(
   _ADMINMESSAGE.fields_by_name['data'])
 _ADMINMESSAGE.fields_by_name['data'].containing_oneof = _ADMINMESSAGE.oneofs_by_name['payload']
@@ -5964,8 +7351,47 @@ _ADMINMESSAGE.fields_by_name['config_status'].containing_oneof = _ADMINMESSAGE.o
 _ADMINMESSAGE.oneofs_by_name['payload'].fields.append(
   _ADMINMESSAGE.fields_by_name['device_time'])
 _ADMINMESSAGE.fields_by_name['device_time'].containing_oneof = _ADMINMESSAGE.oneofs_by_name['payload']
+_ADMINMESSAGE.oneofs_by_name['payload'].fields.append(
+  _ADMINMESSAGE.fields_by_name['dali_sensor_type'])
+_ADMINMESSAGE.fields_by_name['dali_sensor_type'].containing_oneof = _ADMINMESSAGE.oneofs_by_name['payload']
 _FIRMWARECONTROLMESSAGE.fields_by_name['cmd'].enum_type = _FIRMWARECOMMANDTYPE
 _FIRMWARECHUNKMESSAGE.fields_by_name['payload'].message_type = _DATAMESSAGE
+_SYSTEMLOGREADMESSAGE.fields_by_name['logs'].message_type = _SYSTEMLOGMESSAGE
+_SYSTEMLOGMESSAGE.fields_by_name['boot'].message_type = _SYSTEMLOGBOOT
+_SYSTEMLOGMESSAGE.fields_by_name['netlink'].message_type = _SYSTEMLOGNETLINK
+_SYSTEMLOGMESSAGE.fields_by_name['ntp'].message_type = _SYSTEMLOGNTP
+_SYSTEMLOGMESSAGE.fields_by_name['trigger'].message_type = _SYSTEMLOGTRIGGER
+_SYSTEMLOGMESSAGE.fields_by_name['spektra'].message_type = _SYSTEMLOGSPEKTRA
+_SYSTEMLOGMESSAGE.fields_by_name['schedule'].message_type = _SYSTEMLOGSCHEDULE
+_SYSTEMLOGMESSAGE.fields_by_name['userstart'].message_type = _SYSTEMLOGUSERSTART
+_SYSTEMLOGMESSAGE.oneofs_by_name['packet'].fields.append(
+  _SYSTEMLOGMESSAGE.fields_by_name['boot'])
+_SYSTEMLOGMESSAGE.fields_by_name['boot'].containing_oneof = _SYSTEMLOGMESSAGE.oneofs_by_name['packet']
+_SYSTEMLOGMESSAGE.oneofs_by_name['packet'].fields.append(
+  _SYSTEMLOGMESSAGE.fields_by_name['netlink'])
+_SYSTEMLOGMESSAGE.fields_by_name['netlink'].containing_oneof = _SYSTEMLOGMESSAGE.oneofs_by_name['packet']
+_SYSTEMLOGMESSAGE.oneofs_by_name['packet'].fields.append(
+  _SYSTEMLOGMESSAGE.fields_by_name['ntp'])
+_SYSTEMLOGMESSAGE.fields_by_name['ntp'].containing_oneof = _SYSTEMLOGMESSAGE.oneofs_by_name['packet']
+_SYSTEMLOGMESSAGE.oneofs_by_name['packet'].fields.append(
+  _SYSTEMLOGMESSAGE.fields_by_name['trigger'])
+_SYSTEMLOGMESSAGE.fields_by_name['trigger'].containing_oneof = _SYSTEMLOGMESSAGE.oneofs_by_name['packet']
+_SYSTEMLOGMESSAGE.oneofs_by_name['packet'].fields.append(
+  _SYSTEMLOGMESSAGE.fields_by_name['spektra'])
+_SYSTEMLOGMESSAGE.fields_by_name['spektra'].containing_oneof = _SYSTEMLOGMESSAGE.oneofs_by_name['packet']
+_SYSTEMLOGMESSAGE.oneofs_by_name['packet'].fields.append(
+  _SYSTEMLOGMESSAGE.fields_by_name['schedule'])
+_SYSTEMLOGMESSAGE.fields_by_name['schedule'].containing_oneof = _SYSTEMLOGMESSAGE.oneofs_by_name['packet']
+_SYSTEMLOGMESSAGE.oneofs_by_name['packet'].fields.append(
+  _SYSTEMLOGMESSAGE.fields_by_name['userstart'])
+_SYSTEMLOGMESSAGE.fields_by_name['userstart'].containing_oneof = _SYSTEMLOGMESSAGE.oneofs_by_name['packet']
+_SYSTEMLOGBOOT.fields_by_name['timeclock'].message_type = _TIMECLOCKMESSAGE
+_SYSTEMLOGNTP.fields_by_name['timeclock'].message_type = _TIMECLOCKMESSAGE
+_SYSTEMLOGTRIGGER.fields_by_name['trigger'].message_type = _TRIGGERMESSAGE
+_SYSTEMLOGTRIGGER.fields_by_name['source'].enum_type = _READTYPE
+_SYSTEMLOGSPEKTRA.fields_by_name['action'].enum_type = _SPEKTRAACTIONTYPE
+_SYSTEMLOGSPEKTRA.fields_by_name['type'].enum_type = _SPEKTRATARGETTYPE
+_SYSTEMLOGUSERSTART.fields_by_name['timeclock'].message_type = _TIMECLOCKMESSAGE
 _TRIGGEREVENT.fields_by_name['type'].enum_type = _TRIGGERTYPE
 _TRIGGEREVENT.fields_by_name['dali_command'].enum_type = _DALICOMMANDTYPE
 _TRIGGEREVENT.oneofs_by_name['payload'].fields.append(
@@ -6035,6 +7461,13 @@ _EDIDIOMESSAGE.fields_by_name['rdm_response_message'].message_type = _RDMRESPONS
 _EDIDIOMESSAGE.fields_by_name['logic_message'].message_type = _LOGICMULTIMESSAGE
 _EDIDIOMESSAGE.fields_by_name['secure_login'].message_type = _ADMINSECURELOGINMESSAGE
 _EDIDIOMESSAGE.fields_by_name['device_state_message'].message_type = _DEVICESTATEMESSAGE
+_EDIDIOMESSAGE.fields_by_name['spektra_calendar_day'].message_type = _SPEKTRACALENDARDAYMESSAGE
+_EDIDIOMESSAGE.fields_by_name['spektra_calendar_overview'].message_type = _SPEKTRACALENDAROVERVIEWMESSAGE
+_EDIDIOMESSAGE.fields_by_name['inputs_dali'].message_type = _DALIINPUTMULTIMESSAGE
+_EDIDIOMESSAGE.fields_by_name['logs_read'].message_type = _SYSTEMLOGREADMESSAGE
+_EDIDIOMESSAGE.fields_by_name['metadata_read'].message_type = _SYSTEMMETADATAREADMESSAGE
+_EDIDIOMESSAGE.fields_by_name['dali_addressing_message'].message_type = _DALIADDRESSINGMESSAGE
+_EDIDIOMESSAGE.fields_by_name['dali_remapping_message'].message_type = _DALIREMAPPINGMESSAGE
 _EDIDIOMESSAGE.oneofs_by_name['payload'].fields.append(
   _EDIDIOMESSAGE.fields_by_name['ack'])
 _EDIDIOMESSAGE.fields_by_name['ack'].containing_oneof = _EDIDIOMESSAGE.oneofs_by_name['payload']
@@ -6167,6 +7600,27 @@ _EDIDIOMESSAGE.fields_by_name['secure_login'].containing_oneof = _EDIDIOMESSAGE.
 _EDIDIOMESSAGE.oneofs_by_name['payload'].fields.append(
   _EDIDIOMESSAGE.fields_by_name['device_state_message'])
 _EDIDIOMESSAGE.fields_by_name['device_state_message'].containing_oneof = _EDIDIOMESSAGE.oneofs_by_name['payload']
+_EDIDIOMESSAGE.oneofs_by_name['payload'].fields.append(
+  _EDIDIOMESSAGE.fields_by_name['spektra_calendar_day'])
+_EDIDIOMESSAGE.fields_by_name['spektra_calendar_day'].containing_oneof = _EDIDIOMESSAGE.oneofs_by_name['payload']
+_EDIDIOMESSAGE.oneofs_by_name['payload'].fields.append(
+  _EDIDIOMESSAGE.fields_by_name['spektra_calendar_overview'])
+_EDIDIOMESSAGE.fields_by_name['spektra_calendar_overview'].containing_oneof = _EDIDIOMESSAGE.oneofs_by_name['payload']
+_EDIDIOMESSAGE.oneofs_by_name['payload'].fields.append(
+  _EDIDIOMESSAGE.fields_by_name['inputs_dali'])
+_EDIDIOMESSAGE.fields_by_name['inputs_dali'].containing_oneof = _EDIDIOMESSAGE.oneofs_by_name['payload']
+_EDIDIOMESSAGE.oneofs_by_name['payload'].fields.append(
+  _EDIDIOMESSAGE.fields_by_name['logs_read'])
+_EDIDIOMESSAGE.fields_by_name['logs_read'].containing_oneof = _EDIDIOMESSAGE.oneofs_by_name['payload']
+_EDIDIOMESSAGE.oneofs_by_name['payload'].fields.append(
+  _EDIDIOMESSAGE.fields_by_name['metadata_read'])
+_EDIDIOMESSAGE.fields_by_name['metadata_read'].containing_oneof = _EDIDIOMESSAGE.oneofs_by_name['payload']
+_EDIDIOMESSAGE.oneofs_by_name['payload'].fields.append(
+  _EDIDIOMESSAGE.fields_by_name['dali_addressing_message'])
+_EDIDIOMESSAGE.fields_by_name['dali_addressing_message'].containing_oneof = _EDIDIOMESSAGE.oneofs_by_name['payload']
+_EDIDIOMESSAGE.oneofs_by_name['payload'].fields.append(
+  _EDIDIOMESSAGE.fields_by_name['dali_remapping_message'])
+_EDIDIOMESSAGE.fields_by_name['dali_remapping_message'].containing_oneof = _EDIDIOMESSAGE.oneofs_by_name['payload']
 DESCRIPTOR.message_types_by_name['AckMessage'] = _ACKMESSAGE
 DESCRIPTOR.message_types_by_name['PayloadMessage'] = _PAYLOADMESSAGE
 DESCRIPTOR.message_types_by_name['AytMessage'] = _AYTMESSAGE
@@ -6176,6 +7630,7 @@ DESCRIPTOR.message_types_by_name['TimeClockMessage'] = _TIMECLOCKMESSAGE
 DESCRIPTOR.message_types_by_name['BurnInBitsMessage'] = _BURNINBITSMESSAGE
 DESCRIPTOR.message_types_by_name['IOInputMessage'] = _IOINPUTMESSAGE
 DESCRIPTOR.message_types_by_name['IOOutputMessage'] = _IOOUTPUTMESSAGE
+DESCRIPTOR.message_types_by_name['DALIInputMessage'] = _DALIINPUTMESSAGE
 DESCRIPTOR.message_types_by_name['IOIRMessage'] = _IOIRMESSAGE
 DESCRIPTOR.message_types_by_name['SensorMessage'] = _SENSORMESSAGE
 DESCRIPTOR.message_types_by_name['ListStepMessage'] = _LISTSTEPMESSAGE
@@ -6184,6 +7639,7 @@ DESCRIPTOR.message_types_by_name['BurnInMessage'] = _BURNINMESSAGE
 DESCRIPTOR.message_types_by_name['ExternalTriggerMessage'] = _EXTERNALTRIGGERMESSAGE
 DESCRIPTOR.message_types_by_name['InputMultiMessage'] = _INPUTMULTIMESSAGE
 DESCRIPTOR.message_types_by_name['OutputMultiMessage'] = _OUTPUTMULTIMESSAGE
+DESCRIPTOR.message_types_by_name['DALIInputMultiMessage'] = _DALIINPUTMULTIMESSAGE
 DESCRIPTOR.message_types_by_name['IRMultiMessage'] = _IRMULTIMESSAGE
 DESCRIPTOR.message_types_by_name['ListMessage'] = _LISTMESSAGE
 DESCRIPTOR.message_types_by_name['ExtendedListMessage'] = _EXTENDEDLISTMESSAGE
@@ -6201,6 +7657,8 @@ DESCRIPTOR.message_types_by_name['DTRPayloadMessage'] = _DTRPAYLOADMESSAGE
 DESCRIPTOR.message_types_by_name['DALIMessage'] = _DALIMESSAGE
 DESCRIPTOR.message_types_by_name['DALIStatusFlagMessage'] = _DALISTATUSFLAGMESSAGE
 DESCRIPTOR.message_types_by_name['DALIQueryResponse'] = _DALIQUERYRESPONSE
+DESCRIPTOR.message_types_by_name['DALIAddressingMessage'] = _DALIADDRESSINGMESSAGE
+DESCRIPTOR.message_types_by_name['DALIRemappingMessage'] = _DALIREMAPPINGMESSAGE
 DESCRIPTOR.message_types_by_name['DMXMessage'] = _DMXMESSAGE
 DESCRIPTOR.message_types_by_name['RDMMessage'] = _RDMMESSAGE
 DESCRIPTOR.message_types_by_name['RDMResponseMessage'] = _RDMRESPONSEMESSAGE
@@ -6208,6 +7666,8 @@ DESCRIPTOR.message_types_by_name['SpektraSettingMessage'] = _SPEKTRASETTINGMESSA
 DESCRIPTOR.message_types_by_name['SpektraColourConfigMessage'] = _SPEKTRACOLOURCONFIGMESSAGE
 DESCRIPTOR.message_types_by_name['SpektraSequenceConfigMessage'] = _SPEKTRASEQUENCECONFIGMESSAGE
 DESCRIPTOR.message_types_by_name['SpektraCalendarMessage'] = _SPEKTRACALENDARMESSAGE
+DESCRIPTOR.message_types_by_name['SpektraCalendarDayMessage'] = _SPEKTRACALENDARDAYMESSAGE
+DESCRIPTOR.message_types_by_name['SpektraCalendarOverviewMessage'] = _SPEKTRACALENDAROVERVIEWMESSAGE
 DESCRIPTOR.message_types_by_name['SpektraThemeConfigMessage'] = _SPEKTRATHEMECONFIGMESSAGE
 DESCRIPTOR.message_types_by_name['SpektraReadMessage'] = _SPEKTRAREADMESSAGE
 DESCRIPTOR.message_types_by_name['SpektraControlMessage'] = _SPEKTRACONTROLMESSAGE
@@ -6225,11 +7685,22 @@ DESCRIPTOR.message_types_by_name['AdminNetworkPropertiesMessage'] = _ADMINNETWOR
 DESCRIPTOR.message_types_by_name['AdminControllerLinesMessage'] = _ADMINCONTROLLERLINESMESSAGE
 DESCRIPTOR.message_types_by_name['AdminDeviceStatusMessage'] = _ADMINDEVICESTATUSMESSAGE
 DESCRIPTOR.message_types_by_name['AdminSecureLoginMessage'] = _ADMINSECURELOGINMESSAGE
+DESCRIPTOR.message_types_by_name['AdminDALISensorTypeMessage'] = _ADMINDALISENSORTYPEMESSAGE
 DESCRIPTOR.message_types_by_name['AdminMessage'] = _ADMINMESSAGE
 DESCRIPTOR.message_types_by_name['DataMessage'] = _DATAMESSAGE
 DESCRIPTOR.message_types_by_name['FirmwareMetaMessage'] = _FIRMWAREMETAMESSAGE
 DESCRIPTOR.message_types_by_name['FirmwareControlMessage'] = _FIRMWARECONTROLMESSAGE
 DESCRIPTOR.message_types_by_name['FirmwareChunkMessage'] = _FIRMWARECHUNKMESSAGE
+DESCRIPTOR.message_types_by_name['SystemLogReadMessage'] = _SYSTEMLOGREADMESSAGE
+DESCRIPTOR.message_types_by_name['SystemLogMessage'] = _SYSTEMLOGMESSAGE
+DESCRIPTOR.message_types_by_name['SystemLogBoot'] = _SYSTEMLOGBOOT
+DESCRIPTOR.message_types_by_name['SystemLogNetLink'] = _SYSTEMLOGNETLINK
+DESCRIPTOR.message_types_by_name['SystemLogNTP'] = _SYSTEMLOGNTP
+DESCRIPTOR.message_types_by_name['SystemLogTrigger'] = _SYSTEMLOGTRIGGER
+DESCRIPTOR.message_types_by_name['SystemLogSpektra'] = _SYSTEMLOGSPEKTRA
+DESCRIPTOR.message_types_by_name['SystemLogSchedule'] = _SYSTEMLOGSCHEDULE
+DESCRIPTOR.message_types_by_name['SystemLogUserStart'] = _SYSTEMLOGUSERSTART
+DESCRIPTOR.message_types_by_name['SystemMetaDataReadMessage'] = _SYSTEMMETADATAREADMESSAGE
 DESCRIPTOR.message_types_by_name['TriggerEvent'] = _TRIGGEREVENT
 DESCRIPTOR.message_types_by_name['EventMessage'] = _EVENTMESSAGE
 DESCRIPTOR.message_types_by_name['EdidioMessage'] = _EDIDIOMESSAGE
@@ -6241,6 +7712,7 @@ DESCRIPTOR.enum_types_by_name['AlarmAstroType'] = _ALARMASTROTYPE
 DESCRIPTOR.enum_types_by_name['SpektraTargetType'] = _SPEKTRATARGETTYPE
 DESCRIPTOR.enum_types_by_name['SpektraActionType'] = _SPEKTRAACTIONTYPE
 DESCRIPTOR.enum_types_by_name['SpektraUnscheduledBehaviourType'] = _SPEKTRAUNSCHEDULEDBEHAVIOURTYPE
+DESCRIPTOR.enum_types_by_name['LineAddressingType'] = _LINEADDRESSINGTYPE
 DESCRIPTOR.enum_types_by_name['AckMessageType'] = _ACKMESSAGETYPE
 DESCRIPTOR.enum_types_by_name['Type8CommandType'] = _TYPE8COMMANDTYPE
 DESCRIPTOR.enum_types_by_name['Type8QueryType'] = _TYPE8QUERYTYPE
@@ -6252,11 +7724,17 @@ DESCRIPTOR.enum_types_by_name['CustomDALICommandType'] = _CUSTOMDALICOMMANDTYPE
 DESCRIPTOR.enum_types_by_name['AdminPropertyType'] = _ADMINPROPERTYTYPE
 DESCRIPTOR.enum_types_by_name['AdminCommandType'] = _ADMINCOMMANDTYPE
 DESCRIPTOR.enum_types_by_name['DALIStatusType'] = _DALISTATUSTYPE
+DESCRIPTOR.enum_types_by_name['DALIRXStatusFlag'] = _DALIRXSTATUSFLAG
 DESCRIPTOR.enum_types_by_name['DiagnosticMessageType'] = _DIAGNOSTICMESSAGETYPE
 DESCRIPTOR.enum_types_by_name['FirmwareCommandType'] = _FIRMWARECOMMANDTYPE
 DESCRIPTOR.enum_types_by_name['SpektraTransitionType'] = _SPEKTRATRANSITIONTYPE
 DESCRIPTOR.enum_types_by_name['LogicType'] = _LOGICTYPE
 DESCRIPTOR.enum_types_by_name['LogicComparisonType'] = _LOGICCOMPARISONTYPE
+DESCRIPTOR.enum_types_by_name['DALISensorType'] = _DALISENSORTYPE
+DESCRIPTOR.enum_types_by_name['SensorCommandType'] = _SENSORCOMMANDTYPE
+DESCRIPTOR.enum_types_by_name['SystemLogType'] = _SYSTEMLOGTYPE
+DESCRIPTOR.enum_types_by_name['DALIAddressingError'] = _DALIADDRESSINGERROR
+DESCRIPTOR.enum_types_by_name['DALIAddressingType'] = _DALIADDRESSINGTYPE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 AckMessage = _reflection.GeneratedProtocolMessageType('AckMessage', (_message.Message,), dict(
@@ -6322,6 +7800,13 @@ IOOutputMessage = _reflection.GeneratedProtocolMessageType('IOOutputMessage', (_
   ))
 _sym_db.RegisterMessage(IOOutputMessage)
 
+DALIInputMessage = _reflection.GeneratedProtocolMessageType('DALIInputMessage', (_message.Message,), dict(
+  DESCRIPTOR = _DALIINPUTMESSAGE,
+  __module__ = 'eDS10_ProtocolBuffer_pb2'
+  # @@protoc_insertion_point(class_scope:DALIInputMessage)
+  ))
+_sym_db.RegisterMessage(DALIInputMessage)
+
 IOIRMessage = _reflection.GeneratedProtocolMessageType('IOIRMessage', (_message.Message,), dict(
   DESCRIPTOR = _IOIRMESSAGE,
   __module__ = 'eDS10_ProtocolBuffer_pb2'
@@ -6377,6 +7862,13 @@ OutputMultiMessage = _reflection.GeneratedProtocolMessageType('OutputMultiMessag
   # @@protoc_insertion_point(class_scope:OutputMultiMessage)
   ))
 _sym_db.RegisterMessage(OutputMultiMessage)
+
+DALIInputMultiMessage = _reflection.GeneratedProtocolMessageType('DALIInputMultiMessage', (_message.Message,), dict(
+  DESCRIPTOR = _DALIINPUTMULTIMESSAGE,
+  __module__ = 'eDS10_ProtocolBuffer_pb2'
+  # @@protoc_insertion_point(class_scope:DALIInputMultiMessage)
+  ))
+_sym_db.RegisterMessage(DALIInputMultiMessage)
 
 IRMultiMessage = _reflection.GeneratedProtocolMessageType('IRMultiMessage', (_message.Message,), dict(
   DESCRIPTOR = _IRMULTIMESSAGE,
@@ -6497,6 +7989,20 @@ DALIQueryResponse = _reflection.GeneratedProtocolMessageType('DALIQueryResponse'
   ))
 _sym_db.RegisterMessage(DALIQueryResponse)
 
+DALIAddressingMessage = _reflection.GeneratedProtocolMessageType('DALIAddressingMessage', (_message.Message,), dict(
+  DESCRIPTOR = _DALIADDRESSINGMESSAGE,
+  __module__ = 'eDS10_ProtocolBuffer_pb2'
+  # @@protoc_insertion_point(class_scope:DALIAddressingMessage)
+  ))
+_sym_db.RegisterMessage(DALIAddressingMessage)
+
+DALIRemappingMessage = _reflection.GeneratedProtocolMessageType('DALIRemappingMessage', (_message.Message,), dict(
+  DESCRIPTOR = _DALIREMAPPINGMESSAGE,
+  __module__ = 'eDS10_ProtocolBuffer_pb2'
+  # @@protoc_insertion_point(class_scope:DALIRemappingMessage)
+  ))
+_sym_db.RegisterMessage(DALIRemappingMessage)
+
 DMXMessage = _reflection.GeneratedProtocolMessageType('DMXMessage', (_message.Message,), dict(
   DESCRIPTOR = _DMXMESSAGE,
   __module__ = 'eDS10_ProtocolBuffer_pb2'
@@ -6545,6 +8051,20 @@ SpektraCalendarMessage = _reflection.GeneratedProtocolMessageType('SpektraCalend
   # @@protoc_insertion_point(class_scope:SpektraCalendarMessage)
   ))
 _sym_db.RegisterMessage(SpektraCalendarMessage)
+
+SpektraCalendarDayMessage = _reflection.GeneratedProtocolMessageType('SpektraCalendarDayMessage', (_message.Message,), dict(
+  DESCRIPTOR = _SPEKTRACALENDARDAYMESSAGE,
+  __module__ = 'eDS10_ProtocolBuffer_pb2'
+  # @@protoc_insertion_point(class_scope:SpektraCalendarDayMessage)
+  ))
+_sym_db.RegisterMessage(SpektraCalendarDayMessage)
+
+SpektraCalendarOverviewMessage = _reflection.GeneratedProtocolMessageType('SpektraCalendarOverviewMessage', (_message.Message,), dict(
+  DESCRIPTOR = _SPEKTRACALENDAROVERVIEWMESSAGE,
+  __module__ = 'eDS10_ProtocolBuffer_pb2'
+  # @@protoc_insertion_point(class_scope:SpektraCalendarOverviewMessage)
+  ))
+_sym_db.RegisterMessage(SpektraCalendarOverviewMessage)
 
 SpektraThemeConfigMessage = _reflection.GeneratedProtocolMessageType('SpektraThemeConfigMessage', (_message.Message,), dict(
   DESCRIPTOR = _SPEKTRATHEMECONFIGMESSAGE,
@@ -6665,6 +8185,13 @@ AdminSecureLoginMessage = _reflection.GeneratedProtocolMessageType('AdminSecureL
   ))
 _sym_db.RegisterMessage(AdminSecureLoginMessage)
 
+AdminDALISensorTypeMessage = _reflection.GeneratedProtocolMessageType('AdminDALISensorTypeMessage', (_message.Message,), dict(
+  DESCRIPTOR = _ADMINDALISENSORTYPEMESSAGE,
+  __module__ = 'eDS10_ProtocolBuffer_pb2'
+  # @@protoc_insertion_point(class_scope:AdminDALISensorTypeMessage)
+  ))
+_sym_db.RegisterMessage(AdminDALISensorTypeMessage)
+
 AdminMessage = _reflection.GeneratedProtocolMessageType('AdminMessage', (_message.Message,), dict(
   DESCRIPTOR = _ADMINMESSAGE,
   __module__ = 'eDS10_ProtocolBuffer_pb2'
@@ -6699,6 +8226,76 @@ FirmwareChunkMessage = _reflection.GeneratedProtocolMessageType('FirmwareChunkMe
   # @@protoc_insertion_point(class_scope:FirmwareChunkMessage)
   ))
 _sym_db.RegisterMessage(FirmwareChunkMessage)
+
+SystemLogReadMessage = _reflection.GeneratedProtocolMessageType('SystemLogReadMessage', (_message.Message,), dict(
+  DESCRIPTOR = _SYSTEMLOGREADMESSAGE,
+  __module__ = 'eDS10_ProtocolBuffer_pb2'
+  # @@protoc_insertion_point(class_scope:SystemLogReadMessage)
+  ))
+_sym_db.RegisterMessage(SystemLogReadMessage)
+
+SystemLogMessage = _reflection.GeneratedProtocolMessageType('SystemLogMessage', (_message.Message,), dict(
+  DESCRIPTOR = _SYSTEMLOGMESSAGE,
+  __module__ = 'eDS10_ProtocolBuffer_pb2'
+  # @@protoc_insertion_point(class_scope:SystemLogMessage)
+  ))
+_sym_db.RegisterMessage(SystemLogMessage)
+
+SystemLogBoot = _reflection.GeneratedProtocolMessageType('SystemLogBoot', (_message.Message,), dict(
+  DESCRIPTOR = _SYSTEMLOGBOOT,
+  __module__ = 'eDS10_ProtocolBuffer_pb2'
+  # @@protoc_insertion_point(class_scope:SystemLogBoot)
+  ))
+_sym_db.RegisterMessage(SystemLogBoot)
+
+SystemLogNetLink = _reflection.GeneratedProtocolMessageType('SystemLogNetLink', (_message.Message,), dict(
+  DESCRIPTOR = _SYSTEMLOGNETLINK,
+  __module__ = 'eDS10_ProtocolBuffer_pb2'
+  # @@protoc_insertion_point(class_scope:SystemLogNetLink)
+  ))
+_sym_db.RegisterMessage(SystemLogNetLink)
+
+SystemLogNTP = _reflection.GeneratedProtocolMessageType('SystemLogNTP', (_message.Message,), dict(
+  DESCRIPTOR = _SYSTEMLOGNTP,
+  __module__ = 'eDS10_ProtocolBuffer_pb2'
+  # @@protoc_insertion_point(class_scope:SystemLogNTP)
+  ))
+_sym_db.RegisterMessage(SystemLogNTP)
+
+SystemLogTrigger = _reflection.GeneratedProtocolMessageType('SystemLogTrigger', (_message.Message,), dict(
+  DESCRIPTOR = _SYSTEMLOGTRIGGER,
+  __module__ = 'eDS10_ProtocolBuffer_pb2'
+  # @@protoc_insertion_point(class_scope:SystemLogTrigger)
+  ))
+_sym_db.RegisterMessage(SystemLogTrigger)
+
+SystemLogSpektra = _reflection.GeneratedProtocolMessageType('SystemLogSpektra', (_message.Message,), dict(
+  DESCRIPTOR = _SYSTEMLOGSPEKTRA,
+  __module__ = 'eDS10_ProtocolBuffer_pb2'
+  # @@protoc_insertion_point(class_scope:SystemLogSpektra)
+  ))
+_sym_db.RegisterMessage(SystemLogSpektra)
+
+SystemLogSchedule = _reflection.GeneratedProtocolMessageType('SystemLogSchedule', (_message.Message,), dict(
+  DESCRIPTOR = _SYSTEMLOGSCHEDULE,
+  __module__ = 'eDS10_ProtocolBuffer_pb2'
+  # @@protoc_insertion_point(class_scope:SystemLogSchedule)
+  ))
+_sym_db.RegisterMessage(SystemLogSchedule)
+
+SystemLogUserStart = _reflection.GeneratedProtocolMessageType('SystemLogUserStart', (_message.Message,), dict(
+  DESCRIPTOR = _SYSTEMLOGUSERSTART,
+  __module__ = 'eDS10_ProtocolBuffer_pb2'
+  # @@protoc_insertion_point(class_scope:SystemLogUserStart)
+  ))
+_sym_db.RegisterMessage(SystemLogUserStart)
+
+SystemMetaDataReadMessage = _reflection.GeneratedProtocolMessageType('SystemMetaDataReadMessage', (_message.Message,), dict(
+  DESCRIPTOR = _SYSTEMMETADATAREADMESSAGE,
+  __module__ = 'eDS10_ProtocolBuffer_pb2'
+  # @@protoc_insertion_point(class_scope:SystemMetaDataReadMessage)
+  ))
+_sym_db.RegisterMessage(SystemMetaDataReadMessage)
 
 TriggerEvent = _reflection.GeneratedProtocolMessageType('TriggerEvent', (_message.Message,), dict(
   DESCRIPTOR = _TRIGGEREVENT,

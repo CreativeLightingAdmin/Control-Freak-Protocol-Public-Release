@@ -16,6 +16,7 @@ goog.exportSymbol('proto.AckMessageType', null, global);
 goog.exportSymbol('proto.AdminCommandType', null, global);
 goog.exportSymbol('proto.AdminConfigStatusMessage', null, global);
 goog.exportSymbol('proto.AdminControllerLinesMessage', null, global);
+goog.exportSymbol('proto.AdminDALISensorTypeMessage', null, global);
 goog.exportSymbol('proto.AdminDeviceStatusMessage', null, global);
 goog.exportSymbol('proto.AdminMessage', null, global);
 goog.exportSymbol('proto.AdminNetworkPropertiesMessage', null, global);
@@ -33,9 +34,13 @@ goog.exportSymbol('proto.BurnInMultiMessage', null, global);
 goog.exportSymbol('proto.ChangeProfileMessage', null, global);
 goog.exportSymbol('proto.CustomDALICommandType', null, global);
 goog.exportSymbol('proto.DALICommandType', null, global);
+goog.exportSymbol('proto.DALIInputMessage', null, global);
+goog.exportSymbol('proto.DALIInputMultiMessage', null, global);
 goog.exportSymbol('proto.DALIMessage', null, global);
 goog.exportSymbol('proto.DALIQueryResponse', null, global);
 goog.exportSymbol('proto.DALIQueryType', null, global);
+goog.exportSymbol('proto.DALIRXStatusFlag', null, global);
+goog.exportSymbol('proto.DALISensorType', null, global);
 goog.exportSymbol('proto.DALIStatusFlagMessage', null, global);
 goog.exportSymbol('proto.DALIStatusType', null, global);
 goog.exportSymbol('proto.DMXMessage', null, global);
@@ -66,6 +71,7 @@ goog.exportSymbol('proto.InputStateMessage', null, global);
 goog.exportSymbol('proto.InputStateResponse', null, global);
 goog.exportSymbol('proto.JoinedRoomsMessage', null, global);
 goog.exportSymbol('proto.LevelCacheResponse', null, global);
+goog.exportSymbol('proto.LineAddressingType', null, global);
 goog.exportSymbol('proto.LineType', null, global);
 goog.exportSymbol('proto.ListMessage', null, global);
 goog.exportSymbol('proto.ListStepMessage', null, global);
@@ -81,9 +87,12 @@ goog.exportSymbol('proto.ReadDeviceMessage', null, global);
 goog.exportSymbol('proto.ReadType', null, global);
 goog.exportSymbol('proto.SecureDeviceSettingsMessage', null, global);
 goog.exportSymbol('proto.SensorCommandMessage', null, global);
+goog.exportSymbol('proto.SensorCommandType', null, global);
 goog.exportSymbol('proto.SensorMessage', null, global);
 goog.exportSymbol('proto.SpektraActionType', null, global);
+goog.exportSymbol('proto.SpektraCalendarDayMessage', null, global);
 goog.exportSymbol('proto.SpektraCalendarMessage', null, global);
+goog.exportSymbol('proto.SpektraCalendarOverviewMessage', null, global);
 goog.exportSymbol('proto.SpektraColourConfigMessage', null, global);
 goog.exportSymbol('proto.SpektraControlMessage', null, global);
 goog.exportSymbol('proto.SpektraReadMessage', null, global);
@@ -93,6 +102,17 @@ goog.exportSymbol('proto.SpektraTargetType', null, global);
 goog.exportSymbol('proto.SpektraThemeConfigMessage', null, global);
 goog.exportSymbol('proto.SpektraTransitionType', null, global);
 goog.exportSymbol('proto.SpektraUnscheduledBehaviourType', null, global);
+goog.exportSymbol('proto.SystemLogBoot', null, global);
+goog.exportSymbol('proto.SystemLogMessage', null, global);
+goog.exportSymbol('proto.SystemLogNTP', null, global);
+goog.exportSymbol('proto.SystemLogNetLink', null, global);
+goog.exportSymbol('proto.SystemLogReadMessage', null, global);
+goog.exportSymbol('proto.SystemLogSchedule', null, global);
+goog.exportSymbol('proto.SystemLogSpektra', null, global);
+goog.exportSymbol('proto.SystemLogTrigger', null, global);
+goog.exportSymbol('proto.SystemLogType', null, global);
+goog.exportSymbol('proto.SystemLogUserStart', null, global);
+goog.exportSymbol('proto.SystemMetaDataReadMessage', null, global);
 goog.exportSymbol('proto.TimeClockMessage', null, global);
 goog.exportSymbol('proto.TriggerEvent', null, global);
 goog.exportSymbol('proto.TriggerMessage', null, global);
@@ -772,7 +792,8 @@ proto.DeviceStateMessage.toObject = function(includeInstance, msg) {
     sensorStatesList: jspb.Message.getRepeatedField(msg, 10),
     zoneStatesList: jspb.Message.getRepeatedField(msg, 11),
     zoneSleepStatesList: jspb.Message.getRepeatedField(msg, 12),
-    zoneIndexesList: jspb.Message.getRepeatedField(msg, 13)
+    zoneIndexesList: jspb.Message.getRepeatedField(msg, 13),
+    daliInputState: jspb.Message.getFieldWithDefault(msg, 14, 0)
   };
 
   if (includeInstance) {
@@ -862,6 +883,10 @@ proto.DeviceStateMessage.deserializeBinaryFromReader = function(msg, reader) {
     case 13:
       var value = /** @type {!Array<number>} */ (reader.readPackedUint32());
       msg.setZoneIndexesList(value);
+      break;
+    case 14:
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.setDaliInputState(value);
       break;
     default:
       reader.skipField();
@@ -982,6 +1007,13 @@ proto.DeviceStateMessage.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writePackedUint32(
       13,
+      f
+    );
+  }
+  f = message.getDaliInputState();
+  if (f !== 0) {
+    writer.writeUint64(
+      14,
       f
     );
   }
@@ -1294,6 +1326,21 @@ proto.DeviceStateMessage.prototype.addZoneIndexes = function(value, opt_index) {
 
 proto.DeviceStateMessage.prototype.clearZoneIndexesList = function() {
   this.setZoneIndexesList([]);
+};
+
+
+/**
+ * optional uint64 dali_input_state = 14;
+ * @return {number}
+ */
+proto.DeviceStateMessage.prototype.getDaliInputState = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 14, 0));
+};
+
+
+/** @param {number} value */
+proto.DeviceStateMessage.prototype.setDaliInputState = function(value) {
+  jspb.Message.setProto3IntField(this, 14, value);
 };
 
 
@@ -2430,6 +2477,317 @@ proto.IOOutputMessage.prototype.setType = function(value) {
  * @extends {jspb.Message}
  * @constructor
  */
+proto.DALIInputMessage = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.DALIInputMessage, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.DALIInputMessage.displayName = 'proto.DALIInputMessage';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.DALIInputMessage.prototype.toObject = function(opt_includeInstance) {
+  return proto.DALIInputMessage.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.DALIInputMessage} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.DALIInputMessage.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    index: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    address: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    daliLine: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    buttonState: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    shortPress: (f = msg.getShortPress()) && proto.TriggerMessage.toObject(includeInstance, f),
+    longPress: (f = msg.getLongPress()) && proto.TriggerMessage.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.DALIInputMessage}
+ */
+proto.DALIInputMessage.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.DALIInputMessage;
+  return proto.DALIInputMessage.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.DALIInputMessage} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.DALIInputMessage}
+ */
+proto.DALIInputMessage.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setIndex(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setAddress(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setDaliLine(value);
+      break;
+    case 4:
+      var value = /** @type {!proto.TriggerOperationType} */ (reader.readEnum());
+      msg.setButtonState(value);
+      break;
+    case 5:
+      var value = new proto.TriggerMessage;
+      reader.readMessage(value,proto.TriggerMessage.deserializeBinaryFromReader);
+      msg.setShortPress(value);
+      break;
+    case 6:
+      var value = new proto.TriggerMessage;
+      reader.readMessage(value,proto.TriggerMessage.deserializeBinaryFromReader);
+      msg.setLongPress(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.DALIInputMessage.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.DALIInputMessage.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.DALIInputMessage} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.DALIInputMessage.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getIndex();
+  if (f !== 0) {
+    writer.writeUint32(
+      1,
+      f
+    );
+  }
+  f = message.getAddress();
+  if (f !== 0) {
+    writer.writeUint32(
+      2,
+      f
+    );
+  }
+  f = message.getDaliLine();
+  if (f !== 0) {
+    writer.writeUint32(
+      3,
+      f
+    );
+  }
+  f = message.getButtonState();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      4,
+      f
+    );
+  }
+  f = message.getShortPress();
+  if (f != null) {
+    writer.writeMessage(
+      5,
+      f,
+      proto.TriggerMessage.serializeBinaryToWriter
+    );
+  }
+  f = message.getLongPress();
+  if (f != null) {
+    writer.writeMessage(
+      6,
+      f,
+      proto.TriggerMessage.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional uint32 index = 1;
+ * @return {number}
+ */
+proto.DALIInputMessage.prototype.getIndex = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/** @param {number} value */
+proto.DALIInputMessage.prototype.setIndex = function(value) {
+  jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional uint32 address = 2;
+ * @return {number}
+ */
+proto.DALIInputMessage.prototype.getAddress = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/** @param {number} value */
+proto.DALIInputMessage.prototype.setAddress = function(value) {
+  jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+/**
+ * optional uint32 dali_line = 3;
+ * @return {number}
+ */
+proto.DALIInputMessage.prototype.getDaliLine = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/** @param {number} value */
+proto.DALIInputMessage.prototype.setDaliLine = function(value) {
+  jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+/**
+ * optional TriggerOperationType button_state = 4;
+ * @return {!proto.TriggerOperationType}
+ */
+proto.DALIInputMessage.prototype.getButtonState = function() {
+  return /** @type {!proto.TriggerOperationType} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/** @param {!proto.TriggerOperationType} value */
+proto.DALIInputMessage.prototype.setButtonState = function(value) {
+  jspb.Message.setProto3EnumField(this, 4, value);
+};
+
+
+/**
+ * optional TriggerMessage short_press = 5;
+ * @return {?proto.TriggerMessage}
+ */
+proto.DALIInputMessage.prototype.getShortPress = function() {
+  return /** @type{?proto.TriggerMessage} */ (
+    jspb.Message.getWrapperField(this, proto.TriggerMessage, 5));
+};
+
+
+/** @param {?proto.TriggerMessage|undefined} value */
+proto.DALIInputMessage.prototype.setShortPress = function(value) {
+  jspb.Message.setWrapperField(this, 5, value);
+};
+
+
+proto.DALIInputMessage.prototype.clearShortPress = function() {
+  this.setShortPress(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.DALIInputMessage.prototype.hasShortPress = function() {
+  return jspb.Message.getField(this, 5) != null;
+};
+
+
+/**
+ * optional TriggerMessage long_press = 6;
+ * @return {?proto.TriggerMessage}
+ */
+proto.DALIInputMessage.prototype.getLongPress = function() {
+  return /** @type{?proto.TriggerMessage} */ (
+    jspb.Message.getWrapperField(this, proto.TriggerMessage, 6));
+};
+
+
+/** @param {?proto.TriggerMessage|undefined} value */
+proto.DALIInputMessage.prototype.setLongPress = function(value) {
+  jspb.Message.setWrapperField(this, 6, value);
+};
+
+
+proto.DALIInputMessage.prototype.clearLongPress = function() {
+  this.setLongPress(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.DALIInputMessage.prototype.hasLongPress = function() {
+  return jspb.Message.getField(this, 6) != null;
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
 proto.IOIRMessage = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
@@ -2698,7 +3056,10 @@ proto.SensorMessage.toObject = function(includeInstance, msg) {
     motionSensors: jspb.Message.getFieldWithDefault(msg, 17, 0),
     luxSensors: jspb.Message.getFieldWithDefault(msg, 18, 0),
     offFlag: jspb.Message.getFieldWithDefault(msg, 19, 0),
-    isProgrammed: jspb.Message.getFieldWithDefault(msg, 20, false)
+    isProgrammed: jspb.Message.getFieldWithDefault(msg, 20, false),
+    detectionTrigger: (f = msg.getDetectionTrigger()) && proto.TriggerMessage.toObject(includeInstance, f),
+    warningTrigger: (f = msg.getWarningTrigger()) && proto.TriggerMessage.toObject(includeInstance, f),
+    idleTrigger: (f = msg.getIdleTrigger()) && proto.TriggerMessage.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2814,6 +3175,21 @@ proto.SensorMessage.deserializeBinaryFromReader = function(msg, reader) {
     case 20:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setIsProgrammed(value);
+      break;
+    case 21:
+      var value = new proto.TriggerMessage;
+      reader.readMessage(value,proto.TriggerMessage.deserializeBinaryFromReader);
+      msg.setDetectionTrigger(value);
+      break;
+    case 22:
+      var value = new proto.TriggerMessage;
+      reader.readMessage(value,proto.TriggerMessage.deserializeBinaryFromReader);
+      msg.setWarningTrigger(value);
+      break;
+    case 23:
+      var value = new proto.TriggerMessage;
+      reader.readMessage(value,proto.TriggerMessage.deserializeBinaryFromReader);
+      msg.setIdleTrigger(value);
       break;
     default:
       reader.skipField();
@@ -2982,6 +3358,30 @@ proto.SensorMessage.serializeBinaryToWriter = function(message, writer) {
     writer.writeBool(
       20,
       f
+    );
+  }
+  f = message.getDetectionTrigger();
+  if (f != null) {
+    writer.writeMessage(
+      21,
+      f,
+      proto.TriggerMessage.serializeBinaryToWriter
+    );
+  }
+  f = message.getWarningTrigger();
+  if (f != null) {
+    writer.writeMessage(
+      22,
+      f,
+      proto.TriggerMessage.serializeBinaryToWriter
+    );
+  }
+  f = message.getIdleTrigger();
+  if (f != null) {
+    writer.writeMessage(
+      23,
+      f,
+      proto.TriggerMessage.serializeBinaryToWriter
     );
   }
 };
@@ -3286,6 +3686,96 @@ proto.SensorMessage.prototype.getIsProgrammed = function() {
 /** @param {boolean} value */
 proto.SensorMessage.prototype.setIsProgrammed = function(value) {
   jspb.Message.setProto3BooleanField(this, 20, value);
+};
+
+
+/**
+ * optional TriggerMessage detection_trigger = 21;
+ * @return {?proto.TriggerMessage}
+ */
+proto.SensorMessage.prototype.getDetectionTrigger = function() {
+  return /** @type{?proto.TriggerMessage} */ (
+    jspb.Message.getWrapperField(this, proto.TriggerMessage, 21));
+};
+
+
+/** @param {?proto.TriggerMessage|undefined} value */
+proto.SensorMessage.prototype.setDetectionTrigger = function(value) {
+  jspb.Message.setWrapperField(this, 21, value);
+};
+
+
+proto.SensorMessage.prototype.clearDetectionTrigger = function() {
+  this.setDetectionTrigger(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.SensorMessage.prototype.hasDetectionTrigger = function() {
+  return jspb.Message.getField(this, 21) != null;
+};
+
+
+/**
+ * optional TriggerMessage warning_trigger = 22;
+ * @return {?proto.TriggerMessage}
+ */
+proto.SensorMessage.prototype.getWarningTrigger = function() {
+  return /** @type{?proto.TriggerMessage} */ (
+    jspb.Message.getWrapperField(this, proto.TriggerMessage, 22));
+};
+
+
+/** @param {?proto.TriggerMessage|undefined} value */
+proto.SensorMessage.prototype.setWarningTrigger = function(value) {
+  jspb.Message.setWrapperField(this, 22, value);
+};
+
+
+proto.SensorMessage.prototype.clearWarningTrigger = function() {
+  this.setWarningTrigger(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.SensorMessage.prototype.hasWarningTrigger = function() {
+  return jspb.Message.getField(this, 22) != null;
+};
+
+
+/**
+ * optional TriggerMessage idle_trigger = 23;
+ * @return {?proto.TriggerMessage}
+ */
+proto.SensorMessage.prototype.getIdleTrigger = function() {
+  return /** @type{?proto.TriggerMessage} */ (
+    jspb.Message.getWrapperField(this, proto.TriggerMessage, 23));
+};
+
+
+/** @param {?proto.TriggerMessage|undefined} value */
+proto.SensorMessage.prototype.setIdleTrigger = function(value) {
+  jspb.Message.setWrapperField(this, 23, value);
+};
+
+
+proto.SensorMessage.prototype.clearIdleTrigger = function() {
+  this.setIdleTrigger(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.SensorMessage.prototype.hasIdleTrigger = function() {
+  return jspb.Message.getField(this, 23) != null;
 };
 
 
@@ -4952,6 +5442,228 @@ proto.OutputMultiMessage.prototype.clearOutputsList = function() {
  * @extends {jspb.Message}
  * @constructor
  */
+proto.DALIInputMultiMessage = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.DALIInputMultiMessage.repeatedFields_, null);
+};
+goog.inherits(proto.DALIInputMultiMessage, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.DALIInputMultiMessage.displayName = 'proto.DALIInputMultiMessage';
+}
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.DALIInputMultiMessage.repeatedFields_ = [3];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.DALIInputMultiMessage.prototype.toObject = function(opt_includeInstance) {
+  return proto.DALIInputMultiMessage.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.DALIInputMultiMessage} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.DALIInputMultiMessage.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    profile: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    inputIndexOffset: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    inputsList: jspb.Message.toObjectList(msg.getInputsList(),
+    proto.DALIInputMessage.toObject, includeInstance)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.DALIInputMultiMessage}
+ */
+proto.DALIInputMultiMessage.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.DALIInputMultiMessage;
+  return proto.DALIInputMultiMessage.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.DALIInputMultiMessage} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.DALIInputMultiMessage}
+ */
+proto.DALIInputMultiMessage.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setProfile(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setInputIndexOffset(value);
+      break;
+    case 3:
+      var value = new proto.DALIInputMessage;
+      reader.readMessage(value,proto.DALIInputMessage.deserializeBinaryFromReader);
+      msg.addInputs(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.DALIInputMultiMessage.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.DALIInputMultiMessage.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.DALIInputMultiMessage} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.DALIInputMultiMessage.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getProfile();
+  if (f !== 0) {
+    writer.writeUint32(
+      1,
+      f
+    );
+  }
+  f = message.getInputIndexOffset();
+  if (f !== 0) {
+    writer.writeUint32(
+      2,
+      f
+    );
+  }
+  f = message.getInputsList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      3,
+      f,
+      proto.DALIInputMessage.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional uint32 profile = 1;
+ * @return {number}
+ */
+proto.DALIInputMultiMessage.prototype.getProfile = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/** @param {number} value */
+proto.DALIInputMultiMessage.prototype.setProfile = function(value) {
+  jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional uint32 input_index_offset = 2;
+ * @return {number}
+ */
+proto.DALIInputMultiMessage.prototype.getInputIndexOffset = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/** @param {number} value */
+proto.DALIInputMultiMessage.prototype.setInputIndexOffset = function(value) {
+  jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+/**
+ * repeated DALIInputMessage inputs = 3;
+ * @return {!Array<!proto.DALIInputMessage>}
+ */
+proto.DALIInputMultiMessage.prototype.getInputsList = function() {
+  return /** @type{!Array<!proto.DALIInputMessage>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.DALIInputMessage, 3));
+};
+
+
+/** @param {!Array<!proto.DALIInputMessage>} value */
+proto.DALIInputMultiMessage.prototype.setInputsList = function(value) {
+  jspb.Message.setRepeatedWrapperField(this, 3, value);
+};
+
+
+/**
+ * @param {!proto.DALIInputMessage=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.DALIInputMessage}
+ */
+proto.DALIInputMultiMessage.prototype.addInputs = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.DALIInputMessage, opt_index);
+};
+
+
+proto.DALIInputMultiMessage.prototype.clearInputsList = function() {
+  this.setInputsList([]);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
 proto.IRMultiMessage = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, proto.IRMultiMessage.repeatedFields_, null);
 };
@@ -6516,7 +7228,8 @@ proto.SensorCommandMessage.prototype.toObject = function(opt_includeInstance) {
 proto.SensorCommandMessage.toObject = function(includeInstance, msg) {
   var f, obj = {
     command: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    index: jspb.Message.getFieldWithDefault(msg, 2, 0)
+    index: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    type: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -6561,6 +7274,10 @@ proto.SensorCommandMessage.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {number} */ (reader.readUint32());
       msg.setIndex(value);
       break;
+    case 3:
+      var value = /** @type {!proto.SensorCommandType} */ (reader.readEnum());
+      msg.setType(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -6604,6 +7321,13 @@ proto.SensorCommandMessage.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getType();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      3,
+      f
+    );
+  }
 };
 
 
@@ -6634,6 +7358,21 @@ proto.SensorCommandMessage.prototype.getIndex = function() {
 /** @param {number} value */
 proto.SensorCommandMessage.prototype.setIndex = function(value) {
   jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+/**
+ * optional SensorCommandType type = 3;
+ * @return {!proto.SensorCommandType}
+ */
+proto.SensorCommandMessage.prototype.getType = function() {
+  return /** @type {!proto.SensorCommandType} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/** @param {!proto.SensorCommandType} value */
+proto.SensorCommandMessage.prototype.setType = function(value) {
+  jspb.Message.setProto3EnumField(this, 3, value);
 };
 
 
@@ -8418,7 +9157,9 @@ proto.DALIQueryResponse.prototype.toObject = function(opt_includeInstance) {
 proto.DALIQueryResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     statusFlags: (f = msg.getStatusFlags()) && proto.DALIStatusFlagMessage.toObject(includeInstance, f),
-    data: (f = msg.getData()) && proto.PayloadMessage.toObject(includeInstance, f)
+    data: (f = msg.getData()) && proto.PayloadMessage.toObject(includeInstance, f),
+    daliFlag: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    reponseData: (f = msg.getReponseData()) && proto.PayloadMessage.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -8465,6 +9206,15 @@ proto.DALIQueryResponse.deserializeBinaryFromReader = function(msg, reader) {
       reader.readMessage(value,proto.PayloadMessage.deserializeBinaryFromReader);
       msg.setData(value);
       break;
+    case 3:
+      var value = /** @type {!proto.DALIRXStatusFlag} */ (reader.readEnum());
+      msg.setDaliFlag(value);
+      break;
+    case 4:
+      var value = new proto.PayloadMessage;
+      reader.readMessage(value,proto.PayloadMessage.deserializeBinaryFromReader);
+      msg.setReponseData(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -8506,6 +9256,21 @@ proto.DALIQueryResponse.serializeBinaryToWriter = function(message, writer) {
   if (f != null) {
     writer.writeMessage(
       2,
+      f,
+      proto.PayloadMessage.serializeBinaryToWriter
+    );
+  }
+  f = message.getDaliFlag();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      3,
+      f
+    );
+  }
+  f = message.getReponseData();
+  if (f != null) {
+    writer.writeMessage(
+      4,
       f,
       proto.PayloadMessage.serializeBinaryToWriter
     );
@@ -8570,6 +9335,51 @@ proto.DALIQueryResponse.prototype.clearData = function() {
  */
 proto.DALIQueryResponse.prototype.hasData = function() {
   return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional DALIRXStatusFlag dali_flag = 3;
+ * @return {!proto.DALIRXStatusFlag}
+ */
+proto.DALIQueryResponse.prototype.getDaliFlag = function() {
+  return /** @type {!proto.DALIRXStatusFlag} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/** @param {!proto.DALIRXStatusFlag} value */
+proto.DALIQueryResponse.prototype.setDaliFlag = function(value) {
+  jspb.Message.setProto3EnumField(this, 3, value);
+};
+
+
+/**
+ * optional PayloadMessage reponse_data = 4;
+ * @return {?proto.PayloadMessage}
+ */
+proto.DALIQueryResponse.prototype.getReponseData = function() {
+  return /** @type{?proto.PayloadMessage} */ (
+    jspb.Message.getWrapperField(this, proto.PayloadMessage, 4));
+};
+
+
+/** @param {?proto.PayloadMessage|undefined} value */
+proto.DALIQueryResponse.prototype.setReponseData = function(value) {
+  jspb.Message.setWrapperField(this, 4, value);
+};
+
+
+proto.DALIQueryResponse.prototype.clearReponseData = function() {
+  this.setReponseData(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.DALIQueryResponse.prototype.hasReponseData = function() {
+  return jspb.Message.getField(this, 4) != null;
 };
 
 
@@ -9475,7 +10285,9 @@ proto.SpektraSettingMessage.toObject = function(includeInstance, msg) {
     channelsPerLight: jspb.Message.getFieldWithDefault(msg, 6, 0),
     channelColoursList: jspb.Message.getRepeatedField(msg, 7),
     unscheduledBehaviour: jspb.Message.getFieldWithDefault(msg, 8, 0),
-    channelMappingList: jspb.Message.getRepeatedField(msg, 9)
+    channelMappingList: jspb.Message.getRepeatedField(msg, 9),
+    lineAddressing: jspb.Message.getFieldWithDefault(msg, 10, 0),
+    zoneScaleFactor: +jspb.Message.getFieldWithDefault(msg, 11, 0.0)
   };
 
   if (includeInstance) {
@@ -9547,6 +10359,14 @@ proto.SpektraSettingMessage.deserializeBinaryFromReader = function(msg, reader) 
     case 9:
       var value = /** @type {!Array<number>} */ (reader.readPackedUint32());
       msg.setChannelMappingList(value);
+      break;
+    case 10:
+      var value = /** @type {!proto.LineAddressingType} */ (reader.readEnum());
+      msg.setLineAddressing(value);
+      break;
+    case 11:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setZoneScaleFactor(value);
       break;
     default:
       reader.skipField();
@@ -9637,6 +10457,20 @@ proto.SpektraSettingMessage.serializeBinaryToWriter = function(message, writer) 
   if (f.length > 0) {
     writer.writePackedUint32(
       9,
+      f
+    );
+  }
+  f = message.getLineAddressing();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      10,
+      f
+    );
+  }
+  f = message.getZoneScaleFactor();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      11,
       f
     );
   }
@@ -9803,6 +10637,36 @@ proto.SpektraSettingMessage.prototype.addChannelMapping = function(value, opt_in
 
 proto.SpektraSettingMessage.prototype.clearChannelMappingList = function() {
   this.setChannelMappingList([]);
+};
+
+
+/**
+ * optional LineAddressingType line_addressing = 10;
+ * @return {!proto.LineAddressingType}
+ */
+proto.SpektraSettingMessage.prototype.getLineAddressing = function() {
+  return /** @type {!proto.LineAddressingType} */ (jspb.Message.getFieldWithDefault(this, 10, 0));
+};
+
+
+/** @param {!proto.LineAddressingType} value */
+proto.SpektraSettingMessage.prototype.setLineAddressing = function(value) {
+  jspb.Message.setProto3EnumField(this, 10, value);
+};
+
+
+/**
+ * optional float zone_scale_factor = 11;
+ * @return {number}
+ */
+proto.SpektraSettingMessage.prototype.getZoneScaleFactor = function() {
+  return /** @type {number} */ (+jspb.Message.getFieldWithDefault(this, 11, 0.0));
+};
+
+
+/** @param {number} value */
+proto.SpektraSettingMessage.prototype.setZoneScaleFactor = function(value) {
+  jspb.Message.setProto3FloatField(this, 11, value);
 };
 
 
@@ -9992,7 +10856,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.SpektraSequenceConfigMessage.repeatedFields_ = [10,17];
+proto.SpektraSequenceConfigMessage.repeatedFields_ = [10,17,18];
 
 
 
@@ -10040,7 +10904,8 @@ proto.SpektraSequenceConfigMessage.toObject = function(includeInstance, msg) {
     title: jspb.Message.getFieldWithDefault(msg, 15, ""),
     hasRandomColourOrder: jspb.Message.getFieldWithDefault(msg, 16, false),
     coloursList: jspb.Message.toObjectList(msg.getColoursList(),
-    proto.SpektraColourConfigMessage.toObject, includeInstance)
+    proto.SpektraColourConfigMessage.toObject, includeInstance),
+    argsList: jspb.Message.getRepeatedField(msg, 18)
   };
 
   if (includeInstance) {
@@ -10145,6 +11010,10 @@ proto.SpektraSequenceConfigMessage.deserializeBinaryFromReader = function(msg, r
       var value = new proto.SpektraColourConfigMessage;
       reader.readMessage(value,proto.SpektraColourConfigMessage.deserializeBinaryFromReader);
       msg.addColours(value);
+      break;
+    case 18:
+      var value = /** @type {!Array<number>} */ (reader.readPackedUint32());
+      msg.setArgsList(value);
       break;
     default:
       reader.skipField();
@@ -10293,6 +11162,13 @@ proto.SpektraSequenceConfigMessage.serializeBinaryToWriter = function(message, w
       17,
       f,
       proto.SpektraColourConfigMessage.serializeBinaryToWriter
+    );
+  }
+  f = message.getArgsList();
+  if (f.length > 0) {
+    writer.writePackedUint32(
+      18,
+      f
     );
   }
 };
@@ -10585,6 +11461,35 @@ proto.SpektraSequenceConfigMessage.prototype.clearColoursList = function() {
 };
 
 
+/**
+ * repeated uint32 args = 18;
+ * @return {!Array<number>}
+ */
+proto.SpektraSequenceConfigMessage.prototype.getArgsList = function() {
+  return /** @type {!Array<number>} */ (jspb.Message.getRepeatedField(this, 18));
+};
+
+
+/** @param {!Array<number>} value */
+proto.SpektraSequenceConfigMessage.prototype.setArgsList = function(value) {
+  jspb.Message.setField(this, 18, value || []);
+};
+
+
+/**
+ * @param {!number} value
+ * @param {number=} opt_index
+ */
+proto.SpektraSequenceConfigMessage.prototype.addArgs = function(value, opt_index) {
+  jspb.Message.addToRepeatedField(this, 18, value, opt_index);
+};
+
+
+proto.SpektraSequenceConfigMessage.prototype.clearArgsList = function() {
+  this.setArgsList([]);
+};
+
+
 
 /**
  * Generated by JsPbCodeGenerator.
@@ -10800,6 +11705,397 @@ proto.SpektraCalendarMessage.prototype.addDays = function(value, opt_index) {
 
 
 proto.SpektraCalendarMessage.prototype.clearDaysList = function() {
+  this.setDaysList([]);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.SpektraCalendarDayMessage = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.SpektraCalendarDayMessage, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.SpektraCalendarDayMessage.displayName = 'proto.SpektraCalendarDayMessage';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.SpektraCalendarDayMessage.prototype.toObject = function(opt_includeInstance) {
+  return proto.SpektraCalendarDayMessage.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.SpektraCalendarDayMessage} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.SpektraCalendarDayMessage.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    dayIndex: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    type: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    targetIndex: jspb.Message.getFieldWithDefault(msg, 3, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.SpektraCalendarDayMessage}
+ */
+proto.SpektraCalendarDayMessage.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.SpektraCalendarDayMessage;
+  return proto.SpektraCalendarDayMessage.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.SpektraCalendarDayMessage} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.SpektraCalendarDayMessage}
+ */
+proto.SpektraCalendarDayMessage.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setDayIndex(value);
+      break;
+    case 2:
+      var value = /** @type {!proto.SpektraTargetType} */ (reader.readEnum());
+      msg.setType(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setTargetIndex(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.SpektraCalendarDayMessage.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.SpektraCalendarDayMessage.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.SpektraCalendarDayMessage} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.SpektraCalendarDayMessage.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getDayIndex();
+  if (f !== 0) {
+    writer.writeUint32(
+      1,
+      f
+    );
+  }
+  f = message.getType();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      2,
+      f
+    );
+  }
+  f = message.getTargetIndex();
+  if (f !== 0) {
+    writer.writeUint32(
+      3,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional uint32 day_index = 1;
+ * @return {number}
+ */
+proto.SpektraCalendarDayMessage.prototype.getDayIndex = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/** @param {number} value */
+proto.SpektraCalendarDayMessage.prototype.setDayIndex = function(value) {
+  jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional SpektraTargetType type = 2;
+ * @return {!proto.SpektraTargetType}
+ */
+proto.SpektraCalendarDayMessage.prototype.getType = function() {
+  return /** @type {!proto.SpektraTargetType} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/** @param {!proto.SpektraTargetType} value */
+proto.SpektraCalendarDayMessage.prototype.setType = function(value) {
+  jspb.Message.setProto3EnumField(this, 2, value);
+};
+
+
+/**
+ * optional uint32 target_index = 3;
+ * @return {number}
+ */
+proto.SpektraCalendarDayMessage.prototype.getTargetIndex = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/** @param {number} value */
+proto.SpektraCalendarDayMessage.prototype.setTargetIndex = function(value) {
+  jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.SpektraCalendarOverviewMessage = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.SpektraCalendarOverviewMessage.repeatedFields_, null);
+};
+goog.inherits(proto.SpektraCalendarOverviewMessage, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.SpektraCalendarOverviewMessage.displayName = 'proto.SpektraCalendarOverviewMessage';
+}
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.SpektraCalendarOverviewMessage.repeatedFields_ = [2];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.SpektraCalendarOverviewMessage.prototype.toObject = function(opt_includeInstance) {
+  return proto.SpektraCalendarOverviewMessage.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.SpektraCalendarOverviewMessage} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.SpektraCalendarOverviewMessage.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    dayOffset: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    daysList: jspb.Message.toObjectList(msg.getDaysList(),
+    proto.SpektraCalendarDayMessage.toObject, includeInstance)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.SpektraCalendarOverviewMessage}
+ */
+proto.SpektraCalendarOverviewMessage.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.SpektraCalendarOverviewMessage;
+  return proto.SpektraCalendarOverviewMessage.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.SpektraCalendarOverviewMessage} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.SpektraCalendarOverviewMessage}
+ */
+proto.SpektraCalendarOverviewMessage.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setDayOffset(value);
+      break;
+    case 2:
+      var value = new proto.SpektraCalendarDayMessage;
+      reader.readMessage(value,proto.SpektraCalendarDayMessage.deserializeBinaryFromReader);
+      msg.addDays(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.SpektraCalendarOverviewMessage.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.SpektraCalendarOverviewMessage.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.SpektraCalendarOverviewMessage} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.SpektraCalendarOverviewMessage.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getDayOffset();
+  if (f !== 0) {
+    writer.writeUint32(
+      1,
+      f
+    );
+  }
+  f = message.getDaysList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      2,
+      f,
+      proto.SpektraCalendarDayMessage.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional uint32 day_offset = 1;
+ * @return {number}
+ */
+proto.SpektraCalendarOverviewMessage.prototype.getDayOffset = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/** @param {number} value */
+proto.SpektraCalendarOverviewMessage.prototype.setDayOffset = function(value) {
+  jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * repeated SpektraCalendarDayMessage days = 2;
+ * @return {!Array<!proto.SpektraCalendarDayMessage>}
+ */
+proto.SpektraCalendarOverviewMessage.prototype.getDaysList = function() {
+  return /** @type{!Array<!proto.SpektraCalendarDayMessage>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.SpektraCalendarDayMessage, 2));
+};
+
+
+/** @param {!Array<!proto.SpektraCalendarDayMessage>} value */
+proto.SpektraCalendarOverviewMessage.prototype.setDaysList = function(value) {
+  jspb.Message.setRepeatedWrapperField(this, 2, value);
+};
+
+
+/**
+ * @param {!proto.SpektraCalendarDayMessage=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.SpektraCalendarDayMessage}
+ */
+proto.SpektraCalendarOverviewMessage.prototype.addDays = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.SpektraCalendarDayMessage, opt_index);
+};
+
+
+proto.SpektraCalendarOverviewMessage.prototype.clearDaysList = function() {
   this.setDaysList([]);
 };
 
@@ -12831,7 +14127,8 @@ proto.DiagnosticSystemInfoResponse.toObject = function(includeInstance, msg) {
     userLevelCount: jspb.Message.getFieldWithDefault(msg, 20, 0),
     dmxToDaliCount: jspb.Message.getFieldWithDefault(msg, 21, 0),
     spektraZoneCount: jspb.Message.getFieldWithDefault(msg, 22, 0),
-    logicCount: jspb.Message.getFieldWithDefault(msg, 23, 0)
+    logicCount: jspb.Message.getFieldWithDefault(msg, 23, 0),
+    inputDaliCount: jspb.Message.getFieldWithDefault(msg, 24, 0)
   };
 
   if (includeInstance) {
@@ -12959,6 +14256,10 @@ proto.DiagnosticSystemInfoResponse.deserializeBinaryFromReader = function(msg, r
     case 23:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setLogicCount(value);
+      break;
+    case 24:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setInputDaliCount(value);
       break;
     default:
       reader.skipField();
@@ -13147,6 +14448,13 @@ proto.DiagnosticSystemInfoResponse.serializeBinaryToWriter = function(message, w
   if (f !== 0) {
     writer.writeUint32(
       23,
+      f
+    );
+  }
+  f = message.getInputDaliCount();
+  if (f !== 0) {
+    writer.writeUint32(
+      24,
       f
     );
   }
@@ -13509,6 +14817,21 @@ proto.DiagnosticSystemInfoResponse.prototype.getLogicCount = function() {
 /** @param {number} value */
 proto.DiagnosticSystemInfoResponse.prototype.setLogicCount = function(value) {
   jspb.Message.setProto3IntField(this, 23, value);
+};
+
+
+/**
+ * optional uint32 input_dali_count = 24;
+ * @return {number}
+ */
+proto.DiagnosticSystemInfoResponse.prototype.getInputDaliCount = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 24, 0));
+};
+
+
+/** @param {number} value */
+proto.DiagnosticSystemInfoResponse.prototype.setInputDaliCount = function(value) {
+  jspb.Message.setProto3IntField(this, 24, value);
 };
 
 
@@ -15227,6 +16550,148 @@ proto.AdminSecureLoginMessage.prototype.clearHashList = function() {
  * @extends {jspb.Message}
  * @constructor
  */
+proto.AdminDALISensorTypeMessage = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.AdminDALISensorTypeMessage, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.AdminDALISensorTypeMessage.displayName = 'proto.AdminDALISensorTypeMessage';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.AdminDALISensorTypeMessage.prototype.toObject = function(opt_includeInstance) {
+  return proto.AdminDALISensorTypeMessage.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.AdminDALISensorTypeMessage} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.AdminDALISensorTypeMessage.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    type: jspb.Message.getFieldWithDefault(msg, 1, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.AdminDALISensorTypeMessage}
+ */
+proto.AdminDALISensorTypeMessage.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.AdminDALISensorTypeMessage;
+  return proto.AdminDALISensorTypeMessage.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.AdminDALISensorTypeMessage} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.AdminDALISensorTypeMessage}
+ */
+proto.AdminDALISensorTypeMessage.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {!proto.DALISensorType} */ (reader.readEnum());
+      msg.setType(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.AdminDALISensorTypeMessage.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.AdminDALISensorTypeMessage.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.AdminDALISensorTypeMessage} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.AdminDALISensorTypeMessage.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getType();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional DALISensorType type = 1;
+ * @return {!proto.DALISensorType}
+ */
+proto.AdminDALISensorTypeMessage.prototype.getType = function() {
+  return /** @type {!proto.DALISensorType} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/** @param {!proto.DALISensorType} value */
+proto.AdminDALISensorTypeMessage.prototype.setType = function(value) {
+  jspb.Message.setProto3EnumField(this, 1, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
 proto.AdminMessage = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, proto.AdminMessage.oneofGroups_);
 };
@@ -15242,7 +16707,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<!Array<number>>}
  * @const
  */
-proto.AdminMessage.oneofGroups_ = [[3,4,5,6,7,8,9]];
+proto.AdminMessage.oneofGroups_ = [[3,4,5,6,7,8,9,10]];
 
 /**
  * @enum {number}
@@ -15255,7 +16720,8 @@ proto.AdminMessage.PayloadCase = {
   CONTROLLER_LINES: 6,
   DEVICE_STATUS: 7,
   CONFIG_STATUS: 8,
-  DEVICE_TIME: 9
+  DEVICE_TIME: 9,
+  DALI_SENSOR_TYPE: 10
 };
 
 /**
@@ -15302,7 +16768,8 @@ proto.AdminMessage.toObject = function(includeInstance, msg) {
     controllerLines: (f = msg.getControllerLines()) && proto.AdminControllerLinesMessage.toObject(includeInstance, f),
     deviceStatus: (f = msg.getDeviceStatus()) && proto.AdminDeviceStatusMessage.toObject(includeInstance, f),
     configStatus: (f = msg.getConfigStatus()) && proto.AdminConfigStatusMessage.toObject(includeInstance, f),
-    deviceTime: (f = msg.getDeviceTime()) && proto.UpdateTimeMessage.toObject(includeInstance, f)
+    deviceTime: (f = msg.getDeviceTime()) && proto.UpdateTimeMessage.toObject(includeInstance, f),
+    daliSensorType: (f = msg.getDaliSensorType()) && proto.AdminDALISensorTypeMessage.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -15381,6 +16848,11 @@ proto.AdminMessage.deserializeBinaryFromReader = function(msg, reader) {
       var value = new proto.UpdateTimeMessage;
       reader.readMessage(value,proto.UpdateTimeMessage.deserializeBinaryFromReader);
       msg.setDeviceTime(value);
+      break;
+    case 10:
+      var value = new proto.AdminDALISensorTypeMessage;
+      reader.readMessage(value,proto.AdminDALISensorTypeMessage.deserializeBinaryFromReader);
+      msg.setDaliSensorType(value);
       break;
     default:
       reader.skipField();
@@ -15479,6 +16951,14 @@ proto.AdminMessage.serializeBinaryToWriter = function(message, writer) {
       9,
       f,
       proto.UpdateTimeMessage.serializeBinaryToWriter
+    );
+  }
+  f = message.getDaliSensorType();
+  if (f != null) {
+    writer.writeMessage(
+      10,
+      f,
+      proto.AdminDALISensorTypeMessage.serializeBinaryToWriter
     );
   }
 };
@@ -15721,6 +17201,36 @@ proto.AdminMessage.prototype.clearDeviceTime = function() {
  */
 proto.AdminMessage.prototype.hasDeviceTime = function() {
   return jspb.Message.getField(this, 9) != null;
+};
+
+
+/**
+ * optional AdminDALISensorTypeMessage dali_sensor_type = 10;
+ * @return {?proto.AdminDALISensorTypeMessage}
+ */
+proto.AdminMessage.prototype.getDaliSensorType = function() {
+  return /** @type{?proto.AdminDALISensorTypeMessage} */ (
+    jspb.Message.getWrapperField(this, proto.AdminDALISensorTypeMessage, 10));
+};
+
+
+/** @param {?proto.AdminDALISensorTypeMessage|undefined} value */
+proto.AdminMessage.prototype.setDaliSensorType = function(value) {
+  jspb.Message.setOneofWrapperField(this, 10, proto.AdminMessage.oneofGroups_[0], value);
+};
+
+
+proto.AdminMessage.prototype.clearDaliSensorType = function() {
+  this.setDaliSensorType(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.AdminMessage.prototype.hasDaliSensorType = function() {
+  return jspb.Message.getField(this, 10) != null;
 };
 
 
@@ -16638,6 +18148,2342 @@ proto.FirmwareChunkMessage.prototype.hasPayload = function() {
  * @extends {jspb.Message}
  * @constructor
  */
+proto.SystemLogReadMessage = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.SystemLogReadMessage.repeatedFields_, null);
+};
+goog.inherits(proto.SystemLogReadMessage, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.SystemLogReadMessage.displayName = 'proto.SystemLogReadMessage';
+}
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.SystemLogReadMessage.repeatedFields_ = [3];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.SystemLogReadMessage.prototype.toObject = function(opt_includeInstance) {
+  return proto.SystemLogReadMessage.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.SystemLogReadMessage} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.SystemLogReadMessage.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    logStartAddress: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    logsRequested: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    logsList: jspb.Message.toObjectList(msg.getLogsList(),
+    proto.SystemLogMessage.toObject, includeInstance)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.SystemLogReadMessage}
+ */
+proto.SystemLogReadMessage.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.SystemLogReadMessage;
+  return proto.SystemLogReadMessage.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.SystemLogReadMessage} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.SystemLogReadMessage}
+ */
+proto.SystemLogReadMessage.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setLogStartAddress(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setLogsRequested(value);
+      break;
+    case 3:
+      var value = new proto.SystemLogMessage;
+      reader.readMessage(value,proto.SystemLogMessage.deserializeBinaryFromReader);
+      msg.addLogs(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.SystemLogReadMessage.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.SystemLogReadMessage.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.SystemLogReadMessage} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.SystemLogReadMessage.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getLogStartAddress();
+  if (f !== 0) {
+    writer.writeUint32(
+      1,
+      f
+    );
+  }
+  f = message.getLogsRequested();
+  if (f !== 0) {
+    writer.writeUint32(
+      2,
+      f
+    );
+  }
+  f = message.getLogsList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      3,
+      f,
+      proto.SystemLogMessage.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional uint32 log_start_address = 1;
+ * @return {number}
+ */
+proto.SystemLogReadMessage.prototype.getLogStartAddress = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/** @param {number} value */
+proto.SystemLogReadMessage.prototype.setLogStartAddress = function(value) {
+  jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional uint32 logs_requested = 2;
+ * @return {number}
+ */
+proto.SystemLogReadMessage.prototype.getLogsRequested = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/** @param {number} value */
+proto.SystemLogReadMessage.prototype.setLogsRequested = function(value) {
+  jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+/**
+ * repeated SystemLogMessage logs = 3;
+ * @return {!Array<!proto.SystemLogMessage>}
+ */
+proto.SystemLogReadMessage.prototype.getLogsList = function() {
+  return /** @type{!Array<!proto.SystemLogMessage>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.SystemLogMessage, 3));
+};
+
+
+/** @param {!Array<!proto.SystemLogMessage>} value */
+proto.SystemLogReadMessage.prototype.setLogsList = function(value) {
+  jspb.Message.setRepeatedWrapperField(this, 3, value);
+};
+
+
+/**
+ * @param {!proto.SystemLogMessage=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.SystemLogMessage}
+ */
+proto.SystemLogReadMessage.prototype.addLogs = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.SystemLogMessage, opt_index);
+};
+
+
+proto.SystemLogReadMessage.prototype.clearLogsList = function() {
+  this.setLogsList([]);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.SystemLogMessage = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, proto.SystemLogMessage.oneofGroups_);
+};
+goog.inherits(proto.SystemLogMessage, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.SystemLogMessage.displayName = 'proto.SystemLogMessage';
+}
+/**
+ * Oneof group definitions for this message. Each group defines the field
+ * numbers belonging to that group. When of these fields' value is set, all
+ * other fields in the group are cleared. During deserialization, if multiple
+ * fields are encountered for a group, only the last value seen will be kept.
+ * @private {!Array<!Array<number>>}
+ * @const
+ */
+proto.SystemLogMessage.oneofGroups_ = [[2,3,4,5,6,7,8]];
+
+/**
+ * @enum {number}
+ */
+proto.SystemLogMessage.PacketCase = {
+  PACKET_NOT_SET: 0,
+  BOOT: 2,
+  NETLINK: 3,
+  NTP: 4,
+  TRIGGER: 5,
+  SPEKTRA: 6,
+  SCHEDULE: 7,
+  USERSTART: 8
+};
+
+/**
+ * @return {proto.SystemLogMessage.PacketCase}
+ */
+proto.SystemLogMessage.prototype.getPacketCase = function() {
+  return /** @type {proto.SystemLogMessage.PacketCase} */(jspb.Message.computeOneofCase(this, proto.SystemLogMessage.oneofGroups_[0]));
+};
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.SystemLogMessage.prototype.toObject = function(opt_includeInstance) {
+  return proto.SystemLogMessage.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.SystemLogMessage} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.SystemLogMessage.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    timeSinceBoot: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    boot: (f = msg.getBoot()) && proto.SystemLogBoot.toObject(includeInstance, f),
+    netlink: (f = msg.getNetlink()) && proto.SystemLogNetLink.toObject(includeInstance, f),
+    ntp: (f = msg.getNtp()) && proto.SystemLogNTP.toObject(includeInstance, f),
+    trigger: (f = msg.getTrigger()) && proto.SystemLogTrigger.toObject(includeInstance, f),
+    spektra: (f = msg.getSpektra()) && proto.SystemLogSpektra.toObject(includeInstance, f),
+    schedule: (f = msg.getSchedule()) && proto.SystemLogSchedule.toObject(includeInstance, f),
+    userstart: (f = msg.getUserstart()) && proto.SystemLogUserStart.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.SystemLogMessage}
+ */
+proto.SystemLogMessage.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.SystemLogMessage;
+  return proto.SystemLogMessage.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.SystemLogMessage} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.SystemLogMessage}
+ */
+proto.SystemLogMessage.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setTimeSinceBoot(value);
+      break;
+    case 2:
+      var value = new proto.SystemLogBoot;
+      reader.readMessage(value,proto.SystemLogBoot.deserializeBinaryFromReader);
+      msg.setBoot(value);
+      break;
+    case 3:
+      var value = new proto.SystemLogNetLink;
+      reader.readMessage(value,proto.SystemLogNetLink.deserializeBinaryFromReader);
+      msg.setNetlink(value);
+      break;
+    case 4:
+      var value = new proto.SystemLogNTP;
+      reader.readMessage(value,proto.SystemLogNTP.deserializeBinaryFromReader);
+      msg.setNtp(value);
+      break;
+    case 5:
+      var value = new proto.SystemLogTrigger;
+      reader.readMessage(value,proto.SystemLogTrigger.deserializeBinaryFromReader);
+      msg.setTrigger(value);
+      break;
+    case 6:
+      var value = new proto.SystemLogSpektra;
+      reader.readMessage(value,proto.SystemLogSpektra.deserializeBinaryFromReader);
+      msg.setSpektra(value);
+      break;
+    case 7:
+      var value = new proto.SystemLogSchedule;
+      reader.readMessage(value,proto.SystemLogSchedule.deserializeBinaryFromReader);
+      msg.setSchedule(value);
+      break;
+    case 8:
+      var value = new proto.SystemLogUserStart;
+      reader.readMessage(value,proto.SystemLogUserStart.deserializeBinaryFromReader);
+      msg.setUserstart(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.SystemLogMessage.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.SystemLogMessage.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.SystemLogMessage} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.SystemLogMessage.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getTimeSinceBoot();
+  if (f !== 0) {
+    writer.writeUint32(
+      1,
+      f
+    );
+  }
+  f = message.getBoot();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      proto.SystemLogBoot.serializeBinaryToWriter
+    );
+  }
+  f = message.getNetlink();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      proto.SystemLogNetLink.serializeBinaryToWriter
+    );
+  }
+  f = message.getNtp();
+  if (f != null) {
+    writer.writeMessage(
+      4,
+      f,
+      proto.SystemLogNTP.serializeBinaryToWriter
+    );
+  }
+  f = message.getTrigger();
+  if (f != null) {
+    writer.writeMessage(
+      5,
+      f,
+      proto.SystemLogTrigger.serializeBinaryToWriter
+    );
+  }
+  f = message.getSpektra();
+  if (f != null) {
+    writer.writeMessage(
+      6,
+      f,
+      proto.SystemLogSpektra.serializeBinaryToWriter
+    );
+  }
+  f = message.getSchedule();
+  if (f != null) {
+    writer.writeMessage(
+      7,
+      f,
+      proto.SystemLogSchedule.serializeBinaryToWriter
+    );
+  }
+  f = message.getUserstart();
+  if (f != null) {
+    writer.writeMessage(
+      8,
+      f,
+      proto.SystemLogUserStart.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional uint32 time_since_boot = 1;
+ * @return {number}
+ */
+proto.SystemLogMessage.prototype.getTimeSinceBoot = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/** @param {number} value */
+proto.SystemLogMessage.prototype.setTimeSinceBoot = function(value) {
+  jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional SystemLogBoot boot = 2;
+ * @return {?proto.SystemLogBoot}
+ */
+proto.SystemLogMessage.prototype.getBoot = function() {
+  return /** @type{?proto.SystemLogBoot} */ (
+    jspb.Message.getWrapperField(this, proto.SystemLogBoot, 2));
+};
+
+
+/** @param {?proto.SystemLogBoot|undefined} value */
+proto.SystemLogMessage.prototype.setBoot = function(value) {
+  jspb.Message.setOneofWrapperField(this, 2, proto.SystemLogMessage.oneofGroups_[0], value);
+};
+
+
+proto.SystemLogMessage.prototype.clearBoot = function() {
+  this.setBoot(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.SystemLogMessage.prototype.hasBoot = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional SystemLogNetLink netlink = 3;
+ * @return {?proto.SystemLogNetLink}
+ */
+proto.SystemLogMessage.prototype.getNetlink = function() {
+  return /** @type{?proto.SystemLogNetLink} */ (
+    jspb.Message.getWrapperField(this, proto.SystemLogNetLink, 3));
+};
+
+
+/** @param {?proto.SystemLogNetLink|undefined} value */
+proto.SystemLogMessage.prototype.setNetlink = function(value) {
+  jspb.Message.setOneofWrapperField(this, 3, proto.SystemLogMessage.oneofGroups_[0], value);
+};
+
+
+proto.SystemLogMessage.prototype.clearNetlink = function() {
+  this.setNetlink(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.SystemLogMessage.prototype.hasNetlink = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * optional SystemLogNTP ntp = 4;
+ * @return {?proto.SystemLogNTP}
+ */
+proto.SystemLogMessage.prototype.getNtp = function() {
+  return /** @type{?proto.SystemLogNTP} */ (
+    jspb.Message.getWrapperField(this, proto.SystemLogNTP, 4));
+};
+
+
+/** @param {?proto.SystemLogNTP|undefined} value */
+proto.SystemLogMessage.prototype.setNtp = function(value) {
+  jspb.Message.setOneofWrapperField(this, 4, proto.SystemLogMessage.oneofGroups_[0], value);
+};
+
+
+proto.SystemLogMessage.prototype.clearNtp = function() {
+  this.setNtp(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.SystemLogMessage.prototype.hasNtp = function() {
+  return jspb.Message.getField(this, 4) != null;
+};
+
+
+/**
+ * optional SystemLogTrigger trigger = 5;
+ * @return {?proto.SystemLogTrigger}
+ */
+proto.SystemLogMessage.prototype.getTrigger = function() {
+  return /** @type{?proto.SystemLogTrigger} */ (
+    jspb.Message.getWrapperField(this, proto.SystemLogTrigger, 5));
+};
+
+
+/** @param {?proto.SystemLogTrigger|undefined} value */
+proto.SystemLogMessage.prototype.setTrigger = function(value) {
+  jspb.Message.setOneofWrapperField(this, 5, proto.SystemLogMessage.oneofGroups_[0], value);
+};
+
+
+proto.SystemLogMessage.prototype.clearTrigger = function() {
+  this.setTrigger(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.SystemLogMessage.prototype.hasTrigger = function() {
+  return jspb.Message.getField(this, 5) != null;
+};
+
+
+/**
+ * optional SystemLogSpektra spektra = 6;
+ * @return {?proto.SystemLogSpektra}
+ */
+proto.SystemLogMessage.prototype.getSpektra = function() {
+  return /** @type{?proto.SystemLogSpektra} */ (
+    jspb.Message.getWrapperField(this, proto.SystemLogSpektra, 6));
+};
+
+
+/** @param {?proto.SystemLogSpektra|undefined} value */
+proto.SystemLogMessage.prototype.setSpektra = function(value) {
+  jspb.Message.setOneofWrapperField(this, 6, proto.SystemLogMessage.oneofGroups_[0], value);
+};
+
+
+proto.SystemLogMessage.prototype.clearSpektra = function() {
+  this.setSpektra(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.SystemLogMessage.prototype.hasSpektra = function() {
+  return jspb.Message.getField(this, 6) != null;
+};
+
+
+/**
+ * optional SystemLogSchedule schedule = 7;
+ * @return {?proto.SystemLogSchedule}
+ */
+proto.SystemLogMessage.prototype.getSchedule = function() {
+  return /** @type{?proto.SystemLogSchedule} */ (
+    jspb.Message.getWrapperField(this, proto.SystemLogSchedule, 7));
+};
+
+
+/** @param {?proto.SystemLogSchedule|undefined} value */
+proto.SystemLogMessage.prototype.setSchedule = function(value) {
+  jspb.Message.setOneofWrapperField(this, 7, proto.SystemLogMessage.oneofGroups_[0], value);
+};
+
+
+proto.SystemLogMessage.prototype.clearSchedule = function() {
+  this.setSchedule(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.SystemLogMessage.prototype.hasSchedule = function() {
+  return jspb.Message.getField(this, 7) != null;
+};
+
+
+/**
+ * optional SystemLogUserStart userstart = 8;
+ * @return {?proto.SystemLogUserStart}
+ */
+proto.SystemLogMessage.prototype.getUserstart = function() {
+  return /** @type{?proto.SystemLogUserStart} */ (
+    jspb.Message.getWrapperField(this, proto.SystemLogUserStart, 8));
+};
+
+
+/** @param {?proto.SystemLogUserStart|undefined} value */
+proto.SystemLogMessage.prototype.setUserstart = function(value) {
+  jspb.Message.setOneofWrapperField(this, 8, proto.SystemLogMessage.oneofGroups_[0], value);
+};
+
+
+proto.SystemLogMessage.prototype.clearUserstart = function() {
+  this.setUserstart(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.SystemLogMessage.prototype.hasUserstart = function() {
+  return jspb.Message.getField(this, 8) != null;
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.SystemLogBoot = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.SystemLogBoot, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.SystemLogBoot.displayName = 'proto.SystemLogBoot';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.SystemLogBoot.prototype.toObject = function(opt_includeInstance) {
+  return proto.SystemLogBoot.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.SystemLogBoot} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.SystemLogBoot.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    timeclock: (f = msg.getTimeclock()) && proto.TimeClockMessage.toObject(includeInstance, f),
+    flags: jspb.Message.getFieldWithDefault(msg, 2, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.SystemLogBoot}
+ */
+proto.SystemLogBoot.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.SystemLogBoot;
+  return proto.SystemLogBoot.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.SystemLogBoot} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.SystemLogBoot}
+ */
+proto.SystemLogBoot.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.TimeClockMessage;
+      reader.readMessage(value,proto.TimeClockMessage.deserializeBinaryFromReader);
+      msg.setTimeclock(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setFlags(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.SystemLogBoot.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.SystemLogBoot.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.SystemLogBoot} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.SystemLogBoot.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getTimeclock();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.TimeClockMessage.serializeBinaryToWriter
+    );
+  }
+  f = message.getFlags();
+  if (f !== 0) {
+    writer.writeUint32(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional TimeClockMessage timeclock = 1;
+ * @return {?proto.TimeClockMessage}
+ */
+proto.SystemLogBoot.prototype.getTimeclock = function() {
+  return /** @type{?proto.TimeClockMessage} */ (
+    jspb.Message.getWrapperField(this, proto.TimeClockMessage, 1));
+};
+
+
+/** @param {?proto.TimeClockMessage|undefined} value */
+proto.SystemLogBoot.prototype.setTimeclock = function(value) {
+  jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+proto.SystemLogBoot.prototype.clearTimeclock = function() {
+  this.setTimeclock(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.SystemLogBoot.prototype.hasTimeclock = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional uint32 flags = 2;
+ * @return {number}
+ */
+proto.SystemLogBoot.prototype.getFlags = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/** @param {number} value */
+proto.SystemLogBoot.prototype.setFlags = function(value) {
+  jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.SystemLogNetLink = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.SystemLogNetLink, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.SystemLogNetLink.displayName = 'proto.SystemLogNetLink';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.SystemLogNetLink.prototype.toObject = function(opt_includeInstance) {
+  return proto.SystemLogNetLink.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.SystemLogNetLink} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.SystemLogNetLink.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    isLinked: jspb.Message.getFieldWithDefault(msg, 1, false)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.SystemLogNetLink}
+ */
+proto.SystemLogNetLink.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.SystemLogNetLink;
+  return proto.SystemLogNetLink.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.SystemLogNetLink} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.SystemLogNetLink}
+ */
+proto.SystemLogNetLink.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIsLinked(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.SystemLogNetLink.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.SystemLogNetLink.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.SystemLogNetLink} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.SystemLogNetLink.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getIsLinked();
+  if (f) {
+    writer.writeBool(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional bool is_linked = 1;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
+ * @return {boolean}
+ */
+proto.SystemLogNetLink.prototype.getIsLinked = function() {
+  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 1, false));
+};
+
+
+/** @param {boolean} value */
+proto.SystemLogNetLink.prototype.setIsLinked = function(value) {
+  jspb.Message.setProto3BooleanField(this, 1, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.SystemLogNTP = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.SystemLogNTP, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.SystemLogNTP.displayName = 'proto.SystemLogNTP';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.SystemLogNTP.prototype.toObject = function(opt_includeInstance) {
+  return proto.SystemLogNTP.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.SystemLogNTP} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.SystemLogNTP.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    timeclock: (f = msg.getTimeclock()) && proto.TimeClockMessage.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.SystemLogNTP}
+ */
+proto.SystemLogNTP.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.SystemLogNTP;
+  return proto.SystemLogNTP.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.SystemLogNTP} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.SystemLogNTP}
+ */
+proto.SystemLogNTP.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.TimeClockMessage;
+      reader.readMessage(value,proto.TimeClockMessage.deserializeBinaryFromReader);
+      msg.setTimeclock(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.SystemLogNTP.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.SystemLogNTP.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.SystemLogNTP} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.SystemLogNTP.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getTimeclock();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.TimeClockMessage.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional TimeClockMessage timeclock = 1;
+ * @return {?proto.TimeClockMessage}
+ */
+proto.SystemLogNTP.prototype.getTimeclock = function() {
+  return /** @type{?proto.TimeClockMessage} */ (
+    jspb.Message.getWrapperField(this, proto.TimeClockMessage, 1));
+};
+
+
+/** @param {?proto.TimeClockMessage|undefined} value */
+proto.SystemLogNTP.prototype.setTimeclock = function(value) {
+  jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+proto.SystemLogNTP.prototype.clearTimeclock = function() {
+  this.setTimeclock(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.SystemLogNTP.prototype.hasTimeclock = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.SystemLogTrigger = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.SystemLogTrigger, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.SystemLogTrigger.displayName = 'proto.SystemLogTrigger';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.SystemLogTrigger.prototype.toObject = function(opt_includeInstance) {
+  return proto.SystemLogTrigger.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.SystemLogTrigger} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.SystemLogTrigger.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    trigger: (f = msg.getTrigger()) && proto.TriggerMessage.toObject(includeInstance, f),
+    source: jspb.Message.getFieldWithDefault(msg, 2, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.SystemLogTrigger}
+ */
+proto.SystemLogTrigger.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.SystemLogTrigger;
+  return proto.SystemLogTrigger.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.SystemLogTrigger} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.SystemLogTrigger}
+ */
+proto.SystemLogTrigger.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.TriggerMessage;
+      reader.readMessage(value,proto.TriggerMessage.deserializeBinaryFromReader);
+      msg.setTrigger(value);
+      break;
+    case 2:
+      var value = /** @type {!proto.ReadType} */ (reader.readEnum());
+      msg.setSource(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.SystemLogTrigger.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.SystemLogTrigger.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.SystemLogTrigger} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.SystemLogTrigger.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getTrigger();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.TriggerMessage.serializeBinaryToWriter
+    );
+  }
+  f = message.getSource();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional TriggerMessage trigger = 1;
+ * @return {?proto.TriggerMessage}
+ */
+proto.SystemLogTrigger.prototype.getTrigger = function() {
+  return /** @type{?proto.TriggerMessage} */ (
+    jspb.Message.getWrapperField(this, proto.TriggerMessage, 1));
+};
+
+
+/** @param {?proto.TriggerMessage|undefined} value */
+proto.SystemLogTrigger.prototype.setTrigger = function(value) {
+  jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+proto.SystemLogTrigger.prototype.clearTrigger = function() {
+  this.setTrigger(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.SystemLogTrigger.prototype.hasTrigger = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional ReadType source = 2;
+ * @return {!proto.ReadType}
+ */
+proto.SystemLogTrigger.prototype.getSource = function() {
+  return /** @type {!proto.ReadType} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/** @param {!proto.ReadType} value */
+proto.SystemLogTrigger.prototype.setSource = function(value) {
+  jspb.Message.setProto3EnumField(this, 2, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.SystemLogSpektra = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.SystemLogSpektra, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.SystemLogSpektra.displayName = 'proto.SystemLogSpektra';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.SystemLogSpektra.prototype.toObject = function(opt_includeInstance) {
+  return proto.SystemLogSpektra.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.SystemLogSpektra} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.SystemLogSpektra.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    action: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    type: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    index: jspb.Message.getFieldWithDefault(msg, 3, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.SystemLogSpektra}
+ */
+proto.SystemLogSpektra.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.SystemLogSpektra;
+  return proto.SystemLogSpektra.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.SystemLogSpektra} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.SystemLogSpektra}
+ */
+proto.SystemLogSpektra.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {!proto.SpektraActionType} */ (reader.readEnum());
+      msg.setAction(value);
+      break;
+    case 2:
+      var value = /** @type {!proto.SpektraTargetType} */ (reader.readEnum());
+      msg.setType(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setIndex(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.SystemLogSpektra.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.SystemLogSpektra.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.SystemLogSpektra} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.SystemLogSpektra.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getAction();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      1,
+      f
+    );
+  }
+  f = message.getType();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      2,
+      f
+    );
+  }
+  f = message.getIndex();
+  if (f !== 0) {
+    writer.writeUint32(
+      3,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional SpektraActionType action = 1;
+ * @return {!proto.SpektraActionType}
+ */
+proto.SystemLogSpektra.prototype.getAction = function() {
+  return /** @type {!proto.SpektraActionType} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/** @param {!proto.SpektraActionType} value */
+proto.SystemLogSpektra.prototype.setAction = function(value) {
+  jspb.Message.setProto3EnumField(this, 1, value);
+};
+
+
+/**
+ * optional SpektraTargetType type = 2;
+ * @return {!proto.SpektraTargetType}
+ */
+proto.SystemLogSpektra.prototype.getType = function() {
+  return /** @type {!proto.SpektraTargetType} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/** @param {!proto.SpektraTargetType} value */
+proto.SystemLogSpektra.prototype.setType = function(value) {
+  jspb.Message.setProto3EnumField(this, 2, value);
+};
+
+
+/**
+ * optional uint32 index = 3;
+ * @return {number}
+ */
+proto.SystemLogSpektra.prototype.getIndex = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/** @param {number} value */
+proto.SystemLogSpektra.prototype.setIndex = function(value) {
+  jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.SystemLogSchedule = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.SystemLogSchedule, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.SystemLogSchedule.displayName = 'proto.SystemLogSchedule';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.SystemLogSchedule.prototype.toObject = function(opt_includeInstance) {
+  return proto.SystemLogSchedule.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.SystemLogSchedule} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.SystemLogSchedule.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    index: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    isstart: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    second: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    minute: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    hour: jspb.Message.getFieldWithDefault(msg, 5, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.SystemLogSchedule}
+ */
+proto.SystemLogSchedule.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.SystemLogSchedule;
+  return proto.SystemLogSchedule.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.SystemLogSchedule} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.SystemLogSchedule}
+ */
+proto.SystemLogSchedule.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setIndex(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setIsstart(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setSecond(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setMinute(value);
+      break;
+    case 5:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setHour(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.SystemLogSchedule.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.SystemLogSchedule.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.SystemLogSchedule} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.SystemLogSchedule.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getIndex();
+  if (f !== 0) {
+    writer.writeUint32(
+      1,
+      f
+    );
+  }
+  f = message.getIsstart();
+  if (f !== 0) {
+    writer.writeUint32(
+      2,
+      f
+    );
+  }
+  f = message.getSecond();
+  if (f !== 0) {
+    writer.writeUint32(
+      3,
+      f
+    );
+  }
+  f = message.getMinute();
+  if (f !== 0) {
+    writer.writeUint32(
+      4,
+      f
+    );
+  }
+  f = message.getHour();
+  if (f !== 0) {
+    writer.writeUint32(
+      5,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional uint32 index = 1;
+ * @return {number}
+ */
+proto.SystemLogSchedule.prototype.getIndex = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/** @param {number} value */
+proto.SystemLogSchedule.prototype.setIndex = function(value) {
+  jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional uint32 isStart = 2;
+ * @return {number}
+ */
+proto.SystemLogSchedule.prototype.getIsstart = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/** @param {number} value */
+proto.SystemLogSchedule.prototype.setIsstart = function(value) {
+  jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+/**
+ * optional uint32 second = 3;
+ * @return {number}
+ */
+proto.SystemLogSchedule.prototype.getSecond = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/** @param {number} value */
+proto.SystemLogSchedule.prototype.setSecond = function(value) {
+  jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+/**
+ * optional uint32 minute = 4;
+ * @return {number}
+ */
+proto.SystemLogSchedule.prototype.getMinute = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/** @param {number} value */
+proto.SystemLogSchedule.prototype.setMinute = function(value) {
+  jspb.Message.setProto3IntField(this, 4, value);
+};
+
+
+/**
+ * optional uint32 hour = 5;
+ * @return {number}
+ */
+proto.SystemLogSchedule.prototype.getHour = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/** @param {number} value */
+proto.SystemLogSchedule.prototype.setHour = function(value) {
+  jspb.Message.setProto3IntField(this, 5, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.SystemLogUserStart = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.SystemLogUserStart, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.SystemLogUserStart.displayName = 'proto.SystemLogUserStart';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.SystemLogUserStart.prototype.toObject = function(opt_includeInstance) {
+  return proto.SystemLogUserStart.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.SystemLogUserStart} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.SystemLogUserStart.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    timeclock: (f = msg.getTimeclock()) && proto.TimeClockMessage.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.SystemLogUserStart}
+ */
+proto.SystemLogUserStart.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.SystemLogUserStart;
+  return proto.SystemLogUserStart.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.SystemLogUserStart} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.SystemLogUserStart}
+ */
+proto.SystemLogUserStart.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.TimeClockMessage;
+      reader.readMessage(value,proto.TimeClockMessage.deserializeBinaryFromReader);
+      msg.setTimeclock(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.SystemLogUserStart.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.SystemLogUserStart.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.SystemLogUserStart} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.SystemLogUserStart.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getTimeclock();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.TimeClockMessage.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional TimeClockMessage timeclock = 1;
+ * @return {?proto.TimeClockMessage}
+ */
+proto.SystemLogUserStart.prototype.getTimeclock = function() {
+  return /** @type{?proto.TimeClockMessage} */ (
+    jspb.Message.getWrapperField(this, proto.TimeClockMessage, 1));
+};
+
+
+/** @param {?proto.TimeClockMessage|undefined} value */
+proto.SystemLogUserStart.prototype.setTimeclock = function(value) {
+  jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+proto.SystemLogUserStart.prototype.clearTimeclock = function() {
+  this.setTimeclock(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.SystemLogUserStart.prototype.hasTimeclock = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.SystemMetaDataReadMessage = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.SystemMetaDataReadMessage.repeatedFields_, null);
+};
+goog.inherits(proto.SystemMetaDataReadMessage, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.SystemMetaDataReadMessage.displayName = 'proto.SystemMetaDataReadMessage';
+}
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.SystemMetaDataReadMessage.repeatedFields_ = [1,2,3];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.SystemMetaDataReadMessage.prototype.toObject = function(opt_includeInstance) {
+  return proto.SystemMetaDataReadMessage.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.SystemMetaDataReadMessage} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.SystemMetaDataReadMessage.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    inputPressCounterList: jspb.Message.getRepeatedField(msg, 1),
+    listStartCounterList: jspb.Message.getRepeatedField(msg, 2),
+    schedulesCounterList: jspb.Message.getRepeatedField(msg, 3),
+    screenOnTime: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    screenDimTime: jspb.Message.getFieldWithDefault(msg, 5, 0),
+    screenSaverTime: jspb.Message.getFieldWithDefault(msg, 6, 0),
+    rebootCounter: jspb.Message.getFieldWithDefault(msg, 7, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.SystemMetaDataReadMessage}
+ */
+proto.SystemMetaDataReadMessage.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.SystemMetaDataReadMessage;
+  return proto.SystemMetaDataReadMessage.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.SystemMetaDataReadMessage} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.SystemMetaDataReadMessage}
+ */
+proto.SystemMetaDataReadMessage.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {!Array<number>} */ (reader.readPackedUint32());
+      msg.setInputPressCounterList(value);
+      break;
+    case 2:
+      var value = /** @type {!Array<number>} */ (reader.readPackedUint32());
+      msg.setListStartCounterList(value);
+      break;
+    case 3:
+      var value = /** @type {!Array<number>} */ (reader.readPackedUint32());
+      msg.setSchedulesCounterList(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setScreenOnTime(value);
+      break;
+    case 5:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setScreenDimTime(value);
+      break;
+    case 6:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setScreenSaverTime(value);
+      break;
+    case 7:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setRebootCounter(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.SystemMetaDataReadMessage.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.SystemMetaDataReadMessage.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.SystemMetaDataReadMessage} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.SystemMetaDataReadMessage.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getInputPressCounterList();
+  if (f.length > 0) {
+    writer.writePackedUint32(
+      1,
+      f
+    );
+  }
+  f = message.getListStartCounterList();
+  if (f.length > 0) {
+    writer.writePackedUint32(
+      2,
+      f
+    );
+  }
+  f = message.getSchedulesCounterList();
+  if (f.length > 0) {
+    writer.writePackedUint32(
+      3,
+      f
+    );
+  }
+  f = message.getScreenOnTime();
+  if (f !== 0) {
+    writer.writeUint32(
+      4,
+      f
+    );
+  }
+  f = message.getScreenDimTime();
+  if (f !== 0) {
+    writer.writeUint32(
+      5,
+      f
+    );
+  }
+  f = message.getScreenSaverTime();
+  if (f !== 0) {
+    writer.writeUint32(
+      6,
+      f
+    );
+  }
+  f = message.getRebootCounter();
+  if (f !== 0) {
+    writer.writeUint32(
+      7,
+      f
+    );
+  }
+};
+
+
+/**
+ * repeated uint32 input_press_counter = 1;
+ * @return {!Array<number>}
+ */
+proto.SystemMetaDataReadMessage.prototype.getInputPressCounterList = function() {
+  return /** @type {!Array<number>} */ (jspb.Message.getRepeatedField(this, 1));
+};
+
+
+/** @param {!Array<number>} value */
+proto.SystemMetaDataReadMessage.prototype.setInputPressCounterList = function(value) {
+  jspb.Message.setField(this, 1, value || []);
+};
+
+
+/**
+ * @param {!number} value
+ * @param {number=} opt_index
+ */
+proto.SystemMetaDataReadMessage.prototype.addInputPressCounter = function(value, opt_index) {
+  jspb.Message.addToRepeatedField(this, 1, value, opt_index);
+};
+
+
+proto.SystemMetaDataReadMessage.prototype.clearInputPressCounterList = function() {
+  this.setInputPressCounterList([]);
+};
+
+
+/**
+ * repeated uint32 list_start_counter = 2;
+ * @return {!Array<number>}
+ */
+proto.SystemMetaDataReadMessage.prototype.getListStartCounterList = function() {
+  return /** @type {!Array<number>} */ (jspb.Message.getRepeatedField(this, 2));
+};
+
+
+/** @param {!Array<number>} value */
+proto.SystemMetaDataReadMessage.prototype.setListStartCounterList = function(value) {
+  jspb.Message.setField(this, 2, value || []);
+};
+
+
+/**
+ * @param {!number} value
+ * @param {number=} opt_index
+ */
+proto.SystemMetaDataReadMessage.prototype.addListStartCounter = function(value, opt_index) {
+  jspb.Message.addToRepeatedField(this, 2, value, opt_index);
+};
+
+
+proto.SystemMetaDataReadMessage.prototype.clearListStartCounterList = function() {
+  this.setListStartCounterList([]);
+};
+
+
+/**
+ * repeated uint32 schedules_counter = 3;
+ * @return {!Array<number>}
+ */
+proto.SystemMetaDataReadMessage.prototype.getSchedulesCounterList = function() {
+  return /** @type {!Array<number>} */ (jspb.Message.getRepeatedField(this, 3));
+};
+
+
+/** @param {!Array<number>} value */
+proto.SystemMetaDataReadMessage.prototype.setSchedulesCounterList = function(value) {
+  jspb.Message.setField(this, 3, value || []);
+};
+
+
+/**
+ * @param {!number} value
+ * @param {number=} opt_index
+ */
+proto.SystemMetaDataReadMessage.prototype.addSchedulesCounter = function(value, opt_index) {
+  jspb.Message.addToRepeatedField(this, 3, value, opt_index);
+};
+
+
+proto.SystemMetaDataReadMessage.prototype.clearSchedulesCounterList = function() {
+  this.setSchedulesCounterList([]);
+};
+
+
+/**
+ * optional uint32 screen_on_time = 4;
+ * @return {number}
+ */
+proto.SystemMetaDataReadMessage.prototype.getScreenOnTime = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/** @param {number} value */
+proto.SystemMetaDataReadMessage.prototype.setScreenOnTime = function(value) {
+  jspb.Message.setProto3IntField(this, 4, value);
+};
+
+
+/**
+ * optional uint32 screen_dim_time = 5;
+ * @return {number}
+ */
+proto.SystemMetaDataReadMessage.prototype.getScreenDimTime = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/** @param {number} value */
+proto.SystemMetaDataReadMessage.prototype.setScreenDimTime = function(value) {
+  jspb.Message.setProto3IntField(this, 5, value);
+};
+
+
+/**
+ * optional uint32 screen_saver_time = 6;
+ * @return {number}
+ */
+proto.SystemMetaDataReadMessage.prototype.getScreenSaverTime = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
+};
+
+
+/** @param {number} value */
+proto.SystemMetaDataReadMessage.prototype.setScreenSaverTime = function(value) {
+  jspb.Message.setProto3IntField(this, 6, value);
+};
+
+
+/**
+ * optional uint32 reboot_counter = 7;
+ * @return {number}
+ */
+proto.SystemMetaDataReadMessage.prototype.getRebootCounter = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
+};
+
+
+/** @param {number} value */
+proto.SystemMetaDataReadMessage.prototype.setRebootCounter = function(value) {
+  jspb.Message.setProto3IntField(this, 7, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
 proto.TriggerEvent = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, proto.TriggerEvent.oneofGroups_);
 };
@@ -17303,7 +21149,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<!Array<number>>}
  * @const
  */
-proto.EdidioMessage.oneofGroups_ = [[2,3,4,5,6,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47]];
+proto.EdidioMessage.oneofGroups_ = [[2,3,4,5,6,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52]];
 
 /**
  * @enum {number}
@@ -17353,7 +21199,12 @@ proto.EdidioMessage.PayloadCase = {
   RDM_RESPONSE_MESSAGE: 44,
   LOGIC_MESSAGE: 45,
   SECURE_LOGIN: 46,
-  DEVICE_STATE_MESSAGE: 47
+  DEVICE_STATE_MESSAGE: 47,
+  SPEKTRA_CALENDAR_DAY: 48,
+  SPEKTRA_CALENDAR_OVERVIEW: 49,
+  INPUTS_DALI: 50,
+  LOGS_READ: 51,
+  METADATA_READ: 52
 };
 
 /**
@@ -17436,7 +21287,12 @@ proto.EdidioMessage.toObject = function(includeInstance, msg) {
     rdmResponseMessage: (f = msg.getRdmResponseMessage()) && proto.RDMResponseMessage.toObject(includeInstance, f),
     logicMessage: (f = msg.getLogicMessage()) && proto.LogicMultiMessage.toObject(includeInstance, f),
     secureLogin: (f = msg.getSecureLogin()) && proto.AdminSecureLoginMessage.toObject(includeInstance, f),
-    deviceStateMessage: (f = msg.getDeviceStateMessage()) && proto.DeviceStateMessage.toObject(includeInstance, f)
+    deviceStateMessage: (f = msg.getDeviceStateMessage()) && proto.DeviceStateMessage.toObject(includeInstance, f),
+    spektraCalendarDay: (f = msg.getSpektraCalendarDay()) && proto.SpektraCalendarDayMessage.toObject(includeInstance, f),
+    spektraCalendarOverview: (f = msg.getSpektraCalendarOverview()) && proto.SpektraCalendarOverviewMessage.toObject(includeInstance, f),
+    inputsDali: (f = msg.getInputsDali()) && proto.DALIInputMultiMessage.toObject(includeInstance, f),
+    logsRead: (f = msg.getLogsRead()) && proto.SystemLogReadMessage.toObject(includeInstance, f),
+    metadataRead: (f = msg.getMetadataRead()) && proto.SystemMetaDataReadMessage.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -17696,6 +21552,31 @@ proto.EdidioMessage.deserializeBinaryFromReader = function(msg, reader) {
       var value = new proto.DeviceStateMessage;
       reader.readMessage(value,proto.DeviceStateMessage.deserializeBinaryFromReader);
       msg.setDeviceStateMessage(value);
+      break;
+    case 48:
+      var value = new proto.SpektraCalendarDayMessage;
+      reader.readMessage(value,proto.SpektraCalendarDayMessage.deserializeBinaryFromReader);
+      msg.setSpektraCalendarDay(value);
+      break;
+    case 49:
+      var value = new proto.SpektraCalendarOverviewMessage;
+      reader.readMessage(value,proto.SpektraCalendarOverviewMessage.deserializeBinaryFromReader);
+      msg.setSpektraCalendarOverview(value);
+      break;
+    case 50:
+      var value = new proto.DALIInputMultiMessage;
+      reader.readMessage(value,proto.DALIInputMultiMessage.deserializeBinaryFromReader);
+      msg.setInputsDali(value);
+      break;
+    case 51:
+      var value = new proto.SystemLogReadMessage;
+      reader.readMessage(value,proto.SystemLogReadMessage.deserializeBinaryFromReader);
+      msg.setLogsRead(value);
+      break;
+    case 52:
+      var value = new proto.SystemMetaDataReadMessage;
+      reader.readMessage(value,proto.SystemMetaDataReadMessage.deserializeBinaryFromReader);
+      msg.setMetadataRead(value);
       break;
     default:
       reader.skipField();
@@ -18083,6 +21964,46 @@ proto.EdidioMessage.serializeBinaryToWriter = function(message, writer) {
       47,
       f,
       proto.DeviceStateMessage.serializeBinaryToWriter
+    );
+  }
+  f = message.getSpektraCalendarDay();
+  if (f != null) {
+    writer.writeMessage(
+      48,
+      f,
+      proto.SpektraCalendarDayMessage.serializeBinaryToWriter
+    );
+  }
+  f = message.getSpektraCalendarOverview();
+  if (f != null) {
+    writer.writeMessage(
+      49,
+      f,
+      proto.SpektraCalendarOverviewMessage.serializeBinaryToWriter
+    );
+  }
+  f = message.getInputsDali();
+  if (f != null) {
+    writer.writeMessage(
+      50,
+      f,
+      proto.DALIInputMultiMessage.serializeBinaryToWriter
+    );
+  }
+  f = message.getLogsRead();
+  if (f != null) {
+    writer.writeMessage(
+      51,
+      f,
+      proto.SystemLogReadMessage.serializeBinaryToWriter
+    );
+  }
+  f = message.getMetadataRead();
+  if (f != null) {
+    writer.writeMessage(
+      52,
+      f,
+      proto.SystemMetaDataReadMessage.serializeBinaryToWriter
     );
   }
 };
@@ -19424,6 +23345,156 @@ proto.EdidioMessage.prototype.hasDeviceStateMessage = function() {
 
 
 /**
+ * optional SpektraCalendarDayMessage spektra_calendar_day = 48;
+ * @return {?proto.SpektraCalendarDayMessage}
+ */
+proto.EdidioMessage.prototype.getSpektraCalendarDay = function() {
+  return /** @type{?proto.SpektraCalendarDayMessage} */ (
+    jspb.Message.getWrapperField(this, proto.SpektraCalendarDayMessage, 48));
+};
+
+
+/** @param {?proto.SpektraCalendarDayMessage|undefined} value */
+proto.EdidioMessage.prototype.setSpektraCalendarDay = function(value) {
+  jspb.Message.setOneofWrapperField(this, 48, proto.EdidioMessage.oneofGroups_[0], value);
+};
+
+
+proto.EdidioMessage.prototype.clearSpektraCalendarDay = function() {
+  this.setSpektraCalendarDay(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.EdidioMessage.prototype.hasSpektraCalendarDay = function() {
+  return jspb.Message.getField(this, 48) != null;
+};
+
+
+/**
+ * optional SpektraCalendarOverviewMessage spektra_calendar_overview = 49;
+ * @return {?proto.SpektraCalendarOverviewMessage}
+ */
+proto.EdidioMessage.prototype.getSpektraCalendarOverview = function() {
+  return /** @type{?proto.SpektraCalendarOverviewMessage} */ (
+    jspb.Message.getWrapperField(this, proto.SpektraCalendarOverviewMessage, 49));
+};
+
+
+/** @param {?proto.SpektraCalendarOverviewMessage|undefined} value */
+proto.EdidioMessage.prototype.setSpektraCalendarOverview = function(value) {
+  jspb.Message.setOneofWrapperField(this, 49, proto.EdidioMessage.oneofGroups_[0], value);
+};
+
+
+proto.EdidioMessage.prototype.clearSpektraCalendarOverview = function() {
+  this.setSpektraCalendarOverview(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.EdidioMessage.prototype.hasSpektraCalendarOverview = function() {
+  return jspb.Message.getField(this, 49) != null;
+};
+
+
+/**
+ * optional DALIInputMultiMessage inputs_dali = 50;
+ * @return {?proto.DALIInputMultiMessage}
+ */
+proto.EdidioMessage.prototype.getInputsDali = function() {
+  return /** @type{?proto.DALIInputMultiMessage} */ (
+    jspb.Message.getWrapperField(this, proto.DALIInputMultiMessage, 50));
+};
+
+
+/** @param {?proto.DALIInputMultiMessage|undefined} value */
+proto.EdidioMessage.prototype.setInputsDali = function(value) {
+  jspb.Message.setOneofWrapperField(this, 50, proto.EdidioMessage.oneofGroups_[0], value);
+};
+
+
+proto.EdidioMessage.prototype.clearInputsDali = function() {
+  this.setInputsDali(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.EdidioMessage.prototype.hasInputsDali = function() {
+  return jspb.Message.getField(this, 50) != null;
+};
+
+
+/**
+ * optional SystemLogReadMessage logs_read = 51;
+ * @return {?proto.SystemLogReadMessage}
+ */
+proto.EdidioMessage.prototype.getLogsRead = function() {
+  return /** @type{?proto.SystemLogReadMessage} */ (
+    jspb.Message.getWrapperField(this, proto.SystemLogReadMessage, 51));
+};
+
+
+/** @param {?proto.SystemLogReadMessage|undefined} value */
+proto.EdidioMessage.prototype.setLogsRead = function(value) {
+  jspb.Message.setOneofWrapperField(this, 51, proto.EdidioMessage.oneofGroups_[0], value);
+};
+
+
+proto.EdidioMessage.prototype.clearLogsRead = function() {
+  this.setLogsRead(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.EdidioMessage.prototype.hasLogsRead = function() {
+  return jspb.Message.getField(this, 51) != null;
+};
+
+
+/**
+ * optional SystemMetaDataReadMessage metadata_read = 52;
+ * @return {?proto.SystemMetaDataReadMessage}
+ */
+proto.EdidioMessage.prototype.getMetadataRead = function() {
+  return /** @type{?proto.SystemMetaDataReadMessage} */ (
+    jspb.Message.getWrapperField(this, proto.SystemMetaDataReadMessage, 52));
+};
+
+
+/** @param {?proto.SystemMetaDataReadMessage|undefined} value */
+proto.EdidioMessage.prototype.setMetadataRead = function(value) {
+  jspb.Message.setOneofWrapperField(this, 52, proto.EdidioMessage.oneofGroups_[0], value);
+};
+
+
+proto.EdidioMessage.prototype.clearMetadataRead = function() {
+  this.setMetadataRead(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.EdidioMessage.prototype.hasMetadataRead = function() {
+  return jspb.Message.getField(this, 52) != null;
+};
+
+
+/**
  * @enum {number}
  */
 proto.TriggerOperationType = {
@@ -19431,6 +23502,7 @@ proto.TriggerOperationType = {
   LATCHING: 1,
   MOMENTARY_OUTPUT: 2,
   LATCHING_OUTPUT: 3,
+  ROTARY: 4,
   MOMENTARY_DISABLED: 128,
   LATCHING_DISABLED: 129
 };
@@ -19489,6 +23561,21 @@ proto.TriggerType = {
   LOGIC_OPERATION: 48,
   ALARM_ENABLE: 49,
   ALARM_DISABLE: 50,
+  DALI_CONTROL_SENSOR_OVERRIDE: 51,
+  DALI_CONTROL_SENSOR_TEMP_DISABLE: 52,
+  DALI_CONTROL_SENSOR_RESUME: 53,
+  DALI_ARC_OVERRIDE: 54,
+  DALI_COMMAND_OVERRIDE: 55,
+  FADE_UP_WITH_MIN_OVERRIDE: 56,
+  ON_OFF_TOG_OVERRIDE: 57,
+  MIN_MAX_TOG_OVERRIDE: 58,
+  MAX_OFF_TOG: 59,
+  MAX_OFF_TOG_OVERRIDE: 60,
+  FADE_LONG_PRESS_OVERRIDE: 61,
+  USER_LEVEL_RECALL_OVERRIDE: 62,
+  DMX_ZONE_FADE_UP: 63,
+  DMX_ZONE_FADE_DOWN: 64,
+  LOGGING_LEVEL: 65,
   NO_COMMAND: 254
 };
 
@@ -19508,7 +23595,8 @@ proto.ReadType = {
   DEVICE: 11,
   POLL_DATA: 12,
   LIST_EXTENDED: 13,
-  LOGIC: 14
+  LOGIC: 14,
+  DALI_INPUTS: 15
 };
 
 /**
@@ -19565,6 +23653,14 @@ proto.SpektraUnscheduledBehaviourType = {
 /**
  * @enum {number}
  */
+proto.LineAddressingType = {
+  INDEPENDENT: 0,
+  CONSECUTIVE: 1
+};
+
+/**
+ * @enum {number}
+ */
 proto.AckMessageType = {
   DECODE_FAILED: 0,
   INDEX_OUT_OF_BOUNDS: 1,
@@ -19579,7 +23675,9 @@ proto.AckMessageType = {
   DATA_TOO_LONG: 10,
   UNEXPECTED_CASE: 11,
   SLOTS_FULL: 12,
-  UNAUTHORISED: 13
+  UNAUTHORISED: 13,
+  PARTIAL_SUCCESS: 14,
+  COMMAND_FAILED: 15
 };
 
 /**
@@ -19774,7 +23872,10 @@ proto.AdminPropertyType = {
   NTP_DETAILS: 20,
   TRIDONIC_MSENSORS: 21,
   SECURE_SESSION: 22,
-  NONCE: 23
+  NONCE: 23,
+  DALI_SENSOR_TYPE: 24,
+  DEVICE_REBOOT: 25,
+  SYSTEM_LOGGING: 26
 };
 
 /**
@@ -19785,7 +23886,8 @@ proto.AdminCommandType = {
   GET: 1,
   ADD: 2,
   REMOVE: 3,
-  RESET: 4
+  RESET: 4,
+  RUN: 5
 };
 
 /**
@@ -19794,13 +23896,30 @@ proto.AdminCommandType = {
 proto.DALIStatusType = {
   LAMP_OFF: 0,
   CONTROL_GEAR_FAILURE: 1,
-  LAMP_FAILURE: 3,
-  LAMP_ON: 7,
-  LIMIT_ERROR: 15,
-  FADE_RUNNING: 31,
-  RESET_STATE: 63,
-  SHORT_ADDRESS: 127,
-  POWER_CYCLE_SEEN: 255
+  LAMP_FAILURE: 2,
+  LAMP_ON: 4,
+  LIMIT_ERROR: 8,
+  FADE_RUNNING: 16,
+  RESET_STATE: 32,
+  SHORT_ADDRESS: 64,
+  POWER_CYCLE_SEEN: 128
+};
+
+/**
+ * @enum {number}
+ */
+proto.DALIRXStatusFlag = {
+  WAITING: 0,
+  RECEIVING_FRAME: 1,
+  NO_RECEIVED_FRAME: 2,
+  RECEIVED_8_BIT_FRAME: 3,
+  RECEIVED_16_BIT_FRAME: 4,
+  RECEIVED_24_BIT_FRAME: 5,
+  RECEIVED_PARTIAL_FRAME: 6,
+  IDLE: 7,
+  CALIBRATION: 8,
+  ERROR_WHILE_SENDING: 254,
+  ERROR_WHILE_RECEIVING: 255
 };
 
 /**
@@ -19859,6 +23978,37 @@ proto.LogicComparisonType = {
   MORE_THAN: 3,
   MORE_THAN_OR_EQUALS: 4,
   NOT_EQUAL: 5
+};
+
+/**
+ * @enum {number}
+ */
+proto.DALISensorType = {
+  TRIDONIC_EDALI: 0,
+  STANDARD_EDALI: 1
+};
+
+/**
+ * @enum {number}
+ */
+proto.SensorCommandType = {
+  INITIALISE: 0,
+  MUTE: 1,
+  UNMUTE: 2,
+  OVERRIDE: 3
+};
+
+/**
+ * @enum {number}
+ */
+proto.SystemLogType = {
+  BOOT: 0,
+  NET_LINK: 1,
+  NTP: 2,
+  TRIGGER: 3,
+  SPEKTRA: 4,
+  SCHEDULE: 5,
+  USER: 6
 };
 
 goog.object.extend(exports, proto);
