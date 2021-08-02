@@ -1,5 +1,5 @@
 // The eDIDIO S10 Protocol Buffer Structure
-// Version Number 1.1.0
+// Version Number 1.1.1
 
 syntax = "proto3";
 
@@ -163,38 +163,39 @@ enum AckMessageType {
 }
 
 enum Type8CommandType {
-    ENABLE_DEVICE_TYPE8                  = 0;
-    SET_TEMP_X_COORD                     = 1;
-    SET_TEMP_Y_COORD                     = 2;
-    ACTIVATE                             = 3;
-    X_COORD_STEP_UP                      = 4;
-    X_COORD_STEP_DOWN                    = 5;
-    Y_COORD_STEP_UP                      = 6;
-    Y_COORD_STEP_DOWN                    = 7;
-    SET_TEMP_COLOUR_TEMPERATURE          = 8;
-    COLOUR_TEMPERATURE_STEP_COOLER       = 9;
-    COLOUR_TEMPERATURE_STEP_WARMER       = 10;
-    SET_TEMP_PRI_N_DIMLEVEL              = 11;
-    SET_TEMP_RGB_DIMLEVEL                = 12;
-    SET_TEMP_WAF_DIMLEVEL                = 13;
-    SET_TEMP_RGBWAF_CONTROL              = 14;
-    COPY_REPORT_TEMPORARY                = 15;
+    SET_TEMP_X_COORD                     = 0;   
+    SET_TEMP_Y_COORD                     = 1;
+    ACTIVATE                             = 2;
+    X_COORD_STEP_UP                      = 3;   // Activate Not Required
+    X_COORD_STEP_DOWN                    = 4;   // Activate Not Required
+    Y_COORD_STEP_UP                      = 5;   // Activate Not Required
+    Y_COORD_STEP_DOWN                    = 6;   // Activate Not Required
+    SET_TEMP_COLOUR_TEMPERATURE          = 7;   // Calls ACTIVATE internally. DTR1 | DTR as Mirek Value
+    COLOUR_TEMPERATURE_STEP_COOLER       = 8;   // Activate Not Required
+    COLOUR_TEMPERATURE_STEP_WARMER       = 9;   // Activate Not Required
+    SET_TEMP_PRI_N_DIMLEVEL              = 10;
+    SET_TEMP_RGB_DIMLEVEL                = 11;
+    SET_TEMP_WAF_DIMLEVEL                = 12;
+    SET_TEMP_RGBWAF_CONTROL              = 13;
+    COPY_REPORT_TEMPORARY                = 14;
     STORE_TY_PRI_N                       = 16;
     STORE_XY_COORD_PRI_N                 = 17;
     STORE_COLOUR_TEMPERATURE_LIMIT       = 18;
     STORE_GEAR_FEATURES_STATUS           = 19;
-    ASSIGN_COLOR_LINKED_CH               = 20;
-    START_AUTO_CAL                       = 21;
+    ASSIGN_COLOR_LINKED_CH               = 21;
+    START_AUTO_CAL                       = 22;
+    ENABLE_DEVICE_TYPE8                  = 48; 
 }
 
 enum Type8QueryType {
-    TYPE8_QUERY_GEAR_FEATURES_STATUS  = 0;
-    TYPE8_QUERY_COLOUR_STATUS         = 1;
-    TYPE8_QUERY_COLOUR_TYPE_FEATURES  = 2;
-    TYPE8_QUERY_COLOUR_VALUE          = 3;
-    TYPE8_QUERY_RGBWAF_CONTROL        = 4;
-    TYPE8_QUERY_ASSIGNED_COLOUR       = 5;
-    TYPE8_QUERY_EXT_VERSION_NUM       = 6;
+    TYPE8_QUERY_NULL                  = 0; // Required as the first "default" element for the Protocol. Will not perform any action.
+    TYPE8_QUERY_GEAR_FEATURES_STATUS  = 247;
+    TYPE8_QUERY_COLOUR_STATUS         = 248;
+    TYPE8_QUERY_COLOUR_TYPE_FEATURES  = 249;
+    TYPE8_QUERY_COLOUR_VALUE          = 250;
+    TYPE8_QUERY_RGBWAF_CONTROL        = 251;
+    TYPE8_QUERY_ASSIGNED_COLOUR       = 252;
+    TYPE8_QUERY_EXT_VERSION_NUM       = 254;
 }
 
 enum LineType {
@@ -707,10 +708,10 @@ uint32 line_mask                             = 1; // Binary mask; e.g. selecting
         CustomDALICommandType custom_command = 6;
         DALIQueryType query                  = 7;
         Type8CommandType type8               = 8;
-        uint32 frame_16_bit                  = 11;  // Standard DALI Frame data
-        uint32 frame_16_bit_reply            = 12; // Standard DALI Frame data with reply
-        uint32 frame_24_bit                  = 13; // Standard 24 Bit DALI Frame data
-        uint32 frame_24_bit_reply            = 14; // Standard 24 Bit DALI Frame data with reply
+        uint32 frame_16_bit                  = 11; // Standard DALI Frame data - Don't use arg
+        uint32 frame_16_bit_reply            = 12; // Standard DALI Frame data with reply - Don't use arg
+        uint32 frame_24_bit                  = 13; // Standard 24 Bit DALI Frame data - Don't use arg
+        uint32 frame_24_bit_reply            = 14; // Standard 24 Bit DALI Frame data with reply - Don't use arg
     }
     oneof params {
         uint32 arg                          = 9; // 'arg' rather than level for methods where you need a scene number.
