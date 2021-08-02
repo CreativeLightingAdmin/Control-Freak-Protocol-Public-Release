@@ -1,5 +1,5 @@
 // The eDIDIO S10 Protocol Buffer Structure
-// Version Number 1.1.1
+// Version Number 1.1.2
 
 syntax = "proto3";
 
@@ -732,7 +732,7 @@ message DALIQueryResponse {
     }
 	// New Query Method
 	DALIRXStatusFlag dali_flag              = 3;
-	PayloadMessage reponse_data             = 4;
+	PayloadMessage response_data            = 4;
 }
 
 enum DALIAddressingError {
