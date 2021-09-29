@@ -1,5 +1,5 @@
 // The eDIDIO S10 Protocol Buffer Structure
-// Version Number 1.1.2
+// Version Number 1.1.3
 
 syntax = "proto3";
 
@@ -80,26 +80,29 @@ enum TriggerType {
 	DMX_ZONE_FADE_UP					= 63;   // DMX Spektra Zone Fade UP
 	DMX_ZONE_FADE_DOWN					= 64;   // DMX Spektra Zone Fade DOWN
 	LOGGING_LEVEL						= 65;	// Enable Logging to EEPROM to be read by configurator
+    SPEKTRA_SHOW_CONTROL                = 66;   // Show Control 
     NO_COMMAND                          = 254;  // This TriggerType should always be at the bottom of the list. Add any new TriggerTypes above it (up to 253).
 }
 
 enum ReadType {
-    INPUTS      = 0;
-    OUTPUTS     = 1;
-    IR          = 2;
-    SENSOR      = 3;
-    // DEPRECATED: SENSORS (4)
-    LIST        = 5;
-    // DEPRECATED: LISTS (6)
-    ALARMS      = 7;
-    BURN_IN     = 8;
-    PROJECT     = 9;
-    NETWORK     = 10;
-    DEVICE      = 11;
-    POLL_DATA   = 12;
-    LIST_EXTENDED = 13;
-	LOGIC	    = 14;
-	DALI_INPUTS = 15;
+    INPUTS                  = 0;
+    OUTPUTS                 = 1;
+    IR                      = 2;
+    SENSOR                  = 3;
+    // DEPRECATED: SENSORS  (4)
+    LIST                    = 5;
+    // DEPRECATED: LISTS    (6)
+    ALARMS                  = 7;
+    BURN_IN                 = 8;
+    PROJECT                 = 9;
+    NETWORK                 = 10;
+    DEVICE                  = 11;
+    POLL_DATA               = 12;
+    LIST_EXTENDED           = 13;
+	LOGIC	                = 14;
+	DALI_INPUTS             = 15;
+    SPEKTRA_SHOW            = 16;
+    SPEKTRA_SHOW_EXTENDED   = 17;
 }
 
 enum AlarmRepeatType {
@@ -117,11 +120,12 @@ enum AlarmAstroType {
 }
 
 enum SpektraTargetType {
-    SETTINGS     = 0;
-    SEQUENCE     = 1;
-    THEME        = 2;
-    STATIC       = 3;
-	CALENDAR     = 4;
+    SETTINGS        = 0;
+    SEQUENCE        = 1;
+    THEME           = 2;
+    STATIC          = 3;
+	CALENDAR        = 4;
+    SHOW            = 5;
 }
 
 enum SpektraActionType {
@@ -129,6 +133,14 @@ enum SpektraActionType {
     STOP   = 1;
     PAUSE  = 2;
     SAVE   = 3;
+}
+
+enum SpektraStepActionType {
+    RUN_SEQUENCE    = 0;
+    SHOW_THEME      = 1;
+    START_LIST      = 2;
+    PAUSE_PREVIOUS  = 3;
+    STOP_PREVIOUS   = 4;
 }
 
 enum SpektraUnscheduledBehaviourType {
@@ -160,6 +172,7 @@ enum AckMessageType {
     UNAUTHORISED                   = 13; // The message could not be actioned because the connection has not been authorised.
     PARTIAL_SUCCESS                = 14; // Can be returned in the case where some but not all Lines in a line_mask successfully sent
     COMMAND_FAILED                 = 15; // For whatever reason, the intended command did not complete
+    DEPRECATED                     = 16; // For message which is no longer supported by this Firmware
 }
 
 enum Type8CommandType {
@@ -203,15 +216,17 @@ enum LineType {
     LINE_DALI   = 1;
     LINE_DMX    = 2;
 	LINE_DMX_IN = 3; // Must be set in the case of DMX to DALI Translation.
+    LINE_AUTO   = 4; // Line will be determined from physical hardware
 }
 
 enum EventType {
-    REGISTER         = 0; // Sent by the client to register for events.
-    TRIGGER_EVENT    = 1; // Emitted when trigger runs an action listed in TriggerType.
-    INPUT_EVENT      = 2; // Emitted when an input is triggered.
-    SENSOR_EVENT     = 3; // Emitted when a sensor is triggered.
-    CONTROL_EVENT    = 4; // Emitted when an DALI/DMX/phyiscal output type event is done. References an action in TriggerType.
-    ROOM_JOIN_EVENT  = 5; // Emitted when rooms are joined/unjoined.
+    REGISTER                = 0; // Sent by the client to register for events.
+    TRIGGER_EVENT           = 1; // Emitted when trigger runs an action listed in TriggerType.
+    INPUT_EVENT             = 2; // Emitted when a physical Input is triggered.
+    SENSOR_EVENT            = 3; // Emitted when a Sensor (Tridonic or 24-Bit) is triggered.
+    CONTROL_EVENT           = 4; // Emitted when an DALI/DMX/phyiscal output type event is done. References an action in TriggerType.
+    ROOM_JOIN_EVENT         = 5; // Emitted when rooms are joined/unjoined.
+    DALI_24_INPUT_EVENT     = 6; // Emitted when a 24-bit DALI Input Device is triggered.
 }
 
 enum DALIQueryType {
@@ -336,7 +351,9 @@ enum AdminPropertyType {
     NONCE               = 23; // Allows you to request a Nonce to perform a Secure Login
     DALI_SENSOR_TYPE    = 24; // The type of DALI frame (24 or 25-bit) for eDALI packets to/from motion sensors
     DEVICE_REBOOT       = 25; // Will reboot the device when used with the 'RUN' AdminCommandType
-	SYSTEM_LOGGING      = 26; // Will reset the system logs when used with a 'RESET' AdminCommandTyppe
+	SYSTEM_LOGGING      = 26; // Will reset the system logs when used with a 'RESET' AdminCommandType
+    SUBNET              = 27; // The Subnet of the Device
+    DNS                 = 28; // The Primary and Secondary DNS
 }
 
 enum AdminCommandType {
@@ -441,6 +458,27 @@ enum SystemLogType {
 	USER = 6;
 }
 
+enum DALI24InputType {
+    MOMENTARY_SHORT     = 0;
+    MOMENTARY_LONG      = 1;
+    LATCHED_LOW         = 2;
+    LATCHED_HIGH        = 3;
+    POSITIONAL          = 4;
+}
+
+enum DALIMotionSensorStates {
+    MOTION_IDLE        = 0;
+    MOTION_DISABLED    = 1;
+    MOTION_WARNING     = 2;
+    MOTION_OCCUPANCY   = 3;
+}
+
+enum DALILuxSensorStates {
+    LUX_DISABLED    = 0;
+    LUX_ENABLED     = 1;
+    LUX_DEVIATE     = 2;
+}
+
 /********** General Messages ****************/
 // Sent in Response to another message.
 message AckMessage {
@@ -529,6 +567,7 @@ message DALIInputMessage {
     TriggerOperationType button_state  = 4; // How will this Input be triggered? Momentary (short/long press) or Latching (low/high)
     TriggerMessage short_press         = 5; // What action should occur on short/low
     TriggerMessage long_press          = 6; // What action should occur on long/high
+    uint32 instance                    = 7; // What instance of the device? If it has multiple inputs
 }
 
 // IR
@@ -712,6 +751,7 @@ uint32 line_mask                             = 1; // Binary mask; e.g. selecting
         uint32 frame_16_bit_reply            = 12; // Standard DALI Frame data with reply - Don't use arg
         uint32 frame_24_bit                  = 13; // Standard 24 Bit DALI Frame data - Don't use arg
         uint32 frame_24_bit_reply            = 14; // Standard 24 Bit DALI Frame data with reply - Don't use arg
+        Type8QueryType type8_reply           = 15; 
     }
     oneof params {
         uint32 arg                          = 9; // 'arg' rather than level for methods where you need a scene number.
@@ -792,6 +832,18 @@ message RDMResponseMessage {
 	repeated uint32 data    = 4;
 }
 
+// RDM Discovery Message - Invokes Discovery with reply as RDMDiscoveryReplyMessage
+message RDMDiscoveryMessage {
+    uint32 universe_mask = 1;
+}
+
+// RDM Discovery Reply with up to 
+message RDMDiscoveryReplyMessage {
+    uint32 discovery_count = 1;
+    repeated uint64 uid = 2;
+    uint32 error_code = 3;
+}
+
 /************   SPEKTRA    *************/
 message SpektraSettingMessage {    
     uint32 zone                                                 = 1;
@@ -836,12 +888,14 @@ message SpektraCalendarMessage {
 	SpektraTargetType type  = 1;	    // Spektra Type (e.g. Sequence or Theme)
 	uint32 index            = 2;        // Index (i.e. which Sequence or Theme)
 	repeated bool days      = 3;        // Boolean array to specify when this Target Index is active (up to the number of days in a year)
+    bool isOverride         = 4;        // Boolean isOverride. If override, only run once
 }
 
 message SpektraCalendarDayMessage {
     uint32 day_index        = 1;    // Index of this day (0 to 365, 366 days total)
     SpektraTargetType type  = 2;    // Spektra Type for this day (e.g. Sequence or Theme)
     uint32 target_index     = 3;    // Index of the specified Type (i.e. which Sequence or Theme)
+    bool isOverride         = 4;    // Boolean isOverride. If override, only run once
 }
 
 message SpektraCalendarOverviewMessage {
@@ -862,12 +916,46 @@ message SpektraReadMessage {
 }
 
 message SpektraControlMessage {
-    SpektraTargetType type    = 1;
-    uint32 zone               = 2;
-    uint32 index              = 3;
-    SpektraActionType action  = 4;
+    SpektraTargetType type        = 1;
+    uint32 zone                   = 2;
+    uint32 index                  = 3;
+    SpektraActionType action      = 4;
 }
 
+/************   SHOW    *************/
+message ShowStepMessage {
+    uint32 step_index                       = 1;
+    uint32 target_index                     = 2; // The index for the action_type (where relevant)
+    SpektraStepActionType action_type       = 3; // Run Sequence / Show Theme / Start List / Pause / Stop & Off
+    uint32 max_random_target_index          = 4; // If non-zero, will randomly pick a target_index between target_index and max_random_target_index, inclusive
+    uint32 zone                             = 5; // Which Zone to activate the action_type on (or use 0xFF to send to All Zones)
+    uint32 max_output_level_limit           = 6; // For DMX / DALI, what should the maximum output be restricted to (e.g. 127 out of 255)
+    uint32 time_until_next_10ms             = 7; // How long to wait before the next step (in multiples of 10ms)
+}
+
+message SpektraShowMessage {
+    uint32 show_index               = 1;
+    uint32 number_of_steps          = 2;
+    repeated ShowStepMessage step   = 3; // Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+    bool isRunning                  = 4;
+    bool isLooped                   = 5;
+    bool isRandom                   = 6;
+    bool isTemporary                = 7;
+    uint32 activations_remaining    = 8; // If isTemporary is true; this is how many times this Show can be activated [NOTE: Only 1 Temporary Show can exist at any given time]
+}
+
+// This Message must be used when the Show has more than 32 steps
+message ExtendedSpektraShowMessage {
+    uint32 show_index              = 1; // Which Show do these steps belong to?
+    uint32 step_index_offset       = 2; // 0 for the first ExtendedListMessage; offset by 32 for every ExtendedListMessage beyond the first
+    repeated ShowStepMessage step  = 3;
+}
+
+message SpektraShowControlMessage {
+    uint32 show_index               = 1; // Which Show
+    uint32 start_resume             = 2; // Action
+    uint32 gotoStep                 = 3; // Which step to start on if not 0
+}
 
 /************ TRANSLATION  *************/
 message DMXTranslationObject {
@@ -902,12 +990,6 @@ message LevelCacheResponse { // DALI/DMX agnostic.
     repeated uint32 levels  = 1; 
     uint32 line             = 2;
     uint32 page             = 3; 
-}
-
-message JoinedRoomsMessage {
-    repeated uint32 pairs  = 1; // Pairs of integers indicating joins between physical zones.
-    bool joined            = 2; // If True, these pairs are joined. Else they are being separated.
-    bool clear_joins       = 3; // Can be sent at the same time as joining, but interpreted as "clear all". An "override" type effect.
 }
 
 // Get System Info
@@ -975,6 +1057,11 @@ message AdminNetworkPropertiesMessage {
     string gateway      = 4; // The Gateway IP for the network this Device is on
 	string NTPServer    = 5; // The NTP Server address from RTC updates over the network
 	bool NTP            = 6; // Should NTP be used to keep the RTC up-to-date via network requests
+    string error        = 7; // Error or Status Message 32 char
+    uint32 NTPTimeout   = 8; // Timeout in seconds for NTP Retry
+    string subnet       = 9; // The Subnet if set by Static IP
+    string DNS_Primary  = 10;   // Primary DNS
+    string DNS_Secondary = 11;  // Secondary DNS
 }
 
 message AdminControllerLinesMessage {
@@ -1030,6 +1117,7 @@ message FirmwareMetaMessage {
 	uint32 firmware_chunk_count	         = 5; // Number of stored chunks
 	uint32 firmware_base_address 	     = 6; // Base Address of the Firmware
 	uint32 firmware_end_address	         = 7; // End Address - For sector erases
+    bool firmware_is_backup              = 8; // Flag to send Firmware to 'Backup' Location
 	// Controller will reply 'Ready' After each succesful action. 
 }
 
@@ -1124,18 +1212,36 @@ message TriggerEvent {
     }
     uint32 target_address             = 4; // The target address for the TriggerType (if applicable)
     uint32 line_mask                  = 5; // The Line(s) on wich the Trigger occurred (if applicable)
+}
 
+message DALI24InputEvent {
+    uint32 index            = 1;
+    uint32 line             = 2;
+    uint32 address          = 3;
+    DALI24InputType type    = 4; // Momentary Short / Momentary Long / Latch Low / Latch High / Positional
+    uint32 arg              = 5; // Relevant information for the DALI24InputType
+}
+
+message DALISensorEvent {
+    uint32 index                            = 1;
+    uint32 line                             = 2;
+    uint32 address                          = 3;
+    DALIMotionSensorStates motion_state     = 4; // Idle / Disabled / Warning / Occupancy
+    DALILuxSensorStates lux_state           = 5; // Disabled / Enabled / Deviate
+    uint32 lux_level                        = 6;
 }
 
 // A message sent to a client when an event occurs. Depending on the event type (Trigger, Input or Sensor) different data is supplied with the event.
 // If a client sends an EventMessage with EventType of REGISTER then broadcast events out to the client.
 message EventMessage {
-    EventType event                      = 1;
+    EventType event                             = 1;
     oneof event_data {
-        TriggerEvent trigger             = 2;
-        InputStateResponse inputs        = 3;
-        PayloadMessage payload           = 4;
-        JoinedRoomsMessage joined_rooms  = 5;
+        TriggerEvent trigger                    = 2;
+        InputStateResponse inputs               = 3;
+        PayloadMessage payload                  = 4;
+        // OBSOLETE: JoinedRoomsMessage joined_rooms (5) --> No longer used
+        DALISensorEvent sensor                  = 6;
+        DALI24InputEvent dali_24_input          = 7;
     }
 }
 
@@ -1182,7 +1288,7 @@ message EdidioMessage
         FirmwareControlMessage firmware_control               = 37;
         FirmwareChunkMessage firmware_chunk                   = 38;
         LevelCacheResponse level_cache_response               = 39;
-        JoinedRoomsMessage joined_rooms                       = 40;
+        // OBSOLETE: JoinedRoomsMessage joined_rooms           (40) --> No longer used
         ExtendedListMessage list_extended                     = 41;
         AytMessage ayt_message                                = 42;
         RDMMessage rdm_message                                = 43;
@@ -1197,5 +1303,10 @@ message EdidioMessage
 		SystemMetaDataReadMessage metadata_read						= 52;
         DALIAddressingMessage dali_addressing_message               = 53;
         DALIRemappingMessage dali_remapping_message                 = 54;
+        SpektraShowControlMessage spektra_show_control_message      = 55;
+        SpektraShowMessage spektra_show_message                     = 56;
+        ExtendedSpektraShowMessage extended_spektra_show_message    = 57;
+        RDMDiscoveryMessage rdm_discovery                           = 58;
+        RDMDiscoveryReplyMessage rdm_discovery_reply                = 59;
     }
 }

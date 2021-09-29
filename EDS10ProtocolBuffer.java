@@ -566,6 +566,14 @@ public final class EDS10ProtocolBuffer {
     LOGGING_LEVEL(65),
     /**
      * <pre>
+     * Show Control 
+     * </pre>
+     *
+     * <code>SPEKTRA_SHOW_CONTROL = 66;</code>
+     */
+    SPEKTRA_SHOW_CONTROL(66),
+    /**
+     * <pre>
      * This TriggerType should always be at the bottom of the list. Add any new TriggerTypes above it (up to 253).
      * </pre>
      *
@@ -921,6 +929,14 @@ public final class EDS10ProtocolBuffer {
     public static final int LOGGING_LEVEL_VALUE = 65;
     /**
      * <pre>
+     * Show Control 
+     * </pre>
+     *
+     * <code>SPEKTRA_SHOW_CONTROL = 66;</code>
+     */
+    public static final int SPEKTRA_SHOW_CONTROL_VALUE = 66;
+    /**
+     * <pre>
      * This TriggerType should always be at the bottom of the list. Add any new TriggerTypes above it (up to 253).
      * </pre>
      *
@@ -1012,6 +1028,7 @@ public final class EDS10ProtocolBuffer {
         case 63: return DMX_ZONE_FADE_UP;
         case 64: return DMX_ZONE_FADE_DOWN;
         case 65: return LOGGING_LEVEL;
+        case 66: return SPEKTRA_SHOW_CONTROL;
         case 254: return NO_COMMAND;
         default: return null;
       }
@@ -1088,7 +1105,7 @@ public final class EDS10ProtocolBuffer {
     SENSOR(3),
     /**
      * <pre>
-     * DEPRECATED: SENSORS (4)
+     * DEPRECATED: SENSORS  (4)
      * </pre>
      *
      * <code>LIST = 5;</code>
@@ -1096,7 +1113,7 @@ public final class EDS10ProtocolBuffer {
     LIST(5),
     /**
      * <pre>
-     * DEPRECATED: LISTS (6)
+     * DEPRECATED: LISTS    (6)
      * </pre>
      *
      * <code>ALARMS = 7;</code>
@@ -1134,6 +1151,14 @@ public final class EDS10ProtocolBuffer {
      * <code>DALI_INPUTS = 15;</code>
      */
     DALI_INPUTS(15),
+    /**
+     * <code>SPEKTRA_SHOW = 16;</code>
+     */
+    SPEKTRA_SHOW(16),
+    /**
+     * <code>SPEKTRA_SHOW_EXTENDED = 17;</code>
+     */
+    SPEKTRA_SHOW_EXTENDED(17),
     UNRECOGNIZED(-1),
     ;
 
@@ -1155,7 +1180,7 @@ public final class EDS10ProtocolBuffer {
     public static final int SENSOR_VALUE = 3;
     /**
      * <pre>
-     * DEPRECATED: SENSORS (4)
+     * DEPRECATED: SENSORS  (4)
      * </pre>
      *
      * <code>LIST = 5;</code>
@@ -1163,7 +1188,7 @@ public final class EDS10ProtocolBuffer {
     public static final int LIST_VALUE = 5;
     /**
      * <pre>
-     * DEPRECATED: LISTS (6)
+     * DEPRECATED: LISTS    (6)
      * </pre>
      *
      * <code>ALARMS = 7;</code>
@@ -1201,6 +1226,14 @@ public final class EDS10ProtocolBuffer {
      * <code>DALI_INPUTS = 15;</code>
      */
     public static final int DALI_INPUTS_VALUE = 15;
+    /**
+     * <code>SPEKTRA_SHOW = 16;</code>
+     */
+    public static final int SPEKTRA_SHOW_VALUE = 16;
+    /**
+     * <code>SPEKTRA_SHOW_EXTENDED = 17;</code>
+     */
+    public static final int SPEKTRA_SHOW_EXTENDED_VALUE = 17;
 
 
     public final int getNumber() {
@@ -1235,6 +1268,8 @@ public final class EDS10ProtocolBuffer {
         case 13: return LIST_EXTENDED;
         case 14: return LOGIC;
         case 15: return DALI_INPUTS;
+        case 16: return SPEKTRA_SHOW;
+        case 17: return SPEKTRA_SHOW_EXTENDED;
         default: return null;
       }
     }
@@ -1544,6 +1579,10 @@ public final class EDS10ProtocolBuffer {
      * <code>CALENDAR = 4;</code>
      */
     CALENDAR(4),
+    /**
+     * <code>SHOW = 5;</code>
+     */
+    SHOW(5),
     UNRECOGNIZED(-1),
     ;
 
@@ -1567,6 +1606,10 @@ public final class EDS10ProtocolBuffer {
      * <code>CALENDAR = 4;</code>
      */
     public static final int CALENDAR_VALUE = 4;
+    /**
+     * <code>SHOW = 5;</code>
+     */
+    public static final int SHOW_VALUE = 5;
 
 
     public final int getNumber() {
@@ -1592,6 +1635,7 @@ public final class EDS10ProtocolBuffer {
         case 2: return THEME;
         case 3: return STATIC;
         case 4: return CALENDAR;
+        case 5: return SHOW;
         default: return null;
       }
     }
@@ -1761,6 +1805,131 @@ public final class EDS10ProtocolBuffer {
   }
 
   /**
+   * Protobuf enum {@code SpektraStepActionType}
+   */
+  public enum SpektraStepActionType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>RUN_SEQUENCE = 0;</code>
+     */
+    RUN_SEQUENCE(0),
+    /**
+     * <code>SHOW_THEME = 1;</code>
+     */
+    SHOW_THEME(1),
+    /**
+     * <code>START_LIST = 2;</code>
+     */
+    START_LIST(2),
+    /**
+     * <code>PAUSE_PREVIOUS = 3;</code>
+     */
+    PAUSE_PREVIOUS(3),
+    /**
+     * <code>STOP_PREVIOUS = 4;</code>
+     */
+    STOP_PREVIOUS(4),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>RUN_SEQUENCE = 0;</code>
+     */
+    public static final int RUN_SEQUENCE_VALUE = 0;
+    /**
+     * <code>SHOW_THEME = 1;</code>
+     */
+    public static final int SHOW_THEME_VALUE = 1;
+    /**
+     * <code>START_LIST = 2;</code>
+     */
+    public static final int START_LIST_VALUE = 2;
+    /**
+     * <code>PAUSE_PREVIOUS = 3;</code>
+     */
+    public static final int PAUSE_PREVIOUS_VALUE = 3;
+    /**
+     * <code>STOP_PREVIOUS = 4;</code>
+     */
+    public static final int STOP_PREVIOUS_VALUE = 4;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static SpektraStepActionType valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static SpektraStepActionType forNumber(int value) {
+      switch (value) {
+        case 0: return RUN_SEQUENCE;
+        case 1: return SHOW_THEME;
+        case 2: return START_LIST;
+        case 3: return PAUSE_PREVIOUS;
+        case 4: return STOP_PREVIOUS;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<SpektraStepActionType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        SpektraStepActionType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<SpektraStepActionType>() {
+            public SpektraStepActionType findValueByNumber(int number) {
+              return SpektraStepActionType.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(7);
+    }
+
+    private static final SpektraStepActionType[] VALUES = values();
+
+    public static SpektraStepActionType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private SpektraStepActionType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:SpektraStepActionType)
+  }
+
+  /**
    * Protobuf enum {@code SpektraUnscheduledBehaviourType}
    */
   public enum SpektraUnscheduledBehaviourType
@@ -1882,7 +2051,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(7);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(8);
     }
 
     private static final SpektraUnscheduledBehaviourType[] VALUES = values();
@@ -1996,7 +2165,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(8);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(9);
     }
 
     private static final LineAddressingType[] VALUES = values();
@@ -2155,6 +2324,14 @@ public final class EDS10ProtocolBuffer {
      * <code>COMMAND_FAILED = 15;</code>
      */
     COMMAND_FAILED(15),
+    /**
+     * <pre>
+     * For message which is no longer supported by this Firmware
+     * </pre>
+     *
+     * <code>DEPRECATED = 16;</code>
+     */
+    DEPRECATED(16),
     UNRECOGNIZED(-1),
     ;
 
@@ -2286,6 +2463,14 @@ public final class EDS10ProtocolBuffer {
      * <code>COMMAND_FAILED = 15;</code>
      */
     public static final int COMMAND_FAILED_VALUE = 15;
+    /**
+     * <pre>
+     * For message which is no longer supported by this Firmware
+     * </pre>
+     *
+     * <code>DEPRECATED = 16;</code>
+     */
+    public static final int DEPRECATED_VALUE = 16;
 
 
     public final int getNumber() {
@@ -2322,6 +2507,7 @@ public final class EDS10ProtocolBuffer {
         case 13: return UNAUTHORISED;
         case 14: return PARTIAL_SUCCESS;
         case 15: return COMMAND_FAILED;
+        case 16: return DEPRECATED;
         default: return null;
       }
     }
@@ -2348,7 +2534,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(9);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(10);
     }
 
     private static final AckMessageType[] VALUES = values();
@@ -2682,7 +2868,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(10);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(11);
     }
 
     private static final Type8CommandType[] VALUES = values();
@@ -2842,7 +3028,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(11);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(12);
     }
 
     private static final Type8QueryType[] VALUES = values();
@@ -2893,6 +3079,14 @@ public final class EDS10ProtocolBuffer {
      * <code>LINE_DMX_IN = 3;</code>
      */
     LINE_DMX_IN(3),
+    /**
+     * <pre>
+     * Line will be determined from physical hardware
+     * </pre>
+     *
+     * <code>LINE_AUTO = 4;</code>
+     */
+    LINE_AUTO(4),
     UNRECOGNIZED(-1),
     ;
 
@@ -2916,6 +3110,14 @@ public final class EDS10ProtocolBuffer {
      * <code>LINE_DMX_IN = 3;</code>
      */
     public static final int LINE_DMX_IN_VALUE = 3;
+    /**
+     * <pre>
+     * Line will be determined from physical hardware
+     * </pre>
+     *
+     * <code>LINE_AUTO = 4;</code>
+     */
+    public static final int LINE_AUTO_VALUE = 4;
 
 
     public final int getNumber() {
@@ -2940,6 +3142,7 @@ public final class EDS10ProtocolBuffer {
         case 1: return LINE_DALI;
         case 2: return LINE_DMX;
         case 3: return LINE_DMX_IN;
+        case 4: return LINE_AUTO;
         default: return null;
       }
     }
@@ -2966,7 +3169,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(12);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(13);
     }
 
     private static final LineType[] VALUES = values();
@@ -3015,7 +3218,7 @@ public final class EDS10ProtocolBuffer {
     TRIGGER_EVENT(1),
     /**
      * <pre>
-     * Emitted when an input is triggered.
+     * Emitted when a physical Input is triggered.
      * </pre>
      *
      * <code>INPUT_EVENT = 2;</code>
@@ -3023,7 +3226,7 @@ public final class EDS10ProtocolBuffer {
     INPUT_EVENT(2),
     /**
      * <pre>
-     * Emitted when a sensor is triggered.
+     * Emitted when a Sensor (Tridonic or 24-Bit) is triggered.
      * </pre>
      *
      * <code>SENSOR_EVENT = 3;</code>
@@ -3045,6 +3248,14 @@ public final class EDS10ProtocolBuffer {
      * <code>ROOM_JOIN_EVENT = 5;</code>
      */
     ROOM_JOIN_EVENT(5),
+    /**
+     * <pre>
+     * Emitted when a 24-bit DALI Input Device is triggered.
+     * </pre>
+     *
+     * <code>DALI_24_INPUT_EVENT = 6;</code>
+     */
+    DALI_24_INPUT_EVENT(6),
     UNRECOGNIZED(-1),
     ;
 
@@ -3066,7 +3277,7 @@ public final class EDS10ProtocolBuffer {
     public static final int TRIGGER_EVENT_VALUE = 1;
     /**
      * <pre>
-     * Emitted when an input is triggered.
+     * Emitted when a physical Input is triggered.
      * </pre>
      *
      * <code>INPUT_EVENT = 2;</code>
@@ -3074,7 +3285,7 @@ public final class EDS10ProtocolBuffer {
     public static final int INPUT_EVENT_VALUE = 2;
     /**
      * <pre>
-     * Emitted when a sensor is triggered.
+     * Emitted when a Sensor (Tridonic or 24-Bit) is triggered.
      * </pre>
      *
      * <code>SENSOR_EVENT = 3;</code>
@@ -3096,6 +3307,14 @@ public final class EDS10ProtocolBuffer {
      * <code>ROOM_JOIN_EVENT = 5;</code>
      */
     public static final int ROOM_JOIN_EVENT_VALUE = 5;
+    /**
+     * <pre>
+     * Emitted when a 24-bit DALI Input Device is triggered.
+     * </pre>
+     *
+     * <code>DALI_24_INPUT_EVENT = 6;</code>
+     */
+    public static final int DALI_24_INPUT_EVENT_VALUE = 6;
 
 
     public final int getNumber() {
@@ -3122,6 +3341,7 @@ public final class EDS10ProtocolBuffer {
         case 3: return SENSOR_EVENT;
         case 4: return CONTROL_EVENT;
         case 5: return ROOM_JOIN_EVENT;
+        case 6: return DALI_24_INPUT_EVENT;
         default: return null;
       }
     }
@@ -3148,7 +3368,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(13);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(14);
     }
 
     private static final EventType[] VALUES = values();
@@ -3587,7 +3807,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(14);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(15);
     }
 
     private static final DALIQueryType[] VALUES = values();
@@ -4022,7 +4242,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(15);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(16);
     }
 
     private static final DALICommandType[] VALUES = values();
@@ -4208,7 +4428,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(16);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(17);
     }
 
     private static final CustomDALICommandType[] VALUES = values();
@@ -4449,12 +4669,28 @@ public final class EDS10ProtocolBuffer {
     DEVICE_REBOOT(25),
     /**
      * <pre>
-     * Will reset the system logs when used with a 'RESET' AdminCommandTyppe
+     * Will reset the system logs when used with a 'RESET' AdminCommandType
      * </pre>
      *
      * <code>SYSTEM_LOGGING = 26;</code>
      */
     SYSTEM_LOGGING(26),
+    /**
+     * <pre>
+     * The Subnet of the Device
+     * </pre>
+     *
+     * <code>SUBNET = 27;</code>
+     */
+    SUBNET(27),
+    /**
+     * <pre>
+     * The Primary and Secondary DNS
+     * </pre>
+     *
+     * <code>DNS = 28;</code>
+     */
+    DNS(28),
     UNRECOGNIZED(-1),
     ;
 
@@ -4668,12 +4904,28 @@ public final class EDS10ProtocolBuffer {
     public static final int DEVICE_REBOOT_VALUE = 25;
     /**
      * <pre>
-     * Will reset the system logs when used with a 'RESET' AdminCommandTyppe
+     * Will reset the system logs when used with a 'RESET' AdminCommandType
      * </pre>
      *
      * <code>SYSTEM_LOGGING = 26;</code>
      */
     public static final int SYSTEM_LOGGING_VALUE = 26;
+    /**
+     * <pre>
+     * The Subnet of the Device
+     * </pre>
+     *
+     * <code>SUBNET = 27;</code>
+     */
+    public static final int SUBNET_VALUE = 27;
+    /**
+     * <pre>
+     * The Primary and Secondary DNS
+     * </pre>
+     *
+     * <code>DNS = 28;</code>
+     */
+    public static final int DNS_VALUE = 28;
 
 
     public final int getNumber() {
@@ -4721,6 +4973,8 @@ public final class EDS10ProtocolBuffer {
         case 24: return DALI_SENSOR_TYPE;
         case 25: return DEVICE_REBOOT;
         case 26: return SYSTEM_LOGGING;
+        case 27: return SUBNET;
+        case 28: return DNS;
         default: return null;
       }
     }
@@ -4747,7 +5001,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(17);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(18);
     }
 
     private static final AdminPropertyType[] VALUES = values();
@@ -4881,7 +5135,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(18);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(19);
     }
 
     private static final AdminCommandType[] VALUES = values();
@@ -5062,7 +5316,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(19);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(20);
     }
 
     private static final DALIStatusType[] VALUES = values();
@@ -5241,7 +5495,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(20);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(21);
     }
 
     private static final DALIRXStatusFlag[] VALUES = values();
@@ -5406,7 +5660,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(21);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(22);
     }
 
     private static final DiagnosticMessageType[] VALUES = values();
@@ -5540,7 +5794,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(22);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(23);
     }
 
     private static final FirmwareCommandType[] VALUES = values();
@@ -5671,7 +5925,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(23);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(24);
     }
 
     private static final SpektraTransitionType[] VALUES = values();
@@ -5823,7 +6077,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(24);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(25);
     }
 
     private static final LogicType[] VALUES = values();
@@ -5957,7 +6211,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(25);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(26);
     }
 
     private static final LogicComparisonType[] VALUES = values();
@@ -6071,7 +6325,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(26);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(27);
     }
 
     private static final DALISensorType[] VALUES = values();
@@ -6219,7 +6473,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(27);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(28);
     }
 
     private static final SensorCommandType[] VALUES = values();
@@ -6362,7 +6616,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(28);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(29);
     }
 
     private static final SystemLogType[] VALUES = values();
@@ -6386,6 +6640,354 @@ public final class EDS10ProtocolBuffer {
     }
 
     // @@protoc_insertion_point(enum_scope:SystemLogType)
+  }
+
+  /**
+   * Protobuf enum {@code DALI24InputType}
+   */
+  public enum DALI24InputType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>MOMENTARY_SHORT = 0;</code>
+     */
+    MOMENTARY_SHORT(0),
+    /**
+     * <code>MOMENTARY_LONG = 1;</code>
+     */
+    MOMENTARY_LONG(1),
+    /**
+     * <code>LATCHED_LOW = 2;</code>
+     */
+    LATCHED_LOW(2),
+    /**
+     * <code>LATCHED_HIGH = 3;</code>
+     */
+    LATCHED_HIGH(3),
+    /**
+     * <code>POSITIONAL = 4;</code>
+     */
+    POSITIONAL(4),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>MOMENTARY_SHORT = 0;</code>
+     */
+    public static final int MOMENTARY_SHORT_VALUE = 0;
+    /**
+     * <code>MOMENTARY_LONG = 1;</code>
+     */
+    public static final int MOMENTARY_LONG_VALUE = 1;
+    /**
+     * <code>LATCHED_LOW = 2;</code>
+     */
+    public static final int LATCHED_LOW_VALUE = 2;
+    /**
+     * <code>LATCHED_HIGH = 3;</code>
+     */
+    public static final int LATCHED_HIGH_VALUE = 3;
+    /**
+     * <code>POSITIONAL = 4;</code>
+     */
+    public static final int POSITIONAL_VALUE = 4;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static DALI24InputType valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static DALI24InputType forNumber(int value) {
+      switch (value) {
+        case 0: return MOMENTARY_SHORT;
+        case 1: return MOMENTARY_LONG;
+        case 2: return LATCHED_LOW;
+        case 3: return LATCHED_HIGH;
+        case 4: return POSITIONAL;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<DALI24InputType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        DALI24InputType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<DALI24InputType>() {
+            public DALI24InputType findValueByNumber(int number) {
+              return DALI24InputType.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(30);
+    }
+
+    private static final DALI24InputType[] VALUES = values();
+
+    public static DALI24InputType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private DALI24InputType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:DALI24InputType)
+  }
+
+  /**
+   * Protobuf enum {@code DALIMotionSensorStates}
+   */
+  public enum DALIMotionSensorStates
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>MOTION_IDLE = 0;</code>
+     */
+    MOTION_IDLE(0),
+    /**
+     * <code>MOTION_DISABLED = 1;</code>
+     */
+    MOTION_DISABLED(1),
+    /**
+     * <code>MOTION_WARNING = 2;</code>
+     */
+    MOTION_WARNING(2),
+    /**
+     * <code>MOTION_OCCUPANCY = 3;</code>
+     */
+    MOTION_OCCUPANCY(3),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>MOTION_IDLE = 0;</code>
+     */
+    public static final int MOTION_IDLE_VALUE = 0;
+    /**
+     * <code>MOTION_DISABLED = 1;</code>
+     */
+    public static final int MOTION_DISABLED_VALUE = 1;
+    /**
+     * <code>MOTION_WARNING = 2;</code>
+     */
+    public static final int MOTION_WARNING_VALUE = 2;
+    /**
+     * <code>MOTION_OCCUPANCY = 3;</code>
+     */
+    public static final int MOTION_OCCUPANCY_VALUE = 3;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static DALIMotionSensorStates valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static DALIMotionSensorStates forNumber(int value) {
+      switch (value) {
+        case 0: return MOTION_IDLE;
+        case 1: return MOTION_DISABLED;
+        case 2: return MOTION_WARNING;
+        case 3: return MOTION_OCCUPANCY;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<DALIMotionSensorStates>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        DALIMotionSensorStates> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<DALIMotionSensorStates>() {
+            public DALIMotionSensorStates findValueByNumber(int number) {
+              return DALIMotionSensorStates.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(31);
+    }
+
+    private static final DALIMotionSensorStates[] VALUES = values();
+
+    public static DALIMotionSensorStates valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private DALIMotionSensorStates(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:DALIMotionSensorStates)
+  }
+
+  /**
+   * Protobuf enum {@code DALILuxSensorStates}
+   */
+  public enum DALILuxSensorStates
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>LUX_DISABLED = 0;</code>
+     */
+    LUX_DISABLED(0),
+    /**
+     * <code>LUX_ENABLED = 1;</code>
+     */
+    LUX_ENABLED(1),
+    /**
+     * <code>LUX_DEVIATE = 2;</code>
+     */
+    LUX_DEVIATE(2),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>LUX_DISABLED = 0;</code>
+     */
+    public static final int LUX_DISABLED_VALUE = 0;
+    /**
+     * <code>LUX_ENABLED = 1;</code>
+     */
+    public static final int LUX_ENABLED_VALUE = 1;
+    /**
+     * <code>LUX_DEVIATE = 2;</code>
+     */
+    public static final int LUX_DEVIATE_VALUE = 2;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static DALILuxSensorStates valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static DALILuxSensorStates forNumber(int value) {
+      switch (value) {
+        case 0: return LUX_DISABLED;
+        case 1: return LUX_ENABLED;
+        case 2: return LUX_DEVIATE;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<DALILuxSensorStates>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        DALILuxSensorStates> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<DALILuxSensorStates>() {
+            public DALILuxSensorStates findValueByNumber(int number) {
+              return DALILuxSensorStates.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(32);
+    }
+
+    private static final DALILuxSensorStates[] VALUES = values();
+
+    public static DALILuxSensorStates valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private DALILuxSensorStates(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:DALILuxSensorStates)
   }
 
   /**
@@ -6478,7 +7080,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(29);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(33);
     }
 
     private static final DALIAddressingError[] VALUES = values();
@@ -6576,7 +7178,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(30);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(34);
     }
 
     private static final DALIAddressingType[] VALUES = values();
@@ -15858,6 +16460,15 @@ public final class EDS10ProtocolBuffer {
      * <code>.TriggerMessage long_press = 6;</code>
      */
     EDS10ProtocolBuffer.TriggerMessageOrBuilder getLongPressOrBuilder();
+
+    /**
+     * <pre>
+     * What instance of the device? If it has multiple inputs
+     * </pre>
+     *
+     * <code>uint32 instance = 7;</code>
+     */
+    int getInstance();
   }
   /**
    * <pre>
@@ -15880,6 +16491,7 @@ public final class EDS10ProtocolBuffer {
       address_ = 0;
       daliLine_ = 0;
       buttonState_ = 0;
+      instance_ = 0;
     }
 
     @java.lang.Override
@@ -15951,6 +16563,11 @@ public final class EDS10ProtocolBuffer {
                 longPress_ = subBuilder.buildPartial();
               }
 
+              break;
+            }
+            case 56: {
+
+              instance_ = input.readUInt32();
               break;
             }
             default: {
@@ -16115,6 +16732,19 @@ public final class EDS10ProtocolBuffer {
       return getLongPress();
     }
 
+    public static final int INSTANCE_FIELD_NUMBER = 7;
+    private int instance_;
+    /**
+     * <pre>
+     * What instance of the device? If it has multiple inputs
+     * </pre>
+     *
+     * <code>uint32 instance = 7;</code>
+     */
+    public int getInstance() {
+      return instance_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -16146,6 +16776,9 @@ public final class EDS10ProtocolBuffer {
       }
       if (longPress_ != null) {
         output.writeMessage(6, getLongPress());
+      }
+      if (instance_ != 0) {
+        output.writeUInt32(7, instance_);
       }
       unknownFields.writeTo(output);
     }
@@ -16180,6 +16813,10 @@ public final class EDS10ProtocolBuffer {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(6, getLongPress());
       }
+      if (instance_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(7, instance_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -16213,6 +16850,8 @@ public final class EDS10ProtocolBuffer {
         result = result && getLongPress()
             .equals(other.getLongPress());
       }
+      result = result && (getInstance()
+          == other.getInstance());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -16240,6 +16879,8 @@ public final class EDS10ProtocolBuffer {
         hash = (37 * hash) + LONG_PRESS_FIELD_NUMBER;
         hash = (53 * hash) + getLongPress().hashCode();
       }
+      hash = (37 * hash) + INSTANCE_FIELD_NUMBER;
+      hash = (53 * hash) + getInstance();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -16397,6 +17038,8 @@ public final class EDS10ProtocolBuffer {
           longPress_ = null;
           longPressBuilder_ = null;
         }
+        instance_ = 0;
+
         return this;
       }
 
@@ -16437,6 +17080,7 @@ public final class EDS10ProtocolBuffer {
         } else {
           result.longPress_ = longPressBuilder_.build();
         }
+        result.instance_ = instance_;
         onBuilt();
         return result;
       }
@@ -16502,6 +17146,9 @@ public final class EDS10ProtocolBuffer {
         }
         if (other.hasLongPress()) {
           mergeLongPress(other.getLongPress());
+        }
+        if (other.getInstance() != 0) {
+          setInstance(other.getInstance());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -17015,6 +17662,44 @@ public final class EDS10ProtocolBuffer {
           longPress_ = null;
         }
         return longPressBuilder_;
+      }
+
+      private int instance_ ;
+      /**
+       * <pre>
+       * What instance of the device? If it has multiple inputs
+       * </pre>
+       *
+       * <code>uint32 instance = 7;</code>
+       */
+      public int getInstance() {
+        return instance_;
+      }
+      /**
+       * <pre>
+       * What instance of the device? If it has multiple inputs
+       * </pre>
+       *
+       * <code>uint32 instance = 7;</code>
+       */
+      public Builder setInstance(int value) {
+        
+        instance_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * What instance of the device? If it has multiple inputs
+       * </pre>
+       *
+       * <code>uint32 instance = 7;</code>
+       */
+      public Builder clearInstance() {
+        
+        instance_ = 0;
+        onChanged();
+        return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -38847,6 +39532,15 @@ public final class EDS10ProtocolBuffer {
     int getFrame24BitReply();
 
     /**
+     * <code>.Type8QueryType type8_reply = 15;</code>
+     */
+    int getType8ReplyValue();
+    /**
+     * <code>.Type8QueryType type8_reply = 15;</code>
+     */
+    EDS10ProtocolBuffer.Type8QueryType getType8Reply();
+
+    /**
      * <pre>
      * 'arg' rather than level for methods where you need a scene number.
      * </pre>
@@ -38996,6 +39690,12 @@ public final class EDS10ProtocolBuffer {
               action_ = input.readUInt32();
               break;
             }
+            case 120: {
+              int rawValue = input.readEnum();
+              actionCase_ = 15;
+              action_ = rawValue;
+              break;
+            }
             default: {
               if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -39042,6 +39742,7 @@ public final class EDS10ProtocolBuffer {
       FRAME_16_BIT_REPLY(12),
       FRAME_24_BIT(13),
       FRAME_24_BIT_REPLY(14),
+      TYPE8_REPLY(15),
       ACTION_NOT_SET(0);
       private final int value;
       private ActionCase(int value) {
@@ -39067,6 +39768,7 @@ public final class EDS10ProtocolBuffer {
           case 12: return FRAME_16_BIT_REPLY;
           case 13: return FRAME_24_BIT;
           case 14: return FRAME_24_BIT_REPLY;
+          case 15: return TYPE8_REPLY;
           case 0: return ACTION_NOT_SET;
           default: return null;
         }
@@ -39328,6 +40030,29 @@ public final class EDS10ProtocolBuffer {
       return 0;
     }
 
+    public static final int TYPE8_REPLY_FIELD_NUMBER = 15;
+    /**
+     * <code>.Type8QueryType type8_reply = 15;</code>
+     */
+    public int getType8ReplyValue() {
+      if (actionCase_ == 15) {
+        return (java.lang.Integer) action_;
+      }
+      return 0;
+    }
+    /**
+     * <code>.Type8QueryType type8_reply = 15;</code>
+     */
+    public EDS10ProtocolBuffer.Type8QueryType getType8Reply() {
+      if (actionCase_ == 15) {
+        @SuppressWarnings("deprecation")
+        EDS10ProtocolBuffer.Type8QueryType result = EDS10ProtocolBuffer.Type8QueryType.valueOf(
+            (java.lang.Integer) action_);
+        return result == null ? EDS10ProtocolBuffer.Type8QueryType.UNRECOGNIZED : result;
+      }
+      return EDS10ProtocolBuffer.Type8QueryType.TYPE8_QUERY_NULL;
+    }
+
     public static final int ARG_FIELD_NUMBER = 9;
     /**
      * <pre>
@@ -39432,6 +40157,9 @@ public final class EDS10ProtocolBuffer {
         output.writeUInt32(
             14, (int)((java.lang.Integer) action_));
       }
+      if (actionCase_ == 15) {
+        output.writeEnum(15, ((java.lang.Integer) action_));
+      }
       unknownFields.writeTo(output);
     }
 
@@ -39504,6 +40232,10 @@ public final class EDS10ProtocolBuffer {
           .computeUInt32Size(
               14, (int)((java.lang.Integer) action_));
       }
+      if (actionCase_ == 15) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(15, ((java.lang.Integer) action_));
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -39567,6 +40299,10 @@ public final class EDS10ProtocolBuffer {
         case 14:
           result = result && (getFrame24BitReply()
               == other.getFrame24BitReply());
+          break;
+        case 15:
+          result = result && getType8ReplyValue()
+              == other.getType8ReplyValue();
           break;
         case 0:
         default:
@@ -39641,6 +40377,10 @@ public final class EDS10ProtocolBuffer {
         case 14:
           hash = (37 * hash) + FRAME_24_BIT_REPLY_FIELD_NUMBER;
           hash = (53 * hash) + getFrame24BitReply();
+          break;
+        case 15:
+          hash = (37 * hash) + TYPE8_REPLY_FIELD_NUMBER;
+          hash = (53 * hash) + getType8ReplyValue();
           break;
         case 0:
         default:
@@ -39856,6 +40596,9 @@ public final class EDS10ProtocolBuffer {
         if (actionCase_ == 14) {
           result.action_ = action_;
         }
+        if (actionCase_ == 15) {
+          result.action_ = action_;
+        }
         if (paramsCase_ == 9) {
           result.params_ = params_;
         }
@@ -39961,6 +40704,10 @@ public final class EDS10ProtocolBuffer {
           }
           case FRAME_24_BIT_REPLY: {
             setFrame24BitReply(other.getFrame24BitReply());
+            break;
+          }
+          case TYPE8_REPLY: {
+            setType8ReplyValue(other.getType8ReplyValue());
             break;
           }
           case ACTION_NOT_SET: {
@@ -40576,6 +41323,60 @@ public final class EDS10ProtocolBuffer {
        */
       public Builder clearFrame24BitReply() {
         if (actionCase_ == 14) {
+          actionCase_ = 0;
+          action_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>.Type8QueryType type8_reply = 15;</code>
+       */
+      public int getType8ReplyValue() {
+        if (actionCase_ == 15) {
+          return ((java.lang.Integer) action_).intValue();
+        }
+        return 0;
+      }
+      /**
+       * <code>.Type8QueryType type8_reply = 15;</code>
+       */
+      public Builder setType8ReplyValue(int value) {
+        actionCase_ = 15;
+        action_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.Type8QueryType type8_reply = 15;</code>
+       */
+      public EDS10ProtocolBuffer.Type8QueryType getType8Reply() {
+        if (actionCase_ == 15) {
+          @SuppressWarnings("deprecation")
+          EDS10ProtocolBuffer.Type8QueryType result = EDS10ProtocolBuffer.Type8QueryType.valueOf(
+              (java.lang.Integer) action_);
+          return result == null ? EDS10ProtocolBuffer.Type8QueryType.UNRECOGNIZED : result;
+        }
+        return EDS10ProtocolBuffer.Type8QueryType.TYPE8_QUERY_NULL;
+      }
+      /**
+       * <code>.Type8QueryType type8_reply = 15;</code>
+       */
+      public Builder setType8Reply(EDS10ProtocolBuffer.Type8QueryType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        actionCase_ = 15;
+        action_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.Type8QueryType type8_reply = 15;</code>
+       */
+      public Builder clearType8Reply() {
+        if (actionCase_ == 15) {
           actionCase_ = 0;
           action_ = null;
           onChanged();
@@ -47140,6 +47941,1214 @@ public final class EDS10ProtocolBuffer {
 
   }
 
+  public interface RDMDiscoveryMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:RDMDiscoveryMessage)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>uint32 universe_mask = 1;</code>
+     */
+    int getUniverseMask();
+  }
+  /**
+   * <pre>
+   * RDM Discovery Message - Invokes Discovery with reply as RDMDiscoveryReplyMessage
+   * </pre>
+   *
+   * Protobuf type {@code RDMDiscoveryMessage}
+   */
+  public  static final class RDMDiscoveryMessage extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:RDMDiscoveryMessage)
+      RDMDiscoveryMessageOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use RDMDiscoveryMessage.newBuilder() to construct.
+    private RDMDiscoveryMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private RDMDiscoveryMessage() {
+      universeMask_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RDMDiscoveryMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              universeMask_ = input.readUInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.internal_static_RDMDiscoveryMessage_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return EDS10ProtocolBuffer.internal_static_RDMDiscoveryMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              EDS10ProtocolBuffer.RDMDiscoveryMessage.class, EDS10ProtocolBuffer.RDMDiscoveryMessage.Builder.class);
+    }
+
+    public static final int UNIVERSE_MASK_FIELD_NUMBER = 1;
+    private int universeMask_;
+    /**
+     * <code>uint32 universe_mask = 1;</code>
+     */
+    public int getUniverseMask() {
+      return universeMask_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (universeMask_ != 0) {
+        output.writeUInt32(1, universeMask_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (universeMask_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, universeMask_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof EDS10ProtocolBuffer.RDMDiscoveryMessage)) {
+        return super.equals(obj);
+      }
+      EDS10ProtocolBuffer.RDMDiscoveryMessage other = (EDS10ProtocolBuffer.RDMDiscoveryMessage) obj;
+
+      boolean result = true;
+      result = result && (getUniverseMask()
+          == other.getUniverseMask());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + UNIVERSE_MASK_FIELD_NUMBER;
+      hash = (53 * hash) + getUniverseMask();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static EDS10ProtocolBuffer.RDMDiscoveryMessage parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.RDMDiscoveryMessage parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.RDMDiscoveryMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.RDMDiscoveryMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.RDMDiscoveryMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.RDMDiscoveryMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.RDMDiscoveryMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.RDMDiscoveryMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.RDMDiscoveryMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.RDMDiscoveryMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.RDMDiscoveryMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.RDMDiscoveryMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(EDS10ProtocolBuffer.RDMDiscoveryMessage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * RDM Discovery Message - Invokes Discovery with reply as RDMDiscoveryReplyMessage
+     * </pre>
+     *
+     * Protobuf type {@code RDMDiscoveryMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:RDMDiscoveryMessage)
+        EDS10ProtocolBuffer.RDMDiscoveryMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return EDS10ProtocolBuffer.internal_static_RDMDiscoveryMessage_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return EDS10ProtocolBuffer.internal_static_RDMDiscoveryMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                EDS10ProtocolBuffer.RDMDiscoveryMessage.class, EDS10ProtocolBuffer.RDMDiscoveryMessage.Builder.class);
+      }
+
+      // Construct using EDS10ProtocolBuffer.RDMDiscoveryMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        universeMask_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return EDS10ProtocolBuffer.internal_static_RDMDiscoveryMessage_descriptor;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.RDMDiscoveryMessage getDefaultInstanceForType() {
+        return EDS10ProtocolBuffer.RDMDiscoveryMessage.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.RDMDiscoveryMessage build() {
+        EDS10ProtocolBuffer.RDMDiscoveryMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.RDMDiscoveryMessage buildPartial() {
+        EDS10ProtocolBuffer.RDMDiscoveryMessage result = new EDS10ProtocolBuffer.RDMDiscoveryMessage(this);
+        result.universeMask_ = universeMask_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof EDS10ProtocolBuffer.RDMDiscoveryMessage) {
+          return mergeFrom((EDS10ProtocolBuffer.RDMDiscoveryMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(EDS10ProtocolBuffer.RDMDiscoveryMessage other) {
+        if (other == EDS10ProtocolBuffer.RDMDiscoveryMessage.getDefaultInstance()) return this;
+        if (other.getUniverseMask() != 0) {
+          setUniverseMask(other.getUniverseMask());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        EDS10ProtocolBuffer.RDMDiscoveryMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (EDS10ProtocolBuffer.RDMDiscoveryMessage) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int universeMask_ ;
+      /**
+       * <code>uint32 universe_mask = 1;</code>
+       */
+      public int getUniverseMask() {
+        return universeMask_;
+      }
+      /**
+       * <code>uint32 universe_mask = 1;</code>
+       */
+      public Builder setUniverseMask(int value) {
+        
+        universeMask_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 universe_mask = 1;</code>
+       */
+      public Builder clearUniverseMask() {
+        
+        universeMask_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:RDMDiscoveryMessage)
+    }
+
+    // @@protoc_insertion_point(class_scope:RDMDiscoveryMessage)
+    private static final EDS10ProtocolBuffer.RDMDiscoveryMessage DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.RDMDiscoveryMessage();
+    }
+
+    public static EDS10ProtocolBuffer.RDMDiscoveryMessage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<RDMDiscoveryMessage>
+        PARSER = new com.google.protobuf.AbstractParser<RDMDiscoveryMessage>() {
+      @java.lang.Override
+      public RDMDiscoveryMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RDMDiscoveryMessage(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<RDMDiscoveryMessage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RDMDiscoveryMessage> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public EDS10ProtocolBuffer.RDMDiscoveryMessage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface RDMDiscoveryReplyMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:RDMDiscoveryReplyMessage)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>uint32 discovery_count = 1;</code>
+     */
+    int getDiscoveryCount();
+
+    /**
+     * <code>repeated uint64 uid = 2;</code>
+     */
+    java.util.List<java.lang.Long> getUidList();
+    /**
+     * <code>repeated uint64 uid = 2;</code>
+     */
+    int getUidCount();
+    /**
+     * <code>repeated uint64 uid = 2;</code>
+     */
+    long getUid(int index);
+
+    /**
+     * <code>uint32 error_code = 3;</code>
+     */
+    int getErrorCode();
+  }
+  /**
+   * <pre>
+   * RDM Discovery Reply with up to 
+   * </pre>
+   *
+   * Protobuf type {@code RDMDiscoveryReplyMessage}
+   */
+  public  static final class RDMDiscoveryReplyMessage extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:RDMDiscoveryReplyMessage)
+      RDMDiscoveryReplyMessageOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use RDMDiscoveryReplyMessage.newBuilder() to construct.
+    private RDMDiscoveryReplyMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private RDMDiscoveryReplyMessage() {
+      discoveryCount_ = 0;
+      uid_ = java.util.Collections.emptyList();
+      errorCode_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RDMDiscoveryReplyMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              discoveryCount_ = input.readUInt32();
+              break;
+            }
+            case 16: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                uid_ = new java.util.ArrayList<java.lang.Long>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              uid_.add(input.readUInt64());
+              break;
+            }
+            case 18: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002) && input.getBytesUntilLimit() > 0) {
+                uid_ = new java.util.ArrayList<java.lang.Long>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                uid_.add(input.readUInt64());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 24: {
+
+              errorCode_ = input.readUInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          uid_ = java.util.Collections.unmodifiableList(uid_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.internal_static_RDMDiscoveryReplyMessage_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return EDS10ProtocolBuffer.internal_static_RDMDiscoveryReplyMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              EDS10ProtocolBuffer.RDMDiscoveryReplyMessage.class, EDS10ProtocolBuffer.RDMDiscoveryReplyMessage.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int DISCOVERY_COUNT_FIELD_NUMBER = 1;
+    private int discoveryCount_;
+    /**
+     * <code>uint32 discovery_count = 1;</code>
+     */
+    public int getDiscoveryCount() {
+      return discoveryCount_;
+    }
+
+    public static final int UID_FIELD_NUMBER = 2;
+    private java.util.List<java.lang.Long> uid_;
+    /**
+     * <code>repeated uint64 uid = 2;</code>
+     */
+    public java.util.List<java.lang.Long>
+        getUidList() {
+      return uid_;
+    }
+    /**
+     * <code>repeated uint64 uid = 2;</code>
+     */
+    public int getUidCount() {
+      return uid_.size();
+    }
+    /**
+     * <code>repeated uint64 uid = 2;</code>
+     */
+    public long getUid(int index) {
+      return uid_.get(index);
+    }
+    private int uidMemoizedSerializedSize = -1;
+
+    public static final int ERROR_CODE_FIELD_NUMBER = 3;
+    private int errorCode_;
+    /**
+     * <code>uint32 error_code = 3;</code>
+     */
+    public int getErrorCode() {
+      return errorCode_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (discoveryCount_ != 0) {
+        output.writeUInt32(1, discoveryCount_);
+      }
+      if (getUidList().size() > 0) {
+        output.writeUInt32NoTag(18);
+        output.writeUInt32NoTag(uidMemoizedSerializedSize);
+      }
+      for (int i = 0; i < uid_.size(); i++) {
+        output.writeUInt64NoTag(uid_.get(i));
+      }
+      if (errorCode_ != 0) {
+        output.writeUInt32(3, errorCode_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (discoveryCount_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, discoveryCount_);
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < uid_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeUInt64SizeNoTag(uid_.get(i));
+        }
+        size += dataSize;
+        if (!getUidList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        uidMemoizedSerializedSize = dataSize;
+      }
+      if (errorCode_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(3, errorCode_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof EDS10ProtocolBuffer.RDMDiscoveryReplyMessage)) {
+        return super.equals(obj);
+      }
+      EDS10ProtocolBuffer.RDMDiscoveryReplyMessage other = (EDS10ProtocolBuffer.RDMDiscoveryReplyMessage) obj;
+
+      boolean result = true;
+      result = result && (getDiscoveryCount()
+          == other.getDiscoveryCount());
+      result = result && getUidList()
+          .equals(other.getUidList());
+      result = result && (getErrorCode()
+          == other.getErrorCode());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + DISCOVERY_COUNT_FIELD_NUMBER;
+      hash = (53 * hash) + getDiscoveryCount();
+      if (getUidCount() > 0) {
+        hash = (37 * hash) + UID_FIELD_NUMBER;
+        hash = (53 * hash) + getUidList().hashCode();
+      }
+      hash = (37 * hash) + ERROR_CODE_FIELD_NUMBER;
+      hash = (53 * hash) + getErrorCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static EDS10ProtocolBuffer.RDMDiscoveryReplyMessage parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.RDMDiscoveryReplyMessage parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.RDMDiscoveryReplyMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.RDMDiscoveryReplyMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.RDMDiscoveryReplyMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.RDMDiscoveryReplyMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.RDMDiscoveryReplyMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.RDMDiscoveryReplyMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.RDMDiscoveryReplyMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.RDMDiscoveryReplyMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.RDMDiscoveryReplyMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.RDMDiscoveryReplyMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(EDS10ProtocolBuffer.RDMDiscoveryReplyMessage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * RDM Discovery Reply with up to 
+     * </pre>
+     *
+     * Protobuf type {@code RDMDiscoveryReplyMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:RDMDiscoveryReplyMessage)
+        EDS10ProtocolBuffer.RDMDiscoveryReplyMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return EDS10ProtocolBuffer.internal_static_RDMDiscoveryReplyMessage_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return EDS10ProtocolBuffer.internal_static_RDMDiscoveryReplyMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                EDS10ProtocolBuffer.RDMDiscoveryReplyMessage.class, EDS10ProtocolBuffer.RDMDiscoveryReplyMessage.Builder.class);
+      }
+
+      // Construct using EDS10ProtocolBuffer.RDMDiscoveryReplyMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        discoveryCount_ = 0;
+
+        uid_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        errorCode_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return EDS10ProtocolBuffer.internal_static_RDMDiscoveryReplyMessage_descriptor;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.RDMDiscoveryReplyMessage getDefaultInstanceForType() {
+        return EDS10ProtocolBuffer.RDMDiscoveryReplyMessage.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.RDMDiscoveryReplyMessage build() {
+        EDS10ProtocolBuffer.RDMDiscoveryReplyMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.RDMDiscoveryReplyMessage buildPartial() {
+        EDS10ProtocolBuffer.RDMDiscoveryReplyMessage result = new EDS10ProtocolBuffer.RDMDiscoveryReplyMessage(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        result.discoveryCount_ = discoveryCount_;
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          uid_ = java.util.Collections.unmodifiableList(uid_);
+          bitField0_ = (bitField0_ & ~0x00000002);
+        }
+        result.uid_ = uid_;
+        result.errorCode_ = errorCode_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof EDS10ProtocolBuffer.RDMDiscoveryReplyMessage) {
+          return mergeFrom((EDS10ProtocolBuffer.RDMDiscoveryReplyMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(EDS10ProtocolBuffer.RDMDiscoveryReplyMessage other) {
+        if (other == EDS10ProtocolBuffer.RDMDiscoveryReplyMessage.getDefaultInstance()) return this;
+        if (other.getDiscoveryCount() != 0) {
+          setDiscoveryCount(other.getDiscoveryCount());
+        }
+        if (!other.uid_.isEmpty()) {
+          if (uid_.isEmpty()) {
+            uid_ = other.uid_;
+            bitField0_ = (bitField0_ & ~0x00000002);
+          } else {
+            ensureUidIsMutable();
+            uid_.addAll(other.uid_);
+          }
+          onChanged();
+        }
+        if (other.getErrorCode() != 0) {
+          setErrorCode(other.getErrorCode());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        EDS10ProtocolBuffer.RDMDiscoveryReplyMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (EDS10ProtocolBuffer.RDMDiscoveryReplyMessage) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int discoveryCount_ ;
+      /**
+       * <code>uint32 discovery_count = 1;</code>
+       */
+      public int getDiscoveryCount() {
+        return discoveryCount_;
+      }
+      /**
+       * <code>uint32 discovery_count = 1;</code>
+       */
+      public Builder setDiscoveryCount(int value) {
+        
+        discoveryCount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 discovery_count = 1;</code>
+       */
+      public Builder clearDiscoveryCount() {
+        
+        discoveryCount_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<java.lang.Long> uid_ = java.util.Collections.emptyList();
+      private void ensureUidIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          uid_ = new java.util.ArrayList<java.lang.Long>(uid_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+      /**
+       * <code>repeated uint64 uid = 2;</code>
+       */
+      public java.util.List<java.lang.Long>
+          getUidList() {
+        return java.util.Collections.unmodifiableList(uid_);
+      }
+      /**
+       * <code>repeated uint64 uid = 2;</code>
+       */
+      public int getUidCount() {
+        return uid_.size();
+      }
+      /**
+       * <code>repeated uint64 uid = 2;</code>
+       */
+      public long getUid(int index) {
+        return uid_.get(index);
+      }
+      /**
+       * <code>repeated uint64 uid = 2;</code>
+       */
+      public Builder setUid(
+          int index, long value) {
+        ensureUidIsMutable();
+        uid_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated uint64 uid = 2;</code>
+       */
+      public Builder addUid(long value) {
+        ensureUidIsMutable();
+        uid_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated uint64 uid = 2;</code>
+       */
+      public Builder addAllUid(
+          java.lang.Iterable<? extends java.lang.Long> values) {
+        ensureUidIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, uid_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated uint64 uid = 2;</code>
+       */
+      public Builder clearUid() {
+        uid_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+
+      private int errorCode_ ;
+      /**
+       * <code>uint32 error_code = 3;</code>
+       */
+      public int getErrorCode() {
+        return errorCode_;
+      }
+      /**
+       * <code>uint32 error_code = 3;</code>
+       */
+      public Builder setErrorCode(int value) {
+        
+        errorCode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 error_code = 3;</code>
+       */
+      public Builder clearErrorCode() {
+        
+        errorCode_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:RDMDiscoveryReplyMessage)
+    }
+
+    // @@protoc_insertion_point(class_scope:RDMDiscoveryReplyMessage)
+    private static final EDS10ProtocolBuffer.RDMDiscoveryReplyMessage DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.RDMDiscoveryReplyMessage();
+    }
+
+    public static EDS10ProtocolBuffer.RDMDiscoveryReplyMessage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<RDMDiscoveryReplyMessage>
+        PARSER = new com.google.protobuf.AbstractParser<RDMDiscoveryReplyMessage>() {
+      @java.lang.Override
+      public RDMDiscoveryReplyMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RDMDiscoveryReplyMessage(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<RDMDiscoveryReplyMessage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RDMDiscoveryReplyMessage> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public EDS10ProtocolBuffer.RDMDiscoveryReplyMessage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface SpektraSettingMessageOrBuilder extends
       // @@protoc_insertion_point(interface_extends:SpektraSettingMessage)
       com.google.protobuf.MessageOrBuilder {
@@ -52197,6 +54206,15 @@ public final class EDS10ProtocolBuffer {
      * <code>repeated bool days = 3;</code>
      */
     boolean getDays(int index);
+
+    /**
+     * <pre>
+     * Boolean isOverride. If override, only run once
+     * </pre>
+     *
+     * <code>bool isOverride = 4;</code>
+     */
+    boolean getIsOverride();
   }
   /**
    * Protobuf type {@code SpektraCalendarMessage}
@@ -52214,6 +54232,7 @@ public final class EDS10ProtocolBuffer {
       type_ = 0;
       index_ = 0;
       days_ = java.util.Collections.emptyList();
+      isOverride_ = false;
     }
 
     @java.lang.Override
@@ -52270,6 +54289,11 @@ public final class EDS10ProtocolBuffer {
                 days_.add(input.readBool());
               }
               input.popLimit(limit);
+              break;
+            }
+            case 32: {
+
+              isOverride_ = input.readBool();
               break;
             }
             default: {
@@ -52381,6 +54405,19 @@ public final class EDS10ProtocolBuffer {
     }
     private int daysMemoizedSerializedSize = -1;
 
+    public static final int ISOVERRIDE_FIELD_NUMBER = 4;
+    private boolean isOverride_;
+    /**
+     * <pre>
+     * Boolean isOverride. If override, only run once
+     * </pre>
+     *
+     * <code>bool isOverride = 4;</code>
+     */
+    public boolean getIsOverride() {
+      return isOverride_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -52408,6 +54445,9 @@ public final class EDS10ProtocolBuffer {
       }
       for (int i = 0; i < days_.size(); i++) {
         output.writeBoolNoTag(days_.get(i));
+      }
+      if (isOverride_ != false) {
+        output.writeBool(4, isOverride_);
       }
       unknownFields.writeTo(output);
     }
@@ -52437,6 +54477,10 @@ public final class EDS10ProtocolBuffer {
         }
         daysMemoizedSerializedSize = dataSize;
       }
+      if (isOverride_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(4, isOverride_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -52458,6 +54502,8 @@ public final class EDS10ProtocolBuffer {
           == other.getIndex());
       result = result && getDaysList()
           .equals(other.getDaysList());
+      result = result && (getIsOverride()
+          == other.getIsOverride());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -52477,6 +54523,9 @@ public final class EDS10ProtocolBuffer {
         hash = (37 * hash) + DAYS_FIELD_NUMBER;
         hash = (53 * hash) + getDaysList().hashCode();
       }
+      hash = (37 * hash) + ISOVERRIDE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsOverride());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -52616,6 +54665,8 @@ public final class EDS10ProtocolBuffer {
 
         days_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000004);
+        isOverride_ = false;
+
         return this;
       }
 
@@ -52651,6 +54702,7 @@ public final class EDS10ProtocolBuffer {
           bitField0_ = (bitField0_ & ~0x00000004);
         }
         result.days_ = days_;
+        result.isOverride_ = isOverride_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -52715,6 +54767,9 @@ public final class EDS10ProtocolBuffer {
             days_.addAll(other.days_);
           }
           onChanged();
+        }
+        if (other.getIsOverride() != false) {
+          setIsOverride(other.getIsOverride());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -52942,6 +54997,44 @@ public final class EDS10ProtocolBuffer {
         onChanged();
         return this;
       }
+
+      private boolean isOverride_ ;
+      /**
+       * <pre>
+       * Boolean isOverride. If override, only run once
+       * </pre>
+       *
+       * <code>bool isOverride = 4;</code>
+       */
+      public boolean getIsOverride() {
+        return isOverride_;
+      }
+      /**
+       * <pre>
+       * Boolean isOverride. If override, only run once
+       * </pre>
+       *
+       * <code>bool isOverride = 4;</code>
+       */
+      public Builder setIsOverride(boolean value) {
+        
+        isOverride_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Boolean isOverride. If override, only run once
+       * </pre>
+       *
+       * <code>bool isOverride = 4;</code>
+       */
+      public Builder clearIsOverride() {
+        
+        isOverride_ = false;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -53033,6 +55126,15 @@ public final class EDS10ProtocolBuffer {
      * <code>uint32 target_index = 3;</code>
      */
     int getTargetIndex();
+
+    /**
+     * <pre>
+     * Boolean isOverride. If override, only run once
+     * </pre>
+     *
+     * <code>bool isOverride = 4;</code>
+     */
+    boolean getIsOverride();
   }
   /**
    * Protobuf type {@code SpektraCalendarDayMessage}
@@ -53050,6 +55152,7 @@ public final class EDS10ProtocolBuffer {
       dayIndex_ = 0;
       type_ = 0;
       targetIndex_ = 0;
+      isOverride_ = false;
     }
 
     @java.lang.Override
@@ -53090,6 +55193,11 @@ public final class EDS10ProtocolBuffer {
             case 24: {
 
               targetIndex_ = input.readUInt32();
+              break;
+            }
+            case 32: {
+
+              isOverride_ = input.readBool();
               break;
             }
             default: {
@@ -53175,6 +55283,19 @@ public final class EDS10ProtocolBuffer {
       return targetIndex_;
     }
 
+    public static final int ISOVERRIDE_FIELD_NUMBER = 4;
+    private boolean isOverride_;
+    /**
+     * <pre>
+     * Boolean isOverride. If override, only run once
+     * </pre>
+     *
+     * <code>bool isOverride = 4;</code>
+     */
+    public boolean getIsOverride() {
+      return isOverride_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -53198,6 +55319,9 @@ public final class EDS10ProtocolBuffer {
       if (targetIndex_ != 0) {
         output.writeUInt32(3, targetIndex_);
       }
+      if (isOverride_ != false) {
+        output.writeBool(4, isOverride_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -53218,6 +55342,10 @@ public final class EDS10ProtocolBuffer {
       if (targetIndex_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(3, targetIndex_);
+      }
+      if (isOverride_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(4, isOverride_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -53240,6 +55368,8 @@ public final class EDS10ProtocolBuffer {
       result = result && type_ == other.type_;
       result = result && (getTargetIndex()
           == other.getTargetIndex());
+      result = result && (getIsOverride()
+          == other.getIsOverride());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -53257,6 +55387,9 @@ public final class EDS10ProtocolBuffer {
       hash = (53 * hash) + type_;
       hash = (37 * hash) + TARGET_INDEX_FIELD_NUMBER;
       hash = (53 * hash) + getTargetIndex();
+      hash = (37 * hash) + ISOVERRIDE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsOverride());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -53396,6 +55529,8 @@ public final class EDS10ProtocolBuffer {
 
         targetIndex_ = 0;
 
+        isOverride_ = false;
+
         return this;
       }
 
@@ -53425,6 +55560,7 @@ public final class EDS10ProtocolBuffer {
         result.dayIndex_ = dayIndex_;
         result.type_ = type_;
         result.targetIndex_ = targetIndex_;
+        result.isOverride_ = isOverride_;
         onBuilt();
         return result;
       }
@@ -53481,6 +55617,9 @@ public final class EDS10ProtocolBuffer {
         }
         if (other.getTargetIndex() != 0) {
           setTargetIndex(other.getTargetIndex());
+        }
+        if (other.getIsOverride() != false) {
+          setIsOverride(other.getIsOverride());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -53648,6 +55787,44 @@ public final class EDS10ProtocolBuffer {
       public Builder clearTargetIndex() {
         
         targetIndex_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private boolean isOverride_ ;
+      /**
+       * <pre>
+       * Boolean isOverride. If override, only run once
+       * </pre>
+       *
+       * <code>bool isOverride = 4;</code>
+       */
+      public boolean getIsOverride() {
+        return isOverride_;
+      }
+      /**
+       * <pre>
+       * Boolean isOverride. If override, only run once
+       * </pre>
+       *
+       * <code>bool isOverride = 4;</code>
+       */
+      public Builder setIsOverride(boolean value) {
+        
+        isOverride_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Boolean isOverride. If override, only run once
+       * </pre>
+       *
+       * <code>bool isOverride = 4;</code>
+       */
+      public Builder clearIsOverride() {
+        
+        isOverride_ = false;
         onChanged();
         return this;
       }
@@ -57333,6 +59510,4018 @@ public final class EDS10ProtocolBuffer {
 
     @java.lang.Override
     public EDS10ProtocolBuffer.SpektraControlMessage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ShowStepMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ShowStepMessage)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>uint32 step_index = 1;</code>
+     */
+    int getStepIndex();
+
+    /**
+     * <pre>
+     * The index for the action_type (where relevant)
+     * </pre>
+     *
+     * <code>uint32 target_index = 2;</code>
+     */
+    int getTargetIndex();
+
+    /**
+     * <pre>
+     * Run Sequence / Show Theme / Start List / Pause / Stop &amp; Off
+     * </pre>
+     *
+     * <code>.SpektraStepActionType action_type = 3;</code>
+     */
+    int getActionTypeValue();
+    /**
+     * <pre>
+     * Run Sequence / Show Theme / Start List / Pause / Stop &amp; Off
+     * </pre>
+     *
+     * <code>.SpektraStepActionType action_type = 3;</code>
+     */
+    EDS10ProtocolBuffer.SpektraStepActionType getActionType();
+
+    /**
+     * <pre>
+     * If non-zero, will randomly pick a target_index between target_index and max_random_target_index, inclusive
+     * </pre>
+     *
+     * <code>uint32 max_random_target_index = 4;</code>
+     */
+    int getMaxRandomTargetIndex();
+
+    /**
+     * <pre>
+     * Which Zone to activate the action_type on (or use 0xFF to send to All Zones)
+     * </pre>
+     *
+     * <code>uint32 zone = 5;</code>
+     */
+    int getZone();
+
+    /**
+     * <pre>
+     * For DMX / DALI, what should the maximum output be restricted to (e.g. 127 out of 255)
+     * </pre>
+     *
+     * <code>uint32 max_output_level_limit = 6;</code>
+     */
+    int getMaxOutputLevelLimit();
+
+    /**
+     * <pre>
+     * How long to wait before the next step (in multiples of 10ms)
+     * </pre>
+     *
+     * <code>uint32 time_until_next_10ms = 7;</code>
+     */
+    int getTimeUntilNext10Ms();
+  }
+  /**
+   * <pre>
+   ************   SHOW    ************
+   * </pre>
+   *
+   * Protobuf type {@code ShowStepMessage}
+   */
+  public  static final class ShowStepMessage extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:ShowStepMessage)
+      ShowStepMessageOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ShowStepMessage.newBuilder() to construct.
+    private ShowStepMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ShowStepMessage() {
+      stepIndex_ = 0;
+      targetIndex_ = 0;
+      actionType_ = 0;
+      maxRandomTargetIndex_ = 0;
+      zone_ = 0;
+      maxOutputLevelLimit_ = 0;
+      timeUntilNext10Ms_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ShowStepMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              stepIndex_ = input.readUInt32();
+              break;
+            }
+            case 16: {
+
+              targetIndex_ = input.readUInt32();
+              break;
+            }
+            case 24: {
+              int rawValue = input.readEnum();
+
+              actionType_ = rawValue;
+              break;
+            }
+            case 32: {
+
+              maxRandomTargetIndex_ = input.readUInt32();
+              break;
+            }
+            case 40: {
+
+              zone_ = input.readUInt32();
+              break;
+            }
+            case 48: {
+
+              maxOutputLevelLimit_ = input.readUInt32();
+              break;
+            }
+            case 56: {
+
+              timeUntilNext10Ms_ = input.readUInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.internal_static_ShowStepMessage_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return EDS10ProtocolBuffer.internal_static_ShowStepMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              EDS10ProtocolBuffer.ShowStepMessage.class, EDS10ProtocolBuffer.ShowStepMessage.Builder.class);
+    }
+
+    public static final int STEP_INDEX_FIELD_NUMBER = 1;
+    private int stepIndex_;
+    /**
+     * <code>uint32 step_index = 1;</code>
+     */
+    public int getStepIndex() {
+      return stepIndex_;
+    }
+
+    public static final int TARGET_INDEX_FIELD_NUMBER = 2;
+    private int targetIndex_;
+    /**
+     * <pre>
+     * The index for the action_type (where relevant)
+     * </pre>
+     *
+     * <code>uint32 target_index = 2;</code>
+     */
+    public int getTargetIndex() {
+      return targetIndex_;
+    }
+
+    public static final int ACTION_TYPE_FIELD_NUMBER = 3;
+    private int actionType_;
+    /**
+     * <pre>
+     * Run Sequence / Show Theme / Start List / Pause / Stop &amp; Off
+     * </pre>
+     *
+     * <code>.SpektraStepActionType action_type = 3;</code>
+     */
+    public int getActionTypeValue() {
+      return actionType_;
+    }
+    /**
+     * <pre>
+     * Run Sequence / Show Theme / Start List / Pause / Stop &amp; Off
+     * </pre>
+     *
+     * <code>.SpektraStepActionType action_type = 3;</code>
+     */
+    public EDS10ProtocolBuffer.SpektraStepActionType getActionType() {
+      @SuppressWarnings("deprecation")
+      EDS10ProtocolBuffer.SpektraStepActionType result = EDS10ProtocolBuffer.SpektraStepActionType.valueOf(actionType_);
+      return result == null ? EDS10ProtocolBuffer.SpektraStepActionType.UNRECOGNIZED : result;
+    }
+
+    public static final int MAX_RANDOM_TARGET_INDEX_FIELD_NUMBER = 4;
+    private int maxRandomTargetIndex_;
+    /**
+     * <pre>
+     * If non-zero, will randomly pick a target_index between target_index and max_random_target_index, inclusive
+     * </pre>
+     *
+     * <code>uint32 max_random_target_index = 4;</code>
+     */
+    public int getMaxRandomTargetIndex() {
+      return maxRandomTargetIndex_;
+    }
+
+    public static final int ZONE_FIELD_NUMBER = 5;
+    private int zone_;
+    /**
+     * <pre>
+     * Which Zone to activate the action_type on (or use 0xFF to send to All Zones)
+     * </pre>
+     *
+     * <code>uint32 zone = 5;</code>
+     */
+    public int getZone() {
+      return zone_;
+    }
+
+    public static final int MAX_OUTPUT_LEVEL_LIMIT_FIELD_NUMBER = 6;
+    private int maxOutputLevelLimit_;
+    /**
+     * <pre>
+     * For DMX / DALI, what should the maximum output be restricted to (e.g. 127 out of 255)
+     * </pre>
+     *
+     * <code>uint32 max_output_level_limit = 6;</code>
+     */
+    public int getMaxOutputLevelLimit() {
+      return maxOutputLevelLimit_;
+    }
+
+    public static final int TIME_UNTIL_NEXT_10MS_FIELD_NUMBER = 7;
+    private int timeUntilNext10Ms_;
+    /**
+     * <pre>
+     * How long to wait before the next step (in multiples of 10ms)
+     * </pre>
+     *
+     * <code>uint32 time_until_next_10ms = 7;</code>
+     */
+    public int getTimeUntilNext10Ms() {
+      return timeUntilNext10Ms_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (stepIndex_ != 0) {
+        output.writeUInt32(1, stepIndex_);
+      }
+      if (targetIndex_ != 0) {
+        output.writeUInt32(2, targetIndex_);
+      }
+      if (actionType_ != EDS10ProtocolBuffer.SpektraStepActionType.RUN_SEQUENCE.getNumber()) {
+        output.writeEnum(3, actionType_);
+      }
+      if (maxRandomTargetIndex_ != 0) {
+        output.writeUInt32(4, maxRandomTargetIndex_);
+      }
+      if (zone_ != 0) {
+        output.writeUInt32(5, zone_);
+      }
+      if (maxOutputLevelLimit_ != 0) {
+        output.writeUInt32(6, maxOutputLevelLimit_);
+      }
+      if (timeUntilNext10Ms_ != 0) {
+        output.writeUInt32(7, timeUntilNext10Ms_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (stepIndex_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, stepIndex_);
+      }
+      if (targetIndex_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, targetIndex_);
+      }
+      if (actionType_ != EDS10ProtocolBuffer.SpektraStepActionType.RUN_SEQUENCE.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(3, actionType_);
+      }
+      if (maxRandomTargetIndex_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(4, maxRandomTargetIndex_);
+      }
+      if (zone_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(5, zone_);
+      }
+      if (maxOutputLevelLimit_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(6, maxOutputLevelLimit_);
+      }
+      if (timeUntilNext10Ms_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(7, timeUntilNext10Ms_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof EDS10ProtocolBuffer.ShowStepMessage)) {
+        return super.equals(obj);
+      }
+      EDS10ProtocolBuffer.ShowStepMessage other = (EDS10ProtocolBuffer.ShowStepMessage) obj;
+
+      boolean result = true;
+      result = result && (getStepIndex()
+          == other.getStepIndex());
+      result = result && (getTargetIndex()
+          == other.getTargetIndex());
+      result = result && actionType_ == other.actionType_;
+      result = result && (getMaxRandomTargetIndex()
+          == other.getMaxRandomTargetIndex());
+      result = result && (getZone()
+          == other.getZone());
+      result = result && (getMaxOutputLevelLimit()
+          == other.getMaxOutputLevelLimit());
+      result = result && (getTimeUntilNext10Ms()
+          == other.getTimeUntilNext10Ms());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + STEP_INDEX_FIELD_NUMBER;
+      hash = (53 * hash) + getStepIndex();
+      hash = (37 * hash) + TARGET_INDEX_FIELD_NUMBER;
+      hash = (53 * hash) + getTargetIndex();
+      hash = (37 * hash) + ACTION_TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + actionType_;
+      hash = (37 * hash) + MAX_RANDOM_TARGET_INDEX_FIELD_NUMBER;
+      hash = (53 * hash) + getMaxRandomTargetIndex();
+      hash = (37 * hash) + ZONE_FIELD_NUMBER;
+      hash = (53 * hash) + getZone();
+      hash = (37 * hash) + MAX_OUTPUT_LEVEL_LIMIT_FIELD_NUMBER;
+      hash = (53 * hash) + getMaxOutputLevelLimit();
+      hash = (37 * hash) + TIME_UNTIL_NEXT_10MS_FIELD_NUMBER;
+      hash = (53 * hash) + getTimeUntilNext10Ms();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static EDS10ProtocolBuffer.ShowStepMessage parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.ShowStepMessage parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.ShowStepMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.ShowStepMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.ShowStepMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.ShowStepMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.ShowStepMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.ShowStepMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.ShowStepMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.ShowStepMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.ShowStepMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.ShowStepMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(EDS10ProtocolBuffer.ShowStepMessage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     ************   SHOW    ************
+     * </pre>
+     *
+     * Protobuf type {@code ShowStepMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ShowStepMessage)
+        EDS10ProtocolBuffer.ShowStepMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return EDS10ProtocolBuffer.internal_static_ShowStepMessage_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return EDS10ProtocolBuffer.internal_static_ShowStepMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                EDS10ProtocolBuffer.ShowStepMessage.class, EDS10ProtocolBuffer.ShowStepMessage.Builder.class);
+      }
+
+      // Construct using EDS10ProtocolBuffer.ShowStepMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        stepIndex_ = 0;
+
+        targetIndex_ = 0;
+
+        actionType_ = 0;
+
+        maxRandomTargetIndex_ = 0;
+
+        zone_ = 0;
+
+        maxOutputLevelLimit_ = 0;
+
+        timeUntilNext10Ms_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return EDS10ProtocolBuffer.internal_static_ShowStepMessage_descriptor;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.ShowStepMessage getDefaultInstanceForType() {
+        return EDS10ProtocolBuffer.ShowStepMessage.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.ShowStepMessage build() {
+        EDS10ProtocolBuffer.ShowStepMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.ShowStepMessage buildPartial() {
+        EDS10ProtocolBuffer.ShowStepMessage result = new EDS10ProtocolBuffer.ShowStepMessage(this);
+        result.stepIndex_ = stepIndex_;
+        result.targetIndex_ = targetIndex_;
+        result.actionType_ = actionType_;
+        result.maxRandomTargetIndex_ = maxRandomTargetIndex_;
+        result.zone_ = zone_;
+        result.maxOutputLevelLimit_ = maxOutputLevelLimit_;
+        result.timeUntilNext10Ms_ = timeUntilNext10Ms_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof EDS10ProtocolBuffer.ShowStepMessage) {
+          return mergeFrom((EDS10ProtocolBuffer.ShowStepMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(EDS10ProtocolBuffer.ShowStepMessage other) {
+        if (other == EDS10ProtocolBuffer.ShowStepMessage.getDefaultInstance()) return this;
+        if (other.getStepIndex() != 0) {
+          setStepIndex(other.getStepIndex());
+        }
+        if (other.getTargetIndex() != 0) {
+          setTargetIndex(other.getTargetIndex());
+        }
+        if (other.actionType_ != 0) {
+          setActionTypeValue(other.getActionTypeValue());
+        }
+        if (other.getMaxRandomTargetIndex() != 0) {
+          setMaxRandomTargetIndex(other.getMaxRandomTargetIndex());
+        }
+        if (other.getZone() != 0) {
+          setZone(other.getZone());
+        }
+        if (other.getMaxOutputLevelLimit() != 0) {
+          setMaxOutputLevelLimit(other.getMaxOutputLevelLimit());
+        }
+        if (other.getTimeUntilNext10Ms() != 0) {
+          setTimeUntilNext10Ms(other.getTimeUntilNext10Ms());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        EDS10ProtocolBuffer.ShowStepMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (EDS10ProtocolBuffer.ShowStepMessage) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int stepIndex_ ;
+      /**
+       * <code>uint32 step_index = 1;</code>
+       */
+      public int getStepIndex() {
+        return stepIndex_;
+      }
+      /**
+       * <code>uint32 step_index = 1;</code>
+       */
+      public Builder setStepIndex(int value) {
+        
+        stepIndex_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 step_index = 1;</code>
+       */
+      public Builder clearStepIndex() {
+        
+        stepIndex_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int targetIndex_ ;
+      /**
+       * <pre>
+       * The index for the action_type (where relevant)
+       * </pre>
+       *
+       * <code>uint32 target_index = 2;</code>
+       */
+      public int getTargetIndex() {
+        return targetIndex_;
+      }
+      /**
+       * <pre>
+       * The index for the action_type (where relevant)
+       * </pre>
+       *
+       * <code>uint32 target_index = 2;</code>
+       */
+      public Builder setTargetIndex(int value) {
+        
+        targetIndex_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The index for the action_type (where relevant)
+       * </pre>
+       *
+       * <code>uint32 target_index = 2;</code>
+       */
+      public Builder clearTargetIndex() {
+        
+        targetIndex_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int actionType_ = 0;
+      /**
+       * <pre>
+       * Run Sequence / Show Theme / Start List / Pause / Stop &amp; Off
+       * </pre>
+       *
+       * <code>.SpektraStepActionType action_type = 3;</code>
+       */
+      public int getActionTypeValue() {
+        return actionType_;
+      }
+      /**
+       * <pre>
+       * Run Sequence / Show Theme / Start List / Pause / Stop &amp; Off
+       * </pre>
+       *
+       * <code>.SpektraStepActionType action_type = 3;</code>
+       */
+      public Builder setActionTypeValue(int value) {
+        actionType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Run Sequence / Show Theme / Start List / Pause / Stop &amp; Off
+       * </pre>
+       *
+       * <code>.SpektraStepActionType action_type = 3;</code>
+       */
+      public EDS10ProtocolBuffer.SpektraStepActionType getActionType() {
+        @SuppressWarnings("deprecation")
+        EDS10ProtocolBuffer.SpektraStepActionType result = EDS10ProtocolBuffer.SpektraStepActionType.valueOf(actionType_);
+        return result == null ? EDS10ProtocolBuffer.SpektraStepActionType.UNRECOGNIZED : result;
+      }
+      /**
+       * <pre>
+       * Run Sequence / Show Theme / Start List / Pause / Stop &amp; Off
+       * </pre>
+       *
+       * <code>.SpektraStepActionType action_type = 3;</code>
+       */
+      public Builder setActionType(EDS10ProtocolBuffer.SpektraStepActionType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        actionType_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Run Sequence / Show Theme / Start List / Pause / Stop &amp; Off
+       * </pre>
+       *
+       * <code>.SpektraStepActionType action_type = 3;</code>
+       */
+      public Builder clearActionType() {
+        
+        actionType_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int maxRandomTargetIndex_ ;
+      /**
+       * <pre>
+       * If non-zero, will randomly pick a target_index between target_index and max_random_target_index, inclusive
+       * </pre>
+       *
+       * <code>uint32 max_random_target_index = 4;</code>
+       */
+      public int getMaxRandomTargetIndex() {
+        return maxRandomTargetIndex_;
+      }
+      /**
+       * <pre>
+       * If non-zero, will randomly pick a target_index between target_index and max_random_target_index, inclusive
+       * </pre>
+       *
+       * <code>uint32 max_random_target_index = 4;</code>
+       */
+      public Builder setMaxRandomTargetIndex(int value) {
+        
+        maxRandomTargetIndex_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * If non-zero, will randomly pick a target_index between target_index and max_random_target_index, inclusive
+       * </pre>
+       *
+       * <code>uint32 max_random_target_index = 4;</code>
+       */
+      public Builder clearMaxRandomTargetIndex() {
+        
+        maxRandomTargetIndex_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int zone_ ;
+      /**
+       * <pre>
+       * Which Zone to activate the action_type on (or use 0xFF to send to All Zones)
+       * </pre>
+       *
+       * <code>uint32 zone = 5;</code>
+       */
+      public int getZone() {
+        return zone_;
+      }
+      /**
+       * <pre>
+       * Which Zone to activate the action_type on (or use 0xFF to send to All Zones)
+       * </pre>
+       *
+       * <code>uint32 zone = 5;</code>
+       */
+      public Builder setZone(int value) {
+        
+        zone_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Which Zone to activate the action_type on (or use 0xFF to send to All Zones)
+       * </pre>
+       *
+       * <code>uint32 zone = 5;</code>
+       */
+      public Builder clearZone() {
+        
+        zone_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int maxOutputLevelLimit_ ;
+      /**
+       * <pre>
+       * For DMX / DALI, what should the maximum output be restricted to (e.g. 127 out of 255)
+       * </pre>
+       *
+       * <code>uint32 max_output_level_limit = 6;</code>
+       */
+      public int getMaxOutputLevelLimit() {
+        return maxOutputLevelLimit_;
+      }
+      /**
+       * <pre>
+       * For DMX / DALI, what should the maximum output be restricted to (e.g. 127 out of 255)
+       * </pre>
+       *
+       * <code>uint32 max_output_level_limit = 6;</code>
+       */
+      public Builder setMaxOutputLevelLimit(int value) {
+        
+        maxOutputLevelLimit_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * For DMX / DALI, what should the maximum output be restricted to (e.g. 127 out of 255)
+       * </pre>
+       *
+       * <code>uint32 max_output_level_limit = 6;</code>
+       */
+      public Builder clearMaxOutputLevelLimit() {
+        
+        maxOutputLevelLimit_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int timeUntilNext10Ms_ ;
+      /**
+       * <pre>
+       * How long to wait before the next step (in multiples of 10ms)
+       * </pre>
+       *
+       * <code>uint32 time_until_next_10ms = 7;</code>
+       */
+      public int getTimeUntilNext10Ms() {
+        return timeUntilNext10Ms_;
+      }
+      /**
+       * <pre>
+       * How long to wait before the next step (in multiples of 10ms)
+       * </pre>
+       *
+       * <code>uint32 time_until_next_10ms = 7;</code>
+       */
+      public Builder setTimeUntilNext10Ms(int value) {
+        
+        timeUntilNext10Ms_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * How long to wait before the next step (in multiples of 10ms)
+       * </pre>
+       *
+       * <code>uint32 time_until_next_10ms = 7;</code>
+       */
+      public Builder clearTimeUntilNext10Ms() {
+        
+        timeUntilNext10Ms_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ShowStepMessage)
+    }
+
+    // @@protoc_insertion_point(class_scope:ShowStepMessage)
+    private static final EDS10ProtocolBuffer.ShowStepMessage DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.ShowStepMessage();
+    }
+
+    public static EDS10ProtocolBuffer.ShowStepMessage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ShowStepMessage>
+        PARSER = new com.google.protobuf.AbstractParser<ShowStepMessage>() {
+      @java.lang.Override
+      public ShowStepMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ShowStepMessage(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ShowStepMessage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ShowStepMessage> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public EDS10ProtocolBuffer.ShowStepMessage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SpektraShowMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SpektraShowMessage)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>uint32 show_index = 1;</code>
+     */
+    int getShowIndex();
+
+    /**
+     * <code>uint32 number_of_steps = 2;</code>
+     */
+    int getNumberOfSteps();
+
+    /**
+     * <pre>
+     * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+     * </pre>
+     *
+     * <code>repeated .ShowStepMessage step = 3;</code>
+     */
+    java.util.List<EDS10ProtocolBuffer.ShowStepMessage> 
+        getStepList();
+    /**
+     * <pre>
+     * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+     * </pre>
+     *
+     * <code>repeated .ShowStepMessage step = 3;</code>
+     */
+    EDS10ProtocolBuffer.ShowStepMessage getStep(int index);
+    /**
+     * <pre>
+     * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+     * </pre>
+     *
+     * <code>repeated .ShowStepMessage step = 3;</code>
+     */
+    int getStepCount();
+    /**
+     * <pre>
+     * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+     * </pre>
+     *
+     * <code>repeated .ShowStepMessage step = 3;</code>
+     */
+    java.util.List<? extends EDS10ProtocolBuffer.ShowStepMessageOrBuilder> 
+        getStepOrBuilderList();
+    /**
+     * <pre>
+     * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+     * </pre>
+     *
+     * <code>repeated .ShowStepMessage step = 3;</code>
+     */
+    EDS10ProtocolBuffer.ShowStepMessageOrBuilder getStepOrBuilder(
+        int index);
+
+    /**
+     * <code>bool isRunning = 4;</code>
+     */
+    boolean getIsRunning();
+
+    /**
+     * <code>bool isLooped = 5;</code>
+     */
+    boolean getIsLooped();
+
+    /**
+     * <code>bool isRandom = 6;</code>
+     */
+    boolean getIsRandom();
+
+    /**
+     * <code>bool isTemporary = 7;</code>
+     */
+    boolean getIsTemporary();
+
+    /**
+     * <pre>
+     * If isTemporary is true; this is how many times this Show can be activated [NOTE: Only 1 Temporary Show can exist at any given time]
+     * </pre>
+     *
+     * <code>uint32 activations_remaining = 8;</code>
+     */
+    int getActivationsRemaining();
+  }
+  /**
+   * Protobuf type {@code SpektraShowMessage}
+   */
+  public  static final class SpektraShowMessage extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:SpektraShowMessage)
+      SpektraShowMessageOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use SpektraShowMessage.newBuilder() to construct.
+    private SpektraShowMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SpektraShowMessage() {
+      showIndex_ = 0;
+      numberOfSteps_ = 0;
+      step_ = java.util.Collections.emptyList();
+      isRunning_ = false;
+      isLooped_ = false;
+      isRandom_ = false;
+      isTemporary_ = false;
+      activationsRemaining_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SpektraShowMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              showIndex_ = input.readUInt32();
+              break;
+            }
+            case 16: {
+
+              numberOfSteps_ = input.readUInt32();
+              break;
+            }
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                step_ = new java.util.ArrayList<EDS10ProtocolBuffer.ShowStepMessage>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              step_.add(
+                  input.readMessage(EDS10ProtocolBuffer.ShowStepMessage.parser(), extensionRegistry));
+              break;
+            }
+            case 32: {
+
+              isRunning_ = input.readBool();
+              break;
+            }
+            case 40: {
+
+              isLooped_ = input.readBool();
+              break;
+            }
+            case 48: {
+
+              isRandom_ = input.readBool();
+              break;
+            }
+            case 56: {
+
+              isTemporary_ = input.readBool();
+              break;
+            }
+            case 64: {
+
+              activationsRemaining_ = input.readUInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          step_ = java.util.Collections.unmodifiableList(step_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.internal_static_SpektraShowMessage_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return EDS10ProtocolBuffer.internal_static_SpektraShowMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              EDS10ProtocolBuffer.SpektraShowMessage.class, EDS10ProtocolBuffer.SpektraShowMessage.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int SHOW_INDEX_FIELD_NUMBER = 1;
+    private int showIndex_;
+    /**
+     * <code>uint32 show_index = 1;</code>
+     */
+    public int getShowIndex() {
+      return showIndex_;
+    }
+
+    public static final int NUMBER_OF_STEPS_FIELD_NUMBER = 2;
+    private int numberOfSteps_;
+    /**
+     * <code>uint32 number_of_steps = 2;</code>
+     */
+    public int getNumberOfSteps() {
+      return numberOfSteps_;
+    }
+
+    public static final int STEP_FIELD_NUMBER = 3;
+    private java.util.List<EDS10ProtocolBuffer.ShowStepMessage> step_;
+    /**
+     * <pre>
+     * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+     * </pre>
+     *
+     * <code>repeated .ShowStepMessage step = 3;</code>
+     */
+    public java.util.List<EDS10ProtocolBuffer.ShowStepMessage> getStepList() {
+      return step_;
+    }
+    /**
+     * <pre>
+     * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+     * </pre>
+     *
+     * <code>repeated .ShowStepMessage step = 3;</code>
+     */
+    public java.util.List<? extends EDS10ProtocolBuffer.ShowStepMessageOrBuilder> 
+        getStepOrBuilderList() {
+      return step_;
+    }
+    /**
+     * <pre>
+     * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+     * </pre>
+     *
+     * <code>repeated .ShowStepMessage step = 3;</code>
+     */
+    public int getStepCount() {
+      return step_.size();
+    }
+    /**
+     * <pre>
+     * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+     * </pre>
+     *
+     * <code>repeated .ShowStepMessage step = 3;</code>
+     */
+    public EDS10ProtocolBuffer.ShowStepMessage getStep(int index) {
+      return step_.get(index);
+    }
+    /**
+     * <pre>
+     * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+     * </pre>
+     *
+     * <code>repeated .ShowStepMessage step = 3;</code>
+     */
+    public EDS10ProtocolBuffer.ShowStepMessageOrBuilder getStepOrBuilder(
+        int index) {
+      return step_.get(index);
+    }
+
+    public static final int ISRUNNING_FIELD_NUMBER = 4;
+    private boolean isRunning_;
+    /**
+     * <code>bool isRunning = 4;</code>
+     */
+    public boolean getIsRunning() {
+      return isRunning_;
+    }
+
+    public static final int ISLOOPED_FIELD_NUMBER = 5;
+    private boolean isLooped_;
+    /**
+     * <code>bool isLooped = 5;</code>
+     */
+    public boolean getIsLooped() {
+      return isLooped_;
+    }
+
+    public static final int ISRANDOM_FIELD_NUMBER = 6;
+    private boolean isRandom_;
+    /**
+     * <code>bool isRandom = 6;</code>
+     */
+    public boolean getIsRandom() {
+      return isRandom_;
+    }
+
+    public static final int ISTEMPORARY_FIELD_NUMBER = 7;
+    private boolean isTemporary_;
+    /**
+     * <code>bool isTemporary = 7;</code>
+     */
+    public boolean getIsTemporary() {
+      return isTemporary_;
+    }
+
+    public static final int ACTIVATIONS_REMAINING_FIELD_NUMBER = 8;
+    private int activationsRemaining_;
+    /**
+     * <pre>
+     * If isTemporary is true; this is how many times this Show can be activated [NOTE: Only 1 Temporary Show can exist at any given time]
+     * </pre>
+     *
+     * <code>uint32 activations_remaining = 8;</code>
+     */
+    public int getActivationsRemaining() {
+      return activationsRemaining_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (showIndex_ != 0) {
+        output.writeUInt32(1, showIndex_);
+      }
+      if (numberOfSteps_ != 0) {
+        output.writeUInt32(2, numberOfSteps_);
+      }
+      for (int i = 0; i < step_.size(); i++) {
+        output.writeMessage(3, step_.get(i));
+      }
+      if (isRunning_ != false) {
+        output.writeBool(4, isRunning_);
+      }
+      if (isLooped_ != false) {
+        output.writeBool(5, isLooped_);
+      }
+      if (isRandom_ != false) {
+        output.writeBool(6, isRandom_);
+      }
+      if (isTemporary_ != false) {
+        output.writeBool(7, isTemporary_);
+      }
+      if (activationsRemaining_ != 0) {
+        output.writeUInt32(8, activationsRemaining_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (showIndex_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, showIndex_);
+      }
+      if (numberOfSteps_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, numberOfSteps_);
+      }
+      for (int i = 0; i < step_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, step_.get(i));
+      }
+      if (isRunning_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(4, isRunning_);
+      }
+      if (isLooped_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(5, isLooped_);
+      }
+      if (isRandom_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(6, isRandom_);
+      }
+      if (isTemporary_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(7, isTemporary_);
+      }
+      if (activationsRemaining_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(8, activationsRemaining_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof EDS10ProtocolBuffer.SpektraShowMessage)) {
+        return super.equals(obj);
+      }
+      EDS10ProtocolBuffer.SpektraShowMessage other = (EDS10ProtocolBuffer.SpektraShowMessage) obj;
+
+      boolean result = true;
+      result = result && (getShowIndex()
+          == other.getShowIndex());
+      result = result && (getNumberOfSteps()
+          == other.getNumberOfSteps());
+      result = result && getStepList()
+          .equals(other.getStepList());
+      result = result && (getIsRunning()
+          == other.getIsRunning());
+      result = result && (getIsLooped()
+          == other.getIsLooped());
+      result = result && (getIsRandom()
+          == other.getIsRandom());
+      result = result && (getIsTemporary()
+          == other.getIsTemporary());
+      result = result && (getActivationsRemaining()
+          == other.getActivationsRemaining());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + SHOW_INDEX_FIELD_NUMBER;
+      hash = (53 * hash) + getShowIndex();
+      hash = (37 * hash) + NUMBER_OF_STEPS_FIELD_NUMBER;
+      hash = (53 * hash) + getNumberOfSteps();
+      if (getStepCount() > 0) {
+        hash = (37 * hash) + STEP_FIELD_NUMBER;
+        hash = (53 * hash) + getStepList().hashCode();
+      }
+      hash = (37 * hash) + ISRUNNING_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsRunning());
+      hash = (37 * hash) + ISLOOPED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsLooped());
+      hash = (37 * hash) + ISRANDOM_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsRandom());
+      hash = (37 * hash) + ISTEMPORARY_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsTemporary());
+      hash = (37 * hash) + ACTIVATIONS_REMAINING_FIELD_NUMBER;
+      hash = (53 * hash) + getActivationsRemaining();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static EDS10ProtocolBuffer.SpektraShowMessage parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SpektraShowMessage parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SpektraShowMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SpektraShowMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SpektraShowMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SpektraShowMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SpektraShowMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SpektraShowMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SpektraShowMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SpektraShowMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SpektraShowMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SpektraShowMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(EDS10ProtocolBuffer.SpektraShowMessage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code SpektraShowMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:SpektraShowMessage)
+        EDS10ProtocolBuffer.SpektraShowMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return EDS10ProtocolBuffer.internal_static_SpektraShowMessage_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return EDS10ProtocolBuffer.internal_static_SpektraShowMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                EDS10ProtocolBuffer.SpektraShowMessage.class, EDS10ProtocolBuffer.SpektraShowMessage.Builder.class);
+      }
+
+      // Construct using EDS10ProtocolBuffer.SpektraShowMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getStepFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        showIndex_ = 0;
+
+        numberOfSteps_ = 0;
+
+        if (stepBuilder_ == null) {
+          step_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          stepBuilder_.clear();
+        }
+        isRunning_ = false;
+
+        isLooped_ = false;
+
+        isRandom_ = false;
+
+        isTemporary_ = false;
+
+        activationsRemaining_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return EDS10ProtocolBuffer.internal_static_SpektraShowMessage_descriptor;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SpektraShowMessage getDefaultInstanceForType() {
+        return EDS10ProtocolBuffer.SpektraShowMessage.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SpektraShowMessage build() {
+        EDS10ProtocolBuffer.SpektraShowMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SpektraShowMessage buildPartial() {
+        EDS10ProtocolBuffer.SpektraShowMessage result = new EDS10ProtocolBuffer.SpektraShowMessage(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        result.showIndex_ = showIndex_;
+        result.numberOfSteps_ = numberOfSteps_;
+        if (stepBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            step_ = java.util.Collections.unmodifiableList(step_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.step_ = step_;
+        } else {
+          result.step_ = stepBuilder_.build();
+        }
+        result.isRunning_ = isRunning_;
+        result.isLooped_ = isLooped_;
+        result.isRandom_ = isRandom_;
+        result.isTemporary_ = isTemporary_;
+        result.activationsRemaining_ = activationsRemaining_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof EDS10ProtocolBuffer.SpektraShowMessage) {
+          return mergeFrom((EDS10ProtocolBuffer.SpektraShowMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(EDS10ProtocolBuffer.SpektraShowMessage other) {
+        if (other == EDS10ProtocolBuffer.SpektraShowMessage.getDefaultInstance()) return this;
+        if (other.getShowIndex() != 0) {
+          setShowIndex(other.getShowIndex());
+        }
+        if (other.getNumberOfSteps() != 0) {
+          setNumberOfSteps(other.getNumberOfSteps());
+        }
+        if (stepBuilder_ == null) {
+          if (!other.step_.isEmpty()) {
+            if (step_.isEmpty()) {
+              step_ = other.step_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureStepIsMutable();
+              step_.addAll(other.step_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.step_.isEmpty()) {
+            if (stepBuilder_.isEmpty()) {
+              stepBuilder_.dispose();
+              stepBuilder_ = null;
+              step_ = other.step_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              stepBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getStepFieldBuilder() : null;
+            } else {
+              stepBuilder_.addAllMessages(other.step_);
+            }
+          }
+        }
+        if (other.getIsRunning() != false) {
+          setIsRunning(other.getIsRunning());
+        }
+        if (other.getIsLooped() != false) {
+          setIsLooped(other.getIsLooped());
+        }
+        if (other.getIsRandom() != false) {
+          setIsRandom(other.getIsRandom());
+        }
+        if (other.getIsTemporary() != false) {
+          setIsTemporary(other.getIsTemporary());
+        }
+        if (other.getActivationsRemaining() != 0) {
+          setActivationsRemaining(other.getActivationsRemaining());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        EDS10ProtocolBuffer.SpektraShowMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (EDS10ProtocolBuffer.SpektraShowMessage) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int showIndex_ ;
+      /**
+       * <code>uint32 show_index = 1;</code>
+       */
+      public int getShowIndex() {
+        return showIndex_;
+      }
+      /**
+       * <code>uint32 show_index = 1;</code>
+       */
+      public Builder setShowIndex(int value) {
+        
+        showIndex_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 show_index = 1;</code>
+       */
+      public Builder clearShowIndex() {
+        
+        showIndex_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int numberOfSteps_ ;
+      /**
+       * <code>uint32 number_of_steps = 2;</code>
+       */
+      public int getNumberOfSteps() {
+        return numberOfSteps_;
+      }
+      /**
+       * <code>uint32 number_of_steps = 2;</code>
+       */
+      public Builder setNumberOfSteps(int value) {
+        
+        numberOfSteps_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 number_of_steps = 2;</code>
+       */
+      public Builder clearNumberOfSteps() {
+        
+        numberOfSteps_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<EDS10ProtocolBuffer.ShowStepMessage> step_ =
+        java.util.Collections.emptyList();
+      private void ensureStepIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          step_ = new java.util.ArrayList<EDS10ProtocolBuffer.ShowStepMessage>(step_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          EDS10ProtocolBuffer.ShowStepMessage, EDS10ProtocolBuffer.ShowStepMessage.Builder, EDS10ProtocolBuffer.ShowStepMessageOrBuilder> stepBuilder_;
+
+      /**
+       * <pre>
+       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+       * </pre>
+       *
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public java.util.List<EDS10ProtocolBuffer.ShowStepMessage> getStepList() {
+        if (stepBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(step_);
+        } else {
+          return stepBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <pre>
+       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+       * </pre>
+       *
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public int getStepCount() {
+        if (stepBuilder_ == null) {
+          return step_.size();
+        } else {
+          return stepBuilder_.getCount();
+        }
+      }
+      /**
+       * <pre>
+       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+       * </pre>
+       *
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public EDS10ProtocolBuffer.ShowStepMessage getStep(int index) {
+        if (stepBuilder_ == null) {
+          return step_.get(index);
+        } else {
+          return stepBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <pre>
+       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+       * </pre>
+       *
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public Builder setStep(
+          int index, EDS10ProtocolBuffer.ShowStepMessage value) {
+        if (stepBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureStepIsMutable();
+          step_.set(index, value);
+          onChanged();
+        } else {
+          stepBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+       * </pre>
+       *
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public Builder setStep(
+          int index, EDS10ProtocolBuffer.ShowStepMessage.Builder builderForValue) {
+        if (stepBuilder_ == null) {
+          ensureStepIsMutable();
+          step_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          stepBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+       * </pre>
+       *
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public Builder addStep(EDS10ProtocolBuffer.ShowStepMessage value) {
+        if (stepBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureStepIsMutable();
+          step_.add(value);
+          onChanged();
+        } else {
+          stepBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+       * </pre>
+       *
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public Builder addStep(
+          int index, EDS10ProtocolBuffer.ShowStepMessage value) {
+        if (stepBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureStepIsMutable();
+          step_.add(index, value);
+          onChanged();
+        } else {
+          stepBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+       * </pre>
+       *
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public Builder addStep(
+          EDS10ProtocolBuffer.ShowStepMessage.Builder builderForValue) {
+        if (stepBuilder_ == null) {
+          ensureStepIsMutable();
+          step_.add(builderForValue.build());
+          onChanged();
+        } else {
+          stepBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+       * </pre>
+       *
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public Builder addStep(
+          int index, EDS10ProtocolBuffer.ShowStepMessage.Builder builderForValue) {
+        if (stepBuilder_ == null) {
+          ensureStepIsMutable();
+          step_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          stepBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+       * </pre>
+       *
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public Builder addAllStep(
+          java.lang.Iterable<? extends EDS10ProtocolBuffer.ShowStepMessage> values) {
+        if (stepBuilder_ == null) {
+          ensureStepIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, step_);
+          onChanged();
+        } else {
+          stepBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+       * </pre>
+       *
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public Builder clearStep() {
+        if (stepBuilder_ == null) {
+          step_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          stepBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+       * </pre>
+       *
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public Builder removeStep(int index) {
+        if (stepBuilder_ == null) {
+          ensureStepIsMutable();
+          step_.remove(index);
+          onChanged();
+        } else {
+          stepBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+       * </pre>
+       *
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public EDS10ProtocolBuffer.ShowStepMessage.Builder getStepBuilder(
+          int index) {
+        return getStepFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <pre>
+       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+       * </pre>
+       *
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public EDS10ProtocolBuffer.ShowStepMessageOrBuilder getStepOrBuilder(
+          int index) {
+        if (stepBuilder_ == null) {
+          return step_.get(index);  } else {
+          return stepBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <pre>
+       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+       * </pre>
+       *
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public java.util.List<? extends EDS10ProtocolBuffer.ShowStepMessageOrBuilder> 
+           getStepOrBuilderList() {
+        if (stepBuilder_ != null) {
+          return stepBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(step_);
+        }
+      }
+      /**
+       * <pre>
+       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+       * </pre>
+       *
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public EDS10ProtocolBuffer.ShowStepMessage.Builder addStepBuilder() {
+        return getStepFieldBuilder().addBuilder(
+            EDS10ProtocolBuffer.ShowStepMessage.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+       * </pre>
+       *
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public EDS10ProtocolBuffer.ShowStepMessage.Builder addStepBuilder(
+          int index) {
+        return getStepFieldBuilder().addBuilder(
+            index, EDS10ProtocolBuffer.ShowStepMessage.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+       * </pre>
+       *
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public java.util.List<EDS10ProtocolBuffer.ShowStepMessage.Builder> 
+           getStepBuilderList() {
+        return getStepFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          EDS10ProtocolBuffer.ShowStepMessage, EDS10ProtocolBuffer.ShowStepMessage.Builder, EDS10ProtocolBuffer.ShowStepMessageOrBuilder> 
+          getStepFieldBuilder() {
+        if (stepBuilder_ == null) {
+          stepBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              EDS10ProtocolBuffer.ShowStepMessage, EDS10ProtocolBuffer.ShowStepMessage.Builder, EDS10ProtocolBuffer.ShowStepMessageOrBuilder>(
+                  step_,
+                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  getParentForChildren(),
+                  isClean());
+          step_ = null;
+        }
+        return stepBuilder_;
+      }
+
+      private boolean isRunning_ ;
+      /**
+       * <code>bool isRunning = 4;</code>
+       */
+      public boolean getIsRunning() {
+        return isRunning_;
+      }
+      /**
+       * <code>bool isRunning = 4;</code>
+       */
+      public Builder setIsRunning(boolean value) {
+        
+        isRunning_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool isRunning = 4;</code>
+       */
+      public Builder clearIsRunning() {
+        
+        isRunning_ = false;
+        onChanged();
+        return this;
+      }
+
+      private boolean isLooped_ ;
+      /**
+       * <code>bool isLooped = 5;</code>
+       */
+      public boolean getIsLooped() {
+        return isLooped_;
+      }
+      /**
+       * <code>bool isLooped = 5;</code>
+       */
+      public Builder setIsLooped(boolean value) {
+        
+        isLooped_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool isLooped = 5;</code>
+       */
+      public Builder clearIsLooped() {
+        
+        isLooped_ = false;
+        onChanged();
+        return this;
+      }
+
+      private boolean isRandom_ ;
+      /**
+       * <code>bool isRandom = 6;</code>
+       */
+      public boolean getIsRandom() {
+        return isRandom_;
+      }
+      /**
+       * <code>bool isRandom = 6;</code>
+       */
+      public Builder setIsRandom(boolean value) {
+        
+        isRandom_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool isRandom = 6;</code>
+       */
+      public Builder clearIsRandom() {
+        
+        isRandom_ = false;
+        onChanged();
+        return this;
+      }
+
+      private boolean isTemporary_ ;
+      /**
+       * <code>bool isTemporary = 7;</code>
+       */
+      public boolean getIsTemporary() {
+        return isTemporary_;
+      }
+      /**
+       * <code>bool isTemporary = 7;</code>
+       */
+      public Builder setIsTemporary(boolean value) {
+        
+        isTemporary_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool isTemporary = 7;</code>
+       */
+      public Builder clearIsTemporary() {
+        
+        isTemporary_ = false;
+        onChanged();
+        return this;
+      }
+
+      private int activationsRemaining_ ;
+      /**
+       * <pre>
+       * If isTemporary is true; this is how many times this Show can be activated [NOTE: Only 1 Temporary Show can exist at any given time]
+       * </pre>
+       *
+       * <code>uint32 activations_remaining = 8;</code>
+       */
+      public int getActivationsRemaining() {
+        return activationsRemaining_;
+      }
+      /**
+       * <pre>
+       * If isTemporary is true; this is how many times this Show can be activated [NOTE: Only 1 Temporary Show can exist at any given time]
+       * </pre>
+       *
+       * <code>uint32 activations_remaining = 8;</code>
+       */
+      public Builder setActivationsRemaining(int value) {
+        
+        activationsRemaining_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * If isTemporary is true; this is how many times this Show can be activated [NOTE: Only 1 Temporary Show can exist at any given time]
+       * </pre>
+       *
+       * <code>uint32 activations_remaining = 8;</code>
+       */
+      public Builder clearActivationsRemaining() {
+        
+        activationsRemaining_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:SpektraShowMessage)
+    }
+
+    // @@protoc_insertion_point(class_scope:SpektraShowMessage)
+    private static final EDS10ProtocolBuffer.SpektraShowMessage DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.SpektraShowMessage();
+    }
+
+    public static EDS10ProtocolBuffer.SpektraShowMessage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SpektraShowMessage>
+        PARSER = new com.google.protobuf.AbstractParser<SpektraShowMessage>() {
+      @java.lang.Override
+      public SpektraShowMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SpektraShowMessage(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SpektraShowMessage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SpektraShowMessage> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public EDS10ProtocolBuffer.SpektraShowMessage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ExtendedSpektraShowMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ExtendedSpektraShowMessage)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Which Show do these steps belong to?
+     * </pre>
+     *
+     * <code>uint32 show_index = 1;</code>
+     */
+    int getShowIndex();
+
+    /**
+     * <pre>
+     * 0 for the first ExtendedListMessage; offset by 32 for every ExtendedListMessage beyond the first
+     * </pre>
+     *
+     * <code>uint32 step_index_offset = 2;</code>
+     */
+    int getStepIndexOffset();
+
+    /**
+     * <code>repeated .ShowStepMessage step = 3;</code>
+     */
+    java.util.List<EDS10ProtocolBuffer.ShowStepMessage> 
+        getStepList();
+    /**
+     * <code>repeated .ShowStepMessage step = 3;</code>
+     */
+    EDS10ProtocolBuffer.ShowStepMessage getStep(int index);
+    /**
+     * <code>repeated .ShowStepMessage step = 3;</code>
+     */
+    int getStepCount();
+    /**
+     * <code>repeated .ShowStepMessage step = 3;</code>
+     */
+    java.util.List<? extends EDS10ProtocolBuffer.ShowStepMessageOrBuilder> 
+        getStepOrBuilderList();
+    /**
+     * <code>repeated .ShowStepMessage step = 3;</code>
+     */
+    EDS10ProtocolBuffer.ShowStepMessageOrBuilder getStepOrBuilder(
+        int index);
+  }
+  /**
+   * <pre>
+   * This Message must be used when the Show has more than 32 steps
+   * </pre>
+   *
+   * Protobuf type {@code ExtendedSpektraShowMessage}
+   */
+  public  static final class ExtendedSpektraShowMessage extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:ExtendedSpektraShowMessage)
+      ExtendedSpektraShowMessageOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ExtendedSpektraShowMessage.newBuilder() to construct.
+    private ExtendedSpektraShowMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ExtendedSpektraShowMessage() {
+      showIndex_ = 0;
+      stepIndexOffset_ = 0;
+      step_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ExtendedSpektraShowMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              showIndex_ = input.readUInt32();
+              break;
+            }
+            case 16: {
+
+              stepIndexOffset_ = input.readUInt32();
+              break;
+            }
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                step_ = new java.util.ArrayList<EDS10ProtocolBuffer.ShowStepMessage>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              step_.add(
+                  input.readMessage(EDS10ProtocolBuffer.ShowStepMessage.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          step_ = java.util.Collections.unmodifiableList(step_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.internal_static_ExtendedSpektraShowMessage_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return EDS10ProtocolBuffer.internal_static_ExtendedSpektraShowMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              EDS10ProtocolBuffer.ExtendedSpektraShowMessage.class, EDS10ProtocolBuffer.ExtendedSpektraShowMessage.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int SHOW_INDEX_FIELD_NUMBER = 1;
+    private int showIndex_;
+    /**
+     * <pre>
+     * Which Show do these steps belong to?
+     * </pre>
+     *
+     * <code>uint32 show_index = 1;</code>
+     */
+    public int getShowIndex() {
+      return showIndex_;
+    }
+
+    public static final int STEP_INDEX_OFFSET_FIELD_NUMBER = 2;
+    private int stepIndexOffset_;
+    /**
+     * <pre>
+     * 0 for the first ExtendedListMessage; offset by 32 for every ExtendedListMessage beyond the first
+     * </pre>
+     *
+     * <code>uint32 step_index_offset = 2;</code>
+     */
+    public int getStepIndexOffset() {
+      return stepIndexOffset_;
+    }
+
+    public static final int STEP_FIELD_NUMBER = 3;
+    private java.util.List<EDS10ProtocolBuffer.ShowStepMessage> step_;
+    /**
+     * <code>repeated .ShowStepMessage step = 3;</code>
+     */
+    public java.util.List<EDS10ProtocolBuffer.ShowStepMessage> getStepList() {
+      return step_;
+    }
+    /**
+     * <code>repeated .ShowStepMessage step = 3;</code>
+     */
+    public java.util.List<? extends EDS10ProtocolBuffer.ShowStepMessageOrBuilder> 
+        getStepOrBuilderList() {
+      return step_;
+    }
+    /**
+     * <code>repeated .ShowStepMessage step = 3;</code>
+     */
+    public int getStepCount() {
+      return step_.size();
+    }
+    /**
+     * <code>repeated .ShowStepMessage step = 3;</code>
+     */
+    public EDS10ProtocolBuffer.ShowStepMessage getStep(int index) {
+      return step_.get(index);
+    }
+    /**
+     * <code>repeated .ShowStepMessage step = 3;</code>
+     */
+    public EDS10ProtocolBuffer.ShowStepMessageOrBuilder getStepOrBuilder(
+        int index) {
+      return step_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (showIndex_ != 0) {
+        output.writeUInt32(1, showIndex_);
+      }
+      if (stepIndexOffset_ != 0) {
+        output.writeUInt32(2, stepIndexOffset_);
+      }
+      for (int i = 0; i < step_.size(); i++) {
+        output.writeMessage(3, step_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (showIndex_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, showIndex_);
+      }
+      if (stepIndexOffset_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, stepIndexOffset_);
+      }
+      for (int i = 0; i < step_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, step_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof EDS10ProtocolBuffer.ExtendedSpektraShowMessage)) {
+        return super.equals(obj);
+      }
+      EDS10ProtocolBuffer.ExtendedSpektraShowMessage other = (EDS10ProtocolBuffer.ExtendedSpektraShowMessage) obj;
+
+      boolean result = true;
+      result = result && (getShowIndex()
+          == other.getShowIndex());
+      result = result && (getStepIndexOffset()
+          == other.getStepIndexOffset());
+      result = result && getStepList()
+          .equals(other.getStepList());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + SHOW_INDEX_FIELD_NUMBER;
+      hash = (53 * hash) + getShowIndex();
+      hash = (37 * hash) + STEP_INDEX_OFFSET_FIELD_NUMBER;
+      hash = (53 * hash) + getStepIndexOffset();
+      if (getStepCount() > 0) {
+        hash = (37 * hash) + STEP_FIELD_NUMBER;
+        hash = (53 * hash) + getStepList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static EDS10ProtocolBuffer.ExtendedSpektraShowMessage parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.ExtendedSpektraShowMessage parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.ExtendedSpektraShowMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.ExtendedSpektraShowMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.ExtendedSpektraShowMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.ExtendedSpektraShowMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.ExtendedSpektraShowMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.ExtendedSpektraShowMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.ExtendedSpektraShowMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.ExtendedSpektraShowMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.ExtendedSpektraShowMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.ExtendedSpektraShowMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(EDS10ProtocolBuffer.ExtendedSpektraShowMessage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * This Message must be used when the Show has more than 32 steps
+     * </pre>
+     *
+     * Protobuf type {@code ExtendedSpektraShowMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ExtendedSpektraShowMessage)
+        EDS10ProtocolBuffer.ExtendedSpektraShowMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return EDS10ProtocolBuffer.internal_static_ExtendedSpektraShowMessage_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return EDS10ProtocolBuffer.internal_static_ExtendedSpektraShowMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                EDS10ProtocolBuffer.ExtendedSpektraShowMessage.class, EDS10ProtocolBuffer.ExtendedSpektraShowMessage.Builder.class);
+      }
+
+      // Construct using EDS10ProtocolBuffer.ExtendedSpektraShowMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getStepFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        showIndex_ = 0;
+
+        stepIndexOffset_ = 0;
+
+        if (stepBuilder_ == null) {
+          step_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          stepBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return EDS10ProtocolBuffer.internal_static_ExtendedSpektraShowMessage_descriptor;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.ExtendedSpektraShowMessage getDefaultInstanceForType() {
+        return EDS10ProtocolBuffer.ExtendedSpektraShowMessage.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.ExtendedSpektraShowMessage build() {
+        EDS10ProtocolBuffer.ExtendedSpektraShowMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.ExtendedSpektraShowMessage buildPartial() {
+        EDS10ProtocolBuffer.ExtendedSpektraShowMessage result = new EDS10ProtocolBuffer.ExtendedSpektraShowMessage(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        result.showIndex_ = showIndex_;
+        result.stepIndexOffset_ = stepIndexOffset_;
+        if (stepBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            step_ = java.util.Collections.unmodifiableList(step_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.step_ = step_;
+        } else {
+          result.step_ = stepBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof EDS10ProtocolBuffer.ExtendedSpektraShowMessage) {
+          return mergeFrom((EDS10ProtocolBuffer.ExtendedSpektraShowMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(EDS10ProtocolBuffer.ExtendedSpektraShowMessage other) {
+        if (other == EDS10ProtocolBuffer.ExtendedSpektraShowMessage.getDefaultInstance()) return this;
+        if (other.getShowIndex() != 0) {
+          setShowIndex(other.getShowIndex());
+        }
+        if (other.getStepIndexOffset() != 0) {
+          setStepIndexOffset(other.getStepIndexOffset());
+        }
+        if (stepBuilder_ == null) {
+          if (!other.step_.isEmpty()) {
+            if (step_.isEmpty()) {
+              step_ = other.step_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureStepIsMutable();
+              step_.addAll(other.step_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.step_.isEmpty()) {
+            if (stepBuilder_.isEmpty()) {
+              stepBuilder_.dispose();
+              stepBuilder_ = null;
+              step_ = other.step_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              stepBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getStepFieldBuilder() : null;
+            } else {
+              stepBuilder_.addAllMessages(other.step_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        EDS10ProtocolBuffer.ExtendedSpektraShowMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (EDS10ProtocolBuffer.ExtendedSpektraShowMessage) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int showIndex_ ;
+      /**
+       * <pre>
+       * Which Show do these steps belong to?
+       * </pre>
+       *
+       * <code>uint32 show_index = 1;</code>
+       */
+      public int getShowIndex() {
+        return showIndex_;
+      }
+      /**
+       * <pre>
+       * Which Show do these steps belong to?
+       * </pre>
+       *
+       * <code>uint32 show_index = 1;</code>
+       */
+      public Builder setShowIndex(int value) {
+        
+        showIndex_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Which Show do these steps belong to?
+       * </pre>
+       *
+       * <code>uint32 show_index = 1;</code>
+       */
+      public Builder clearShowIndex() {
+        
+        showIndex_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int stepIndexOffset_ ;
+      /**
+       * <pre>
+       * 0 for the first ExtendedListMessage; offset by 32 for every ExtendedListMessage beyond the first
+       * </pre>
+       *
+       * <code>uint32 step_index_offset = 2;</code>
+       */
+      public int getStepIndexOffset() {
+        return stepIndexOffset_;
+      }
+      /**
+       * <pre>
+       * 0 for the first ExtendedListMessage; offset by 32 for every ExtendedListMessage beyond the first
+       * </pre>
+       *
+       * <code>uint32 step_index_offset = 2;</code>
+       */
+      public Builder setStepIndexOffset(int value) {
+        
+        stepIndexOffset_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 0 for the first ExtendedListMessage; offset by 32 for every ExtendedListMessage beyond the first
+       * </pre>
+       *
+       * <code>uint32 step_index_offset = 2;</code>
+       */
+      public Builder clearStepIndexOffset() {
+        
+        stepIndexOffset_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<EDS10ProtocolBuffer.ShowStepMessage> step_ =
+        java.util.Collections.emptyList();
+      private void ensureStepIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          step_ = new java.util.ArrayList<EDS10ProtocolBuffer.ShowStepMessage>(step_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          EDS10ProtocolBuffer.ShowStepMessage, EDS10ProtocolBuffer.ShowStepMessage.Builder, EDS10ProtocolBuffer.ShowStepMessageOrBuilder> stepBuilder_;
+
+      /**
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public java.util.List<EDS10ProtocolBuffer.ShowStepMessage> getStepList() {
+        if (stepBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(step_);
+        } else {
+          return stepBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public int getStepCount() {
+        if (stepBuilder_ == null) {
+          return step_.size();
+        } else {
+          return stepBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public EDS10ProtocolBuffer.ShowStepMessage getStep(int index) {
+        if (stepBuilder_ == null) {
+          return step_.get(index);
+        } else {
+          return stepBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public Builder setStep(
+          int index, EDS10ProtocolBuffer.ShowStepMessage value) {
+        if (stepBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureStepIsMutable();
+          step_.set(index, value);
+          onChanged();
+        } else {
+          stepBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public Builder setStep(
+          int index, EDS10ProtocolBuffer.ShowStepMessage.Builder builderForValue) {
+        if (stepBuilder_ == null) {
+          ensureStepIsMutable();
+          step_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          stepBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public Builder addStep(EDS10ProtocolBuffer.ShowStepMessage value) {
+        if (stepBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureStepIsMutable();
+          step_.add(value);
+          onChanged();
+        } else {
+          stepBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public Builder addStep(
+          int index, EDS10ProtocolBuffer.ShowStepMessage value) {
+        if (stepBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureStepIsMutable();
+          step_.add(index, value);
+          onChanged();
+        } else {
+          stepBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public Builder addStep(
+          EDS10ProtocolBuffer.ShowStepMessage.Builder builderForValue) {
+        if (stepBuilder_ == null) {
+          ensureStepIsMutable();
+          step_.add(builderForValue.build());
+          onChanged();
+        } else {
+          stepBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public Builder addStep(
+          int index, EDS10ProtocolBuffer.ShowStepMessage.Builder builderForValue) {
+        if (stepBuilder_ == null) {
+          ensureStepIsMutable();
+          step_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          stepBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public Builder addAllStep(
+          java.lang.Iterable<? extends EDS10ProtocolBuffer.ShowStepMessage> values) {
+        if (stepBuilder_ == null) {
+          ensureStepIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, step_);
+          onChanged();
+        } else {
+          stepBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public Builder clearStep() {
+        if (stepBuilder_ == null) {
+          step_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          stepBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public Builder removeStep(int index) {
+        if (stepBuilder_ == null) {
+          ensureStepIsMutable();
+          step_.remove(index);
+          onChanged();
+        } else {
+          stepBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public EDS10ProtocolBuffer.ShowStepMessage.Builder getStepBuilder(
+          int index) {
+        return getStepFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public EDS10ProtocolBuffer.ShowStepMessageOrBuilder getStepOrBuilder(
+          int index) {
+        if (stepBuilder_ == null) {
+          return step_.get(index);  } else {
+          return stepBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public java.util.List<? extends EDS10ProtocolBuffer.ShowStepMessageOrBuilder> 
+           getStepOrBuilderList() {
+        if (stepBuilder_ != null) {
+          return stepBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(step_);
+        }
+      }
+      /**
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public EDS10ProtocolBuffer.ShowStepMessage.Builder addStepBuilder() {
+        return getStepFieldBuilder().addBuilder(
+            EDS10ProtocolBuffer.ShowStepMessage.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public EDS10ProtocolBuffer.ShowStepMessage.Builder addStepBuilder(
+          int index) {
+        return getStepFieldBuilder().addBuilder(
+            index, EDS10ProtocolBuffer.ShowStepMessage.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .ShowStepMessage step = 3;</code>
+       */
+      public java.util.List<EDS10ProtocolBuffer.ShowStepMessage.Builder> 
+           getStepBuilderList() {
+        return getStepFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          EDS10ProtocolBuffer.ShowStepMessage, EDS10ProtocolBuffer.ShowStepMessage.Builder, EDS10ProtocolBuffer.ShowStepMessageOrBuilder> 
+          getStepFieldBuilder() {
+        if (stepBuilder_ == null) {
+          stepBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              EDS10ProtocolBuffer.ShowStepMessage, EDS10ProtocolBuffer.ShowStepMessage.Builder, EDS10ProtocolBuffer.ShowStepMessageOrBuilder>(
+                  step_,
+                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  getParentForChildren(),
+                  isClean());
+          step_ = null;
+        }
+        return stepBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ExtendedSpektraShowMessage)
+    }
+
+    // @@protoc_insertion_point(class_scope:ExtendedSpektraShowMessage)
+    private static final EDS10ProtocolBuffer.ExtendedSpektraShowMessage DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.ExtendedSpektraShowMessage();
+    }
+
+    public static EDS10ProtocolBuffer.ExtendedSpektraShowMessage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ExtendedSpektraShowMessage>
+        PARSER = new com.google.protobuf.AbstractParser<ExtendedSpektraShowMessage>() {
+      @java.lang.Override
+      public ExtendedSpektraShowMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ExtendedSpektraShowMessage(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ExtendedSpektraShowMessage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ExtendedSpektraShowMessage> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public EDS10ProtocolBuffer.ExtendedSpektraShowMessage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SpektraShowControlMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SpektraShowControlMessage)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Which Show
+     * </pre>
+     *
+     * <code>uint32 show_index = 1;</code>
+     */
+    int getShowIndex();
+
+    /**
+     * <pre>
+     * Action
+     * </pre>
+     *
+     * <code>uint32 start_resume = 2;</code>
+     */
+    int getStartResume();
+
+    /**
+     * <pre>
+     * Which step to start on if not 0
+     * </pre>
+     *
+     * <code>uint32 gotoStep = 3;</code>
+     */
+    int getGotoStep();
+  }
+  /**
+   * Protobuf type {@code SpektraShowControlMessage}
+   */
+  public  static final class SpektraShowControlMessage extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:SpektraShowControlMessage)
+      SpektraShowControlMessageOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use SpektraShowControlMessage.newBuilder() to construct.
+    private SpektraShowControlMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SpektraShowControlMessage() {
+      showIndex_ = 0;
+      startResume_ = 0;
+      gotoStep_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SpektraShowControlMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              showIndex_ = input.readUInt32();
+              break;
+            }
+            case 16: {
+
+              startResume_ = input.readUInt32();
+              break;
+            }
+            case 24: {
+
+              gotoStep_ = input.readUInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.internal_static_SpektraShowControlMessage_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return EDS10ProtocolBuffer.internal_static_SpektraShowControlMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              EDS10ProtocolBuffer.SpektraShowControlMessage.class, EDS10ProtocolBuffer.SpektraShowControlMessage.Builder.class);
+    }
+
+    public static final int SHOW_INDEX_FIELD_NUMBER = 1;
+    private int showIndex_;
+    /**
+     * <pre>
+     * Which Show
+     * </pre>
+     *
+     * <code>uint32 show_index = 1;</code>
+     */
+    public int getShowIndex() {
+      return showIndex_;
+    }
+
+    public static final int START_RESUME_FIELD_NUMBER = 2;
+    private int startResume_;
+    /**
+     * <pre>
+     * Action
+     * </pre>
+     *
+     * <code>uint32 start_resume = 2;</code>
+     */
+    public int getStartResume() {
+      return startResume_;
+    }
+
+    public static final int GOTOSTEP_FIELD_NUMBER = 3;
+    private int gotoStep_;
+    /**
+     * <pre>
+     * Which step to start on if not 0
+     * </pre>
+     *
+     * <code>uint32 gotoStep = 3;</code>
+     */
+    public int getGotoStep() {
+      return gotoStep_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (showIndex_ != 0) {
+        output.writeUInt32(1, showIndex_);
+      }
+      if (startResume_ != 0) {
+        output.writeUInt32(2, startResume_);
+      }
+      if (gotoStep_ != 0) {
+        output.writeUInt32(3, gotoStep_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (showIndex_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, showIndex_);
+      }
+      if (startResume_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, startResume_);
+      }
+      if (gotoStep_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(3, gotoStep_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof EDS10ProtocolBuffer.SpektraShowControlMessage)) {
+        return super.equals(obj);
+      }
+      EDS10ProtocolBuffer.SpektraShowControlMessage other = (EDS10ProtocolBuffer.SpektraShowControlMessage) obj;
+
+      boolean result = true;
+      result = result && (getShowIndex()
+          == other.getShowIndex());
+      result = result && (getStartResume()
+          == other.getStartResume());
+      result = result && (getGotoStep()
+          == other.getGotoStep());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + SHOW_INDEX_FIELD_NUMBER;
+      hash = (53 * hash) + getShowIndex();
+      hash = (37 * hash) + START_RESUME_FIELD_NUMBER;
+      hash = (53 * hash) + getStartResume();
+      hash = (37 * hash) + GOTOSTEP_FIELD_NUMBER;
+      hash = (53 * hash) + getGotoStep();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static EDS10ProtocolBuffer.SpektraShowControlMessage parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SpektraShowControlMessage parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SpektraShowControlMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SpektraShowControlMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SpektraShowControlMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.SpektraShowControlMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SpektraShowControlMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SpektraShowControlMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SpektraShowControlMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SpektraShowControlMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.SpektraShowControlMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.SpektraShowControlMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(EDS10ProtocolBuffer.SpektraShowControlMessage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code SpektraShowControlMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:SpektraShowControlMessage)
+        EDS10ProtocolBuffer.SpektraShowControlMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return EDS10ProtocolBuffer.internal_static_SpektraShowControlMessage_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return EDS10ProtocolBuffer.internal_static_SpektraShowControlMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                EDS10ProtocolBuffer.SpektraShowControlMessage.class, EDS10ProtocolBuffer.SpektraShowControlMessage.Builder.class);
+      }
+
+      // Construct using EDS10ProtocolBuffer.SpektraShowControlMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        showIndex_ = 0;
+
+        startResume_ = 0;
+
+        gotoStep_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return EDS10ProtocolBuffer.internal_static_SpektraShowControlMessage_descriptor;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SpektraShowControlMessage getDefaultInstanceForType() {
+        return EDS10ProtocolBuffer.SpektraShowControlMessage.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SpektraShowControlMessage build() {
+        EDS10ProtocolBuffer.SpektraShowControlMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.SpektraShowControlMessage buildPartial() {
+        EDS10ProtocolBuffer.SpektraShowControlMessage result = new EDS10ProtocolBuffer.SpektraShowControlMessage(this);
+        result.showIndex_ = showIndex_;
+        result.startResume_ = startResume_;
+        result.gotoStep_ = gotoStep_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof EDS10ProtocolBuffer.SpektraShowControlMessage) {
+          return mergeFrom((EDS10ProtocolBuffer.SpektraShowControlMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(EDS10ProtocolBuffer.SpektraShowControlMessage other) {
+        if (other == EDS10ProtocolBuffer.SpektraShowControlMessage.getDefaultInstance()) return this;
+        if (other.getShowIndex() != 0) {
+          setShowIndex(other.getShowIndex());
+        }
+        if (other.getStartResume() != 0) {
+          setStartResume(other.getStartResume());
+        }
+        if (other.getGotoStep() != 0) {
+          setGotoStep(other.getGotoStep());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        EDS10ProtocolBuffer.SpektraShowControlMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (EDS10ProtocolBuffer.SpektraShowControlMessage) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int showIndex_ ;
+      /**
+       * <pre>
+       * Which Show
+       * </pre>
+       *
+       * <code>uint32 show_index = 1;</code>
+       */
+      public int getShowIndex() {
+        return showIndex_;
+      }
+      /**
+       * <pre>
+       * Which Show
+       * </pre>
+       *
+       * <code>uint32 show_index = 1;</code>
+       */
+      public Builder setShowIndex(int value) {
+        
+        showIndex_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Which Show
+       * </pre>
+       *
+       * <code>uint32 show_index = 1;</code>
+       */
+      public Builder clearShowIndex() {
+        
+        showIndex_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int startResume_ ;
+      /**
+       * <pre>
+       * Action
+       * </pre>
+       *
+       * <code>uint32 start_resume = 2;</code>
+       */
+      public int getStartResume() {
+        return startResume_;
+      }
+      /**
+       * <pre>
+       * Action
+       * </pre>
+       *
+       * <code>uint32 start_resume = 2;</code>
+       */
+      public Builder setStartResume(int value) {
+        
+        startResume_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Action
+       * </pre>
+       *
+       * <code>uint32 start_resume = 2;</code>
+       */
+      public Builder clearStartResume() {
+        
+        startResume_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int gotoStep_ ;
+      /**
+       * <pre>
+       * Which step to start on if not 0
+       * </pre>
+       *
+       * <code>uint32 gotoStep = 3;</code>
+       */
+      public int getGotoStep() {
+        return gotoStep_;
+      }
+      /**
+       * <pre>
+       * Which step to start on if not 0
+       * </pre>
+       *
+       * <code>uint32 gotoStep = 3;</code>
+       */
+      public Builder setGotoStep(int value) {
+        
+        gotoStep_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Which step to start on if not 0
+       * </pre>
+       *
+       * <code>uint32 gotoStep = 3;</code>
+       */
+      public Builder clearGotoStep() {
+        
+        gotoStep_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:SpektraShowControlMessage)
+    }
+
+    // @@protoc_insertion_point(class_scope:SpektraShowControlMessage)
+    private static final EDS10ProtocolBuffer.SpektraShowControlMessage DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.SpektraShowControlMessage();
+    }
+
+    public static EDS10ProtocolBuffer.SpektraShowControlMessage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SpektraShowControlMessage>
+        PARSER = new com.google.protobuf.AbstractParser<SpektraShowControlMessage>() {
+      @java.lang.Override
+      public SpektraShowControlMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SpektraShowControlMessage(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SpektraShowControlMessage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SpektraShowControlMessage> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public EDS10ProtocolBuffer.SpektraShowControlMessage getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -61394,816 +67583,6 @@ public final class EDS10ProtocolBuffer {
 
     @java.lang.Override
     public EDS10ProtocolBuffer.LevelCacheResponse getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface JoinedRoomsMessageOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:JoinedRoomsMessage)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <pre>
-     * Pairs of integers indicating joins between physical zones.
-     * </pre>
-     *
-     * <code>repeated uint32 pairs = 1;</code>
-     */
-    java.util.List<java.lang.Integer> getPairsList();
-    /**
-     * <pre>
-     * Pairs of integers indicating joins between physical zones.
-     * </pre>
-     *
-     * <code>repeated uint32 pairs = 1;</code>
-     */
-    int getPairsCount();
-    /**
-     * <pre>
-     * Pairs of integers indicating joins between physical zones.
-     * </pre>
-     *
-     * <code>repeated uint32 pairs = 1;</code>
-     */
-    int getPairs(int index);
-
-    /**
-     * <pre>
-     * If True, these pairs are joined. Else they are being separated.
-     * </pre>
-     *
-     * <code>bool joined = 2;</code>
-     */
-    boolean getJoined();
-
-    /**
-     * <pre>
-     * Can be sent at the same time as joining, but interpreted as "clear all". An "override" type effect.
-     * </pre>
-     *
-     * <code>bool clear_joins = 3;</code>
-     */
-    boolean getClearJoins();
-  }
-  /**
-   * Protobuf type {@code JoinedRoomsMessage}
-   */
-  public  static final class JoinedRoomsMessage extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:JoinedRoomsMessage)
-      JoinedRoomsMessageOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use JoinedRoomsMessage.newBuilder() to construct.
-    private JoinedRoomsMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private JoinedRoomsMessage() {
-      pairs_ = java.util.Collections.emptyList();
-      joined_ = false;
-      clearJoins_ = false;
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private JoinedRoomsMessage(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                pairs_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              pairs_.add(input.readUInt32());
-              break;
-            }
-            case 10: {
-              int length = input.readRawVarint32();
-              int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001) && input.getBytesUntilLimit() > 0) {
-                pairs_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              while (input.getBytesUntilLimit() > 0) {
-                pairs_.add(input.readUInt32());
-              }
-              input.popLimit(limit);
-              break;
-            }
-            case 16: {
-
-              joined_ = input.readBool();
-              break;
-            }
-            case 24: {
-
-              clearJoins_ = input.readBool();
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          pairs_ = java.util.Collections.unmodifiableList(pairs_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return EDS10ProtocolBuffer.internal_static_JoinedRoomsMessage_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return EDS10ProtocolBuffer.internal_static_JoinedRoomsMessage_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              EDS10ProtocolBuffer.JoinedRoomsMessage.class, EDS10ProtocolBuffer.JoinedRoomsMessage.Builder.class);
-    }
-
-    private int bitField0_;
-    public static final int PAIRS_FIELD_NUMBER = 1;
-    private java.util.List<java.lang.Integer> pairs_;
-    /**
-     * <pre>
-     * Pairs of integers indicating joins between physical zones.
-     * </pre>
-     *
-     * <code>repeated uint32 pairs = 1;</code>
-     */
-    public java.util.List<java.lang.Integer>
-        getPairsList() {
-      return pairs_;
-    }
-    /**
-     * <pre>
-     * Pairs of integers indicating joins between physical zones.
-     * </pre>
-     *
-     * <code>repeated uint32 pairs = 1;</code>
-     */
-    public int getPairsCount() {
-      return pairs_.size();
-    }
-    /**
-     * <pre>
-     * Pairs of integers indicating joins between physical zones.
-     * </pre>
-     *
-     * <code>repeated uint32 pairs = 1;</code>
-     */
-    public int getPairs(int index) {
-      return pairs_.get(index);
-    }
-    private int pairsMemoizedSerializedSize = -1;
-
-    public static final int JOINED_FIELD_NUMBER = 2;
-    private boolean joined_;
-    /**
-     * <pre>
-     * If True, these pairs are joined. Else they are being separated.
-     * </pre>
-     *
-     * <code>bool joined = 2;</code>
-     */
-    public boolean getJoined() {
-      return joined_;
-    }
-
-    public static final int CLEAR_JOINS_FIELD_NUMBER = 3;
-    private boolean clearJoins_;
-    /**
-     * <pre>
-     * Can be sent at the same time as joining, but interpreted as "clear all". An "override" type effect.
-     * </pre>
-     *
-     * <code>bool clear_joins = 3;</code>
-     */
-    public boolean getClearJoins() {
-      return clearJoins_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (getPairsList().size() > 0) {
-        output.writeUInt32NoTag(10);
-        output.writeUInt32NoTag(pairsMemoizedSerializedSize);
-      }
-      for (int i = 0; i < pairs_.size(); i++) {
-        output.writeUInt32NoTag(pairs_.get(i));
-      }
-      if (joined_ != false) {
-        output.writeBool(2, joined_);
-      }
-      if (clearJoins_ != false) {
-        output.writeBool(3, clearJoins_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      {
-        int dataSize = 0;
-        for (int i = 0; i < pairs_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeUInt32SizeNoTag(pairs_.get(i));
-        }
-        size += dataSize;
-        if (!getPairsList().isEmpty()) {
-          size += 1;
-          size += com.google.protobuf.CodedOutputStream
-              .computeInt32SizeNoTag(dataSize);
-        }
-        pairsMemoizedSerializedSize = dataSize;
-      }
-      if (joined_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(2, joined_);
-      }
-      if (clearJoins_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(3, clearJoins_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof EDS10ProtocolBuffer.JoinedRoomsMessage)) {
-        return super.equals(obj);
-      }
-      EDS10ProtocolBuffer.JoinedRoomsMessage other = (EDS10ProtocolBuffer.JoinedRoomsMessage) obj;
-
-      boolean result = true;
-      result = result && getPairsList()
-          .equals(other.getPairsList());
-      result = result && (getJoined()
-          == other.getJoined());
-      result = result && (getClearJoins()
-          == other.getClearJoins());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (getPairsCount() > 0) {
-        hash = (37 * hash) + PAIRS_FIELD_NUMBER;
-        hash = (53 * hash) + getPairsList().hashCode();
-      }
-      hash = (37 * hash) + JOINED_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getJoined());
-      hash = (37 * hash) + CLEAR_JOINS_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getClearJoins());
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static EDS10ProtocolBuffer.JoinedRoomsMessage parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static EDS10ProtocolBuffer.JoinedRoomsMessage parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static EDS10ProtocolBuffer.JoinedRoomsMessage parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static EDS10ProtocolBuffer.JoinedRoomsMessage parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static EDS10ProtocolBuffer.JoinedRoomsMessage parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static EDS10ProtocolBuffer.JoinedRoomsMessage parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static EDS10ProtocolBuffer.JoinedRoomsMessage parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static EDS10ProtocolBuffer.JoinedRoomsMessage parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static EDS10ProtocolBuffer.JoinedRoomsMessage parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static EDS10ProtocolBuffer.JoinedRoomsMessage parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static EDS10ProtocolBuffer.JoinedRoomsMessage parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static EDS10ProtocolBuffer.JoinedRoomsMessage parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(EDS10ProtocolBuffer.JoinedRoomsMessage prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code JoinedRoomsMessage}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:JoinedRoomsMessage)
-        EDS10ProtocolBuffer.JoinedRoomsMessageOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return EDS10ProtocolBuffer.internal_static_JoinedRoomsMessage_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return EDS10ProtocolBuffer.internal_static_JoinedRoomsMessage_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                EDS10ProtocolBuffer.JoinedRoomsMessage.class, EDS10ProtocolBuffer.JoinedRoomsMessage.Builder.class);
-      }
-
-      // Construct using EDS10ProtocolBuffer.JoinedRoomsMessage.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        pairs_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        joined_ = false;
-
-        clearJoins_ = false;
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return EDS10ProtocolBuffer.internal_static_JoinedRoomsMessage_descriptor;
-      }
-
-      @java.lang.Override
-      public EDS10ProtocolBuffer.JoinedRoomsMessage getDefaultInstanceForType() {
-        return EDS10ProtocolBuffer.JoinedRoomsMessage.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public EDS10ProtocolBuffer.JoinedRoomsMessage build() {
-        EDS10ProtocolBuffer.JoinedRoomsMessage result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public EDS10ProtocolBuffer.JoinedRoomsMessage buildPartial() {
-        EDS10ProtocolBuffer.JoinedRoomsMessage result = new EDS10ProtocolBuffer.JoinedRoomsMessage(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          pairs_ = java.util.Collections.unmodifiableList(pairs_);
-          bitField0_ = (bitField0_ & ~0x00000001);
-        }
-        result.pairs_ = pairs_;
-        result.joined_ = joined_;
-        result.clearJoins_ = clearJoins_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof EDS10ProtocolBuffer.JoinedRoomsMessage) {
-          return mergeFrom((EDS10ProtocolBuffer.JoinedRoomsMessage)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(EDS10ProtocolBuffer.JoinedRoomsMessage other) {
-        if (other == EDS10ProtocolBuffer.JoinedRoomsMessage.getDefaultInstance()) return this;
-        if (!other.pairs_.isEmpty()) {
-          if (pairs_.isEmpty()) {
-            pairs_ = other.pairs_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            ensurePairsIsMutable();
-            pairs_.addAll(other.pairs_);
-          }
-          onChanged();
-        }
-        if (other.getJoined() != false) {
-          setJoined(other.getJoined());
-        }
-        if (other.getClearJoins() != false) {
-          setClearJoins(other.getClearJoins());
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        EDS10ProtocolBuffer.JoinedRoomsMessage parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (EDS10ProtocolBuffer.JoinedRoomsMessage) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      private java.util.List<java.lang.Integer> pairs_ = java.util.Collections.emptyList();
-      private void ensurePairsIsMutable() {
-        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          pairs_ = new java.util.ArrayList<java.lang.Integer>(pairs_);
-          bitField0_ |= 0x00000001;
-         }
-      }
-      /**
-       * <pre>
-       * Pairs of integers indicating joins between physical zones.
-       * </pre>
-       *
-       * <code>repeated uint32 pairs = 1;</code>
-       */
-      public java.util.List<java.lang.Integer>
-          getPairsList() {
-        return java.util.Collections.unmodifiableList(pairs_);
-      }
-      /**
-       * <pre>
-       * Pairs of integers indicating joins between physical zones.
-       * </pre>
-       *
-       * <code>repeated uint32 pairs = 1;</code>
-       */
-      public int getPairsCount() {
-        return pairs_.size();
-      }
-      /**
-       * <pre>
-       * Pairs of integers indicating joins between physical zones.
-       * </pre>
-       *
-       * <code>repeated uint32 pairs = 1;</code>
-       */
-      public int getPairs(int index) {
-        return pairs_.get(index);
-      }
-      /**
-       * <pre>
-       * Pairs of integers indicating joins between physical zones.
-       * </pre>
-       *
-       * <code>repeated uint32 pairs = 1;</code>
-       */
-      public Builder setPairs(
-          int index, int value) {
-        ensurePairsIsMutable();
-        pairs_.set(index, value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * Pairs of integers indicating joins between physical zones.
-       * </pre>
-       *
-       * <code>repeated uint32 pairs = 1;</code>
-       */
-      public Builder addPairs(int value) {
-        ensurePairsIsMutable();
-        pairs_.add(value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * Pairs of integers indicating joins between physical zones.
-       * </pre>
-       *
-       * <code>repeated uint32 pairs = 1;</code>
-       */
-      public Builder addAllPairs(
-          java.lang.Iterable<? extends java.lang.Integer> values) {
-        ensurePairsIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, pairs_);
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * Pairs of integers indicating joins between physical zones.
-       * </pre>
-       *
-       * <code>repeated uint32 pairs = 1;</code>
-       */
-      public Builder clearPairs() {
-        pairs_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
-        return this;
-      }
-
-      private boolean joined_ ;
-      /**
-       * <pre>
-       * If True, these pairs are joined. Else they are being separated.
-       * </pre>
-       *
-       * <code>bool joined = 2;</code>
-       */
-      public boolean getJoined() {
-        return joined_;
-      }
-      /**
-       * <pre>
-       * If True, these pairs are joined. Else they are being separated.
-       * </pre>
-       *
-       * <code>bool joined = 2;</code>
-       */
-      public Builder setJoined(boolean value) {
-        
-        joined_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * If True, these pairs are joined. Else they are being separated.
-       * </pre>
-       *
-       * <code>bool joined = 2;</code>
-       */
-      public Builder clearJoined() {
-        
-        joined_ = false;
-        onChanged();
-        return this;
-      }
-
-      private boolean clearJoins_ ;
-      /**
-       * <pre>
-       * Can be sent at the same time as joining, but interpreted as "clear all". An "override" type effect.
-       * </pre>
-       *
-       * <code>bool clear_joins = 3;</code>
-       */
-      public boolean getClearJoins() {
-        return clearJoins_;
-      }
-      /**
-       * <pre>
-       * Can be sent at the same time as joining, but interpreted as "clear all". An "override" type effect.
-       * </pre>
-       *
-       * <code>bool clear_joins = 3;</code>
-       */
-      public Builder setClearJoins(boolean value) {
-        
-        clearJoins_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * Can be sent at the same time as joining, but interpreted as "clear all". An "override" type effect.
-       * </pre>
-       *
-       * <code>bool clear_joins = 3;</code>
-       */
-      public Builder clearClearJoins() {
-        
-        clearJoins_ = false;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:JoinedRoomsMessage)
-    }
-
-    // @@protoc_insertion_point(class_scope:JoinedRoomsMessage)
-    private static final EDS10ProtocolBuffer.JoinedRoomsMessage DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.JoinedRoomsMessage();
-    }
-
-    public static EDS10ProtocolBuffer.JoinedRoomsMessage getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<JoinedRoomsMessage>
-        PARSER = new com.google.protobuf.AbstractParser<JoinedRoomsMessage>() {
-      @java.lang.Override
-      public JoinedRoomsMessage parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new JoinedRoomsMessage(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<JoinedRoomsMessage> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<JoinedRoomsMessage> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public EDS10ProtocolBuffer.JoinedRoomsMessage getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -68707,6 +74086,87 @@ public final class EDS10ProtocolBuffer {
      * <code>bool NTP = 6;</code>
      */
     boolean getNTP();
+
+    /**
+     * <pre>
+     * Error or Status Message 32 char
+     * </pre>
+     *
+     * <code>string error = 7;</code>
+     */
+    java.lang.String getError();
+    /**
+     * <pre>
+     * Error or Status Message 32 char
+     * </pre>
+     *
+     * <code>string error = 7;</code>
+     */
+    com.google.protobuf.ByteString
+        getErrorBytes();
+
+    /**
+     * <pre>
+     * Timeout in seconds for NTP Retry
+     * </pre>
+     *
+     * <code>uint32 NTPTimeout = 8;</code>
+     */
+    int getNTPTimeout();
+
+    /**
+     * <pre>
+     * The Subnet if set by Static IP
+     * </pre>
+     *
+     * <code>string subnet = 9;</code>
+     */
+    java.lang.String getSubnet();
+    /**
+     * <pre>
+     * The Subnet if set by Static IP
+     * </pre>
+     *
+     * <code>string subnet = 9;</code>
+     */
+    com.google.protobuf.ByteString
+        getSubnetBytes();
+
+    /**
+     * <pre>
+     * Primary DNS
+     * </pre>
+     *
+     * <code>string DNS_Primary = 10;</code>
+     */
+    java.lang.String getDNSPrimary();
+    /**
+     * <pre>
+     * Primary DNS
+     * </pre>
+     *
+     * <code>string DNS_Primary = 10;</code>
+     */
+    com.google.protobuf.ByteString
+        getDNSPrimaryBytes();
+
+    /**
+     * <pre>
+     * Secondary DNS
+     * </pre>
+     *
+     * <code>string DNS_Secondary = 11;</code>
+     */
+    java.lang.String getDNSSecondary();
+    /**
+     * <pre>
+     * Secondary DNS
+     * </pre>
+     *
+     * <code>string DNS_Secondary = 11;</code>
+     */
+    com.google.protobuf.ByteString
+        getDNSSecondaryBytes();
   }
   /**
    * Protobuf type {@code AdminNetworkPropertiesMessage}
@@ -68727,6 +74187,11 @@ public final class EDS10ProtocolBuffer {
       gateway_ = "";
       nTPServer_ = "";
       nTP_ = false;
+      error_ = "";
+      nTPTimeout_ = 0;
+      subnet_ = "";
+      dNSPrimary_ = "";
+      dNSSecondary_ = "";
     }
 
     @java.lang.Override
@@ -68785,6 +74250,35 @@ public final class EDS10ProtocolBuffer {
             case 48: {
 
               nTP_ = input.readBool();
+              break;
+            }
+            case 58: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              error_ = s;
+              break;
+            }
+            case 64: {
+
+              nTPTimeout_ = input.readUInt32();
+              break;
+            }
+            case 74: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              subnet_ = s;
+              break;
+            }
+            case 82: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              dNSPrimary_ = s;
+              break;
+            }
+            case 90: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              dNSSecondary_ = s;
               break;
             }
             default: {
@@ -69013,6 +74507,187 @@ public final class EDS10ProtocolBuffer {
       return nTP_;
     }
 
+    public static final int ERROR_FIELD_NUMBER = 7;
+    private volatile java.lang.Object error_;
+    /**
+     * <pre>
+     * Error or Status Message 32 char
+     * </pre>
+     *
+     * <code>string error = 7;</code>
+     */
+    public java.lang.String getError() {
+      java.lang.Object ref = error_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        error_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Error or Status Message 32 char
+     * </pre>
+     *
+     * <code>string error = 7;</code>
+     */
+    public com.google.protobuf.ByteString
+        getErrorBytes() {
+      java.lang.Object ref = error_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        error_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int NTPTIMEOUT_FIELD_NUMBER = 8;
+    private int nTPTimeout_;
+    /**
+     * <pre>
+     * Timeout in seconds for NTP Retry
+     * </pre>
+     *
+     * <code>uint32 NTPTimeout = 8;</code>
+     */
+    public int getNTPTimeout() {
+      return nTPTimeout_;
+    }
+
+    public static final int SUBNET_FIELD_NUMBER = 9;
+    private volatile java.lang.Object subnet_;
+    /**
+     * <pre>
+     * The Subnet if set by Static IP
+     * </pre>
+     *
+     * <code>string subnet = 9;</code>
+     */
+    public java.lang.String getSubnet() {
+      java.lang.Object ref = subnet_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        subnet_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * The Subnet if set by Static IP
+     * </pre>
+     *
+     * <code>string subnet = 9;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSubnetBytes() {
+      java.lang.Object ref = subnet_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        subnet_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DNS_PRIMARY_FIELD_NUMBER = 10;
+    private volatile java.lang.Object dNSPrimary_;
+    /**
+     * <pre>
+     * Primary DNS
+     * </pre>
+     *
+     * <code>string DNS_Primary = 10;</code>
+     */
+    public java.lang.String getDNSPrimary() {
+      java.lang.Object ref = dNSPrimary_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        dNSPrimary_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Primary DNS
+     * </pre>
+     *
+     * <code>string DNS_Primary = 10;</code>
+     */
+    public com.google.protobuf.ByteString
+        getDNSPrimaryBytes() {
+      java.lang.Object ref = dNSPrimary_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        dNSPrimary_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DNS_SECONDARY_FIELD_NUMBER = 11;
+    private volatile java.lang.Object dNSSecondary_;
+    /**
+     * <pre>
+     * Secondary DNS
+     * </pre>
+     *
+     * <code>string DNS_Secondary = 11;</code>
+     */
+    public java.lang.String getDNSSecondary() {
+      java.lang.Object ref = dNSSecondary_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        dNSSecondary_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Secondary DNS
+     * </pre>
+     *
+     * <code>string DNS_Secondary = 11;</code>
+     */
+    public com.google.protobuf.ByteString
+        getDNSSecondaryBytes() {
+      java.lang.Object ref = dNSSecondary_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        dNSSecondary_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -69045,6 +74720,21 @@ public final class EDS10ProtocolBuffer {
       if (nTP_ != false) {
         output.writeBool(6, nTP_);
       }
+      if (!getErrorBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, error_);
+      }
+      if (nTPTimeout_ != 0) {
+        output.writeUInt32(8, nTPTimeout_);
+      }
+      if (!getSubnetBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 9, subnet_);
+      }
+      if (!getDNSPrimaryBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 10, dNSPrimary_);
+      }
+      if (!getDNSSecondaryBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 11, dNSSecondary_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -69074,6 +74764,22 @@ public final class EDS10ProtocolBuffer {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(6, nTP_);
       }
+      if (!getErrorBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, error_);
+      }
+      if (nTPTimeout_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(8, nTPTimeout_);
+      }
+      if (!getSubnetBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, subnet_);
+      }
+      if (!getDNSPrimaryBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, dNSPrimary_);
+      }
+      if (!getDNSSecondaryBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, dNSSecondary_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -69102,6 +74808,16 @@ public final class EDS10ProtocolBuffer {
           .equals(other.getNTPServer());
       result = result && (getNTP()
           == other.getNTP());
+      result = result && getError()
+          .equals(other.getError());
+      result = result && (getNTPTimeout()
+          == other.getNTPTimeout());
+      result = result && getSubnet()
+          .equals(other.getSubnet());
+      result = result && getDNSPrimary()
+          .equals(other.getDNSPrimary());
+      result = result && getDNSSecondary()
+          .equals(other.getDNSSecondary());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -69127,6 +74843,16 @@ public final class EDS10ProtocolBuffer {
       hash = (37 * hash) + NTP_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getNTP());
+      hash = (37 * hash) + ERROR_FIELD_NUMBER;
+      hash = (53 * hash) + getError().hashCode();
+      hash = (37 * hash) + NTPTIMEOUT_FIELD_NUMBER;
+      hash = (53 * hash) + getNTPTimeout();
+      hash = (37 * hash) + SUBNET_FIELD_NUMBER;
+      hash = (53 * hash) + getSubnet().hashCode();
+      hash = (37 * hash) + DNS_PRIMARY_FIELD_NUMBER;
+      hash = (53 * hash) + getDNSPrimary().hashCode();
+      hash = (37 * hash) + DNS_SECONDARY_FIELD_NUMBER;
+      hash = (53 * hash) + getDNSSecondary().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -69272,6 +74998,16 @@ public final class EDS10ProtocolBuffer {
 
         nTP_ = false;
 
+        error_ = "";
+
+        nTPTimeout_ = 0;
+
+        subnet_ = "";
+
+        dNSPrimary_ = "";
+
+        dNSSecondary_ = "";
+
         return this;
       }
 
@@ -69304,6 +75040,11 @@ public final class EDS10ProtocolBuffer {
         result.gateway_ = gateway_;
         result.nTPServer_ = nTPServer_;
         result.nTP_ = nTP_;
+        result.error_ = error_;
+        result.nTPTimeout_ = nTPTimeout_;
+        result.subnet_ = subnet_;
+        result.dNSPrimary_ = dNSPrimary_;
+        result.dNSSecondary_ = dNSSecondary_;
         onBuilt();
         return result;
       }
@@ -69373,6 +75114,25 @@ public final class EDS10ProtocolBuffer {
         }
         if (other.getNTP() != false) {
           setNTP(other.getNTP());
+        }
+        if (!other.getError().isEmpty()) {
+          error_ = other.error_;
+          onChanged();
+        }
+        if (other.getNTPTimeout() != 0) {
+          setNTPTimeout(other.getNTPTimeout());
+        }
+        if (!other.getSubnet().isEmpty()) {
+          subnet_ = other.subnet_;
+          onChanged();
+        }
+        if (!other.getDNSPrimary().isEmpty()) {
+          dNSPrimary_ = other.dNSPrimary_;
+          onChanged();
+        }
+        if (!other.getDNSSecondary().isEmpty()) {
+          dNSSecondary_ = other.dNSSecondary_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -69831,6 +75591,400 @@ public final class EDS10ProtocolBuffer {
       public Builder clearNTP() {
         
         nTP_ = false;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object error_ = "";
+      /**
+       * <pre>
+       * Error or Status Message 32 char
+       * </pre>
+       *
+       * <code>string error = 7;</code>
+       */
+      public java.lang.String getError() {
+        java.lang.Object ref = error_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          error_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Error or Status Message 32 char
+       * </pre>
+       *
+       * <code>string error = 7;</code>
+       */
+      public com.google.protobuf.ByteString
+          getErrorBytes() {
+        java.lang.Object ref = error_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          error_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Error or Status Message 32 char
+       * </pre>
+       *
+       * <code>string error = 7;</code>
+       */
+      public Builder setError(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        error_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Error or Status Message 32 char
+       * </pre>
+       *
+       * <code>string error = 7;</code>
+       */
+      public Builder clearError() {
+        
+        error_ = getDefaultInstance().getError();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Error or Status Message 32 char
+       * </pre>
+       *
+       * <code>string error = 7;</code>
+       */
+      public Builder setErrorBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        error_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int nTPTimeout_ ;
+      /**
+       * <pre>
+       * Timeout in seconds for NTP Retry
+       * </pre>
+       *
+       * <code>uint32 NTPTimeout = 8;</code>
+       */
+      public int getNTPTimeout() {
+        return nTPTimeout_;
+      }
+      /**
+       * <pre>
+       * Timeout in seconds for NTP Retry
+       * </pre>
+       *
+       * <code>uint32 NTPTimeout = 8;</code>
+       */
+      public Builder setNTPTimeout(int value) {
+        
+        nTPTimeout_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Timeout in seconds for NTP Retry
+       * </pre>
+       *
+       * <code>uint32 NTPTimeout = 8;</code>
+       */
+      public Builder clearNTPTimeout() {
+        
+        nTPTimeout_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object subnet_ = "";
+      /**
+       * <pre>
+       * The Subnet if set by Static IP
+       * </pre>
+       *
+       * <code>string subnet = 9;</code>
+       */
+      public java.lang.String getSubnet() {
+        java.lang.Object ref = subnet_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          subnet_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The Subnet if set by Static IP
+       * </pre>
+       *
+       * <code>string subnet = 9;</code>
+       */
+      public com.google.protobuf.ByteString
+          getSubnetBytes() {
+        java.lang.Object ref = subnet_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          subnet_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The Subnet if set by Static IP
+       * </pre>
+       *
+       * <code>string subnet = 9;</code>
+       */
+      public Builder setSubnet(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        subnet_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The Subnet if set by Static IP
+       * </pre>
+       *
+       * <code>string subnet = 9;</code>
+       */
+      public Builder clearSubnet() {
+        
+        subnet_ = getDefaultInstance().getSubnet();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The Subnet if set by Static IP
+       * </pre>
+       *
+       * <code>string subnet = 9;</code>
+       */
+      public Builder setSubnetBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        subnet_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object dNSPrimary_ = "";
+      /**
+       * <pre>
+       * Primary DNS
+       * </pre>
+       *
+       * <code>string DNS_Primary = 10;</code>
+       */
+      public java.lang.String getDNSPrimary() {
+        java.lang.Object ref = dNSPrimary_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          dNSPrimary_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Primary DNS
+       * </pre>
+       *
+       * <code>string DNS_Primary = 10;</code>
+       */
+      public com.google.protobuf.ByteString
+          getDNSPrimaryBytes() {
+        java.lang.Object ref = dNSPrimary_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          dNSPrimary_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Primary DNS
+       * </pre>
+       *
+       * <code>string DNS_Primary = 10;</code>
+       */
+      public Builder setDNSPrimary(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        dNSPrimary_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Primary DNS
+       * </pre>
+       *
+       * <code>string DNS_Primary = 10;</code>
+       */
+      public Builder clearDNSPrimary() {
+        
+        dNSPrimary_ = getDefaultInstance().getDNSPrimary();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Primary DNS
+       * </pre>
+       *
+       * <code>string DNS_Primary = 10;</code>
+       */
+      public Builder setDNSPrimaryBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        dNSPrimary_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object dNSSecondary_ = "";
+      /**
+       * <pre>
+       * Secondary DNS
+       * </pre>
+       *
+       * <code>string DNS_Secondary = 11;</code>
+       */
+      public java.lang.String getDNSSecondary() {
+        java.lang.Object ref = dNSSecondary_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          dNSSecondary_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Secondary DNS
+       * </pre>
+       *
+       * <code>string DNS_Secondary = 11;</code>
+       */
+      public com.google.protobuf.ByteString
+          getDNSSecondaryBytes() {
+        java.lang.Object ref = dNSSecondary_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          dNSSecondary_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Secondary DNS
+       * </pre>
+       *
+       * <code>string DNS_Secondary = 11;</code>
+       */
+      public Builder setDNSSecondary(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        dNSSecondary_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Secondary DNS
+       * </pre>
+       *
+       * <code>string DNS_Secondary = 11;</code>
+       */
+      public Builder clearDNSSecondary() {
+        
+        dNSSecondary_ = getDefaultInstance().getDNSSecondary();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Secondary DNS
+       * </pre>
+       *
+       * <code>string DNS_Secondary = 11;</code>
+       */
+      public Builder setDNSSecondaryBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        dNSSecondary_ = value;
         onChanged();
         return this;
       }
@@ -76153,6 +82307,15 @@ public final class EDS10ProtocolBuffer {
      * <code>uint32 firmware_end_address = 7;</code>
      */
     int getFirmwareEndAddress();
+
+    /**
+     * <pre>
+     * Flag to send Firmware to 'Backup' Location
+     * </pre>
+     *
+     * <code>bool firmware_is_backup = 8;</code>
+     */
+    boolean getFirmwareIsBackup();
   }
   /**
    * Protobuf type {@code FirmwareMetaMessage}
@@ -76174,6 +82337,7 @@ public final class EDS10ProtocolBuffer {
       firmwareChunkCount_ = 0;
       firmwareBaseAddress_ = 0;
       firmwareEndAddress_ = 0;
+      firmwareIsBackup_ = false;
     }
 
     @java.lang.Override
@@ -76233,6 +82397,11 @@ public final class EDS10ProtocolBuffer {
             case 56: {
 
               firmwareEndAddress_ = input.readUInt32();
+              break;
+            }
+            case 64: {
+
+              firmwareIsBackup_ = input.readBool();
               break;
             }
             default: {
@@ -76358,6 +82527,19 @@ public final class EDS10ProtocolBuffer {
       return firmwareEndAddress_;
     }
 
+    public static final int FIRMWARE_IS_BACKUP_FIELD_NUMBER = 8;
+    private boolean firmwareIsBackup_;
+    /**
+     * <pre>
+     * Flag to send Firmware to 'Backup' Location
+     * </pre>
+     *
+     * <code>bool firmware_is_backup = 8;</code>
+     */
+    public boolean getFirmwareIsBackup() {
+      return firmwareIsBackup_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -76392,6 +82574,9 @@ public final class EDS10ProtocolBuffer {
       }
       if (firmwareEndAddress_ != 0) {
         output.writeUInt32(7, firmwareEndAddress_);
+      }
+      if (firmwareIsBackup_ != false) {
+        output.writeBool(8, firmwareIsBackup_);
       }
       unknownFields.writeTo(output);
     }
@@ -76430,6 +82615,10 @@ public final class EDS10ProtocolBuffer {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(7, firmwareEndAddress_);
       }
+      if (firmwareIsBackup_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(8, firmwareIsBackup_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -76460,6 +82649,8 @@ public final class EDS10ProtocolBuffer {
           == other.getFirmwareBaseAddress());
       result = result && (getFirmwareEndAddress()
           == other.getFirmwareEndAddress());
+      result = result && (getFirmwareIsBackup()
+          == other.getFirmwareIsBackup());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -76485,6 +82676,9 @@ public final class EDS10ProtocolBuffer {
       hash = (53 * hash) + getFirmwareBaseAddress();
       hash = (37 * hash) + FIRMWARE_END_ADDRESS_FIELD_NUMBER;
       hash = (53 * hash) + getFirmwareEndAddress();
+      hash = (37 * hash) + FIRMWARE_IS_BACKUP_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getFirmwareIsBackup());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -76632,6 +82826,8 @@ public final class EDS10ProtocolBuffer {
 
         firmwareEndAddress_ = 0;
 
+        firmwareIsBackup_ = false;
+
         return this;
       }
 
@@ -76665,6 +82861,7 @@ public final class EDS10ProtocolBuffer {
         result.firmwareChunkCount_ = firmwareChunkCount_;
         result.firmwareBaseAddress_ = firmwareBaseAddress_;
         result.firmwareEndAddress_ = firmwareEndAddress_;
+        result.firmwareIsBackup_ = firmwareIsBackup_;
         onBuilt();
         return result;
       }
@@ -76733,6 +82930,9 @@ public final class EDS10ProtocolBuffer {
         }
         if (other.getFirmwareEndAddress() != 0) {
           setFirmwareEndAddress(other.getFirmwareEndAddress());
+        }
+        if (other.getFirmwareIsBackup() != false) {
+          setFirmwareIsBackup(other.getFirmwareIsBackup());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -77025,6 +83225,44 @@ public final class EDS10ProtocolBuffer {
       public Builder clearFirmwareEndAddress() {
         
         firmwareEndAddress_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private boolean firmwareIsBackup_ ;
+      /**
+       * <pre>
+       * Flag to send Firmware to 'Backup' Location
+       * </pre>
+       *
+       * <code>bool firmware_is_backup = 8;</code>
+       */
+      public boolean getFirmwareIsBackup() {
+        return firmwareIsBackup_;
+      }
+      /**
+       * <pre>
+       * Flag to send Firmware to 'Backup' Location
+       * </pre>
+       *
+       * <code>bool firmware_is_backup = 8;</code>
+       */
+      public Builder setFirmwareIsBackup(boolean value) {
+        
+        firmwareIsBackup_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Flag to send Firmware to 'Backup' Location
+       * </pre>
+       *
+       * <code>bool firmware_is_backup = 8;</code>
+       */
+      public Builder clearFirmwareIsBackup() {
+        
+        firmwareIsBackup_ = false;
         onChanged();
         return this;
       }
@@ -88271,6 +94509,1746 @@ public final class EDS10ProtocolBuffer {
 
   }
 
+  public interface DALI24InputEventOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:DALI24InputEvent)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>uint32 index = 1;</code>
+     */
+    int getIndex();
+
+    /**
+     * <code>uint32 line = 2;</code>
+     */
+    int getLine();
+
+    /**
+     * <code>uint32 address = 3;</code>
+     */
+    int getAddress();
+
+    /**
+     * <pre>
+     * Momentary Short / Momentary Long / Latch Low / Latch High / Positional
+     * </pre>
+     *
+     * <code>.DALI24InputType type = 4;</code>
+     */
+    int getTypeValue();
+    /**
+     * <pre>
+     * Momentary Short / Momentary Long / Latch Low / Latch High / Positional
+     * </pre>
+     *
+     * <code>.DALI24InputType type = 4;</code>
+     */
+    EDS10ProtocolBuffer.DALI24InputType getType();
+
+    /**
+     * <pre>
+     * Relevant information for the DALI24InputType
+     * </pre>
+     *
+     * <code>uint32 arg = 5;</code>
+     */
+    int getArg();
+  }
+  /**
+   * Protobuf type {@code DALI24InputEvent}
+   */
+  public  static final class DALI24InputEvent extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:DALI24InputEvent)
+      DALI24InputEventOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use DALI24InputEvent.newBuilder() to construct.
+    private DALI24InputEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private DALI24InputEvent() {
+      index_ = 0;
+      line_ = 0;
+      address_ = 0;
+      type_ = 0;
+      arg_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DALI24InputEvent(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              index_ = input.readUInt32();
+              break;
+            }
+            case 16: {
+
+              line_ = input.readUInt32();
+              break;
+            }
+            case 24: {
+
+              address_ = input.readUInt32();
+              break;
+            }
+            case 32: {
+              int rawValue = input.readEnum();
+
+              type_ = rawValue;
+              break;
+            }
+            case 40: {
+
+              arg_ = input.readUInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.internal_static_DALI24InputEvent_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return EDS10ProtocolBuffer.internal_static_DALI24InputEvent_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              EDS10ProtocolBuffer.DALI24InputEvent.class, EDS10ProtocolBuffer.DALI24InputEvent.Builder.class);
+    }
+
+    public static final int INDEX_FIELD_NUMBER = 1;
+    private int index_;
+    /**
+     * <code>uint32 index = 1;</code>
+     */
+    public int getIndex() {
+      return index_;
+    }
+
+    public static final int LINE_FIELD_NUMBER = 2;
+    private int line_;
+    /**
+     * <code>uint32 line = 2;</code>
+     */
+    public int getLine() {
+      return line_;
+    }
+
+    public static final int ADDRESS_FIELD_NUMBER = 3;
+    private int address_;
+    /**
+     * <code>uint32 address = 3;</code>
+     */
+    public int getAddress() {
+      return address_;
+    }
+
+    public static final int TYPE_FIELD_NUMBER = 4;
+    private int type_;
+    /**
+     * <pre>
+     * Momentary Short / Momentary Long / Latch Low / Latch High / Positional
+     * </pre>
+     *
+     * <code>.DALI24InputType type = 4;</code>
+     */
+    public int getTypeValue() {
+      return type_;
+    }
+    /**
+     * <pre>
+     * Momentary Short / Momentary Long / Latch Low / Latch High / Positional
+     * </pre>
+     *
+     * <code>.DALI24InputType type = 4;</code>
+     */
+    public EDS10ProtocolBuffer.DALI24InputType getType() {
+      @SuppressWarnings("deprecation")
+      EDS10ProtocolBuffer.DALI24InputType result = EDS10ProtocolBuffer.DALI24InputType.valueOf(type_);
+      return result == null ? EDS10ProtocolBuffer.DALI24InputType.UNRECOGNIZED : result;
+    }
+
+    public static final int ARG_FIELD_NUMBER = 5;
+    private int arg_;
+    /**
+     * <pre>
+     * Relevant information for the DALI24InputType
+     * </pre>
+     *
+     * <code>uint32 arg = 5;</code>
+     */
+    public int getArg() {
+      return arg_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (index_ != 0) {
+        output.writeUInt32(1, index_);
+      }
+      if (line_ != 0) {
+        output.writeUInt32(2, line_);
+      }
+      if (address_ != 0) {
+        output.writeUInt32(3, address_);
+      }
+      if (type_ != EDS10ProtocolBuffer.DALI24InputType.MOMENTARY_SHORT.getNumber()) {
+        output.writeEnum(4, type_);
+      }
+      if (arg_ != 0) {
+        output.writeUInt32(5, arg_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (index_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, index_);
+      }
+      if (line_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, line_);
+      }
+      if (address_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(3, address_);
+      }
+      if (type_ != EDS10ProtocolBuffer.DALI24InputType.MOMENTARY_SHORT.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(4, type_);
+      }
+      if (arg_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(5, arg_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof EDS10ProtocolBuffer.DALI24InputEvent)) {
+        return super.equals(obj);
+      }
+      EDS10ProtocolBuffer.DALI24InputEvent other = (EDS10ProtocolBuffer.DALI24InputEvent) obj;
+
+      boolean result = true;
+      result = result && (getIndex()
+          == other.getIndex());
+      result = result && (getLine()
+          == other.getLine());
+      result = result && (getAddress()
+          == other.getAddress());
+      result = result && type_ == other.type_;
+      result = result && (getArg()
+          == other.getArg());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + INDEX_FIELD_NUMBER;
+      hash = (53 * hash) + getIndex();
+      hash = (37 * hash) + LINE_FIELD_NUMBER;
+      hash = (53 * hash) + getLine();
+      hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
+      hash = (53 * hash) + getAddress();
+      hash = (37 * hash) + TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + type_;
+      hash = (37 * hash) + ARG_FIELD_NUMBER;
+      hash = (53 * hash) + getArg();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static EDS10ProtocolBuffer.DALI24InputEvent parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.DALI24InputEvent parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALI24InputEvent parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.DALI24InputEvent parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALI24InputEvent parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.DALI24InputEvent parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALI24InputEvent parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.DALI24InputEvent parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALI24InputEvent parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.DALI24InputEvent parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALI24InputEvent parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.DALI24InputEvent parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(EDS10ProtocolBuffer.DALI24InputEvent prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code DALI24InputEvent}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:DALI24InputEvent)
+        EDS10ProtocolBuffer.DALI24InputEventOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return EDS10ProtocolBuffer.internal_static_DALI24InputEvent_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return EDS10ProtocolBuffer.internal_static_DALI24InputEvent_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                EDS10ProtocolBuffer.DALI24InputEvent.class, EDS10ProtocolBuffer.DALI24InputEvent.Builder.class);
+      }
+
+      // Construct using EDS10ProtocolBuffer.DALI24InputEvent.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        index_ = 0;
+
+        line_ = 0;
+
+        address_ = 0;
+
+        type_ = 0;
+
+        arg_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return EDS10ProtocolBuffer.internal_static_DALI24InputEvent_descriptor;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.DALI24InputEvent getDefaultInstanceForType() {
+        return EDS10ProtocolBuffer.DALI24InputEvent.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.DALI24InputEvent build() {
+        EDS10ProtocolBuffer.DALI24InputEvent result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.DALI24InputEvent buildPartial() {
+        EDS10ProtocolBuffer.DALI24InputEvent result = new EDS10ProtocolBuffer.DALI24InputEvent(this);
+        result.index_ = index_;
+        result.line_ = line_;
+        result.address_ = address_;
+        result.type_ = type_;
+        result.arg_ = arg_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof EDS10ProtocolBuffer.DALI24InputEvent) {
+          return mergeFrom((EDS10ProtocolBuffer.DALI24InputEvent)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(EDS10ProtocolBuffer.DALI24InputEvent other) {
+        if (other == EDS10ProtocolBuffer.DALI24InputEvent.getDefaultInstance()) return this;
+        if (other.getIndex() != 0) {
+          setIndex(other.getIndex());
+        }
+        if (other.getLine() != 0) {
+          setLine(other.getLine());
+        }
+        if (other.getAddress() != 0) {
+          setAddress(other.getAddress());
+        }
+        if (other.type_ != 0) {
+          setTypeValue(other.getTypeValue());
+        }
+        if (other.getArg() != 0) {
+          setArg(other.getArg());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        EDS10ProtocolBuffer.DALI24InputEvent parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (EDS10ProtocolBuffer.DALI24InputEvent) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int index_ ;
+      /**
+       * <code>uint32 index = 1;</code>
+       */
+      public int getIndex() {
+        return index_;
+      }
+      /**
+       * <code>uint32 index = 1;</code>
+       */
+      public Builder setIndex(int value) {
+        
+        index_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 index = 1;</code>
+       */
+      public Builder clearIndex() {
+        
+        index_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int line_ ;
+      /**
+       * <code>uint32 line = 2;</code>
+       */
+      public int getLine() {
+        return line_;
+      }
+      /**
+       * <code>uint32 line = 2;</code>
+       */
+      public Builder setLine(int value) {
+        
+        line_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 line = 2;</code>
+       */
+      public Builder clearLine() {
+        
+        line_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int address_ ;
+      /**
+       * <code>uint32 address = 3;</code>
+       */
+      public int getAddress() {
+        return address_;
+      }
+      /**
+       * <code>uint32 address = 3;</code>
+       */
+      public Builder setAddress(int value) {
+        
+        address_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 address = 3;</code>
+       */
+      public Builder clearAddress() {
+        
+        address_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int type_ = 0;
+      /**
+       * <pre>
+       * Momentary Short / Momentary Long / Latch Low / Latch High / Positional
+       * </pre>
+       *
+       * <code>.DALI24InputType type = 4;</code>
+       */
+      public int getTypeValue() {
+        return type_;
+      }
+      /**
+       * <pre>
+       * Momentary Short / Momentary Long / Latch Low / Latch High / Positional
+       * </pre>
+       *
+       * <code>.DALI24InputType type = 4;</code>
+       */
+      public Builder setTypeValue(int value) {
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Momentary Short / Momentary Long / Latch Low / Latch High / Positional
+       * </pre>
+       *
+       * <code>.DALI24InputType type = 4;</code>
+       */
+      public EDS10ProtocolBuffer.DALI24InputType getType() {
+        @SuppressWarnings("deprecation")
+        EDS10ProtocolBuffer.DALI24InputType result = EDS10ProtocolBuffer.DALI24InputType.valueOf(type_);
+        return result == null ? EDS10ProtocolBuffer.DALI24InputType.UNRECOGNIZED : result;
+      }
+      /**
+       * <pre>
+       * Momentary Short / Momentary Long / Latch Low / Latch High / Positional
+       * </pre>
+       *
+       * <code>.DALI24InputType type = 4;</code>
+       */
+      public Builder setType(EDS10ProtocolBuffer.DALI24InputType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        type_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Momentary Short / Momentary Long / Latch Low / Latch High / Positional
+       * </pre>
+       *
+       * <code>.DALI24InputType type = 4;</code>
+       */
+      public Builder clearType() {
+        
+        type_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int arg_ ;
+      /**
+       * <pre>
+       * Relevant information for the DALI24InputType
+       * </pre>
+       *
+       * <code>uint32 arg = 5;</code>
+       */
+      public int getArg() {
+        return arg_;
+      }
+      /**
+       * <pre>
+       * Relevant information for the DALI24InputType
+       * </pre>
+       *
+       * <code>uint32 arg = 5;</code>
+       */
+      public Builder setArg(int value) {
+        
+        arg_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Relevant information for the DALI24InputType
+       * </pre>
+       *
+       * <code>uint32 arg = 5;</code>
+       */
+      public Builder clearArg() {
+        
+        arg_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:DALI24InputEvent)
+    }
+
+    // @@protoc_insertion_point(class_scope:DALI24InputEvent)
+    private static final EDS10ProtocolBuffer.DALI24InputEvent DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.DALI24InputEvent();
+    }
+
+    public static EDS10ProtocolBuffer.DALI24InputEvent getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<DALI24InputEvent>
+        PARSER = new com.google.protobuf.AbstractParser<DALI24InputEvent>() {
+      @java.lang.Override
+      public DALI24InputEvent parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DALI24InputEvent(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<DALI24InputEvent> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DALI24InputEvent> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public EDS10ProtocolBuffer.DALI24InputEvent getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface DALISensorEventOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:DALISensorEvent)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>uint32 index = 1;</code>
+     */
+    int getIndex();
+
+    /**
+     * <code>uint32 line = 2;</code>
+     */
+    int getLine();
+
+    /**
+     * <code>uint32 address = 3;</code>
+     */
+    int getAddress();
+
+    /**
+     * <pre>
+     * Idle / Disabled / Warning / Occupancy
+     * </pre>
+     *
+     * <code>.DALIMotionSensorStates motion_state = 4;</code>
+     */
+    int getMotionStateValue();
+    /**
+     * <pre>
+     * Idle / Disabled / Warning / Occupancy
+     * </pre>
+     *
+     * <code>.DALIMotionSensorStates motion_state = 4;</code>
+     */
+    EDS10ProtocolBuffer.DALIMotionSensorStates getMotionState();
+
+    /**
+     * <pre>
+     * Disabled / Enabled / Deviate
+     * </pre>
+     *
+     * <code>.DALILuxSensorStates lux_state = 5;</code>
+     */
+    int getLuxStateValue();
+    /**
+     * <pre>
+     * Disabled / Enabled / Deviate
+     * </pre>
+     *
+     * <code>.DALILuxSensorStates lux_state = 5;</code>
+     */
+    EDS10ProtocolBuffer.DALILuxSensorStates getLuxState();
+
+    /**
+     * <code>uint32 lux_level = 6;</code>
+     */
+    int getLuxLevel();
+  }
+  /**
+   * Protobuf type {@code DALISensorEvent}
+   */
+  public  static final class DALISensorEvent extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:DALISensorEvent)
+      DALISensorEventOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use DALISensorEvent.newBuilder() to construct.
+    private DALISensorEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private DALISensorEvent() {
+      index_ = 0;
+      line_ = 0;
+      address_ = 0;
+      motionState_ = 0;
+      luxState_ = 0;
+      luxLevel_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DALISensorEvent(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              index_ = input.readUInt32();
+              break;
+            }
+            case 16: {
+
+              line_ = input.readUInt32();
+              break;
+            }
+            case 24: {
+
+              address_ = input.readUInt32();
+              break;
+            }
+            case 32: {
+              int rawValue = input.readEnum();
+
+              motionState_ = rawValue;
+              break;
+            }
+            case 40: {
+              int rawValue = input.readEnum();
+
+              luxState_ = rawValue;
+              break;
+            }
+            case 48: {
+
+              luxLevel_ = input.readUInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.internal_static_DALISensorEvent_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return EDS10ProtocolBuffer.internal_static_DALISensorEvent_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              EDS10ProtocolBuffer.DALISensorEvent.class, EDS10ProtocolBuffer.DALISensorEvent.Builder.class);
+    }
+
+    public static final int INDEX_FIELD_NUMBER = 1;
+    private int index_;
+    /**
+     * <code>uint32 index = 1;</code>
+     */
+    public int getIndex() {
+      return index_;
+    }
+
+    public static final int LINE_FIELD_NUMBER = 2;
+    private int line_;
+    /**
+     * <code>uint32 line = 2;</code>
+     */
+    public int getLine() {
+      return line_;
+    }
+
+    public static final int ADDRESS_FIELD_NUMBER = 3;
+    private int address_;
+    /**
+     * <code>uint32 address = 3;</code>
+     */
+    public int getAddress() {
+      return address_;
+    }
+
+    public static final int MOTION_STATE_FIELD_NUMBER = 4;
+    private int motionState_;
+    /**
+     * <pre>
+     * Idle / Disabled / Warning / Occupancy
+     * </pre>
+     *
+     * <code>.DALIMotionSensorStates motion_state = 4;</code>
+     */
+    public int getMotionStateValue() {
+      return motionState_;
+    }
+    /**
+     * <pre>
+     * Idle / Disabled / Warning / Occupancy
+     * </pre>
+     *
+     * <code>.DALIMotionSensorStates motion_state = 4;</code>
+     */
+    public EDS10ProtocolBuffer.DALIMotionSensorStates getMotionState() {
+      @SuppressWarnings("deprecation")
+      EDS10ProtocolBuffer.DALIMotionSensorStates result = EDS10ProtocolBuffer.DALIMotionSensorStates.valueOf(motionState_);
+      return result == null ? EDS10ProtocolBuffer.DALIMotionSensorStates.UNRECOGNIZED : result;
+    }
+
+    public static final int LUX_STATE_FIELD_NUMBER = 5;
+    private int luxState_;
+    /**
+     * <pre>
+     * Disabled / Enabled / Deviate
+     * </pre>
+     *
+     * <code>.DALILuxSensorStates lux_state = 5;</code>
+     */
+    public int getLuxStateValue() {
+      return luxState_;
+    }
+    /**
+     * <pre>
+     * Disabled / Enabled / Deviate
+     * </pre>
+     *
+     * <code>.DALILuxSensorStates lux_state = 5;</code>
+     */
+    public EDS10ProtocolBuffer.DALILuxSensorStates getLuxState() {
+      @SuppressWarnings("deprecation")
+      EDS10ProtocolBuffer.DALILuxSensorStates result = EDS10ProtocolBuffer.DALILuxSensorStates.valueOf(luxState_);
+      return result == null ? EDS10ProtocolBuffer.DALILuxSensorStates.UNRECOGNIZED : result;
+    }
+
+    public static final int LUX_LEVEL_FIELD_NUMBER = 6;
+    private int luxLevel_;
+    /**
+     * <code>uint32 lux_level = 6;</code>
+     */
+    public int getLuxLevel() {
+      return luxLevel_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (index_ != 0) {
+        output.writeUInt32(1, index_);
+      }
+      if (line_ != 0) {
+        output.writeUInt32(2, line_);
+      }
+      if (address_ != 0) {
+        output.writeUInt32(3, address_);
+      }
+      if (motionState_ != EDS10ProtocolBuffer.DALIMotionSensorStates.MOTION_IDLE.getNumber()) {
+        output.writeEnum(4, motionState_);
+      }
+      if (luxState_ != EDS10ProtocolBuffer.DALILuxSensorStates.LUX_DISABLED.getNumber()) {
+        output.writeEnum(5, luxState_);
+      }
+      if (luxLevel_ != 0) {
+        output.writeUInt32(6, luxLevel_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (index_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, index_);
+      }
+      if (line_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, line_);
+      }
+      if (address_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(3, address_);
+      }
+      if (motionState_ != EDS10ProtocolBuffer.DALIMotionSensorStates.MOTION_IDLE.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(4, motionState_);
+      }
+      if (luxState_ != EDS10ProtocolBuffer.DALILuxSensorStates.LUX_DISABLED.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(5, luxState_);
+      }
+      if (luxLevel_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(6, luxLevel_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof EDS10ProtocolBuffer.DALISensorEvent)) {
+        return super.equals(obj);
+      }
+      EDS10ProtocolBuffer.DALISensorEvent other = (EDS10ProtocolBuffer.DALISensorEvent) obj;
+
+      boolean result = true;
+      result = result && (getIndex()
+          == other.getIndex());
+      result = result && (getLine()
+          == other.getLine());
+      result = result && (getAddress()
+          == other.getAddress());
+      result = result && motionState_ == other.motionState_;
+      result = result && luxState_ == other.luxState_;
+      result = result && (getLuxLevel()
+          == other.getLuxLevel());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + INDEX_FIELD_NUMBER;
+      hash = (53 * hash) + getIndex();
+      hash = (37 * hash) + LINE_FIELD_NUMBER;
+      hash = (53 * hash) + getLine();
+      hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
+      hash = (53 * hash) + getAddress();
+      hash = (37 * hash) + MOTION_STATE_FIELD_NUMBER;
+      hash = (53 * hash) + motionState_;
+      hash = (37 * hash) + LUX_STATE_FIELD_NUMBER;
+      hash = (53 * hash) + luxState_;
+      hash = (37 * hash) + LUX_LEVEL_FIELD_NUMBER;
+      hash = (53 * hash) + getLuxLevel();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static EDS10ProtocolBuffer.DALISensorEvent parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.DALISensorEvent parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALISensorEvent parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.DALISensorEvent parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALISensorEvent parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.DALISensorEvent parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALISensorEvent parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.DALISensorEvent parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALISensorEvent parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.DALISensorEvent parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALISensorEvent parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.DALISensorEvent parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(EDS10ProtocolBuffer.DALISensorEvent prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code DALISensorEvent}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:DALISensorEvent)
+        EDS10ProtocolBuffer.DALISensorEventOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return EDS10ProtocolBuffer.internal_static_DALISensorEvent_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return EDS10ProtocolBuffer.internal_static_DALISensorEvent_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                EDS10ProtocolBuffer.DALISensorEvent.class, EDS10ProtocolBuffer.DALISensorEvent.Builder.class);
+      }
+
+      // Construct using EDS10ProtocolBuffer.DALISensorEvent.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        index_ = 0;
+
+        line_ = 0;
+
+        address_ = 0;
+
+        motionState_ = 0;
+
+        luxState_ = 0;
+
+        luxLevel_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return EDS10ProtocolBuffer.internal_static_DALISensorEvent_descriptor;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.DALISensorEvent getDefaultInstanceForType() {
+        return EDS10ProtocolBuffer.DALISensorEvent.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.DALISensorEvent build() {
+        EDS10ProtocolBuffer.DALISensorEvent result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.DALISensorEvent buildPartial() {
+        EDS10ProtocolBuffer.DALISensorEvent result = new EDS10ProtocolBuffer.DALISensorEvent(this);
+        result.index_ = index_;
+        result.line_ = line_;
+        result.address_ = address_;
+        result.motionState_ = motionState_;
+        result.luxState_ = luxState_;
+        result.luxLevel_ = luxLevel_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof EDS10ProtocolBuffer.DALISensorEvent) {
+          return mergeFrom((EDS10ProtocolBuffer.DALISensorEvent)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(EDS10ProtocolBuffer.DALISensorEvent other) {
+        if (other == EDS10ProtocolBuffer.DALISensorEvent.getDefaultInstance()) return this;
+        if (other.getIndex() != 0) {
+          setIndex(other.getIndex());
+        }
+        if (other.getLine() != 0) {
+          setLine(other.getLine());
+        }
+        if (other.getAddress() != 0) {
+          setAddress(other.getAddress());
+        }
+        if (other.motionState_ != 0) {
+          setMotionStateValue(other.getMotionStateValue());
+        }
+        if (other.luxState_ != 0) {
+          setLuxStateValue(other.getLuxStateValue());
+        }
+        if (other.getLuxLevel() != 0) {
+          setLuxLevel(other.getLuxLevel());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        EDS10ProtocolBuffer.DALISensorEvent parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (EDS10ProtocolBuffer.DALISensorEvent) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int index_ ;
+      /**
+       * <code>uint32 index = 1;</code>
+       */
+      public int getIndex() {
+        return index_;
+      }
+      /**
+       * <code>uint32 index = 1;</code>
+       */
+      public Builder setIndex(int value) {
+        
+        index_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 index = 1;</code>
+       */
+      public Builder clearIndex() {
+        
+        index_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int line_ ;
+      /**
+       * <code>uint32 line = 2;</code>
+       */
+      public int getLine() {
+        return line_;
+      }
+      /**
+       * <code>uint32 line = 2;</code>
+       */
+      public Builder setLine(int value) {
+        
+        line_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 line = 2;</code>
+       */
+      public Builder clearLine() {
+        
+        line_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int address_ ;
+      /**
+       * <code>uint32 address = 3;</code>
+       */
+      public int getAddress() {
+        return address_;
+      }
+      /**
+       * <code>uint32 address = 3;</code>
+       */
+      public Builder setAddress(int value) {
+        
+        address_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 address = 3;</code>
+       */
+      public Builder clearAddress() {
+        
+        address_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int motionState_ = 0;
+      /**
+       * <pre>
+       * Idle / Disabled / Warning / Occupancy
+       * </pre>
+       *
+       * <code>.DALIMotionSensorStates motion_state = 4;</code>
+       */
+      public int getMotionStateValue() {
+        return motionState_;
+      }
+      /**
+       * <pre>
+       * Idle / Disabled / Warning / Occupancy
+       * </pre>
+       *
+       * <code>.DALIMotionSensorStates motion_state = 4;</code>
+       */
+      public Builder setMotionStateValue(int value) {
+        motionState_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Idle / Disabled / Warning / Occupancy
+       * </pre>
+       *
+       * <code>.DALIMotionSensorStates motion_state = 4;</code>
+       */
+      public EDS10ProtocolBuffer.DALIMotionSensorStates getMotionState() {
+        @SuppressWarnings("deprecation")
+        EDS10ProtocolBuffer.DALIMotionSensorStates result = EDS10ProtocolBuffer.DALIMotionSensorStates.valueOf(motionState_);
+        return result == null ? EDS10ProtocolBuffer.DALIMotionSensorStates.UNRECOGNIZED : result;
+      }
+      /**
+       * <pre>
+       * Idle / Disabled / Warning / Occupancy
+       * </pre>
+       *
+       * <code>.DALIMotionSensorStates motion_state = 4;</code>
+       */
+      public Builder setMotionState(EDS10ProtocolBuffer.DALIMotionSensorStates value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        motionState_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Idle / Disabled / Warning / Occupancy
+       * </pre>
+       *
+       * <code>.DALIMotionSensorStates motion_state = 4;</code>
+       */
+      public Builder clearMotionState() {
+        
+        motionState_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int luxState_ = 0;
+      /**
+       * <pre>
+       * Disabled / Enabled / Deviate
+       * </pre>
+       *
+       * <code>.DALILuxSensorStates lux_state = 5;</code>
+       */
+      public int getLuxStateValue() {
+        return luxState_;
+      }
+      /**
+       * <pre>
+       * Disabled / Enabled / Deviate
+       * </pre>
+       *
+       * <code>.DALILuxSensorStates lux_state = 5;</code>
+       */
+      public Builder setLuxStateValue(int value) {
+        luxState_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Disabled / Enabled / Deviate
+       * </pre>
+       *
+       * <code>.DALILuxSensorStates lux_state = 5;</code>
+       */
+      public EDS10ProtocolBuffer.DALILuxSensorStates getLuxState() {
+        @SuppressWarnings("deprecation")
+        EDS10ProtocolBuffer.DALILuxSensorStates result = EDS10ProtocolBuffer.DALILuxSensorStates.valueOf(luxState_);
+        return result == null ? EDS10ProtocolBuffer.DALILuxSensorStates.UNRECOGNIZED : result;
+      }
+      /**
+       * <pre>
+       * Disabled / Enabled / Deviate
+       * </pre>
+       *
+       * <code>.DALILuxSensorStates lux_state = 5;</code>
+       */
+      public Builder setLuxState(EDS10ProtocolBuffer.DALILuxSensorStates value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        luxState_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Disabled / Enabled / Deviate
+       * </pre>
+       *
+       * <code>.DALILuxSensorStates lux_state = 5;</code>
+       */
+      public Builder clearLuxState() {
+        
+        luxState_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int luxLevel_ ;
+      /**
+       * <code>uint32 lux_level = 6;</code>
+       */
+      public int getLuxLevel() {
+        return luxLevel_;
+      }
+      /**
+       * <code>uint32 lux_level = 6;</code>
+       */
+      public Builder setLuxLevel(int value) {
+        
+        luxLevel_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 lux_level = 6;</code>
+       */
+      public Builder clearLuxLevel() {
+        
+        luxLevel_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:DALISensorEvent)
+    }
+
+    // @@protoc_insertion_point(class_scope:DALISensorEvent)
+    private static final EDS10ProtocolBuffer.DALISensorEvent DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.DALISensorEvent();
+    }
+
+    public static EDS10ProtocolBuffer.DALISensorEvent getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<DALISensorEvent>
+        PARSER = new com.google.protobuf.AbstractParser<DALISensorEvent>() {
+      @java.lang.Override
+      public DALISensorEvent parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DALISensorEvent(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<DALISensorEvent> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DALISensorEvent> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public EDS10ProtocolBuffer.DALISensorEvent getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface EventMessageOrBuilder extends
       // @@protoc_insertion_point(interface_extends:EventMessage)
       com.google.protobuf.MessageOrBuilder {
@@ -88324,17 +96302,42 @@ public final class EDS10ProtocolBuffer {
     EDS10ProtocolBuffer.PayloadMessageOrBuilder getPayloadOrBuilder();
 
     /**
-     * <code>.JoinedRoomsMessage joined_rooms = 5;</code>
+     * <pre>
+     * OBSOLETE: JoinedRoomsMessage joined_rooms (5) --&gt; No longer used
+     * </pre>
+     *
+     * <code>.DALISensorEvent sensor = 6;</code>
      */
-    boolean hasJoinedRooms();
+    boolean hasSensor();
     /**
-     * <code>.JoinedRoomsMessage joined_rooms = 5;</code>
+     * <pre>
+     * OBSOLETE: JoinedRoomsMessage joined_rooms (5) --&gt; No longer used
+     * </pre>
+     *
+     * <code>.DALISensorEvent sensor = 6;</code>
      */
-    EDS10ProtocolBuffer.JoinedRoomsMessage getJoinedRooms();
+    EDS10ProtocolBuffer.DALISensorEvent getSensor();
     /**
-     * <code>.JoinedRoomsMessage joined_rooms = 5;</code>
+     * <pre>
+     * OBSOLETE: JoinedRoomsMessage joined_rooms (5) --&gt; No longer used
+     * </pre>
+     *
+     * <code>.DALISensorEvent sensor = 6;</code>
      */
-    EDS10ProtocolBuffer.JoinedRoomsMessageOrBuilder getJoinedRoomsOrBuilder();
+    EDS10ProtocolBuffer.DALISensorEventOrBuilder getSensorOrBuilder();
+
+    /**
+     * <code>.DALI24InputEvent dali_24_input = 7;</code>
+     */
+    boolean hasDali24Input();
+    /**
+     * <code>.DALI24InputEvent dali_24_input = 7;</code>
+     */
+    EDS10ProtocolBuffer.DALI24InputEvent getDali24Input();
+    /**
+     * <code>.DALI24InputEvent dali_24_input = 7;</code>
+     */
+    EDS10ProtocolBuffer.DALI24InputEventOrBuilder getDali24InputOrBuilder();
 
     public EDS10ProtocolBuffer.EventMessage.EventDataCase getEventDataCase();
   }
@@ -88431,18 +96434,32 @@ public final class EDS10ProtocolBuffer {
               eventDataCase_ = 4;
               break;
             }
-            case 42: {
-              EDS10ProtocolBuffer.JoinedRoomsMessage.Builder subBuilder = null;
-              if (eventDataCase_ == 5) {
-                subBuilder = ((EDS10ProtocolBuffer.JoinedRoomsMessage) eventData_).toBuilder();
+            case 50: {
+              EDS10ProtocolBuffer.DALISensorEvent.Builder subBuilder = null;
+              if (eventDataCase_ == 6) {
+                subBuilder = ((EDS10ProtocolBuffer.DALISensorEvent) eventData_).toBuilder();
               }
               eventData_ =
-                  input.readMessage(EDS10ProtocolBuffer.JoinedRoomsMessage.parser(), extensionRegistry);
+                  input.readMessage(EDS10ProtocolBuffer.DALISensorEvent.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom((EDS10ProtocolBuffer.JoinedRoomsMessage) eventData_);
+                subBuilder.mergeFrom((EDS10ProtocolBuffer.DALISensorEvent) eventData_);
                 eventData_ = subBuilder.buildPartial();
               }
-              eventDataCase_ = 5;
+              eventDataCase_ = 6;
+              break;
+            }
+            case 58: {
+              EDS10ProtocolBuffer.DALI24InputEvent.Builder subBuilder = null;
+              if (eventDataCase_ == 7) {
+                subBuilder = ((EDS10ProtocolBuffer.DALI24InputEvent) eventData_).toBuilder();
+              }
+              eventData_ =
+                  input.readMessage(EDS10ProtocolBuffer.DALI24InputEvent.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((EDS10ProtocolBuffer.DALI24InputEvent) eventData_);
+                eventData_ = subBuilder.buildPartial();
+              }
+              eventDataCase_ = 7;
               break;
             }
             default: {
@@ -88484,7 +96501,8 @@ public final class EDS10ProtocolBuffer {
       TRIGGER(2),
       INPUTS(3),
       PAYLOAD(4),
-      JOINED_ROOMS(5),
+      SENSOR(6),
+      DALI_24_INPUT(7),
       EVENTDATA_NOT_SET(0);
       private final int value;
       private EventDataCase(int value) {
@@ -88503,7 +96521,8 @@ public final class EDS10ProtocolBuffer {
           case 2: return TRIGGER;
           case 3: return INPUTS;
           case 4: return PAYLOAD;
-          case 5: return JOINED_ROOMS;
+          case 6: return SENSOR;
+          case 7: return DALI_24_INPUT;
           case 0: return EVENTDATA_NOT_SET;
           default: return null;
         }
@@ -88614,30 +96633,68 @@ public final class EDS10ProtocolBuffer {
       return EDS10ProtocolBuffer.PayloadMessage.getDefaultInstance();
     }
 
-    public static final int JOINED_ROOMS_FIELD_NUMBER = 5;
+    public static final int SENSOR_FIELD_NUMBER = 6;
     /**
-     * <code>.JoinedRoomsMessage joined_rooms = 5;</code>
+     * <pre>
+     * OBSOLETE: JoinedRoomsMessage joined_rooms (5) --&gt; No longer used
+     * </pre>
+     *
+     * <code>.DALISensorEvent sensor = 6;</code>
      */
-    public boolean hasJoinedRooms() {
-      return eventDataCase_ == 5;
+    public boolean hasSensor() {
+      return eventDataCase_ == 6;
     }
     /**
-     * <code>.JoinedRoomsMessage joined_rooms = 5;</code>
+     * <pre>
+     * OBSOLETE: JoinedRoomsMessage joined_rooms (5) --&gt; No longer used
+     * </pre>
+     *
+     * <code>.DALISensorEvent sensor = 6;</code>
      */
-    public EDS10ProtocolBuffer.JoinedRoomsMessage getJoinedRooms() {
-      if (eventDataCase_ == 5) {
-         return (EDS10ProtocolBuffer.JoinedRoomsMessage) eventData_;
+    public EDS10ProtocolBuffer.DALISensorEvent getSensor() {
+      if (eventDataCase_ == 6) {
+         return (EDS10ProtocolBuffer.DALISensorEvent) eventData_;
       }
-      return EDS10ProtocolBuffer.JoinedRoomsMessage.getDefaultInstance();
+      return EDS10ProtocolBuffer.DALISensorEvent.getDefaultInstance();
     }
     /**
-     * <code>.JoinedRoomsMessage joined_rooms = 5;</code>
+     * <pre>
+     * OBSOLETE: JoinedRoomsMessage joined_rooms (5) --&gt; No longer used
+     * </pre>
+     *
+     * <code>.DALISensorEvent sensor = 6;</code>
      */
-    public EDS10ProtocolBuffer.JoinedRoomsMessageOrBuilder getJoinedRoomsOrBuilder() {
-      if (eventDataCase_ == 5) {
-         return (EDS10ProtocolBuffer.JoinedRoomsMessage) eventData_;
+    public EDS10ProtocolBuffer.DALISensorEventOrBuilder getSensorOrBuilder() {
+      if (eventDataCase_ == 6) {
+         return (EDS10ProtocolBuffer.DALISensorEvent) eventData_;
       }
-      return EDS10ProtocolBuffer.JoinedRoomsMessage.getDefaultInstance();
+      return EDS10ProtocolBuffer.DALISensorEvent.getDefaultInstance();
+    }
+
+    public static final int DALI_24_INPUT_FIELD_NUMBER = 7;
+    /**
+     * <code>.DALI24InputEvent dali_24_input = 7;</code>
+     */
+    public boolean hasDali24Input() {
+      return eventDataCase_ == 7;
+    }
+    /**
+     * <code>.DALI24InputEvent dali_24_input = 7;</code>
+     */
+    public EDS10ProtocolBuffer.DALI24InputEvent getDali24Input() {
+      if (eventDataCase_ == 7) {
+         return (EDS10ProtocolBuffer.DALI24InputEvent) eventData_;
+      }
+      return EDS10ProtocolBuffer.DALI24InputEvent.getDefaultInstance();
+    }
+    /**
+     * <code>.DALI24InputEvent dali_24_input = 7;</code>
+     */
+    public EDS10ProtocolBuffer.DALI24InputEventOrBuilder getDali24InputOrBuilder() {
+      if (eventDataCase_ == 7) {
+         return (EDS10ProtocolBuffer.DALI24InputEvent) eventData_;
+      }
+      return EDS10ProtocolBuffer.DALI24InputEvent.getDefaultInstance();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -88666,8 +96723,11 @@ public final class EDS10ProtocolBuffer {
       if (eventDataCase_ == 4) {
         output.writeMessage(4, (EDS10ProtocolBuffer.PayloadMessage) eventData_);
       }
-      if (eventDataCase_ == 5) {
-        output.writeMessage(5, (EDS10ProtocolBuffer.JoinedRoomsMessage) eventData_);
+      if (eventDataCase_ == 6) {
+        output.writeMessage(6, (EDS10ProtocolBuffer.DALISensorEvent) eventData_);
+      }
+      if (eventDataCase_ == 7) {
+        output.writeMessage(7, (EDS10ProtocolBuffer.DALI24InputEvent) eventData_);
       }
       unknownFields.writeTo(output);
     }
@@ -88694,9 +96754,13 @@ public final class EDS10ProtocolBuffer {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, (EDS10ProtocolBuffer.PayloadMessage) eventData_);
       }
-      if (eventDataCase_ == 5) {
+      if (eventDataCase_ == 6) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, (EDS10ProtocolBuffer.JoinedRoomsMessage) eventData_);
+          .computeMessageSize(6, (EDS10ProtocolBuffer.DALISensorEvent) eventData_);
+      }
+      if (eventDataCase_ == 7) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(7, (EDS10ProtocolBuffer.DALI24InputEvent) eventData_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -88731,9 +96795,13 @@ public final class EDS10ProtocolBuffer {
           result = result && getPayload()
               .equals(other.getPayload());
           break;
-        case 5:
-          result = result && getJoinedRooms()
-              .equals(other.getJoinedRooms());
+        case 6:
+          result = result && getSensor()
+              .equals(other.getSensor());
+          break;
+        case 7:
+          result = result && getDali24Input()
+              .equals(other.getDali24Input());
           break;
         case 0:
         default:
@@ -88764,9 +96832,13 @@ public final class EDS10ProtocolBuffer {
           hash = (37 * hash) + PAYLOAD_FIELD_NUMBER;
           hash = (53 * hash) + getPayload().hashCode();
           break;
-        case 5:
-          hash = (37 * hash) + JOINED_ROOMS_FIELD_NUMBER;
-          hash = (53 * hash) + getJoinedRooms().hashCode();
+        case 6:
+          hash = (37 * hash) + SENSOR_FIELD_NUMBER;
+          hash = (53 * hash) + getSensor().hashCode();
+          break;
+        case 7:
+          hash = (37 * hash) + DALI_24_INPUT_FIELD_NUMBER;
+          hash = (53 * hash) + getDali24Input().hashCode();
           break;
         case 0:
         default:
@@ -88961,11 +97033,18 @@ public final class EDS10ProtocolBuffer {
             result.eventData_ = payloadBuilder_.build();
           }
         }
-        if (eventDataCase_ == 5) {
-          if (joinedRoomsBuilder_ == null) {
+        if (eventDataCase_ == 6) {
+          if (sensorBuilder_ == null) {
             result.eventData_ = eventData_;
           } else {
-            result.eventData_ = joinedRoomsBuilder_.build();
+            result.eventData_ = sensorBuilder_.build();
+          }
+        }
+        if (eventDataCase_ == 7) {
+          if (dali24InputBuilder_ == null) {
+            result.eventData_ = eventData_;
+          } else {
+            result.eventData_ = dali24InputBuilder_.build();
           }
         }
         result.eventDataCase_ = eventDataCase_;
@@ -89033,8 +97112,12 @@ public final class EDS10ProtocolBuffer {
             mergePayload(other.getPayload());
             break;
           }
-          case JOINED_ROOMS: {
-            mergeJoinedRooms(other.getJoinedRooms());
+          case SENSOR: {
+            mergeSensor(other.getSensor());
+            break;
+          }
+          case DALI_24_INPUT: {
+            mergeDali24Input(other.getDali24Input());
             break;
           }
           case EVENTDATA_NOT_SET: {
@@ -89539,139 +97622,311 @@ public final class EDS10ProtocolBuffer {
       }
 
       private com.google.protobuf.SingleFieldBuilderV3<
-          EDS10ProtocolBuffer.JoinedRoomsMessage, EDS10ProtocolBuffer.JoinedRoomsMessage.Builder, EDS10ProtocolBuffer.JoinedRoomsMessageOrBuilder> joinedRoomsBuilder_;
+          EDS10ProtocolBuffer.DALISensorEvent, EDS10ProtocolBuffer.DALISensorEvent.Builder, EDS10ProtocolBuffer.DALISensorEventOrBuilder> sensorBuilder_;
       /**
-       * <code>.JoinedRoomsMessage joined_rooms = 5;</code>
+       * <pre>
+       * OBSOLETE: JoinedRoomsMessage joined_rooms (5) --&gt; No longer used
+       * </pre>
+       *
+       * <code>.DALISensorEvent sensor = 6;</code>
        */
-      public boolean hasJoinedRooms() {
-        return eventDataCase_ == 5;
+      public boolean hasSensor() {
+        return eventDataCase_ == 6;
       }
       /**
-       * <code>.JoinedRoomsMessage joined_rooms = 5;</code>
+       * <pre>
+       * OBSOLETE: JoinedRoomsMessage joined_rooms (5) --&gt; No longer used
+       * </pre>
+       *
+       * <code>.DALISensorEvent sensor = 6;</code>
        */
-      public EDS10ProtocolBuffer.JoinedRoomsMessage getJoinedRooms() {
-        if (joinedRoomsBuilder_ == null) {
-          if (eventDataCase_ == 5) {
-            return (EDS10ProtocolBuffer.JoinedRoomsMessage) eventData_;
+      public EDS10ProtocolBuffer.DALISensorEvent getSensor() {
+        if (sensorBuilder_ == null) {
+          if (eventDataCase_ == 6) {
+            return (EDS10ProtocolBuffer.DALISensorEvent) eventData_;
           }
-          return EDS10ProtocolBuffer.JoinedRoomsMessage.getDefaultInstance();
+          return EDS10ProtocolBuffer.DALISensorEvent.getDefaultInstance();
         } else {
-          if (eventDataCase_ == 5) {
-            return joinedRoomsBuilder_.getMessage();
+          if (eventDataCase_ == 6) {
+            return sensorBuilder_.getMessage();
           }
-          return EDS10ProtocolBuffer.JoinedRoomsMessage.getDefaultInstance();
+          return EDS10ProtocolBuffer.DALISensorEvent.getDefaultInstance();
         }
       }
       /**
-       * <code>.JoinedRoomsMessage joined_rooms = 5;</code>
+       * <pre>
+       * OBSOLETE: JoinedRoomsMessage joined_rooms (5) --&gt; No longer used
+       * </pre>
+       *
+       * <code>.DALISensorEvent sensor = 6;</code>
        */
-      public Builder setJoinedRooms(EDS10ProtocolBuffer.JoinedRoomsMessage value) {
-        if (joinedRoomsBuilder_ == null) {
+      public Builder setSensor(EDS10ProtocolBuffer.DALISensorEvent value) {
+        if (sensorBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
           eventData_ = value;
           onChanged();
         } else {
-          joinedRoomsBuilder_.setMessage(value);
+          sensorBuilder_.setMessage(value);
         }
-        eventDataCase_ = 5;
+        eventDataCase_ = 6;
         return this;
       }
       /**
-       * <code>.JoinedRoomsMessage joined_rooms = 5;</code>
+       * <pre>
+       * OBSOLETE: JoinedRoomsMessage joined_rooms (5) --&gt; No longer used
+       * </pre>
+       *
+       * <code>.DALISensorEvent sensor = 6;</code>
        */
-      public Builder setJoinedRooms(
-          EDS10ProtocolBuffer.JoinedRoomsMessage.Builder builderForValue) {
-        if (joinedRoomsBuilder_ == null) {
+      public Builder setSensor(
+          EDS10ProtocolBuffer.DALISensorEvent.Builder builderForValue) {
+        if (sensorBuilder_ == null) {
           eventData_ = builderForValue.build();
           onChanged();
         } else {
-          joinedRoomsBuilder_.setMessage(builderForValue.build());
+          sensorBuilder_.setMessage(builderForValue.build());
         }
-        eventDataCase_ = 5;
+        eventDataCase_ = 6;
         return this;
       }
       /**
-       * <code>.JoinedRoomsMessage joined_rooms = 5;</code>
+       * <pre>
+       * OBSOLETE: JoinedRoomsMessage joined_rooms (5) --&gt; No longer used
+       * </pre>
+       *
+       * <code>.DALISensorEvent sensor = 6;</code>
        */
-      public Builder mergeJoinedRooms(EDS10ProtocolBuffer.JoinedRoomsMessage value) {
-        if (joinedRoomsBuilder_ == null) {
-          if (eventDataCase_ == 5 &&
-              eventData_ != EDS10ProtocolBuffer.JoinedRoomsMessage.getDefaultInstance()) {
-            eventData_ = EDS10ProtocolBuffer.JoinedRoomsMessage.newBuilder((EDS10ProtocolBuffer.JoinedRoomsMessage) eventData_)
+      public Builder mergeSensor(EDS10ProtocolBuffer.DALISensorEvent value) {
+        if (sensorBuilder_ == null) {
+          if (eventDataCase_ == 6 &&
+              eventData_ != EDS10ProtocolBuffer.DALISensorEvent.getDefaultInstance()) {
+            eventData_ = EDS10ProtocolBuffer.DALISensorEvent.newBuilder((EDS10ProtocolBuffer.DALISensorEvent) eventData_)
                 .mergeFrom(value).buildPartial();
           } else {
             eventData_ = value;
           }
           onChanged();
         } else {
-          if (eventDataCase_ == 5) {
-            joinedRoomsBuilder_.mergeFrom(value);
+          if (eventDataCase_ == 6) {
+            sensorBuilder_.mergeFrom(value);
           }
-          joinedRoomsBuilder_.setMessage(value);
+          sensorBuilder_.setMessage(value);
         }
-        eventDataCase_ = 5;
+        eventDataCase_ = 6;
         return this;
       }
       /**
-       * <code>.JoinedRoomsMessage joined_rooms = 5;</code>
+       * <pre>
+       * OBSOLETE: JoinedRoomsMessage joined_rooms (5) --&gt; No longer used
+       * </pre>
+       *
+       * <code>.DALISensorEvent sensor = 6;</code>
        */
-      public Builder clearJoinedRooms() {
-        if (joinedRoomsBuilder_ == null) {
-          if (eventDataCase_ == 5) {
+      public Builder clearSensor() {
+        if (sensorBuilder_ == null) {
+          if (eventDataCase_ == 6) {
             eventDataCase_ = 0;
             eventData_ = null;
             onChanged();
           }
         } else {
-          if (eventDataCase_ == 5) {
+          if (eventDataCase_ == 6) {
             eventDataCase_ = 0;
             eventData_ = null;
           }
-          joinedRoomsBuilder_.clear();
+          sensorBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>.JoinedRoomsMessage joined_rooms = 5;</code>
+       * <pre>
+       * OBSOLETE: JoinedRoomsMessage joined_rooms (5) --&gt; No longer used
+       * </pre>
+       *
+       * <code>.DALISensorEvent sensor = 6;</code>
        */
-      public EDS10ProtocolBuffer.JoinedRoomsMessage.Builder getJoinedRoomsBuilder() {
-        return getJoinedRoomsFieldBuilder().getBuilder();
+      public EDS10ProtocolBuffer.DALISensorEvent.Builder getSensorBuilder() {
+        return getSensorFieldBuilder().getBuilder();
       }
       /**
-       * <code>.JoinedRoomsMessage joined_rooms = 5;</code>
+       * <pre>
+       * OBSOLETE: JoinedRoomsMessage joined_rooms (5) --&gt; No longer used
+       * </pre>
+       *
+       * <code>.DALISensorEvent sensor = 6;</code>
        */
-      public EDS10ProtocolBuffer.JoinedRoomsMessageOrBuilder getJoinedRoomsOrBuilder() {
-        if ((eventDataCase_ == 5) && (joinedRoomsBuilder_ != null)) {
-          return joinedRoomsBuilder_.getMessageOrBuilder();
+      public EDS10ProtocolBuffer.DALISensorEventOrBuilder getSensorOrBuilder() {
+        if ((eventDataCase_ == 6) && (sensorBuilder_ != null)) {
+          return sensorBuilder_.getMessageOrBuilder();
         } else {
-          if (eventDataCase_ == 5) {
-            return (EDS10ProtocolBuffer.JoinedRoomsMessage) eventData_;
+          if (eventDataCase_ == 6) {
+            return (EDS10ProtocolBuffer.DALISensorEvent) eventData_;
           }
-          return EDS10ProtocolBuffer.JoinedRoomsMessage.getDefaultInstance();
+          return EDS10ProtocolBuffer.DALISensorEvent.getDefaultInstance();
         }
       }
       /**
-       * <code>.JoinedRoomsMessage joined_rooms = 5;</code>
+       * <pre>
+       * OBSOLETE: JoinedRoomsMessage joined_rooms (5) --&gt; No longer used
+       * </pre>
+       *
+       * <code>.DALISensorEvent sensor = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          EDS10ProtocolBuffer.JoinedRoomsMessage, EDS10ProtocolBuffer.JoinedRoomsMessage.Builder, EDS10ProtocolBuffer.JoinedRoomsMessageOrBuilder> 
-          getJoinedRoomsFieldBuilder() {
-        if (joinedRoomsBuilder_ == null) {
-          if (!(eventDataCase_ == 5)) {
-            eventData_ = EDS10ProtocolBuffer.JoinedRoomsMessage.getDefaultInstance();
+          EDS10ProtocolBuffer.DALISensorEvent, EDS10ProtocolBuffer.DALISensorEvent.Builder, EDS10ProtocolBuffer.DALISensorEventOrBuilder> 
+          getSensorFieldBuilder() {
+        if (sensorBuilder_ == null) {
+          if (!(eventDataCase_ == 6)) {
+            eventData_ = EDS10ProtocolBuffer.DALISensorEvent.getDefaultInstance();
           }
-          joinedRoomsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              EDS10ProtocolBuffer.JoinedRoomsMessage, EDS10ProtocolBuffer.JoinedRoomsMessage.Builder, EDS10ProtocolBuffer.JoinedRoomsMessageOrBuilder>(
-                  (EDS10ProtocolBuffer.JoinedRoomsMessage) eventData_,
+          sensorBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.DALISensorEvent, EDS10ProtocolBuffer.DALISensorEvent.Builder, EDS10ProtocolBuffer.DALISensorEventOrBuilder>(
+                  (EDS10ProtocolBuffer.DALISensorEvent) eventData_,
                   getParentForChildren(),
                   isClean());
           eventData_ = null;
         }
-        eventDataCase_ = 5;
+        eventDataCase_ = 6;
         onChanged();;
-        return joinedRoomsBuilder_;
+        return sensorBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.DALI24InputEvent, EDS10ProtocolBuffer.DALI24InputEvent.Builder, EDS10ProtocolBuffer.DALI24InputEventOrBuilder> dali24InputBuilder_;
+      /**
+       * <code>.DALI24InputEvent dali_24_input = 7;</code>
+       */
+      public boolean hasDali24Input() {
+        return eventDataCase_ == 7;
+      }
+      /**
+       * <code>.DALI24InputEvent dali_24_input = 7;</code>
+       */
+      public EDS10ProtocolBuffer.DALI24InputEvent getDali24Input() {
+        if (dali24InputBuilder_ == null) {
+          if (eventDataCase_ == 7) {
+            return (EDS10ProtocolBuffer.DALI24InputEvent) eventData_;
+          }
+          return EDS10ProtocolBuffer.DALI24InputEvent.getDefaultInstance();
+        } else {
+          if (eventDataCase_ == 7) {
+            return dali24InputBuilder_.getMessage();
+          }
+          return EDS10ProtocolBuffer.DALI24InputEvent.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.DALI24InputEvent dali_24_input = 7;</code>
+       */
+      public Builder setDali24Input(EDS10ProtocolBuffer.DALI24InputEvent value) {
+        if (dali24InputBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          eventData_ = value;
+          onChanged();
+        } else {
+          dali24InputBuilder_.setMessage(value);
+        }
+        eventDataCase_ = 7;
+        return this;
+      }
+      /**
+       * <code>.DALI24InputEvent dali_24_input = 7;</code>
+       */
+      public Builder setDali24Input(
+          EDS10ProtocolBuffer.DALI24InputEvent.Builder builderForValue) {
+        if (dali24InputBuilder_ == null) {
+          eventData_ = builderForValue.build();
+          onChanged();
+        } else {
+          dali24InputBuilder_.setMessage(builderForValue.build());
+        }
+        eventDataCase_ = 7;
+        return this;
+      }
+      /**
+       * <code>.DALI24InputEvent dali_24_input = 7;</code>
+       */
+      public Builder mergeDali24Input(EDS10ProtocolBuffer.DALI24InputEvent value) {
+        if (dali24InputBuilder_ == null) {
+          if (eventDataCase_ == 7 &&
+              eventData_ != EDS10ProtocolBuffer.DALI24InputEvent.getDefaultInstance()) {
+            eventData_ = EDS10ProtocolBuffer.DALI24InputEvent.newBuilder((EDS10ProtocolBuffer.DALI24InputEvent) eventData_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            eventData_ = value;
+          }
+          onChanged();
+        } else {
+          if (eventDataCase_ == 7) {
+            dali24InputBuilder_.mergeFrom(value);
+          }
+          dali24InputBuilder_.setMessage(value);
+        }
+        eventDataCase_ = 7;
+        return this;
+      }
+      /**
+       * <code>.DALI24InputEvent dali_24_input = 7;</code>
+       */
+      public Builder clearDali24Input() {
+        if (dali24InputBuilder_ == null) {
+          if (eventDataCase_ == 7) {
+            eventDataCase_ = 0;
+            eventData_ = null;
+            onChanged();
+          }
+        } else {
+          if (eventDataCase_ == 7) {
+            eventDataCase_ = 0;
+            eventData_ = null;
+          }
+          dali24InputBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.DALI24InputEvent dali_24_input = 7;</code>
+       */
+      public EDS10ProtocolBuffer.DALI24InputEvent.Builder getDali24InputBuilder() {
+        return getDali24InputFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.DALI24InputEvent dali_24_input = 7;</code>
+       */
+      public EDS10ProtocolBuffer.DALI24InputEventOrBuilder getDali24InputOrBuilder() {
+        if ((eventDataCase_ == 7) && (dali24InputBuilder_ != null)) {
+          return dali24InputBuilder_.getMessageOrBuilder();
+        } else {
+          if (eventDataCase_ == 7) {
+            return (EDS10ProtocolBuffer.DALI24InputEvent) eventData_;
+          }
+          return EDS10ProtocolBuffer.DALI24InputEvent.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.DALI24InputEvent dali_24_input = 7;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.DALI24InputEvent, EDS10ProtocolBuffer.DALI24InputEvent.Builder, EDS10ProtocolBuffer.DALI24InputEventOrBuilder> 
+          getDali24InputFieldBuilder() {
+        if (dali24InputBuilder_ == null) {
+          if (!(eventDataCase_ == 7)) {
+            eventData_ = EDS10ProtocolBuffer.DALI24InputEvent.getDefaultInstance();
+          }
+          dali24InputBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.DALI24InputEvent, EDS10ProtocolBuffer.DALI24InputEvent.Builder, EDS10ProtocolBuffer.DALI24InputEventOrBuilder>(
+                  (EDS10ProtocolBuffer.DALI24InputEvent) eventData_,
+                  getParentForChildren(),
+                  isClean());
+          eventData_ = null;
+        }
+        eventDataCase_ = 7;
+        onChanged();;
+        return dali24InputBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -90232,27 +98487,26 @@ public final class EDS10ProtocolBuffer {
     EDS10ProtocolBuffer.LevelCacheResponseOrBuilder getLevelCacheResponseOrBuilder();
 
     /**
-     * <code>.JoinedRoomsMessage joined_rooms = 40;</code>
-     */
-    boolean hasJoinedRooms();
-    /**
-     * <code>.JoinedRoomsMessage joined_rooms = 40;</code>
-     */
-    EDS10ProtocolBuffer.JoinedRoomsMessage getJoinedRooms();
-    /**
-     * <code>.JoinedRoomsMessage joined_rooms = 40;</code>
-     */
-    EDS10ProtocolBuffer.JoinedRoomsMessageOrBuilder getJoinedRoomsOrBuilder();
-
-    /**
+     * <pre>
+     * OBSOLETE: JoinedRoomsMessage joined_rooms           (40) --&gt; No longer used
+     * </pre>
+     *
      * <code>.ExtendedListMessage list_extended = 41;</code>
      */
     boolean hasListExtended();
     /**
+     * <pre>
+     * OBSOLETE: JoinedRoomsMessage joined_rooms           (40) --&gt; No longer used
+     * </pre>
+     *
      * <code>.ExtendedListMessage list_extended = 41;</code>
      */
     EDS10ProtocolBuffer.ExtendedListMessage getListExtended();
     /**
+     * <pre>
+     * OBSOLETE: JoinedRoomsMessage joined_rooms           (40) --&gt; No longer used
+     * </pre>
+     *
      * <code>.ExtendedListMessage list_extended = 41;</code>
      */
     EDS10ProtocolBuffer.ExtendedListMessageOrBuilder getListExtendedOrBuilder();
@@ -90425,6 +98679,71 @@ public final class EDS10ProtocolBuffer {
      * <code>.DALIRemappingMessage dali_remapping_message = 54;</code>
      */
     EDS10ProtocolBuffer.DALIRemappingMessageOrBuilder getDaliRemappingMessageOrBuilder();
+
+    /**
+     * <code>.SpektraShowControlMessage spektra_show_control_message = 55;</code>
+     */
+    boolean hasSpektraShowControlMessage();
+    /**
+     * <code>.SpektraShowControlMessage spektra_show_control_message = 55;</code>
+     */
+    EDS10ProtocolBuffer.SpektraShowControlMessage getSpektraShowControlMessage();
+    /**
+     * <code>.SpektraShowControlMessage spektra_show_control_message = 55;</code>
+     */
+    EDS10ProtocolBuffer.SpektraShowControlMessageOrBuilder getSpektraShowControlMessageOrBuilder();
+
+    /**
+     * <code>.SpektraShowMessage spektra_show_message = 56;</code>
+     */
+    boolean hasSpektraShowMessage();
+    /**
+     * <code>.SpektraShowMessage spektra_show_message = 56;</code>
+     */
+    EDS10ProtocolBuffer.SpektraShowMessage getSpektraShowMessage();
+    /**
+     * <code>.SpektraShowMessage spektra_show_message = 56;</code>
+     */
+    EDS10ProtocolBuffer.SpektraShowMessageOrBuilder getSpektraShowMessageOrBuilder();
+
+    /**
+     * <code>.ExtendedSpektraShowMessage extended_spektra_show_message = 57;</code>
+     */
+    boolean hasExtendedSpektraShowMessage();
+    /**
+     * <code>.ExtendedSpektraShowMessage extended_spektra_show_message = 57;</code>
+     */
+    EDS10ProtocolBuffer.ExtendedSpektraShowMessage getExtendedSpektraShowMessage();
+    /**
+     * <code>.ExtendedSpektraShowMessage extended_spektra_show_message = 57;</code>
+     */
+    EDS10ProtocolBuffer.ExtendedSpektraShowMessageOrBuilder getExtendedSpektraShowMessageOrBuilder();
+
+    /**
+     * <code>.RDMDiscoveryMessage rdm_discovery = 58;</code>
+     */
+    boolean hasRdmDiscovery();
+    /**
+     * <code>.RDMDiscoveryMessage rdm_discovery = 58;</code>
+     */
+    EDS10ProtocolBuffer.RDMDiscoveryMessage getRdmDiscovery();
+    /**
+     * <code>.RDMDiscoveryMessage rdm_discovery = 58;</code>
+     */
+    EDS10ProtocolBuffer.RDMDiscoveryMessageOrBuilder getRdmDiscoveryOrBuilder();
+
+    /**
+     * <code>.RDMDiscoveryReplyMessage rdm_discovery_reply = 59;</code>
+     */
+    boolean hasRdmDiscoveryReply();
+    /**
+     * <code>.RDMDiscoveryReplyMessage rdm_discovery_reply = 59;</code>
+     */
+    EDS10ProtocolBuffer.RDMDiscoveryReplyMessage getRdmDiscoveryReply();
+    /**
+     * <code>.RDMDiscoveryReplyMessage rdm_discovery_reply = 59;</code>
+     */
+    EDS10ProtocolBuffer.RDMDiscoveryReplyMessageOrBuilder getRdmDiscoveryReplyOrBuilder();
 
     public EDS10ProtocolBuffer.EdidioMessage.PayloadCase getPayloadCase();
   }
@@ -90982,20 +99301,6 @@ public final class EDS10ProtocolBuffer {
               payloadCase_ = 39;
               break;
             }
-            case 322: {
-              EDS10ProtocolBuffer.JoinedRoomsMessage.Builder subBuilder = null;
-              if (payloadCase_ == 40) {
-                subBuilder = ((EDS10ProtocolBuffer.JoinedRoomsMessage) payload_).toBuilder();
-              }
-              payload_ =
-                  input.readMessage(EDS10ProtocolBuffer.JoinedRoomsMessage.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom((EDS10ProtocolBuffer.JoinedRoomsMessage) payload_);
-                payload_ = subBuilder.buildPartial();
-              }
-              payloadCase_ = 40;
-              break;
-            }
             case 330: {
               EDS10ProtocolBuffer.ExtendedListMessage.Builder subBuilder = null;
               if (payloadCase_ == 41) {
@@ -91192,6 +99497,76 @@ public final class EDS10ProtocolBuffer {
               payloadCase_ = 54;
               break;
             }
+            case 442: {
+              EDS10ProtocolBuffer.SpektraShowControlMessage.Builder subBuilder = null;
+              if (payloadCase_ == 55) {
+                subBuilder = ((EDS10ProtocolBuffer.SpektraShowControlMessage) payload_).toBuilder();
+              }
+              payload_ =
+                  input.readMessage(EDS10ProtocolBuffer.SpektraShowControlMessage.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((EDS10ProtocolBuffer.SpektraShowControlMessage) payload_);
+                payload_ = subBuilder.buildPartial();
+              }
+              payloadCase_ = 55;
+              break;
+            }
+            case 450: {
+              EDS10ProtocolBuffer.SpektraShowMessage.Builder subBuilder = null;
+              if (payloadCase_ == 56) {
+                subBuilder = ((EDS10ProtocolBuffer.SpektraShowMessage) payload_).toBuilder();
+              }
+              payload_ =
+                  input.readMessage(EDS10ProtocolBuffer.SpektraShowMessage.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((EDS10ProtocolBuffer.SpektraShowMessage) payload_);
+                payload_ = subBuilder.buildPartial();
+              }
+              payloadCase_ = 56;
+              break;
+            }
+            case 458: {
+              EDS10ProtocolBuffer.ExtendedSpektraShowMessage.Builder subBuilder = null;
+              if (payloadCase_ == 57) {
+                subBuilder = ((EDS10ProtocolBuffer.ExtendedSpektraShowMessage) payload_).toBuilder();
+              }
+              payload_ =
+                  input.readMessage(EDS10ProtocolBuffer.ExtendedSpektraShowMessage.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((EDS10ProtocolBuffer.ExtendedSpektraShowMessage) payload_);
+                payload_ = subBuilder.buildPartial();
+              }
+              payloadCase_ = 57;
+              break;
+            }
+            case 466: {
+              EDS10ProtocolBuffer.RDMDiscoveryMessage.Builder subBuilder = null;
+              if (payloadCase_ == 58) {
+                subBuilder = ((EDS10ProtocolBuffer.RDMDiscoveryMessage) payload_).toBuilder();
+              }
+              payload_ =
+                  input.readMessage(EDS10ProtocolBuffer.RDMDiscoveryMessage.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((EDS10ProtocolBuffer.RDMDiscoveryMessage) payload_);
+                payload_ = subBuilder.buildPartial();
+              }
+              payloadCase_ = 58;
+              break;
+            }
+            case 474: {
+              EDS10ProtocolBuffer.RDMDiscoveryReplyMessage.Builder subBuilder = null;
+              if (payloadCase_ == 59) {
+                subBuilder = ((EDS10ProtocolBuffer.RDMDiscoveryReplyMessage) payload_).toBuilder();
+              }
+              payload_ =
+                  input.readMessage(EDS10ProtocolBuffer.RDMDiscoveryReplyMessage.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((EDS10ProtocolBuffer.RDMDiscoveryReplyMessage) payload_);
+                payload_ = subBuilder.buildPartial();
+              }
+              payloadCase_ = 59;
+              break;
+            }
             default: {
               if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -91264,7 +99639,6 @@ public final class EDS10ProtocolBuffer {
       FIRMWARE_CONTROL(37),
       FIRMWARE_CHUNK(38),
       LEVEL_CACHE_RESPONSE(39),
-      JOINED_ROOMS(40),
       LIST_EXTENDED(41),
       AYT_MESSAGE(42),
       RDM_MESSAGE(43),
@@ -91279,6 +99653,11 @@ public final class EDS10ProtocolBuffer {
       METADATA_READ(52),
       DALI_ADDRESSING_MESSAGE(53),
       DALI_REMAPPING_MESSAGE(54),
+      SPEKTRA_SHOW_CONTROL_MESSAGE(55),
+      SPEKTRA_SHOW_MESSAGE(56),
+      EXTENDED_SPEKTRA_SHOW_MESSAGE(57),
+      RDM_DISCOVERY(58),
+      RDM_DISCOVERY_REPLY(59),
       PAYLOAD_NOT_SET(0);
       private final int value;
       private PayloadCase(int value) {
@@ -91330,7 +99709,6 @@ public final class EDS10ProtocolBuffer {
           case 37: return FIRMWARE_CONTROL;
           case 38: return FIRMWARE_CHUNK;
           case 39: return LEVEL_CACHE_RESPONSE;
-          case 40: return JOINED_ROOMS;
           case 41: return LIST_EXTENDED;
           case 42: return AYT_MESSAGE;
           case 43: return RDM_MESSAGE;
@@ -91345,6 +99723,11 @@ public final class EDS10ProtocolBuffer {
           case 52: return METADATA_READ;
           case 53: return DALI_ADDRESSING_MESSAGE;
           case 54: return DALI_REMAPPING_MESSAGE;
+          case 55: return SPEKTRA_SHOW_CONTROL_MESSAGE;
+          case 56: return SPEKTRA_SHOW_MESSAGE;
+          case 57: return EXTENDED_SPEKTRA_SHOW_MESSAGE;
+          case 58: return RDM_DISCOVERY;
+          case 59: return RDM_DISCOVERY_REPLY;
           case 0: return PAYLOAD_NOT_SET;
           default: return null;
         }
@@ -92333,40 +100716,22 @@ public final class EDS10ProtocolBuffer {
       return EDS10ProtocolBuffer.LevelCacheResponse.getDefaultInstance();
     }
 
-    public static final int JOINED_ROOMS_FIELD_NUMBER = 40;
-    /**
-     * <code>.JoinedRoomsMessage joined_rooms = 40;</code>
-     */
-    public boolean hasJoinedRooms() {
-      return payloadCase_ == 40;
-    }
-    /**
-     * <code>.JoinedRoomsMessage joined_rooms = 40;</code>
-     */
-    public EDS10ProtocolBuffer.JoinedRoomsMessage getJoinedRooms() {
-      if (payloadCase_ == 40) {
-         return (EDS10ProtocolBuffer.JoinedRoomsMessage) payload_;
-      }
-      return EDS10ProtocolBuffer.JoinedRoomsMessage.getDefaultInstance();
-    }
-    /**
-     * <code>.JoinedRoomsMessage joined_rooms = 40;</code>
-     */
-    public EDS10ProtocolBuffer.JoinedRoomsMessageOrBuilder getJoinedRoomsOrBuilder() {
-      if (payloadCase_ == 40) {
-         return (EDS10ProtocolBuffer.JoinedRoomsMessage) payload_;
-      }
-      return EDS10ProtocolBuffer.JoinedRoomsMessage.getDefaultInstance();
-    }
-
     public static final int LIST_EXTENDED_FIELD_NUMBER = 41;
     /**
+     * <pre>
+     * OBSOLETE: JoinedRoomsMessage joined_rooms           (40) --&gt; No longer used
+     * </pre>
+     *
      * <code>.ExtendedListMessage list_extended = 41;</code>
      */
     public boolean hasListExtended() {
       return payloadCase_ == 41;
     }
     /**
+     * <pre>
+     * OBSOLETE: JoinedRoomsMessage joined_rooms           (40) --&gt; No longer used
+     * </pre>
+     *
      * <code>.ExtendedListMessage list_extended = 41;</code>
      */
     public EDS10ProtocolBuffer.ExtendedListMessage getListExtended() {
@@ -92376,6 +100741,10 @@ public final class EDS10ProtocolBuffer {
       return EDS10ProtocolBuffer.ExtendedListMessage.getDefaultInstance();
     }
     /**
+     * <pre>
+     * OBSOLETE: JoinedRoomsMessage joined_rooms           (40) --&gt; No longer used
+     * </pre>
+     *
      * <code>.ExtendedListMessage list_extended = 41;</code>
      */
     public EDS10ProtocolBuffer.ExtendedListMessageOrBuilder getListExtendedOrBuilder() {
@@ -92723,6 +101092,136 @@ public final class EDS10ProtocolBuffer {
       return EDS10ProtocolBuffer.DALIRemappingMessage.getDefaultInstance();
     }
 
+    public static final int SPEKTRA_SHOW_CONTROL_MESSAGE_FIELD_NUMBER = 55;
+    /**
+     * <code>.SpektraShowControlMessage spektra_show_control_message = 55;</code>
+     */
+    public boolean hasSpektraShowControlMessage() {
+      return payloadCase_ == 55;
+    }
+    /**
+     * <code>.SpektraShowControlMessage spektra_show_control_message = 55;</code>
+     */
+    public EDS10ProtocolBuffer.SpektraShowControlMessage getSpektraShowControlMessage() {
+      if (payloadCase_ == 55) {
+         return (EDS10ProtocolBuffer.SpektraShowControlMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.SpektraShowControlMessage.getDefaultInstance();
+    }
+    /**
+     * <code>.SpektraShowControlMessage spektra_show_control_message = 55;</code>
+     */
+    public EDS10ProtocolBuffer.SpektraShowControlMessageOrBuilder getSpektraShowControlMessageOrBuilder() {
+      if (payloadCase_ == 55) {
+         return (EDS10ProtocolBuffer.SpektraShowControlMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.SpektraShowControlMessage.getDefaultInstance();
+    }
+
+    public static final int SPEKTRA_SHOW_MESSAGE_FIELD_NUMBER = 56;
+    /**
+     * <code>.SpektraShowMessage spektra_show_message = 56;</code>
+     */
+    public boolean hasSpektraShowMessage() {
+      return payloadCase_ == 56;
+    }
+    /**
+     * <code>.SpektraShowMessage spektra_show_message = 56;</code>
+     */
+    public EDS10ProtocolBuffer.SpektraShowMessage getSpektraShowMessage() {
+      if (payloadCase_ == 56) {
+         return (EDS10ProtocolBuffer.SpektraShowMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.SpektraShowMessage.getDefaultInstance();
+    }
+    /**
+     * <code>.SpektraShowMessage spektra_show_message = 56;</code>
+     */
+    public EDS10ProtocolBuffer.SpektraShowMessageOrBuilder getSpektraShowMessageOrBuilder() {
+      if (payloadCase_ == 56) {
+         return (EDS10ProtocolBuffer.SpektraShowMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.SpektraShowMessage.getDefaultInstance();
+    }
+
+    public static final int EXTENDED_SPEKTRA_SHOW_MESSAGE_FIELD_NUMBER = 57;
+    /**
+     * <code>.ExtendedSpektraShowMessage extended_spektra_show_message = 57;</code>
+     */
+    public boolean hasExtendedSpektraShowMessage() {
+      return payloadCase_ == 57;
+    }
+    /**
+     * <code>.ExtendedSpektraShowMessage extended_spektra_show_message = 57;</code>
+     */
+    public EDS10ProtocolBuffer.ExtendedSpektraShowMessage getExtendedSpektraShowMessage() {
+      if (payloadCase_ == 57) {
+         return (EDS10ProtocolBuffer.ExtendedSpektraShowMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.ExtendedSpektraShowMessage.getDefaultInstance();
+    }
+    /**
+     * <code>.ExtendedSpektraShowMessage extended_spektra_show_message = 57;</code>
+     */
+    public EDS10ProtocolBuffer.ExtendedSpektraShowMessageOrBuilder getExtendedSpektraShowMessageOrBuilder() {
+      if (payloadCase_ == 57) {
+         return (EDS10ProtocolBuffer.ExtendedSpektraShowMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.ExtendedSpektraShowMessage.getDefaultInstance();
+    }
+
+    public static final int RDM_DISCOVERY_FIELD_NUMBER = 58;
+    /**
+     * <code>.RDMDiscoveryMessage rdm_discovery = 58;</code>
+     */
+    public boolean hasRdmDiscovery() {
+      return payloadCase_ == 58;
+    }
+    /**
+     * <code>.RDMDiscoveryMessage rdm_discovery = 58;</code>
+     */
+    public EDS10ProtocolBuffer.RDMDiscoveryMessage getRdmDiscovery() {
+      if (payloadCase_ == 58) {
+         return (EDS10ProtocolBuffer.RDMDiscoveryMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.RDMDiscoveryMessage.getDefaultInstance();
+    }
+    /**
+     * <code>.RDMDiscoveryMessage rdm_discovery = 58;</code>
+     */
+    public EDS10ProtocolBuffer.RDMDiscoveryMessageOrBuilder getRdmDiscoveryOrBuilder() {
+      if (payloadCase_ == 58) {
+         return (EDS10ProtocolBuffer.RDMDiscoveryMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.RDMDiscoveryMessage.getDefaultInstance();
+    }
+
+    public static final int RDM_DISCOVERY_REPLY_FIELD_NUMBER = 59;
+    /**
+     * <code>.RDMDiscoveryReplyMessage rdm_discovery_reply = 59;</code>
+     */
+    public boolean hasRdmDiscoveryReply() {
+      return payloadCase_ == 59;
+    }
+    /**
+     * <code>.RDMDiscoveryReplyMessage rdm_discovery_reply = 59;</code>
+     */
+    public EDS10ProtocolBuffer.RDMDiscoveryReplyMessage getRdmDiscoveryReply() {
+      if (payloadCase_ == 59) {
+         return (EDS10ProtocolBuffer.RDMDiscoveryReplyMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.RDMDiscoveryReplyMessage.getDefaultInstance();
+    }
+    /**
+     * <code>.RDMDiscoveryReplyMessage rdm_discovery_reply = 59;</code>
+     */
+    public EDS10ProtocolBuffer.RDMDiscoveryReplyMessageOrBuilder getRdmDiscoveryReplyOrBuilder() {
+      if (payloadCase_ == 59) {
+         return (EDS10ProtocolBuffer.RDMDiscoveryReplyMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.RDMDiscoveryReplyMessage.getDefaultInstance();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -92848,9 +101347,6 @@ public final class EDS10ProtocolBuffer {
       if (payloadCase_ == 39) {
         output.writeMessage(39, (EDS10ProtocolBuffer.LevelCacheResponse) payload_);
       }
-      if (payloadCase_ == 40) {
-        output.writeMessage(40, (EDS10ProtocolBuffer.JoinedRoomsMessage) payload_);
-      }
       if (payloadCase_ == 41) {
         output.writeMessage(41, (EDS10ProtocolBuffer.ExtendedListMessage) payload_);
       }
@@ -92892,6 +101388,21 @@ public final class EDS10ProtocolBuffer {
       }
       if (payloadCase_ == 54) {
         output.writeMessage(54, (EDS10ProtocolBuffer.DALIRemappingMessage) payload_);
+      }
+      if (payloadCase_ == 55) {
+        output.writeMessage(55, (EDS10ProtocolBuffer.SpektraShowControlMessage) payload_);
+      }
+      if (payloadCase_ == 56) {
+        output.writeMessage(56, (EDS10ProtocolBuffer.SpektraShowMessage) payload_);
+      }
+      if (payloadCase_ == 57) {
+        output.writeMessage(57, (EDS10ProtocolBuffer.ExtendedSpektraShowMessage) payload_);
+      }
+      if (payloadCase_ == 58) {
+        output.writeMessage(58, (EDS10ProtocolBuffer.RDMDiscoveryMessage) payload_);
+      }
+      if (payloadCase_ == 59) {
+        output.writeMessage(59, (EDS10ProtocolBuffer.RDMDiscoveryReplyMessage) payload_);
       }
       unknownFields.writeTo(output);
     }
@@ -93050,10 +101561,6 @@ public final class EDS10ProtocolBuffer {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(39, (EDS10ProtocolBuffer.LevelCacheResponse) payload_);
       }
-      if (payloadCase_ == 40) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(40, (EDS10ProtocolBuffer.JoinedRoomsMessage) payload_);
-      }
       if (payloadCase_ == 41) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(41, (EDS10ProtocolBuffer.ExtendedListMessage) payload_);
@@ -93109,6 +101616,26 @@ public final class EDS10ProtocolBuffer {
       if (payloadCase_ == 54) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(54, (EDS10ProtocolBuffer.DALIRemappingMessage) payload_);
+      }
+      if (payloadCase_ == 55) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(55, (EDS10ProtocolBuffer.SpektraShowControlMessage) payload_);
+      }
+      if (payloadCase_ == 56) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(56, (EDS10ProtocolBuffer.SpektraShowMessage) payload_);
+      }
+      if (payloadCase_ == 57) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(57, (EDS10ProtocolBuffer.ExtendedSpektraShowMessage) payload_);
+      }
+      if (payloadCase_ == 58) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(58, (EDS10ProtocolBuffer.RDMDiscoveryMessage) payload_);
+      }
+      if (payloadCase_ == 59) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(59, (EDS10ProtocolBuffer.RDMDiscoveryReplyMessage) payload_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -93276,10 +101803,6 @@ public final class EDS10ProtocolBuffer {
           result = result && getLevelCacheResponse()
               .equals(other.getLevelCacheResponse());
           break;
-        case 40:
-          result = result && getJoinedRooms()
-              .equals(other.getJoinedRooms());
-          break;
         case 41:
           result = result && getListExtended()
               .equals(other.getListExtended());
@@ -93335,6 +101858,26 @@ public final class EDS10ProtocolBuffer {
         case 54:
           result = result && getDaliRemappingMessage()
               .equals(other.getDaliRemappingMessage());
+          break;
+        case 55:
+          result = result && getSpektraShowControlMessage()
+              .equals(other.getSpektraShowControlMessage());
+          break;
+        case 56:
+          result = result && getSpektraShowMessage()
+              .equals(other.getSpektraShowMessage());
+          break;
+        case 57:
+          result = result && getExtendedSpektraShowMessage()
+              .equals(other.getExtendedSpektraShowMessage());
+          break;
+        case 58:
+          result = result && getRdmDiscovery()
+              .equals(other.getRdmDiscovery());
+          break;
+        case 59:
+          result = result && getRdmDiscoveryReply()
+              .equals(other.getRdmDiscoveryReply());
           break;
         case 0:
         default:
@@ -93497,10 +102040,6 @@ public final class EDS10ProtocolBuffer {
           hash = (37 * hash) + LEVEL_CACHE_RESPONSE_FIELD_NUMBER;
           hash = (53 * hash) + getLevelCacheResponse().hashCode();
           break;
-        case 40:
-          hash = (37 * hash) + JOINED_ROOMS_FIELD_NUMBER;
-          hash = (53 * hash) + getJoinedRooms().hashCode();
-          break;
         case 41:
           hash = (37 * hash) + LIST_EXTENDED_FIELD_NUMBER;
           hash = (53 * hash) + getListExtended().hashCode();
@@ -93556,6 +102095,26 @@ public final class EDS10ProtocolBuffer {
         case 54:
           hash = (37 * hash) + DALI_REMAPPING_MESSAGE_FIELD_NUMBER;
           hash = (53 * hash) + getDaliRemappingMessage().hashCode();
+          break;
+        case 55:
+          hash = (37 * hash) + SPEKTRA_SHOW_CONTROL_MESSAGE_FIELD_NUMBER;
+          hash = (53 * hash) + getSpektraShowControlMessage().hashCode();
+          break;
+        case 56:
+          hash = (37 * hash) + SPEKTRA_SHOW_MESSAGE_FIELD_NUMBER;
+          hash = (53 * hash) + getSpektraShowMessage().hashCode();
+          break;
+        case 57:
+          hash = (37 * hash) + EXTENDED_SPEKTRA_SHOW_MESSAGE_FIELD_NUMBER;
+          hash = (53 * hash) + getExtendedSpektraShowMessage().hashCode();
+          break;
+        case 58:
+          hash = (37 * hash) + RDM_DISCOVERY_FIELD_NUMBER;
+          hash = (53 * hash) + getRdmDiscovery().hashCode();
+          break;
+        case 59:
+          hash = (37 * hash) + RDM_DISCOVERY_REPLY_FIELD_NUMBER;
+          hash = (53 * hash) + getRdmDiscoveryReply().hashCode();
           break;
         case 0:
         default:
@@ -93980,13 +102539,6 @@ public final class EDS10ProtocolBuffer {
             result.payload_ = levelCacheResponseBuilder_.build();
           }
         }
-        if (payloadCase_ == 40) {
-          if (joinedRoomsBuilder_ == null) {
-            result.payload_ = payload_;
-          } else {
-            result.payload_ = joinedRoomsBuilder_.build();
-          }
-        }
         if (payloadCase_ == 41) {
           if (listExtendedBuilder_ == null) {
             result.payload_ = payload_;
@@ -94083,6 +102635,41 @@ public final class EDS10ProtocolBuffer {
             result.payload_ = payload_;
           } else {
             result.payload_ = daliRemappingMessageBuilder_.build();
+          }
+        }
+        if (payloadCase_ == 55) {
+          if (spektraShowControlMessageBuilder_ == null) {
+            result.payload_ = payload_;
+          } else {
+            result.payload_ = spektraShowControlMessageBuilder_.build();
+          }
+        }
+        if (payloadCase_ == 56) {
+          if (spektraShowMessageBuilder_ == null) {
+            result.payload_ = payload_;
+          } else {
+            result.payload_ = spektraShowMessageBuilder_.build();
+          }
+        }
+        if (payloadCase_ == 57) {
+          if (extendedSpektraShowMessageBuilder_ == null) {
+            result.payload_ = payload_;
+          } else {
+            result.payload_ = extendedSpektraShowMessageBuilder_.build();
+          }
+        }
+        if (payloadCase_ == 58) {
+          if (rdmDiscoveryBuilder_ == null) {
+            result.payload_ = payload_;
+          } else {
+            result.payload_ = rdmDiscoveryBuilder_.build();
+          }
+        }
+        if (payloadCase_ == 59) {
+          if (rdmDiscoveryReplyBuilder_ == null) {
+            result.payload_ = payload_;
+          } else {
+            result.payload_ = rdmDiscoveryReplyBuilder_.build();
           }
         }
         result.payloadCase_ = payloadCase_;
@@ -94282,10 +102869,6 @@ public final class EDS10ProtocolBuffer {
             mergeLevelCacheResponse(other.getLevelCacheResponse());
             break;
           }
-          case JOINED_ROOMS: {
-            mergeJoinedRooms(other.getJoinedRooms());
-            break;
-          }
           case LIST_EXTENDED: {
             mergeListExtended(other.getListExtended());
             break;
@@ -94340,6 +102923,26 @@ public final class EDS10ProtocolBuffer {
           }
           case DALI_REMAPPING_MESSAGE: {
             mergeDaliRemappingMessage(other.getDaliRemappingMessage());
+            break;
+          }
+          case SPEKTRA_SHOW_CONTROL_MESSAGE: {
+            mergeSpektraShowControlMessage(other.getSpektraShowControlMessage());
+            break;
+          }
+          case SPEKTRA_SHOW_MESSAGE: {
+            mergeSpektraShowMessage(other.getSpektraShowMessage());
+            break;
+          }
+          case EXTENDED_SPEKTRA_SHOW_MESSAGE: {
+            mergeExtendedSpektraShowMessage(other.getExtendedSpektraShowMessage());
+            break;
+          }
+          case RDM_DISCOVERY: {
+            mergeRdmDiscovery(other.getRdmDiscovery());
+            break;
+          }
+          case RDM_DISCOVERY_REPLY: {
+            mergeRdmDiscoveryReply(other.getRdmDiscoveryReply());
             break;
           }
           case PAYLOAD_NOT_SET: {
@@ -99397,150 +108000,22 @@ public final class EDS10ProtocolBuffer {
       }
 
       private com.google.protobuf.SingleFieldBuilderV3<
-          EDS10ProtocolBuffer.JoinedRoomsMessage, EDS10ProtocolBuffer.JoinedRoomsMessage.Builder, EDS10ProtocolBuffer.JoinedRoomsMessageOrBuilder> joinedRoomsBuilder_;
-      /**
-       * <code>.JoinedRoomsMessage joined_rooms = 40;</code>
-       */
-      public boolean hasJoinedRooms() {
-        return payloadCase_ == 40;
-      }
-      /**
-       * <code>.JoinedRoomsMessage joined_rooms = 40;</code>
-       */
-      public EDS10ProtocolBuffer.JoinedRoomsMessage getJoinedRooms() {
-        if (joinedRoomsBuilder_ == null) {
-          if (payloadCase_ == 40) {
-            return (EDS10ProtocolBuffer.JoinedRoomsMessage) payload_;
-          }
-          return EDS10ProtocolBuffer.JoinedRoomsMessage.getDefaultInstance();
-        } else {
-          if (payloadCase_ == 40) {
-            return joinedRoomsBuilder_.getMessage();
-          }
-          return EDS10ProtocolBuffer.JoinedRoomsMessage.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>.JoinedRoomsMessage joined_rooms = 40;</code>
-       */
-      public Builder setJoinedRooms(EDS10ProtocolBuffer.JoinedRoomsMessage value) {
-        if (joinedRoomsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          payload_ = value;
-          onChanged();
-        } else {
-          joinedRoomsBuilder_.setMessage(value);
-        }
-        payloadCase_ = 40;
-        return this;
-      }
-      /**
-       * <code>.JoinedRoomsMessage joined_rooms = 40;</code>
-       */
-      public Builder setJoinedRooms(
-          EDS10ProtocolBuffer.JoinedRoomsMessage.Builder builderForValue) {
-        if (joinedRoomsBuilder_ == null) {
-          payload_ = builderForValue.build();
-          onChanged();
-        } else {
-          joinedRoomsBuilder_.setMessage(builderForValue.build());
-        }
-        payloadCase_ = 40;
-        return this;
-      }
-      /**
-       * <code>.JoinedRoomsMessage joined_rooms = 40;</code>
-       */
-      public Builder mergeJoinedRooms(EDS10ProtocolBuffer.JoinedRoomsMessage value) {
-        if (joinedRoomsBuilder_ == null) {
-          if (payloadCase_ == 40 &&
-              payload_ != EDS10ProtocolBuffer.JoinedRoomsMessage.getDefaultInstance()) {
-            payload_ = EDS10ProtocolBuffer.JoinedRoomsMessage.newBuilder((EDS10ProtocolBuffer.JoinedRoomsMessage) payload_)
-                .mergeFrom(value).buildPartial();
-          } else {
-            payload_ = value;
-          }
-          onChanged();
-        } else {
-          if (payloadCase_ == 40) {
-            joinedRoomsBuilder_.mergeFrom(value);
-          }
-          joinedRoomsBuilder_.setMessage(value);
-        }
-        payloadCase_ = 40;
-        return this;
-      }
-      /**
-       * <code>.JoinedRoomsMessage joined_rooms = 40;</code>
-       */
-      public Builder clearJoinedRooms() {
-        if (joinedRoomsBuilder_ == null) {
-          if (payloadCase_ == 40) {
-            payloadCase_ = 0;
-            payload_ = null;
-            onChanged();
-          }
-        } else {
-          if (payloadCase_ == 40) {
-            payloadCase_ = 0;
-            payload_ = null;
-          }
-          joinedRoomsBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>.JoinedRoomsMessage joined_rooms = 40;</code>
-       */
-      public EDS10ProtocolBuffer.JoinedRoomsMessage.Builder getJoinedRoomsBuilder() {
-        return getJoinedRoomsFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.JoinedRoomsMessage joined_rooms = 40;</code>
-       */
-      public EDS10ProtocolBuffer.JoinedRoomsMessageOrBuilder getJoinedRoomsOrBuilder() {
-        if ((payloadCase_ == 40) && (joinedRoomsBuilder_ != null)) {
-          return joinedRoomsBuilder_.getMessageOrBuilder();
-        } else {
-          if (payloadCase_ == 40) {
-            return (EDS10ProtocolBuffer.JoinedRoomsMessage) payload_;
-          }
-          return EDS10ProtocolBuffer.JoinedRoomsMessage.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>.JoinedRoomsMessage joined_rooms = 40;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          EDS10ProtocolBuffer.JoinedRoomsMessage, EDS10ProtocolBuffer.JoinedRoomsMessage.Builder, EDS10ProtocolBuffer.JoinedRoomsMessageOrBuilder> 
-          getJoinedRoomsFieldBuilder() {
-        if (joinedRoomsBuilder_ == null) {
-          if (!(payloadCase_ == 40)) {
-            payload_ = EDS10ProtocolBuffer.JoinedRoomsMessage.getDefaultInstance();
-          }
-          joinedRoomsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              EDS10ProtocolBuffer.JoinedRoomsMessage, EDS10ProtocolBuffer.JoinedRoomsMessage.Builder, EDS10ProtocolBuffer.JoinedRoomsMessageOrBuilder>(
-                  (EDS10ProtocolBuffer.JoinedRoomsMessage) payload_,
-                  getParentForChildren(),
-                  isClean());
-          payload_ = null;
-        }
-        payloadCase_ = 40;
-        onChanged();;
-        return joinedRoomsBuilder_;
-      }
-
-      private com.google.protobuf.SingleFieldBuilderV3<
           EDS10ProtocolBuffer.ExtendedListMessage, EDS10ProtocolBuffer.ExtendedListMessage.Builder, EDS10ProtocolBuffer.ExtendedListMessageOrBuilder> listExtendedBuilder_;
       /**
+       * <pre>
+       * OBSOLETE: JoinedRoomsMessage joined_rooms           (40) --&gt; No longer used
+       * </pre>
+       *
        * <code>.ExtendedListMessage list_extended = 41;</code>
        */
       public boolean hasListExtended() {
         return payloadCase_ == 41;
       }
       /**
+       * <pre>
+       * OBSOLETE: JoinedRoomsMessage joined_rooms           (40) --&gt; No longer used
+       * </pre>
+       *
        * <code>.ExtendedListMessage list_extended = 41;</code>
        */
       public EDS10ProtocolBuffer.ExtendedListMessage getListExtended() {
@@ -99557,6 +108032,10 @@ public final class EDS10ProtocolBuffer {
         }
       }
       /**
+       * <pre>
+       * OBSOLETE: JoinedRoomsMessage joined_rooms           (40) --&gt; No longer used
+       * </pre>
+       *
        * <code>.ExtendedListMessage list_extended = 41;</code>
        */
       public Builder setListExtended(EDS10ProtocolBuffer.ExtendedListMessage value) {
@@ -99573,6 +108052,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * OBSOLETE: JoinedRoomsMessage joined_rooms           (40) --&gt; No longer used
+       * </pre>
+       *
        * <code>.ExtendedListMessage list_extended = 41;</code>
        */
       public Builder setListExtended(
@@ -99587,6 +108070,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * OBSOLETE: JoinedRoomsMessage joined_rooms           (40) --&gt; No longer used
+       * </pre>
+       *
        * <code>.ExtendedListMessage list_extended = 41;</code>
        */
       public Builder mergeListExtended(EDS10ProtocolBuffer.ExtendedListMessage value) {
@@ -99609,6 +108096,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * OBSOLETE: JoinedRoomsMessage joined_rooms           (40) --&gt; No longer used
+       * </pre>
+       *
        * <code>.ExtendedListMessage list_extended = 41;</code>
        */
       public Builder clearListExtended() {
@@ -99628,12 +108119,20 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * OBSOLETE: JoinedRoomsMessage joined_rooms           (40) --&gt; No longer used
+       * </pre>
+       *
        * <code>.ExtendedListMessage list_extended = 41;</code>
        */
       public EDS10ProtocolBuffer.ExtendedListMessage.Builder getListExtendedBuilder() {
         return getListExtendedFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * OBSOLETE: JoinedRoomsMessage joined_rooms           (40) --&gt; No longer used
+       * </pre>
+       *
        * <code>.ExtendedListMessage list_extended = 41;</code>
        */
       public EDS10ProtocolBuffer.ExtendedListMessageOrBuilder getListExtendedOrBuilder() {
@@ -99647,6 +108146,10 @@ public final class EDS10ProtocolBuffer {
         }
       }
       /**
+       * <pre>
+       * OBSOLETE: JoinedRoomsMessage joined_rooms           (40) --&gt; No longer used
+       * </pre>
+       *
        * <code>.ExtendedListMessage list_extended = 41;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -101435,6 +109938,686 @@ public final class EDS10ProtocolBuffer {
         onChanged();;
         return daliRemappingMessageBuilder_;
       }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.SpektraShowControlMessage, EDS10ProtocolBuffer.SpektraShowControlMessage.Builder, EDS10ProtocolBuffer.SpektraShowControlMessageOrBuilder> spektraShowControlMessageBuilder_;
+      /**
+       * <code>.SpektraShowControlMessage spektra_show_control_message = 55;</code>
+       */
+      public boolean hasSpektraShowControlMessage() {
+        return payloadCase_ == 55;
+      }
+      /**
+       * <code>.SpektraShowControlMessage spektra_show_control_message = 55;</code>
+       */
+      public EDS10ProtocolBuffer.SpektraShowControlMessage getSpektraShowControlMessage() {
+        if (spektraShowControlMessageBuilder_ == null) {
+          if (payloadCase_ == 55) {
+            return (EDS10ProtocolBuffer.SpektraShowControlMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.SpektraShowControlMessage.getDefaultInstance();
+        } else {
+          if (payloadCase_ == 55) {
+            return spektraShowControlMessageBuilder_.getMessage();
+          }
+          return EDS10ProtocolBuffer.SpektraShowControlMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.SpektraShowControlMessage spektra_show_control_message = 55;</code>
+       */
+      public Builder setSpektraShowControlMessage(EDS10ProtocolBuffer.SpektraShowControlMessage value) {
+        if (spektraShowControlMessageBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          payload_ = value;
+          onChanged();
+        } else {
+          spektraShowControlMessageBuilder_.setMessage(value);
+        }
+        payloadCase_ = 55;
+        return this;
+      }
+      /**
+       * <code>.SpektraShowControlMessage spektra_show_control_message = 55;</code>
+       */
+      public Builder setSpektraShowControlMessage(
+          EDS10ProtocolBuffer.SpektraShowControlMessage.Builder builderForValue) {
+        if (spektraShowControlMessageBuilder_ == null) {
+          payload_ = builderForValue.build();
+          onChanged();
+        } else {
+          spektraShowControlMessageBuilder_.setMessage(builderForValue.build());
+        }
+        payloadCase_ = 55;
+        return this;
+      }
+      /**
+       * <code>.SpektraShowControlMessage spektra_show_control_message = 55;</code>
+       */
+      public Builder mergeSpektraShowControlMessage(EDS10ProtocolBuffer.SpektraShowControlMessage value) {
+        if (spektraShowControlMessageBuilder_ == null) {
+          if (payloadCase_ == 55 &&
+              payload_ != EDS10ProtocolBuffer.SpektraShowControlMessage.getDefaultInstance()) {
+            payload_ = EDS10ProtocolBuffer.SpektraShowControlMessage.newBuilder((EDS10ProtocolBuffer.SpektraShowControlMessage) payload_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            payload_ = value;
+          }
+          onChanged();
+        } else {
+          if (payloadCase_ == 55) {
+            spektraShowControlMessageBuilder_.mergeFrom(value);
+          }
+          spektraShowControlMessageBuilder_.setMessage(value);
+        }
+        payloadCase_ = 55;
+        return this;
+      }
+      /**
+       * <code>.SpektraShowControlMessage spektra_show_control_message = 55;</code>
+       */
+      public Builder clearSpektraShowControlMessage() {
+        if (spektraShowControlMessageBuilder_ == null) {
+          if (payloadCase_ == 55) {
+            payloadCase_ = 0;
+            payload_ = null;
+            onChanged();
+          }
+        } else {
+          if (payloadCase_ == 55) {
+            payloadCase_ = 0;
+            payload_ = null;
+          }
+          spektraShowControlMessageBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.SpektraShowControlMessage spektra_show_control_message = 55;</code>
+       */
+      public EDS10ProtocolBuffer.SpektraShowControlMessage.Builder getSpektraShowControlMessageBuilder() {
+        return getSpektraShowControlMessageFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.SpektraShowControlMessage spektra_show_control_message = 55;</code>
+       */
+      public EDS10ProtocolBuffer.SpektraShowControlMessageOrBuilder getSpektraShowControlMessageOrBuilder() {
+        if ((payloadCase_ == 55) && (spektraShowControlMessageBuilder_ != null)) {
+          return spektraShowControlMessageBuilder_.getMessageOrBuilder();
+        } else {
+          if (payloadCase_ == 55) {
+            return (EDS10ProtocolBuffer.SpektraShowControlMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.SpektraShowControlMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.SpektraShowControlMessage spektra_show_control_message = 55;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.SpektraShowControlMessage, EDS10ProtocolBuffer.SpektraShowControlMessage.Builder, EDS10ProtocolBuffer.SpektraShowControlMessageOrBuilder> 
+          getSpektraShowControlMessageFieldBuilder() {
+        if (spektraShowControlMessageBuilder_ == null) {
+          if (!(payloadCase_ == 55)) {
+            payload_ = EDS10ProtocolBuffer.SpektraShowControlMessage.getDefaultInstance();
+          }
+          spektraShowControlMessageBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.SpektraShowControlMessage, EDS10ProtocolBuffer.SpektraShowControlMessage.Builder, EDS10ProtocolBuffer.SpektraShowControlMessageOrBuilder>(
+                  (EDS10ProtocolBuffer.SpektraShowControlMessage) payload_,
+                  getParentForChildren(),
+                  isClean());
+          payload_ = null;
+        }
+        payloadCase_ = 55;
+        onChanged();;
+        return spektraShowControlMessageBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.SpektraShowMessage, EDS10ProtocolBuffer.SpektraShowMessage.Builder, EDS10ProtocolBuffer.SpektraShowMessageOrBuilder> spektraShowMessageBuilder_;
+      /**
+       * <code>.SpektraShowMessage spektra_show_message = 56;</code>
+       */
+      public boolean hasSpektraShowMessage() {
+        return payloadCase_ == 56;
+      }
+      /**
+       * <code>.SpektraShowMessage spektra_show_message = 56;</code>
+       */
+      public EDS10ProtocolBuffer.SpektraShowMessage getSpektraShowMessage() {
+        if (spektraShowMessageBuilder_ == null) {
+          if (payloadCase_ == 56) {
+            return (EDS10ProtocolBuffer.SpektraShowMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.SpektraShowMessage.getDefaultInstance();
+        } else {
+          if (payloadCase_ == 56) {
+            return spektraShowMessageBuilder_.getMessage();
+          }
+          return EDS10ProtocolBuffer.SpektraShowMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.SpektraShowMessage spektra_show_message = 56;</code>
+       */
+      public Builder setSpektraShowMessage(EDS10ProtocolBuffer.SpektraShowMessage value) {
+        if (spektraShowMessageBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          payload_ = value;
+          onChanged();
+        } else {
+          spektraShowMessageBuilder_.setMessage(value);
+        }
+        payloadCase_ = 56;
+        return this;
+      }
+      /**
+       * <code>.SpektraShowMessage spektra_show_message = 56;</code>
+       */
+      public Builder setSpektraShowMessage(
+          EDS10ProtocolBuffer.SpektraShowMessage.Builder builderForValue) {
+        if (spektraShowMessageBuilder_ == null) {
+          payload_ = builderForValue.build();
+          onChanged();
+        } else {
+          spektraShowMessageBuilder_.setMessage(builderForValue.build());
+        }
+        payloadCase_ = 56;
+        return this;
+      }
+      /**
+       * <code>.SpektraShowMessage spektra_show_message = 56;</code>
+       */
+      public Builder mergeSpektraShowMessage(EDS10ProtocolBuffer.SpektraShowMessage value) {
+        if (spektraShowMessageBuilder_ == null) {
+          if (payloadCase_ == 56 &&
+              payload_ != EDS10ProtocolBuffer.SpektraShowMessage.getDefaultInstance()) {
+            payload_ = EDS10ProtocolBuffer.SpektraShowMessage.newBuilder((EDS10ProtocolBuffer.SpektraShowMessage) payload_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            payload_ = value;
+          }
+          onChanged();
+        } else {
+          if (payloadCase_ == 56) {
+            spektraShowMessageBuilder_.mergeFrom(value);
+          }
+          spektraShowMessageBuilder_.setMessage(value);
+        }
+        payloadCase_ = 56;
+        return this;
+      }
+      /**
+       * <code>.SpektraShowMessage spektra_show_message = 56;</code>
+       */
+      public Builder clearSpektraShowMessage() {
+        if (spektraShowMessageBuilder_ == null) {
+          if (payloadCase_ == 56) {
+            payloadCase_ = 0;
+            payload_ = null;
+            onChanged();
+          }
+        } else {
+          if (payloadCase_ == 56) {
+            payloadCase_ = 0;
+            payload_ = null;
+          }
+          spektraShowMessageBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.SpektraShowMessage spektra_show_message = 56;</code>
+       */
+      public EDS10ProtocolBuffer.SpektraShowMessage.Builder getSpektraShowMessageBuilder() {
+        return getSpektraShowMessageFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.SpektraShowMessage spektra_show_message = 56;</code>
+       */
+      public EDS10ProtocolBuffer.SpektraShowMessageOrBuilder getSpektraShowMessageOrBuilder() {
+        if ((payloadCase_ == 56) && (spektraShowMessageBuilder_ != null)) {
+          return spektraShowMessageBuilder_.getMessageOrBuilder();
+        } else {
+          if (payloadCase_ == 56) {
+            return (EDS10ProtocolBuffer.SpektraShowMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.SpektraShowMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.SpektraShowMessage spektra_show_message = 56;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.SpektraShowMessage, EDS10ProtocolBuffer.SpektraShowMessage.Builder, EDS10ProtocolBuffer.SpektraShowMessageOrBuilder> 
+          getSpektraShowMessageFieldBuilder() {
+        if (spektraShowMessageBuilder_ == null) {
+          if (!(payloadCase_ == 56)) {
+            payload_ = EDS10ProtocolBuffer.SpektraShowMessage.getDefaultInstance();
+          }
+          spektraShowMessageBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.SpektraShowMessage, EDS10ProtocolBuffer.SpektraShowMessage.Builder, EDS10ProtocolBuffer.SpektraShowMessageOrBuilder>(
+                  (EDS10ProtocolBuffer.SpektraShowMessage) payload_,
+                  getParentForChildren(),
+                  isClean());
+          payload_ = null;
+        }
+        payloadCase_ = 56;
+        onChanged();;
+        return spektraShowMessageBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.ExtendedSpektraShowMessage, EDS10ProtocolBuffer.ExtendedSpektraShowMessage.Builder, EDS10ProtocolBuffer.ExtendedSpektraShowMessageOrBuilder> extendedSpektraShowMessageBuilder_;
+      /**
+       * <code>.ExtendedSpektraShowMessage extended_spektra_show_message = 57;</code>
+       */
+      public boolean hasExtendedSpektraShowMessage() {
+        return payloadCase_ == 57;
+      }
+      /**
+       * <code>.ExtendedSpektraShowMessage extended_spektra_show_message = 57;</code>
+       */
+      public EDS10ProtocolBuffer.ExtendedSpektraShowMessage getExtendedSpektraShowMessage() {
+        if (extendedSpektraShowMessageBuilder_ == null) {
+          if (payloadCase_ == 57) {
+            return (EDS10ProtocolBuffer.ExtendedSpektraShowMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.ExtendedSpektraShowMessage.getDefaultInstance();
+        } else {
+          if (payloadCase_ == 57) {
+            return extendedSpektraShowMessageBuilder_.getMessage();
+          }
+          return EDS10ProtocolBuffer.ExtendedSpektraShowMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.ExtendedSpektraShowMessage extended_spektra_show_message = 57;</code>
+       */
+      public Builder setExtendedSpektraShowMessage(EDS10ProtocolBuffer.ExtendedSpektraShowMessage value) {
+        if (extendedSpektraShowMessageBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          payload_ = value;
+          onChanged();
+        } else {
+          extendedSpektraShowMessageBuilder_.setMessage(value);
+        }
+        payloadCase_ = 57;
+        return this;
+      }
+      /**
+       * <code>.ExtendedSpektraShowMessage extended_spektra_show_message = 57;</code>
+       */
+      public Builder setExtendedSpektraShowMessage(
+          EDS10ProtocolBuffer.ExtendedSpektraShowMessage.Builder builderForValue) {
+        if (extendedSpektraShowMessageBuilder_ == null) {
+          payload_ = builderForValue.build();
+          onChanged();
+        } else {
+          extendedSpektraShowMessageBuilder_.setMessage(builderForValue.build());
+        }
+        payloadCase_ = 57;
+        return this;
+      }
+      /**
+       * <code>.ExtendedSpektraShowMessage extended_spektra_show_message = 57;</code>
+       */
+      public Builder mergeExtendedSpektraShowMessage(EDS10ProtocolBuffer.ExtendedSpektraShowMessage value) {
+        if (extendedSpektraShowMessageBuilder_ == null) {
+          if (payloadCase_ == 57 &&
+              payload_ != EDS10ProtocolBuffer.ExtendedSpektraShowMessage.getDefaultInstance()) {
+            payload_ = EDS10ProtocolBuffer.ExtendedSpektraShowMessage.newBuilder((EDS10ProtocolBuffer.ExtendedSpektraShowMessage) payload_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            payload_ = value;
+          }
+          onChanged();
+        } else {
+          if (payloadCase_ == 57) {
+            extendedSpektraShowMessageBuilder_.mergeFrom(value);
+          }
+          extendedSpektraShowMessageBuilder_.setMessage(value);
+        }
+        payloadCase_ = 57;
+        return this;
+      }
+      /**
+       * <code>.ExtendedSpektraShowMessage extended_spektra_show_message = 57;</code>
+       */
+      public Builder clearExtendedSpektraShowMessage() {
+        if (extendedSpektraShowMessageBuilder_ == null) {
+          if (payloadCase_ == 57) {
+            payloadCase_ = 0;
+            payload_ = null;
+            onChanged();
+          }
+        } else {
+          if (payloadCase_ == 57) {
+            payloadCase_ = 0;
+            payload_ = null;
+          }
+          extendedSpektraShowMessageBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.ExtendedSpektraShowMessage extended_spektra_show_message = 57;</code>
+       */
+      public EDS10ProtocolBuffer.ExtendedSpektraShowMessage.Builder getExtendedSpektraShowMessageBuilder() {
+        return getExtendedSpektraShowMessageFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.ExtendedSpektraShowMessage extended_spektra_show_message = 57;</code>
+       */
+      public EDS10ProtocolBuffer.ExtendedSpektraShowMessageOrBuilder getExtendedSpektraShowMessageOrBuilder() {
+        if ((payloadCase_ == 57) && (extendedSpektraShowMessageBuilder_ != null)) {
+          return extendedSpektraShowMessageBuilder_.getMessageOrBuilder();
+        } else {
+          if (payloadCase_ == 57) {
+            return (EDS10ProtocolBuffer.ExtendedSpektraShowMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.ExtendedSpektraShowMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.ExtendedSpektraShowMessage extended_spektra_show_message = 57;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.ExtendedSpektraShowMessage, EDS10ProtocolBuffer.ExtendedSpektraShowMessage.Builder, EDS10ProtocolBuffer.ExtendedSpektraShowMessageOrBuilder> 
+          getExtendedSpektraShowMessageFieldBuilder() {
+        if (extendedSpektraShowMessageBuilder_ == null) {
+          if (!(payloadCase_ == 57)) {
+            payload_ = EDS10ProtocolBuffer.ExtendedSpektraShowMessage.getDefaultInstance();
+          }
+          extendedSpektraShowMessageBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.ExtendedSpektraShowMessage, EDS10ProtocolBuffer.ExtendedSpektraShowMessage.Builder, EDS10ProtocolBuffer.ExtendedSpektraShowMessageOrBuilder>(
+                  (EDS10ProtocolBuffer.ExtendedSpektraShowMessage) payload_,
+                  getParentForChildren(),
+                  isClean());
+          payload_ = null;
+        }
+        payloadCase_ = 57;
+        onChanged();;
+        return extendedSpektraShowMessageBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.RDMDiscoveryMessage, EDS10ProtocolBuffer.RDMDiscoveryMessage.Builder, EDS10ProtocolBuffer.RDMDiscoveryMessageOrBuilder> rdmDiscoveryBuilder_;
+      /**
+       * <code>.RDMDiscoveryMessage rdm_discovery = 58;</code>
+       */
+      public boolean hasRdmDiscovery() {
+        return payloadCase_ == 58;
+      }
+      /**
+       * <code>.RDMDiscoveryMessage rdm_discovery = 58;</code>
+       */
+      public EDS10ProtocolBuffer.RDMDiscoveryMessage getRdmDiscovery() {
+        if (rdmDiscoveryBuilder_ == null) {
+          if (payloadCase_ == 58) {
+            return (EDS10ProtocolBuffer.RDMDiscoveryMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.RDMDiscoveryMessage.getDefaultInstance();
+        } else {
+          if (payloadCase_ == 58) {
+            return rdmDiscoveryBuilder_.getMessage();
+          }
+          return EDS10ProtocolBuffer.RDMDiscoveryMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.RDMDiscoveryMessage rdm_discovery = 58;</code>
+       */
+      public Builder setRdmDiscovery(EDS10ProtocolBuffer.RDMDiscoveryMessage value) {
+        if (rdmDiscoveryBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          payload_ = value;
+          onChanged();
+        } else {
+          rdmDiscoveryBuilder_.setMessage(value);
+        }
+        payloadCase_ = 58;
+        return this;
+      }
+      /**
+       * <code>.RDMDiscoveryMessage rdm_discovery = 58;</code>
+       */
+      public Builder setRdmDiscovery(
+          EDS10ProtocolBuffer.RDMDiscoveryMessage.Builder builderForValue) {
+        if (rdmDiscoveryBuilder_ == null) {
+          payload_ = builderForValue.build();
+          onChanged();
+        } else {
+          rdmDiscoveryBuilder_.setMessage(builderForValue.build());
+        }
+        payloadCase_ = 58;
+        return this;
+      }
+      /**
+       * <code>.RDMDiscoveryMessage rdm_discovery = 58;</code>
+       */
+      public Builder mergeRdmDiscovery(EDS10ProtocolBuffer.RDMDiscoveryMessage value) {
+        if (rdmDiscoveryBuilder_ == null) {
+          if (payloadCase_ == 58 &&
+              payload_ != EDS10ProtocolBuffer.RDMDiscoveryMessage.getDefaultInstance()) {
+            payload_ = EDS10ProtocolBuffer.RDMDiscoveryMessage.newBuilder((EDS10ProtocolBuffer.RDMDiscoveryMessage) payload_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            payload_ = value;
+          }
+          onChanged();
+        } else {
+          if (payloadCase_ == 58) {
+            rdmDiscoveryBuilder_.mergeFrom(value);
+          }
+          rdmDiscoveryBuilder_.setMessage(value);
+        }
+        payloadCase_ = 58;
+        return this;
+      }
+      /**
+       * <code>.RDMDiscoveryMessage rdm_discovery = 58;</code>
+       */
+      public Builder clearRdmDiscovery() {
+        if (rdmDiscoveryBuilder_ == null) {
+          if (payloadCase_ == 58) {
+            payloadCase_ = 0;
+            payload_ = null;
+            onChanged();
+          }
+        } else {
+          if (payloadCase_ == 58) {
+            payloadCase_ = 0;
+            payload_ = null;
+          }
+          rdmDiscoveryBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.RDMDiscoveryMessage rdm_discovery = 58;</code>
+       */
+      public EDS10ProtocolBuffer.RDMDiscoveryMessage.Builder getRdmDiscoveryBuilder() {
+        return getRdmDiscoveryFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.RDMDiscoveryMessage rdm_discovery = 58;</code>
+       */
+      public EDS10ProtocolBuffer.RDMDiscoveryMessageOrBuilder getRdmDiscoveryOrBuilder() {
+        if ((payloadCase_ == 58) && (rdmDiscoveryBuilder_ != null)) {
+          return rdmDiscoveryBuilder_.getMessageOrBuilder();
+        } else {
+          if (payloadCase_ == 58) {
+            return (EDS10ProtocolBuffer.RDMDiscoveryMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.RDMDiscoveryMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.RDMDiscoveryMessage rdm_discovery = 58;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.RDMDiscoveryMessage, EDS10ProtocolBuffer.RDMDiscoveryMessage.Builder, EDS10ProtocolBuffer.RDMDiscoveryMessageOrBuilder> 
+          getRdmDiscoveryFieldBuilder() {
+        if (rdmDiscoveryBuilder_ == null) {
+          if (!(payloadCase_ == 58)) {
+            payload_ = EDS10ProtocolBuffer.RDMDiscoveryMessage.getDefaultInstance();
+          }
+          rdmDiscoveryBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.RDMDiscoveryMessage, EDS10ProtocolBuffer.RDMDiscoveryMessage.Builder, EDS10ProtocolBuffer.RDMDiscoveryMessageOrBuilder>(
+                  (EDS10ProtocolBuffer.RDMDiscoveryMessage) payload_,
+                  getParentForChildren(),
+                  isClean());
+          payload_ = null;
+        }
+        payloadCase_ = 58;
+        onChanged();;
+        return rdmDiscoveryBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.RDMDiscoveryReplyMessage, EDS10ProtocolBuffer.RDMDiscoveryReplyMessage.Builder, EDS10ProtocolBuffer.RDMDiscoveryReplyMessageOrBuilder> rdmDiscoveryReplyBuilder_;
+      /**
+       * <code>.RDMDiscoveryReplyMessage rdm_discovery_reply = 59;</code>
+       */
+      public boolean hasRdmDiscoveryReply() {
+        return payloadCase_ == 59;
+      }
+      /**
+       * <code>.RDMDiscoveryReplyMessage rdm_discovery_reply = 59;</code>
+       */
+      public EDS10ProtocolBuffer.RDMDiscoveryReplyMessage getRdmDiscoveryReply() {
+        if (rdmDiscoveryReplyBuilder_ == null) {
+          if (payloadCase_ == 59) {
+            return (EDS10ProtocolBuffer.RDMDiscoveryReplyMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.RDMDiscoveryReplyMessage.getDefaultInstance();
+        } else {
+          if (payloadCase_ == 59) {
+            return rdmDiscoveryReplyBuilder_.getMessage();
+          }
+          return EDS10ProtocolBuffer.RDMDiscoveryReplyMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.RDMDiscoveryReplyMessage rdm_discovery_reply = 59;</code>
+       */
+      public Builder setRdmDiscoveryReply(EDS10ProtocolBuffer.RDMDiscoveryReplyMessage value) {
+        if (rdmDiscoveryReplyBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          payload_ = value;
+          onChanged();
+        } else {
+          rdmDiscoveryReplyBuilder_.setMessage(value);
+        }
+        payloadCase_ = 59;
+        return this;
+      }
+      /**
+       * <code>.RDMDiscoveryReplyMessage rdm_discovery_reply = 59;</code>
+       */
+      public Builder setRdmDiscoveryReply(
+          EDS10ProtocolBuffer.RDMDiscoveryReplyMessage.Builder builderForValue) {
+        if (rdmDiscoveryReplyBuilder_ == null) {
+          payload_ = builderForValue.build();
+          onChanged();
+        } else {
+          rdmDiscoveryReplyBuilder_.setMessage(builderForValue.build());
+        }
+        payloadCase_ = 59;
+        return this;
+      }
+      /**
+       * <code>.RDMDiscoveryReplyMessage rdm_discovery_reply = 59;</code>
+       */
+      public Builder mergeRdmDiscoveryReply(EDS10ProtocolBuffer.RDMDiscoveryReplyMessage value) {
+        if (rdmDiscoveryReplyBuilder_ == null) {
+          if (payloadCase_ == 59 &&
+              payload_ != EDS10ProtocolBuffer.RDMDiscoveryReplyMessage.getDefaultInstance()) {
+            payload_ = EDS10ProtocolBuffer.RDMDiscoveryReplyMessage.newBuilder((EDS10ProtocolBuffer.RDMDiscoveryReplyMessage) payload_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            payload_ = value;
+          }
+          onChanged();
+        } else {
+          if (payloadCase_ == 59) {
+            rdmDiscoveryReplyBuilder_.mergeFrom(value);
+          }
+          rdmDiscoveryReplyBuilder_.setMessage(value);
+        }
+        payloadCase_ = 59;
+        return this;
+      }
+      /**
+       * <code>.RDMDiscoveryReplyMessage rdm_discovery_reply = 59;</code>
+       */
+      public Builder clearRdmDiscoveryReply() {
+        if (rdmDiscoveryReplyBuilder_ == null) {
+          if (payloadCase_ == 59) {
+            payloadCase_ = 0;
+            payload_ = null;
+            onChanged();
+          }
+        } else {
+          if (payloadCase_ == 59) {
+            payloadCase_ = 0;
+            payload_ = null;
+          }
+          rdmDiscoveryReplyBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.RDMDiscoveryReplyMessage rdm_discovery_reply = 59;</code>
+       */
+      public EDS10ProtocolBuffer.RDMDiscoveryReplyMessage.Builder getRdmDiscoveryReplyBuilder() {
+        return getRdmDiscoveryReplyFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.RDMDiscoveryReplyMessage rdm_discovery_reply = 59;</code>
+       */
+      public EDS10ProtocolBuffer.RDMDiscoveryReplyMessageOrBuilder getRdmDiscoveryReplyOrBuilder() {
+        if ((payloadCase_ == 59) && (rdmDiscoveryReplyBuilder_ != null)) {
+          return rdmDiscoveryReplyBuilder_.getMessageOrBuilder();
+        } else {
+          if (payloadCase_ == 59) {
+            return (EDS10ProtocolBuffer.RDMDiscoveryReplyMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.RDMDiscoveryReplyMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.RDMDiscoveryReplyMessage rdm_discovery_reply = 59;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.RDMDiscoveryReplyMessage, EDS10ProtocolBuffer.RDMDiscoveryReplyMessage.Builder, EDS10ProtocolBuffer.RDMDiscoveryReplyMessageOrBuilder> 
+          getRdmDiscoveryReplyFieldBuilder() {
+        if (rdmDiscoveryReplyBuilder_ == null) {
+          if (!(payloadCase_ == 59)) {
+            payload_ = EDS10ProtocolBuffer.RDMDiscoveryReplyMessage.getDefaultInstance();
+          }
+          rdmDiscoveryReplyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.RDMDiscoveryReplyMessage, EDS10ProtocolBuffer.RDMDiscoveryReplyMessage.Builder, EDS10ProtocolBuffer.RDMDiscoveryReplyMessageOrBuilder>(
+                  (EDS10ProtocolBuffer.RDMDiscoveryReplyMessage) payload_,
+                  getParentForChildren(),
+                  isClean());
+          payload_ = null;
+        }
+        payloadCase_ = 59;
+        onChanged();;
+        return rdmDiscoveryReplyBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -101694,6 +110877,16 @@ public final class EDS10ProtocolBuffer {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_RDMResponseMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_RDMDiscoveryMessage_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_RDMDiscoveryMessage_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_RDMDiscoveryReplyMessage_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_RDMDiscoveryReplyMessage_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_SpektraSettingMessage_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -101739,6 +110932,26 @@ public final class EDS10ProtocolBuffer {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_SpektraControlMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ShowStepMessage_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ShowStepMessage_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_SpektraShowMessage_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_SpektraShowMessage_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ExtendedSpektraShowMessage_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ExtendedSpektraShowMessage_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_SpektraShowControlMessage_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_SpektraShowControlMessage_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_DMXTranslationObject_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -101763,11 +110976,6 @@ public final class EDS10ProtocolBuffer {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_LevelCacheResponse_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_JoinedRoomsMessage_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_JoinedRoomsMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_DiagnosticSystemInfoResponse_descriptor;
   private static final 
@@ -101894,6 +111102,16 @@ public final class EDS10ProtocolBuffer {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_TriggerEvent_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_DALI24InputEvent_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_DALI24InputEvent_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_DALISensorEvent_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_DALISensorEvent_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_EventMessage_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -101940,527 +111158,578 @@ public final class EDS10ProtocolBuffer {
       "ong_press\030\004 \001(\0132\017.TriggerMessage\"|\n\017IOOu" +
       "tputMessage\022\r\n\005index\030\001 \001(\r\022\025\n\rinitial_le" +
       "vel\030\002 \001(\r\022\036\n\026time_trigger_is_active\030\003 \001(" +
-      "\r\022#\n\004type\030\004 \001(\0162\025.TriggerOperationType\"\275" +
+      "\r\022#\n\004type\030\004 \001(\0162\025.TriggerOperationType\"\317" +
       "\001\n\020DALIInputMessage\022\r\n\005index\030\001 \001(\r\022\017\n\007ad" +
       "dress\030\002 \001(\r\022\021\n\tdali_line\030\003 \001(\r\022+\n\014button" +
       "_state\030\004 \001(\0162\025.TriggerOperationType\022$\n\013s" +
       "hort_press\030\005 \001(\0132\017.TriggerMessage\022#\n\nlon" +
-      "g_press\030\006 \001(\0132\017.TriggerMessage\"L\n\013IOIRMe" +
-      "ssage\022\r\n\005index\030\001 \001(\r\022\037\n\006action\030\002 \001(\0132\017.T" +
-      "riggerMessage\022\r\n\005codes\030\003 \001(\r\"\313\004\n\rSensorM" +
-      "essage\022\017\n\007profile\030\001 \001(\r\022\r\n\005index\030\002 \001(\r\022\026" +
-      "\n\016sensor_address\030\003 \001(\r\022\030\n\020sensor_dali_li" +
-      "ne\030\004 \001(\r\022\025\n\raddress_query\030\005 \001(\r\022\031\n\021contr" +
-      "ol_dali_line\030\006 \001(\r\022\025\n\rcontrol_group\030\007 \001(" +
-      "\r\022\026\n\016light_setpoint\030\010 \001(\r\022\030\n\020warning_set" +
-      "point\030\t \001(\r\022\023\n\013motion_only\030\n \001(\r\022\026\n\016time" +
-      "out_values\030\013 \001(\r\022\026\n\016warning_values\030\014 \001(\r" +
-      "\022\026\n\016disable_values\030\r \001(\r\022\022\n\ninput_1_pm\030\016" +
-      " \001(\r\022\022\n\ninput_2_pm\030\017 \001(\r\022\025\n\rsensor_state" +
-      "s\030\020 \001(\r\022\026\n\016motion_sensors\030\021 \001(\r\022\023\n\013lux_s" +
-      "ensors\030\022 \001(\r\022\020\n\010off_flag\030\023 \001(\r\022\025\n\ris_pro" +
-      "grammed\030\024 \001(\010\022*\n\021detection_trigger\030\025 \001(\013" +
-      "2\017.TriggerMessage\022(\n\017warning_trigger\030\026 \001" +
-      "(\0132\017.TriggerMessage\022%\n\014idle_trigger\030\027 \001(" +
-      "\0132\017.TriggerMessage\"\\\n\017ListStepMessage\022\022\n" +
-      "\nstep_index\030\001 \001(\r\022\037\n\006action\030\002 \001(\0132\017.Trig" +
-      "gerMessage\022\024\n\014time_seconds\030\003 \001(\r\"\274\003\n\014Ala" +
-      "rmMessage\022\r\n\005index\030\001 \001(\r\022\017\n\007enabled\030\002 \001(" +
-      "\010\022%\n\nstart_time\030\003 \001(\0132\021.TimeClockMessage" +
-      "\022#\n\010end_time\030\004 \001(\0132\021.TimeClockMessage\022&\n" +
-      "\rstart_trigger\030\005 \001(\0132\017.TriggerMessage\022$\n" +
-      "\013end_trigger\030\006 \001(\0132\017.TriggerMessage\022$\n\013a" +
-      "stro_start\030\007 \001(\0162\017.AlarmAstroType\022\"\n\tast" +
-      "ro_end\030\010 \001(\0162\017.AlarmAstroType\022 \n\006repeat\030" +
-      "\t \001(\0162\020.AlarmRepeatType\022\032\n\022repeat_day_bi" +
-      "tmask\030\n \001(\r\022\034\n\024repeat_month_bitmask\030\013 \001(" +
-      "\r\022\016\n\006yearly\030\014 \001(\010\022\036\n\026start_offset_is_bef" +
-      "ore\030\r \001(\010\022\034\n\024end_offset_is_before\030\016 \001(\010\"" +
-      "\231\001\n\rBurnInMessage\022\r\n\005index\030\001 \001(\r\022\014\n\004line" +
-      "\030\002 \001(\r\022\017\n\007address\030\003 \001(\r\022\025\n\rquery_address" +
-      "\030\004 \001(\r\022\014\n\004time\030\005 \001(\r\022\021\n\tremaining\030\006 \001(\r\022" +
-      "\"\n\006states\030\007 \001(\0132\022.BurnInBitsMessage\":\n\026E" +
-      "xternalTriggerMessage\022 \n\007trigger\030\001 \001(\0132\017" +
-      ".TriggerMessage\"E\n\021InputMultiMessage\022\017\n\007" +
-      "profile\030\001 \001(\r\022\037\n\006inputs\030\002 \003(\0132\017.IOInputM" +
-      "essage\"H\n\022OutputMultiMessage\022\017\n\007profile\030" +
-      "\001 \001(\r\022!\n\007outputs\030\002 \003(\0132\020.IOOutputMessage" +
-      "\"g\n\025DALIInputMultiMessage\022\017\n\007profile\030\001 \001" +
-      "(\r\022\032\n\022input_index_offset\030\002 \001(\r\022!\n\006inputs" +
-      "\030\003 \003(\0132\021.DALIInputMessage\"<\n\016IRMultiMess" +
-      "age\022\017\n\007profile\030\001 \001(\r\022\031\n\003irs\030\002 \003(\0132\014.IOIR" +
-      "Message\"o\n\013ListMessage\022\022\n\nlist_index\030\001 \001" +
-      "(\r\022\036\n\004step\030\002 \003(\0132\020.ListStepMessage\022\022\n\nli" +
-      "st_state\030\003 \001(\r\022\030\n\020total_step_count\030\004 \001(\r" +
-      "\"d\n\023ExtendedListMessage\022\022\n\nlist_index\030\001 " +
-      "\001(\r\022\031\n\021step_index_offset\030\002 \001(\r\022\036\n\004step\030\003" +
-      " \003(\0132\020.ListStepMessage\"1\n\021AlarmMultiMess" +
-      "age\022\034\n\005alarm\030\001 \003(\0132\r.AlarmMessage\"4\n\022Bur" +
-      "nInMultiMessage\022\036\n\006burnin\030\001 \003(\0132\016.BurnIn" +
-      "Message\"\347\001\n\014LogicMessage\022\r\n\005index\030\001 \001(\r\022" +
-      "\017\n\007enabled\030\002 \001(\010\022*\n\021comparison_object\030\003 " +
-      "\001(\0132\017.TriggerMessage\022\030\n\020comparison_value" +
-      "\030\004 \001(\r\022-\n\017comparison_type\030\005 \001(\0162\024.LogicC" +
-      "omparisonType\022 \n\007actionA\030\006 \001(\0132\017.Trigger" +
-      "Message\022 \n\007actionB\030\007 \001(\0132\017.TriggerMessag" +
-      "e\"1\n\021LogicMultiMessage\022\034\n\005logic\030\001 \003(\0132\r." +
-      "LogicMessage\"X\n\024SensorCommandMessage\022\017\n\007" +
-      "command\030\001 \001(\r\022\r\n\005index\030\002 \001(\r\022 \n\004type\030\003 \001" +
-      "(\0162\022.SensorCommandType\"\'\n\024ChangeProfileM" +
-      "essage\022\017\n\007profile\030\001 \001(\r\"*\n\017IdentifyMessa" +
-      "ge\022\013\n\003MAC\030\001 \001(\004\022\n\n\002IP\030\002 \001(\004\"4\n\021UpdateTim" +
-      "eMessage\022\037\n\004time\030\001 \001(\0132\021.TimeClockMessag" +
-      "e\"e\n\021ReadDeviceMessage\022\017\n\007profile\030\001 \001(\r\022" +
-      "\027\n\004type\030\002 \001(\0162\t.ReadType\022\r\n\005index\030\003 \001(\r\022" +
-      "\027\n\017secondary_index\030\004 \001(\r\".\n\033SecureDevice" +
-      "SettingsMessage\022\017\n\007payload\030\001 \001(\t\" \n\021DTRP" +
-      "ayloadMessage\022\013\n\003dtr\030\001 \003(\r\"\265\003\n\013DALIMessa" +
-      "ge\022\021\n\tline_mask\030\001 \001(\r\022\017\n\007address\030\002 \001(\r\022\026" +
-      "\n\014frame_25_bit\030\003 \001(\rH\000\022\034\n\022frame_25_bit_r" +
-      "eply\030\004 \001(\rH\000\022#\n\007command\030\005 \001(\0162\020.DALIComm" +
-      "andTypeH\000\0220\n\016custom_command\030\006 \001(\0162\026.Cust" +
-      "omDALICommandTypeH\000\022\037\n\005query\030\007 \001(\0162\016.DAL" +
-      "IQueryTypeH\000\022\"\n\005type8\030\010 \001(\0162\021.Type8Comma" +
-      "ndTypeH\000\022\026\n\014frame_16_bit\030\013 \001(\rH\000\022\034\n\022fram" +
-      "e_16_bit_reply\030\014 \001(\rH\000\022\026\n\014frame_24_bit\030\r" +
-      " \001(\rH\000\022\034\n\022frame_24_bit_reply\030\016 \001(\rH\000\022\r\n\003" +
-      "arg\030\t \001(\rH\001\022!\n\003dtr\030\n \001(\0132\022.DTRPayloadMes" +
-      "sageH\001B\010\n\006actionB\010\n\006params\"7\n\025DALIStatus" +
-      "FlagMessage\022\036\n\005flags\030\001 \003(\0162\017.DALIStatusT" +
-      "ype\"\275\001\n\021DALIQueryResponse\022.\n\014status_flag" +
-      "s\030\001 \001(\0132\026.DALIStatusFlagMessageH\000\022\037\n\004dat" +
-      "a\030\002 \001(\0132\017.PayloadMessageH\000\022$\n\tdali_flag\030" +
-      "\003 \001(\0162\021.DALIRXStatusFlag\022&\n\rresponse_dat" +
-      "a\030\004 \001(\0132\017.PayloadMessageB\t\n\007payload\"\252\001\n\025" +
-      "DALIAddressingMessage\022!\n\004type\030\001 \001(\0162\023.DA" +
-      "LIAddressingType\022\026\n\016initialisation\030\002 \001(\010" +
-      "\022\021\n\tline_mask\030\003 \001(\r\022\017\n\007is24Bit\030\004 \001(\010\022#\n\005" +
-      "error\030\005 \001(\0162\024.DALIAddressingError\022\r\n\005ind" +
-      "ex\030\006 \001(\r\"d\n\024DALIRemappingMessage\022\024\n\014from" +
-      "_address\030\001 \001(\r\022\022\n\nto_address\030\002 \001(\r\022\021\n\tli" +
-      "ne_mask\030\003 \001(\r\022\017\n\007is24Bit\030\004 \001(\010\"|\n\nDMXMes" +
-      "sage\022\014\n\004zone\030\001 \001(\r\022\025\n\runiverse_mask\030\002 \001(" +
-      "\r\022\017\n\007channel\030\003 \001(\r\022\016\n\006repeat\030\004 \001(\r\022\r\n\005le" +
-      "vel\030\005 \003(\r\022\031\n\021fade_time_by_10ms\030\006 \001(\r\"o\n\n" +
-      "RDMMessage\022\025\n\runiverse_mask\030\001 \001(\r\022\013\n\003uid" +
-      "\030\002 \001(\004\022\013\n\003pid\030\003 \001(\r\022\016\n\006getset\030\004 \001(\r\022\022\n\nd" +
-      "atalength\030\005 \001(\r\022\014\n\004data\030\006 \003(\r\"P\n\022RDMResp" +
-      "onseMessage\022\013\n\003uid\030\001 \001(\004\022\013\n\003pid\030\002 \001(\r\022\022\n" +
-      "\ndatalength\030\003 \001(\r\022\014\n\004data\030\004 \003(\r\"\337\002\n\025Spek" +
-      "traSettingMessage\022\014\n\004zone\030\001 \001(\r\022\025\n\rstart" +
-      "_address\030\002 \001(\r\022\035\n\025line_or_universe_mask\030" +
-      "\003 \001(\r\022\020\n\010protocol\030\004 \001(\r\022\030\n\020number_of_lig" +
-      "hts\030\005 \001(\r\022\032\n\022channels_per_light\030\006 \001(\r\022\027\n" +
-      "\017channel_colours\030\007 \003(\r\022?\n\025unscheduled_be" +
-      "haviour\030\010 \001(\0162 .SpektraUnscheduledBehavi" +
-      "ourType\022\027\n\017channel_mapping\030\t \003(\r\022,\n\017line" +
-      "_addressing\030\n \001(\0162\023.LineAddressingType\022\031" +
-      "\n\021zone_scale_factor\030\013 \001(\002\"3\n\032SpektraColo" +
-      "urConfigMessage\022\025\n\rchannel_value\030\001 \003(\r\"\350" +
-      "\003\n\034SpektraSequenceConfigMessage\022\r\n\005index" +
-      "\030\001 \001(\r\022\014\n\004type\030\002 \001(\r\022*\n\ntransition\030\003 \001(\016" +
-      "2\026.SpektraTransitionType\022\031\n\021fade_time_by" +
-      "_10ms\030\004 \001(\r\022\027\n\017time_per_colour\030\005 \001(\r\022\034\n\024" +
-      "time_per_colour_unit\030\006 \001(\r\022\025\n\rtime_per_s" +
-      "tep\030\007 \001(\r\022\032\n\022time_per_step_unit\030\010 \001(\r\022\r\n" +
-      "\005range\030\t \001(\r\022\016\n\006colour\030\n \003(\004\022\032\n\022is_rando" +
-      "mised_type\030\013 \001(\r\022\031\n\021random_types_mask\030\014 " +
-      "\001(\r\022\034\n\024is_reverse_direction\030\r \001(\r\022\032\n\022is_" +
-      "cycle_direction\030\016 \001(\r\022\r\n\005title\030\017 \001(\t\022\037\n\027" +
-      "has_random_colour_order\030\020 \001(\010\022,\n\007colours" +
-      "\030\021 \003(\0132\033.SpektraColourConfigMessage\022\014\n\004a" +
-      "rgs\030\022 \003(\r\"W\n\026SpektraCalendarMessage\022 \n\004t" +
-      "ype\030\001 \001(\0162\022.SpektraTargetType\022\r\n\005index\030\002" +
-      " \001(\r\022\014\n\004days\030\003 \003(\010\"f\n\031SpektraCalendarDay" +
-      "Message\022\021\n\tday_index\030\001 \001(\r\022 \n\004type\030\002 \001(\016" +
-      "2\022.SpektraTargetType\022\024\n\014target_index\030\003 \001" +
-      "(\r\"^\n\036SpektraCalendarOverviewMessage\022\022\n\n" +
-      "day_offset\030\001 \001(\r\022(\n\004days\030\002 \003(\0132\032.Spektra" +
-      "CalendarDayMessage\"w\n\031SpektraThemeConfig" +
-      "Message\022\r\n\005index\030\001 \001(\r\022\016\n\006colour\030\002 \003(\004\022\r" +
-      "\n\005title\030\003 \001(\t\022,\n\007colours\030\004 \003(\0132\033.Spektra" +
-      "ColourConfigMessage\"E\n\022SpektraReadMessag" +
-      "e\022 \n\004type\030\001 \001(\0162\022.SpektraTargetType\022\r\n\005i" +
-      "ndex\030\002 \001(\r\"z\n\025SpektraControlMessage\022 \n\004t" +
-      "ype\030\001 \001(\0162\022.SpektraTargetType\022\014\n\004zone\030\002 " +
-      "\001(\r\022\r\n\005index\030\003 \001(\r\022\"\n\006action\030\004 \001(\0162\022.Spe" +
-      "ktraActionType\"\272\001\n\024DMXTranslationObject\022" +
-      "\017\n\007line_in\030\001 \001(\r\022\020\n\010line_out\030\002 \001(\r\022\031\n\021dm" +
-      "x_start_address\030\003 \001(\r\022\025\n\rchannel_count\030\004" +
-      " \001(\r\022\022\n\ndali_array\030\005 \003(\r\022\026\n\016affected_inp" +
-      "ut\030\007 \001(\r\022\020\n\010blocking\030\010 \001(\010\022\017\n\007enabled\030\t " +
-      "\001(\010\"?\n\026DMXProtocolTranslation\022%\n\006object\030" +
-      "\001 \003(\0132\025.DMXTranslationObject\"%\n\021InputSta" +
-      "teMessage\022\020\n\010use_mask\030\001 \001(\010\"8\n\022InputStat" +
-      "eResponse\022\016\n\006inputs\030\001 \003(\r\022\022\n\ninput_mask\030" +
-      "\002 \001(\r\"@\n\022LevelCacheResponse\022\016\n\006levels\030\001 " +
-      "\003(\r\022\014\n\004line\030\002 \001(\r\022\014\n\004page\030\003 \001(\r\"H\n\022Joine" +
-      "dRoomsMessage\022\r\n\005pairs\030\001 \003(\r\022\016\n\006joined\030\002" +
-      " \001(\010\022\023\n\013clear_joins\030\003 \001(\010\"\323\004\n\034Diagnostic" +
-      "SystemInfoResponse\022\020\n\010firmware\030\001 \001(\t\022\020\n\010" +
-      "hardware\030\002 \001(\t\022\r\n\005error\030\003 \001(\t\022\023\n\013input_c" +
-      "ount\030\004 \001(\r\022\024\n\014output_count\030\005 \001(\r\022\020\n\010ir_c" +
-      "ount\030\006 \001(\r\022\027\n\017list_step_count\030\007 \001(\r\022\022\n\nl" +
-      "ist_count\030\010 \001(\r\022\023\n\013alarm_count\030\t \001(\r\022\024\n\014" +
-      "burnin_count\030\n \001(\r\022\031\n\021spektra_seq_count\030" +
-      "\013 \001(\r\022\036\n\026spektra_seq_step_count\030\014 \001(\r\022\033\n" +
-      "\023spektra_theme_count\030\r \001(\r\022\034\n\024spektra_st" +
-      "atic_count\030\016 \001(\r\022\025\n\rproto_version\030\017 \001(\r\022" +
-      "\022\n\nline_count\030\020 \001(\r\022\030\n\005lines\030\021 \003(\0162\t.Lin" +
-      "eType\022\025\n\rprofile_count\030\022 \001(\r\022\031\n\021preset_c" +
-      "ode_count\030\023 \001(\r\022\030\n\020user_level_count\030\024 \001(" +
-      "\r\022\031\n\021dmx_to_dali_count\030\025 \001(\r\022\032\n\022spektra_" +
-      "zone_count\030\026 \001(\r\022\023\n\013logic_count\030\027 \001(\r\022\030\n" +
-      "\020input_dali_count\030\030 \001(\r\"U\n\021DiagnosticMes" +
-      "sage\022$\n\004type\030\001 \001(\0162\026.DiagnosticMessageTy" +
-      "pe\022\014\n\004page\030\002 \001(\r\022\014\n\004line\030\003 \001(\r\"\362\001\n\035Admin" +
-      "ProjectPropertiesMessage\022\023\n\013device_name\030" +
-      "\002 \001(\t\022\024\n\014project_name\030\003 \001(\t\022\021\n\tlongitude" +
-      "\030\004 \001(\002\022\020\n\010latitude\030\005 \001(\002\022\024\n\014local_offset" +
-      "\030\006 \001(\002\022\030\n\020daylight_savings\030\007 \001(\010\022\036\n\026dayl" +
-      "ight_savings_start\030\010 \001(\r\022\034\n\024daylight_sav" +
-      "ings_end\030\t \001(\r\022\023\n\013poll_active\030\n \001(\010\"\244\001\n\030" +
-      "AdminConfigStatusMessage\022\023\n\013list_status\030" +
-      "\001 \003(\r\022\026\n\016burn_in_status\030\002 \003(\r\022\024\n\014alarm_s" +
-      "tatus\030\003 \001(\r\022.\n\023alarm_time_from_reg\030\004 \001(\013" +
-      "2\021.TimeClockMessage\022\025\n\rsensor_status\030\005 \003" +
-      "(\r\"w\n\035AdminNetworkPropertiesMessage\022\014\n\004D" +
-      "HCP\030\001 \001(\010\022\n\n\002IP\030\002 \001(\t\022\013\n\003MAC\030\003 \001(\t\022\017\n\007ga" +
-      "teway\030\004 \001(\t\022\021\n\tNTPServer\030\005 \001(\t\022\013\n\003NTP\030\006 " +
-      "\001(\010\"7\n\033AdminControllerLinesMessage\022\030\n\005li" +
-      "nes\030\001 \003(\0162\t.LineType\"@\n\030AdminDeviceStatu" +
-      "sMessage\022\023\n\013temperature\030\001 \001(\002\022\017\n\007battery" +
-      "\030\002 \001(\002\"I\n\027AdminSecureLoginMessage\022\020\n\010use" +
-      "rname\030\001 \001(\t\022\016\n\006cnonce\030\002 \001(\t\022\014\n\004hash\030\003 \003(" +
-      "\r\";\n\032AdminDALISensorTypeMessage\022\035\n\004type\030" +
-      "\001 \001(\0162\017.DALISensorType\"\204\004\n\014AdminMessage\022" +
-      "\"\n\007command\030\001 \001(\0162\021.AdminCommandType\022\"\n\006t" +
-      "arget\030\002 \001(\0162\022.AdminPropertyType\022\037\n\004data\030" +
-      "\003 \001(\0132\017.PayloadMessageH\000\022<\n\022network_prop" +
-      "erties\030\004 \001(\0132\036.AdminNetworkPropertiesMes" +
-      "sageH\000\022<\n\022project_properties\030\005 \001(\0132\036.Adm" +
-      "inProjectPropertiesMessageH\000\0228\n\020controll" +
-      "er_lines\030\006 \001(\0132\034.AdminControllerLinesMes" +
-      "sageH\000\0222\n\rdevice_status\030\007 \001(\0132\031.AdminDev" +
-      "iceStatusMessageH\000\0222\n\rconfig_status\030\010 \001(" +
-      "\0132\031.AdminConfigStatusMessageH\000\022)\n\013device" +
-      "_time\030\t \001(\0132\022.UpdateTimeMessageH\000\0227\n\020dal" +
-      "i_sensor_type\030\n \001(\0132\033.AdminDALISensorTyp" +
-      "eMessageH\000B\t\n\007payload\"K\n\013DataMessage\022\022\n\n" +
-      "identifier\030\001 \001(\r\022\013\n\003seq\030\002 \001(\r\022\r\n\005count\030\003" +
-      " \001(\r\022\014\n\004data\030\004 \003(\r\"\332\001\n\023FirmwareMetaMessa" +
-      "ge\022\030\n\020firmware_version\030\001 \001(\r\022\025\n\rfirmware" +
-      "_date\030\002 \001(\r\022\034\n\024firmware_date_upload\030\003 \001(" +
-      "\r\022\031\n\021firmware_checksum\030\004 \001(\r\022\034\n\024firmware" +
-      "_chunk_count\030\005 \001(\r\022\035\n\025firmware_base_addr" +
-      "ess\030\006 \001(\r\022\034\n\024firmware_end_address\030\007 \001(\r\"" +
-      ";\n\026FirmwareControlMessage\022!\n\003cmd\030\001 \001(\0162\024" +
-      ".FirmwareCommandType\"d\n\024FirmwareChunkMes" +
-      "sage\022\030\n\020firmware_address\030\001 \001(\r\022\023\n\013total_" +
-      "bytes\030\002 \001(\r\022\035\n\007payload\030\003 \001(\0132\014.DataMessa" +
-      "ge\"j\n\024SystemLogReadMessage\022\031\n\021log_start_" +
-      "address\030\001 \001(\r\022\026\n\016logs_requested\030\002 \001(\r\022\037\n" +
-      "\004logs\030\003 \003(\0132\021.SystemLogMessage\"\267\002\n\020Syste" +
-      "mLogMessage\022\027\n\017time_since_boot\030\001 \001(\r\022\036\n\004" +
-      "boot\030\002 \001(\0132\016.SystemLogBootH\000\022$\n\007netlink\030" +
-      "\003 \001(\0132\021.SystemLogNetLinkH\000\022\034\n\003ntp\030\004 \001(\0132" +
-      "\r.SystemLogNTPH\000\022$\n\007trigger\030\005 \001(\0132\021.Syst" +
-      "emLogTriggerH\000\022$\n\007spektra\030\006 \001(\0132\021.System" +
-      "LogSpektraH\000\022&\n\010schedule\030\007 \001(\0132\022.SystemL" +
-      "ogScheduleH\000\022(\n\tuserstart\030\010 \001(\0132\023.System" +
-      "LogUserStartH\000B\010\n\006packet\"D\n\rSystemLogBoo" +
-      "t\022$\n\ttimeclock\030\001 \001(\0132\021.TimeClockMessage\022" +
-      "\r\n\005flags\030\002 \001(\r\"%\n\020SystemLogNetLink\022\021\n\tis" +
-      "_linked\030\001 \001(\010\"4\n\014SystemLogNTP\022$\n\ttimeclo" +
-      "ck\030\001 \001(\0132\021.TimeClockMessage\"O\n\020SystemLog" +
-      "Trigger\022 \n\007trigger\030\001 \001(\0132\017.TriggerMessag" +
-      "e\022\031\n\006source\030\002 \001(\0162\t.ReadType\"g\n\020SystemLo" +
-      "gSpektra\022\"\n\006action\030\001 \001(\0162\022.SpektraAction" +
-      "Type\022 \n\004type\030\002 \001(\0162\022.SpektraTargetType\022\r" +
-      "\n\005index\030\003 \001(\r\"a\n\021SystemLogSchedule\022\r\n\005in" +
-      "dex\030\001 \001(\r\022\017\n\007isStart\030\002 \001(\r\022\016\n\006second\030\003 \001" +
-      "(\r\022\016\n\006minute\030\004 \001(\r\022\014\n\004hour\030\005 \001(\r\":\n\022Syst" +
-      "emLogUserStart\022$\n\ttimeclock\030\001 \001(\0132\021.Time" +
-      "ClockMessage\"\323\001\n\031SystemMetaDataReadMessa" +
-      "ge\022\033\n\023input_press_counter\030\001 \003(\r\022\032\n\022list_" +
-      "start_counter\030\002 \003(\r\022\031\n\021schedules_counter" +
-      "\030\003 \003(\r\022\026\n\016screen_on_time\030\004 \001(\r\022\027\n\017screen" +
-      "_dim_time\030\005 \001(\r\022\031\n\021screen_saver_time\030\006 \001" +
-      "(\r\022\026\n\016reboot_counter\030\007 \001(\r\"\233\001\n\014TriggerEv" +
-      "ent\022\032\n\004type\030\001 \001(\0162\014.TriggerType\022\017\n\005level" +
-      "\030\002 \001(\rH\000\022(\n\014dali_command\030\003 \001(\0162\020.DALICom" +
-      "mandTypeH\000\022\026\n\016target_address\030\004 \001(\r\022\021\n\tli" +
-      "ne_mask\030\005 \001(\rB\t\n\007payload\"\321\001\n\014EventMessag" +
-      "e\022\031\n\005event\030\001 \001(\0162\n.EventType\022 \n\007trigger\030" +
-      "\002 \001(\0132\r.TriggerEventH\000\022%\n\006inputs\030\003 \001(\0132\023" +
-      ".InputStateResponseH\000\022\"\n\007payload\030\004 \001(\0132\017" +
-      ".PayloadMessageH\000\022+\n\014joined_rooms\030\005 \001(\0132" +
-      "\023.JoinedRoomsMessageH\000B\014\n\nevent_data\"\344\022\n" +
-      "\rEdidioMessage\022\022\n\nmessage_id\030\001 \001(\r\022\032\n\003ac" +
-      "k\030\002 \001(\0132\013.AckMessageH\000\022$\n\006inputs\030\003 \001(\0132\022" +
-      ".InputMultiMessageH\000\022&\n\007outputs\030\004 \001(\0132\023." +
-      "OutputMultiMessageH\000\022\036\n\003irs\030\005 \001(\0132\017.IRMu" +
-      "ltiMessageH\000\022 \n\006sensor\030\006 \001(\0132\016.SensorMes" +
-      "sageH\000\022\034\n\004list\030\010 \001(\0132\014.ListMessageH\000\022\036\n\005" +
-      "alarm\030\n \001(\0132\r.AlarmMessageH\000\022$\n\006alarms\030\013" +
-      " \001(\0132\022.AlarmMultiMessageH\000\022\'\n\010burn_ins\030\014" +
-      " \001(\0132\023.BurnInMultiMessageH\000\022/\n\016sensor_co" +
-      "mmand\030\r \001(\0132\025.SensorCommandMessageH\000\022/\n\016" +
-      "change_profile\030\016 \001(\0132\025.ChangeProfileMess" +
-      "ageH\000\022,\n\020identify_message\030\017 \001(\0132\020.Identi" +
-      "fyMessageH\000\022)\n\013update_time\030\020 \001(\0132\022.Updat" +
-      "eTimeMessageH\000\022)\n\013read_device\030\021 \001(\0132\022.Re" +
-      "adDeviceMessageH\000\022$\n\014dali_message\030\022 \001(\0132" +
-      "\014.DALIMessageH\000\022(\n\ndali_query\030\023 \001(\0132\022.DA" +
-      "LIQueryResponseH\000\022\"\n\013dmx_message\030\024 \001(\0132\013" +
-      ".DMXMessageH\000\0223\n\020external_trigger\030\025 \001(\0132" +
-      "\027.ExternalTriggerMessageH\000\0222\n\020spektra_se" +
-      "ttings\030\026 \001(\0132\026.SpektraSettingMessageH\000\0229" +
-      "\n\020spektra_sequence\030\027 \001(\0132\035.SpektraSequen" +
-      "ceConfigMessageH\000\0223\n\020spektra_calendar\030\030 " +
-      "\001(\0132\027.SpektraCalendarMessageH\000\0223\n\rspektr" +
-      "a_theme\030\031 \001(\0132\032.SpektraThemeConfigMessag" +
-      "eH\000\022+\n\014spektra_read\030\032 \001(\0132\023.SpektraReadM" +
-      "essageH\000\0221\n\017spektra_control\030\033 \001(\0132\026.Spek" +
-      "traControlMessageH\000\0221\n\016dmx_translator\030\034 " +
-      "\001(\0132\027.DMXProtocolTranslationH\000\022+\n\rinput_" +
-      "request\030\035 \001(\0132\022.InputStateMessageH\000\022-\n\016i" +
-      "nput_response\030\036 \001(\0132\023.InputStateResponse" +
-      "H\000\0224\n\013diag_system\030\037 \001(\0132\035.DiagnosticSyst" +
-      "emInfoResponseH\000\022*\n\014diag_message\030  \001(\0132\022" +
-      ".DiagnosticMessageH\000\022&\n\radmin_message\030! " +
-      "\001(\0132\r.AdminMessageH\000\022\036\n\005event\030\" \001(\0132\r.Ev" +
-      "entMessageH\000\022>\n\026secure_device_settings\030#" +
-      " \001(\0132\034.SecureDeviceSettingsMessageH\000\022,\n\014" +
-      "firmware_new\030$ \001(\0132\024.FirmwareMetaMessage" +
-      "H\000\0223\n\020firmware_control\030% \001(\0132\027.FirmwareC" +
-      "ontrolMessageH\000\022/\n\016firmware_chunk\030& \001(\0132" +
-      "\025.FirmwareChunkMessageH\000\0223\n\024level_cache_" +
-      "response\030\' \001(\0132\023.LevelCacheResponseH\000\022+\n" +
-      "\014joined_rooms\030( \001(\0132\023.JoinedRoomsMessage" +
-      "H\000\022-\n\rlist_extended\030) \001(\0132\024.ExtendedList" +
-      "MessageH\000\022\"\n\013ayt_message\030* \001(\0132\013.AytMess" +
-      "ageH\000\022\"\n\013rdm_message\030+ \001(\0132\013.RDMMessageH" +
-      "\000\0223\n\024rdm_response_message\030, \001(\0132\023.RDMRes" +
-      "ponseMessageH\000\022+\n\rlogic_message\030- \001(\0132\022." +
-      "LogicMultiMessageH\000\0220\n\014secure_login\030. \001(" +
-      "\0132\030.AdminSecureLoginMessageH\000\0223\n\024device_" +
-      "state_message\030/ \001(\0132\023.DeviceStateMessage" +
-      "H\000\022:\n\024spektra_calendar_day\0300 \001(\0132\032.Spekt" +
-      "raCalendarDayMessageH\000\022D\n\031spektra_calend" +
-      "ar_overview\0301 \001(\0132\037.SpektraCalendarOverv" +
-      "iewMessageH\000\022-\n\013inputs_dali\0302 \001(\0132\026.DALI" +
-      "InputMultiMessageH\000\022*\n\tlogs_read\0303 \001(\0132\025" +
-      ".SystemLogReadMessageH\000\0223\n\rmetadata_read" +
-      "\0304 \001(\0132\032.SystemMetaDataReadMessageH\000\0229\n\027" +
-      "dali_addressing_message\0305 \001(\0132\026.DALIAddr" +
-      "essingMessageH\000\0227\n\026dali_remapping_messag" +
-      "e\0306 \001(\0132\025.DALIRemappingMessageH\000B\t\n\007payl" +
-      "oad*\233\001\n\024TriggerOperationType\022\r\n\tMOMENTAR" +
-      "Y\020\000\022\014\n\010LATCHING\020\001\022\024\n\020MOMENTARY_OUTPUT\020\002\022" +
-      "\023\n\017LATCHING_OUTPUT\020\003\022\n\n\006ROTARY\020\004\022\027\n\022MOME" +
-      "NTARY_DISABLED\020\200\001\022\026\n\021LATCHING_DISABLED\020\201" +
-      "\001*\231\013\n\013TriggerType\022\014\n\010DALI_ARC\020\000\022\020\n\014DALI_" +
-      "COMMAND\020\001\022\032\n\026DMX_CHANNELS_SPLIT_LOW\020\002\022\033\n" +
-      "\027DMX_CHANNELS_SPLIT_HIGH\020\003\022$\n DMX_MULTIC" +
-      "AST_CHANNELS_SPLIT_LOW\020\004\022%\n!DMX_MULTICAS" +
-      "T_CHANNELS_SPLIT_HIGH\020\005\022\021\n\rDMX_BROADCAST" +
-      "\020\006\022\t\n\005DIDIO\020\007\022\024\n\020FADE_UP_WITH_MIN\020\010\022\016\n\nL" +
-      "IST_START\020\t\022\031\n\025LIST_START_CONTINUOUS\020\n\022\r" +
-      "\n\tLIST_STOP\020\013\022\025\n\021SPEKTRA_START_SEQ\020\014\022\024\n\020" +
-      "SPEKTRA_STOP_SEQ\020\r\022\021\n\rSPEKTRA_THEME\020\016\022\022\n" +
-      "\016SPEKTRA_STATIC\020\017\022\024\n\020SPEKTRA_SCHEDULE\020\020\022" +
-      "\016\n\nLINK_START\020\021\022\r\n\tLINK_STOP\020\022\022\020\n\014DISABL" +
-      "E_BURN\020\023\022\017\n\013ENABLE_BURN\020\024\022\016\n\nON_OFF_TOG\020" +
-      "\025\022\017\n\013MIN_MAX_TOG\020\026\022\020\n\014ENABLE_INPUT\020\027\022\021\n\r" +
-      "DISABLE_INPUT\020\030\022\024\n\020ENABLE_TOG_INPUT\020\031\022\016\n" +
-      "\nOUTPUT_TOG\020\032\022\017\n\013OUTPUT_HIGH\020\033\022\016\n\nOUTPUT" +
-      "_LOW\020\034\022\017\n\013OUTPUT_TRIG\020\035\022\022\n\016PROFILE_CHANG" +
-      "E\020\036\022\023\n\017FADE_LONG_PRESS\020\037\022\n\n\006SYNCRO\020 \022\017\n\013" +
-      "PRESET_CODE\020!\022\017\n\013CUSTOM_CODE\020\"\022\021\n\rSPEKTR" +
-      "A_SLEEP\020#\022\022\n\016SPEKTRA_RESUME\020$\022\020\n\014DEVICE_" +
-      "RESET\020%\022\017\n\013DEVICE_SAVE\020&\022\030\n\024USER_LEVEL_S" +
-      "TORE_NEW\020\'\022\032\n\026USER_LEVEL_SET_DEFAULT\020(\022\025" +
-      "\n\021USER_LEVEL_RECALL\020)\022\r\n\tROOM_JOIN\020+\022\017\n\013" +
-      "ROOM_UNJOIN\020,\022\023\n\017TYPE8_TC_WARMER\020-\022\023\n\017TY" +
-      "PE8_TC_COOLER\020.\022\023\n\017TYPE8_TC_ACTUAL\020/\022\023\n\017" +
-      "LOGIC_OPERATION\0200\022\020\n\014ALARM_ENABLE\0201\022\021\n\rA" +
-      "LARM_DISABLE\0202\022 \n\034DALI_CONTROL_SENSOR_OV" +
-      "ERRIDE\0203\022$\n DALI_CONTROL_SENSOR_TEMP_DIS" +
-      "ABLE\0204\022\036\n\032DALI_CONTROL_SENSOR_RESUME\0205\022\025" +
-      "\n\021DALI_ARC_OVERRIDE\0206\022\031\n\025DALI_COMMAND_OV" +
-      "ERRIDE\0207\022\035\n\031FADE_UP_WITH_MIN_OVERRIDE\0208\022" +
-      "\027\n\023ON_OFF_TOG_OVERRIDE\0209\022\030\n\024MIN_MAX_TOG_" +
-      "OVERRIDE\020:\022\017\n\013MAX_OFF_TOG\020;\022\030\n\024MAX_OFF_T" +
-      "OG_OVERRIDE\020<\022\034\n\030FADE_LONG_PRESS_OVERRID" +
-      "E\020=\022\036\n\032USER_LEVEL_RECALL_OVERRIDE\020>\022\024\n\020D" +
-      "MX_ZONE_FADE_UP\020?\022\026\n\022DMX_ZONE_FADE_DOWN\020" +
-      "@\022\021\n\rLOGGING_LEVEL\020A\022\017\n\nNO_COMMAND\020\376\001*\276\001" +
-      "\n\010ReadType\022\n\n\006INPUTS\020\000\022\013\n\007OUTPUTS\020\001\022\006\n\002I" +
-      "R\020\002\022\n\n\006SENSOR\020\003\022\010\n\004LIST\020\005\022\n\n\006ALARMS\020\007\022\013\n" +
-      "\007BURN_IN\020\010\022\013\n\007PROJECT\020\t\022\013\n\007NETWORK\020\n\022\n\n\006" +
-      "DEVICE\020\013\022\r\n\tPOLL_DATA\020\014\022\021\n\rLIST_EXTENDED" +
-      "\020\r\022\t\n\005LOGIC\020\016\022\017\n\013DALI_INPUTS\020\017*\214\001\n\017Alarm" +
-      "RepeatType\022\023\n\017ALARM_NO_REPEAT\020\000\022\026\n\022ALARM" +
-      "_REPEAT_DAILY\020\001\022\031\n\025ALARM_REPEAT_WORK_DAY" +
-      "\020\002\022\027\n\023ALARM_REPEAT_WEEKLY\020\003\022\030\n\024ALARM_REP" +
-      "EAT_MONTHLY\020\004*I\n\016AlarmAstroType\022\022\n\016ALARM" +
-      "_NO_ASTRO\020\000\022\021\n\rALARM_SUNRUSE\020\001\022\020\n\014ALARM_" +
-      "SUNSET\020\002*T\n\021SpektraTargetType\022\014\n\010SETTING" +
-      "S\020\000\022\014\n\010SEQUENCE\020\001\022\t\n\005THEME\020\002\022\n\n\006STATIC\020\003" +
-      "\022\014\n\010CALENDAR\020\004*=\n\021SpektraActionType\022\t\n\005S" +
-      "TART\020\000\022\010\n\004STOP\020\001\022\t\n\005PAUSE\020\002\022\010\n\004SAVE\020\003*}\n" +
-      "\037SpektraUnscheduledBehaviourType\022 \n\034RUN_" +
-      "RANDOM_COLOURED_SEQUENCE\020\000\022\022\n\016RUN_SEQUEN",
-      "CE_1\020\001\022\023\n\017RESUME_PREVIOUS\020\002\022\017\n\nDO_NOTHIN" +
-      "G\020\376\001*6\n\022LineAddressingType\022\017\n\013INDEPENDEN" +
-      "T\020\000\022\017\n\013CONSECUTIVE\020\001*\327\002\n\016AckMessageType\022" +
-      "\021\n\rDECODE_FAILED\020\000\022\027\n\023INDEX_OUT_OF_BOUND" +
-      "S\020\001\022\023\n\017UNEXPECTED_TYPE\020\002\022\021\n\rENCODE_FAILE" +
-      "D\020\003\022\020\n\014KEY_MISMATCH\020\004\022\013\n\007SUCCESS\020\005\022\022\n\016IN" +
-      "VALID_PARAMS\020\006\022\026\n\022UNEXPECTED_COMMAND\020\007\022\030" +
-      "\n\024COMMUNICATION_FAILED\020\010\022\031\n\025COMMUNICATIO" +
-      "N_TIMEOUT\020\t\022\021\n\rDATA_TOO_LONG\020\n\022\023\n\017UNEXPE" +
-      "CTED_CASE\020\013\022\016\n\nSLOTS_FULL\020\014\022\020\n\014UNAUTHORI" +
-      "SED\020\r\022\023\n\017PARTIAL_SUCCESS\020\016\022\022\n\016COMMAND_FA" +
-      "ILED\020\017*\323\004\n\020Type8CommandType\022\024\n\020SET_TEMP_" +
-      "X_COORD\020\000\022\024\n\020SET_TEMP_Y_COORD\020\001\022\014\n\010ACTIV" +
-      "ATE\020\002\022\023\n\017X_COORD_STEP_UP\020\003\022\025\n\021X_COORD_ST" +
-      "EP_DOWN\020\004\022\023\n\017Y_COORD_STEP_UP\020\005\022\025\n\021Y_COOR" +
-      "D_STEP_DOWN\020\006\022\037\n\033SET_TEMP_COLOUR_TEMPERA" +
-      "TURE\020\007\022\"\n\036COLOUR_TEMPERATURE_STEP_COOLER" +
-      "\020\010\022\"\n\036COLOUR_TEMPERATURE_STEP_WARMER\020\t\022\033" +
-      "\n\027SET_TEMP_PRI_N_DIMLEVEL\020\n\022\031\n\025SET_TEMP_" +
-      "RGB_DIMLEVEL\020\013\022\031\n\025SET_TEMP_WAF_DIMLEVEL\020" +
-      "\014\022\033\n\027SET_TEMP_RGBWAF_CONTROL\020\r\022\031\n\025COPY_R" +
-      "EPORT_TEMPORARY\020\016\022\022\n\016STORE_TY_PRI_N\020\020\022\030\n" +
-      "\024STORE_XY_COORD_PRI_N\020\021\022\"\n\036STORE_COLOUR_" +
-      "TEMPERATURE_LIMIT\020\022\022\036\n\032STORE_GEAR_FEATUR" +
-      "ES_STATUS\020\023\022\032\n\026ASSIGN_COLOR_LINKED_CH\020\025\022" +
-      "\022\n\016START_AUTO_CAL\020\026\022\027\n\023ENABLE_DEVICE_TYP" +
-      "E8\0200*\230\002\n\016Type8QueryType\022\024\n\020TYPE8_QUERY_N" +
-      "ULL\020\000\022%\n TYPE8_QUERY_GEAR_FEATURES_STATU" +
-      "S\020\367\001\022\036\n\031TYPE8_QUERY_COLOUR_STATUS\020\370\001\022%\n " +
-      "TYPE8_QUERY_COLOUR_TYPE_FEATURES\020\371\001\022\035\n\030T" +
-      "YPE8_QUERY_COLOUR_VALUE\020\372\001\022\037\n\032TYPE8_QUER" +
-      "Y_RGBWAF_CONTROL\020\373\001\022 \n\033TYPE8_QUERY_ASSIG" +
-      "NED_COLOUR\020\374\001\022 \n\033TYPE8_QUERY_EXT_VERSION" +
-      "_NUM\020\376\001*H\n\010LineType\022\016\n\nLINE_EMPTY\020\000\022\r\n\tL" +
-      "INE_DALI\020\001\022\014\n\010LINE_DMX\020\002\022\017\n\013LINE_DMX_IN\020" +
-      "\003*w\n\tEventType\022\014\n\010REGISTER\020\000\022\021\n\rTRIGGER_" +
-      "EVENT\020\001\022\017\n\013INPUT_EVENT\020\002\022\020\n\014SENSOR_EVENT" +
-      "\020\003\022\021\n\rCONTROL_EVENT\020\004\022\023\n\017ROOM_JOIN_EVENT" +
-      "\020\005*\306\t\n\rDALIQueryType\022\023\n\017DALI_QUERY_NULL\020" +
-      "\000\022\026\n\021DALI_QUERY_STATUS\020\220\001\022\027\n\022DALI_QUERY_" +
-      "BALLAST\020\221\001\022\034\n\027DALI_QUERY_LAMP_FAILURE\020\222\001" +
-      "\022\035\n\030DALI_QUERY_LAMP_POWER_ON\020\223\001\022\033\n\026DALI_" +
-      "QUERY_LIMIT_ERROR\020\224\001\022\033\n\026DALI_QUERY_RESET" +
-      "_STATE\020\225\001\022%\n DALI_QUERY_MISSING_SHORT_AD" +
-      "DRESS\020\226\001\022\036\n\031DALI_QUERY_VERSION_NUMBER\020\227\001" +
-      "\022\024\n\017DALI_QUERY_DTR0\020\230\001\022\033\n\026DALI_QUERY_DEV" +
-      "ICE_TYPE\020\231\001\022\034\n\027DALI_QUERY_PHYSICAL_MIN\020\232" +
-      "\001\022\035\n\030DALI_QUERY_POWER_FAILURE\020\233\001\022\024\n\017DALI" +
-      "_QUERY_DTR1\020\234\001\022\024\n\017DALI_QUERY_DTR2\020\235\001\022\036\n\031" +
-      "DALI_QUERY_OPERATING_MODE\020\236\001\022 \n\033DALI_QUE" +
-      "RY_LIGHTSOURCE_TYPE\020\237\001\022\034\n\027DALI_QUERY_ACT" +
-      "UAL_LEVEL\020\240\001\022\031\n\024DALI_QUERY_MAX_LEVEL\020\241\001\022" +
-      "\031\n\024DALI_QUERY_MIN_LEVEL\020\242\001\022\036\n\031DALI_QUERY" +
-      "_POWER_ON_LEVEL\020\243\001\022$\n\037DALI_QUERY_SYSTEM_" +
-      "FAILURE_LEVEL\020\244\001\022!\n\034DALI_QUERY_FADETIME_" +
-      "FADERATE\020\245\001\022*\n%DALI_QUERY_MANUFACTURER_S" +
-      "PECIFIC_MODE\020\246\001\022 \n\033DALI_QUERY_NEXT_DEVIC" +
-      "E_TYPE\020\247\001\022\"\n\035DALI_QUERY_EXTENDED_FADE_TI" +
-      "ME\020\250\001\022$\n\037DALI_QUERY_CONTROL_GEAR_FAILURE" +
-      "\020\252\001\022\035\n\030DALI_QUERY_SCENE_X_LEVEL\020\260\001\022\032\n\025DA" +
-      "LI_QUERY_GROUPS_0_7\020\300\001\022\033\n\026DALI_QUERY_GRO" +
-      "UPS_8_15\020\301\001\022 \n\033DALI_QUERY_RANDOM_ADDRESS" +
-      "_H\020\302\001\022 \n\033DALI_QUERY_RANDOM_ADDRESS_M\020\303\001\022" +
-      " \n\033DALI_QUERY_RANDOM_ADDRESS_L\020\304\001\022\034\n\027DAL" +
-      "I_QUERY_READ_DTR_0_1\020\305\001\022 \n\033DALI_QUERY_AP" +
-      "P_EXT_COMMANDS\020\340\001\022\"\n\035DALI_QUERY_EXT_VERS" +
-      "ION_NUMBER\020\377\001\022\027\n\022DALI_QUERY_COMPARE\020\204\002\022$" +
-      "\n\037DALI_QUERY_VERIFY_SHORT_ADDRESS\020\214\002\022\035\n\030" +
-      "DALI_QUERY_SHORT_ADDRESS\020\215\002*\335\007\n\017DALIComm" +
-      "andType\022\014\n\010DALI_OFF\020\000\022\020\n\014DALI_FADE_UP\020\001\022" +
-      "\022\n\016DALI_FADE_DOWN\020\002\022\020\n\014DALI_STEP_UP\020\003\022\022\n" +
-      "\016DALI_STEP_DOWN\020\004\022\022\n\016DALI_MAX_LEVEL\020\005\022\022\n" +
-      "\016DALI_MIN_LEVEL\020\006\022\026\n\022DALI_STEP_DOWN_OFF\020" +
-      "\007\022\023\n\017DALI_ON_STEP_UP\020\010\022\030\n\024DALI_ENABLE_DA" +
-      "PC_SEQ\020\t\022!\n\035DALI_RECALL_LAST_ACTIVE_LEVE" +
-      "L\020\n\022\027\n\023DALI_RECALL_SCENE_X\020\020\022\016\n\nDALI_RES" +
-      "ET\020 \022 \n\034DALI_STORE_ACTUAL_LEVEL_DTR0\020!\022\035" +
-      "\n\031DALI_SAVE_PERSISTENT_VARS\020\"\022\033\n\027DALI_SE" +
-      "T_OPERATING_MODE\020#\022\032\n\026DALI_RESET_MEMORY_" +
-      "BANK\020$\022\030\n\024DALI_IDENTIFY_DEVICE\020%\022\026\n\022DALI" +
-      "_SET_MAX_LEVEL\020*\022\026\n\022DALI_SET_MIN_LEVEL\020+" +
-      "\022!\n\035DALI_SET_SYSTEM_FAILURE_LEVEL\020,\022\033\n\027D" +
-      "ALI_SET_POWER_ON_LEVEL\020-\022\026\n\022DALI_SET_FAD" +
-      "E_TIME\020.\022\026\n\022DALI_SET_FADE_RATE\020/\022\032\n\026DALI" +
-      "_SET_EXT_FADE_TIME\0200\022\024\n\020DALI_SET_SCENE_X" +
-      "\020@\022\034\n\030DALI_REMOVE_FROM_SCENE_X\020P\022\027\n\023DALI" +
-      "_ADD_TO_GROUP_X\020`\022\034\n\030DALI_REMOVE_FROM_GR" +
-      "OUP_X\020p\022\033\n\026DALI_SET_SHORT_ADDRESS\020\200\001\022\035\n\030" +
-      "DALI_ENABLE_WRITE_MEMORY\020\201\001\022\023\n\016DALI_TERM" +
-      "INATE\020\377\001\022\024\n\017DALI_INITIALISE\020\202\002\022\023\n\016DALI_R" +
-      "ANDOMISE\020\203\002\022\022\n\rDALI_WITHDRAW\020\205\002\022\027\n\022DALI_" +
-      "SEARCH_ADDR_H\020\210\002\022\027\n\022DALI_SEARCH_ADDR_M\020\211" +
-      "\002\022\027\n\022DALI_SEARCH_ADDR_L\020\212\002\022\037\n\032DALI_PROGR" +
-      "AM_SHORT_ADDRESS\020\213\002*\250\001\n\025CustomDALIComman" +
-      "dType\022\022\n\016DALI_ARC_LEVEL\020\000\022\023\n\017DALI_DAPC_L" +
-      "EVEL\020\001\022\030\n\024DALI_GROUP_ARC_LEVEL\020\002\022\030\n\024DALI" +
-      "_BROADCAST_SCENE\020\003\022\027\n\023DALI_SCENE_ON_GROU" +
-      "P\020\004\022\031\n\025DALI_SCENE_ON_ADDRESS\020\005*\206\004\n\021Admin" +
-      "PropertyType\022\017\n\013DEVICE_NAME\020\000\022\020\n\014PROJECT" +
-      "_NAME\020\001\022\r\n\tLONGITUDE\020\002\022\014\n\010LATITUDE\020\003\022\024\n\020" +
-      "LOCAL_UTC_OFFSET\020\004\022\024\n\020DAYLIGHT_SAVINGS\020\005" +
-      "\022\017\n\013POLL_ACTIVE\020\006\022\020\n\014DHCP_ENABLED\020\007\022\013\n\007I" +
-      "P_ADDR\020\010\022\014\n\010MAC_ADDR\020\t\022\016\n\nGATEWAY_IP\020\n\022\026" +
-      "\n\022NETWORK_PROPERTIES\020\013\022\025\n\021SYSTEM_PROPERT" +
-      "IES\020\014\022\024\n\020CONTROLLER_LINES\020\r\022\024\n\020EEPROM_FU" +
-      "LL_CHIP\020\016\022\017\n\013CONFIG_DATA\020\017\022\020\n\014SPEKTRA_DA" +
-      "TA\020\020\022\021\n\rDEVICE_STATUS\020\021\022\021\n\rCONFIG_STATUS" +
-      "\020\022\022\017\n\013DEVICE_TIME\020\023\022\017\n\013NTP_DETAILS\020\024\022\025\n\021" +
-      "TRIDONIC_MSENSORS\020\025\022\022\n\016SECURE_SESSION\020\026\022" +
-      "\t\n\005NONCE\020\027\022\024\n\020DALI_SENSOR_TYPE\020\030\022\021\n\rDEVI" +
-      "CE_REBOOT\020\031\022\022\n\016SYSTEM_LOGGING\020\032*M\n\020Admin" +
-      "CommandType\022\007\n\003SET\020\000\022\007\n\003GET\020\001\022\007\n\003ADD\020\002\022\n" +
-      "\n\006REMOVE\020\003\022\t\n\005RESET\020\004\022\007\n\003RUN\020\005*\265\001\n\016DALIS" +
-      "tatusType\022\014\n\010LAMP_OFF\020\000\022\030\n\024CONTROL_GEAR_" +
-      "FAILURE\020\001\022\020\n\014LAMP_FAILURE\020\002\022\013\n\007LAMP_ON\020\004" +
-      "\022\017\n\013LIMIT_ERROR\020\010\022\020\n\014FADE_RUNNING\020\020\022\017\n\013R" +
-      "ESET_STATE\020 \022\021\n\rSHORT_ADDRESS\020@\022\025\n\020POWER" +
-      "_CYCLE_SEEN\020\200\001*\210\002\n\020DALIRXStatusFlag\022\013\n\007W" +
-      "AITING\020\000\022\023\n\017RECEIVING_FRAME\020\001\022\025\n\021NO_RECE" +
-      "IVED_FRAME\020\002\022\030\n\024RECEIVED_8_BIT_FRAME\020\003\022\031" +
-      "\n\025RECEIVED_16_BIT_FRAME\020\004\022\031\n\025RECEIVED_24" +
-      "_BIT_FRAME\020\005\022\032\n\026RECEIVED_PARTIAL_FRAME\020\006" +
-      "\022\010\n\004IDLE\020\007\022\017\n\013CALIBRATION\020\010\022\030\n\023ERROR_WHI" +
-      "LE_SENDING\020\376\001\022\032\n\025ERROR_WHILE_RECEIVING\020\377" +
-      "\001*\213\001\n\025DiagnosticMessageType\022\032\n\026DIAGNOSTI" +
-      "C_SYSTEM_INFO\020\000\022\033\n\027DIAGNOSTIC_INPUT_STAT" +
-      "US\020\001\022\024\n\020DALI_LEVEL_CACHE\020\002\022\023\n\017DMX_LEVEL_" +
-      "CACHE\020\003\022\016\n\nROOM_JOINS\020\004*z\n\023FirmwareComma" +
-      "ndType\022\014\n\010FW_READY\020\000\022\014\n\010FW_APPLY\020\001\022\r\n\tFW" +
-      "_VERIFY\020\002\022\024\n\020FW_VERIFY_FAILED\020\003\022\025\n\021FW_VE" +
-      "RIFY_SUCCESS\020\004\022\013\n\007FW_READ\020\005*?\n\025SpektraTr" +
-      "ansitionType\022\t\n\005BLEND\020\000\022\010\n\004SNAP\020\001\022\021\n\rFAD" +
-      "E_TO_BLACK\020\002*\234\001\n\tLogicType\022\016\n\nDALI_LEVEL" +
-      "\020\000\022\017\n\013INPUT_STATE\020\001\022\020\n\014LIST_RUNNING\020\002\022\026\n" +
-      "\022OCCUPANCY_DETECTED\020\003\022\017\n\013DMX_PRESENT\020\004\022\017" +
-      "\n\013CAL_WEEKDAY\020\005\022\r\n\tCAL_MONTH\020\006\022\023\n\017ALARM_" +
-      "SCHEDULED\020\007*\200\001\n\023LogicComparisonType\022\r\n\tL" +
-      "ESS_THAN\020\000\022\027\n\023LESS_THAN_OR_EQUALS\020\001\022\n\n\006E" +
-      "QUALS\020\002\022\r\n\tMORE_THAN\020\003\022\027\n\023MORE_THAN_OR_E" +
-      "QUALS\020\004\022\r\n\tNOT_EQUAL\020\005*8\n\016DALISensorType" +
-      "\022\022\n\016TRIDONIC_EDALI\020\000\022\022\n\016STANDARD_EDALI\020\001" +
-      "*G\n\021SensorCommandType\022\016\n\nINITIALISE\020\000\022\010\n" +
-      "\004MUTE\020\001\022\n\n\006UNMUTE\020\002\022\014\n\010OVERRIDE\020\003*b\n\rSys" +
-      "temLogType\022\010\n\004BOOT\020\000\022\014\n\010NET_LINK\020\001\022\007\n\003NT" +
-      "P\020\002\022\013\n\007TRIGGER\020\003\022\013\n\007SPEKTRA\020\004\022\014\n\010SCHEDUL" +
-      "E\020\005\022\010\n\004USER\020\006*N\n\023DALIAddressingError\022\014\n\010" +
-      "NO_ERROR\020\000\022\n\n\006VERIFY\020\001\022\n\n\006SEARCH\020\002\022\021\n\rNO" +
-      "_NEW_DEVICE\020\003*8\n\022DALIAddressingType\022\017\n\013A" +
-      "DDRESS_NEW\020\000\022\021\n\rREADDRESS_ALL\020\001b\006proto3"
+      "g_press\030\006 \001(\0132\017.TriggerMessage\022\020\n\010instan" +
+      "ce\030\007 \001(\r\"L\n\013IOIRMessage\022\r\n\005index\030\001 \001(\r\022\037" +
+      "\n\006action\030\002 \001(\0132\017.TriggerMessage\022\r\n\005codes" +
+      "\030\003 \001(\r\"\313\004\n\rSensorMessage\022\017\n\007profile\030\001 \001(" +
+      "\r\022\r\n\005index\030\002 \001(\r\022\026\n\016sensor_address\030\003 \001(\r" +
+      "\022\030\n\020sensor_dali_line\030\004 \001(\r\022\025\n\raddress_qu" +
+      "ery\030\005 \001(\r\022\031\n\021control_dali_line\030\006 \001(\r\022\025\n\r" +
+      "control_group\030\007 \001(\r\022\026\n\016light_setpoint\030\010 " +
+      "\001(\r\022\030\n\020warning_setpoint\030\t \001(\r\022\023\n\013motion_" +
+      "only\030\n \001(\r\022\026\n\016timeout_values\030\013 \001(\r\022\026\n\016wa" +
+      "rning_values\030\014 \001(\r\022\026\n\016disable_values\030\r \001" +
+      "(\r\022\022\n\ninput_1_pm\030\016 \001(\r\022\022\n\ninput_2_pm\030\017 \001" +
+      "(\r\022\025\n\rsensor_states\030\020 \001(\r\022\026\n\016motion_sens" +
+      "ors\030\021 \001(\r\022\023\n\013lux_sensors\030\022 \001(\r\022\020\n\010off_fl" +
+      "ag\030\023 \001(\r\022\025\n\ris_programmed\030\024 \001(\010\022*\n\021detec" +
+      "tion_trigger\030\025 \001(\0132\017.TriggerMessage\022(\n\017w" +
+      "arning_trigger\030\026 \001(\0132\017.TriggerMessage\022%\n" +
+      "\014idle_trigger\030\027 \001(\0132\017.TriggerMessage\"\\\n\017" +
+      "ListStepMessage\022\022\n\nstep_index\030\001 \001(\r\022\037\n\006a" +
+      "ction\030\002 \001(\0132\017.TriggerMessage\022\024\n\014time_sec" +
+      "onds\030\003 \001(\r\"\274\003\n\014AlarmMessage\022\r\n\005index\030\001 \001" +
+      "(\r\022\017\n\007enabled\030\002 \001(\010\022%\n\nstart_time\030\003 \001(\0132" +
+      "\021.TimeClockMessage\022#\n\010end_time\030\004 \001(\0132\021.T" +
+      "imeClockMessage\022&\n\rstart_trigger\030\005 \001(\0132\017" +
+      ".TriggerMessage\022$\n\013end_trigger\030\006 \001(\0132\017.T" +
+      "riggerMessage\022$\n\013astro_start\030\007 \001(\0162\017.Ala" +
+      "rmAstroType\022\"\n\tastro_end\030\010 \001(\0162\017.AlarmAs" +
+      "troType\022 \n\006repeat\030\t \001(\0162\020.AlarmRepeatTyp" +
+      "e\022\032\n\022repeat_day_bitmask\030\n \001(\r\022\034\n\024repeat_" +
+      "month_bitmask\030\013 \001(\r\022\016\n\006yearly\030\014 \001(\010\022\036\n\026s" +
+      "tart_offset_is_before\030\r \001(\010\022\034\n\024end_offse" +
+      "t_is_before\030\016 \001(\010\"\231\001\n\rBurnInMessage\022\r\n\005i" +
+      "ndex\030\001 \001(\r\022\014\n\004line\030\002 \001(\r\022\017\n\007address\030\003 \001(" +
+      "\r\022\025\n\rquery_address\030\004 \001(\r\022\014\n\004time\030\005 \001(\r\022\021" +
+      "\n\tremaining\030\006 \001(\r\022\"\n\006states\030\007 \001(\0132\022.Burn" +
+      "InBitsMessage\":\n\026ExternalTriggerMessage\022" +
+      " \n\007trigger\030\001 \001(\0132\017.TriggerMessage\"E\n\021Inp" +
+      "utMultiMessage\022\017\n\007profile\030\001 \001(\r\022\037\n\006input" +
+      "s\030\002 \003(\0132\017.IOInputMessage\"H\n\022OutputMultiM" +
+      "essage\022\017\n\007profile\030\001 \001(\r\022!\n\007outputs\030\002 \003(\013" +
+      "2\020.IOOutputMessage\"g\n\025DALIInputMultiMess" +
+      "age\022\017\n\007profile\030\001 \001(\r\022\032\n\022input_index_offs" +
+      "et\030\002 \001(\r\022!\n\006inputs\030\003 \003(\0132\021.DALIInputMess" +
+      "age\"<\n\016IRMultiMessage\022\017\n\007profile\030\001 \001(\r\022\031" +
+      "\n\003irs\030\002 \003(\0132\014.IOIRMessage\"o\n\013ListMessage" +
+      "\022\022\n\nlist_index\030\001 \001(\r\022\036\n\004step\030\002 \003(\0132\020.Lis" +
+      "tStepMessage\022\022\n\nlist_state\030\003 \001(\r\022\030\n\020tota" +
+      "l_step_count\030\004 \001(\r\"d\n\023ExtendedListMessag" +
+      "e\022\022\n\nlist_index\030\001 \001(\r\022\031\n\021step_index_offs" +
+      "et\030\002 \001(\r\022\036\n\004step\030\003 \003(\0132\020.ListStepMessage" +
+      "\"1\n\021AlarmMultiMessage\022\034\n\005alarm\030\001 \003(\0132\r.A" +
+      "larmMessage\"4\n\022BurnInMultiMessage\022\036\n\006bur" +
+      "nin\030\001 \003(\0132\016.BurnInMessage\"\347\001\n\014LogicMessa" +
+      "ge\022\r\n\005index\030\001 \001(\r\022\017\n\007enabled\030\002 \001(\010\022*\n\021co" +
+      "mparison_object\030\003 \001(\0132\017.TriggerMessage\022\030" +
+      "\n\020comparison_value\030\004 \001(\r\022-\n\017comparison_t" +
+      "ype\030\005 \001(\0162\024.LogicComparisonType\022 \n\007actio" +
+      "nA\030\006 \001(\0132\017.TriggerMessage\022 \n\007actionB\030\007 \001" +
+      "(\0132\017.TriggerMessage\"1\n\021LogicMultiMessage" +
+      "\022\034\n\005logic\030\001 \003(\0132\r.LogicMessage\"X\n\024Sensor" +
+      "CommandMessage\022\017\n\007command\030\001 \001(\r\022\r\n\005index" +
+      "\030\002 \001(\r\022 \n\004type\030\003 \001(\0162\022.SensorCommandType" +
+      "\"\'\n\024ChangeProfileMessage\022\017\n\007profile\030\001 \001(" +
+      "\r\"*\n\017IdentifyMessage\022\013\n\003MAC\030\001 \001(\004\022\n\n\002IP\030" +
+      "\002 \001(\004\"4\n\021UpdateTimeMessage\022\037\n\004time\030\001 \001(\013" +
+      "2\021.TimeClockMessage\"e\n\021ReadDeviceMessage" +
+      "\022\017\n\007profile\030\001 \001(\r\022\027\n\004type\030\002 \001(\0162\t.ReadTy" +
+      "pe\022\r\n\005index\030\003 \001(\r\022\027\n\017secondary_index\030\004 \001" +
+      "(\r\".\n\033SecureDeviceSettingsMessage\022\017\n\007pay" +
+      "load\030\001 \001(\t\" \n\021DTRPayloadMessage\022\013\n\003dtr\030\001" +
+      " \003(\r\"\335\003\n\013DALIMessage\022\021\n\tline_mask\030\001 \001(\r\022" +
+      "\017\n\007address\030\002 \001(\r\022\026\n\014frame_25_bit\030\003 \001(\rH\000" +
+      "\022\034\n\022frame_25_bit_reply\030\004 \001(\rH\000\022#\n\007comman" +
+      "d\030\005 \001(\0162\020.DALICommandTypeH\000\0220\n\016custom_co" +
+      "mmand\030\006 \001(\0162\026.CustomDALICommandTypeH\000\022\037\n" +
+      "\005query\030\007 \001(\0162\016.DALIQueryTypeH\000\022\"\n\005type8\030" +
+      "\010 \001(\0162\021.Type8CommandTypeH\000\022\026\n\014frame_16_b" +
+      "it\030\013 \001(\rH\000\022\034\n\022frame_16_bit_reply\030\014 \001(\rH\000" +
+      "\022\026\n\014frame_24_bit\030\r \001(\rH\000\022\034\n\022frame_24_bit" +
+      "_reply\030\016 \001(\rH\000\022&\n\013type8_reply\030\017 \001(\0162\017.Ty" +
+      "pe8QueryTypeH\000\022\r\n\003arg\030\t \001(\rH\001\022!\n\003dtr\030\n \001" +
+      "(\0132\022.DTRPayloadMessageH\001B\010\n\006actionB\010\n\006pa" +
+      "rams\"7\n\025DALIStatusFlagMessage\022\036\n\005flags\030\001" +
+      " \003(\0162\017.DALIStatusType\"\275\001\n\021DALIQueryRespo" +
+      "nse\022.\n\014status_flags\030\001 \001(\0132\026.DALIStatusFl" +
+      "agMessageH\000\022\037\n\004data\030\002 \001(\0132\017.PayloadMessa" +
+      "geH\000\022$\n\tdali_flag\030\003 \001(\0162\021.DALIRXStatusFl" +
+      "ag\022&\n\rresponse_data\030\004 \001(\0132\017.PayloadMessa" +
+      "geB\t\n\007payload\"\252\001\n\025DALIAddressingMessage\022" +
+      "!\n\004type\030\001 \001(\0162\023.DALIAddressingType\022\026\n\016in" +
+      "itialisation\030\002 \001(\010\022\021\n\tline_mask\030\003 \001(\r\022\017\n" +
+      "\007is24Bit\030\004 \001(\010\022#\n\005error\030\005 \001(\0162\024.DALIAddr" +
+      "essingError\022\r\n\005index\030\006 \001(\r\"d\n\024DALIRemapp" +
+      "ingMessage\022\024\n\014from_address\030\001 \001(\r\022\022\n\nto_a" +
+      "ddress\030\002 \001(\r\022\021\n\tline_mask\030\003 \001(\r\022\017\n\007is24B" +
+      "it\030\004 \001(\010\"|\n\nDMXMessage\022\014\n\004zone\030\001 \001(\r\022\025\n\r" +
+      "universe_mask\030\002 \001(\r\022\017\n\007channel\030\003 \001(\r\022\016\n\006" +
+      "repeat\030\004 \001(\r\022\r\n\005level\030\005 \003(\r\022\031\n\021fade_time" +
+      "_by_10ms\030\006 \001(\r\"o\n\nRDMMessage\022\025\n\runiverse" +
+      "_mask\030\001 \001(\r\022\013\n\003uid\030\002 \001(\004\022\013\n\003pid\030\003 \001(\r\022\016\n" +
+      "\006getset\030\004 \001(\r\022\022\n\ndatalength\030\005 \001(\r\022\014\n\004dat" +
+      "a\030\006 \003(\r\"P\n\022RDMResponseMessage\022\013\n\003uid\030\001 \001" +
+      "(\004\022\013\n\003pid\030\002 \001(\r\022\022\n\ndatalength\030\003 \001(\r\022\014\n\004d" +
+      "ata\030\004 \003(\r\",\n\023RDMDiscoveryMessage\022\025\n\runiv" +
+      "erse_mask\030\001 \001(\r\"T\n\030RDMDiscoveryReplyMess" +
+      "age\022\027\n\017discovery_count\030\001 \001(\r\022\013\n\003uid\030\002 \003(" +
+      "\004\022\022\n\nerror_code\030\003 \001(\r\"\337\002\n\025SpektraSetting" +
+      "Message\022\014\n\004zone\030\001 \001(\r\022\025\n\rstart_address\030\002" +
+      " \001(\r\022\035\n\025line_or_universe_mask\030\003 \001(\r\022\020\n\010p" +
+      "rotocol\030\004 \001(\r\022\030\n\020number_of_lights\030\005 \001(\r\022" +
+      "\032\n\022channels_per_light\030\006 \001(\r\022\027\n\017channel_c" +
+      "olours\030\007 \003(\r\022?\n\025unscheduled_behaviour\030\010 " +
+      "\001(\0162 .SpektraUnscheduledBehaviourType\022\027\n" +
+      "\017channel_mapping\030\t \003(\r\022,\n\017line_addressin" +
+      "g\030\n \001(\0162\023.LineAddressingType\022\031\n\021zone_sca" +
+      "le_factor\030\013 \001(\002\"3\n\032SpektraColourConfigMe" +
+      "ssage\022\025\n\rchannel_value\030\001 \003(\r\"\350\003\n\034Spektra" +
+      "SequenceConfigMessage\022\r\n\005index\030\001 \001(\r\022\014\n\004" +
+      "type\030\002 \001(\r\022*\n\ntransition\030\003 \001(\0162\026.Spektra" +
+      "TransitionType\022\031\n\021fade_time_by_10ms\030\004 \001(" +
+      "\r\022\027\n\017time_per_colour\030\005 \001(\r\022\034\n\024time_per_c" +
+      "olour_unit\030\006 \001(\r\022\025\n\rtime_per_step\030\007 \001(\r\022" +
+      "\032\n\022time_per_step_unit\030\010 \001(\r\022\r\n\005range\030\t \001" +
+      "(\r\022\016\n\006colour\030\n \003(\004\022\032\n\022is_randomised_type" +
+      "\030\013 \001(\r\022\031\n\021random_types_mask\030\014 \001(\r\022\034\n\024is_" +
+      "reverse_direction\030\r \001(\r\022\032\n\022is_cycle_dire" +
+      "ction\030\016 \001(\r\022\r\n\005title\030\017 \001(\t\022\037\n\027has_random" +
+      "_colour_order\030\020 \001(\010\022,\n\007colours\030\021 \003(\0132\033.S" +
+      "pektraColourConfigMessage\022\014\n\004args\030\022 \003(\r\"" +
+      "k\n\026SpektraCalendarMessage\022 \n\004type\030\001 \001(\0162" +
+      "\022.SpektraTargetType\022\r\n\005index\030\002 \001(\r\022\014\n\004da" +
+      "ys\030\003 \003(\010\022\022\n\nisOverride\030\004 \001(\010\"z\n\031SpektraC" +
+      "alendarDayMessage\022\021\n\tday_index\030\001 \001(\r\022 \n\004" +
+      "type\030\002 \001(\0162\022.SpektraTargetType\022\024\n\014target" +
+      "_index\030\003 \001(\r\022\022\n\nisOverride\030\004 \001(\010\"^\n\036Spek" +
+      "traCalendarOverviewMessage\022\022\n\nday_offset" +
+      "\030\001 \001(\r\022(\n\004days\030\002 \003(\0132\032.SpektraCalendarDa" +
+      "yMessage\"w\n\031SpektraThemeConfigMessage\022\r\n" +
+      "\005index\030\001 \001(\r\022\016\n\006colour\030\002 \003(\004\022\r\n\005title\030\003 " +
+      "\001(\t\022,\n\007colours\030\004 \003(\0132\033.SpektraColourConf" +
+      "igMessage\"E\n\022SpektraReadMessage\022 \n\004type\030" +
+      "\001 \001(\0162\022.SpektraTargetType\022\r\n\005index\030\002 \001(\r" +
+      "\"z\n\025SpektraControlMessage\022 \n\004type\030\001 \001(\0162" +
+      "\022.SpektraTargetType\022\014\n\004zone\030\002 \001(\r\022\r\n\005ind" +
+      "ex\030\003 \001(\r\022\"\n\006action\030\004 \001(\0162\022.SpektraAction" +
+      "Type\"\325\001\n\017ShowStepMessage\022\022\n\nstep_index\030\001" +
+      " \001(\r\022\024\n\014target_index\030\002 \001(\r\022+\n\013action_typ" +
+      "e\030\003 \001(\0162\026.SpektraStepActionType\022\037\n\027max_r" +
+      "andom_target_index\030\004 \001(\r\022\014\n\004zone\030\005 \001(\r\022\036" +
+      "\n\026max_output_level_limit\030\006 \001(\r\022\034\n\024time_u" +
+      "ntil_next_10ms\030\007 \001(\r\"\314\001\n\022SpektraShowMess" +
+      "age\022\022\n\nshow_index\030\001 \001(\r\022\027\n\017number_of_ste" +
+      "ps\030\002 \001(\r\022\036\n\004step\030\003 \003(\0132\020.ShowStepMessage" +
+      "\022\021\n\tisRunning\030\004 \001(\010\022\020\n\010isLooped\030\005 \001(\010\022\020\n" +
+      "\010isRandom\030\006 \001(\010\022\023\n\013isTemporary\030\007 \001(\010\022\035\n\025" +
+      "activations_remaining\030\010 \001(\r\"k\n\032ExtendedS" +
+      "pektraShowMessage\022\022\n\nshow_index\030\001 \001(\r\022\031\n" +
+      "\021step_index_offset\030\002 \001(\r\022\036\n\004step\030\003 \003(\0132\020" +
+      ".ShowStepMessage\"W\n\031SpektraShowControlMe" +
+      "ssage\022\022\n\nshow_index\030\001 \001(\r\022\024\n\014start_resum" +
+      "e\030\002 \001(\r\022\020\n\010gotoStep\030\003 \001(\r\"\272\001\n\024DMXTransla" +
+      "tionObject\022\017\n\007line_in\030\001 \001(\r\022\020\n\010line_out\030" +
+      "\002 \001(\r\022\031\n\021dmx_start_address\030\003 \001(\r\022\025\n\rchan" +
+      "nel_count\030\004 \001(\r\022\022\n\ndali_array\030\005 \003(\r\022\026\n\016a" +
+      "ffected_input\030\007 \001(\r\022\020\n\010blocking\030\010 \001(\010\022\017\n" +
+      "\007enabled\030\t \001(\010\"?\n\026DMXProtocolTranslation" +
+      "\022%\n\006object\030\001 \003(\0132\025.DMXTranslationObject\"" +
+      "%\n\021InputStateMessage\022\020\n\010use_mask\030\001 \001(\010\"8" +
+      "\n\022InputStateResponse\022\016\n\006inputs\030\001 \003(\r\022\022\n\n" +
+      "input_mask\030\002 \001(\r\"@\n\022LevelCacheResponse\022\016" +
+      "\n\006levels\030\001 \003(\r\022\014\n\004line\030\002 \001(\r\022\014\n\004page\030\003 \001" +
+      "(\r\"\323\004\n\034DiagnosticSystemInfoResponse\022\020\n\010f" +
+      "irmware\030\001 \001(\t\022\020\n\010hardware\030\002 \001(\t\022\r\n\005error" +
+      "\030\003 \001(\t\022\023\n\013input_count\030\004 \001(\r\022\024\n\014output_co" +
+      "unt\030\005 \001(\r\022\020\n\010ir_count\030\006 \001(\r\022\027\n\017list_step" +
+      "_count\030\007 \001(\r\022\022\n\nlist_count\030\010 \001(\r\022\023\n\013alar" +
+      "m_count\030\t \001(\r\022\024\n\014burnin_count\030\n \001(\r\022\031\n\021s" +
+      "pektra_seq_count\030\013 \001(\r\022\036\n\026spektra_seq_st" +
+      "ep_count\030\014 \001(\r\022\033\n\023spektra_theme_count\030\r " +
+      "\001(\r\022\034\n\024spektra_static_count\030\016 \001(\r\022\025\n\rpro" +
+      "to_version\030\017 \001(\r\022\022\n\nline_count\030\020 \001(\r\022\030\n\005" +
+      "lines\030\021 \003(\0162\t.LineType\022\025\n\rprofile_count\030" +
+      "\022 \001(\r\022\031\n\021preset_code_count\030\023 \001(\r\022\030\n\020user" +
+      "_level_count\030\024 \001(\r\022\031\n\021dmx_to_dali_count\030" +
+      "\025 \001(\r\022\032\n\022spektra_zone_count\030\026 \001(\r\022\023\n\013log" +
+      "ic_count\030\027 \001(\r\022\030\n\020input_dali_count\030\030 \001(\r" +
+      "\"U\n\021DiagnosticMessage\022$\n\004type\030\001 \001(\0162\026.Di" +
+      "agnosticMessageType\022\014\n\004page\030\002 \001(\r\022\014\n\004lin" +
+      "e\030\003 \001(\r\"\362\001\n\035AdminProjectPropertiesMessag" +
+      "e\022\023\n\013device_name\030\002 \001(\t\022\024\n\014project_name\030\003" +
+      " \001(\t\022\021\n\tlongitude\030\004 \001(\002\022\020\n\010latitude\030\005 \001(" +
+      "\002\022\024\n\014local_offset\030\006 \001(\002\022\030\n\020daylight_savi" +
+      "ngs\030\007 \001(\010\022\036\n\026daylight_savings_start\030\010 \001(" +
+      "\r\022\034\n\024daylight_savings_end\030\t \001(\r\022\023\n\013poll_" +
+      "active\030\n \001(\010\"\244\001\n\030AdminConfigStatusMessag" +
+      "e\022\023\n\013list_status\030\001 \003(\r\022\026\n\016burn_in_status" +
+      "\030\002 \003(\r\022\024\n\014alarm_status\030\003 \001(\r\022.\n\023alarm_ti" +
+      "me_from_reg\030\004 \001(\0132\021.TimeClockMessage\022\025\n\r" +
+      "sensor_status\030\005 \003(\r\"\326\001\n\035AdminNetworkProp" +
+      "ertiesMessage\022\014\n\004DHCP\030\001 \001(\010\022\n\n\002IP\030\002 \001(\t\022" +
+      "\013\n\003MAC\030\003 \001(\t\022\017\n\007gateway\030\004 \001(\t\022\021\n\tNTPServ" +
+      "er\030\005 \001(\t\022\013\n\003NTP\030\006 \001(\010\022\r\n\005error\030\007 \001(\t\022\022\n\n" +
+      "NTPTimeout\030\010 \001(\r\022\016\n\006subnet\030\t \001(\t\022\023\n\013DNS_" +
+      "Primary\030\n \001(\t\022\025\n\rDNS_Secondary\030\013 \001(\t\"7\n\033" +
+      "AdminControllerLinesMessage\022\030\n\005lines\030\001 \003" +
+      "(\0162\t.LineType\"@\n\030AdminDeviceStatusMessag" +
+      "e\022\023\n\013temperature\030\001 \001(\002\022\017\n\007battery\030\002 \001(\002\"" +
+      "I\n\027AdminSecureLoginMessage\022\020\n\010username\030\001" +
+      " \001(\t\022\016\n\006cnonce\030\002 \001(\t\022\014\n\004hash\030\003 \003(\r\";\n\032Ad" +
+      "minDALISensorTypeMessage\022\035\n\004type\030\001 \001(\0162\017" +
+      ".DALISensorType\"\204\004\n\014AdminMessage\022\"\n\007comm" +
+      "and\030\001 \001(\0162\021.AdminCommandType\022\"\n\006target\030\002" +
+      " \001(\0162\022.AdminPropertyType\022\037\n\004data\030\003 \001(\0132\017" +
+      ".PayloadMessageH\000\022<\n\022network_properties\030" +
+      "\004 \001(\0132\036.AdminNetworkPropertiesMessageH\000\022" +
+      "<\n\022project_properties\030\005 \001(\0132\036.AdminProje" +
+      "ctPropertiesMessageH\000\0228\n\020controller_line" +
+      "s\030\006 \001(\0132\034.AdminControllerLinesMessageH\000\022" +
+      "2\n\rdevice_status\030\007 \001(\0132\031.AdminDeviceStat" +
+      "usMessageH\000\0222\n\rconfig_status\030\010 \001(\0132\031.Adm" +
+      "inConfigStatusMessageH\000\022)\n\013device_time\030\t" +
+      " \001(\0132\022.UpdateTimeMessageH\000\0227\n\020dali_senso" +
+      "r_type\030\n \001(\0132\033.AdminDALISensorTypeMessag" +
+      "eH\000B\t\n\007payload\"K\n\013DataMessage\022\022\n\nidentif" +
+      "ier\030\001 \001(\r\022\013\n\003seq\030\002 \001(\r\022\r\n\005count\030\003 \001(\r\022\014\n" +
+      "\004data\030\004 \003(\r\"\366\001\n\023FirmwareMetaMessage\022\030\n\020f" +
+      "irmware_version\030\001 \001(\r\022\025\n\rfirmware_date\030\002" +
+      " \001(\r\022\034\n\024firmware_date_upload\030\003 \001(\r\022\031\n\021fi" +
+      "rmware_checksum\030\004 \001(\r\022\034\n\024firmware_chunk_" +
+      "count\030\005 \001(\r\022\035\n\025firmware_base_address\030\006 \001" +
+      "(\r\022\034\n\024firmware_end_address\030\007 \001(\r\022\032\n\022firm" +
+      "ware_is_backup\030\010 \001(\010\";\n\026FirmwareControlM" +
+      "essage\022!\n\003cmd\030\001 \001(\0162\024.FirmwareCommandTyp" +
+      "e\"d\n\024FirmwareChunkMessage\022\030\n\020firmware_ad" +
+      "dress\030\001 \001(\r\022\023\n\013total_bytes\030\002 \001(\r\022\035\n\007payl" +
+      "oad\030\003 \001(\0132\014.DataMessage\"j\n\024SystemLogRead" +
+      "Message\022\031\n\021log_start_address\030\001 \001(\r\022\026\n\016lo" +
+      "gs_requested\030\002 \001(\r\022\037\n\004logs\030\003 \003(\0132\021.Syste" +
+      "mLogMessage\"\267\002\n\020SystemLogMessage\022\027\n\017time" +
+      "_since_boot\030\001 \001(\r\022\036\n\004boot\030\002 \001(\0132\016.System" +
+      "LogBootH\000\022$\n\007netlink\030\003 \001(\0132\021.SystemLogNe" +
+      "tLinkH\000\022\034\n\003ntp\030\004 \001(\0132\r.SystemLogNTPH\000\022$\n" +
+      "\007trigger\030\005 \001(\0132\021.SystemLogTriggerH\000\022$\n\007s" +
+      "pektra\030\006 \001(\0132\021.SystemLogSpektraH\000\022&\n\010sch" +
+      "edule\030\007 \001(\0132\022.SystemLogScheduleH\000\022(\n\tuse" +
+      "rstart\030\010 \001(\0132\023.SystemLogUserStartH\000B\010\n\006p" +
+      "acket\"D\n\rSystemLogBoot\022$\n\ttimeclock\030\001 \001(" +
+      "\0132\021.TimeClockMessage\022\r\n\005flags\030\002 \001(\r\"%\n\020S" +
+      "ystemLogNetLink\022\021\n\tis_linked\030\001 \001(\010\"4\n\014Sy" +
+      "stemLogNTP\022$\n\ttimeclock\030\001 \001(\0132\021.TimeCloc" +
+      "kMessage\"O\n\020SystemLogTrigger\022 \n\007trigger\030" +
+      "\001 \001(\0132\017.TriggerMessage\022\031\n\006source\030\002 \001(\0162\t" +
+      ".ReadType\"g\n\020SystemLogSpektra\022\"\n\006action\030" +
+      "\001 \001(\0162\022.SpektraActionType\022 \n\004type\030\002 \001(\0162" +
+      "\022.SpektraTargetType\022\r\n\005index\030\003 \001(\r\"a\n\021Sy" +
+      "stemLogSchedule\022\r\n\005index\030\001 \001(\r\022\017\n\007isStar" +
+      "t\030\002 \001(\r\022\016\n\006second\030\003 \001(\r\022\016\n\006minute\030\004 \001(\r\022" +
+      "\014\n\004hour\030\005 \001(\r\":\n\022SystemLogUserStart\022$\n\tt" +
+      "imeclock\030\001 \001(\0132\021.TimeClockMessage\"\323\001\n\031Sy" +
+      "stemMetaDataReadMessage\022\033\n\023input_press_c" +
+      "ounter\030\001 \003(\r\022\032\n\022list_start_counter\030\002 \003(\r" +
+      "\022\031\n\021schedules_counter\030\003 \003(\r\022\026\n\016screen_on" +
+      "_time\030\004 \001(\r\022\027\n\017screen_dim_time\030\005 \001(\r\022\031\n\021" +
+      "screen_saver_time\030\006 \001(\r\022\026\n\016reboot_counte" +
+      "r\030\007 \001(\r\"\233\001\n\014TriggerEvent\022\032\n\004type\030\001 \001(\0162\014" +
+      ".TriggerType\022\017\n\005level\030\002 \001(\rH\000\022(\n\014dali_co" +
+      "mmand\030\003 \001(\0162\020.DALICommandTypeH\000\022\026\n\016targe" +
+      "t_address\030\004 \001(\r\022\021\n\tline_mask\030\005 \001(\rB\t\n\007pa" +
+      "yload\"m\n\020DALI24InputEvent\022\r\n\005index\030\001 \001(\r" +
+      "\022\014\n\004line\030\002 \001(\r\022\017\n\007address\030\003 \001(\r\022\036\n\004type\030" +
+      "\004 \001(\0162\020.DALI24InputType\022\013\n\003arg\030\005 \001(\r\"\252\001\n" +
+      "\017DALISensorEvent\022\r\n\005index\030\001 \001(\r\022\014\n\004line\030" +
+      "\002 \001(\r\022\017\n\007address\030\003 \001(\r\022-\n\014motion_state\030\004" +
+      " \001(\0162\027.DALIMotionSensorStates\022\'\n\tlux_sta" +
+      "te\030\005 \001(\0162\024.DALILuxSensorStates\022\021\n\tlux_le" +
+      "vel\030\006 \001(\r\"\364\001\n\014EventMessage\022\031\n\005event\030\001 \001(" +
+      "\0162\n.EventType\022 \n\007trigger\030\002 \001(\0132\r.Trigger" +
+      "EventH\000\022%\n\006inputs\030\003 \001(\0132\023.InputStateResp" +
+      "onseH\000\022\"\n\007payload\030\004 \001(\0132\017.PayloadMessage" +
+      "H\000\022\"\n\006sensor\030\006 \001(\0132\020.DALISensorEventH\000\022*" +
+      "\n\rdali_24_input\030\007 \001(\0132\021.DALI24InputEvent" +
+      "H\000B\014\n\nevent_data\"\337\024\n\rEdidioMessage\022\022\n\nme" +
+      "ssage_id\030\001 \001(\r\022\032\n\003ack\030\002 \001(\0132\013.AckMessage" +
+      "H\000\022$\n\006inputs\030\003 \001(\0132\022.InputMultiMessageH\000" +
+      "\022&\n\007outputs\030\004 \001(\0132\023.OutputMultiMessageH\000" +
+      "\022\036\n\003irs\030\005 \001(\0132\017.IRMultiMessageH\000\022 \n\006sens" +
+      "or\030\006 \001(\0132\016.SensorMessageH\000\022\034\n\004list\030\010 \001(\013" +
+      "2\014.ListMessageH\000\022\036\n\005alarm\030\n \001(\0132\r.AlarmM" +
+      "essageH\000\022$\n\006alarms\030\013 \001(\0132\022.AlarmMultiMes" +
+      "sageH\000\022\'\n\010burn_ins\030\014 \001(\0132\023.BurnInMultiMe" +
+      "ssageH\000\022/\n\016sensor_command\030\r \001(\0132\025.Sensor" +
+      "CommandMessageH\000\022/\n\016change_profile\030\016 \001(\013" +
+      "2\025.ChangeProfileMessageH\000\022,\n\020identify_me" +
+      "ssage\030\017 \001(\0132\020.IdentifyMessageH\000\022)\n\013updat" +
+      "e_time\030\020 \001(\0132\022.UpdateTimeMessageH\000\022)\n\013re" +
+      "ad_device\030\021 \001(\0132\022.ReadDeviceMessageH\000\022$\n" +
+      "\014dali_message\030\022 \001(\0132\014.DALIMessageH\000\022(\n\nd" +
+      "ali_query\030\023 \001(\0132\022.DALIQueryResponseH\000\022\"\n" +
+      "\013dmx_message\030\024 \001(\0132\013.DMXMessageH\000\0223\n\020ext" +
+      "ernal_trigger\030\025 \001(\0132\027.ExternalTriggerMes" +
+      "sageH\000\0222\n\020spektra_settings\030\026 \001(\0132\026.Spekt" +
+      "raSettingMessageH\000\0229\n\020spektra_sequence\030\027" +
+      " \001(\0132\035.SpektraSequenceConfigMessageH\000\0223\n" +
+      "\020spektra_calendar\030\030 \001(\0132\027.SpektraCalenda" +
+      "rMessageH\000\0223\n\rspektra_theme\030\031 \001(\0132\032.Spek" +
+      "traThemeConfigMessageH\000\022+\n\014spektra_read\030" +
+      "\032 \001(\0132\023.SpektraReadMessageH\000\0221\n\017spektra_" +
+      "control\030\033 \001(\0132\026.SpektraControlMessageH\000\022" +
+      "1\n\016dmx_translator\030\034 \001(\0132\027.DMXProtocolTra" +
+      "nslationH\000\022+\n\rinput_request\030\035 \001(\0132\022.Inpu" +
+      "tStateMessageH\000\022-\n\016input_response\030\036 \001(\0132" +
+      "\023.InputStateResponseH\000\0224\n\013diag_system\030\037 " +
+      "\001(\0132\035.DiagnosticSystemInfoResponseH\000\022*\n\014" +
+      "diag_message\030  \001(\0132\022.DiagnosticMessageH\000" +
+      "\022&\n\radmin_message\030! \001(\0132\r.AdminMessageH\000" +
+      "\022\036\n\005event\030\" \001(\0132\r.EventMessageH\000\022>\n\026secu" +
+      "re_device_settings\030# \001(\0132\034.SecureDeviceS" +
+      "ettingsMessageH\000\022,\n\014firmware_new\030$ \001(\0132\024" +
+      ".FirmwareMetaMessageH\000\0223\n\020firmware_contr" +
+      "ol\030% \001(\0132\027.FirmwareControlMessageH\000\022/\n\016f" +
+      "irmware_chunk\030& \001(\0132\025.FirmwareChunkMessa" +
+      "geH\000\0223\n\024level_cache_response\030\' \001(\0132\023.Lev" +
+      "elCacheResponseH\000\022-\n\rlist_extended\030) \001(\013" +
+      "2\024.ExtendedListMessageH\000\022\"\n\013ayt_message\030" +
+      "* \001(\0132\013.AytMessageH\000\022\"\n\013rdm_message\030+ \001(" +
+      "\0132\013.RDMMessageH\000\0223\n\024rdm_response_message" +
+      "\030, \001(\0132\023.RDMResponseMessageH\000\022+\n\rlogic_m" +
+      "essage\030- \001(\0132\022.LogicMultiMessageH\000\0220\n\014se" +
+      "cure_login\030. \001(\0132\030.AdminSecureLoginMessa" +
+      "geH\000\0223\n\024device_state_message\030/ \001(\0132\023.Dev" +
+      "iceStateMessageH\000\022:\n\024spektra_calendar_da" +
+      "y\0300 \001(\0132\032.SpektraCalendarDayMessageH\000\022D\n" +
+      "\031spektra_calendar_overview\0301 \001(\0132\037.Spekt" +
+      "raCalendarOverviewMessageH\000\022-\n\013inputs_da" +
+      "li\0302 \001(\0132\026.DALIInputMultiMessageH\000\022*\n\tlo" +
+      "gs_read\0303 \001(\0132\025.SystemLogReadMessageH\000\0223" +
+      "\n\rmetadata_read\0304 \001(\0132\032.SystemMetaDataRe" +
+      "adMessageH\000\0229\n\027dali_addressing_message\0305" +
+      " \001(\0132\026.DALIAddressingMessageH\000\0227\n\026dali_r" +
+      "emapping_message\0306 \001(\0132\025.DALIRemappingMe" +
+      "ssageH\000\022B\n\034spektra_show_control_message\030" +
+      "7 \001(\0132\032.SpektraShowControlMessageH\000\0223\n\024s" +
+      "pektra_show_message\0308 \001(\0132\023.SpektraShowM" +
+      "essageH\000\022D\n\035extended_spektra_show_messag" +
+      "e\0309 \001(\0132\033.ExtendedSpektraShowMessageH\000\022-" +
+      "\n\rrdm_discovery\030: \001(\0132\024.RDMDiscoveryMess" +
+      "ageH\000\0228\n\023rdm_discovery_reply\030; \001(\0132\031.RDM" +
+      "DiscoveryReplyMessageH\000B\t\n\007payload*\233\001\n\024T" +
+      "riggerOperationType\022\r\n\tMOMENTARY\020\000\022\014\n\010LA" +
+      "TCHING\020\001\022\024\n\020MOMENTARY_OUTPUT\020\002\022\023\n\017LATCHI" +
+      "NG_OUTPUT\020\003\022\n\n\006ROTARY\020\004\022\027\n\022MOMENTARY_DIS" +
+      "ABLED\020\200\001\022\026\n\021LATCHING_DISABLED\020\201\001*\263\013\n\013Tri" +
+      "ggerType\022\014\n\010DALI_ARC\020\000\022\020\n\014DALI_COMMAND\020\001" +
+      "\022\032\n\026DMX_CHANNELS_SPLIT_LOW\020\002\022\033\n\027DMX_CHAN" +
+      "NELS_SPLIT_HIGH\020\003\022$\n DMX_MULTICAST_CHANN" +
+      "ELS_SPLIT_LOW\020\004\022%\n!DMX_MULTICAST_CHANNEL" +
+      "S_SPLIT_HIGH\020\005\022\021\n\rDMX_BROADCAST\020\006\022\t\n\005DID" +
+      "IO\020\007\022\024\n\020FADE_UP_WITH_MIN\020\010\022\016\n\nLIST_START" +
+      "\020\t\022\031\n\025LIST_START_CONTINUOUS\020\n\022\r\n\tLIST_ST" +
+      "OP\020\013\022\025\n\021SPEKTRA_START_SEQ\020\014\022\024\n\020SPEKTRA_S" +
+      "TOP_SEQ\020\r\022\021\n\rSPEKTRA_THEME\020\016\022\022\n\016SPEKTRA_" +
+      "STATIC\020\017\022\024\n\020SPEKTRA_SCHEDULE\020\020\022\016\n\nLINK_S" +
+      "TART\020\021\022\r\n\tLINK_STOP\020\022\022\020\n\014DISABLE_BURN\020\023\022" +
+      "\017\n\013ENABLE_BURN\020\024\022\016\n\nON_OFF_TOG\020\025\022\017\n\013MIN_" +
+      "MAX_TOG\020\026\022\020\n\014ENABLE_INPUT\020\027\022\021\n\rDISABLE_I" +
+      "NPUT\020\030\022\024\n\020ENABLE_TOG_INPUT\020\031\022\016\n\nOUTPUT_T" +
+      "OG\020\032\022\017\n\013OUTPUT_HIGH\020\033\022\016\n\nOUTPUT_LOW\020\034\022\017\n",
+      "\013OUTPUT_TRIG\020\035\022\022\n\016PROFILE_CHANGE\020\036\022\023\n\017FA" +
+      "DE_LONG_PRESS\020\037\022\n\n\006SYNCRO\020 \022\017\n\013PRESET_CO" +
+      "DE\020!\022\017\n\013CUSTOM_CODE\020\"\022\021\n\rSPEKTRA_SLEEP\020#" +
+      "\022\022\n\016SPEKTRA_RESUME\020$\022\020\n\014DEVICE_RESET\020%\022\017" +
+      "\n\013DEVICE_SAVE\020&\022\030\n\024USER_LEVEL_STORE_NEW\020" +
+      "\'\022\032\n\026USER_LEVEL_SET_DEFAULT\020(\022\025\n\021USER_LE" +
+      "VEL_RECALL\020)\022\r\n\tROOM_JOIN\020+\022\017\n\013ROOM_UNJO" +
+      "IN\020,\022\023\n\017TYPE8_TC_WARMER\020-\022\023\n\017TYPE8_TC_CO" +
+      "OLER\020.\022\023\n\017TYPE8_TC_ACTUAL\020/\022\023\n\017LOGIC_OPE" +
+      "RATION\0200\022\020\n\014ALARM_ENABLE\0201\022\021\n\rALARM_DISA" +
+      "BLE\0202\022 \n\034DALI_CONTROL_SENSOR_OVERRIDE\0203\022" +
+      "$\n DALI_CONTROL_SENSOR_TEMP_DISABLE\0204\022\036\n" +
+      "\032DALI_CONTROL_SENSOR_RESUME\0205\022\025\n\021DALI_AR" +
+      "C_OVERRIDE\0206\022\031\n\025DALI_COMMAND_OVERRIDE\0207\022" +
+      "\035\n\031FADE_UP_WITH_MIN_OVERRIDE\0208\022\027\n\023ON_OFF" +
+      "_TOG_OVERRIDE\0209\022\030\n\024MIN_MAX_TOG_OVERRIDE\020" +
+      ":\022\017\n\013MAX_OFF_TOG\020;\022\030\n\024MAX_OFF_TOG_OVERRI" +
+      "DE\020<\022\034\n\030FADE_LONG_PRESS_OVERRIDE\020=\022\036\n\032US" +
+      "ER_LEVEL_RECALL_OVERRIDE\020>\022\024\n\020DMX_ZONE_F" +
+      "ADE_UP\020?\022\026\n\022DMX_ZONE_FADE_DOWN\020@\022\021\n\rLOGG" +
+      "ING_LEVEL\020A\022\030\n\024SPEKTRA_SHOW_CONTROL\020B\022\017\n" +
+      "\nNO_COMMAND\020\376\001*\353\001\n\010ReadType\022\n\n\006INPUTS\020\000\022" +
+      "\013\n\007OUTPUTS\020\001\022\006\n\002IR\020\002\022\n\n\006SENSOR\020\003\022\010\n\004LIST" +
+      "\020\005\022\n\n\006ALARMS\020\007\022\013\n\007BURN_IN\020\010\022\013\n\007PROJECT\020\t" +
+      "\022\013\n\007NETWORK\020\n\022\n\n\006DEVICE\020\013\022\r\n\tPOLL_DATA\020\014" +
+      "\022\021\n\rLIST_EXTENDED\020\r\022\t\n\005LOGIC\020\016\022\017\n\013DALI_I" +
+      "NPUTS\020\017\022\020\n\014SPEKTRA_SHOW\020\020\022\031\n\025SPEKTRA_SHO" +
+      "W_EXTENDED\020\021*\214\001\n\017AlarmRepeatType\022\023\n\017ALAR" +
+      "M_NO_REPEAT\020\000\022\026\n\022ALARM_REPEAT_DAILY\020\001\022\031\n" +
+      "\025ALARM_REPEAT_WORK_DAY\020\002\022\027\n\023ALARM_REPEAT" +
+      "_WEEKLY\020\003\022\030\n\024ALARM_REPEAT_MONTHLY\020\004*I\n\016A" +
+      "larmAstroType\022\022\n\016ALARM_NO_ASTRO\020\000\022\021\n\rALA" +
+      "RM_SUNRUSE\020\001\022\020\n\014ALARM_SUNSET\020\002*^\n\021Spektr" +
+      "aTargetType\022\014\n\010SETTINGS\020\000\022\014\n\010SEQUENCE\020\001\022" +
+      "\t\n\005THEME\020\002\022\n\n\006STATIC\020\003\022\014\n\010CALENDAR\020\004\022\010\n\004" +
+      "SHOW\020\005*=\n\021SpektraActionType\022\t\n\005START\020\000\022\010" +
+      "\n\004STOP\020\001\022\t\n\005PAUSE\020\002\022\010\n\004SAVE\020\003*p\n\025Spektra" +
+      "StepActionType\022\020\n\014RUN_SEQUENCE\020\000\022\016\n\nSHOW" +
+      "_THEME\020\001\022\016\n\nSTART_LIST\020\002\022\022\n\016PAUSE_PREVIO" +
+      "US\020\003\022\021\n\rSTOP_PREVIOUS\020\004*}\n\037SpektraUnsche" +
+      "duledBehaviourType\022 \n\034RUN_RANDOM_COLOURE" +
+      "D_SEQUENCE\020\000\022\022\n\016RUN_SEQUENCE_1\020\001\022\023\n\017RESU" +
+      "ME_PREVIOUS\020\002\022\017\n\nDO_NOTHING\020\376\001*6\n\022LineAd" +
+      "dressingType\022\017\n\013INDEPENDENT\020\000\022\017\n\013CONSECU" +
+      "TIVE\020\001*\347\002\n\016AckMessageType\022\021\n\rDECODE_FAIL" +
+      "ED\020\000\022\027\n\023INDEX_OUT_OF_BOUNDS\020\001\022\023\n\017UNEXPEC" +
+      "TED_TYPE\020\002\022\021\n\rENCODE_FAILED\020\003\022\020\n\014KEY_MIS" +
+      "MATCH\020\004\022\013\n\007SUCCESS\020\005\022\022\n\016INVALID_PARAMS\020\006" +
+      "\022\026\n\022UNEXPECTED_COMMAND\020\007\022\030\n\024COMMUNICATIO" +
+      "N_FAILED\020\010\022\031\n\025COMMUNICATION_TIMEOUT\020\t\022\021\n" +
+      "\rDATA_TOO_LONG\020\n\022\023\n\017UNEXPECTED_CASE\020\013\022\016\n" +
+      "\nSLOTS_FULL\020\014\022\020\n\014UNAUTHORISED\020\r\022\023\n\017PARTI" +
+      "AL_SUCCESS\020\016\022\022\n\016COMMAND_FAILED\020\017\022\016\n\nDEPR" +
+      "ECATED\020\020*\323\004\n\020Type8CommandType\022\024\n\020SET_TEM" +
+      "P_X_COORD\020\000\022\024\n\020SET_TEMP_Y_COORD\020\001\022\014\n\010ACT" +
+      "IVATE\020\002\022\023\n\017X_COORD_STEP_UP\020\003\022\025\n\021X_COORD_" +
+      "STEP_DOWN\020\004\022\023\n\017Y_COORD_STEP_UP\020\005\022\025\n\021Y_CO" +
+      "ORD_STEP_DOWN\020\006\022\037\n\033SET_TEMP_COLOUR_TEMPE" +
+      "RATURE\020\007\022\"\n\036COLOUR_TEMPERATURE_STEP_COOL" +
+      "ER\020\010\022\"\n\036COLOUR_TEMPERATURE_STEP_WARMER\020\t" +
+      "\022\033\n\027SET_TEMP_PRI_N_DIMLEVEL\020\n\022\031\n\025SET_TEM" +
+      "P_RGB_DIMLEVEL\020\013\022\031\n\025SET_TEMP_WAF_DIMLEVE" +
+      "L\020\014\022\033\n\027SET_TEMP_RGBWAF_CONTROL\020\r\022\031\n\025COPY" +
+      "_REPORT_TEMPORARY\020\016\022\022\n\016STORE_TY_PRI_N\020\020\022" +
+      "\030\n\024STORE_XY_COORD_PRI_N\020\021\022\"\n\036STORE_COLOU" +
+      "R_TEMPERATURE_LIMIT\020\022\022\036\n\032STORE_GEAR_FEAT" +
+      "URES_STATUS\020\023\022\032\n\026ASSIGN_COLOR_LINKED_CH\020" +
+      "\025\022\022\n\016START_AUTO_CAL\020\026\022\027\n\023ENABLE_DEVICE_T" +
+      "YPE8\0200*\230\002\n\016Type8QueryType\022\024\n\020TYPE8_QUERY" +
+      "_NULL\020\000\022%\n TYPE8_QUERY_GEAR_FEATURES_STA" +
+      "TUS\020\367\001\022\036\n\031TYPE8_QUERY_COLOUR_STATUS\020\370\001\022%" +
+      "\n TYPE8_QUERY_COLOUR_TYPE_FEATURES\020\371\001\022\035\n" +
+      "\030TYPE8_QUERY_COLOUR_VALUE\020\372\001\022\037\n\032TYPE8_QU" +
+      "ERY_RGBWAF_CONTROL\020\373\001\022 \n\033TYPE8_QUERY_ASS" +
+      "IGNED_COLOUR\020\374\001\022 \n\033TYPE8_QUERY_EXT_VERSI" +
+      "ON_NUM\020\376\001*W\n\010LineType\022\016\n\nLINE_EMPTY\020\000\022\r\n" +
+      "\tLINE_DALI\020\001\022\014\n\010LINE_DMX\020\002\022\017\n\013LINE_DMX_I" +
+      "N\020\003\022\r\n\tLINE_AUTO\020\004*\220\001\n\tEventType\022\014\n\010REGI" +
+      "STER\020\000\022\021\n\rTRIGGER_EVENT\020\001\022\017\n\013INPUT_EVENT" +
+      "\020\002\022\020\n\014SENSOR_EVENT\020\003\022\021\n\rCONTROL_EVENT\020\004\022" +
+      "\023\n\017ROOM_JOIN_EVENT\020\005\022\027\n\023DALI_24_INPUT_EV" +
+      "ENT\020\006*\306\t\n\rDALIQueryType\022\023\n\017DALI_QUERY_NU" +
+      "LL\020\000\022\026\n\021DALI_QUERY_STATUS\020\220\001\022\027\n\022DALI_QUE" +
+      "RY_BALLAST\020\221\001\022\034\n\027DALI_QUERY_LAMP_FAILURE" +
+      "\020\222\001\022\035\n\030DALI_QUERY_LAMP_POWER_ON\020\223\001\022\033\n\026DA" +
+      "LI_QUERY_LIMIT_ERROR\020\224\001\022\033\n\026DALI_QUERY_RE" +
+      "SET_STATE\020\225\001\022%\n DALI_QUERY_MISSING_SHORT" +
+      "_ADDRESS\020\226\001\022\036\n\031DALI_QUERY_VERSION_NUMBER" +
+      "\020\227\001\022\024\n\017DALI_QUERY_DTR0\020\230\001\022\033\n\026DALI_QUERY_" +
+      "DEVICE_TYPE\020\231\001\022\034\n\027DALI_QUERY_PHYSICAL_MI" +
+      "N\020\232\001\022\035\n\030DALI_QUERY_POWER_FAILURE\020\233\001\022\024\n\017D" +
+      "ALI_QUERY_DTR1\020\234\001\022\024\n\017DALI_QUERY_DTR2\020\235\001\022" +
+      "\036\n\031DALI_QUERY_OPERATING_MODE\020\236\001\022 \n\033DALI_" +
+      "QUERY_LIGHTSOURCE_TYPE\020\237\001\022\034\n\027DALI_QUERY_" +
+      "ACTUAL_LEVEL\020\240\001\022\031\n\024DALI_QUERY_MAX_LEVEL\020" +
+      "\241\001\022\031\n\024DALI_QUERY_MIN_LEVEL\020\242\001\022\036\n\031DALI_QU" +
+      "ERY_POWER_ON_LEVEL\020\243\001\022$\n\037DALI_QUERY_SYST" +
+      "EM_FAILURE_LEVEL\020\244\001\022!\n\034DALI_QUERY_FADETI" +
+      "ME_FADERATE\020\245\001\022*\n%DALI_QUERY_MANUFACTURE" +
+      "R_SPECIFIC_MODE\020\246\001\022 \n\033DALI_QUERY_NEXT_DE" +
+      "VICE_TYPE\020\247\001\022\"\n\035DALI_QUERY_EXTENDED_FADE" +
+      "_TIME\020\250\001\022$\n\037DALI_QUERY_CONTROL_GEAR_FAIL" +
+      "URE\020\252\001\022\035\n\030DALI_QUERY_SCENE_X_LEVEL\020\260\001\022\032\n" +
+      "\025DALI_QUERY_GROUPS_0_7\020\300\001\022\033\n\026DALI_QUERY_" +
+      "GROUPS_8_15\020\301\001\022 \n\033DALI_QUERY_RANDOM_ADDR" +
+      "ESS_H\020\302\001\022 \n\033DALI_QUERY_RANDOM_ADDRESS_M\020" +
+      "\303\001\022 \n\033DALI_QUERY_RANDOM_ADDRESS_L\020\304\001\022\034\n\027" +
+      "DALI_QUERY_READ_DTR_0_1\020\305\001\022 \n\033DALI_QUERY" +
+      "_APP_EXT_COMMANDS\020\340\001\022\"\n\035DALI_QUERY_EXT_V" +
+      "ERSION_NUMBER\020\377\001\022\027\n\022DALI_QUERY_COMPARE\020\204" +
+      "\002\022$\n\037DALI_QUERY_VERIFY_SHORT_ADDRESS\020\214\002\022" +
+      "\035\n\030DALI_QUERY_SHORT_ADDRESS\020\215\002*\335\007\n\017DALIC" +
+      "ommandType\022\014\n\010DALI_OFF\020\000\022\020\n\014DALI_FADE_UP" +
+      "\020\001\022\022\n\016DALI_FADE_DOWN\020\002\022\020\n\014DALI_STEP_UP\020\003" +
+      "\022\022\n\016DALI_STEP_DOWN\020\004\022\022\n\016DALI_MAX_LEVEL\020\005" +
+      "\022\022\n\016DALI_MIN_LEVEL\020\006\022\026\n\022DALI_STEP_DOWN_O" +
+      "FF\020\007\022\023\n\017DALI_ON_STEP_UP\020\010\022\030\n\024DALI_ENABLE" +
+      "_DAPC_SEQ\020\t\022!\n\035DALI_RECALL_LAST_ACTIVE_L" +
+      "EVEL\020\n\022\027\n\023DALI_RECALL_SCENE_X\020\020\022\016\n\nDALI_" +
+      "RESET\020 \022 \n\034DALI_STORE_ACTUAL_LEVEL_DTR0\020" +
+      "!\022\035\n\031DALI_SAVE_PERSISTENT_VARS\020\"\022\033\n\027DALI" +
+      "_SET_OPERATING_MODE\020#\022\032\n\026DALI_RESET_MEMO" +
+      "RY_BANK\020$\022\030\n\024DALI_IDENTIFY_DEVICE\020%\022\026\n\022D" +
+      "ALI_SET_MAX_LEVEL\020*\022\026\n\022DALI_SET_MIN_LEVE" +
+      "L\020+\022!\n\035DALI_SET_SYSTEM_FAILURE_LEVEL\020,\022\033" +
+      "\n\027DALI_SET_POWER_ON_LEVEL\020-\022\026\n\022DALI_SET_" +
+      "FADE_TIME\020.\022\026\n\022DALI_SET_FADE_RATE\020/\022\032\n\026D" +
+      "ALI_SET_EXT_FADE_TIME\0200\022\024\n\020DALI_SET_SCEN" +
+      "E_X\020@\022\034\n\030DALI_REMOVE_FROM_SCENE_X\020P\022\027\n\023D" +
+      "ALI_ADD_TO_GROUP_X\020`\022\034\n\030DALI_REMOVE_FROM" +
+      "_GROUP_X\020p\022\033\n\026DALI_SET_SHORT_ADDRESS\020\200\001\022" +
+      "\035\n\030DALI_ENABLE_WRITE_MEMORY\020\201\001\022\023\n\016DALI_T" +
+      "ERMINATE\020\377\001\022\024\n\017DALI_INITIALISE\020\202\002\022\023\n\016DAL" +
+      "I_RANDOMISE\020\203\002\022\022\n\rDALI_WITHDRAW\020\205\002\022\027\n\022DA" +
+      "LI_SEARCH_ADDR_H\020\210\002\022\027\n\022DALI_SEARCH_ADDR_" +
+      "M\020\211\002\022\027\n\022DALI_SEARCH_ADDR_L\020\212\002\022\037\n\032DALI_PR" +
+      "OGRAM_SHORT_ADDRESS\020\213\002*\250\001\n\025CustomDALICom" +
+      "mandType\022\022\n\016DALI_ARC_LEVEL\020\000\022\023\n\017DALI_DAP" +
+      "C_LEVEL\020\001\022\030\n\024DALI_GROUP_ARC_LEVEL\020\002\022\030\n\024D" +
+      "ALI_BROADCAST_SCENE\020\003\022\027\n\023DALI_SCENE_ON_G" +
+      "ROUP\020\004\022\031\n\025DALI_SCENE_ON_ADDRESS\020\005*\233\004\n\021Ad" +
+      "minPropertyType\022\017\n\013DEVICE_NAME\020\000\022\020\n\014PROJ" +
+      "ECT_NAME\020\001\022\r\n\tLONGITUDE\020\002\022\014\n\010LATITUDE\020\003\022" +
+      "\024\n\020LOCAL_UTC_OFFSET\020\004\022\024\n\020DAYLIGHT_SAVING" +
+      "S\020\005\022\017\n\013POLL_ACTIVE\020\006\022\020\n\014DHCP_ENABLED\020\007\022\013" +
+      "\n\007IP_ADDR\020\010\022\014\n\010MAC_ADDR\020\t\022\016\n\nGATEWAY_IP\020" +
+      "\n\022\026\n\022NETWORK_PROPERTIES\020\013\022\025\n\021SYSTEM_PROP" +
+      "ERTIES\020\014\022\024\n\020CONTROLLER_LINES\020\r\022\024\n\020EEPROM" +
+      "_FULL_CHIP\020\016\022\017\n\013CONFIG_DATA\020\017\022\020\n\014SPEKTRA" +
+      "_DATA\020\020\022\021\n\rDEVICE_STATUS\020\021\022\021\n\rCONFIG_STA" +
+      "TUS\020\022\022\017\n\013DEVICE_TIME\020\023\022\017\n\013NTP_DETAILS\020\024\022" +
+      "\025\n\021TRIDONIC_MSENSORS\020\025\022\022\n\016SECURE_SESSION" +
+      "\020\026\022\t\n\005NONCE\020\027\022\024\n\020DALI_SENSOR_TYPE\020\030\022\021\n\rD" +
+      "EVICE_REBOOT\020\031\022\022\n\016SYSTEM_LOGGING\020\032\022\n\n\006SU" +
+      "BNET\020\033\022\007\n\003DNS\020\034*M\n\020AdminCommandType\022\007\n\003S" +
+      "ET\020\000\022\007\n\003GET\020\001\022\007\n\003ADD\020\002\022\n\n\006REMOVE\020\003\022\t\n\005RE" +
+      "SET\020\004\022\007\n\003RUN\020\005*\265\001\n\016DALIStatusType\022\014\n\010LAM" +
+      "P_OFF\020\000\022\030\n\024CONTROL_GEAR_FAILURE\020\001\022\020\n\014LAM" +
+      "P_FAILURE\020\002\022\013\n\007LAMP_ON\020\004\022\017\n\013LIMIT_ERROR\020" +
+      "\010\022\020\n\014FADE_RUNNING\020\020\022\017\n\013RESET_STATE\020 \022\021\n\r" +
+      "SHORT_ADDRESS\020@\022\025\n\020POWER_CYCLE_SEEN\020\200\001*\210" +
+      "\002\n\020DALIRXStatusFlag\022\013\n\007WAITING\020\000\022\023\n\017RECE" +
+      "IVING_FRAME\020\001\022\025\n\021NO_RECEIVED_FRAME\020\002\022\030\n\024" +
+      "RECEIVED_8_BIT_FRAME\020\003\022\031\n\025RECEIVED_16_BI" +
+      "T_FRAME\020\004\022\031\n\025RECEIVED_24_BIT_FRAME\020\005\022\032\n\026" +
+      "RECEIVED_PARTIAL_FRAME\020\006\022\010\n\004IDLE\020\007\022\017\n\013CA" +
+      "LIBRATION\020\010\022\030\n\023ERROR_WHILE_SENDING\020\376\001\022\032\n" +
+      "\025ERROR_WHILE_RECEIVING\020\377\001*\213\001\n\025Diagnostic" +
+      "MessageType\022\032\n\026DIAGNOSTIC_SYSTEM_INFO\020\000\022" +
+      "\033\n\027DIAGNOSTIC_INPUT_STATUS\020\001\022\024\n\020DALI_LEV" +
+      "EL_CACHE\020\002\022\023\n\017DMX_LEVEL_CACHE\020\003\022\016\n\nROOM_" +
+      "JOINS\020\004*z\n\023FirmwareCommandType\022\014\n\010FW_REA" +
+      "DY\020\000\022\014\n\010FW_APPLY\020\001\022\r\n\tFW_VERIFY\020\002\022\024\n\020FW_" +
+      "VERIFY_FAILED\020\003\022\025\n\021FW_VERIFY_SUCCESS\020\004\022\013" +
+      "\n\007FW_READ\020\005*?\n\025SpektraTransitionType\022\t\n\005" +
+      "BLEND\020\000\022\010\n\004SNAP\020\001\022\021\n\rFADE_TO_BLACK\020\002*\234\001\n" +
+      "\tLogicType\022\016\n\nDALI_LEVEL\020\000\022\017\n\013INPUT_STAT" +
+      "E\020\001\022\020\n\014LIST_RUNNING\020\002\022\026\n\022OCCUPANCY_DETEC" +
+      "TED\020\003\022\017\n\013DMX_PRESENT\020\004\022\017\n\013CAL_WEEKDAY\020\005\022" +
+      "\r\n\tCAL_MONTH\020\006\022\023\n\017ALARM_SCHEDULED\020\007*\200\001\n\023" +
+      "LogicComparisonType\022\r\n\tLESS_THAN\020\000\022\027\n\023LE" +
+      "SS_THAN_OR_EQUALS\020\001\022\n\n\006EQUALS\020\002\022\r\n\tMORE_" +
+      "THAN\020\003\022\027\n\023MORE_THAN_OR_EQUALS\020\004\022\r\n\tNOT_E" +
+      "QUAL\020\005*8\n\016DALISensorType\022\022\n\016TRIDONIC_EDA" +
+      "LI\020\000\022\022\n\016STANDARD_EDALI\020\001*G\n\021SensorComman" +
+      "dType\022\016\n\nINITIALISE\020\000\022\010\n\004MUTE\020\001\022\n\n\006UNMUT" +
+      "E\020\002\022\014\n\010OVERRIDE\020\003*b\n\rSystemLogType\022\010\n\004BO" +
+      "OT\020\000\022\014\n\010NET_LINK\020\001\022\007\n\003NTP\020\002\022\013\n\007TRIGGER\020\003" +
+      "\022\013\n\007SPEKTRA\020\004\022\014\n\010SCHEDULE\020\005\022\010\n\004USER\020\006*m\n" +
+      "\017DALI24InputType\022\023\n\017MOMENTARY_SHORT\020\000\022\022\n" +
+      "\016MOMENTARY_LONG\020\001\022\017\n\013LATCHED_LOW\020\002\022\020\n\014LA" +
+      "TCHED_HIGH\020\003\022\016\n\nPOSITIONAL\020\004*h\n\026DALIMoti" +
+      "onSensorStates\022\017\n\013MOTION_IDLE\020\000\022\023\n\017MOTIO" +
+      "N_DISABLED\020\001\022\022\n\016MOTION_WARNING\020\002\022\024\n\020MOTI" +
+      "ON_OCCUPANCY\020\003*I\n\023DALILuxSensorStates\022\020\n" +
+      "\014LUX_DISABLED\020\000\022\017\n\013LUX_ENABLED\020\001\022\017\n\013LUX_" +
+      "DEVIATE\020\002*N\n\023DALIAddressingError\022\014\n\010NO_E" +
+      "RROR\020\000\022\n\n\006VERIFY\020\001\022\n\n\006SEARCH\020\002\022\021\n\rNO_NEW" +
+      "_DEVICE\020\003*8\n\022DALIAddressingType\022\017\n\013ADDRE" +
+      "SS_NEW\020\000\022\021\n\rREADDRESS_ALL\020\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -102533,7 +111802,7 @@ public final class EDS10ProtocolBuffer {
     internal_static_DALIInputMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DALIInputMessage_descriptor,
-        new java.lang.String[] { "Index", "Address", "DaliLine", "ButtonState", "ShortPress", "LongPress", });
+        new java.lang.String[] { "Index", "Address", "DaliLine", "ButtonState", "ShortPress", "LongPress", "Instance", });
     internal_static_IOIRMessage_descriptor =
       getDescriptor().getMessageTypes().get(10);
     internal_static_IOIRMessage_fieldAccessorTable = new
@@ -102677,7 +111946,7 @@ public final class EDS10ProtocolBuffer {
     internal_static_DALIMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DALIMessage_descriptor,
-        new java.lang.String[] { "LineMask", "Address", "Frame25Bit", "Frame25BitReply", "Command", "CustomCommand", "Query", "Type8", "Frame16Bit", "Frame16BitReply", "Frame24Bit", "Frame24BitReply", "Arg", "Dtr", "Action", "Params", });
+        new java.lang.String[] { "LineMask", "Address", "Frame25Bit", "Frame25BitReply", "Command", "CustomCommand", "Query", "Type8", "Frame16Bit", "Frame16BitReply", "Frame24Bit", "Frame24BitReply", "Type8Reply", "Arg", "Dtr", "Action", "Params", });
     internal_static_DALIStatusFlagMessage_descriptor =
       getDescriptor().getMessageTypes().get(34);
     internal_static_DALIStatusFlagMessage_fieldAccessorTable = new
@@ -102720,258 +111989,300 @@ public final class EDS10ProtocolBuffer {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_RDMResponseMessage_descriptor,
         new java.lang.String[] { "Uid", "Pid", "Datalength", "Data", });
-    internal_static_SpektraSettingMessage_descriptor =
+    internal_static_RDMDiscoveryMessage_descriptor =
       getDescriptor().getMessageTypes().get(41);
+    internal_static_RDMDiscoveryMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_RDMDiscoveryMessage_descriptor,
+        new java.lang.String[] { "UniverseMask", });
+    internal_static_RDMDiscoveryReplyMessage_descriptor =
+      getDescriptor().getMessageTypes().get(42);
+    internal_static_RDMDiscoveryReplyMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_RDMDiscoveryReplyMessage_descriptor,
+        new java.lang.String[] { "DiscoveryCount", "Uid", "ErrorCode", });
+    internal_static_SpektraSettingMessage_descriptor =
+      getDescriptor().getMessageTypes().get(43);
     internal_static_SpektraSettingMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SpektraSettingMessage_descriptor,
         new java.lang.String[] { "Zone", "StartAddress", "LineOrUniverseMask", "Protocol", "NumberOfLights", "ChannelsPerLight", "ChannelColours", "UnscheduledBehaviour", "ChannelMapping", "LineAddressing", "ZoneScaleFactor", });
     internal_static_SpektraColourConfigMessage_descriptor =
-      getDescriptor().getMessageTypes().get(42);
+      getDescriptor().getMessageTypes().get(44);
     internal_static_SpektraColourConfigMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SpektraColourConfigMessage_descriptor,
         new java.lang.String[] { "ChannelValue", });
     internal_static_SpektraSequenceConfigMessage_descriptor =
-      getDescriptor().getMessageTypes().get(43);
+      getDescriptor().getMessageTypes().get(45);
     internal_static_SpektraSequenceConfigMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SpektraSequenceConfigMessage_descriptor,
         new java.lang.String[] { "Index", "Type", "Transition", "FadeTimeBy10Ms", "TimePerColour", "TimePerColourUnit", "TimePerStep", "TimePerStepUnit", "Range", "Colour", "IsRandomisedType", "RandomTypesMask", "IsReverseDirection", "IsCycleDirection", "Title", "HasRandomColourOrder", "Colours", "Args", });
     internal_static_SpektraCalendarMessage_descriptor =
-      getDescriptor().getMessageTypes().get(44);
+      getDescriptor().getMessageTypes().get(46);
     internal_static_SpektraCalendarMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SpektraCalendarMessage_descriptor,
-        new java.lang.String[] { "Type", "Index", "Days", });
+        new java.lang.String[] { "Type", "Index", "Days", "IsOverride", });
     internal_static_SpektraCalendarDayMessage_descriptor =
-      getDescriptor().getMessageTypes().get(45);
+      getDescriptor().getMessageTypes().get(47);
     internal_static_SpektraCalendarDayMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SpektraCalendarDayMessage_descriptor,
-        new java.lang.String[] { "DayIndex", "Type", "TargetIndex", });
+        new java.lang.String[] { "DayIndex", "Type", "TargetIndex", "IsOverride", });
     internal_static_SpektraCalendarOverviewMessage_descriptor =
-      getDescriptor().getMessageTypes().get(46);
+      getDescriptor().getMessageTypes().get(48);
     internal_static_SpektraCalendarOverviewMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SpektraCalendarOverviewMessage_descriptor,
         new java.lang.String[] { "DayOffset", "Days", });
     internal_static_SpektraThemeConfigMessage_descriptor =
-      getDescriptor().getMessageTypes().get(47);
+      getDescriptor().getMessageTypes().get(49);
     internal_static_SpektraThemeConfigMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SpektraThemeConfigMessage_descriptor,
         new java.lang.String[] { "Index", "Colour", "Title", "Colours", });
     internal_static_SpektraReadMessage_descriptor =
-      getDescriptor().getMessageTypes().get(48);
+      getDescriptor().getMessageTypes().get(50);
     internal_static_SpektraReadMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SpektraReadMessage_descriptor,
         new java.lang.String[] { "Type", "Index", });
     internal_static_SpektraControlMessage_descriptor =
-      getDescriptor().getMessageTypes().get(49);
+      getDescriptor().getMessageTypes().get(51);
     internal_static_SpektraControlMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SpektraControlMessage_descriptor,
         new java.lang.String[] { "Type", "Zone", "Index", "Action", });
+    internal_static_ShowStepMessage_descriptor =
+      getDescriptor().getMessageTypes().get(52);
+    internal_static_ShowStepMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ShowStepMessage_descriptor,
+        new java.lang.String[] { "StepIndex", "TargetIndex", "ActionType", "MaxRandomTargetIndex", "Zone", "MaxOutputLevelLimit", "TimeUntilNext10Ms", });
+    internal_static_SpektraShowMessage_descriptor =
+      getDescriptor().getMessageTypes().get(53);
+    internal_static_SpektraShowMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_SpektraShowMessage_descriptor,
+        new java.lang.String[] { "ShowIndex", "NumberOfSteps", "Step", "IsRunning", "IsLooped", "IsRandom", "IsTemporary", "ActivationsRemaining", });
+    internal_static_ExtendedSpektraShowMessage_descriptor =
+      getDescriptor().getMessageTypes().get(54);
+    internal_static_ExtendedSpektraShowMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ExtendedSpektraShowMessage_descriptor,
+        new java.lang.String[] { "ShowIndex", "StepIndexOffset", "Step", });
+    internal_static_SpektraShowControlMessage_descriptor =
+      getDescriptor().getMessageTypes().get(55);
+    internal_static_SpektraShowControlMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_SpektraShowControlMessage_descriptor,
+        new java.lang.String[] { "ShowIndex", "StartResume", "GotoStep", });
     internal_static_DMXTranslationObject_descriptor =
-      getDescriptor().getMessageTypes().get(50);
+      getDescriptor().getMessageTypes().get(56);
     internal_static_DMXTranslationObject_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DMXTranslationObject_descriptor,
         new java.lang.String[] { "LineIn", "LineOut", "DmxStartAddress", "ChannelCount", "DaliArray", "AffectedInput", "Blocking", "Enabled", });
     internal_static_DMXProtocolTranslation_descriptor =
-      getDescriptor().getMessageTypes().get(51);
+      getDescriptor().getMessageTypes().get(57);
     internal_static_DMXProtocolTranslation_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DMXProtocolTranslation_descriptor,
         new java.lang.String[] { "Object", });
     internal_static_InputStateMessage_descriptor =
-      getDescriptor().getMessageTypes().get(52);
+      getDescriptor().getMessageTypes().get(58);
     internal_static_InputStateMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InputStateMessage_descriptor,
         new java.lang.String[] { "UseMask", });
     internal_static_InputStateResponse_descriptor =
-      getDescriptor().getMessageTypes().get(53);
+      getDescriptor().getMessageTypes().get(59);
     internal_static_InputStateResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InputStateResponse_descriptor,
         new java.lang.String[] { "Inputs", "InputMask", });
     internal_static_LevelCacheResponse_descriptor =
-      getDescriptor().getMessageTypes().get(54);
+      getDescriptor().getMessageTypes().get(60);
     internal_static_LevelCacheResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_LevelCacheResponse_descriptor,
         new java.lang.String[] { "Levels", "Line", "Page", });
-    internal_static_JoinedRoomsMessage_descriptor =
-      getDescriptor().getMessageTypes().get(55);
-    internal_static_JoinedRoomsMessage_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_JoinedRoomsMessage_descriptor,
-        new java.lang.String[] { "Pairs", "Joined", "ClearJoins", });
     internal_static_DiagnosticSystemInfoResponse_descriptor =
-      getDescriptor().getMessageTypes().get(56);
+      getDescriptor().getMessageTypes().get(61);
     internal_static_DiagnosticSystemInfoResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DiagnosticSystemInfoResponse_descriptor,
         new java.lang.String[] { "Firmware", "Hardware", "Error", "InputCount", "OutputCount", "IrCount", "ListStepCount", "ListCount", "AlarmCount", "BurninCount", "SpektraSeqCount", "SpektraSeqStepCount", "SpektraThemeCount", "SpektraStaticCount", "ProtoVersion", "LineCount", "Lines", "ProfileCount", "PresetCodeCount", "UserLevelCount", "DmxToDaliCount", "SpektraZoneCount", "LogicCount", "InputDaliCount", });
     internal_static_DiagnosticMessage_descriptor =
-      getDescriptor().getMessageTypes().get(57);
+      getDescriptor().getMessageTypes().get(62);
     internal_static_DiagnosticMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DiagnosticMessage_descriptor,
         new java.lang.String[] { "Type", "Page", "Line", });
     internal_static_AdminProjectPropertiesMessage_descriptor =
-      getDescriptor().getMessageTypes().get(58);
+      getDescriptor().getMessageTypes().get(63);
     internal_static_AdminProjectPropertiesMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminProjectPropertiesMessage_descriptor,
         new java.lang.String[] { "DeviceName", "ProjectName", "Longitude", "Latitude", "LocalOffset", "DaylightSavings", "DaylightSavingsStart", "DaylightSavingsEnd", "PollActive", });
     internal_static_AdminConfigStatusMessage_descriptor =
-      getDescriptor().getMessageTypes().get(59);
+      getDescriptor().getMessageTypes().get(64);
     internal_static_AdminConfigStatusMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminConfigStatusMessage_descriptor,
         new java.lang.String[] { "ListStatus", "BurnInStatus", "AlarmStatus", "AlarmTimeFromReg", "SensorStatus", });
     internal_static_AdminNetworkPropertiesMessage_descriptor =
-      getDescriptor().getMessageTypes().get(60);
+      getDescriptor().getMessageTypes().get(65);
     internal_static_AdminNetworkPropertiesMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminNetworkPropertiesMessage_descriptor,
-        new java.lang.String[] { "DHCP", "IP", "MAC", "Gateway", "NTPServer", "NTP", });
+        new java.lang.String[] { "DHCP", "IP", "MAC", "Gateway", "NTPServer", "NTP", "Error", "NTPTimeout", "Subnet", "DNSPrimary", "DNSSecondary", });
     internal_static_AdminControllerLinesMessage_descriptor =
-      getDescriptor().getMessageTypes().get(61);
+      getDescriptor().getMessageTypes().get(66);
     internal_static_AdminControllerLinesMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminControllerLinesMessage_descriptor,
         new java.lang.String[] { "Lines", });
     internal_static_AdminDeviceStatusMessage_descriptor =
-      getDescriptor().getMessageTypes().get(62);
+      getDescriptor().getMessageTypes().get(67);
     internal_static_AdminDeviceStatusMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminDeviceStatusMessage_descriptor,
         new java.lang.String[] { "Temperature", "Battery", });
     internal_static_AdminSecureLoginMessage_descriptor =
-      getDescriptor().getMessageTypes().get(63);
+      getDescriptor().getMessageTypes().get(68);
     internal_static_AdminSecureLoginMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminSecureLoginMessage_descriptor,
         new java.lang.String[] { "Username", "Cnonce", "Hash", });
     internal_static_AdminDALISensorTypeMessage_descriptor =
-      getDescriptor().getMessageTypes().get(64);
+      getDescriptor().getMessageTypes().get(69);
     internal_static_AdminDALISensorTypeMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminDALISensorTypeMessage_descriptor,
         new java.lang.String[] { "Type", });
     internal_static_AdminMessage_descriptor =
-      getDescriptor().getMessageTypes().get(65);
+      getDescriptor().getMessageTypes().get(70);
     internal_static_AdminMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminMessage_descriptor,
         new java.lang.String[] { "Command", "Target", "Data", "NetworkProperties", "ProjectProperties", "ControllerLines", "DeviceStatus", "ConfigStatus", "DeviceTime", "DaliSensorType", "Payload", });
     internal_static_DataMessage_descriptor =
-      getDescriptor().getMessageTypes().get(66);
+      getDescriptor().getMessageTypes().get(71);
     internal_static_DataMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DataMessage_descriptor,
         new java.lang.String[] { "Identifier", "Seq", "Count", "Data", });
     internal_static_FirmwareMetaMessage_descriptor =
-      getDescriptor().getMessageTypes().get(67);
+      getDescriptor().getMessageTypes().get(72);
     internal_static_FirmwareMetaMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_FirmwareMetaMessage_descriptor,
-        new java.lang.String[] { "FirmwareVersion", "FirmwareDate", "FirmwareDateUpload", "FirmwareChecksum", "FirmwareChunkCount", "FirmwareBaseAddress", "FirmwareEndAddress", });
+        new java.lang.String[] { "FirmwareVersion", "FirmwareDate", "FirmwareDateUpload", "FirmwareChecksum", "FirmwareChunkCount", "FirmwareBaseAddress", "FirmwareEndAddress", "FirmwareIsBackup", });
     internal_static_FirmwareControlMessage_descriptor =
-      getDescriptor().getMessageTypes().get(68);
+      getDescriptor().getMessageTypes().get(73);
     internal_static_FirmwareControlMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_FirmwareControlMessage_descriptor,
         new java.lang.String[] { "Cmd", });
     internal_static_FirmwareChunkMessage_descriptor =
-      getDescriptor().getMessageTypes().get(69);
+      getDescriptor().getMessageTypes().get(74);
     internal_static_FirmwareChunkMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_FirmwareChunkMessage_descriptor,
         new java.lang.String[] { "FirmwareAddress", "TotalBytes", "Payload", });
     internal_static_SystemLogReadMessage_descriptor =
-      getDescriptor().getMessageTypes().get(70);
+      getDescriptor().getMessageTypes().get(75);
     internal_static_SystemLogReadMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogReadMessage_descriptor,
         new java.lang.String[] { "LogStartAddress", "LogsRequested", "Logs", });
     internal_static_SystemLogMessage_descriptor =
-      getDescriptor().getMessageTypes().get(71);
+      getDescriptor().getMessageTypes().get(76);
     internal_static_SystemLogMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogMessage_descriptor,
         new java.lang.String[] { "TimeSinceBoot", "Boot", "Netlink", "Ntp", "Trigger", "Spektra", "Schedule", "Userstart", "Packet", });
     internal_static_SystemLogBoot_descriptor =
-      getDescriptor().getMessageTypes().get(72);
+      getDescriptor().getMessageTypes().get(77);
     internal_static_SystemLogBoot_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogBoot_descriptor,
         new java.lang.String[] { "Timeclock", "Flags", });
     internal_static_SystemLogNetLink_descriptor =
-      getDescriptor().getMessageTypes().get(73);
+      getDescriptor().getMessageTypes().get(78);
     internal_static_SystemLogNetLink_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogNetLink_descriptor,
         new java.lang.String[] { "IsLinked", });
     internal_static_SystemLogNTP_descriptor =
-      getDescriptor().getMessageTypes().get(74);
+      getDescriptor().getMessageTypes().get(79);
     internal_static_SystemLogNTP_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogNTP_descriptor,
         new java.lang.String[] { "Timeclock", });
     internal_static_SystemLogTrigger_descriptor =
-      getDescriptor().getMessageTypes().get(75);
+      getDescriptor().getMessageTypes().get(80);
     internal_static_SystemLogTrigger_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogTrigger_descriptor,
         new java.lang.String[] { "Trigger", "Source", });
     internal_static_SystemLogSpektra_descriptor =
-      getDescriptor().getMessageTypes().get(76);
+      getDescriptor().getMessageTypes().get(81);
     internal_static_SystemLogSpektra_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogSpektra_descriptor,
         new java.lang.String[] { "Action", "Type", "Index", });
     internal_static_SystemLogSchedule_descriptor =
-      getDescriptor().getMessageTypes().get(77);
+      getDescriptor().getMessageTypes().get(82);
     internal_static_SystemLogSchedule_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogSchedule_descriptor,
         new java.lang.String[] { "Index", "IsStart", "Second", "Minute", "Hour", });
     internal_static_SystemLogUserStart_descriptor =
-      getDescriptor().getMessageTypes().get(78);
+      getDescriptor().getMessageTypes().get(83);
     internal_static_SystemLogUserStart_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogUserStart_descriptor,
         new java.lang.String[] { "Timeclock", });
     internal_static_SystemMetaDataReadMessage_descriptor =
-      getDescriptor().getMessageTypes().get(79);
+      getDescriptor().getMessageTypes().get(84);
     internal_static_SystemMetaDataReadMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemMetaDataReadMessage_descriptor,
         new java.lang.String[] { "InputPressCounter", "ListStartCounter", "SchedulesCounter", "ScreenOnTime", "ScreenDimTime", "ScreenSaverTime", "RebootCounter", });
     internal_static_TriggerEvent_descriptor =
-      getDescriptor().getMessageTypes().get(80);
+      getDescriptor().getMessageTypes().get(85);
     internal_static_TriggerEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_TriggerEvent_descriptor,
         new java.lang.String[] { "Type", "Level", "DaliCommand", "TargetAddress", "LineMask", "Payload", });
+    internal_static_DALI24InputEvent_descriptor =
+      getDescriptor().getMessageTypes().get(86);
+    internal_static_DALI24InputEvent_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_DALI24InputEvent_descriptor,
+        new java.lang.String[] { "Index", "Line", "Address", "Type", "Arg", });
+    internal_static_DALISensorEvent_descriptor =
+      getDescriptor().getMessageTypes().get(87);
+    internal_static_DALISensorEvent_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_DALISensorEvent_descriptor,
+        new java.lang.String[] { "Index", "Line", "Address", "MotionState", "LuxState", "LuxLevel", });
     internal_static_EventMessage_descriptor =
-      getDescriptor().getMessageTypes().get(81);
+      getDescriptor().getMessageTypes().get(88);
     internal_static_EventMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_EventMessage_descriptor,
-        new java.lang.String[] { "Event", "Trigger", "Inputs", "Payload", "JoinedRooms", "EventData", });
+        new java.lang.String[] { "Event", "Trigger", "Inputs", "Payload", "Sensor", "Dali24Input", "EventData", });
     internal_static_EdidioMessage_descriptor =
-      getDescriptor().getMessageTypes().get(82);
+      getDescriptor().getMessageTypes().get(89);
     internal_static_EdidioMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_EdidioMessage_descriptor,
-        new java.lang.String[] { "MessageId", "Ack", "Inputs", "Outputs", "Irs", "Sensor", "List", "Alarm", "Alarms", "BurnIns", "SensorCommand", "ChangeProfile", "IdentifyMessage", "UpdateTime", "ReadDevice", "DaliMessage", "DaliQuery", "DmxMessage", "ExternalTrigger", "SpektraSettings", "SpektraSequence", "SpektraCalendar", "SpektraTheme", "SpektraRead", "SpektraControl", "DmxTranslator", "InputRequest", "InputResponse", "DiagSystem", "DiagMessage", "AdminMessage", "Event", "SecureDeviceSettings", "FirmwareNew", "FirmwareControl", "FirmwareChunk", "LevelCacheResponse", "JoinedRooms", "ListExtended", "AytMessage", "RdmMessage", "RdmResponseMessage", "LogicMessage", "SecureLogin", "DeviceStateMessage", "SpektraCalendarDay", "SpektraCalendarOverview", "InputsDali", "LogsRead", "MetadataRead", "DaliAddressingMessage", "DaliRemappingMessage", "Payload", });
+        new java.lang.String[] { "MessageId", "Ack", "Inputs", "Outputs", "Irs", "Sensor", "List", "Alarm", "Alarms", "BurnIns", "SensorCommand", "ChangeProfile", "IdentifyMessage", "UpdateTime", "ReadDevice", "DaliMessage", "DaliQuery", "DmxMessage", "ExternalTrigger", "SpektraSettings", "SpektraSequence", "SpektraCalendar", "SpektraTheme", "SpektraRead", "SpektraControl", "DmxTranslator", "InputRequest", "InputResponse", "DiagSystem", "DiagMessage", "AdminMessage", "Event", "SecureDeviceSettings", "FirmwareNew", "FirmwareControl", "FirmwareChunk", "LevelCacheResponse", "ListExtended", "AytMessage", "RdmMessage", "RdmResponseMessage", "LogicMessage", "SecureLogin", "DeviceStateMessage", "SpektraCalendarDay", "SpektraCalendarOverview", "InputsDali", "LogsRead", "MetadataRead", "DaliAddressingMessage", "DaliRemappingMessage", "SpektraShowControlMessage", "SpektraShowMessage", "ExtendedSpektraShowMessage", "RdmDiscovery", "RdmDiscoveryReply", "Payload", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

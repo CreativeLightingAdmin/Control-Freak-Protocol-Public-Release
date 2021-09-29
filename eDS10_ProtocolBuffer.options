@@ -10,6 +10,7 @@ LogicMultiMessage.logic								   max_count:5
 DMXMessage.level                                       max_count:256, int_size:IS_8 # DMX split to low/high end of Channel Range to reduce message size
 RDMMessage.data										   max_count:256, int_size:IS_8
 RDMResponseMessage.data							       max_count:256, int_size:IS_8
+RDMDiscoveryReplyMessage.uid 						   max_count:128
 InputStateResponse.inputs                              int_size:IS_8, max_count:24 
 DiagnosticSystemInfoResponse.firmware                  max_size:16
 DiagnosticSystemInfoResponse.hardware                  max_size:16
@@ -34,6 +35,10 @@ AdminNetworkPropertiesMessage.IP                       max_size:32
 AdminNetworkPropertiesMessage.MAC                      max_size:32
 AdminNetworkPropertiesMessage.gateway                  max_size:32
 AdminNetworkPropertiesMessage.NTPServer				   max_size:32
+AdminNetworkPropertiesMessage.error						max_size:32
+AdminNetworkPropertiesMessage.subnet						max_size:32
+AdminNetworkPropertiesMessage.DNS_Primary						max_size:32
+AdminNetworkPropertiesMessage.DNS_Secondary						max_size:32
 AdminControllerLinesMessage.lines                      max_count:4
 AdminConfigStatusMessage.list_status                   int_size:IS_8, max_count:32  # 32 Lists
 AdminConfigStatusMessage.burn_in_status                int_size:IS_8, max_count:2
@@ -66,9 +71,11 @@ DeviceStateMessage.sensor_states                       int_size:IS_8, max_count:
 DeviceStateMessage.zone_states                         int_size:IS_8, max_count:10  # 10 Spektra Zones as of Device Firmware 1.0.17
 DeviceStateMessage.zone_sleep_states                   int_size:IS_8, max_count:10  # 10 Spektra Zones as of Device Firmware 1.0.17
 DeviceStateMessage.zone_indexes                        int_size:IS_8, max_count:10  # 10 Spektra Zones as of Device Firmware 1.0.17
-JoinedRoomsMessage.pairs                               max_count:64, int_size:IS_8
 LevelCacheResponse.levels                              max_count:64, int_size:IS_8
 SystemLogReadMessage.logs                              max_count: 32, int_size:IS_8
 SystemMetaDataReadMessage.input_press_counter          max_count:24, int_size:IS_16
 SystemMetaDataReadMessage.list_start_counter           max_count:32, int_size:IS_16
 SystemMetaDataReadMessage.schedules_counter            max_count:10, int_size:IS_16
+SpektraShowMessage.step                                max_count:32                 # The first 32 Steps of any Show
+SpektraShowMessage.activations_remaining               max_count:100
+ExtendedSpektraShowMessage.step                        max_count:32                 # Subsequent Show Steps after the first 32, sent in batches of 32 Steps
