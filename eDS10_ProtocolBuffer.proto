@@ -1,5 +1,5 @@
 // The eDIDIO S10 Protocol Buffer Structure
-// Version Number 1.1.3
+// Version Number 1.1.4
 
 syntax = "proto3";
 
@@ -211,6 +211,58 @@ enum Type8QueryType {
     TYPE8_QUERY_EXT_VERSION_NUM       = 254;
 }
 
+enum DALI24DeviceSetting {
+    COMMAND_IDENTIFY					= 0x00;
+    COMMAND_RESET_POWER_CYCLE_SEEN		= 0x01;
+    COMMAND_RESET						= 0x10;
+    COMMAND_RESET_MEMORY_BANK			= 0x11;
+    COMMAND_SET_SHORT_ADDRESS			= 0x14;
+    COMMAND_ENABLE_WRITE_MEMORY			= 0x15;
+    COMMAND_ENABLE_APP_CONTROLLER		= 0x16;
+    COMMAND_DISABLE_APP_CONTROLLER		= 0x17;
+    COMMAND_SET_OPERATING_MODE			= 0x18;
+    COMMAND_ADD_TO_DEVICE_GROUPS_0_15	= 0x19;
+    COMMAND_ADD_TO_DEVICE_GROUPS_15_32	= 0x1A;
+    COMMAND_REMOVE_FROM_GROUPS_0_15		= 0x1B;
+    COMMAND_REMOVE_FROM_GROUPS_16_32	= 0x1C;
+    COMMAND_START_QUIESCENT_MODE		= 0x1D;
+    COMMAND_STOP_QUIESCENT_MODE			= 0x1E;
+    COMMAND_ENABLE_POWER_CYCLE_NOTIF	= 0x1F;
+    COMMAND_DISABLE_POWER_CYCLE_NOTIF	= 0x20;
+    COMMAND_SAVE_PERSISTENT_VARIABLES	= 0x21;
+    SET_EVENT_PRIORITY					= 0x61;
+    ENABLE_INSTANCE						= 0x62;
+    DISABLE_INSTANCE					= 0x63;
+    SET_PRIMARY_INSTANCE_GROUP			= 0x64;
+    SET_INSTANCE_GROUP_1				= 0x65;
+    SET_INSTANCE_GROUP_2				= 0x66;
+    SET_EVENT_SCHEME					= 0x67;
+    SET_EVENT_FILTER					= 0x68;
+}
+
+enum DALI24InstanceType {
+    DEFAULT				= 0x00;
+    INPUT				= 0x01;
+    ROTARY_INPUT        = 0x02;
+    MOTION_SENSOR 		= 0x03;
+    LIGHT_SENSOR	    = 0x04;
+}
+
+enum DALI24OpCode {
+    OPCODE_NULL				                    = 0x00; // No Action
+    // Motion Sensor
+    SENSOR_MOTION_SET_HOLD_TIMER				= 0x21;
+    SENSOR_MOTION_SET_REPORT_TIMER				= 0x22;
+    SENSOR_MOTION_SET_DEADTIME_TIMER			= 0x23;
+    SENSOR_MOTION_CANCEL_HOLD_TIMER				= 0x24;
+
+    // Light Sensor
+    SENSOR_LIGHT_SET_REPORT_TIMER				= 0x30;
+    SENSOR_LIGHT_SET_HYSTERESIS					= 0x31;
+    SENSOR_LIGHT_SET_DEADTIME_TIMER				= 0x32;
+    SENSOR_LIGHT_SET_HYSTERESIS_MIN				= 0x33;
+}
+
 enum LineType {
     LINE_EMPTY  = 0;
     LINE_DALI   = 1;
@@ -227,6 +279,7 @@ enum EventType {
     CONTROL_EVENT           = 4; // Emitted when an DALI/DMX/phyiscal output type event is done. References an action in TriggerType.
     ROOM_JOIN_EVENT         = 5; // Emitted when rooms are joined/unjoined.
     DALI_24_INPUT_EVENT     = 6; // Emitted when a 24-bit DALI Input Device is triggered.
+    DALI_24_FRAME_EVENT     = 7; // Emitted when a 24-bit DALI Frame is received.
 }
 
 enum DALIQueryType {
@@ -284,7 +337,24 @@ enum DALICommandType {
     DALI_ON_STEP_UP                = 8;
     DALI_ENABLE_DAPC_SEQ           = 9; 
     DALI_RECALL_LAST_ACTIVE_LEVEL  = 10;
-    DALI_RECALL_SCENE_X            = 16;
+    DALI_CONTINUOUS_UP             = 11;
+    DALI_CONTINUOUS_DOWN           = 12;
+    DALI_RECALL_SCENE_0            = 16;
+    DALI_RECALL_SCENE_1            = 17;
+    DALI_RECALL_SCENE_2            = 18;
+    DALI_RECALL_SCENE_3            = 19;
+    DALI_RECALL_SCENE_4            = 20;
+    DALI_RECALL_SCENE_5            = 21;
+    DALI_RECALL_SCENE_6            = 22;
+    DALI_RECALL_SCENE_7            = 23;
+    DALI_RECALL_SCENE_8            = 24;
+    DALI_RECALL_SCENE_9            = 25;
+    DALI_RECALL_SCENE_10           = 26;
+    DALI_RECALL_SCENE_11           = 27;
+    DALI_RECALL_SCENE_12           = 28;
+    DALI_RECALL_SCENE_13           = 29;
+    DALI_RECALL_SCENE_14           = 30;
+    DALI_RECALL_SCENE_15           = 31;
     DALI_RESET                     = 32;
     DALI_STORE_ACTUAL_LEVEL_DTR0   = 33;
     DALI_SAVE_PERSISTENT_VARS      = 34;
@@ -298,10 +368,70 @@ enum DALICommandType {
     DALI_SET_FADE_TIME             = 46;
     DALI_SET_FADE_RATE             = 47;
     DALI_SET_EXT_FADE_TIME         = 48;
-    DALI_SET_SCENE_X               = 64;
-    DALI_REMOVE_FROM_SCENE_X       = 80;
-    DALI_ADD_TO_GROUP_X            = 96;
-    DALI_REMOVE_FROM_GROUP_X       = 112;
+    DALI_SET_SCENE_0               = 64;
+    DALI_SET_SCENE_1               = 65;
+    DALI_SET_SCENE_2               = 66;
+    DALI_SET_SCENE_3               = 67;
+    DALI_SET_SCENE_4               = 68;
+    DALI_SET_SCENE_5               = 69;
+    DALI_SET_SCENE_6               = 70;
+    DALI_SET_SCENE_7               = 71;
+    DALI_SET_SCENE_8               = 72;
+    DALI_SET_SCENE_9               = 73;
+    DALI_SET_SCENE_10              = 74;
+    DALI_SET_SCENE_11              = 75;
+    DALI_SET_SCENE_12              = 76;
+    DALI_SET_SCENE_13              = 77;
+    DALI_SET_SCENE_14              = 78;
+    DALI_SET_SCENE_15              = 79;
+    DALI_REMOVE_FROM_SCENE_0       = 80;
+    DALI_REMOVE_FROM_SCENE_1       = 81;
+    DALI_REMOVE_FROM_SCENE_2       = 82;
+    DALI_REMOVE_FROM_SCENE_3       = 83;
+    DALI_REMOVE_FROM_SCENE_4       = 84;
+    DALI_REMOVE_FROM_SCENE_5       = 85;
+    DALI_REMOVE_FROM_SCENE_6       = 86;
+    DALI_REMOVE_FROM_SCENE_7       = 87;
+    DALI_REMOVE_FROM_SCENE_8       = 88;
+    DALI_REMOVE_FROM_SCENE_9       = 89;
+    DALI_REMOVE_FROM_SCENE_10      = 90;
+    DALI_REMOVE_FROM_SCENE_11      = 91;
+    DALI_REMOVE_FROM_SCENE_12      = 92;
+    DALI_REMOVE_FROM_SCENE_13      = 93;
+    DALI_REMOVE_FROM_SCENE_14      = 94;
+    DALI_REMOVE_FROM_SCENE_15      = 95;
+    DALI_ADD_TO_GROUP_0            = 96;
+    DALI_ADD_TO_GROUP_1            = 97;
+    DALI_ADD_TO_GROUP_2            = 98;
+    DALI_ADD_TO_GROUP_3            = 99;
+    DALI_ADD_TO_GROUP_4            = 100;
+    DALI_ADD_TO_GROUP_5            = 101;
+    DALI_ADD_TO_GROUP_6            = 102;
+    DALI_ADD_TO_GROUP_7            = 103;
+    DALI_ADD_TO_GROUP_8            = 104;
+    DALI_ADD_TO_GROUP_9            = 105;
+    DALI_ADD_TO_GROUP_10           = 106;
+    DALI_ADD_TO_GROUP_11           = 107;
+    DALI_ADD_TO_GROUP_12           = 108;
+    DALI_ADD_TO_GROUP_13           = 109;
+    DALI_ADD_TO_GROUP_14           = 110;
+    DALI_ADD_TO_GROUP_15           = 111;
+    DALI_REMOVE_FROM_GROUP_0       = 112;
+    DALI_REMOVE_FROM_GROUP_1       = 113;
+    DALI_REMOVE_FROM_GROUP_2       = 114;
+    DALI_REMOVE_FROM_GROUP_3       = 115;
+    DALI_REMOVE_FROM_GROUP_4       = 116;
+    DALI_REMOVE_FROM_GROUP_5       = 117;
+    DALI_REMOVE_FROM_GROUP_6       = 118;
+    DALI_REMOVE_FROM_GROUP_7       = 119;
+    DALI_REMOVE_FROM_GROUP_8       = 120;
+    DALI_REMOVE_FROM_GROUP_9       = 121;
+    DALI_REMOVE_FROM_GROUP_10      = 122;
+    DALI_REMOVE_FROM_GROUP_11      = 123;
+    DALI_REMOVE_FROM_GROUP_12      = 124;
+    DALI_REMOVE_FROM_GROUP_13      = 125;
+    DALI_REMOVE_FROM_GROUP_14      = 126;
+    DALI_REMOVE_FROM_GROUP_15      = 127;
     DALI_SET_SHORT_ADDRESS         = 128;
     DALI_ENABLE_WRITE_MEMORY       = 129;
     DALI_TERMINATE                 = 255;
@@ -752,11 +882,14 @@ uint32 line_mask                             = 1; // Binary mask; e.g. selecting
         uint32 frame_24_bit                  = 13; // Standard 24 Bit DALI Frame data - Don't use arg
         uint32 frame_24_bit_reply            = 14; // Standard 24 Bit DALI Frame data with reply - Don't use arg
         Type8QueryType type8_reply           = 15; 
+        DALI24DeviceSetting device24_setting = 16; // Settings for DALI 24 Bit Devices
     }
     oneof params {
-        uint32 arg                          = 9; // 'arg' rather than level for methods where you need a scene number.
-        DTRPayloadMessage dtr               = 10;
+        uint32 arg                           = 9;   // 'arg' rather than level for methods where you need a scene number.
+        DTRPayloadMessage dtr                = 10;
     }
+    DALI24InstanceType instance_type         = 17;  // Instance for 24 bit device - Commands are sent via Type
+    DALI24OpCode op_code                     = 18;  // OpCode for 24 bit device
 }
 
 message DALIStatusFlagMessage {
@@ -1204,6 +1337,16 @@ message SystemMetaDataReadMessage {
 
 /********************  Events ******************/
 
+message EventFilter {
+    bool input                       = 1; // eDIDIO physical inputs
+    bool dali_arc_level              = 2; // 16-bit DALI Arc Level Commands
+    bool dali_command                = 3; // 16-bit DALI Commands
+    bool dali_sensor                 = 4; // DALI Sensors (24-bit and 25-bit Tridonic)
+    bool dali_input                  = 5; // 24-bit DALI Inputs
+    bool dmx_stream_changed          = 6; // DMX output stream changes
+    bool dali_24_frame               = 7; // Raw 24-bit DALI frames
+}
+
 message TriggerEvent {
     TriggerType type                  = 1; // What type of Trigger occurred
     oneof payload {
@@ -1220,6 +1363,11 @@ message DALI24InputEvent {
     uint32 address          = 3;
     DALI24InputType type    = 4; // Momentary Short / Momentary Long / Latch Low / Latch High / Positional
     uint32 arg              = 5; // Relevant information for the DALI24InputType
+}
+
+message DALI24FrameEvent {
+    uint32 line             = 1; // Which DALI Line within the eDIDIO (left -> right): 1, 2, 3, 4
+    uint32 frame            = 2; // The 24-bit Frame
 }
 
 message DALISensorEvent {
@@ -1242,6 +1390,8 @@ message EventMessage {
         // OBSOLETE: JoinedRoomsMessage joined_rooms (5) --> No longer used
         DALISensorEvent sensor                  = 6;
         DALI24InputEvent dali_24_input          = 7;
+        EventFilter filter                      = 8;
+        DALI24FrameEvent dali_24_frame          = 9;
     }
 }
 

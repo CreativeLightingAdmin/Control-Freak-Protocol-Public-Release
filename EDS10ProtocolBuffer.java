@@ -3055,6 +3055,630 @@ public final class EDS10ProtocolBuffer {
   }
 
   /**
+   * Protobuf enum {@code DALI24DeviceSetting}
+   */
+  public enum DALI24DeviceSetting
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>COMMAND_IDENTIFY = 0;</code>
+     */
+    COMMAND_IDENTIFY(0),
+    /**
+     * <code>COMMAND_RESET_POWER_CYCLE_SEEN = 1;</code>
+     */
+    COMMAND_RESET_POWER_CYCLE_SEEN(1),
+    /**
+     * <code>COMMAND_RESET = 16;</code>
+     */
+    COMMAND_RESET(16),
+    /**
+     * <code>COMMAND_RESET_MEMORY_BANK = 17;</code>
+     */
+    COMMAND_RESET_MEMORY_BANK(17),
+    /**
+     * <code>COMMAND_SET_SHORT_ADDRESS = 20;</code>
+     */
+    COMMAND_SET_SHORT_ADDRESS(20),
+    /**
+     * <code>COMMAND_ENABLE_WRITE_MEMORY = 21;</code>
+     */
+    COMMAND_ENABLE_WRITE_MEMORY(21),
+    /**
+     * <code>COMMAND_ENABLE_APP_CONTROLLER = 22;</code>
+     */
+    COMMAND_ENABLE_APP_CONTROLLER(22),
+    /**
+     * <code>COMMAND_DISABLE_APP_CONTROLLER = 23;</code>
+     */
+    COMMAND_DISABLE_APP_CONTROLLER(23),
+    /**
+     * <code>COMMAND_SET_OPERATING_MODE = 24;</code>
+     */
+    COMMAND_SET_OPERATING_MODE(24),
+    /**
+     * <code>COMMAND_ADD_TO_DEVICE_GROUPS_0_15 = 25;</code>
+     */
+    COMMAND_ADD_TO_DEVICE_GROUPS_0_15(25),
+    /**
+     * <code>COMMAND_ADD_TO_DEVICE_GROUPS_15_32 = 26;</code>
+     */
+    COMMAND_ADD_TO_DEVICE_GROUPS_15_32(26),
+    /**
+     * <code>COMMAND_REMOVE_FROM_GROUPS_0_15 = 27;</code>
+     */
+    COMMAND_REMOVE_FROM_GROUPS_0_15(27),
+    /**
+     * <code>COMMAND_REMOVE_FROM_GROUPS_16_32 = 28;</code>
+     */
+    COMMAND_REMOVE_FROM_GROUPS_16_32(28),
+    /**
+     * <code>COMMAND_START_QUIESCENT_MODE = 29;</code>
+     */
+    COMMAND_START_QUIESCENT_MODE(29),
+    /**
+     * <code>COMMAND_STOP_QUIESCENT_MODE = 30;</code>
+     */
+    COMMAND_STOP_QUIESCENT_MODE(30),
+    /**
+     * <code>COMMAND_ENABLE_POWER_CYCLE_NOTIF = 31;</code>
+     */
+    COMMAND_ENABLE_POWER_CYCLE_NOTIF(31),
+    /**
+     * <code>COMMAND_DISABLE_POWER_CYCLE_NOTIF = 32;</code>
+     */
+    COMMAND_DISABLE_POWER_CYCLE_NOTIF(32),
+    /**
+     * <code>COMMAND_SAVE_PERSISTENT_VARIABLES = 33;</code>
+     */
+    COMMAND_SAVE_PERSISTENT_VARIABLES(33),
+    /**
+     * <code>SET_EVENT_PRIORITY = 97;</code>
+     */
+    SET_EVENT_PRIORITY(97),
+    /**
+     * <code>ENABLE_INSTANCE = 98;</code>
+     */
+    ENABLE_INSTANCE(98),
+    /**
+     * <code>DISABLE_INSTANCE = 99;</code>
+     */
+    DISABLE_INSTANCE(99),
+    /**
+     * <code>SET_PRIMARY_INSTANCE_GROUP = 100;</code>
+     */
+    SET_PRIMARY_INSTANCE_GROUP(100),
+    /**
+     * <code>SET_INSTANCE_GROUP_1 = 101;</code>
+     */
+    SET_INSTANCE_GROUP_1(101),
+    /**
+     * <code>SET_INSTANCE_GROUP_2 = 102;</code>
+     */
+    SET_INSTANCE_GROUP_2(102),
+    /**
+     * <code>SET_EVENT_SCHEME = 103;</code>
+     */
+    SET_EVENT_SCHEME(103),
+    /**
+     * <code>SET_EVENT_FILTER = 104;</code>
+     */
+    SET_EVENT_FILTER(104),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>COMMAND_IDENTIFY = 0;</code>
+     */
+    public static final int COMMAND_IDENTIFY_VALUE = 0;
+    /**
+     * <code>COMMAND_RESET_POWER_CYCLE_SEEN = 1;</code>
+     */
+    public static final int COMMAND_RESET_POWER_CYCLE_SEEN_VALUE = 1;
+    /**
+     * <code>COMMAND_RESET = 16;</code>
+     */
+    public static final int COMMAND_RESET_VALUE = 16;
+    /**
+     * <code>COMMAND_RESET_MEMORY_BANK = 17;</code>
+     */
+    public static final int COMMAND_RESET_MEMORY_BANK_VALUE = 17;
+    /**
+     * <code>COMMAND_SET_SHORT_ADDRESS = 20;</code>
+     */
+    public static final int COMMAND_SET_SHORT_ADDRESS_VALUE = 20;
+    /**
+     * <code>COMMAND_ENABLE_WRITE_MEMORY = 21;</code>
+     */
+    public static final int COMMAND_ENABLE_WRITE_MEMORY_VALUE = 21;
+    /**
+     * <code>COMMAND_ENABLE_APP_CONTROLLER = 22;</code>
+     */
+    public static final int COMMAND_ENABLE_APP_CONTROLLER_VALUE = 22;
+    /**
+     * <code>COMMAND_DISABLE_APP_CONTROLLER = 23;</code>
+     */
+    public static final int COMMAND_DISABLE_APP_CONTROLLER_VALUE = 23;
+    /**
+     * <code>COMMAND_SET_OPERATING_MODE = 24;</code>
+     */
+    public static final int COMMAND_SET_OPERATING_MODE_VALUE = 24;
+    /**
+     * <code>COMMAND_ADD_TO_DEVICE_GROUPS_0_15 = 25;</code>
+     */
+    public static final int COMMAND_ADD_TO_DEVICE_GROUPS_0_15_VALUE = 25;
+    /**
+     * <code>COMMAND_ADD_TO_DEVICE_GROUPS_15_32 = 26;</code>
+     */
+    public static final int COMMAND_ADD_TO_DEVICE_GROUPS_15_32_VALUE = 26;
+    /**
+     * <code>COMMAND_REMOVE_FROM_GROUPS_0_15 = 27;</code>
+     */
+    public static final int COMMAND_REMOVE_FROM_GROUPS_0_15_VALUE = 27;
+    /**
+     * <code>COMMAND_REMOVE_FROM_GROUPS_16_32 = 28;</code>
+     */
+    public static final int COMMAND_REMOVE_FROM_GROUPS_16_32_VALUE = 28;
+    /**
+     * <code>COMMAND_START_QUIESCENT_MODE = 29;</code>
+     */
+    public static final int COMMAND_START_QUIESCENT_MODE_VALUE = 29;
+    /**
+     * <code>COMMAND_STOP_QUIESCENT_MODE = 30;</code>
+     */
+    public static final int COMMAND_STOP_QUIESCENT_MODE_VALUE = 30;
+    /**
+     * <code>COMMAND_ENABLE_POWER_CYCLE_NOTIF = 31;</code>
+     */
+    public static final int COMMAND_ENABLE_POWER_CYCLE_NOTIF_VALUE = 31;
+    /**
+     * <code>COMMAND_DISABLE_POWER_CYCLE_NOTIF = 32;</code>
+     */
+    public static final int COMMAND_DISABLE_POWER_CYCLE_NOTIF_VALUE = 32;
+    /**
+     * <code>COMMAND_SAVE_PERSISTENT_VARIABLES = 33;</code>
+     */
+    public static final int COMMAND_SAVE_PERSISTENT_VARIABLES_VALUE = 33;
+    /**
+     * <code>SET_EVENT_PRIORITY = 97;</code>
+     */
+    public static final int SET_EVENT_PRIORITY_VALUE = 97;
+    /**
+     * <code>ENABLE_INSTANCE = 98;</code>
+     */
+    public static final int ENABLE_INSTANCE_VALUE = 98;
+    /**
+     * <code>DISABLE_INSTANCE = 99;</code>
+     */
+    public static final int DISABLE_INSTANCE_VALUE = 99;
+    /**
+     * <code>SET_PRIMARY_INSTANCE_GROUP = 100;</code>
+     */
+    public static final int SET_PRIMARY_INSTANCE_GROUP_VALUE = 100;
+    /**
+     * <code>SET_INSTANCE_GROUP_1 = 101;</code>
+     */
+    public static final int SET_INSTANCE_GROUP_1_VALUE = 101;
+    /**
+     * <code>SET_INSTANCE_GROUP_2 = 102;</code>
+     */
+    public static final int SET_INSTANCE_GROUP_2_VALUE = 102;
+    /**
+     * <code>SET_EVENT_SCHEME = 103;</code>
+     */
+    public static final int SET_EVENT_SCHEME_VALUE = 103;
+    /**
+     * <code>SET_EVENT_FILTER = 104;</code>
+     */
+    public static final int SET_EVENT_FILTER_VALUE = 104;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static DALI24DeviceSetting valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static DALI24DeviceSetting forNumber(int value) {
+      switch (value) {
+        case 0: return COMMAND_IDENTIFY;
+        case 1: return COMMAND_RESET_POWER_CYCLE_SEEN;
+        case 16: return COMMAND_RESET;
+        case 17: return COMMAND_RESET_MEMORY_BANK;
+        case 20: return COMMAND_SET_SHORT_ADDRESS;
+        case 21: return COMMAND_ENABLE_WRITE_MEMORY;
+        case 22: return COMMAND_ENABLE_APP_CONTROLLER;
+        case 23: return COMMAND_DISABLE_APP_CONTROLLER;
+        case 24: return COMMAND_SET_OPERATING_MODE;
+        case 25: return COMMAND_ADD_TO_DEVICE_GROUPS_0_15;
+        case 26: return COMMAND_ADD_TO_DEVICE_GROUPS_15_32;
+        case 27: return COMMAND_REMOVE_FROM_GROUPS_0_15;
+        case 28: return COMMAND_REMOVE_FROM_GROUPS_16_32;
+        case 29: return COMMAND_START_QUIESCENT_MODE;
+        case 30: return COMMAND_STOP_QUIESCENT_MODE;
+        case 31: return COMMAND_ENABLE_POWER_CYCLE_NOTIF;
+        case 32: return COMMAND_DISABLE_POWER_CYCLE_NOTIF;
+        case 33: return COMMAND_SAVE_PERSISTENT_VARIABLES;
+        case 97: return SET_EVENT_PRIORITY;
+        case 98: return ENABLE_INSTANCE;
+        case 99: return DISABLE_INSTANCE;
+        case 100: return SET_PRIMARY_INSTANCE_GROUP;
+        case 101: return SET_INSTANCE_GROUP_1;
+        case 102: return SET_INSTANCE_GROUP_2;
+        case 103: return SET_EVENT_SCHEME;
+        case 104: return SET_EVENT_FILTER;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<DALI24DeviceSetting>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        DALI24DeviceSetting> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<DALI24DeviceSetting>() {
+            public DALI24DeviceSetting findValueByNumber(int number) {
+              return DALI24DeviceSetting.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(13);
+    }
+
+    private static final DALI24DeviceSetting[] VALUES = values();
+
+    public static DALI24DeviceSetting valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private DALI24DeviceSetting(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:DALI24DeviceSetting)
+  }
+
+  /**
+   * Protobuf enum {@code DALI24InstanceType}
+   */
+  public enum DALI24InstanceType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>DEFAULT = 0;</code>
+     */
+    DEFAULT(0),
+    /**
+     * <code>INPUT = 1;</code>
+     */
+    INPUT(1),
+    /**
+     * <code>ROTARY_INPUT = 2;</code>
+     */
+    ROTARY_INPUT(2),
+    /**
+     * <code>MOTION_SENSOR = 3;</code>
+     */
+    MOTION_SENSOR(3),
+    /**
+     * <code>LIGHT_SENSOR = 4;</code>
+     */
+    LIGHT_SENSOR(4),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>DEFAULT = 0;</code>
+     */
+    public static final int DEFAULT_VALUE = 0;
+    /**
+     * <code>INPUT = 1;</code>
+     */
+    public static final int INPUT_VALUE = 1;
+    /**
+     * <code>ROTARY_INPUT = 2;</code>
+     */
+    public static final int ROTARY_INPUT_VALUE = 2;
+    /**
+     * <code>MOTION_SENSOR = 3;</code>
+     */
+    public static final int MOTION_SENSOR_VALUE = 3;
+    /**
+     * <code>LIGHT_SENSOR = 4;</code>
+     */
+    public static final int LIGHT_SENSOR_VALUE = 4;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static DALI24InstanceType valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static DALI24InstanceType forNumber(int value) {
+      switch (value) {
+        case 0: return DEFAULT;
+        case 1: return INPUT;
+        case 2: return ROTARY_INPUT;
+        case 3: return MOTION_SENSOR;
+        case 4: return LIGHT_SENSOR;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<DALI24InstanceType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        DALI24InstanceType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<DALI24InstanceType>() {
+            public DALI24InstanceType findValueByNumber(int number) {
+              return DALI24InstanceType.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(14);
+    }
+
+    private static final DALI24InstanceType[] VALUES = values();
+
+    public static DALI24InstanceType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private DALI24InstanceType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:DALI24InstanceType)
+  }
+
+  /**
+   * Protobuf enum {@code DALI24OpCode}
+   */
+  public enum DALI24OpCode
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <pre>
+     * No Action
+     * </pre>
+     *
+     * <code>OPCODE_NULL = 0;</code>
+     */
+    OPCODE_NULL(0),
+    /**
+     * <pre>
+     * Motion Sensor
+     * </pre>
+     *
+     * <code>SENSOR_MOTION_SET_HOLD_TIMER = 33;</code>
+     */
+    SENSOR_MOTION_SET_HOLD_TIMER(33),
+    /**
+     * <code>SENSOR_MOTION_SET_REPORT_TIMER = 34;</code>
+     */
+    SENSOR_MOTION_SET_REPORT_TIMER(34),
+    /**
+     * <code>SENSOR_MOTION_SET_DEADTIME_TIMER = 35;</code>
+     */
+    SENSOR_MOTION_SET_DEADTIME_TIMER(35),
+    /**
+     * <code>SENSOR_MOTION_CANCEL_HOLD_TIMER = 36;</code>
+     */
+    SENSOR_MOTION_CANCEL_HOLD_TIMER(36),
+    /**
+     * <pre>
+     * Light Sensor
+     * </pre>
+     *
+     * <code>SENSOR_LIGHT_SET_REPORT_TIMER = 48;</code>
+     */
+    SENSOR_LIGHT_SET_REPORT_TIMER(48),
+    /**
+     * <code>SENSOR_LIGHT_SET_HYSTERESIS = 49;</code>
+     */
+    SENSOR_LIGHT_SET_HYSTERESIS(49),
+    /**
+     * <code>SENSOR_LIGHT_SET_DEADTIME_TIMER = 50;</code>
+     */
+    SENSOR_LIGHT_SET_DEADTIME_TIMER(50),
+    /**
+     * <code>SENSOR_LIGHT_SET_HYSTERESIS_MIN = 51;</code>
+     */
+    SENSOR_LIGHT_SET_HYSTERESIS_MIN(51),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <pre>
+     * No Action
+     * </pre>
+     *
+     * <code>OPCODE_NULL = 0;</code>
+     */
+    public static final int OPCODE_NULL_VALUE = 0;
+    /**
+     * <pre>
+     * Motion Sensor
+     * </pre>
+     *
+     * <code>SENSOR_MOTION_SET_HOLD_TIMER = 33;</code>
+     */
+    public static final int SENSOR_MOTION_SET_HOLD_TIMER_VALUE = 33;
+    /**
+     * <code>SENSOR_MOTION_SET_REPORT_TIMER = 34;</code>
+     */
+    public static final int SENSOR_MOTION_SET_REPORT_TIMER_VALUE = 34;
+    /**
+     * <code>SENSOR_MOTION_SET_DEADTIME_TIMER = 35;</code>
+     */
+    public static final int SENSOR_MOTION_SET_DEADTIME_TIMER_VALUE = 35;
+    /**
+     * <code>SENSOR_MOTION_CANCEL_HOLD_TIMER = 36;</code>
+     */
+    public static final int SENSOR_MOTION_CANCEL_HOLD_TIMER_VALUE = 36;
+    /**
+     * <pre>
+     * Light Sensor
+     * </pre>
+     *
+     * <code>SENSOR_LIGHT_SET_REPORT_TIMER = 48;</code>
+     */
+    public static final int SENSOR_LIGHT_SET_REPORT_TIMER_VALUE = 48;
+    /**
+     * <code>SENSOR_LIGHT_SET_HYSTERESIS = 49;</code>
+     */
+    public static final int SENSOR_LIGHT_SET_HYSTERESIS_VALUE = 49;
+    /**
+     * <code>SENSOR_LIGHT_SET_DEADTIME_TIMER = 50;</code>
+     */
+    public static final int SENSOR_LIGHT_SET_DEADTIME_TIMER_VALUE = 50;
+    /**
+     * <code>SENSOR_LIGHT_SET_HYSTERESIS_MIN = 51;</code>
+     */
+    public static final int SENSOR_LIGHT_SET_HYSTERESIS_MIN_VALUE = 51;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static DALI24OpCode valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static DALI24OpCode forNumber(int value) {
+      switch (value) {
+        case 0: return OPCODE_NULL;
+        case 33: return SENSOR_MOTION_SET_HOLD_TIMER;
+        case 34: return SENSOR_MOTION_SET_REPORT_TIMER;
+        case 35: return SENSOR_MOTION_SET_DEADTIME_TIMER;
+        case 36: return SENSOR_MOTION_CANCEL_HOLD_TIMER;
+        case 48: return SENSOR_LIGHT_SET_REPORT_TIMER;
+        case 49: return SENSOR_LIGHT_SET_HYSTERESIS;
+        case 50: return SENSOR_LIGHT_SET_DEADTIME_TIMER;
+        case 51: return SENSOR_LIGHT_SET_HYSTERESIS_MIN;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<DALI24OpCode>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        DALI24OpCode> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<DALI24OpCode>() {
+            public DALI24OpCode findValueByNumber(int number) {
+              return DALI24OpCode.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(15);
+    }
+
+    private static final DALI24OpCode[] VALUES = values();
+
+    public static DALI24OpCode valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private DALI24OpCode(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:DALI24OpCode)
+  }
+
+  /**
    * Protobuf enum {@code LineType}
    */
   public enum LineType
@@ -3169,7 +3793,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(13);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(16);
     }
 
     private static final LineType[] VALUES = values();
@@ -3256,6 +3880,14 @@ public final class EDS10ProtocolBuffer {
      * <code>DALI_24_INPUT_EVENT = 6;</code>
      */
     DALI_24_INPUT_EVENT(6),
+    /**
+     * <pre>
+     * Emitted when a 24-bit DALI Frame is received.
+     * </pre>
+     *
+     * <code>DALI_24_FRAME_EVENT = 7;</code>
+     */
+    DALI_24_FRAME_EVENT(7),
     UNRECOGNIZED(-1),
     ;
 
@@ -3315,6 +3947,14 @@ public final class EDS10ProtocolBuffer {
      * <code>DALI_24_INPUT_EVENT = 6;</code>
      */
     public static final int DALI_24_INPUT_EVENT_VALUE = 6;
+    /**
+     * <pre>
+     * Emitted when a 24-bit DALI Frame is received.
+     * </pre>
+     *
+     * <code>DALI_24_FRAME_EVENT = 7;</code>
+     */
+    public static final int DALI_24_FRAME_EVENT_VALUE = 7;
 
 
     public final int getNumber() {
@@ -3342,6 +3982,7 @@ public final class EDS10ProtocolBuffer {
         case 4: return CONTROL_EVENT;
         case 5: return ROOM_JOIN_EVENT;
         case 6: return DALI_24_INPUT_EVENT;
+        case 7: return DALI_24_FRAME_EVENT;
         default: return null;
       }
     }
@@ -3368,7 +4009,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(14);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(17);
     }
 
     private static final EventType[] VALUES = values();
@@ -3807,7 +4448,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(15);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(18);
     }
 
     private static final DALIQueryType[] VALUES = values();
@@ -3887,9 +4528,77 @@ public final class EDS10ProtocolBuffer {
      */
     DALI_RECALL_LAST_ACTIVE_LEVEL(10),
     /**
-     * <code>DALI_RECALL_SCENE_X = 16;</code>
+     * <code>DALI_CONTINUOUS_UP = 11;</code>
      */
-    DALI_RECALL_SCENE_X(16),
+    DALI_CONTINUOUS_UP(11),
+    /**
+     * <code>DALI_CONTINUOUS_DOWN = 12;</code>
+     */
+    DALI_CONTINUOUS_DOWN(12),
+    /**
+     * <code>DALI_RECALL_SCENE_0 = 16;</code>
+     */
+    DALI_RECALL_SCENE_0(16),
+    /**
+     * <code>DALI_RECALL_SCENE_1 = 17;</code>
+     */
+    DALI_RECALL_SCENE_1(17),
+    /**
+     * <code>DALI_RECALL_SCENE_2 = 18;</code>
+     */
+    DALI_RECALL_SCENE_2(18),
+    /**
+     * <code>DALI_RECALL_SCENE_3 = 19;</code>
+     */
+    DALI_RECALL_SCENE_3(19),
+    /**
+     * <code>DALI_RECALL_SCENE_4 = 20;</code>
+     */
+    DALI_RECALL_SCENE_4(20),
+    /**
+     * <code>DALI_RECALL_SCENE_5 = 21;</code>
+     */
+    DALI_RECALL_SCENE_5(21),
+    /**
+     * <code>DALI_RECALL_SCENE_6 = 22;</code>
+     */
+    DALI_RECALL_SCENE_6(22),
+    /**
+     * <code>DALI_RECALL_SCENE_7 = 23;</code>
+     */
+    DALI_RECALL_SCENE_7(23),
+    /**
+     * <code>DALI_RECALL_SCENE_8 = 24;</code>
+     */
+    DALI_RECALL_SCENE_8(24),
+    /**
+     * <code>DALI_RECALL_SCENE_9 = 25;</code>
+     */
+    DALI_RECALL_SCENE_9(25),
+    /**
+     * <code>DALI_RECALL_SCENE_10 = 26;</code>
+     */
+    DALI_RECALL_SCENE_10(26),
+    /**
+     * <code>DALI_RECALL_SCENE_11 = 27;</code>
+     */
+    DALI_RECALL_SCENE_11(27),
+    /**
+     * <code>DALI_RECALL_SCENE_12 = 28;</code>
+     */
+    DALI_RECALL_SCENE_12(28),
+    /**
+     * <code>DALI_RECALL_SCENE_13 = 29;</code>
+     */
+    DALI_RECALL_SCENE_13(29),
+    /**
+     * <code>DALI_RECALL_SCENE_14 = 30;</code>
+     */
+    DALI_RECALL_SCENE_14(30),
+    /**
+     * <code>DALI_RECALL_SCENE_15 = 31;</code>
+     */
+    DALI_RECALL_SCENE_15(31),
     /**
      * <code>DALI_RESET = 32;</code>
      */
@@ -3943,21 +4652,261 @@ public final class EDS10ProtocolBuffer {
      */
     DALI_SET_EXT_FADE_TIME(48),
     /**
-     * <code>DALI_SET_SCENE_X = 64;</code>
+     * <code>DALI_SET_SCENE_0 = 64;</code>
      */
-    DALI_SET_SCENE_X(64),
+    DALI_SET_SCENE_0(64),
     /**
-     * <code>DALI_REMOVE_FROM_SCENE_X = 80;</code>
+     * <code>DALI_SET_SCENE_1 = 65;</code>
      */
-    DALI_REMOVE_FROM_SCENE_X(80),
+    DALI_SET_SCENE_1(65),
     /**
-     * <code>DALI_ADD_TO_GROUP_X = 96;</code>
+     * <code>DALI_SET_SCENE_2 = 66;</code>
      */
-    DALI_ADD_TO_GROUP_X(96),
+    DALI_SET_SCENE_2(66),
     /**
-     * <code>DALI_REMOVE_FROM_GROUP_X = 112;</code>
+     * <code>DALI_SET_SCENE_3 = 67;</code>
      */
-    DALI_REMOVE_FROM_GROUP_X(112),
+    DALI_SET_SCENE_3(67),
+    /**
+     * <code>DALI_SET_SCENE_4 = 68;</code>
+     */
+    DALI_SET_SCENE_4(68),
+    /**
+     * <code>DALI_SET_SCENE_5 = 69;</code>
+     */
+    DALI_SET_SCENE_5(69),
+    /**
+     * <code>DALI_SET_SCENE_6 = 70;</code>
+     */
+    DALI_SET_SCENE_6(70),
+    /**
+     * <code>DALI_SET_SCENE_7 = 71;</code>
+     */
+    DALI_SET_SCENE_7(71),
+    /**
+     * <code>DALI_SET_SCENE_8 = 72;</code>
+     */
+    DALI_SET_SCENE_8(72),
+    /**
+     * <code>DALI_SET_SCENE_9 = 73;</code>
+     */
+    DALI_SET_SCENE_9(73),
+    /**
+     * <code>DALI_SET_SCENE_10 = 74;</code>
+     */
+    DALI_SET_SCENE_10(74),
+    /**
+     * <code>DALI_SET_SCENE_11 = 75;</code>
+     */
+    DALI_SET_SCENE_11(75),
+    /**
+     * <code>DALI_SET_SCENE_12 = 76;</code>
+     */
+    DALI_SET_SCENE_12(76),
+    /**
+     * <code>DALI_SET_SCENE_13 = 77;</code>
+     */
+    DALI_SET_SCENE_13(77),
+    /**
+     * <code>DALI_SET_SCENE_14 = 78;</code>
+     */
+    DALI_SET_SCENE_14(78),
+    /**
+     * <code>DALI_SET_SCENE_15 = 79;</code>
+     */
+    DALI_SET_SCENE_15(79),
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_0 = 80;</code>
+     */
+    DALI_REMOVE_FROM_SCENE_0(80),
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_1 = 81;</code>
+     */
+    DALI_REMOVE_FROM_SCENE_1(81),
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_2 = 82;</code>
+     */
+    DALI_REMOVE_FROM_SCENE_2(82),
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_3 = 83;</code>
+     */
+    DALI_REMOVE_FROM_SCENE_3(83),
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_4 = 84;</code>
+     */
+    DALI_REMOVE_FROM_SCENE_4(84),
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_5 = 85;</code>
+     */
+    DALI_REMOVE_FROM_SCENE_5(85),
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_6 = 86;</code>
+     */
+    DALI_REMOVE_FROM_SCENE_6(86),
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_7 = 87;</code>
+     */
+    DALI_REMOVE_FROM_SCENE_7(87),
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_8 = 88;</code>
+     */
+    DALI_REMOVE_FROM_SCENE_8(88),
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_9 = 89;</code>
+     */
+    DALI_REMOVE_FROM_SCENE_9(89),
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_10 = 90;</code>
+     */
+    DALI_REMOVE_FROM_SCENE_10(90),
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_11 = 91;</code>
+     */
+    DALI_REMOVE_FROM_SCENE_11(91),
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_12 = 92;</code>
+     */
+    DALI_REMOVE_FROM_SCENE_12(92),
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_13 = 93;</code>
+     */
+    DALI_REMOVE_FROM_SCENE_13(93),
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_14 = 94;</code>
+     */
+    DALI_REMOVE_FROM_SCENE_14(94),
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_15 = 95;</code>
+     */
+    DALI_REMOVE_FROM_SCENE_15(95),
+    /**
+     * <code>DALI_ADD_TO_GROUP_0 = 96;</code>
+     */
+    DALI_ADD_TO_GROUP_0(96),
+    /**
+     * <code>DALI_ADD_TO_GROUP_1 = 97;</code>
+     */
+    DALI_ADD_TO_GROUP_1(97),
+    /**
+     * <code>DALI_ADD_TO_GROUP_2 = 98;</code>
+     */
+    DALI_ADD_TO_GROUP_2(98),
+    /**
+     * <code>DALI_ADD_TO_GROUP_3 = 99;</code>
+     */
+    DALI_ADD_TO_GROUP_3(99),
+    /**
+     * <code>DALI_ADD_TO_GROUP_4 = 100;</code>
+     */
+    DALI_ADD_TO_GROUP_4(100),
+    /**
+     * <code>DALI_ADD_TO_GROUP_5 = 101;</code>
+     */
+    DALI_ADD_TO_GROUP_5(101),
+    /**
+     * <code>DALI_ADD_TO_GROUP_6 = 102;</code>
+     */
+    DALI_ADD_TO_GROUP_6(102),
+    /**
+     * <code>DALI_ADD_TO_GROUP_7 = 103;</code>
+     */
+    DALI_ADD_TO_GROUP_7(103),
+    /**
+     * <code>DALI_ADD_TO_GROUP_8 = 104;</code>
+     */
+    DALI_ADD_TO_GROUP_8(104),
+    /**
+     * <code>DALI_ADD_TO_GROUP_9 = 105;</code>
+     */
+    DALI_ADD_TO_GROUP_9(105),
+    /**
+     * <code>DALI_ADD_TO_GROUP_10 = 106;</code>
+     */
+    DALI_ADD_TO_GROUP_10(106),
+    /**
+     * <code>DALI_ADD_TO_GROUP_11 = 107;</code>
+     */
+    DALI_ADD_TO_GROUP_11(107),
+    /**
+     * <code>DALI_ADD_TO_GROUP_12 = 108;</code>
+     */
+    DALI_ADD_TO_GROUP_12(108),
+    /**
+     * <code>DALI_ADD_TO_GROUP_13 = 109;</code>
+     */
+    DALI_ADD_TO_GROUP_13(109),
+    /**
+     * <code>DALI_ADD_TO_GROUP_14 = 110;</code>
+     */
+    DALI_ADD_TO_GROUP_14(110),
+    /**
+     * <code>DALI_ADD_TO_GROUP_15 = 111;</code>
+     */
+    DALI_ADD_TO_GROUP_15(111),
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_0 = 112;</code>
+     */
+    DALI_REMOVE_FROM_GROUP_0(112),
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_1 = 113;</code>
+     */
+    DALI_REMOVE_FROM_GROUP_1(113),
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_2 = 114;</code>
+     */
+    DALI_REMOVE_FROM_GROUP_2(114),
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_3 = 115;</code>
+     */
+    DALI_REMOVE_FROM_GROUP_3(115),
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_4 = 116;</code>
+     */
+    DALI_REMOVE_FROM_GROUP_4(116),
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_5 = 117;</code>
+     */
+    DALI_REMOVE_FROM_GROUP_5(117),
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_6 = 118;</code>
+     */
+    DALI_REMOVE_FROM_GROUP_6(118),
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_7 = 119;</code>
+     */
+    DALI_REMOVE_FROM_GROUP_7(119),
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_8 = 120;</code>
+     */
+    DALI_REMOVE_FROM_GROUP_8(120),
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_9 = 121;</code>
+     */
+    DALI_REMOVE_FROM_GROUP_9(121),
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_10 = 122;</code>
+     */
+    DALI_REMOVE_FROM_GROUP_10(122),
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_11 = 123;</code>
+     */
+    DALI_REMOVE_FROM_GROUP_11(123),
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_12 = 124;</code>
+     */
+    DALI_REMOVE_FROM_GROUP_12(124),
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_13 = 125;</code>
+     */
+    DALI_REMOVE_FROM_GROUP_13(125),
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_14 = 126;</code>
+     */
+    DALI_REMOVE_FROM_GROUP_14(126),
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_15 = 127;</code>
+     */
+    DALI_REMOVE_FROM_GROUP_15(127),
     /**
      * <code>DALI_SET_SHORT_ADDRESS = 128;</code>
      */
@@ -4046,9 +4995,77 @@ public final class EDS10ProtocolBuffer {
      */
     public static final int DALI_RECALL_LAST_ACTIVE_LEVEL_VALUE = 10;
     /**
-     * <code>DALI_RECALL_SCENE_X = 16;</code>
+     * <code>DALI_CONTINUOUS_UP = 11;</code>
      */
-    public static final int DALI_RECALL_SCENE_X_VALUE = 16;
+    public static final int DALI_CONTINUOUS_UP_VALUE = 11;
+    /**
+     * <code>DALI_CONTINUOUS_DOWN = 12;</code>
+     */
+    public static final int DALI_CONTINUOUS_DOWN_VALUE = 12;
+    /**
+     * <code>DALI_RECALL_SCENE_0 = 16;</code>
+     */
+    public static final int DALI_RECALL_SCENE_0_VALUE = 16;
+    /**
+     * <code>DALI_RECALL_SCENE_1 = 17;</code>
+     */
+    public static final int DALI_RECALL_SCENE_1_VALUE = 17;
+    /**
+     * <code>DALI_RECALL_SCENE_2 = 18;</code>
+     */
+    public static final int DALI_RECALL_SCENE_2_VALUE = 18;
+    /**
+     * <code>DALI_RECALL_SCENE_3 = 19;</code>
+     */
+    public static final int DALI_RECALL_SCENE_3_VALUE = 19;
+    /**
+     * <code>DALI_RECALL_SCENE_4 = 20;</code>
+     */
+    public static final int DALI_RECALL_SCENE_4_VALUE = 20;
+    /**
+     * <code>DALI_RECALL_SCENE_5 = 21;</code>
+     */
+    public static final int DALI_RECALL_SCENE_5_VALUE = 21;
+    /**
+     * <code>DALI_RECALL_SCENE_6 = 22;</code>
+     */
+    public static final int DALI_RECALL_SCENE_6_VALUE = 22;
+    /**
+     * <code>DALI_RECALL_SCENE_7 = 23;</code>
+     */
+    public static final int DALI_RECALL_SCENE_7_VALUE = 23;
+    /**
+     * <code>DALI_RECALL_SCENE_8 = 24;</code>
+     */
+    public static final int DALI_RECALL_SCENE_8_VALUE = 24;
+    /**
+     * <code>DALI_RECALL_SCENE_9 = 25;</code>
+     */
+    public static final int DALI_RECALL_SCENE_9_VALUE = 25;
+    /**
+     * <code>DALI_RECALL_SCENE_10 = 26;</code>
+     */
+    public static final int DALI_RECALL_SCENE_10_VALUE = 26;
+    /**
+     * <code>DALI_RECALL_SCENE_11 = 27;</code>
+     */
+    public static final int DALI_RECALL_SCENE_11_VALUE = 27;
+    /**
+     * <code>DALI_RECALL_SCENE_12 = 28;</code>
+     */
+    public static final int DALI_RECALL_SCENE_12_VALUE = 28;
+    /**
+     * <code>DALI_RECALL_SCENE_13 = 29;</code>
+     */
+    public static final int DALI_RECALL_SCENE_13_VALUE = 29;
+    /**
+     * <code>DALI_RECALL_SCENE_14 = 30;</code>
+     */
+    public static final int DALI_RECALL_SCENE_14_VALUE = 30;
+    /**
+     * <code>DALI_RECALL_SCENE_15 = 31;</code>
+     */
+    public static final int DALI_RECALL_SCENE_15_VALUE = 31;
     /**
      * <code>DALI_RESET = 32;</code>
      */
@@ -4102,21 +5119,261 @@ public final class EDS10ProtocolBuffer {
      */
     public static final int DALI_SET_EXT_FADE_TIME_VALUE = 48;
     /**
-     * <code>DALI_SET_SCENE_X = 64;</code>
+     * <code>DALI_SET_SCENE_0 = 64;</code>
      */
-    public static final int DALI_SET_SCENE_X_VALUE = 64;
+    public static final int DALI_SET_SCENE_0_VALUE = 64;
     /**
-     * <code>DALI_REMOVE_FROM_SCENE_X = 80;</code>
+     * <code>DALI_SET_SCENE_1 = 65;</code>
      */
-    public static final int DALI_REMOVE_FROM_SCENE_X_VALUE = 80;
+    public static final int DALI_SET_SCENE_1_VALUE = 65;
     /**
-     * <code>DALI_ADD_TO_GROUP_X = 96;</code>
+     * <code>DALI_SET_SCENE_2 = 66;</code>
      */
-    public static final int DALI_ADD_TO_GROUP_X_VALUE = 96;
+    public static final int DALI_SET_SCENE_2_VALUE = 66;
     /**
-     * <code>DALI_REMOVE_FROM_GROUP_X = 112;</code>
+     * <code>DALI_SET_SCENE_3 = 67;</code>
      */
-    public static final int DALI_REMOVE_FROM_GROUP_X_VALUE = 112;
+    public static final int DALI_SET_SCENE_3_VALUE = 67;
+    /**
+     * <code>DALI_SET_SCENE_4 = 68;</code>
+     */
+    public static final int DALI_SET_SCENE_4_VALUE = 68;
+    /**
+     * <code>DALI_SET_SCENE_5 = 69;</code>
+     */
+    public static final int DALI_SET_SCENE_5_VALUE = 69;
+    /**
+     * <code>DALI_SET_SCENE_6 = 70;</code>
+     */
+    public static final int DALI_SET_SCENE_6_VALUE = 70;
+    /**
+     * <code>DALI_SET_SCENE_7 = 71;</code>
+     */
+    public static final int DALI_SET_SCENE_7_VALUE = 71;
+    /**
+     * <code>DALI_SET_SCENE_8 = 72;</code>
+     */
+    public static final int DALI_SET_SCENE_8_VALUE = 72;
+    /**
+     * <code>DALI_SET_SCENE_9 = 73;</code>
+     */
+    public static final int DALI_SET_SCENE_9_VALUE = 73;
+    /**
+     * <code>DALI_SET_SCENE_10 = 74;</code>
+     */
+    public static final int DALI_SET_SCENE_10_VALUE = 74;
+    /**
+     * <code>DALI_SET_SCENE_11 = 75;</code>
+     */
+    public static final int DALI_SET_SCENE_11_VALUE = 75;
+    /**
+     * <code>DALI_SET_SCENE_12 = 76;</code>
+     */
+    public static final int DALI_SET_SCENE_12_VALUE = 76;
+    /**
+     * <code>DALI_SET_SCENE_13 = 77;</code>
+     */
+    public static final int DALI_SET_SCENE_13_VALUE = 77;
+    /**
+     * <code>DALI_SET_SCENE_14 = 78;</code>
+     */
+    public static final int DALI_SET_SCENE_14_VALUE = 78;
+    /**
+     * <code>DALI_SET_SCENE_15 = 79;</code>
+     */
+    public static final int DALI_SET_SCENE_15_VALUE = 79;
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_0 = 80;</code>
+     */
+    public static final int DALI_REMOVE_FROM_SCENE_0_VALUE = 80;
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_1 = 81;</code>
+     */
+    public static final int DALI_REMOVE_FROM_SCENE_1_VALUE = 81;
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_2 = 82;</code>
+     */
+    public static final int DALI_REMOVE_FROM_SCENE_2_VALUE = 82;
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_3 = 83;</code>
+     */
+    public static final int DALI_REMOVE_FROM_SCENE_3_VALUE = 83;
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_4 = 84;</code>
+     */
+    public static final int DALI_REMOVE_FROM_SCENE_4_VALUE = 84;
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_5 = 85;</code>
+     */
+    public static final int DALI_REMOVE_FROM_SCENE_5_VALUE = 85;
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_6 = 86;</code>
+     */
+    public static final int DALI_REMOVE_FROM_SCENE_6_VALUE = 86;
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_7 = 87;</code>
+     */
+    public static final int DALI_REMOVE_FROM_SCENE_7_VALUE = 87;
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_8 = 88;</code>
+     */
+    public static final int DALI_REMOVE_FROM_SCENE_8_VALUE = 88;
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_9 = 89;</code>
+     */
+    public static final int DALI_REMOVE_FROM_SCENE_9_VALUE = 89;
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_10 = 90;</code>
+     */
+    public static final int DALI_REMOVE_FROM_SCENE_10_VALUE = 90;
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_11 = 91;</code>
+     */
+    public static final int DALI_REMOVE_FROM_SCENE_11_VALUE = 91;
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_12 = 92;</code>
+     */
+    public static final int DALI_REMOVE_FROM_SCENE_12_VALUE = 92;
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_13 = 93;</code>
+     */
+    public static final int DALI_REMOVE_FROM_SCENE_13_VALUE = 93;
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_14 = 94;</code>
+     */
+    public static final int DALI_REMOVE_FROM_SCENE_14_VALUE = 94;
+    /**
+     * <code>DALI_REMOVE_FROM_SCENE_15 = 95;</code>
+     */
+    public static final int DALI_REMOVE_FROM_SCENE_15_VALUE = 95;
+    /**
+     * <code>DALI_ADD_TO_GROUP_0 = 96;</code>
+     */
+    public static final int DALI_ADD_TO_GROUP_0_VALUE = 96;
+    /**
+     * <code>DALI_ADD_TO_GROUP_1 = 97;</code>
+     */
+    public static final int DALI_ADD_TO_GROUP_1_VALUE = 97;
+    /**
+     * <code>DALI_ADD_TO_GROUP_2 = 98;</code>
+     */
+    public static final int DALI_ADD_TO_GROUP_2_VALUE = 98;
+    /**
+     * <code>DALI_ADD_TO_GROUP_3 = 99;</code>
+     */
+    public static final int DALI_ADD_TO_GROUP_3_VALUE = 99;
+    /**
+     * <code>DALI_ADD_TO_GROUP_4 = 100;</code>
+     */
+    public static final int DALI_ADD_TO_GROUP_4_VALUE = 100;
+    /**
+     * <code>DALI_ADD_TO_GROUP_5 = 101;</code>
+     */
+    public static final int DALI_ADD_TO_GROUP_5_VALUE = 101;
+    /**
+     * <code>DALI_ADD_TO_GROUP_6 = 102;</code>
+     */
+    public static final int DALI_ADD_TO_GROUP_6_VALUE = 102;
+    /**
+     * <code>DALI_ADD_TO_GROUP_7 = 103;</code>
+     */
+    public static final int DALI_ADD_TO_GROUP_7_VALUE = 103;
+    /**
+     * <code>DALI_ADD_TO_GROUP_8 = 104;</code>
+     */
+    public static final int DALI_ADD_TO_GROUP_8_VALUE = 104;
+    /**
+     * <code>DALI_ADD_TO_GROUP_9 = 105;</code>
+     */
+    public static final int DALI_ADD_TO_GROUP_9_VALUE = 105;
+    /**
+     * <code>DALI_ADD_TO_GROUP_10 = 106;</code>
+     */
+    public static final int DALI_ADD_TO_GROUP_10_VALUE = 106;
+    /**
+     * <code>DALI_ADD_TO_GROUP_11 = 107;</code>
+     */
+    public static final int DALI_ADD_TO_GROUP_11_VALUE = 107;
+    /**
+     * <code>DALI_ADD_TO_GROUP_12 = 108;</code>
+     */
+    public static final int DALI_ADD_TO_GROUP_12_VALUE = 108;
+    /**
+     * <code>DALI_ADD_TO_GROUP_13 = 109;</code>
+     */
+    public static final int DALI_ADD_TO_GROUP_13_VALUE = 109;
+    /**
+     * <code>DALI_ADD_TO_GROUP_14 = 110;</code>
+     */
+    public static final int DALI_ADD_TO_GROUP_14_VALUE = 110;
+    /**
+     * <code>DALI_ADD_TO_GROUP_15 = 111;</code>
+     */
+    public static final int DALI_ADD_TO_GROUP_15_VALUE = 111;
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_0 = 112;</code>
+     */
+    public static final int DALI_REMOVE_FROM_GROUP_0_VALUE = 112;
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_1 = 113;</code>
+     */
+    public static final int DALI_REMOVE_FROM_GROUP_1_VALUE = 113;
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_2 = 114;</code>
+     */
+    public static final int DALI_REMOVE_FROM_GROUP_2_VALUE = 114;
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_3 = 115;</code>
+     */
+    public static final int DALI_REMOVE_FROM_GROUP_3_VALUE = 115;
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_4 = 116;</code>
+     */
+    public static final int DALI_REMOVE_FROM_GROUP_4_VALUE = 116;
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_5 = 117;</code>
+     */
+    public static final int DALI_REMOVE_FROM_GROUP_5_VALUE = 117;
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_6 = 118;</code>
+     */
+    public static final int DALI_REMOVE_FROM_GROUP_6_VALUE = 118;
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_7 = 119;</code>
+     */
+    public static final int DALI_REMOVE_FROM_GROUP_7_VALUE = 119;
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_8 = 120;</code>
+     */
+    public static final int DALI_REMOVE_FROM_GROUP_8_VALUE = 120;
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_9 = 121;</code>
+     */
+    public static final int DALI_REMOVE_FROM_GROUP_9_VALUE = 121;
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_10 = 122;</code>
+     */
+    public static final int DALI_REMOVE_FROM_GROUP_10_VALUE = 122;
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_11 = 123;</code>
+     */
+    public static final int DALI_REMOVE_FROM_GROUP_11_VALUE = 123;
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_12 = 124;</code>
+     */
+    public static final int DALI_REMOVE_FROM_GROUP_12_VALUE = 124;
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_13 = 125;</code>
+     */
+    public static final int DALI_REMOVE_FROM_GROUP_13_VALUE = 125;
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_14 = 126;</code>
+     */
+    public static final int DALI_REMOVE_FROM_GROUP_14_VALUE = 126;
+    /**
+     * <code>DALI_REMOVE_FROM_GROUP_15 = 127;</code>
+     */
+    public static final int DALI_REMOVE_FROM_GROUP_15_VALUE = 127;
     /**
      * <code>DALI_SET_SHORT_ADDRESS = 128;</code>
      */
@@ -4188,7 +5445,24 @@ public final class EDS10ProtocolBuffer {
         case 8: return DALI_ON_STEP_UP;
         case 9: return DALI_ENABLE_DAPC_SEQ;
         case 10: return DALI_RECALL_LAST_ACTIVE_LEVEL;
-        case 16: return DALI_RECALL_SCENE_X;
+        case 11: return DALI_CONTINUOUS_UP;
+        case 12: return DALI_CONTINUOUS_DOWN;
+        case 16: return DALI_RECALL_SCENE_0;
+        case 17: return DALI_RECALL_SCENE_1;
+        case 18: return DALI_RECALL_SCENE_2;
+        case 19: return DALI_RECALL_SCENE_3;
+        case 20: return DALI_RECALL_SCENE_4;
+        case 21: return DALI_RECALL_SCENE_5;
+        case 22: return DALI_RECALL_SCENE_6;
+        case 23: return DALI_RECALL_SCENE_7;
+        case 24: return DALI_RECALL_SCENE_8;
+        case 25: return DALI_RECALL_SCENE_9;
+        case 26: return DALI_RECALL_SCENE_10;
+        case 27: return DALI_RECALL_SCENE_11;
+        case 28: return DALI_RECALL_SCENE_12;
+        case 29: return DALI_RECALL_SCENE_13;
+        case 30: return DALI_RECALL_SCENE_14;
+        case 31: return DALI_RECALL_SCENE_15;
         case 32: return DALI_RESET;
         case 33: return DALI_STORE_ACTUAL_LEVEL_DTR0;
         case 34: return DALI_SAVE_PERSISTENT_VARS;
@@ -4202,10 +5476,70 @@ public final class EDS10ProtocolBuffer {
         case 46: return DALI_SET_FADE_TIME;
         case 47: return DALI_SET_FADE_RATE;
         case 48: return DALI_SET_EXT_FADE_TIME;
-        case 64: return DALI_SET_SCENE_X;
-        case 80: return DALI_REMOVE_FROM_SCENE_X;
-        case 96: return DALI_ADD_TO_GROUP_X;
-        case 112: return DALI_REMOVE_FROM_GROUP_X;
+        case 64: return DALI_SET_SCENE_0;
+        case 65: return DALI_SET_SCENE_1;
+        case 66: return DALI_SET_SCENE_2;
+        case 67: return DALI_SET_SCENE_3;
+        case 68: return DALI_SET_SCENE_4;
+        case 69: return DALI_SET_SCENE_5;
+        case 70: return DALI_SET_SCENE_6;
+        case 71: return DALI_SET_SCENE_7;
+        case 72: return DALI_SET_SCENE_8;
+        case 73: return DALI_SET_SCENE_9;
+        case 74: return DALI_SET_SCENE_10;
+        case 75: return DALI_SET_SCENE_11;
+        case 76: return DALI_SET_SCENE_12;
+        case 77: return DALI_SET_SCENE_13;
+        case 78: return DALI_SET_SCENE_14;
+        case 79: return DALI_SET_SCENE_15;
+        case 80: return DALI_REMOVE_FROM_SCENE_0;
+        case 81: return DALI_REMOVE_FROM_SCENE_1;
+        case 82: return DALI_REMOVE_FROM_SCENE_2;
+        case 83: return DALI_REMOVE_FROM_SCENE_3;
+        case 84: return DALI_REMOVE_FROM_SCENE_4;
+        case 85: return DALI_REMOVE_FROM_SCENE_5;
+        case 86: return DALI_REMOVE_FROM_SCENE_6;
+        case 87: return DALI_REMOVE_FROM_SCENE_7;
+        case 88: return DALI_REMOVE_FROM_SCENE_8;
+        case 89: return DALI_REMOVE_FROM_SCENE_9;
+        case 90: return DALI_REMOVE_FROM_SCENE_10;
+        case 91: return DALI_REMOVE_FROM_SCENE_11;
+        case 92: return DALI_REMOVE_FROM_SCENE_12;
+        case 93: return DALI_REMOVE_FROM_SCENE_13;
+        case 94: return DALI_REMOVE_FROM_SCENE_14;
+        case 95: return DALI_REMOVE_FROM_SCENE_15;
+        case 96: return DALI_ADD_TO_GROUP_0;
+        case 97: return DALI_ADD_TO_GROUP_1;
+        case 98: return DALI_ADD_TO_GROUP_2;
+        case 99: return DALI_ADD_TO_GROUP_3;
+        case 100: return DALI_ADD_TO_GROUP_4;
+        case 101: return DALI_ADD_TO_GROUP_5;
+        case 102: return DALI_ADD_TO_GROUP_6;
+        case 103: return DALI_ADD_TO_GROUP_7;
+        case 104: return DALI_ADD_TO_GROUP_8;
+        case 105: return DALI_ADD_TO_GROUP_9;
+        case 106: return DALI_ADD_TO_GROUP_10;
+        case 107: return DALI_ADD_TO_GROUP_11;
+        case 108: return DALI_ADD_TO_GROUP_12;
+        case 109: return DALI_ADD_TO_GROUP_13;
+        case 110: return DALI_ADD_TO_GROUP_14;
+        case 111: return DALI_ADD_TO_GROUP_15;
+        case 112: return DALI_REMOVE_FROM_GROUP_0;
+        case 113: return DALI_REMOVE_FROM_GROUP_1;
+        case 114: return DALI_REMOVE_FROM_GROUP_2;
+        case 115: return DALI_REMOVE_FROM_GROUP_3;
+        case 116: return DALI_REMOVE_FROM_GROUP_4;
+        case 117: return DALI_REMOVE_FROM_GROUP_5;
+        case 118: return DALI_REMOVE_FROM_GROUP_6;
+        case 119: return DALI_REMOVE_FROM_GROUP_7;
+        case 120: return DALI_REMOVE_FROM_GROUP_8;
+        case 121: return DALI_REMOVE_FROM_GROUP_9;
+        case 122: return DALI_REMOVE_FROM_GROUP_10;
+        case 123: return DALI_REMOVE_FROM_GROUP_11;
+        case 124: return DALI_REMOVE_FROM_GROUP_12;
+        case 125: return DALI_REMOVE_FROM_GROUP_13;
+        case 126: return DALI_REMOVE_FROM_GROUP_14;
+        case 127: return DALI_REMOVE_FROM_GROUP_15;
         case 128: return DALI_SET_SHORT_ADDRESS;
         case 129: return DALI_ENABLE_WRITE_MEMORY;
         case 255: return DALI_TERMINATE;
@@ -4242,7 +5576,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(16);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(19);
     }
 
     private static final DALICommandType[] VALUES = values();
@@ -4428,7 +5762,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(17);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(20);
     }
 
     private static final CustomDALICommandType[] VALUES = values();
@@ -5001,7 +6335,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(18);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(21);
     }
 
     private static final AdminPropertyType[] VALUES = values();
@@ -5135,7 +6469,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(19);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(22);
     }
 
     private static final AdminCommandType[] VALUES = values();
@@ -5316,7 +6650,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(20);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(23);
     }
 
     private static final DALIStatusType[] VALUES = values();
@@ -5495,7 +6829,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(21);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(24);
     }
 
     private static final DALIRXStatusFlag[] VALUES = values();
@@ -5660,7 +6994,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(22);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(25);
     }
 
     private static final DiagnosticMessageType[] VALUES = values();
@@ -5794,7 +7128,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(23);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(26);
     }
 
     private static final FirmwareCommandType[] VALUES = values();
@@ -5925,7 +7259,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(24);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(27);
     }
 
     private static final SpektraTransitionType[] VALUES = values();
@@ -6077,7 +7411,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(25);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(28);
     }
 
     private static final LogicType[] VALUES = values();
@@ -6211,7 +7545,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(26);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(29);
     }
 
     private static final LogicComparisonType[] VALUES = values();
@@ -6325,7 +7659,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(27);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(30);
     }
 
     private static final DALISensorType[] VALUES = values();
@@ -6473,7 +7807,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(28);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(31);
     }
 
     private static final SensorCommandType[] VALUES = values();
@@ -6616,7 +7950,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(29);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(32);
     }
 
     private static final SystemLogType[] VALUES = values();
@@ -6741,7 +8075,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(30);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(33);
     }
 
     private static final DALI24InputType[] VALUES = values();
@@ -6857,7 +8191,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(31);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(34);
     }
 
     private static final DALIMotionSensorStates[] VALUES = values();
@@ -6964,7 +8298,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(32);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(35);
     }
 
     private static final DALILuxSensorStates[] VALUES = values();
@@ -7080,7 +8414,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(33);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(36);
     }
 
     private static final DALIAddressingError[] VALUES = values();
@@ -7178,7 +8512,7 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(34);
+      return EDS10ProtocolBuffer.getDescriptor().getEnumTypes().get(37);
     }
 
     private static final DALIAddressingType[] VALUES = values();
@@ -39542,6 +40876,23 @@ public final class EDS10ProtocolBuffer {
 
     /**
      * <pre>
+     * Settings for DALI 24 Bit Devices
+     * </pre>
+     *
+     * <code>.DALI24DeviceSetting device24_setting = 16;</code>
+     */
+    int getDevice24SettingValue();
+    /**
+     * <pre>
+     * Settings for DALI 24 Bit Devices
+     * </pre>
+     *
+     * <code>.DALI24DeviceSetting device24_setting = 16;</code>
+     */
+    EDS10ProtocolBuffer.DALI24DeviceSetting getDevice24Setting();
+
+    /**
+     * <pre>
      * 'arg' rather than level for methods where you need a scene number.
      * </pre>
      *
@@ -39562,6 +40913,40 @@ public final class EDS10ProtocolBuffer {
      */
     EDS10ProtocolBuffer.DTRPayloadMessageOrBuilder getDtrOrBuilder();
 
+    /**
+     * <pre>
+     * Instance for 24 bit device - Commands are sent via Type
+     * </pre>
+     *
+     * <code>.DALI24InstanceType instance_type = 17;</code>
+     */
+    int getInstanceTypeValue();
+    /**
+     * <pre>
+     * Instance for 24 bit device - Commands are sent via Type
+     * </pre>
+     *
+     * <code>.DALI24InstanceType instance_type = 17;</code>
+     */
+    EDS10ProtocolBuffer.DALI24InstanceType getInstanceType();
+
+    /**
+     * <pre>
+     * OpCode for 24 bit device
+     * </pre>
+     *
+     * <code>.DALI24OpCode op_code = 18;</code>
+     */
+    int getOpCodeValue();
+    /**
+     * <pre>
+     * OpCode for 24 bit device
+     * </pre>
+     *
+     * <code>.DALI24OpCode op_code = 18;</code>
+     */
+    EDS10ProtocolBuffer.DALI24OpCode getOpCode();
+
     public EDS10ProtocolBuffer.DALIMessage.ActionCase getActionCase();
 
     public EDS10ProtocolBuffer.DALIMessage.ParamsCase getParamsCase();
@@ -39581,6 +40966,8 @@ public final class EDS10ProtocolBuffer {
     private DALIMessage() {
       lineMask_ = 0;
       address_ = 0;
+      instanceType_ = 0;
+      opCode_ = 0;
     }
 
     @java.lang.Override
@@ -39696,6 +41083,24 @@ public final class EDS10ProtocolBuffer {
               action_ = rawValue;
               break;
             }
+            case 128: {
+              int rawValue = input.readEnum();
+              actionCase_ = 16;
+              action_ = rawValue;
+              break;
+            }
+            case 136: {
+              int rawValue = input.readEnum();
+
+              instanceType_ = rawValue;
+              break;
+            }
+            case 144: {
+              int rawValue = input.readEnum();
+
+              opCode_ = rawValue;
+              break;
+            }
             default: {
               if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -39743,6 +41148,7 @@ public final class EDS10ProtocolBuffer {
       FRAME_24_BIT(13),
       FRAME_24_BIT_REPLY(14),
       TYPE8_REPLY(15),
+      DEVICE24_SETTING(16),
       ACTION_NOT_SET(0);
       private final int value;
       private ActionCase(int value) {
@@ -39769,6 +41175,7 @@ public final class EDS10ProtocolBuffer {
           case 13: return FRAME_24_BIT;
           case 14: return FRAME_24_BIT_REPLY;
           case 15: return TYPE8_REPLY;
+          case 16: return DEVICE24_SETTING;
           case 0: return ACTION_NOT_SET;
           default: return null;
         }
@@ -40053,6 +41460,37 @@ public final class EDS10ProtocolBuffer {
       return EDS10ProtocolBuffer.Type8QueryType.TYPE8_QUERY_NULL;
     }
 
+    public static final int DEVICE24_SETTING_FIELD_NUMBER = 16;
+    /**
+     * <pre>
+     * Settings for DALI 24 Bit Devices
+     * </pre>
+     *
+     * <code>.DALI24DeviceSetting device24_setting = 16;</code>
+     */
+    public int getDevice24SettingValue() {
+      if (actionCase_ == 16) {
+        return (java.lang.Integer) action_;
+      }
+      return 0;
+    }
+    /**
+     * <pre>
+     * Settings for DALI 24 Bit Devices
+     * </pre>
+     *
+     * <code>.DALI24DeviceSetting device24_setting = 16;</code>
+     */
+    public EDS10ProtocolBuffer.DALI24DeviceSetting getDevice24Setting() {
+      if (actionCase_ == 16) {
+        @SuppressWarnings("deprecation")
+        EDS10ProtocolBuffer.DALI24DeviceSetting result = EDS10ProtocolBuffer.DALI24DeviceSetting.valueOf(
+            (java.lang.Integer) action_);
+        return result == null ? EDS10ProtocolBuffer.DALI24DeviceSetting.UNRECOGNIZED : result;
+      }
+      return EDS10ProtocolBuffer.DALI24DeviceSetting.COMMAND_IDENTIFY;
+    }
+
     public static final int ARG_FIELD_NUMBER = 9;
     /**
      * <pre>
@@ -40092,6 +41530,56 @@ public final class EDS10ProtocolBuffer {
          return (EDS10ProtocolBuffer.DTRPayloadMessage) params_;
       }
       return EDS10ProtocolBuffer.DTRPayloadMessage.getDefaultInstance();
+    }
+
+    public static final int INSTANCE_TYPE_FIELD_NUMBER = 17;
+    private int instanceType_;
+    /**
+     * <pre>
+     * Instance for 24 bit device - Commands are sent via Type
+     * </pre>
+     *
+     * <code>.DALI24InstanceType instance_type = 17;</code>
+     */
+    public int getInstanceTypeValue() {
+      return instanceType_;
+    }
+    /**
+     * <pre>
+     * Instance for 24 bit device - Commands are sent via Type
+     * </pre>
+     *
+     * <code>.DALI24InstanceType instance_type = 17;</code>
+     */
+    public EDS10ProtocolBuffer.DALI24InstanceType getInstanceType() {
+      @SuppressWarnings("deprecation")
+      EDS10ProtocolBuffer.DALI24InstanceType result = EDS10ProtocolBuffer.DALI24InstanceType.valueOf(instanceType_);
+      return result == null ? EDS10ProtocolBuffer.DALI24InstanceType.UNRECOGNIZED : result;
+    }
+
+    public static final int OP_CODE_FIELD_NUMBER = 18;
+    private int opCode_;
+    /**
+     * <pre>
+     * OpCode for 24 bit device
+     * </pre>
+     *
+     * <code>.DALI24OpCode op_code = 18;</code>
+     */
+    public int getOpCodeValue() {
+      return opCode_;
+    }
+    /**
+     * <pre>
+     * OpCode for 24 bit device
+     * </pre>
+     *
+     * <code>.DALI24OpCode op_code = 18;</code>
+     */
+    public EDS10ProtocolBuffer.DALI24OpCode getOpCode() {
+      @SuppressWarnings("deprecation")
+      EDS10ProtocolBuffer.DALI24OpCode result = EDS10ProtocolBuffer.DALI24OpCode.valueOf(opCode_);
+      return result == null ? EDS10ProtocolBuffer.DALI24OpCode.UNRECOGNIZED : result;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -40159,6 +41647,15 @@ public final class EDS10ProtocolBuffer {
       }
       if (actionCase_ == 15) {
         output.writeEnum(15, ((java.lang.Integer) action_));
+      }
+      if (actionCase_ == 16) {
+        output.writeEnum(16, ((java.lang.Integer) action_));
+      }
+      if (instanceType_ != EDS10ProtocolBuffer.DALI24InstanceType.DEFAULT.getNumber()) {
+        output.writeEnum(17, instanceType_);
+      }
+      if (opCode_ != EDS10ProtocolBuffer.DALI24OpCode.OPCODE_NULL.getNumber()) {
+        output.writeEnum(18, opCode_);
       }
       unknownFields.writeTo(output);
     }
@@ -40236,6 +41733,18 @@ public final class EDS10ProtocolBuffer {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(15, ((java.lang.Integer) action_));
       }
+      if (actionCase_ == 16) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(16, ((java.lang.Integer) action_));
+      }
+      if (instanceType_ != EDS10ProtocolBuffer.DALI24InstanceType.DEFAULT.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(17, instanceType_);
+      }
+      if (opCode_ != EDS10ProtocolBuffer.DALI24OpCode.OPCODE_NULL.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(18, opCode_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -40256,6 +41765,8 @@ public final class EDS10ProtocolBuffer {
           == other.getLineMask());
       result = result && (getAddress()
           == other.getAddress());
+      result = result && instanceType_ == other.instanceType_;
+      result = result && opCode_ == other.opCode_;
       result = result && getActionCase().equals(
           other.getActionCase());
       if (!result) return false;
@@ -40304,6 +41815,10 @@ public final class EDS10ProtocolBuffer {
           result = result && getType8ReplyValue()
               == other.getType8ReplyValue();
           break;
+        case 16:
+          result = result && getDevice24SettingValue()
+              == other.getDevice24SettingValue();
+          break;
         case 0:
         default:
       }
@@ -40337,6 +41852,10 @@ public final class EDS10ProtocolBuffer {
       hash = (53 * hash) + getLineMask();
       hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
       hash = (53 * hash) + getAddress();
+      hash = (37 * hash) + INSTANCE_TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + instanceType_;
+      hash = (37 * hash) + OP_CODE_FIELD_NUMBER;
+      hash = (53 * hash) + opCode_;
       switch (actionCase_) {
         case 3:
           hash = (37 * hash) + FRAME_25_BIT_FIELD_NUMBER;
@@ -40381,6 +41900,10 @@ public final class EDS10ProtocolBuffer {
         case 15:
           hash = (37 * hash) + TYPE8_REPLY_FIELD_NUMBER;
           hash = (53 * hash) + getType8ReplyValue();
+          break;
+        case 16:
+          hash = (37 * hash) + DEVICE24_SETTING_FIELD_NUMBER;
+          hash = (53 * hash) + getDevice24SettingValue();
           break;
         case 0:
         default:
@@ -40534,6 +42057,10 @@ public final class EDS10ProtocolBuffer {
 
         address_ = 0;
 
+        instanceType_ = 0;
+
+        opCode_ = 0;
+
         actionCase_ = 0;
         action_ = null;
         paramsCase_ = 0;
@@ -40599,6 +42126,9 @@ public final class EDS10ProtocolBuffer {
         if (actionCase_ == 15) {
           result.action_ = action_;
         }
+        if (actionCase_ == 16) {
+          result.action_ = action_;
+        }
         if (paramsCase_ == 9) {
           result.params_ = params_;
         }
@@ -40609,6 +42139,8 @@ public final class EDS10ProtocolBuffer {
             result.params_ = dtrBuilder_.build();
           }
         }
+        result.instanceType_ = instanceType_;
+        result.opCode_ = opCode_;
         result.actionCase_ = actionCase_;
         result.paramsCase_ = paramsCase_;
         onBuilt();
@@ -40665,6 +42197,12 @@ public final class EDS10ProtocolBuffer {
         if (other.getAddress() != 0) {
           setAddress(other.getAddress());
         }
+        if (other.instanceType_ != 0) {
+          setInstanceTypeValue(other.getInstanceTypeValue());
+        }
+        if (other.opCode_ != 0) {
+          setOpCodeValue(other.getOpCodeValue());
+        }
         switch (other.getActionCase()) {
           case FRAME_25_BIT: {
             setFrame25Bit(other.getFrame25Bit());
@@ -40708,6 +42246,10 @@ public final class EDS10ProtocolBuffer {
           }
           case TYPE8_REPLY: {
             setType8ReplyValue(other.getType8ReplyValue());
+            break;
+          }
+          case DEVICE24_SETTING: {
+            setDevice24SettingValue(other.getDevice24SettingValue());
             break;
           }
           case ACTION_NOT_SET: {
@@ -41386,6 +42928,80 @@ public final class EDS10ProtocolBuffer {
 
       /**
        * <pre>
+       * Settings for DALI 24 Bit Devices
+       * </pre>
+       *
+       * <code>.DALI24DeviceSetting device24_setting = 16;</code>
+       */
+      public int getDevice24SettingValue() {
+        if (actionCase_ == 16) {
+          return ((java.lang.Integer) action_).intValue();
+        }
+        return 0;
+      }
+      /**
+       * <pre>
+       * Settings for DALI 24 Bit Devices
+       * </pre>
+       *
+       * <code>.DALI24DeviceSetting device24_setting = 16;</code>
+       */
+      public Builder setDevice24SettingValue(int value) {
+        actionCase_ = 16;
+        action_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Settings for DALI 24 Bit Devices
+       * </pre>
+       *
+       * <code>.DALI24DeviceSetting device24_setting = 16;</code>
+       */
+      public EDS10ProtocolBuffer.DALI24DeviceSetting getDevice24Setting() {
+        if (actionCase_ == 16) {
+          @SuppressWarnings("deprecation")
+          EDS10ProtocolBuffer.DALI24DeviceSetting result = EDS10ProtocolBuffer.DALI24DeviceSetting.valueOf(
+              (java.lang.Integer) action_);
+          return result == null ? EDS10ProtocolBuffer.DALI24DeviceSetting.UNRECOGNIZED : result;
+        }
+        return EDS10ProtocolBuffer.DALI24DeviceSetting.COMMAND_IDENTIFY;
+      }
+      /**
+       * <pre>
+       * Settings for DALI 24 Bit Devices
+       * </pre>
+       *
+       * <code>.DALI24DeviceSetting device24_setting = 16;</code>
+       */
+      public Builder setDevice24Setting(EDS10ProtocolBuffer.DALI24DeviceSetting value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        actionCase_ = 16;
+        action_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Settings for DALI 24 Bit Devices
+       * </pre>
+       *
+       * <code>.DALI24DeviceSetting device24_setting = 16;</code>
+       */
+      public Builder clearDevice24Setting() {
+        if (actionCase_ == 16) {
+          actionCase_ = 0;
+          action_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <pre>
        * 'arg' rather than level for methods where you need a scene number.
        * </pre>
        *
@@ -41560,6 +43176,136 @@ public final class EDS10ProtocolBuffer {
         paramsCase_ = 10;
         onChanged();;
         return dtrBuilder_;
+      }
+
+      private int instanceType_ = 0;
+      /**
+       * <pre>
+       * Instance for 24 bit device - Commands are sent via Type
+       * </pre>
+       *
+       * <code>.DALI24InstanceType instance_type = 17;</code>
+       */
+      public int getInstanceTypeValue() {
+        return instanceType_;
+      }
+      /**
+       * <pre>
+       * Instance for 24 bit device - Commands are sent via Type
+       * </pre>
+       *
+       * <code>.DALI24InstanceType instance_type = 17;</code>
+       */
+      public Builder setInstanceTypeValue(int value) {
+        instanceType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Instance for 24 bit device - Commands are sent via Type
+       * </pre>
+       *
+       * <code>.DALI24InstanceType instance_type = 17;</code>
+       */
+      public EDS10ProtocolBuffer.DALI24InstanceType getInstanceType() {
+        @SuppressWarnings("deprecation")
+        EDS10ProtocolBuffer.DALI24InstanceType result = EDS10ProtocolBuffer.DALI24InstanceType.valueOf(instanceType_);
+        return result == null ? EDS10ProtocolBuffer.DALI24InstanceType.UNRECOGNIZED : result;
+      }
+      /**
+       * <pre>
+       * Instance for 24 bit device - Commands are sent via Type
+       * </pre>
+       *
+       * <code>.DALI24InstanceType instance_type = 17;</code>
+       */
+      public Builder setInstanceType(EDS10ProtocolBuffer.DALI24InstanceType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        instanceType_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Instance for 24 bit device - Commands are sent via Type
+       * </pre>
+       *
+       * <code>.DALI24InstanceType instance_type = 17;</code>
+       */
+      public Builder clearInstanceType() {
+        
+        instanceType_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int opCode_ = 0;
+      /**
+       * <pre>
+       * OpCode for 24 bit device
+       * </pre>
+       *
+       * <code>.DALI24OpCode op_code = 18;</code>
+       */
+      public int getOpCodeValue() {
+        return opCode_;
+      }
+      /**
+       * <pre>
+       * OpCode for 24 bit device
+       * </pre>
+       *
+       * <code>.DALI24OpCode op_code = 18;</code>
+       */
+      public Builder setOpCodeValue(int value) {
+        opCode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * OpCode for 24 bit device
+       * </pre>
+       *
+       * <code>.DALI24OpCode op_code = 18;</code>
+       */
+      public EDS10ProtocolBuffer.DALI24OpCode getOpCode() {
+        @SuppressWarnings("deprecation")
+        EDS10ProtocolBuffer.DALI24OpCode result = EDS10ProtocolBuffer.DALI24OpCode.valueOf(opCode_);
+        return result == null ? EDS10ProtocolBuffer.DALI24OpCode.UNRECOGNIZED : result;
+      }
+      /**
+       * <pre>
+       * OpCode for 24 bit device
+       * </pre>
+       *
+       * <code>.DALI24OpCode op_code = 18;</code>
+       */
+      public Builder setOpCode(EDS10ProtocolBuffer.DALI24OpCode value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        opCode_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * OpCode for 24 bit device
+       * </pre>
+       *
+       * <code>.DALI24OpCode op_code = 18;</code>
+       */
+      public Builder clearOpCode() {
+        
+        opCode_ = 0;
+        onChanged();
+        return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -93481,6 +95227,1007 @@ public final class EDS10ProtocolBuffer {
 
   }
 
+  public interface EventFilterOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:EventFilter)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * eDIDIO physical inputs
+     * </pre>
+     *
+     * <code>bool input = 1;</code>
+     */
+    boolean getInput();
+
+    /**
+     * <pre>
+     * 16-bit DALI Arc Level Commands
+     * </pre>
+     *
+     * <code>bool dali_arc_level = 2;</code>
+     */
+    boolean getDaliArcLevel();
+
+    /**
+     * <pre>
+     * 16-bit DALI Commands
+     * </pre>
+     *
+     * <code>bool dali_command = 3;</code>
+     */
+    boolean getDaliCommand();
+
+    /**
+     * <pre>
+     * DALI Sensors (24-bit and 25-bit Tridonic)
+     * </pre>
+     *
+     * <code>bool dali_sensor = 4;</code>
+     */
+    boolean getDaliSensor();
+
+    /**
+     * <pre>
+     * 24-bit DALI Inputs
+     * </pre>
+     *
+     * <code>bool dali_input = 5;</code>
+     */
+    boolean getDaliInput();
+
+    /**
+     * <pre>
+     * DMX output stream changes
+     * </pre>
+     *
+     * <code>bool dmx_stream_changed = 6;</code>
+     */
+    boolean getDmxStreamChanged();
+
+    /**
+     * <pre>
+     * Raw 24-bit DALI frames
+     * </pre>
+     *
+     * <code>bool dali_24_frame = 7;</code>
+     */
+    boolean getDali24Frame();
+  }
+  /**
+   * Protobuf type {@code EventFilter}
+   */
+  public  static final class EventFilter extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:EventFilter)
+      EventFilterOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use EventFilter.newBuilder() to construct.
+    private EventFilter(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private EventFilter() {
+      input_ = false;
+      daliArcLevel_ = false;
+      daliCommand_ = false;
+      daliSensor_ = false;
+      daliInput_ = false;
+      dmxStreamChanged_ = false;
+      dali24Frame_ = false;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private EventFilter(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              input_ = input.readBool();
+              break;
+            }
+            case 16: {
+
+              daliArcLevel_ = input.readBool();
+              break;
+            }
+            case 24: {
+
+              daliCommand_ = input.readBool();
+              break;
+            }
+            case 32: {
+
+              daliSensor_ = input.readBool();
+              break;
+            }
+            case 40: {
+
+              daliInput_ = input.readBool();
+              break;
+            }
+            case 48: {
+
+              dmxStreamChanged_ = input.readBool();
+              break;
+            }
+            case 56: {
+
+              dali24Frame_ = input.readBool();
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.internal_static_EventFilter_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return EDS10ProtocolBuffer.internal_static_EventFilter_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              EDS10ProtocolBuffer.EventFilter.class, EDS10ProtocolBuffer.EventFilter.Builder.class);
+    }
+
+    public static final int INPUT_FIELD_NUMBER = 1;
+    private boolean input_;
+    /**
+     * <pre>
+     * eDIDIO physical inputs
+     * </pre>
+     *
+     * <code>bool input = 1;</code>
+     */
+    public boolean getInput() {
+      return input_;
+    }
+
+    public static final int DALI_ARC_LEVEL_FIELD_NUMBER = 2;
+    private boolean daliArcLevel_;
+    /**
+     * <pre>
+     * 16-bit DALI Arc Level Commands
+     * </pre>
+     *
+     * <code>bool dali_arc_level = 2;</code>
+     */
+    public boolean getDaliArcLevel() {
+      return daliArcLevel_;
+    }
+
+    public static final int DALI_COMMAND_FIELD_NUMBER = 3;
+    private boolean daliCommand_;
+    /**
+     * <pre>
+     * 16-bit DALI Commands
+     * </pre>
+     *
+     * <code>bool dali_command = 3;</code>
+     */
+    public boolean getDaliCommand() {
+      return daliCommand_;
+    }
+
+    public static final int DALI_SENSOR_FIELD_NUMBER = 4;
+    private boolean daliSensor_;
+    /**
+     * <pre>
+     * DALI Sensors (24-bit and 25-bit Tridonic)
+     * </pre>
+     *
+     * <code>bool dali_sensor = 4;</code>
+     */
+    public boolean getDaliSensor() {
+      return daliSensor_;
+    }
+
+    public static final int DALI_INPUT_FIELD_NUMBER = 5;
+    private boolean daliInput_;
+    /**
+     * <pre>
+     * 24-bit DALI Inputs
+     * </pre>
+     *
+     * <code>bool dali_input = 5;</code>
+     */
+    public boolean getDaliInput() {
+      return daliInput_;
+    }
+
+    public static final int DMX_STREAM_CHANGED_FIELD_NUMBER = 6;
+    private boolean dmxStreamChanged_;
+    /**
+     * <pre>
+     * DMX output stream changes
+     * </pre>
+     *
+     * <code>bool dmx_stream_changed = 6;</code>
+     */
+    public boolean getDmxStreamChanged() {
+      return dmxStreamChanged_;
+    }
+
+    public static final int DALI_24_FRAME_FIELD_NUMBER = 7;
+    private boolean dali24Frame_;
+    /**
+     * <pre>
+     * Raw 24-bit DALI frames
+     * </pre>
+     *
+     * <code>bool dali_24_frame = 7;</code>
+     */
+    public boolean getDali24Frame() {
+      return dali24Frame_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (input_ != false) {
+        output.writeBool(1, input_);
+      }
+      if (daliArcLevel_ != false) {
+        output.writeBool(2, daliArcLevel_);
+      }
+      if (daliCommand_ != false) {
+        output.writeBool(3, daliCommand_);
+      }
+      if (daliSensor_ != false) {
+        output.writeBool(4, daliSensor_);
+      }
+      if (daliInput_ != false) {
+        output.writeBool(5, daliInput_);
+      }
+      if (dmxStreamChanged_ != false) {
+        output.writeBool(6, dmxStreamChanged_);
+      }
+      if (dali24Frame_ != false) {
+        output.writeBool(7, dali24Frame_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (input_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(1, input_);
+      }
+      if (daliArcLevel_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(2, daliArcLevel_);
+      }
+      if (daliCommand_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(3, daliCommand_);
+      }
+      if (daliSensor_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(4, daliSensor_);
+      }
+      if (daliInput_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(5, daliInput_);
+      }
+      if (dmxStreamChanged_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(6, dmxStreamChanged_);
+      }
+      if (dali24Frame_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(7, dali24Frame_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof EDS10ProtocolBuffer.EventFilter)) {
+        return super.equals(obj);
+      }
+      EDS10ProtocolBuffer.EventFilter other = (EDS10ProtocolBuffer.EventFilter) obj;
+
+      boolean result = true;
+      result = result && (getInput()
+          == other.getInput());
+      result = result && (getDaliArcLevel()
+          == other.getDaliArcLevel());
+      result = result && (getDaliCommand()
+          == other.getDaliCommand());
+      result = result && (getDaliSensor()
+          == other.getDaliSensor());
+      result = result && (getDaliInput()
+          == other.getDaliInput());
+      result = result && (getDmxStreamChanged()
+          == other.getDmxStreamChanged());
+      result = result && (getDali24Frame()
+          == other.getDali24Frame());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + INPUT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getInput());
+      hash = (37 * hash) + DALI_ARC_LEVEL_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getDaliArcLevel());
+      hash = (37 * hash) + DALI_COMMAND_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getDaliCommand());
+      hash = (37 * hash) + DALI_SENSOR_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getDaliSensor());
+      hash = (37 * hash) + DALI_INPUT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getDaliInput());
+      hash = (37 * hash) + DMX_STREAM_CHANGED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getDmxStreamChanged());
+      hash = (37 * hash) + DALI_24_FRAME_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getDali24Frame());
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static EDS10ProtocolBuffer.EventFilter parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.EventFilter parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.EventFilter parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.EventFilter parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.EventFilter parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.EventFilter parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.EventFilter parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.EventFilter parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.EventFilter parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.EventFilter parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.EventFilter parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.EventFilter parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(EDS10ProtocolBuffer.EventFilter prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code EventFilter}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:EventFilter)
+        EDS10ProtocolBuffer.EventFilterOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return EDS10ProtocolBuffer.internal_static_EventFilter_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return EDS10ProtocolBuffer.internal_static_EventFilter_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                EDS10ProtocolBuffer.EventFilter.class, EDS10ProtocolBuffer.EventFilter.Builder.class);
+      }
+
+      // Construct using EDS10ProtocolBuffer.EventFilter.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        input_ = false;
+
+        daliArcLevel_ = false;
+
+        daliCommand_ = false;
+
+        daliSensor_ = false;
+
+        daliInput_ = false;
+
+        dmxStreamChanged_ = false;
+
+        dali24Frame_ = false;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return EDS10ProtocolBuffer.internal_static_EventFilter_descriptor;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.EventFilter getDefaultInstanceForType() {
+        return EDS10ProtocolBuffer.EventFilter.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.EventFilter build() {
+        EDS10ProtocolBuffer.EventFilter result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.EventFilter buildPartial() {
+        EDS10ProtocolBuffer.EventFilter result = new EDS10ProtocolBuffer.EventFilter(this);
+        result.input_ = input_;
+        result.daliArcLevel_ = daliArcLevel_;
+        result.daliCommand_ = daliCommand_;
+        result.daliSensor_ = daliSensor_;
+        result.daliInput_ = daliInput_;
+        result.dmxStreamChanged_ = dmxStreamChanged_;
+        result.dali24Frame_ = dali24Frame_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof EDS10ProtocolBuffer.EventFilter) {
+          return mergeFrom((EDS10ProtocolBuffer.EventFilter)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(EDS10ProtocolBuffer.EventFilter other) {
+        if (other == EDS10ProtocolBuffer.EventFilter.getDefaultInstance()) return this;
+        if (other.getInput() != false) {
+          setInput(other.getInput());
+        }
+        if (other.getDaliArcLevel() != false) {
+          setDaliArcLevel(other.getDaliArcLevel());
+        }
+        if (other.getDaliCommand() != false) {
+          setDaliCommand(other.getDaliCommand());
+        }
+        if (other.getDaliSensor() != false) {
+          setDaliSensor(other.getDaliSensor());
+        }
+        if (other.getDaliInput() != false) {
+          setDaliInput(other.getDaliInput());
+        }
+        if (other.getDmxStreamChanged() != false) {
+          setDmxStreamChanged(other.getDmxStreamChanged());
+        }
+        if (other.getDali24Frame() != false) {
+          setDali24Frame(other.getDali24Frame());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        EDS10ProtocolBuffer.EventFilter parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (EDS10ProtocolBuffer.EventFilter) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private boolean input_ ;
+      /**
+       * <pre>
+       * eDIDIO physical inputs
+       * </pre>
+       *
+       * <code>bool input = 1;</code>
+       */
+      public boolean getInput() {
+        return input_;
+      }
+      /**
+       * <pre>
+       * eDIDIO physical inputs
+       * </pre>
+       *
+       * <code>bool input = 1;</code>
+       */
+      public Builder setInput(boolean value) {
+        
+        input_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * eDIDIO physical inputs
+       * </pre>
+       *
+       * <code>bool input = 1;</code>
+       */
+      public Builder clearInput() {
+        
+        input_ = false;
+        onChanged();
+        return this;
+      }
+
+      private boolean daliArcLevel_ ;
+      /**
+       * <pre>
+       * 16-bit DALI Arc Level Commands
+       * </pre>
+       *
+       * <code>bool dali_arc_level = 2;</code>
+       */
+      public boolean getDaliArcLevel() {
+        return daliArcLevel_;
+      }
+      /**
+       * <pre>
+       * 16-bit DALI Arc Level Commands
+       * </pre>
+       *
+       * <code>bool dali_arc_level = 2;</code>
+       */
+      public Builder setDaliArcLevel(boolean value) {
+        
+        daliArcLevel_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 16-bit DALI Arc Level Commands
+       * </pre>
+       *
+       * <code>bool dali_arc_level = 2;</code>
+       */
+      public Builder clearDaliArcLevel() {
+        
+        daliArcLevel_ = false;
+        onChanged();
+        return this;
+      }
+
+      private boolean daliCommand_ ;
+      /**
+       * <pre>
+       * 16-bit DALI Commands
+       * </pre>
+       *
+       * <code>bool dali_command = 3;</code>
+       */
+      public boolean getDaliCommand() {
+        return daliCommand_;
+      }
+      /**
+       * <pre>
+       * 16-bit DALI Commands
+       * </pre>
+       *
+       * <code>bool dali_command = 3;</code>
+       */
+      public Builder setDaliCommand(boolean value) {
+        
+        daliCommand_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 16-bit DALI Commands
+       * </pre>
+       *
+       * <code>bool dali_command = 3;</code>
+       */
+      public Builder clearDaliCommand() {
+        
+        daliCommand_ = false;
+        onChanged();
+        return this;
+      }
+
+      private boolean daliSensor_ ;
+      /**
+       * <pre>
+       * DALI Sensors (24-bit and 25-bit Tridonic)
+       * </pre>
+       *
+       * <code>bool dali_sensor = 4;</code>
+       */
+      public boolean getDaliSensor() {
+        return daliSensor_;
+      }
+      /**
+       * <pre>
+       * DALI Sensors (24-bit and 25-bit Tridonic)
+       * </pre>
+       *
+       * <code>bool dali_sensor = 4;</code>
+       */
+      public Builder setDaliSensor(boolean value) {
+        
+        daliSensor_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * DALI Sensors (24-bit and 25-bit Tridonic)
+       * </pre>
+       *
+       * <code>bool dali_sensor = 4;</code>
+       */
+      public Builder clearDaliSensor() {
+        
+        daliSensor_ = false;
+        onChanged();
+        return this;
+      }
+
+      private boolean daliInput_ ;
+      /**
+       * <pre>
+       * 24-bit DALI Inputs
+       * </pre>
+       *
+       * <code>bool dali_input = 5;</code>
+       */
+      public boolean getDaliInput() {
+        return daliInput_;
+      }
+      /**
+       * <pre>
+       * 24-bit DALI Inputs
+       * </pre>
+       *
+       * <code>bool dali_input = 5;</code>
+       */
+      public Builder setDaliInput(boolean value) {
+        
+        daliInput_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 24-bit DALI Inputs
+       * </pre>
+       *
+       * <code>bool dali_input = 5;</code>
+       */
+      public Builder clearDaliInput() {
+        
+        daliInput_ = false;
+        onChanged();
+        return this;
+      }
+
+      private boolean dmxStreamChanged_ ;
+      /**
+       * <pre>
+       * DMX output stream changes
+       * </pre>
+       *
+       * <code>bool dmx_stream_changed = 6;</code>
+       */
+      public boolean getDmxStreamChanged() {
+        return dmxStreamChanged_;
+      }
+      /**
+       * <pre>
+       * DMX output stream changes
+       * </pre>
+       *
+       * <code>bool dmx_stream_changed = 6;</code>
+       */
+      public Builder setDmxStreamChanged(boolean value) {
+        
+        dmxStreamChanged_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * DMX output stream changes
+       * </pre>
+       *
+       * <code>bool dmx_stream_changed = 6;</code>
+       */
+      public Builder clearDmxStreamChanged() {
+        
+        dmxStreamChanged_ = false;
+        onChanged();
+        return this;
+      }
+
+      private boolean dali24Frame_ ;
+      /**
+       * <pre>
+       * Raw 24-bit DALI frames
+       * </pre>
+       *
+       * <code>bool dali_24_frame = 7;</code>
+       */
+      public boolean getDali24Frame() {
+        return dali24Frame_;
+      }
+      /**
+       * <pre>
+       * Raw 24-bit DALI frames
+       * </pre>
+       *
+       * <code>bool dali_24_frame = 7;</code>
+       */
+      public Builder setDali24Frame(boolean value) {
+        
+        dali24Frame_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Raw 24-bit DALI frames
+       * </pre>
+       *
+       * <code>bool dali_24_frame = 7;</code>
+       */
+      public Builder clearDali24Frame() {
+        
+        dali24Frame_ = false;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:EventFilter)
+    }
+
+    // @@protoc_insertion_point(class_scope:EventFilter)
+    private static final EDS10ProtocolBuffer.EventFilter DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.EventFilter();
+    }
+
+    public static EDS10ProtocolBuffer.EventFilter getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<EventFilter>
+        PARSER = new com.google.protobuf.AbstractParser<EventFilter>() {
+      @java.lang.Override
+      public EventFilter parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new EventFilter(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<EventFilter> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<EventFilter> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public EDS10ProtocolBuffer.EventFilter getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface TriggerEventOrBuilder extends
       // @@protoc_insertion_point(interface_extends:TriggerEvent)
       com.google.protobuf.MessageOrBuilder {
@@ -95324,6 +98071,585 @@ public final class EDS10ProtocolBuffer {
 
   }
 
+  public interface DALI24FrameEventOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:DALI24FrameEvent)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Which DALI Line within the eDIDIO (left -&gt; right): 1, 2, 3, 4
+     * </pre>
+     *
+     * <code>uint32 line = 1;</code>
+     */
+    int getLine();
+
+    /**
+     * <pre>
+     * The 24-bit Frame
+     * </pre>
+     *
+     * <code>uint32 frame = 2;</code>
+     */
+    int getFrame();
+  }
+  /**
+   * Protobuf type {@code DALI24FrameEvent}
+   */
+  public  static final class DALI24FrameEvent extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:DALI24FrameEvent)
+      DALI24FrameEventOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use DALI24FrameEvent.newBuilder() to construct.
+    private DALI24FrameEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private DALI24FrameEvent() {
+      line_ = 0;
+      frame_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DALI24FrameEvent(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              line_ = input.readUInt32();
+              break;
+            }
+            case 16: {
+
+              frame_ = input.readUInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.internal_static_DALI24FrameEvent_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return EDS10ProtocolBuffer.internal_static_DALI24FrameEvent_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              EDS10ProtocolBuffer.DALI24FrameEvent.class, EDS10ProtocolBuffer.DALI24FrameEvent.Builder.class);
+    }
+
+    public static final int LINE_FIELD_NUMBER = 1;
+    private int line_;
+    /**
+     * <pre>
+     * Which DALI Line within the eDIDIO (left -&gt; right): 1, 2, 3, 4
+     * </pre>
+     *
+     * <code>uint32 line = 1;</code>
+     */
+    public int getLine() {
+      return line_;
+    }
+
+    public static final int FRAME_FIELD_NUMBER = 2;
+    private int frame_;
+    /**
+     * <pre>
+     * The 24-bit Frame
+     * </pre>
+     *
+     * <code>uint32 frame = 2;</code>
+     */
+    public int getFrame() {
+      return frame_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (line_ != 0) {
+        output.writeUInt32(1, line_);
+      }
+      if (frame_ != 0) {
+        output.writeUInt32(2, frame_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (line_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, line_);
+      }
+      if (frame_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, frame_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof EDS10ProtocolBuffer.DALI24FrameEvent)) {
+        return super.equals(obj);
+      }
+      EDS10ProtocolBuffer.DALI24FrameEvent other = (EDS10ProtocolBuffer.DALI24FrameEvent) obj;
+
+      boolean result = true;
+      result = result && (getLine()
+          == other.getLine());
+      result = result && (getFrame()
+          == other.getFrame());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + LINE_FIELD_NUMBER;
+      hash = (53 * hash) + getLine();
+      hash = (37 * hash) + FRAME_FIELD_NUMBER;
+      hash = (53 * hash) + getFrame();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static EDS10ProtocolBuffer.DALI24FrameEvent parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.DALI24FrameEvent parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALI24FrameEvent parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.DALI24FrameEvent parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALI24FrameEvent parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.DALI24FrameEvent parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALI24FrameEvent parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.DALI24FrameEvent parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALI24FrameEvent parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.DALI24FrameEvent parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALI24FrameEvent parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.DALI24FrameEvent parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(EDS10ProtocolBuffer.DALI24FrameEvent prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code DALI24FrameEvent}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:DALI24FrameEvent)
+        EDS10ProtocolBuffer.DALI24FrameEventOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return EDS10ProtocolBuffer.internal_static_DALI24FrameEvent_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return EDS10ProtocolBuffer.internal_static_DALI24FrameEvent_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                EDS10ProtocolBuffer.DALI24FrameEvent.class, EDS10ProtocolBuffer.DALI24FrameEvent.Builder.class);
+      }
+
+      // Construct using EDS10ProtocolBuffer.DALI24FrameEvent.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        line_ = 0;
+
+        frame_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return EDS10ProtocolBuffer.internal_static_DALI24FrameEvent_descriptor;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.DALI24FrameEvent getDefaultInstanceForType() {
+        return EDS10ProtocolBuffer.DALI24FrameEvent.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.DALI24FrameEvent build() {
+        EDS10ProtocolBuffer.DALI24FrameEvent result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.DALI24FrameEvent buildPartial() {
+        EDS10ProtocolBuffer.DALI24FrameEvent result = new EDS10ProtocolBuffer.DALI24FrameEvent(this);
+        result.line_ = line_;
+        result.frame_ = frame_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof EDS10ProtocolBuffer.DALI24FrameEvent) {
+          return mergeFrom((EDS10ProtocolBuffer.DALI24FrameEvent)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(EDS10ProtocolBuffer.DALI24FrameEvent other) {
+        if (other == EDS10ProtocolBuffer.DALI24FrameEvent.getDefaultInstance()) return this;
+        if (other.getLine() != 0) {
+          setLine(other.getLine());
+        }
+        if (other.getFrame() != 0) {
+          setFrame(other.getFrame());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        EDS10ProtocolBuffer.DALI24FrameEvent parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (EDS10ProtocolBuffer.DALI24FrameEvent) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int line_ ;
+      /**
+       * <pre>
+       * Which DALI Line within the eDIDIO (left -&gt; right): 1, 2, 3, 4
+       * </pre>
+       *
+       * <code>uint32 line = 1;</code>
+       */
+      public int getLine() {
+        return line_;
+      }
+      /**
+       * <pre>
+       * Which DALI Line within the eDIDIO (left -&gt; right): 1, 2, 3, 4
+       * </pre>
+       *
+       * <code>uint32 line = 1;</code>
+       */
+      public Builder setLine(int value) {
+        
+        line_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Which DALI Line within the eDIDIO (left -&gt; right): 1, 2, 3, 4
+       * </pre>
+       *
+       * <code>uint32 line = 1;</code>
+       */
+      public Builder clearLine() {
+        
+        line_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int frame_ ;
+      /**
+       * <pre>
+       * The 24-bit Frame
+       * </pre>
+       *
+       * <code>uint32 frame = 2;</code>
+       */
+      public int getFrame() {
+        return frame_;
+      }
+      /**
+       * <pre>
+       * The 24-bit Frame
+       * </pre>
+       *
+       * <code>uint32 frame = 2;</code>
+       */
+      public Builder setFrame(int value) {
+        
+        frame_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The 24-bit Frame
+       * </pre>
+       *
+       * <code>uint32 frame = 2;</code>
+       */
+      public Builder clearFrame() {
+        
+        frame_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:DALI24FrameEvent)
+    }
+
+    // @@protoc_insertion_point(class_scope:DALI24FrameEvent)
+    private static final EDS10ProtocolBuffer.DALI24FrameEvent DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.DALI24FrameEvent();
+    }
+
+    public static EDS10ProtocolBuffer.DALI24FrameEvent getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<DALI24FrameEvent>
+        PARSER = new com.google.protobuf.AbstractParser<DALI24FrameEvent>() {
+      @java.lang.Override
+      public DALI24FrameEvent parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DALI24FrameEvent(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<DALI24FrameEvent> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DALI24FrameEvent> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public EDS10ProtocolBuffer.DALI24FrameEvent getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface DALISensorEventOrBuilder extends
       // @@protoc_insertion_point(interface_extends:DALISensorEvent)
       com.google.protobuf.MessageOrBuilder {
@@ -96339,6 +99665,32 @@ public final class EDS10ProtocolBuffer {
      */
     EDS10ProtocolBuffer.DALI24InputEventOrBuilder getDali24InputOrBuilder();
 
+    /**
+     * <code>.EventFilter filter = 8;</code>
+     */
+    boolean hasFilter();
+    /**
+     * <code>.EventFilter filter = 8;</code>
+     */
+    EDS10ProtocolBuffer.EventFilter getFilter();
+    /**
+     * <code>.EventFilter filter = 8;</code>
+     */
+    EDS10ProtocolBuffer.EventFilterOrBuilder getFilterOrBuilder();
+
+    /**
+     * <code>.DALI24FrameEvent dali_24_frame = 9;</code>
+     */
+    boolean hasDali24Frame();
+    /**
+     * <code>.DALI24FrameEvent dali_24_frame = 9;</code>
+     */
+    EDS10ProtocolBuffer.DALI24FrameEvent getDali24Frame();
+    /**
+     * <code>.DALI24FrameEvent dali_24_frame = 9;</code>
+     */
+    EDS10ProtocolBuffer.DALI24FrameEventOrBuilder getDali24FrameOrBuilder();
+
     public EDS10ProtocolBuffer.EventMessage.EventDataCase getEventDataCase();
   }
   /**
@@ -96462,6 +99814,34 @@ public final class EDS10ProtocolBuffer {
               eventDataCase_ = 7;
               break;
             }
+            case 66: {
+              EDS10ProtocolBuffer.EventFilter.Builder subBuilder = null;
+              if (eventDataCase_ == 8) {
+                subBuilder = ((EDS10ProtocolBuffer.EventFilter) eventData_).toBuilder();
+              }
+              eventData_ =
+                  input.readMessage(EDS10ProtocolBuffer.EventFilter.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((EDS10ProtocolBuffer.EventFilter) eventData_);
+                eventData_ = subBuilder.buildPartial();
+              }
+              eventDataCase_ = 8;
+              break;
+            }
+            case 74: {
+              EDS10ProtocolBuffer.DALI24FrameEvent.Builder subBuilder = null;
+              if (eventDataCase_ == 9) {
+                subBuilder = ((EDS10ProtocolBuffer.DALI24FrameEvent) eventData_).toBuilder();
+              }
+              eventData_ =
+                  input.readMessage(EDS10ProtocolBuffer.DALI24FrameEvent.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((EDS10ProtocolBuffer.DALI24FrameEvent) eventData_);
+                eventData_ = subBuilder.buildPartial();
+              }
+              eventDataCase_ = 9;
+              break;
+            }
             default: {
               if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -96503,6 +99883,8 @@ public final class EDS10ProtocolBuffer {
       PAYLOAD(4),
       SENSOR(6),
       DALI_24_INPUT(7),
+      FILTER(8),
+      DALI_24_FRAME(9),
       EVENTDATA_NOT_SET(0);
       private final int value;
       private EventDataCase(int value) {
@@ -96523,6 +99905,8 @@ public final class EDS10ProtocolBuffer {
           case 4: return PAYLOAD;
           case 6: return SENSOR;
           case 7: return DALI_24_INPUT;
+          case 8: return FILTER;
+          case 9: return DALI_24_FRAME;
           case 0: return EVENTDATA_NOT_SET;
           default: return null;
         }
@@ -96697,6 +100081,58 @@ public final class EDS10ProtocolBuffer {
       return EDS10ProtocolBuffer.DALI24InputEvent.getDefaultInstance();
     }
 
+    public static final int FILTER_FIELD_NUMBER = 8;
+    /**
+     * <code>.EventFilter filter = 8;</code>
+     */
+    public boolean hasFilter() {
+      return eventDataCase_ == 8;
+    }
+    /**
+     * <code>.EventFilter filter = 8;</code>
+     */
+    public EDS10ProtocolBuffer.EventFilter getFilter() {
+      if (eventDataCase_ == 8) {
+         return (EDS10ProtocolBuffer.EventFilter) eventData_;
+      }
+      return EDS10ProtocolBuffer.EventFilter.getDefaultInstance();
+    }
+    /**
+     * <code>.EventFilter filter = 8;</code>
+     */
+    public EDS10ProtocolBuffer.EventFilterOrBuilder getFilterOrBuilder() {
+      if (eventDataCase_ == 8) {
+         return (EDS10ProtocolBuffer.EventFilter) eventData_;
+      }
+      return EDS10ProtocolBuffer.EventFilter.getDefaultInstance();
+    }
+
+    public static final int DALI_24_FRAME_FIELD_NUMBER = 9;
+    /**
+     * <code>.DALI24FrameEvent dali_24_frame = 9;</code>
+     */
+    public boolean hasDali24Frame() {
+      return eventDataCase_ == 9;
+    }
+    /**
+     * <code>.DALI24FrameEvent dali_24_frame = 9;</code>
+     */
+    public EDS10ProtocolBuffer.DALI24FrameEvent getDali24Frame() {
+      if (eventDataCase_ == 9) {
+         return (EDS10ProtocolBuffer.DALI24FrameEvent) eventData_;
+      }
+      return EDS10ProtocolBuffer.DALI24FrameEvent.getDefaultInstance();
+    }
+    /**
+     * <code>.DALI24FrameEvent dali_24_frame = 9;</code>
+     */
+    public EDS10ProtocolBuffer.DALI24FrameEventOrBuilder getDali24FrameOrBuilder() {
+      if (eventDataCase_ == 9) {
+         return (EDS10ProtocolBuffer.DALI24FrameEvent) eventData_;
+      }
+      return EDS10ProtocolBuffer.DALI24FrameEvent.getDefaultInstance();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -96728,6 +100164,12 @@ public final class EDS10ProtocolBuffer {
       }
       if (eventDataCase_ == 7) {
         output.writeMessage(7, (EDS10ProtocolBuffer.DALI24InputEvent) eventData_);
+      }
+      if (eventDataCase_ == 8) {
+        output.writeMessage(8, (EDS10ProtocolBuffer.EventFilter) eventData_);
+      }
+      if (eventDataCase_ == 9) {
+        output.writeMessage(9, (EDS10ProtocolBuffer.DALI24FrameEvent) eventData_);
       }
       unknownFields.writeTo(output);
     }
@@ -96761,6 +100203,14 @@ public final class EDS10ProtocolBuffer {
       if (eventDataCase_ == 7) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(7, (EDS10ProtocolBuffer.DALI24InputEvent) eventData_);
+      }
+      if (eventDataCase_ == 8) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, (EDS10ProtocolBuffer.EventFilter) eventData_);
+      }
+      if (eventDataCase_ == 9) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(9, (EDS10ProtocolBuffer.DALI24FrameEvent) eventData_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -96803,6 +100253,14 @@ public final class EDS10ProtocolBuffer {
           result = result && getDali24Input()
               .equals(other.getDali24Input());
           break;
+        case 8:
+          result = result && getFilter()
+              .equals(other.getFilter());
+          break;
+        case 9:
+          result = result && getDali24Frame()
+              .equals(other.getDali24Frame());
+          break;
         case 0:
         default:
       }
@@ -96839,6 +100297,14 @@ public final class EDS10ProtocolBuffer {
         case 7:
           hash = (37 * hash) + DALI_24_INPUT_FIELD_NUMBER;
           hash = (53 * hash) + getDali24Input().hashCode();
+          break;
+        case 8:
+          hash = (37 * hash) + FILTER_FIELD_NUMBER;
+          hash = (53 * hash) + getFilter().hashCode();
+          break;
+        case 9:
+          hash = (37 * hash) + DALI_24_FRAME_FIELD_NUMBER;
+          hash = (53 * hash) + getDali24Frame().hashCode();
           break;
         case 0:
         default:
@@ -97047,6 +100513,20 @@ public final class EDS10ProtocolBuffer {
             result.eventData_ = dali24InputBuilder_.build();
           }
         }
+        if (eventDataCase_ == 8) {
+          if (filterBuilder_ == null) {
+            result.eventData_ = eventData_;
+          } else {
+            result.eventData_ = filterBuilder_.build();
+          }
+        }
+        if (eventDataCase_ == 9) {
+          if (dali24FrameBuilder_ == null) {
+            result.eventData_ = eventData_;
+          } else {
+            result.eventData_ = dali24FrameBuilder_.build();
+          }
+        }
         result.eventDataCase_ = eventDataCase_;
         onBuilt();
         return result;
@@ -97118,6 +100598,14 @@ public final class EDS10ProtocolBuffer {
           }
           case DALI_24_INPUT: {
             mergeDali24Input(other.getDali24Input());
+            break;
+          }
+          case FILTER: {
+            mergeFilter(other.getFilter());
+            break;
+          }
+          case DALI_24_FRAME: {
+            mergeDali24Frame(other.getDali24Frame());
             break;
           }
           case EVENTDATA_NOT_SET: {
@@ -97927,6 +101415,278 @@ public final class EDS10ProtocolBuffer {
         eventDataCase_ = 7;
         onChanged();;
         return dali24InputBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.EventFilter, EDS10ProtocolBuffer.EventFilter.Builder, EDS10ProtocolBuffer.EventFilterOrBuilder> filterBuilder_;
+      /**
+       * <code>.EventFilter filter = 8;</code>
+       */
+      public boolean hasFilter() {
+        return eventDataCase_ == 8;
+      }
+      /**
+       * <code>.EventFilter filter = 8;</code>
+       */
+      public EDS10ProtocolBuffer.EventFilter getFilter() {
+        if (filterBuilder_ == null) {
+          if (eventDataCase_ == 8) {
+            return (EDS10ProtocolBuffer.EventFilter) eventData_;
+          }
+          return EDS10ProtocolBuffer.EventFilter.getDefaultInstance();
+        } else {
+          if (eventDataCase_ == 8) {
+            return filterBuilder_.getMessage();
+          }
+          return EDS10ProtocolBuffer.EventFilter.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.EventFilter filter = 8;</code>
+       */
+      public Builder setFilter(EDS10ProtocolBuffer.EventFilter value) {
+        if (filterBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          eventData_ = value;
+          onChanged();
+        } else {
+          filterBuilder_.setMessage(value);
+        }
+        eventDataCase_ = 8;
+        return this;
+      }
+      /**
+       * <code>.EventFilter filter = 8;</code>
+       */
+      public Builder setFilter(
+          EDS10ProtocolBuffer.EventFilter.Builder builderForValue) {
+        if (filterBuilder_ == null) {
+          eventData_ = builderForValue.build();
+          onChanged();
+        } else {
+          filterBuilder_.setMessage(builderForValue.build());
+        }
+        eventDataCase_ = 8;
+        return this;
+      }
+      /**
+       * <code>.EventFilter filter = 8;</code>
+       */
+      public Builder mergeFilter(EDS10ProtocolBuffer.EventFilter value) {
+        if (filterBuilder_ == null) {
+          if (eventDataCase_ == 8 &&
+              eventData_ != EDS10ProtocolBuffer.EventFilter.getDefaultInstance()) {
+            eventData_ = EDS10ProtocolBuffer.EventFilter.newBuilder((EDS10ProtocolBuffer.EventFilter) eventData_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            eventData_ = value;
+          }
+          onChanged();
+        } else {
+          if (eventDataCase_ == 8) {
+            filterBuilder_.mergeFrom(value);
+          }
+          filterBuilder_.setMessage(value);
+        }
+        eventDataCase_ = 8;
+        return this;
+      }
+      /**
+       * <code>.EventFilter filter = 8;</code>
+       */
+      public Builder clearFilter() {
+        if (filterBuilder_ == null) {
+          if (eventDataCase_ == 8) {
+            eventDataCase_ = 0;
+            eventData_ = null;
+            onChanged();
+          }
+        } else {
+          if (eventDataCase_ == 8) {
+            eventDataCase_ = 0;
+            eventData_ = null;
+          }
+          filterBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.EventFilter filter = 8;</code>
+       */
+      public EDS10ProtocolBuffer.EventFilter.Builder getFilterBuilder() {
+        return getFilterFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.EventFilter filter = 8;</code>
+       */
+      public EDS10ProtocolBuffer.EventFilterOrBuilder getFilterOrBuilder() {
+        if ((eventDataCase_ == 8) && (filterBuilder_ != null)) {
+          return filterBuilder_.getMessageOrBuilder();
+        } else {
+          if (eventDataCase_ == 8) {
+            return (EDS10ProtocolBuffer.EventFilter) eventData_;
+          }
+          return EDS10ProtocolBuffer.EventFilter.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.EventFilter filter = 8;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.EventFilter, EDS10ProtocolBuffer.EventFilter.Builder, EDS10ProtocolBuffer.EventFilterOrBuilder> 
+          getFilterFieldBuilder() {
+        if (filterBuilder_ == null) {
+          if (!(eventDataCase_ == 8)) {
+            eventData_ = EDS10ProtocolBuffer.EventFilter.getDefaultInstance();
+          }
+          filterBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.EventFilter, EDS10ProtocolBuffer.EventFilter.Builder, EDS10ProtocolBuffer.EventFilterOrBuilder>(
+                  (EDS10ProtocolBuffer.EventFilter) eventData_,
+                  getParentForChildren(),
+                  isClean());
+          eventData_ = null;
+        }
+        eventDataCase_ = 8;
+        onChanged();;
+        return filterBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.DALI24FrameEvent, EDS10ProtocolBuffer.DALI24FrameEvent.Builder, EDS10ProtocolBuffer.DALI24FrameEventOrBuilder> dali24FrameBuilder_;
+      /**
+       * <code>.DALI24FrameEvent dali_24_frame = 9;</code>
+       */
+      public boolean hasDali24Frame() {
+        return eventDataCase_ == 9;
+      }
+      /**
+       * <code>.DALI24FrameEvent dali_24_frame = 9;</code>
+       */
+      public EDS10ProtocolBuffer.DALI24FrameEvent getDali24Frame() {
+        if (dali24FrameBuilder_ == null) {
+          if (eventDataCase_ == 9) {
+            return (EDS10ProtocolBuffer.DALI24FrameEvent) eventData_;
+          }
+          return EDS10ProtocolBuffer.DALI24FrameEvent.getDefaultInstance();
+        } else {
+          if (eventDataCase_ == 9) {
+            return dali24FrameBuilder_.getMessage();
+          }
+          return EDS10ProtocolBuffer.DALI24FrameEvent.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.DALI24FrameEvent dali_24_frame = 9;</code>
+       */
+      public Builder setDali24Frame(EDS10ProtocolBuffer.DALI24FrameEvent value) {
+        if (dali24FrameBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          eventData_ = value;
+          onChanged();
+        } else {
+          dali24FrameBuilder_.setMessage(value);
+        }
+        eventDataCase_ = 9;
+        return this;
+      }
+      /**
+       * <code>.DALI24FrameEvent dali_24_frame = 9;</code>
+       */
+      public Builder setDali24Frame(
+          EDS10ProtocolBuffer.DALI24FrameEvent.Builder builderForValue) {
+        if (dali24FrameBuilder_ == null) {
+          eventData_ = builderForValue.build();
+          onChanged();
+        } else {
+          dali24FrameBuilder_.setMessage(builderForValue.build());
+        }
+        eventDataCase_ = 9;
+        return this;
+      }
+      /**
+       * <code>.DALI24FrameEvent dali_24_frame = 9;</code>
+       */
+      public Builder mergeDali24Frame(EDS10ProtocolBuffer.DALI24FrameEvent value) {
+        if (dali24FrameBuilder_ == null) {
+          if (eventDataCase_ == 9 &&
+              eventData_ != EDS10ProtocolBuffer.DALI24FrameEvent.getDefaultInstance()) {
+            eventData_ = EDS10ProtocolBuffer.DALI24FrameEvent.newBuilder((EDS10ProtocolBuffer.DALI24FrameEvent) eventData_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            eventData_ = value;
+          }
+          onChanged();
+        } else {
+          if (eventDataCase_ == 9) {
+            dali24FrameBuilder_.mergeFrom(value);
+          }
+          dali24FrameBuilder_.setMessage(value);
+        }
+        eventDataCase_ = 9;
+        return this;
+      }
+      /**
+       * <code>.DALI24FrameEvent dali_24_frame = 9;</code>
+       */
+      public Builder clearDali24Frame() {
+        if (dali24FrameBuilder_ == null) {
+          if (eventDataCase_ == 9) {
+            eventDataCase_ = 0;
+            eventData_ = null;
+            onChanged();
+          }
+        } else {
+          if (eventDataCase_ == 9) {
+            eventDataCase_ = 0;
+            eventData_ = null;
+          }
+          dali24FrameBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.DALI24FrameEvent dali_24_frame = 9;</code>
+       */
+      public EDS10ProtocolBuffer.DALI24FrameEvent.Builder getDali24FrameBuilder() {
+        return getDali24FrameFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.DALI24FrameEvent dali_24_frame = 9;</code>
+       */
+      public EDS10ProtocolBuffer.DALI24FrameEventOrBuilder getDali24FrameOrBuilder() {
+        if ((eventDataCase_ == 9) && (dali24FrameBuilder_ != null)) {
+          return dali24FrameBuilder_.getMessageOrBuilder();
+        } else {
+          if (eventDataCase_ == 9) {
+            return (EDS10ProtocolBuffer.DALI24FrameEvent) eventData_;
+          }
+          return EDS10ProtocolBuffer.DALI24FrameEvent.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.DALI24FrameEvent dali_24_frame = 9;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.DALI24FrameEvent, EDS10ProtocolBuffer.DALI24FrameEvent.Builder, EDS10ProtocolBuffer.DALI24FrameEventOrBuilder> 
+          getDali24FrameFieldBuilder() {
+        if (dali24FrameBuilder_ == null) {
+          if (!(eventDataCase_ == 9)) {
+            eventData_ = EDS10ProtocolBuffer.DALI24FrameEvent.getDefaultInstance();
+          }
+          dali24FrameBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.DALI24FrameEvent, EDS10ProtocolBuffer.DALI24FrameEvent.Builder, EDS10ProtocolBuffer.DALI24FrameEventOrBuilder>(
+                  (EDS10ProtocolBuffer.DALI24FrameEvent) eventData_,
+                  getParentForChildren(),
+                  isClean());
+          eventData_ = null;
+        }
+        eventDataCase_ = 9;
+        onChanged();;
+        return dali24FrameBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -111097,6 +114857,11 @@ public final class EDS10ProtocolBuffer {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_SystemMetaDataReadMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_EventFilter_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_EventFilter_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_TriggerEvent_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -111106,6 +114871,11 @@ public final class EDS10ProtocolBuffer {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_DALI24InputEvent_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_DALI24FrameEvent_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_DALI24FrameEvent_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_DALISensorEvent_descriptor;
   private static final 
@@ -111233,7 +115003,7 @@ public final class EDS10ProtocolBuffer {
       "pe\022\r\n\005index\030\003 \001(\r\022\027\n\017secondary_index\030\004 \001" +
       "(\r\".\n\033SecureDeviceSettingsMessage\022\017\n\007pay" +
       "load\030\001 \001(\t\" \n\021DTRPayloadMessage\022\013\n\003dtr\030\001" +
-      " \003(\r\"\335\003\n\013DALIMessage\022\021\n\tline_mask\030\001 \001(\r\022" +
+      " \003(\r\"\333\004\n\013DALIMessage\022\021\n\tline_mask\030\001 \001(\r\022" +
       "\017\n\007address\030\002 \001(\r\022\026\n\014frame_25_bit\030\003 \001(\rH\000" +
       "\022\034\n\022frame_25_bit_reply\030\004 \001(\rH\000\022#\n\007comman" +
       "d\030\005 \001(\0162\020.DALICommandTypeH\000\0220\n\016custom_co" +
@@ -111243,493 +115013,587 @@ public final class EDS10ProtocolBuffer {
       "it\030\013 \001(\rH\000\022\034\n\022frame_16_bit_reply\030\014 \001(\rH\000" +
       "\022\026\n\014frame_24_bit\030\r \001(\rH\000\022\034\n\022frame_24_bit" +
       "_reply\030\016 \001(\rH\000\022&\n\013type8_reply\030\017 \001(\0162\017.Ty" +
-      "pe8QueryTypeH\000\022\r\n\003arg\030\t \001(\rH\001\022!\n\003dtr\030\n \001" +
-      "(\0132\022.DTRPayloadMessageH\001B\010\n\006actionB\010\n\006pa" +
-      "rams\"7\n\025DALIStatusFlagMessage\022\036\n\005flags\030\001" +
-      " \003(\0162\017.DALIStatusType\"\275\001\n\021DALIQueryRespo" +
-      "nse\022.\n\014status_flags\030\001 \001(\0132\026.DALIStatusFl" +
-      "agMessageH\000\022\037\n\004data\030\002 \001(\0132\017.PayloadMessa" +
-      "geH\000\022$\n\tdali_flag\030\003 \001(\0162\021.DALIRXStatusFl" +
-      "ag\022&\n\rresponse_data\030\004 \001(\0132\017.PayloadMessa" +
-      "geB\t\n\007payload\"\252\001\n\025DALIAddressingMessage\022" +
-      "!\n\004type\030\001 \001(\0162\023.DALIAddressingType\022\026\n\016in" +
-      "itialisation\030\002 \001(\010\022\021\n\tline_mask\030\003 \001(\r\022\017\n" +
-      "\007is24Bit\030\004 \001(\010\022#\n\005error\030\005 \001(\0162\024.DALIAddr" +
-      "essingError\022\r\n\005index\030\006 \001(\r\"d\n\024DALIRemapp" +
-      "ingMessage\022\024\n\014from_address\030\001 \001(\r\022\022\n\nto_a" +
-      "ddress\030\002 \001(\r\022\021\n\tline_mask\030\003 \001(\r\022\017\n\007is24B" +
-      "it\030\004 \001(\010\"|\n\nDMXMessage\022\014\n\004zone\030\001 \001(\r\022\025\n\r" +
-      "universe_mask\030\002 \001(\r\022\017\n\007channel\030\003 \001(\r\022\016\n\006" +
-      "repeat\030\004 \001(\r\022\r\n\005level\030\005 \003(\r\022\031\n\021fade_time" +
-      "_by_10ms\030\006 \001(\r\"o\n\nRDMMessage\022\025\n\runiverse" +
-      "_mask\030\001 \001(\r\022\013\n\003uid\030\002 \001(\004\022\013\n\003pid\030\003 \001(\r\022\016\n" +
-      "\006getset\030\004 \001(\r\022\022\n\ndatalength\030\005 \001(\r\022\014\n\004dat" +
-      "a\030\006 \003(\r\"P\n\022RDMResponseMessage\022\013\n\003uid\030\001 \001" +
-      "(\004\022\013\n\003pid\030\002 \001(\r\022\022\n\ndatalength\030\003 \001(\r\022\014\n\004d" +
-      "ata\030\004 \003(\r\",\n\023RDMDiscoveryMessage\022\025\n\runiv" +
-      "erse_mask\030\001 \001(\r\"T\n\030RDMDiscoveryReplyMess" +
-      "age\022\027\n\017discovery_count\030\001 \001(\r\022\013\n\003uid\030\002 \003(" +
-      "\004\022\022\n\nerror_code\030\003 \001(\r\"\337\002\n\025SpektraSetting" +
-      "Message\022\014\n\004zone\030\001 \001(\r\022\025\n\rstart_address\030\002" +
-      " \001(\r\022\035\n\025line_or_universe_mask\030\003 \001(\r\022\020\n\010p" +
-      "rotocol\030\004 \001(\r\022\030\n\020number_of_lights\030\005 \001(\r\022" +
-      "\032\n\022channels_per_light\030\006 \001(\r\022\027\n\017channel_c" +
-      "olours\030\007 \003(\r\022?\n\025unscheduled_behaviour\030\010 " +
-      "\001(\0162 .SpektraUnscheduledBehaviourType\022\027\n" +
-      "\017channel_mapping\030\t \003(\r\022,\n\017line_addressin" +
-      "g\030\n \001(\0162\023.LineAddressingType\022\031\n\021zone_sca" +
-      "le_factor\030\013 \001(\002\"3\n\032SpektraColourConfigMe" +
-      "ssage\022\025\n\rchannel_value\030\001 \003(\r\"\350\003\n\034Spektra" +
-      "SequenceConfigMessage\022\r\n\005index\030\001 \001(\r\022\014\n\004" +
-      "type\030\002 \001(\r\022*\n\ntransition\030\003 \001(\0162\026.Spektra" +
-      "TransitionType\022\031\n\021fade_time_by_10ms\030\004 \001(" +
-      "\r\022\027\n\017time_per_colour\030\005 \001(\r\022\034\n\024time_per_c" +
-      "olour_unit\030\006 \001(\r\022\025\n\rtime_per_step\030\007 \001(\r\022" +
-      "\032\n\022time_per_step_unit\030\010 \001(\r\022\r\n\005range\030\t \001" +
-      "(\r\022\016\n\006colour\030\n \003(\004\022\032\n\022is_randomised_type" +
-      "\030\013 \001(\r\022\031\n\021random_types_mask\030\014 \001(\r\022\034\n\024is_" +
-      "reverse_direction\030\r \001(\r\022\032\n\022is_cycle_dire" +
-      "ction\030\016 \001(\r\022\r\n\005title\030\017 \001(\t\022\037\n\027has_random" +
-      "_colour_order\030\020 \001(\010\022,\n\007colours\030\021 \003(\0132\033.S" +
-      "pektraColourConfigMessage\022\014\n\004args\030\022 \003(\r\"" +
-      "k\n\026SpektraCalendarMessage\022 \n\004type\030\001 \001(\0162" +
-      "\022.SpektraTargetType\022\r\n\005index\030\002 \001(\r\022\014\n\004da" +
-      "ys\030\003 \003(\010\022\022\n\nisOverride\030\004 \001(\010\"z\n\031SpektraC" +
-      "alendarDayMessage\022\021\n\tday_index\030\001 \001(\r\022 \n\004" +
-      "type\030\002 \001(\0162\022.SpektraTargetType\022\024\n\014target" +
-      "_index\030\003 \001(\r\022\022\n\nisOverride\030\004 \001(\010\"^\n\036Spek" +
-      "traCalendarOverviewMessage\022\022\n\nday_offset" +
-      "\030\001 \001(\r\022(\n\004days\030\002 \003(\0132\032.SpektraCalendarDa" +
-      "yMessage\"w\n\031SpektraThemeConfigMessage\022\r\n" +
-      "\005index\030\001 \001(\r\022\016\n\006colour\030\002 \003(\004\022\r\n\005title\030\003 " +
-      "\001(\t\022,\n\007colours\030\004 \003(\0132\033.SpektraColourConf" +
-      "igMessage\"E\n\022SpektraReadMessage\022 \n\004type\030" +
+      "pe8QueryTypeH\000\0220\n\020device24_setting\030\020 \001(\016" +
+      "2\024.DALI24DeviceSettingH\000\022\r\n\003arg\030\t \001(\rH\001\022" +
+      "!\n\003dtr\030\n \001(\0132\022.DTRPayloadMessageH\001\022*\n\rin" +
+      "stance_type\030\021 \001(\0162\023.DALI24InstanceType\022\036" +
+      "\n\007op_code\030\022 \001(\0162\r.DALI24OpCodeB\010\n\006action" +
+      "B\010\n\006params\"7\n\025DALIStatusFlagMessage\022\036\n\005f" +
+      "lags\030\001 \003(\0162\017.DALIStatusType\"\275\001\n\021DALIQuer" +
+      "yResponse\022.\n\014status_flags\030\001 \001(\0132\026.DALISt" +
+      "atusFlagMessageH\000\022\037\n\004data\030\002 \001(\0132\017.Payloa" +
+      "dMessageH\000\022$\n\tdali_flag\030\003 \001(\0162\021.DALIRXSt" +
+      "atusFlag\022&\n\rresponse_data\030\004 \001(\0132\017.Payloa" +
+      "dMessageB\t\n\007payload\"\252\001\n\025DALIAddressingMe" +
+      "ssage\022!\n\004type\030\001 \001(\0162\023.DALIAddressingType" +
+      "\022\026\n\016initialisation\030\002 \001(\010\022\021\n\tline_mask\030\003 " +
+      "\001(\r\022\017\n\007is24Bit\030\004 \001(\010\022#\n\005error\030\005 \001(\0162\024.DA" +
+      "LIAddressingError\022\r\n\005index\030\006 \001(\r\"d\n\024DALI" +
+      "RemappingMessage\022\024\n\014from_address\030\001 \001(\r\022\022" +
+      "\n\nto_address\030\002 \001(\r\022\021\n\tline_mask\030\003 \001(\r\022\017\n" +
+      "\007is24Bit\030\004 \001(\010\"|\n\nDMXMessage\022\014\n\004zone\030\001 \001" +
+      "(\r\022\025\n\runiverse_mask\030\002 \001(\r\022\017\n\007channel\030\003 \001" +
+      "(\r\022\016\n\006repeat\030\004 \001(\r\022\r\n\005level\030\005 \003(\r\022\031\n\021fad" +
+      "e_time_by_10ms\030\006 \001(\r\"o\n\nRDMMessage\022\025\n\run" +
+      "iverse_mask\030\001 \001(\r\022\013\n\003uid\030\002 \001(\004\022\013\n\003pid\030\003 " +
+      "\001(\r\022\016\n\006getset\030\004 \001(\r\022\022\n\ndatalength\030\005 \001(\r\022" +
+      "\014\n\004data\030\006 \003(\r\"P\n\022RDMResponseMessage\022\013\n\003u" +
+      "id\030\001 \001(\004\022\013\n\003pid\030\002 \001(\r\022\022\n\ndatalength\030\003 \001(" +
+      "\r\022\014\n\004data\030\004 \003(\r\",\n\023RDMDiscoveryMessage\022\025" +
+      "\n\runiverse_mask\030\001 \001(\r\"T\n\030RDMDiscoveryRep" +
+      "lyMessage\022\027\n\017discovery_count\030\001 \001(\r\022\013\n\003ui" +
+      "d\030\002 \003(\004\022\022\n\nerror_code\030\003 \001(\r\"\337\002\n\025SpektraS" +
+      "ettingMessage\022\014\n\004zone\030\001 \001(\r\022\025\n\rstart_add" +
+      "ress\030\002 \001(\r\022\035\n\025line_or_universe_mask\030\003 \001(" +
+      "\r\022\020\n\010protocol\030\004 \001(\r\022\030\n\020number_of_lights\030" +
+      "\005 \001(\r\022\032\n\022channels_per_light\030\006 \001(\r\022\027\n\017cha" +
+      "nnel_colours\030\007 \003(\r\022?\n\025unscheduled_behavi" +
+      "our\030\010 \001(\0162 .SpektraUnscheduledBehaviourT" +
+      "ype\022\027\n\017channel_mapping\030\t \003(\r\022,\n\017line_add" +
+      "ressing\030\n \001(\0162\023.LineAddressingType\022\031\n\021zo" +
+      "ne_scale_factor\030\013 \001(\002\"3\n\032SpektraColourCo" +
+      "nfigMessage\022\025\n\rchannel_value\030\001 \003(\r\"\350\003\n\034S" +
+      "pektraSequenceConfigMessage\022\r\n\005index\030\001 \001" +
+      "(\r\022\014\n\004type\030\002 \001(\r\022*\n\ntransition\030\003 \001(\0162\026.S" +
+      "pektraTransitionType\022\031\n\021fade_time_by_10m" +
+      "s\030\004 \001(\r\022\027\n\017time_per_colour\030\005 \001(\r\022\034\n\024time" +
+      "_per_colour_unit\030\006 \001(\r\022\025\n\rtime_per_step\030" +
+      "\007 \001(\r\022\032\n\022time_per_step_unit\030\010 \001(\r\022\r\n\005ran" +
+      "ge\030\t \001(\r\022\016\n\006colour\030\n \003(\004\022\032\n\022is_randomise" +
+      "d_type\030\013 \001(\r\022\031\n\021random_types_mask\030\014 \001(\r\022" +
+      "\034\n\024is_reverse_direction\030\r \001(\r\022\032\n\022is_cycl" +
+      "e_direction\030\016 \001(\r\022\r\n\005title\030\017 \001(\t\022\037\n\027has_" +
+      "random_colour_order\030\020 \001(\010\022,\n\007colours\030\021 \003" +
+      "(\0132\033.SpektraColourConfigMessage\022\014\n\004args\030" +
+      "\022 \003(\r\"k\n\026SpektraCalendarMessage\022 \n\004type\030" +
       "\001 \001(\0162\022.SpektraTargetType\022\r\n\005index\030\002 \001(\r" +
-      "\"z\n\025SpektraControlMessage\022 \n\004type\030\001 \001(\0162" +
-      "\022.SpektraTargetType\022\014\n\004zone\030\002 \001(\r\022\r\n\005ind" +
-      "ex\030\003 \001(\r\022\"\n\006action\030\004 \001(\0162\022.SpektraAction" +
-      "Type\"\325\001\n\017ShowStepMessage\022\022\n\nstep_index\030\001" +
-      " \001(\r\022\024\n\014target_index\030\002 \001(\r\022+\n\013action_typ" +
-      "e\030\003 \001(\0162\026.SpektraStepActionType\022\037\n\027max_r" +
-      "andom_target_index\030\004 \001(\r\022\014\n\004zone\030\005 \001(\r\022\036" +
-      "\n\026max_output_level_limit\030\006 \001(\r\022\034\n\024time_u" +
-      "ntil_next_10ms\030\007 \001(\r\"\314\001\n\022SpektraShowMess" +
-      "age\022\022\n\nshow_index\030\001 \001(\r\022\027\n\017number_of_ste" +
-      "ps\030\002 \001(\r\022\036\n\004step\030\003 \003(\0132\020.ShowStepMessage" +
-      "\022\021\n\tisRunning\030\004 \001(\010\022\020\n\010isLooped\030\005 \001(\010\022\020\n" +
-      "\010isRandom\030\006 \001(\010\022\023\n\013isTemporary\030\007 \001(\010\022\035\n\025" +
-      "activations_remaining\030\010 \001(\r\"k\n\032ExtendedS" +
-      "pektraShowMessage\022\022\n\nshow_index\030\001 \001(\r\022\031\n" +
-      "\021step_index_offset\030\002 \001(\r\022\036\n\004step\030\003 \003(\0132\020" +
-      ".ShowStepMessage\"W\n\031SpektraShowControlMe" +
-      "ssage\022\022\n\nshow_index\030\001 \001(\r\022\024\n\014start_resum" +
-      "e\030\002 \001(\r\022\020\n\010gotoStep\030\003 \001(\r\"\272\001\n\024DMXTransla" +
-      "tionObject\022\017\n\007line_in\030\001 \001(\r\022\020\n\010line_out\030" +
-      "\002 \001(\r\022\031\n\021dmx_start_address\030\003 \001(\r\022\025\n\rchan" +
-      "nel_count\030\004 \001(\r\022\022\n\ndali_array\030\005 \003(\r\022\026\n\016a" +
-      "ffected_input\030\007 \001(\r\022\020\n\010blocking\030\010 \001(\010\022\017\n" +
-      "\007enabled\030\t \001(\010\"?\n\026DMXProtocolTranslation" +
-      "\022%\n\006object\030\001 \003(\0132\025.DMXTranslationObject\"" +
-      "%\n\021InputStateMessage\022\020\n\010use_mask\030\001 \001(\010\"8" +
-      "\n\022InputStateResponse\022\016\n\006inputs\030\001 \003(\r\022\022\n\n" +
-      "input_mask\030\002 \001(\r\"@\n\022LevelCacheResponse\022\016" +
-      "\n\006levels\030\001 \003(\r\022\014\n\004line\030\002 \001(\r\022\014\n\004page\030\003 \001" +
-      "(\r\"\323\004\n\034DiagnosticSystemInfoResponse\022\020\n\010f" +
-      "irmware\030\001 \001(\t\022\020\n\010hardware\030\002 \001(\t\022\r\n\005error" +
-      "\030\003 \001(\t\022\023\n\013input_count\030\004 \001(\r\022\024\n\014output_co" +
-      "unt\030\005 \001(\r\022\020\n\010ir_count\030\006 \001(\r\022\027\n\017list_step" +
-      "_count\030\007 \001(\r\022\022\n\nlist_count\030\010 \001(\r\022\023\n\013alar" +
-      "m_count\030\t \001(\r\022\024\n\014burnin_count\030\n \001(\r\022\031\n\021s" +
-      "pektra_seq_count\030\013 \001(\r\022\036\n\026spektra_seq_st" +
-      "ep_count\030\014 \001(\r\022\033\n\023spektra_theme_count\030\r " +
-      "\001(\r\022\034\n\024spektra_static_count\030\016 \001(\r\022\025\n\rpro" +
-      "to_version\030\017 \001(\r\022\022\n\nline_count\030\020 \001(\r\022\030\n\005" +
-      "lines\030\021 \003(\0162\t.LineType\022\025\n\rprofile_count\030" +
-      "\022 \001(\r\022\031\n\021preset_code_count\030\023 \001(\r\022\030\n\020user" +
-      "_level_count\030\024 \001(\r\022\031\n\021dmx_to_dali_count\030" +
-      "\025 \001(\r\022\032\n\022spektra_zone_count\030\026 \001(\r\022\023\n\013log" +
-      "ic_count\030\027 \001(\r\022\030\n\020input_dali_count\030\030 \001(\r" +
-      "\"U\n\021DiagnosticMessage\022$\n\004type\030\001 \001(\0162\026.Di" +
-      "agnosticMessageType\022\014\n\004page\030\002 \001(\r\022\014\n\004lin" +
-      "e\030\003 \001(\r\"\362\001\n\035AdminProjectPropertiesMessag" +
-      "e\022\023\n\013device_name\030\002 \001(\t\022\024\n\014project_name\030\003" +
-      " \001(\t\022\021\n\tlongitude\030\004 \001(\002\022\020\n\010latitude\030\005 \001(" +
-      "\002\022\024\n\014local_offset\030\006 \001(\002\022\030\n\020daylight_savi" +
-      "ngs\030\007 \001(\010\022\036\n\026daylight_savings_start\030\010 \001(" +
-      "\r\022\034\n\024daylight_savings_end\030\t \001(\r\022\023\n\013poll_" +
-      "active\030\n \001(\010\"\244\001\n\030AdminConfigStatusMessag" +
-      "e\022\023\n\013list_status\030\001 \003(\r\022\026\n\016burn_in_status" +
-      "\030\002 \003(\r\022\024\n\014alarm_status\030\003 \001(\r\022.\n\023alarm_ti" +
-      "me_from_reg\030\004 \001(\0132\021.TimeClockMessage\022\025\n\r" +
-      "sensor_status\030\005 \003(\r\"\326\001\n\035AdminNetworkProp" +
-      "ertiesMessage\022\014\n\004DHCP\030\001 \001(\010\022\n\n\002IP\030\002 \001(\t\022" +
-      "\013\n\003MAC\030\003 \001(\t\022\017\n\007gateway\030\004 \001(\t\022\021\n\tNTPServ" +
-      "er\030\005 \001(\t\022\013\n\003NTP\030\006 \001(\010\022\r\n\005error\030\007 \001(\t\022\022\n\n" +
-      "NTPTimeout\030\010 \001(\r\022\016\n\006subnet\030\t \001(\t\022\023\n\013DNS_" +
-      "Primary\030\n \001(\t\022\025\n\rDNS_Secondary\030\013 \001(\t\"7\n\033" +
-      "AdminControllerLinesMessage\022\030\n\005lines\030\001 \003" +
-      "(\0162\t.LineType\"@\n\030AdminDeviceStatusMessag" +
-      "e\022\023\n\013temperature\030\001 \001(\002\022\017\n\007battery\030\002 \001(\002\"" +
-      "I\n\027AdminSecureLoginMessage\022\020\n\010username\030\001" +
-      " \001(\t\022\016\n\006cnonce\030\002 \001(\t\022\014\n\004hash\030\003 \003(\r\";\n\032Ad" +
-      "minDALISensorTypeMessage\022\035\n\004type\030\001 \001(\0162\017" +
-      ".DALISensorType\"\204\004\n\014AdminMessage\022\"\n\007comm" +
-      "and\030\001 \001(\0162\021.AdminCommandType\022\"\n\006target\030\002" +
-      " \001(\0162\022.AdminPropertyType\022\037\n\004data\030\003 \001(\0132\017" +
-      ".PayloadMessageH\000\022<\n\022network_properties\030" +
-      "\004 \001(\0132\036.AdminNetworkPropertiesMessageH\000\022" +
-      "<\n\022project_properties\030\005 \001(\0132\036.AdminProje" +
-      "ctPropertiesMessageH\000\0228\n\020controller_line" +
-      "s\030\006 \001(\0132\034.AdminControllerLinesMessageH\000\022" +
-      "2\n\rdevice_status\030\007 \001(\0132\031.AdminDeviceStat" +
-      "usMessageH\000\0222\n\rconfig_status\030\010 \001(\0132\031.Adm" +
-      "inConfigStatusMessageH\000\022)\n\013device_time\030\t" +
-      " \001(\0132\022.UpdateTimeMessageH\000\0227\n\020dali_senso" +
-      "r_type\030\n \001(\0132\033.AdminDALISensorTypeMessag" +
-      "eH\000B\t\n\007payload\"K\n\013DataMessage\022\022\n\nidentif" +
-      "ier\030\001 \001(\r\022\013\n\003seq\030\002 \001(\r\022\r\n\005count\030\003 \001(\r\022\014\n" +
-      "\004data\030\004 \003(\r\"\366\001\n\023FirmwareMetaMessage\022\030\n\020f" +
-      "irmware_version\030\001 \001(\r\022\025\n\rfirmware_date\030\002" +
-      " \001(\r\022\034\n\024firmware_date_upload\030\003 \001(\r\022\031\n\021fi" +
-      "rmware_checksum\030\004 \001(\r\022\034\n\024firmware_chunk_" +
-      "count\030\005 \001(\r\022\035\n\025firmware_base_address\030\006 \001" +
-      "(\r\022\034\n\024firmware_end_address\030\007 \001(\r\022\032\n\022firm" +
-      "ware_is_backup\030\010 \001(\010\";\n\026FirmwareControlM" +
-      "essage\022!\n\003cmd\030\001 \001(\0162\024.FirmwareCommandTyp" +
-      "e\"d\n\024FirmwareChunkMessage\022\030\n\020firmware_ad" +
-      "dress\030\001 \001(\r\022\023\n\013total_bytes\030\002 \001(\r\022\035\n\007payl" +
-      "oad\030\003 \001(\0132\014.DataMessage\"j\n\024SystemLogRead" +
-      "Message\022\031\n\021log_start_address\030\001 \001(\r\022\026\n\016lo" +
-      "gs_requested\030\002 \001(\r\022\037\n\004logs\030\003 \003(\0132\021.Syste" +
-      "mLogMessage\"\267\002\n\020SystemLogMessage\022\027\n\017time" +
-      "_since_boot\030\001 \001(\r\022\036\n\004boot\030\002 \001(\0132\016.System" +
-      "LogBootH\000\022$\n\007netlink\030\003 \001(\0132\021.SystemLogNe" +
-      "tLinkH\000\022\034\n\003ntp\030\004 \001(\0132\r.SystemLogNTPH\000\022$\n" +
-      "\007trigger\030\005 \001(\0132\021.SystemLogTriggerH\000\022$\n\007s" +
-      "pektra\030\006 \001(\0132\021.SystemLogSpektraH\000\022&\n\010sch" +
-      "edule\030\007 \001(\0132\022.SystemLogScheduleH\000\022(\n\tuse" +
-      "rstart\030\010 \001(\0132\023.SystemLogUserStartH\000B\010\n\006p" +
-      "acket\"D\n\rSystemLogBoot\022$\n\ttimeclock\030\001 \001(" +
-      "\0132\021.TimeClockMessage\022\r\n\005flags\030\002 \001(\r\"%\n\020S" +
-      "ystemLogNetLink\022\021\n\tis_linked\030\001 \001(\010\"4\n\014Sy" +
-      "stemLogNTP\022$\n\ttimeclock\030\001 \001(\0132\021.TimeCloc" +
-      "kMessage\"O\n\020SystemLogTrigger\022 \n\007trigger\030" +
-      "\001 \001(\0132\017.TriggerMessage\022\031\n\006source\030\002 \001(\0162\t" +
-      ".ReadType\"g\n\020SystemLogSpektra\022\"\n\006action\030" +
-      "\001 \001(\0162\022.SpektraActionType\022 \n\004type\030\002 \001(\0162" +
-      "\022.SpektraTargetType\022\r\n\005index\030\003 \001(\r\"a\n\021Sy" +
-      "stemLogSchedule\022\r\n\005index\030\001 \001(\r\022\017\n\007isStar" +
-      "t\030\002 \001(\r\022\016\n\006second\030\003 \001(\r\022\016\n\006minute\030\004 \001(\r\022" +
-      "\014\n\004hour\030\005 \001(\r\":\n\022SystemLogUserStart\022$\n\tt" +
-      "imeclock\030\001 \001(\0132\021.TimeClockMessage\"\323\001\n\031Sy" +
-      "stemMetaDataReadMessage\022\033\n\023input_press_c" +
-      "ounter\030\001 \003(\r\022\032\n\022list_start_counter\030\002 \003(\r" +
-      "\022\031\n\021schedules_counter\030\003 \003(\r\022\026\n\016screen_on" +
-      "_time\030\004 \001(\r\022\027\n\017screen_dim_time\030\005 \001(\r\022\031\n\021" +
-      "screen_saver_time\030\006 \001(\r\022\026\n\016reboot_counte" +
-      "r\030\007 \001(\r\"\233\001\n\014TriggerEvent\022\032\n\004type\030\001 \001(\0162\014" +
-      ".TriggerType\022\017\n\005level\030\002 \001(\rH\000\022(\n\014dali_co" +
-      "mmand\030\003 \001(\0162\020.DALICommandTypeH\000\022\026\n\016targe" +
-      "t_address\030\004 \001(\r\022\021\n\tline_mask\030\005 \001(\rB\t\n\007pa" +
-      "yload\"m\n\020DALI24InputEvent\022\r\n\005index\030\001 \001(\r" +
-      "\022\014\n\004line\030\002 \001(\r\022\017\n\007address\030\003 \001(\r\022\036\n\004type\030" +
-      "\004 \001(\0162\020.DALI24InputType\022\013\n\003arg\030\005 \001(\r\"\252\001\n" +
-      "\017DALISensorEvent\022\r\n\005index\030\001 \001(\r\022\014\n\004line\030" +
-      "\002 \001(\r\022\017\n\007address\030\003 \001(\r\022-\n\014motion_state\030\004" +
-      " \001(\0162\027.DALIMotionSensorStates\022\'\n\tlux_sta" +
-      "te\030\005 \001(\0162\024.DALILuxSensorStates\022\021\n\tlux_le" +
-      "vel\030\006 \001(\r\"\364\001\n\014EventMessage\022\031\n\005event\030\001 \001(" +
-      "\0162\n.EventType\022 \n\007trigger\030\002 \001(\0132\r.Trigger" +
-      "EventH\000\022%\n\006inputs\030\003 \001(\0132\023.InputStateResp" +
-      "onseH\000\022\"\n\007payload\030\004 \001(\0132\017.PayloadMessage" +
-      "H\000\022\"\n\006sensor\030\006 \001(\0132\020.DALISensorEventH\000\022*" +
-      "\n\rdali_24_input\030\007 \001(\0132\021.DALI24InputEvent" +
-      "H\000B\014\n\nevent_data\"\337\024\n\rEdidioMessage\022\022\n\nme" +
-      "ssage_id\030\001 \001(\r\022\032\n\003ack\030\002 \001(\0132\013.AckMessage" +
-      "H\000\022$\n\006inputs\030\003 \001(\0132\022.InputMultiMessageH\000" +
-      "\022&\n\007outputs\030\004 \001(\0132\023.OutputMultiMessageH\000" +
-      "\022\036\n\003irs\030\005 \001(\0132\017.IRMultiMessageH\000\022 \n\006sens" +
-      "or\030\006 \001(\0132\016.SensorMessageH\000\022\034\n\004list\030\010 \001(\013" +
-      "2\014.ListMessageH\000\022\036\n\005alarm\030\n \001(\0132\r.AlarmM" +
-      "essageH\000\022$\n\006alarms\030\013 \001(\0132\022.AlarmMultiMes" +
-      "sageH\000\022\'\n\010burn_ins\030\014 \001(\0132\023.BurnInMultiMe" +
-      "ssageH\000\022/\n\016sensor_command\030\r \001(\0132\025.Sensor" +
-      "CommandMessageH\000\022/\n\016change_profile\030\016 \001(\013" +
-      "2\025.ChangeProfileMessageH\000\022,\n\020identify_me" +
-      "ssage\030\017 \001(\0132\020.IdentifyMessageH\000\022)\n\013updat" +
-      "e_time\030\020 \001(\0132\022.UpdateTimeMessageH\000\022)\n\013re" +
-      "ad_device\030\021 \001(\0132\022.ReadDeviceMessageH\000\022$\n" +
-      "\014dali_message\030\022 \001(\0132\014.DALIMessageH\000\022(\n\nd" +
-      "ali_query\030\023 \001(\0132\022.DALIQueryResponseH\000\022\"\n" +
-      "\013dmx_message\030\024 \001(\0132\013.DMXMessageH\000\0223\n\020ext" +
-      "ernal_trigger\030\025 \001(\0132\027.ExternalTriggerMes" +
-      "sageH\000\0222\n\020spektra_settings\030\026 \001(\0132\026.Spekt" +
-      "raSettingMessageH\000\0229\n\020spektra_sequence\030\027" +
-      " \001(\0132\035.SpektraSequenceConfigMessageH\000\0223\n" +
-      "\020spektra_calendar\030\030 \001(\0132\027.SpektraCalenda" +
-      "rMessageH\000\0223\n\rspektra_theme\030\031 \001(\0132\032.Spek" +
-      "traThemeConfigMessageH\000\022+\n\014spektra_read\030" +
-      "\032 \001(\0132\023.SpektraReadMessageH\000\0221\n\017spektra_" +
-      "control\030\033 \001(\0132\026.SpektraControlMessageH\000\022" +
-      "1\n\016dmx_translator\030\034 \001(\0132\027.DMXProtocolTra" +
-      "nslationH\000\022+\n\rinput_request\030\035 \001(\0132\022.Inpu" +
-      "tStateMessageH\000\022-\n\016input_response\030\036 \001(\0132" +
-      "\023.InputStateResponseH\000\0224\n\013diag_system\030\037 " +
-      "\001(\0132\035.DiagnosticSystemInfoResponseH\000\022*\n\014" +
-      "diag_message\030  \001(\0132\022.DiagnosticMessageH\000" +
-      "\022&\n\radmin_message\030! \001(\0132\r.AdminMessageH\000" +
-      "\022\036\n\005event\030\" \001(\0132\r.EventMessageH\000\022>\n\026secu" +
-      "re_device_settings\030# \001(\0132\034.SecureDeviceS" +
-      "ettingsMessageH\000\022,\n\014firmware_new\030$ \001(\0132\024" +
-      ".FirmwareMetaMessageH\000\0223\n\020firmware_contr" +
-      "ol\030% \001(\0132\027.FirmwareControlMessageH\000\022/\n\016f" +
-      "irmware_chunk\030& \001(\0132\025.FirmwareChunkMessa" +
-      "geH\000\0223\n\024level_cache_response\030\' \001(\0132\023.Lev" +
-      "elCacheResponseH\000\022-\n\rlist_extended\030) \001(\013" +
-      "2\024.ExtendedListMessageH\000\022\"\n\013ayt_message\030" +
-      "* \001(\0132\013.AytMessageH\000\022\"\n\013rdm_message\030+ \001(" +
-      "\0132\013.RDMMessageH\000\0223\n\024rdm_response_message" +
-      "\030, \001(\0132\023.RDMResponseMessageH\000\022+\n\rlogic_m" +
-      "essage\030- \001(\0132\022.LogicMultiMessageH\000\0220\n\014se" +
-      "cure_login\030. \001(\0132\030.AdminSecureLoginMessa" +
-      "geH\000\0223\n\024device_state_message\030/ \001(\0132\023.Dev" +
-      "iceStateMessageH\000\022:\n\024spektra_calendar_da" +
-      "y\0300 \001(\0132\032.SpektraCalendarDayMessageH\000\022D\n" +
-      "\031spektra_calendar_overview\0301 \001(\0132\037.Spekt" +
-      "raCalendarOverviewMessageH\000\022-\n\013inputs_da" +
-      "li\0302 \001(\0132\026.DALIInputMultiMessageH\000\022*\n\tlo" +
-      "gs_read\0303 \001(\0132\025.SystemLogReadMessageH\000\0223" +
-      "\n\rmetadata_read\0304 \001(\0132\032.SystemMetaDataRe" +
-      "adMessageH\000\0229\n\027dali_addressing_message\0305" +
-      " \001(\0132\026.DALIAddressingMessageH\000\0227\n\026dali_r" +
-      "emapping_message\0306 \001(\0132\025.DALIRemappingMe" +
-      "ssageH\000\022B\n\034spektra_show_control_message\030" +
-      "7 \001(\0132\032.SpektraShowControlMessageH\000\0223\n\024s" +
-      "pektra_show_message\0308 \001(\0132\023.SpektraShowM" +
-      "essageH\000\022D\n\035extended_spektra_show_messag" +
-      "e\0309 \001(\0132\033.ExtendedSpektraShowMessageH\000\022-" +
-      "\n\rrdm_discovery\030: \001(\0132\024.RDMDiscoveryMess" +
-      "ageH\000\0228\n\023rdm_discovery_reply\030; \001(\0132\031.RDM" +
-      "DiscoveryReplyMessageH\000B\t\n\007payload*\233\001\n\024T" +
-      "riggerOperationType\022\r\n\tMOMENTARY\020\000\022\014\n\010LA" +
-      "TCHING\020\001\022\024\n\020MOMENTARY_OUTPUT\020\002\022\023\n\017LATCHI" +
-      "NG_OUTPUT\020\003\022\n\n\006ROTARY\020\004\022\027\n\022MOMENTARY_DIS" +
-      "ABLED\020\200\001\022\026\n\021LATCHING_DISABLED\020\201\001*\263\013\n\013Tri" +
-      "ggerType\022\014\n\010DALI_ARC\020\000\022\020\n\014DALI_COMMAND\020\001" +
-      "\022\032\n\026DMX_CHANNELS_SPLIT_LOW\020\002\022\033\n\027DMX_CHAN" +
-      "NELS_SPLIT_HIGH\020\003\022$\n DMX_MULTICAST_CHANN" +
-      "ELS_SPLIT_LOW\020\004\022%\n!DMX_MULTICAST_CHANNEL" +
-      "S_SPLIT_HIGH\020\005\022\021\n\rDMX_BROADCAST\020\006\022\t\n\005DID" +
-      "IO\020\007\022\024\n\020FADE_UP_WITH_MIN\020\010\022\016\n\nLIST_START" +
-      "\020\t\022\031\n\025LIST_START_CONTINUOUS\020\n\022\r\n\tLIST_ST" +
-      "OP\020\013\022\025\n\021SPEKTRA_START_SEQ\020\014\022\024\n\020SPEKTRA_S" +
-      "TOP_SEQ\020\r\022\021\n\rSPEKTRA_THEME\020\016\022\022\n\016SPEKTRA_" +
-      "STATIC\020\017\022\024\n\020SPEKTRA_SCHEDULE\020\020\022\016\n\nLINK_S" +
-      "TART\020\021\022\r\n\tLINK_STOP\020\022\022\020\n\014DISABLE_BURN\020\023\022" +
-      "\017\n\013ENABLE_BURN\020\024\022\016\n\nON_OFF_TOG\020\025\022\017\n\013MIN_" +
-      "MAX_TOG\020\026\022\020\n\014ENABLE_INPUT\020\027\022\021\n\rDISABLE_I" +
-      "NPUT\020\030\022\024\n\020ENABLE_TOG_INPUT\020\031\022\016\n\nOUTPUT_T" +
-      "OG\020\032\022\017\n\013OUTPUT_HIGH\020\033\022\016\n\nOUTPUT_LOW\020\034\022\017\n",
-      "\013OUTPUT_TRIG\020\035\022\022\n\016PROFILE_CHANGE\020\036\022\023\n\017FA" +
-      "DE_LONG_PRESS\020\037\022\n\n\006SYNCRO\020 \022\017\n\013PRESET_CO" +
-      "DE\020!\022\017\n\013CUSTOM_CODE\020\"\022\021\n\rSPEKTRA_SLEEP\020#" +
-      "\022\022\n\016SPEKTRA_RESUME\020$\022\020\n\014DEVICE_RESET\020%\022\017" +
-      "\n\013DEVICE_SAVE\020&\022\030\n\024USER_LEVEL_STORE_NEW\020" +
-      "\'\022\032\n\026USER_LEVEL_SET_DEFAULT\020(\022\025\n\021USER_LE" +
-      "VEL_RECALL\020)\022\r\n\tROOM_JOIN\020+\022\017\n\013ROOM_UNJO" +
-      "IN\020,\022\023\n\017TYPE8_TC_WARMER\020-\022\023\n\017TYPE8_TC_CO" +
-      "OLER\020.\022\023\n\017TYPE8_TC_ACTUAL\020/\022\023\n\017LOGIC_OPE" +
-      "RATION\0200\022\020\n\014ALARM_ENABLE\0201\022\021\n\rALARM_DISA" +
-      "BLE\0202\022 \n\034DALI_CONTROL_SENSOR_OVERRIDE\0203\022" +
-      "$\n DALI_CONTROL_SENSOR_TEMP_DISABLE\0204\022\036\n" +
-      "\032DALI_CONTROL_SENSOR_RESUME\0205\022\025\n\021DALI_AR" +
-      "C_OVERRIDE\0206\022\031\n\025DALI_COMMAND_OVERRIDE\0207\022" +
-      "\035\n\031FADE_UP_WITH_MIN_OVERRIDE\0208\022\027\n\023ON_OFF" +
-      "_TOG_OVERRIDE\0209\022\030\n\024MIN_MAX_TOG_OVERRIDE\020" +
-      ":\022\017\n\013MAX_OFF_TOG\020;\022\030\n\024MAX_OFF_TOG_OVERRI" +
-      "DE\020<\022\034\n\030FADE_LONG_PRESS_OVERRIDE\020=\022\036\n\032US" +
-      "ER_LEVEL_RECALL_OVERRIDE\020>\022\024\n\020DMX_ZONE_F" +
-      "ADE_UP\020?\022\026\n\022DMX_ZONE_FADE_DOWN\020@\022\021\n\rLOGG" +
-      "ING_LEVEL\020A\022\030\n\024SPEKTRA_SHOW_CONTROL\020B\022\017\n" +
-      "\nNO_COMMAND\020\376\001*\353\001\n\010ReadType\022\n\n\006INPUTS\020\000\022" +
-      "\013\n\007OUTPUTS\020\001\022\006\n\002IR\020\002\022\n\n\006SENSOR\020\003\022\010\n\004LIST" +
-      "\020\005\022\n\n\006ALARMS\020\007\022\013\n\007BURN_IN\020\010\022\013\n\007PROJECT\020\t" +
-      "\022\013\n\007NETWORK\020\n\022\n\n\006DEVICE\020\013\022\r\n\tPOLL_DATA\020\014" +
-      "\022\021\n\rLIST_EXTENDED\020\r\022\t\n\005LOGIC\020\016\022\017\n\013DALI_I" +
-      "NPUTS\020\017\022\020\n\014SPEKTRA_SHOW\020\020\022\031\n\025SPEKTRA_SHO" +
-      "W_EXTENDED\020\021*\214\001\n\017AlarmRepeatType\022\023\n\017ALAR" +
-      "M_NO_REPEAT\020\000\022\026\n\022ALARM_REPEAT_DAILY\020\001\022\031\n" +
-      "\025ALARM_REPEAT_WORK_DAY\020\002\022\027\n\023ALARM_REPEAT" +
-      "_WEEKLY\020\003\022\030\n\024ALARM_REPEAT_MONTHLY\020\004*I\n\016A" +
-      "larmAstroType\022\022\n\016ALARM_NO_ASTRO\020\000\022\021\n\rALA" +
-      "RM_SUNRUSE\020\001\022\020\n\014ALARM_SUNSET\020\002*^\n\021Spektr" +
-      "aTargetType\022\014\n\010SETTINGS\020\000\022\014\n\010SEQUENCE\020\001\022" +
-      "\t\n\005THEME\020\002\022\n\n\006STATIC\020\003\022\014\n\010CALENDAR\020\004\022\010\n\004" +
-      "SHOW\020\005*=\n\021SpektraActionType\022\t\n\005START\020\000\022\010" +
-      "\n\004STOP\020\001\022\t\n\005PAUSE\020\002\022\010\n\004SAVE\020\003*p\n\025Spektra" +
-      "StepActionType\022\020\n\014RUN_SEQUENCE\020\000\022\016\n\nSHOW" +
-      "_THEME\020\001\022\016\n\nSTART_LIST\020\002\022\022\n\016PAUSE_PREVIO" +
-      "US\020\003\022\021\n\rSTOP_PREVIOUS\020\004*}\n\037SpektraUnsche" +
-      "duledBehaviourType\022 \n\034RUN_RANDOM_COLOURE" +
-      "D_SEQUENCE\020\000\022\022\n\016RUN_SEQUENCE_1\020\001\022\023\n\017RESU" +
-      "ME_PREVIOUS\020\002\022\017\n\nDO_NOTHING\020\376\001*6\n\022LineAd" +
-      "dressingType\022\017\n\013INDEPENDENT\020\000\022\017\n\013CONSECU" +
-      "TIVE\020\001*\347\002\n\016AckMessageType\022\021\n\rDECODE_FAIL" +
-      "ED\020\000\022\027\n\023INDEX_OUT_OF_BOUNDS\020\001\022\023\n\017UNEXPEC" +
-      "TED_TYPE\020\002\022\021\n\rENCODE_FAILED\020\003\022\020\n\014KEY_MIS" +
-      "MATCH\020\004\022\013\n\007SUCCESS\020\005\022\022\n\016INVALID_PARAMS\020\006" +
-      "\022\026\n\022UNEXPECTED_COMMAND\020\007\022\030\n\024COMMUNICATIO" +
-      "N_FAILED\020\010\022\031\n\025COMMUNICATION_TIMEOUT\020\t\022\021\n" +
-      "\rDATA_TOO_LONG\020\n\022\023\n\017UNEXPECTED_CASE\020\013\022\016\n" +
-      "\nSLOTS_FULL\020\014\022\020\n\014UNAUTHORISED\020\r\022\023\n\017PARTI" +
-      "AL_SUCCESS\020\016\022\022\n\016COMMAND_FAILED\020\017\022\016\n\nDEPR" +
-      "ECATED\020\020*\323\004\n\020Type8CommandType\022\024\n\020SET_TEM" +
-      "P_X_COORD\020\000\022\024\n\020SET_TEMP_Y_COORD\020\001\022\014\n\010ACT" +
-      "IVATE\020\002\022\023\n\017X_COORD_STEP_UP\020\003\022\025\n\021X_COORD_" +
-      "STEP_DOWN\020\004\022\023\n\017Y_COORD_STEP_UP\020\005\022\025\n\021Y_CO" +
-      "ORD_STEP_DOWN\020\006\022\037\n\033SET_TEMP_COLOUR_TEMPE" +
-      "RATURE\020\007\022\"\n\036COLOUR_TEMPERATURE_STEP_COOL" +
-      "ER\020\010\022\"\n\036COLOUR_TEMPERATURE_STEP_WARMER\020\t" +
-      "\022\033\n\027SET_TEMP_PRI_N_DIMLEVEL\020\n\022\031\n\025SET_TEM" +
-      "P_RGB_DIMLEVEL\020\013\022\031\n\025SET_TEMP_WAF_DIMLEVE" +
-      "L\020\014\022\033\n\027SET_TEMP_RGBWAF_CONTROL\020\r\022\031\n\025COPY" +
-      "_REPORT_TEMPORARY\020\016\022\022\n\016STORE_TY_PRI_N\020\020\022" +
-      "\030\n\024STORE_XY_COORD_PRI_N\020\021\022\"\n\036STORE_COLOU" +
-      "R_TEMPERATURE_LIMIT\020\022\022\036\n\032STORE_GEAR_FEAT" +
-      "URES_STATUS\020\023\022\032\n\026ASSIGN_COLOR_LINKED_CH\020" +
-      "\025\022\022\n\016START_AUTO_CAL\020\026\022\027\n\023ENABLE_DEVICE_T" +
-      "YPE8\0200*\230\002\n\016Type8QueryType\022\024\n\020TYPE8_QUERY" +
-      "_NULL\020\000\022%\n TYPE8_QUERY_GEAR_FEATURES_STA" +
-      "TUS\020\367\001\022\036\n\031TYPE8_QUERY_COLOUR_STATUS\020\370\001\022%" +
-      "\n TYPE8_QUERY_COLOUR_TYPE_FEATURES\020\371\001\022\035\n" +
-      "\030TYPE8_QUERY_COLOUR_VALUE\020\372\001\022\037\n\032TYPE8_QU" +
-      "ERY_RGBWAF_CONTROL\020\373\001\022 \n\033TYPE8_QUERY_ASS" +
-      "IGNED_COLOUR\020\374\001\022 \n\033TYPE8_QUERY_EXT_VERSI" +
-      "ON_NUM\020\376\001*W\n\010LineType\022\016\n\nLINE_EMPTY\020\000\022\r\n" +
-      "\tLINE_DALI\020\001\022\014\n\010LINE_DMX\020\002\022\017\n\013LINE_DMX_I" +
-      "N\020\003\022\r\n\tLINE_AUTO\020\004*\220\001\n\tEventType\022\014\n\010REGI" +
-      "STER\020\000\022\021\n\rTRIGGER_EVENT\020\001\022\017\n\013INPUT_EVENT" +
-      "\020\002\022\020\n\014SENSOR_EVENT\020\003\022\021\n\rCONTROL_EVENT\020\004\022" +
-      "\023\n\017ROOM_JOIN_EVENT\020\005\022\027\n\023DALI_24_INPUT_EV" +
-      "ENT\020\006*\306\t\n\rDALIQueryType\022\023\n\017DALI_QUERY_NU" +
-      "LL\020\000\022\026\n\021DALI_QUERY_STATUS\020\220\001\022\027\n\022DALI_QUE" +
-      "RY_BALLAST\020\221\001\022\034\n\027DALI_QUERY_LAMP_FAILURE" +
-      "\020\222\001\022\035\n\030DALI_QUERY_LAMP_POWER_ON\020\223\001\022\033\n\026DA" +
-      "LI_QUERY_LIMIT_ERROR\020\224\001\022\033\n\026DALI_QUERY_RE" +
-      "SET_STATE\020\225\001\022%\n DALI_QUERY_MISSING_SHORT" +
-      "_ADDRESS\020\226\001\022\036\n\031DALI_QUERY_VERSION_NUMBER" +
-      "\020\227\001\022\024\n\017DALI_QUERY_DTR0\020\230\001\022\033\n\026DALI_QUERY_" +
-      "DEVICE_TYPE\020\231\001\022\034\n\027DALI_QUERY_PHYSICAL_MI" +
-      "N\020\232\001\022\035\n\030DALI_QUERY_POWER_FAILURE\020\233\001\022\024\n\017D" +
-      "ALI_QUERY_DTR1\020\234\001\022\024\n\017DALI_QUERY_DTR2\020\235\001\022" +
-      "\036\n\031DALI_QUERY_OPERATING_MODE\020\236\001\022 \n\033DALI_" +
-      "QUERY_LIGHTSOURCE_TYPE\020\237\001\022\034\n\027DALI_QUERY_" +
-      "ACTUAL_LEVEL\020\240\001\022\031\n\024DALI_QUERY_MAX_LEVEL\020" +
-      "\241\001\022\031\n\024DALI_QUERY_MIN_LEVEL\020\242\001\022\036\n\031DALI_QU" +
-      "ERY_POWER_ON_LEVEL\020\243\001\022$\n\037DALI_QUERY_SYST" +
-      "EM_FAILURE_LEVEL\020\244\001\022!\n\034DALI_QUERY_FADETI" +
-      "ME_FADERATE\020\245\001\022*\n%DALI_QUERY_MANUFACTURE" +
-      "R_SPECIFIC_MODE\020\246\001\022 \n\033DALI_QUERY_NEXT_DE" +
-      "VICE_TYPE\020\247\001\022\"\n\035DALI_QUERY_EXTENDED_FADE" +
-      "_TIME\020\250\001\022$\n\037DALI_QUERY_CONTROL_GEAR_FAIL" +
-      "URE\020\252\001\022\035\n\030DALI_QUERY_SCENE_X_LEVEL\020\260\001\022\032\n" +
-      "\025DALI_QUERY_GROUPS_0_7\020\300\001\022\033\n\026DALI_QUERY_" +
-      "GROUPS_8_15\020\301\001\022 \n\033DALI_QUERY_RANDOM_ADDR" +
-      "ESS_H\020\302\001\022 \n\033DALI_QUERY_RANDOM_ADDRESS_M\020" +
-      "\303\001\022 \n\033DALI_QUERY_RANDOM_ADDRESS_L\020\304\001\022\034\n\027" +
-      "DALI_QUERY_READ_DTR_0_1\020\305\001\022 \n\033DALI_QUERY" +
-      "_APP_EXT_COMMANDS\020\340\001\022\"\n\035DALI_QUERY_EXT_V" +
-      "ERSION_NUMBER\020\377\001\022\027\n\022DALI_QUERY_COMPARE\020\204" +
-      "\002\022$\n\037DALI_QUERY_VERIFY_SHORT_ADDRESS\020\214\002\022" +
-      "\035\n\030DALI_QUERY_SHORT_ADDRESS\020\215\002*\335\007\n\017DALIC" +
-      "ommandType\022\014\n\010DALI_OFF\020\000\022\020\n\014DALI_FADE_UP" +
-      "\020\001\022\022\n\016DALI_FADE_DOWN\020\002\022\020\n\014DALI_STEP_UP\020\003" +
-      "\022\022\n\016DALI_STEP_DOWN\020\004\022\022\n\016DALI_MAX_LEVEL\020\005" +
-      "\022\022\n\016DALI_MIN_LEVEL\020\006\022\026\n\022DALI_STEP_DOWN_O" +
-      "FF\020\007\022\023\n\017DALI_ON_STEP_UP\020\010\022\030\n\024DALI_ENABLE" +
-      "_DAPC_SEQ\020\t\022!\n\035DALI_RECALL_LAST_ACTIVE_L" +
-      "EVEL\020\n\022\027\n\023DALI_RECALL_SCENE_X\020\020\022\016\n\nDALI_" +
-      "RESET\020 \022 \n\034DALI_STORE_ACTUAL_LEVEL_DTR0\020" +
-      "!\022\035\n\031DALI_SAVE_PERSISTENT_VARS\020\"\022\033\n\027DALI" +
-      "_SET_OPERATING_MODE\020#\022\032\n\026DALI_RESET_MEMO" +
-      "RY_BANK\020$\022\030\n\024DALI_IDENTIFY_DEVICE\020%\022\026\n\022D" +
-      "ALI_SET_MAX_LEVEL\020*\022\026\n\022DALI_SET_MIN_LEVE" +
-      "L\020+\022!\n\035DALI_SET_SYSTEM_FAILURE_LEVEL\020,\022\033" +
-      "\n\027DALI_SET_POWER_ON_LEVEL\020-\022\026\n\022DALI_SET_" +
-      "FADE_TIME\020.\022\026\n\022DALI_SET_FADE_RATE\020/\022\032\n\026D" +
-      "ALI_SET_EXT_FADE_TIME\0200\022\024\n\020DALI_SET_SCEN" +
-      "E_X\020@\022\034\n\030DALI_REMOVE_FROM_SCENE_X\020P\022\027\n\023D" +
-      "ALI_ADD_TO_GROUP_X\020`\022\034\n\030DALI_REMOVE_FROM" +
-      "_GROUP_X\020p\022\033\n\026DALI_SET_SHORT_ADDRESS\020\200\001\022" +
-      "\035\n\030DALI_ENABLE_WRITE_MEMORY\020\201\001\022\023\n\016DALI_T" +
-      "ERMINATE\020\377\001\022\024\n\017DALI_INITIALISE\020\202\002\022\023\n\016DAL" +
-      "I_RANDOMISE\020\203\002\022\022\n\rDALI_WITHDRAW\020\205\002\022\027\n\022DA" +
-      "LI_SEARCH_ADDR_H\020\210\002\022\027\n\022DALI_SEARCH_ADDR_" +
-      "M\020\211\002\022\027\n\022DALI_SEARCH_ADDR_L\020\212\002\022\037\n\032DALI_PR" +
-      "OGRAM_SHORT_ADDRESS\020\213\002*\250\001\n\025CustomDALICom" +
-      "mandType\022\022\n\016DALI_ARC_LEVEL\020\000\022\023\n\017DALI_DAP" +
-      "C_LEVEL\020\001\022\030\n\024DALI_GROUP_ARC_LEVEL\020\002\022\030\n\024D" +
-      "ALI_BROADCAST_SCENE\020\003\022\027\n\023DALI_SCENE_ON_G" +
-      "ROUP\020\004\022\031\n\025DALI_SCENE_ON_ADDRESS\020\005*\233\004\n\021Ad" +
-      "minPropertyType\022\017\n\013DEVICE_NAME\020\000\022\020\n\014PROJ" +
-      "ECT_NAME\020\001\022\r\n\tLONGITUDE\020\002\022\014\n\010LATITUDE\020\003\022" +
-      "\024\n\020LOCAL_UTC_OFFSET\020\004\022\024\n\020DAYLIGHT_SAVING" +
-      "S\020\005\022\017\n\013POLL_ACTIVE\020\006\022\020\n\014DHCP_ENABLED\020\007\022\013" +
-      "\n\007IP_ADDR\020\010\022\014\n\010MAC_ADDR\020\t\022\016\n\nGATEWAY_IP\020" +
-      "\n\022\026\n\022NETWORK_PROPERTIES\020\013\022\025\n\021SYSTEM_PROP" +
-      "ERTIES\020\014\022\024\n\020CONTROLLER_LINES\020\r\022\024\n\020EEPROM" +
-      "_FULL_CHIP\020\016\022\017\n\013CONFIG_DATA\020\017\022\020\n\014SPEKTRA" +
-      "_DATA\020\020\022\021\n\rDEVICE_STATUS\020\021\022\021\n\rCONFIG_STA" +
-      "TUS\020\022\022\017\n\013DEVICE_TIME\020\023\022\017\n\013NTP_DETAILS\020\024\022" +
-      "\025\n\021TRIDONIC_MSENSORS\020\025\022\022\n\016SECURE_SESSION" +
-      "\020\026\022\t\n\005NONCE\020\027\022\024\n\020DALI_SENSOR_TYPE\020\030\022\021\n\rD" +
-      "EVICE_REBOOT\020\031\022\022\n\016SYSTEM_LOGGING\020\032\022\n\n\006SU" +
-      "BNET\020\033\022\007\n\003DNS\020\034*M\n\020AdminCommandType\022\007\n\003S" +
-      "ET\020\000\022\007\n\003GET\020\001\022\007\n\003ADD\020\002\022\n\n\006REMOVE\020\003\022\t\n\005RE" +
-      "SET\020\004\022\007\n\003RUN\020\005*\265\001\n\016DALIStatusType\022\014\n\010LAM" +
-      "P_OFF\020\000\022\030\n\024CONTROL_GEAR_FAILURE\020\001\022\020\n\014LAM" +
-      "P_FAILURE\020\002\022\013\n\007LAMP_ON\020\004\022\017\n\013LIMIT_ERROR\020" +
-      "\010\022\020\n\014FADE_RUNNING\020\020\022\017\n\013RESET_STATE\020 \022\021\n\r" +
-      "SHORT_ADDRESS\020@\022\025\n\020POWER_CYCLE_SEEN\020\200\001*\210" +
-      "\002\n\020DALIRXStatusFlag\022\013\n\007WAITING\020\000\022\023\n\017RECE" +
-      "IVING_FRAME\020\001\022\025\n\021NO_RECEIVED_FRAME\020\002\022\030\n\024" +
-      "RECEIVED_8_BIT_FRAME\020\003\022\031\n\025RECEIVED_16_BI" +
-      "T_FRAME\020\004\022\031\n\025RECEIVED_24_BIT_FRAME\020\005\022\032\n\026" +
-      "RECEIVED_PARTIAL_FRAME\020\006\022\010\n\004IDLE\020\007\022\017\n\013CA" +
-      "LIBRATION\020\010\022\030\n\023ERROR_WHILE_SENDING\020\376\001\022\032\n" +
-      "\025ERROR_WHILE_RECEIVING\020\377\001*\213\001\n\025Diagnostic" +
-      "MessageType\022\032\n\026DIAGNOSTIC_SYSTEM_INFO\020\000\022" +
-      "\033\n\027DIAGNOSTIC_INPUT_STATUS\020\001\022\024\n\020DALI_LEV" +
-      "EL_CACHE\020\002\022\023\n\017DMX_LEVEL_CACHE\020\003\022\016\n\nROOM_" +
-      "JOINS\020\004*z\n\023FirmwareCommandType\022\014\n\010FW_REA" +
-      "DY\020\000\022\014\n\010FW_APPLY\020\001\022\r\n\tFW_VERIFY\020\002\022\024\n\020FW_" +
-      "VERIFY_FAILED\020\003\022\025\n\021FW_VERIFY_SUCCESS\020\004\022\013" +
-      "\n\007FW_READ\020\005*?\n\025SpektraTransitionType\022\t\n\005" +
-      "BLEND\020\000\022\010\n\004SNAP\020\001\022\021\n\rFADE_TO_BLACK\020\002*\234\001\n" +
-      "\tLogicType\022\016\n\nDALI_LEVEL\020\000\022\017\n\013INPUT_STAT" +
-      "E\020\001\022\020\n\014LIST_RUNNING\020\002\022\026\n\022OCCUPANCY_DETEC" +
-      "TED\020\003\022\017\n\013DMX_PRESENT\020\004\022\017\n\013CAL_WEEKDAY\020\005\022" +
-      "\r\n\tCAL_MONTH\020\006\022\023\n\017ALARM_SCHEDULED\020\007*\200\001\n\023" +
-      "LogicComparisonType\022\r\n\tLESS_THAN\020\000\022\027\n\023LE" +
-      "SS_THAN_OR_EQUALS\020\001\022\n\n\006EQUALS\020\002\022\r\n\tMORE_" +
-      "THAN\020\003\022\027\n\023MORE_THAN_OR_EQUALS\020\004\022\r\n\tNOT_E" +
-      "QUAL\020\005*8\n\016DALISensorType\022\022\n\016TRIDONIC_EDA" +
-      "LI\020\000\022\022\n\016STANDARD_EDALI\020\001*G\n\021SensorComman" +
-      "dType\022\016\n\nINITIALISE\020\000\022\010\n\004MUTE\020\001\022\n\n\006UNMUT" +
-      "E\020\002\022\014\n\010OVERRIDE\020\003*b\n\rSystemLogType\022\010\n\004BO" +
-      "OT\020\000\022\014\n\010NET_LINK\020\001\022\007\n\003NTP\020\002\022\013\n\007TRIGGER\020\003" +
-      "\022\013\n\007SPEKTRA\020\004\022\014\n\010SCHEDULE\020\005\022\010\n\004USER\020\006*m\n" +
-      "\017DALI24InputType\022\023\n\017MOMENTARY_SHORT\020\000\022\022\n" +
-      "\016MOMENTARY_LONG\020\001\022\017\n\013LATCHED_LOW\020\002\022\020\n\014LA" +
-      "TCHED_HIGH\020\003\022\016\n\nPOSITIONAL\020\004*h\n\026DALIMoti" +
-      "onSensorStates\022\017\n\013MOTION_IDLE\020\000\022\023\n\017MOTIO" +
-      "N_DISABLED\020\001\022\022\n\016MOTION_WARNING\020\002\022\024\n\020MOTI" +
-      "ON_OCCUPANCY\020\003*I\n\023DALILuxSensorStates\022\020\n" +
-      "\014LUX_DISABLED\020\000\022\017\n\013LUX_ENABLED\020\001\022\017\n\013LUX_" +
-      "DEVIATE\020\002*N\n\023DALIAddressingError\022\014\n\010NO_E" +
-      "RROR\020\000\022\n\n\006VERIFY\020\001\022\n\n\006SEARCH\020\002\022\021\n\rNO_NEW" +
-      "_DEVICE\020\003*8\n\022DALIAddressingType\022\017\n\013ADDRE" +
-      "SS_NEW\020\000\022\021\n\rREADDRESS_ALL\020\001b\006proto3"
+      "\022\014\n\004days\030\003 \003(\010\022\022\n\nisOverride\030\004 \001(\010\"z\n\031Sp" +
+      "ektraCalendarDayMessage\022\021\n\tday_index\030\001 \001" +
+      "(\r\022 \n\004type\030\002 \001(\0162\022.SpektraTargetType\022\024\n\014" +
+      "target_index\030\003 \001(\r\022\022\n\nisOverride\030\004 \001(\010\"^" +
+      "\n\036SpektraCalendarOverviewMessage\022\022\n\nday_" +
+      "offset\030\001 \001(\r\022(\n\004days\030\002 \003(\0132\032.SpektraCale" +
+      "ndarDayMessage\"w\n\031SpektraThemeConfigMess" +
+      "age\022\r\n\005index\030\001 \001(\r\022\016\n\006colour\030\002 \003(\004\022\r\n\005ti" +
+      "tle\030\003 \001(\t\022,\n\007colours\030\004 \003(\0132\033.SpektraColo" +
+      "urConfigMessage\"E\n\022SpektraReadMessage\022 \n" +
+      "\004type\030\001 \001(\0162\022.SpektraTargetType\022\r\n\005index" +
+      "\030\002 \001(\r\"z\n\025SpektraControlMessage\022 \n\004type\030" +
+      "\001 \001(\0162\022.SpektraTargetType\022\014\n\004zone\030\002 \001(\r\022" +
+      "\r\n\005index\030\003 \001(\r\022\"\n\006action\030\004 \001(\0162\022.Spektra" +
+      "ActionType\"\325\001\n\017ShowStepMessage\022\022\n\nstep_i" +
+      "ndex\030\001 \001(\r\022\024\n\014target_index\030\002 \001(\r\022+\n\013acti" +
+      "on_type\030\003 \001(\0162\026.SpektraStepActionType\022\037\n" +
+      "\027max_random_target_index\030\004 \001(\r\022\014\n\004zone\030\005" +
+      " \001(\r\022\036\n\026max_output_level_limit\030\006 \001(\r\022\034\n\024" +
+      "time_until_next_10ms\030\007 \001(\r\"\314\001\n\022SpektraSh" +
+      "owMessage\022\022\n\nshow_index\030\001 \001(\r\022\027\n\017number_" +
+      "of_steps\030\002 \001(\r\022\036\n\004step\030\003 \003(\0132\020.ShowStepM" +
+      "essage\022\021\n\tisRunning\030\004 \001(\010\022\020\n\010isLooped\030\005 " +
+      "\001(\010\022\020\n\010isRandom\030\006 \001(\010\022\023\n\013isTemporary\030\007 \001" +
+      "(\010\022\035\n\025activations_remaining\030\010 \001(\r\"k\n\032Ext" +
+      "endedSpektraShowMessage\022\022\n\nshow_index\030\001 " +
+      "\001(\r\022\031\n\021step_index_offset\030\002 \001(\r\022\036\n\004step\030\003" +
+      " \003(\0132\020.ShowStepMessage\"W\n\031SpektraShowCon" +
+      "trolMessage\022\022\n\nshow_index\030\001 \001(\r\022\024\n\014start" +
+      "_resume\030\002 \001(\r\022\020\n\010gotoStep\030\003 \001(\r\"\272\001\n\024DMXT" +
+      "ranslationObject\022\017\n\007line_in\030\001 \001(\r\022\020\n\010lin" +
+      "e_out\030\002 \001(\r\022\031\n\021dmx_start_address\030\003 \001(\r\022\025" +
+      "\n\rchannel_count\030\004 \001(\r\022\022\n\ndali_array\030\005 \003(" +
+      "\r\022\026\n\016affected_input\030\007 \001(\r\022\020\n\010blocking\030\010 " +
+      "\001(\010\022\017\n\007enabled\030\t \001(\010\"?\n\026DMXProtocolTrans" +
+      "lation\022%\n\006object\030\001 \003(\0132\025.DMXTranslationO" +
+      "bject\"%\n\021InputStateMessage\022\020\n\010use_mask\030\001" +
+      " \001(\010\"8\n\022InputStateResponse\022\016\n\006inputs\030\001 \003" +
+      "(\r\022\022\n\ninput_mask\030\002 \001(\r\"@\n\022LevelCacheResp" +
+      "onse\022\016\n\006levels\030\001 \003(\r\022\014\n\004line\030\002 \001(\r\022\014\n\004pa" +
+      "ge\030\003 \001(\r\"\323\004\n\034DiagnosticSystemInfoRespons" +
+      "e\022\020\n\010firmware\030\001 \001(\t\022\020\n\010hardware\030\002 \001(\t\022\r\n" +
+      "\005error\030\003 \001(\t\022\023\n\013input_count\030\004 \001(\r\022\024\n\014out" +
+      "put_count\030\005 \001(\r\022\020\n\010ir_count\030\006 \001(\r\022\027\n\017lis" +
+      "t_step_count\030\007 \001(\r\022\022\n\nlist_count\030\010 \001(\r\022\023" +
+      "\n\013alarm_count\030\t \001(\r\022\024\n\014burnin_count\030\n \001(" +
+      "\r\022\031\n\021spektra_seq_count\030\013 \001(\r\022\036\n\026spektra_" +
+      "seq_step_count\030\014 \001(\r\022\033\n\023spektra_theme_co" +
+      "unt\030\r \001(\r\022\034\n\024spektra_static_count\030\016 \001(\r\022" +
+      "\025\n\rproto_version\030\017 \001(\r\022\022\n\nline_count\030\020 \001" +
+      "(\r\022\030\n\005lines\030\021 \003(\0162\t.LineType\022\025\n\rprofile_" +
+      "count\030\022 \001(\r\022\031\n\021preset_code_count\030\023 \001(\r\022\030" +
+      "\n\020user_level_count\030\024 \001(\r\022\031\n\021dmx_to_dali_" +
+      "count\030\025 \001(\r\022\032\n\022spektra_zone_count\030\026 \001(\r\022" +
+      "\023\n\013logic_count\030\027 \001(\r\022\030\n\020input_dali_count" +
+      "\030\030 \001(\r\"U\n\021DiagnosticMessage\022$\n\004type\030\001 \001(" +
+      "\0162\026.DiagnosticMessageType\022\014\n\004page\030\002 \001(\r\022" +
+      "\014\n\004line\030\003 \001(\r\"\362\001\n\035AdminProjectProperties" +
+      "Message\022\023\n\013device_name\030\002 \001(\t\022\024\n\014project_" +
+      "name\030\003 \001(\t\022\021\n\tlongitude\030\004 \001(\002\022\020\n\010latitud" +
+      "e\030\005 \001(\002\022\024\n\014local_offset\030\006 \001(\002\022\030\n\020dayligh" +
+      "t_savings\030\007 \001(\010\022\036\n\026daylight_savings_star" +
+      "t\030\010 \001(\r\022\034\n\024daylight_savings_end\030\t \001(\r\022\023\n" +
+      "\013poll_active\030\n \001(\010\"\244\001\n\030AdminConfigStatus" +
+      "Message\022\023\n\013list_status\030\001 \003(\r\022\026\n\016burn_in_" +
+      "status\030\002 \003(\r\022\024\n\014alarm_status\030\003 \001(\r\022.\n\023al" +
+      "arm_time_from_reg\030\004 \001(\0132\021.TimeClockMessa" +
+      "ge\022\025\n\rsensor_status\030\005 \003(\r\"\326\001\n\035AdminNetwo" +
+      "rkPropertiesMessage\022\014\n\004DHCP\030\001 \001(\010\022\n\n\002IP\030" +
+      "\002 \001(\t\022\013\n\003MAC\030\003 \001(\t\022\017\n\007gateway\030\004 \001(\t\022\021\n\tN" +
+      "TPServer\030\005 \001(\t\022\013\n\003NTP\030\006 \001(\010\022\r\n\005error\030\007 \001" +
+      "(\t\022\022\n\nNTPTimeout\030\010 \001(\r\022\016\n\006subnet\030\t \001(\t\022\023" +
+      "\n\013DNS_Primary\030\n \001(\t\022\025\n\rDNS_Secondary\030\013 \001" +
+      "(\t\"7\n\033AdminControllerLinesMessage\022\030\n\005lin" +
+      "es\030\001 \003(\0162\t.LineType\"@\n\030AdminDeviceStatus" +
+      "Message\022\023\n\013temperature\030\001 \001(\002\022\017\n\007battery\030" +
+      "\002 \001(\002\"I\n\027AdminSecureLoginMessage\022\020\n\010user" +
+      "name\030\001 \001(\t\022\016\n\006cnonce\030\002 \001(\t\022\014\n\004hash\030\003 \003(\r" +
+      "\";\n\032AdminDALISensorTypeMessage\022\035\n\004type\030\001" +
+      " \001(\0162\017.DALISensorType\"\204\004\n\014AdminMessage\022\"" +
+      "\n\007command\030\001 \001(\0162\021.AdminCommandType\022\"\n\006ta" +
+      "rget\030\002 \001(\0162\022.AdminPropertyType\022\037\n\004data\030\003" +
+      " \001(\0132\017.PayloadMessageH\000\022<\n\022network_prope" +
+      "rties\030\004 \001(\0132\036.AdminNetworkPropertiesMess" +
+      "ageH\000\022<\n\022project_properties\030\005 \001(\0132\036.Admi" +
+      "nProjectPropertiesMessageH\000\0228\n\020controlle" +
+      "r_lines\030\006 \001(\0132\034.AdminControllerLinesMess" +
+      "ageH\000\0222\n\rdevice_status\030\007 \001(\0132\031.AdminDevi" +
+      "ceStatusMessageH\000\0222\n\rconfig_status\030\010 \001(\013" +
+      "2\031.AdminConfigStatusMessageH\000\022)\n\013device_" +
+      "time\030\t \001(\0132\022.UpdateTimeMessageH\000\0227\n\020dali" +
+      "_sensor_type\030\n \001(\0132\033.AdminDALISensorType" +
+      "MessageH\000B\t\n\007payload\"K\n\013DataMessage\022\022\n\ni" +
+      "dentifier\030\001 \001(\r\022\013\n\003seq\030\002 \001(\r\022\r\n\005count\030\003 " +
+      "\001(\r\022\014\n\004data\030\004 \003(\r\"\366\001\n\023FirmwareMetaMessag" +
+      "e\022\030\n\020firmware_version\030\001 \001(\r\022\025\n\rfirmware_" +
+      "date\030\002 \001(\r\022\034\n\024firmware_date_upload\030\003 \001(\r" +
+      "\022\031\n\021firmware_checksum\030\004 \001(\r\022\034\n\024firmware_" +
+      "chunk_count\030\005 \001(\r\022\035\n\025firmware_base_addre" +
+      "ss\030\006 \001(\r\022\034\n\024firmware_end_address\030\007 \001(\r\022\032" +
+      "\n\022firmware_is_backup\030\010 \001(\010\";\n\026FirmwareCo" +
+      "ntrolMessage\022!\n\003cmd\030\001 \001(\0162\024.FirmwareComm" +
+      "andType\"d\n\024FirmwareChunkMessage\022\030\n\020firmw" +
+      "are_address\030\001 \001(\r\022\023\n\013total_bytes\030\002 \001(\r\022\035" +
+      "\n\007payload\030\003 \001(\0132\014.DataMessage\"j\n\024SystemL" +
+      "ogReadMessage\022\031\n\021log_start_address\030\001 \001(\r" +
+      "\022\026\n\016logs_requested\030\002 \001(\r\022\037\n\004logs\030\003 \003(\0132\021" +
+      ".SystemLogMessage\"\267\002\n\020SystemLogMessage\022\027" +
+      "\n\017time_since_boot\030\001 \001(\r\022\036\n\004boot\030\002 \001(\0132\016." +
+      "SystemLogBootH\000\022$\n\007netlink\030\003 \001(\0132\021.Syste" +
+      "mLogNetLinkH\000\022\034\n\003ntp\030\004 \001(\0132\r.SystemLogNT" +
+      "PH\000\022$\n\007trigger\030\005 \001(\0132\021.SystemLogTriggerH" +
+      "\000\022$\n\007spektra\030\006 \001(\0132\021.SystemLogSpektraH\000\022" +
+      "&\n\010schedule\030\007 \001(\0132\022.SystemLogScheduleH\000\022" +
+      "(\n\tuserstart\030\010 \001(\0132\023.SystemLogUserStartH" +
+      "\000B\010\n\006packet\"D\n\rSystemLogBoot\022$\n\ttimecloc" +
+      "k\030\001 \001(\0132\021.TimeClockMessage\022\r\n\005flags\030\002 \001(" +
+      "\r\"%\n\020SystemLogNetLink\022\021\n\tis_linked\030\001 \001(\010" +
+      "\"4\n\014SystemLogNTP\022$\n\ttimeclock\030\001 \001(\0132\021.Ti" +
+      "meClockMessage\"O\n\020SystemLogTrigger\022 \n\007tr" +
+      "igger\030\001 \001(\0132\017.TriggerMessage\022\031\n\006source\030\002" +
+      " \001(\0162\t.ReadType\"g\n\020SystemLogSpektra\022\"\n\006a" +
+      "ction\030\001 \001(\0162\022.SpektraActionType\022 \n\004type\030" +
+      "\002 \001(\0162\022.SpektraTargetType\022\r\n\005index\030\003 \001(\r" +
+      "\"a\n\021SystemLogSchedule\022\r\n\005index\030\001 \001(\r\022\017\n\007" +
+      "isStart\030\002 \001(\r\022\016\n\006second\030\003 \001(\r\022\016\n\006minute\030" +
+      "\004 \001(\r\022\014\n\004hour\030\005 \001(\r\":\n\022SystemLogUserStar" +
+      "t\022$\n\ttimeclock\030\001 \001(\0132\021.TimeClockMessage\"" +
+      "\323\001\n\031SystemMetaDataReadMessage\022\033\n\023input_p" +
+      "ress_counter\030\001 \003(\r\022\032\n\022list_start_counter" +
+      "\030\002 \003(\r\022\031\n\021schedules_counter\030\003 \003(\r\022\026\n\016scr" +
+      "een_on_time\030\004 \001(\r\022\027\n\017screen_dim_time\030\005 \001" +
+      "(\r\022\031\n\021screen_saver_time\030\006 \001(\r\022\026\n\016reboot_" +
+      "counter\030\007 \001(\r\"\246\001\n\013EventFilter\022\r\n\005input\030\001" +
+      " \001(\010\022\026\n\016dali_arc_level\030\002 \001(\010\022\024\n\014dali_com" +
+      "mand\030\003 \001(\010\022\023\n\013dali_sensor\030\004 \001(\010\022\022\n\ndali_" +
+      "input\030\005 \001(\010\022\032\n\022dmx_stream_changed\030\006 \001(\010\022" +
+      "\025\n\rdali_24_frame\030\007 \001(\010\"\233\001\n\014TriggerEvent\022" +
+      "\032\n\004type\030\001 \001(\0162\014.TriggerType\022\017\n\005level\030\002 \001" +
+      "(\rH\000\022(\n\014dali_command\030\003 \001(\0162\020.DALICommand" +
+      "TypeH\000\022\026\n\016target_address\030\004 \001(\r\022\021\n\tline_m" +
+      "ask\030\005 \001(\rB\t\n\007payload\"m\n\020DALI24InputEvent" +
+      "\022\r\n\005index\030\001 \001(\r\022\014\n\004line\030\002 \001(\r\022\017\n\007address" +
+      "\030\003 \001(\r\022\036\n\004type\030\004 \001(\0162\020.DALI24InputType\022\013" +
+      "\n\003arg\030\005 \001(\r\"/\n\020DALI24FrameEvent\022\014\n\004line\030" +
+      "\001 \001(\r\022\r\n\005frame\030\002 \001(\r\"\252\001\n\017DALISensorEvent" +
+      "\022\r\n\005index\030\001 \001(\r\022\014\n\004line\030\002 \001(\r\022\017\n\007address" +
+      "\030\003 \001(\r\022-\n\014motion_state\030\004 \001(\0162\027.DALIMotio" +
+      "nSensorStates\022\'\n\tlux_state\030\005 \001(\0162\024.DALIL" +
+      "uxSensorStates\022\021\n\tlux_level\030\006 \001(\r\"\300\002\n\014Ev" +
+      "entMessage\022\031\n\005event\030\001 \001(\0162\n.EventType\022 \n" +
+      "\007trigger\030\002 \001(\0132\r.TriggerEventH\000\022%\n\006input" +
+      "s\030\003 \001(\0132\023.InputStateResponseH\000\022\"\n\007payloa" +
+      "d\030\004 \001(\0132\017.PayloadMessageH\000\022\"\n\006sensor\030\006 \001" +
+      "(\0132\020.DALISensorEventH\000\022*\n\rdali_24_input\030" +
+      "\007 \001(\0132\021.DALI24InputEventH\000\022\036\n\006filter\030\010 \001" +
+      "(\0132\014.EventFilterH\000\022*\n\rdali_24_frame\030\t \001(" +
+      "\0132\021.DALI24FrameEventH\000B\014\n\nevent_data\"\337\024\n" +
+      "\rEdidioMessage\022\022\n\nmessage_id\030\001 \001(\r\022\032\n\003ac" +
+      "k\030\002 \001(\0132\013.AckMessageH\000\022$\n\006inputs\030\003 \001(\0132\022" +
+      ".InputMultiMessageH\000\022&\n\007outputs\030\004 \001(\0132\023." +
+      "OutputMultiMessageH\000\022\036\n\003irs\030\005 \001(\0132\017.IRMu" +
+      "ltiMessageH\000\022 \n\006sensor\030\006 \001(\0132\016.SensorMes" +
+      "sageH\000\022\034\n\004list\030\010 \001(\0132\014.ListMessageH\000\022\036\n\005" +
+      "alarm\030\n \001(\0132\r.AlarmMessageH\000\022$\n\006alarms\030\013" +
+      " \001(\0132\022.AlarmMultiMessageH\000\022\'\n\010burn_ins\030\014" +
+      " \001(\0132\023.BurnInMultiMessageH\000\022/\n\016sensor_co" +
+      "mmand\030\r \001(\0132\025.SensorCommandMessageH\000\022/\n\016" +
+      "change_profile\030\016 \001(\0132\025.ChangeProfileMess" +
+      "ageH\000\022,\n\020identify_message\030\017 \001(\0132\020.Identi" +
+      "fyMessageH\000\022)\n\013update_time\030\020 \001(\0132\022.Updat" +
+      "eTimeMessageH\000\022)\n\013read_device\030\021 \001(\0132\022.Re" +
+      "adDeviceMessageH\000\022$\n\014dali_message\030\022 \001(\0132" +
+      "\014.DALIMessageH\000\022(\n\ndali_query\030\023 \001(\0132\022.DA" +
+      "LIQueryResponseH\000\022\"\n\013dmx_message\030\024 \001(\0132\013" +
+      ".DMXMessageH\000\0223\n\020external_trigger\030\025 \001(\0132" +
+      "\027.ExternalTriggerMessageH\000\0222\n\020spektra_se" +
+      "ttings\030\026 \001(\0132\026.SpektraSettingMessageH\000\0229" +
+      "\n\020spektra_sequence\030\027 \001(\0132\035.SpektraSequen" +
+      "ceConfigMessageH\000\0223\n\020spektra_calendar\030\030 " +
+      "\001(\0132\027.SpektraCalendarMessageH\000\0223\n\rspektr" +
+      "a_theme\030\031 \001(\0132\032.SpektraThemeConfigMessag" +
+      "eH\000\022+\n\014spektra_read\030\032 \001(\0132\023.SpektraReadM" +
+      "essageH\000\0221\n\017spektra_control\030\033 \001(\0132\026.Spek" +
+      "traControlMessageH\000\0221\n\016dmx_translator\030\034 " +
+      "\001(\0132\027.DMXProtocolTranslationH\000\022+\n\rinput_" +
+      "request\030\035 \001(\0132\022.InputStateMessageH\000\022-\n\016i" +
+      "nput_response\030\036 \001(\0132\023.InputStateResponse" +
+      "H\000\0224\n\013diag_system\030\037 \001(\0132\035.DiagnosticSyst" +
+      "emInfoResponseH\000\022*\n\014diag_message\030  \001(\0132\022" +
+      ".DiagnosticMessageH\000\022&\n\radmin_message\030! " +
+      "\001(\0132\r.AdminMessageH\000\022\036\n\005event\030\" \001(\0132\r.Ev" +
+      "entMessageH\000\022>\n\026secure_device_settings\030#" +
+      " \001(\0132\034.SecureDeviceSettingsMessageH\000\022,\n\014" +
+      "firmware_new\030$ \001(\0132\024.FirmwareMetaMessage" +
+      "H\000\0223\n\020firmware_control\030% \001(\0132\027.FirmwareC" +
+      "ontrolMessageH\000\022/\n\016firmware_chunk\030& \001(\0132" +
+      "\025.FirmwareChunkMessageH\000\0223\n\024level_cache_" +
+      "response\030\' \001(\0132\023.LevelCacheResponseH\000\022-\n" +
+      "\rlist_extended\030) \001(\0132\024.ExtendedListMessa" +
+      "geH\000\022\"\n\013ayt_message\030* \001(\0132\013.AytMessageH\000" +
+      "\022\"\n\013rdm_message\030+ \001(\0132\013.RDMMessageH\000\0223\n\024" +
+      "rdm_response_message\030, \001(\0132\023.RDMResponse" +
+      "MessageH\000\022+\n\rlogic_message\030- \001(\0132\022.Logic" +
+      "MultiMessageH\000\0220\n\014secure_login\030. \001(\0132\030.A" +
+      "dminSecureLoginMessageH\000\0223\n\024device_state" +
+      "_message\030/ \001(\0132\023.DeviceStateMessageH\000\022:\n" +
+      "\024spektra_calendar_day\0300 \001(\0132\032.SpektraCal" +
+      "endarDayMessageH\000\022D\n\031spektra_calendar_ov" +
+      "erview\0301 \001(\0132\037.SpektraCalendarOverviewMe" +
+      "ssageH\000\022-\n\013inputs_dali\0302 \001(\0132\026.DALIInput" +
+      "MultiMessageH\000\022*\n\tlogs_read\0303 \001(\0132\025.Syst" +
+      "emLogReadMessageH\000\0223\n\rmetadata_read\0304 \001(" +
+      "\0132\032.SystemMetaDataReadMessageH\000\0229\n\027dali_" +
+      "addressing_message\0305 \001(\0132\026.DALIAddressin" +
+      "gMessageH\000\0227\n\026dali_remapping_message\0306 \001" +
+      "(\0132\025.DALIRemappingMessageH\000\022B\n\034spektra_s" +
+      "how_control_message\0307 \001(\0132\032.SpektraShowC" +
+      "ontrolMessageH\000\0223\n\024spektra_show_message\030" +
+      "8 \001(\0132\023.SpektraShowMessageH\000\022D\n\035extended" +
+      "_spektra_show_message\0309 \001(\0132\033.ExtendedSp" +
+      "ektraShowMessageH\000\022-\n\rrdm_discovery\030: \001(" +
+      "\0132\024.RDMDiscoveryMessageH\000\0228\n\023rdm_discove" +
+      "ry_reply\030; \001(\0132\031.RDMDiscoveryReplyMessag" +
+      "eH\000B\t\n\007payload*\233\001\n\024TriggerOperationType\022" +
+      "\r\n\tMOMENTARY\020\000\022\014\n\010LATCHING\020\001\022\024\n\020MOMENTAR" +
+      "Y_OUTPUT\020\002\022\023\n\017LATCHING_OUTPUT\020\003\022\n\n\006ROTAR" +
+      "Y\020\004\022\027\n\022MOMENTARY_DISABLED\020\200\001\022\026\n\021LATCHING" +
+      "_DISABLED\020\201\001*\263\013\n\013TriggerType\022\014\n\010DALI_ARC" +
+      "\020\000\022\020\n\014DALI_COMMAND\020\001\022\032\n\026DMX_CHANNELS_SPL" +
+      "IT_LOW\020\002\022\033\n\027DMX_CHANNELS_SPLIT_HIGH\020\003\022$\n" +
+      " DMX_MULTICAST_CHANNELS_SPLIT_LOW\020\004\022%\n!D" +
+      "MX_MULTICAST_CHANNELS_SPLIT_HIGH\020\005\022\021\n\rDM",
+      "X_BROADCAST\020\006\022\t\n\005DIDIO\020\007\022\024\n\020FADE_UP_WITH" +
+      "_MIN\020\010\022\016\n\nLIST_START\020\t\022\031\n\025LIST_START_CON" +
+      "TINUOUS\020\n\022\r\n\tLIST_STOP\020\013\022\025\n\021SPEKTRA_STAR" +
+      "T_SEQ\020\014\022\024\n\020SPEKTRA_STOP_SEQ\020\r\022\021\n\rSPEKTRA" +
+      "_THEME\020\016\022\022\n\016SPEKTRA_STATIC\020\017\022\024\n\020SPEKTRA_" +
+      "SCHEDULE\020\020\022\016\n\nLINK_START\020\021\022\r\n\tLINK_STOP\020" +
+      "\022\022\020\n\014DISABLE_BURN\020\023\022\017\n\013ENABLE_BURN\020\024\022\016\n\n" +
+      "ON_OFF_TOG\020\025\022\017\n\013MIN_MAX_TOG\020\026\022\020\n\014ENABLE_" +
+      "INPUT\020\027\022\021\n\rDISABLE_INPUT\020\030\022\024\n\020ENABLE_TOG" +
+      "_INPUT\020\031\022\016\n\nOUTPUT_TOG\020\032\022\017\n\013OUTPUT_HIGH\020" +
+      "\033\022\016\n\nOUTPUT_LOW\020\034\022\017\n\013OUTPUT_TRIG\020\035\022\022\n\016PR" +
+      "OFILE_CHANGE\020\036\022\023\n\017FADE_LONG_PRESS\020\037\022\n\n\006S" +
+      "YNCRO\020 \022\017\n\013PRESET_CODE\020!\022\017\n\013CUSTOM_CODE\020" +
+      "\"\022\021\n\rSPEKTRA_SLEEP\020#\022\022\n\016SPEKTRA_RESUME\020$" +
+      "\022\020\n\014DEVICE_RESET\020%\022\017\n\013DEVICE_SAVE\020&\022\030\n\024U" +
+      "SER_LEVEL_STORE_NEW\020\'\022\032\n\026USER_LEVEL_SET_" +
+      "DEFAULT\020(\022\025\n\021USER_LEVEL_RECALL\020)\022\r\n\tROOM" +
+      "_JOIN\020+\022\017\n\013ROOM_UNJOIN\020,\022\023\n\017TYPE8_TC_WAR" +
+      "MER\020-\022\023\n\017TYPE8_TC_COOLER\020.\022\023\n\017TYPE8_TC_A" +
+      "CTUAL\020/\022\023\n\017LOGIC_OPERATION\0200\022\020\n\014ALARM_EN" +
+      "ABLE\0201\022\021\n\rALARM_DISABLE\0202\022 \n\034DALI_CONTRO" +
+      "L_SENSOR_OVERRIDE\0203\022$\n DALI_CONTROL_SENS" +
+      "OR_TEMP_DISABLE\0204\022\036\n\032DALI_CONTROL_SENSOR" +
+      "_RESUME\0205\022\025\n\021DALI_ARC_OVERRIDE\0206\022\031\n\025DALI" +
+      "_COMMAND_OVERRIDE\0207\022\035\n\031FADE_UP_WITH_MIN_" +
+      "OVERRIDE\0208\022\027\n\023ON_OFF_TOG_OVERRIDE\0209\022\030\n\024M" +
+      "IN_MAX_TOG_OVERRIDE\020:\022\017\n\013MAX_OFF_TOG\020;\022\030" +
+      "\n\024MAX_OFF_TOG_OVERRIDE\020<\022\034\n\030FADE_LONG_PR" +
+      "ESS_OVERRIDE\020=\022\036\n\032USER_LEVEL_RECALL_OVER" +
+      "RIDE\020>\022\024\n\020DMX_ZONE_FADE_UP\020?\022\026\n\022DMX_ZONE" +
+      "_FADE_DOWN\020@\022\021\n\rLOGGING_LEVEL\020A\022\030\n\024SPEKT" +
+      "RA_SHOW_CONTROL\020B\022\017\n\nNO_COMMAND\020\376\001*\353\001\n\010R" +
+      "eadType\022\n\n\006INPUTS\020\000\022\013\n\007OUTPUTS\020\001\022\006\n\002IR\020\002" +
+      "\022\n\n\006SENSOR\020\003\022\010\n\004LIST\020\005\022\n\n\006ALARMS\020\007\022\013\n\007BU" +
+      "RN_IN\020\010\022\013\n\007PROJECT\020\t\022\013\n\007NETWORK\020\n\022\n\n\006DEV" +
+      "ICE\020\013\022\r\n\tPOLL_DATA\020\014\022\021\n\rLIST_EXTENDED\020\r\022" +
+      "\t\n\005LOGIC\020\016\022\017\n\013DALI_INPUTS\020\017\022\020\n\014SPEKTRA_S" +
+      "HOW\020\020\022\031\n\025SPEKTRA_SHOW_EXTENDED\020\021*\214\001\n\017Ala" +
+      "rmRepeatType\022\023\n\017ALARM_NO_REPEAT\020\000\022\026\n\022ALA" +
+      "RM_REPEAT_DAILY\020\001\022\031\n\025ALARM_REPEAT_WORK_D" +
+      "AY\020\002\022\027\n\023ALARM_REPEAT_WEEKLY\020\003\022\030\n\024ALARM_R" +
+      "EPEAT_MONTHLY\020\004*I\n\016AlarmAstroType\022\022\n\016ALA" +
+      "RM_NO_ASTRO\020\000\022\021\n\rALARM_SUNRUSE\020\001\022\020\n\014ALAR" +
+      "M_SUNSET\020\002*^\n\021SpektraTargetType\022\014\n\010SETTI" +
+      "NGS\020\000\022\014\n\010SEQUENCE\020\001\022\t\n\005THEME\020\002\022\n\n\006STATIC" +
+      "\020\003\022\014\n\010CALENDAR\020\004\022\010\n\004SHOW\020\005*=\n\021SpektraAct" +
+      "ionType\022\t\n\005START\020\000\022\010\n\004STOP\020\001\022\t\n\005PAUSE\020\002\022" +
+      "\010\n\004SAVE\020\003*p\n\025SpektraStepActionType\022\020\n\014RU" +
+      "N_SEQUENCE\020\000\022\016\n\nSHOW_THEME\020\001\022\016\n\nSTART_LI" +
+      "ST\020\002\022\022\n\016PAUSE_PREVIOUS\020\003\022\021\n\rSTOP_PREVIOU" +
+      "S\020\004*}\n\037SpektraUnscheduledBehaviourType\022 " +
+      "\n\034RUN_RANDOM_COLOURED_SEQUENCE\020\000\022\022\n\016RUN_" +
+      "SEQUENCE_1\020\001\022\023\n\017RESUME_PREVIOUS\020\002\022\017\n\nDO_" +
+      "NOTHING\020\376\001*6\n\022LineAddressingType\022\017\n\013INDE" +
+      "PENDENT\020\000\022\017\n\013CONSECUTIVE\020\001*\347\002\n\016AckMessag" +
+      "eType\022\021\n\rDECODE_FAILED\020\000\022\027\n\023INDEX_OUT_OF" +
+      "_BOUNDS\020\001\022\023\n\017UNEXPECTED_TYPE\020\002\022\021\n\rENCODE" +
+      "_FAILED\020\003\022\020\n\014KEY_MISMATCH\020\004\022\013\n\007SUCCESS\020\005" +
+      "\022\022\n\016INVALID_PARAMS\020\006\022\026\n\022UNEXPECTED_COMMA" +
+      "ND\020\007\022\030\n\024COMMUNICATION_FAILED\020\010\022\031\n\025COMMUN" +
+      "ICATION_TIMEOUT\020\t\022\021\n\rDATA_TOO_LONG\020\n\022\023\n\017" +
+      "UNEXPECTED_CASE\020\013\022\016\n\nSLOTS_FULL\020\014\022\020\n\014UNA" +
+      "UTHORISED\020\r\022\023\n\017PARTIAL_SUCCESS\020\016\022\022\n\016COMM" +
+      "AND_FAILED\020\017\022\016\n\nDEPRECATED\020\020*\323\004\n\020Type8Co" +
+      "mmandType\022\024\n\020SET_TEMP_X_COORD\020\000\022\024\n\020SET_T" +
+      "EMP_Y_COORD\020\001\022\014\n\010ACTIVATE\020\002\022\023\n\017X_COORD_S" +
+      "TEP_UP\020\003\022\025\n\021X_COORD_STEP_DOWN\020\004\022\023\n\017Y_COO" +
+      "RD_STEP_UP\020\005\022\025\n\021Y_COORD_STEP_DOWN\020\006\022\037\n\033S" +
+      "ET_TEMP_COLOUR_TEMPERATURE\020\007\022\"\n\036COLOUR_T" +
+      "EMPERATURE_STEP_COOLER\020\010\022\"\n\036COLOUR_TEMPE" +
+      "RATURE_STEP_WARMER\020\t\022\033\n\027SET_TEMP_PRI_N_D" +
+      "IMLEVEL\020\n\022\031\n\025SET_TEMP_RGB_DIMLEVEL\020\013\022\031\n\025" +
+      "SET_TEMP_WAF_DIMLEVEL\020\014\022\033\n\027SET_TEMP_RGBW" +
+      "AF_CONTROL\020\r\022\031\n\025COPY_REPORT_TEMPORARY\020\016\022" +
+      "\022\n\016STORE_TY_PRI_N\020\020\022\030\n\024STORE_XY_COORD_PR" +
+      "I_N\020\021\022\"\n\036STORE_COLOUR_TEMPERATURE_LIMIT\020" +
+      "\022\022\036\n\032STORE_GEAR_FEATURES_STATUS\020\023\022\032\n\026ASS" +
+      "IGN_COLOR_LINKED_CH\020\025\022\022\n\016START_AUTO_CAL\020" +
+      "\026\022\027\n\023ENABLE_DEVICE_TYPE8\0200*\230\002\n\016Type8Quer" +
+      "yType\022\024\n\020TYPE8_QUERY_NULL\020\000\022%\n TYPE8_QUE" +
+      "RY_GEAR_FEATURES_STATUS\020\367\001\022\036\n\031TYPE8_QUER" +
+      "Y_COLOUR_STATUS\020\370\001\022%\n TYPE8_QUERY_COLOUR" +
+      "_TYPE_FEATURES\020\371\001\022\035\n\030TYPE8_QUERY_COLOUR_" +
+      "VALUE\020\372\001\022\037\n\032TYPE8_QUERY_RGBWAF_CONTROL\020\373" +
+      "\001\022 \n\033TYPE8_QUERY_ASSIGNED_COLOUR\020\374\001\022 \n\033T" +
+      "YPE8_QUERY_EXT_VERSION_NUM\020\376\001*\274\006\n\023DALI24" +
+      "DeviceSetting\022\024\n\020COMMAND_IDENTIFY\020\000\022\"\n\036C" +
+      "OMMAND_RESET_POWER_CYCLE_SEEN\020\001\022\021\n\rCOMMA" +
+      "ND_RESET\020\020\022\035\n\031COMMAND_RESET_MEMORY_BANK\020" +
+      "\021\022\035\n\031COMMAND_SET_SHORT_ADDRESS\020\024\022\037\n\033COMM" +
+      "AND_ENABLE_WRITE_MEMORY\020\025\022!\n\035COMMAND_ENA" +
+      "BLE_APP_CONTROLLER\020\026\022\"\n\036COMMAND_DISABLE_" +
+      "APP_CONTROLLER\020\027\022\036\n\032COMMAND_SET_OPERATIN" +
+      "G_MODE\020\030\022%\n!COMMAND_ADD_TO_DEVICE_GROUPS" +
+      "_0_15\020\031\022&\n\"COMMAND_ADD_TO_DEVICE_GROUPS_" +
+      "15_32\020\032\022#\n\037COMMAND_REMOVE_FROM_GROUPS_0_" +
+      "15\020\033\022$\n COMMAND_REMOVE_FROM_GROUPS_16_32" +
+      "\020\034\022 \n\034COMMAND_START_QUIESCENT_MODE\020\035\022\037\n\033" +
+      "COMMAND_STOP_QUIESCENT_MODE\020\036\022$\n COMMAND" +
+      "_ENABLE_POWER_CYCLE_NOTIF\020\037\022%\n!COMMAND_D" +
+      "ISABLE_POWER_CYCLE_NOTIF\020 \022%\n!COMMAND_SA" +
+      "VE_PERSISTENT_VARIABLES\020!\022\026\n\022SET_EVENT_P" +
+      "RIORITY\020a\022\023\n\017ENABLE_INSTANCE\020b\022\024\n\020DISABL" +
+      "E_INSTANCE\020c\022\036\n\032SET_PRIMARY_INSTANCE_GRO" +
+      "UP\020d\022\030\n\024SET_INSTANCE_GROUP_1\020e\022\030\n\024SET_IN" +
+      "STANCE_GROUP_2\020f\022\024\n\020SET_EVENT_SCHEME\020g\022\024" +
+      "\n\020SET_EVENT_FILTER\020h*c\n\022DALI24InstanceTy" +
+      "pe\022\013\n\007DEFAULT\020\000\022\t\n\005INPUT\020\001\022\020\n\014ROTARY_INP" +
+      "UT\020\002\022\021\n\rMOTION_SENSOR\020\003\022\020\n\014LIGHT_SENSOR\020" +
+      "\004*\276\002\n\014DALI24OpCode\022\017\n\013OPCODE_NULL\020\000\022 \n\034S" +
+      "ENSOR_MOTION_SET_HOLD_TIMER\020!\022\"\n\036SENSOR_" +
+      "MOTION_SET_REPORT_TIMER\020\"\022$\n SENSOR_MOTI" +
+      "ON_SET_DEADTIME_TIMER\020#\022#\n\037SENSOR_MOTION" +
+      "_CANCEL_HOLD_TIMER\020$\022!\n\035SENSOR_LIGHT_SET" +
+      "_REPORT_TIMER\0200\022\037\n\033SENSOR_LIGHT_SET_HYST" +
+      "ERESIS\0201\022#\n\037SENSOR_LIGHT_SET_DEADTIME_TI" +
+      "MER\0202\022#\n\037SENSOR_LIGHT_SET_HYSTERESIS_MIN" +
+      "\0203*W\n\010LineType\022\016\n\nLINE_EMPTY\020\000\022\r\n\tLINE_D" +
+      "ALI\020\001\022\014\n\010LINE_DMX\020\002\022\017\n\013LINE_DMX_IN\020\003\022\r\n\t" +
+      "LINE_AUTO\020\004*\251\001\n\tEventType\022\014\n\010REGISTER\020\000\022" +
+      "\021\n\rTRIGGER_EVENT\020\001\022\017\n\013INPUT_EVENT\020\002\022\020\n\014S" +
+      "ENSOR_EVENT\020\003\022\021\n\rCONTROL_EVENT\020\004\022\023\n\017ROOM" +
+      "_JOIN_EVENT\020\005\022\027\n\023DALI_24_INPUT_EVENT\020\006\022\027" +
+      "\n\023DALI_24_FRAME_EVENT\020\007*\306\t\n\rDALIQueryTyp" +
+      "e\022\023\n\017DALI_QUERY_NULL\020\000\022\026\n\021DALI_QUERY_STA" +
+      "TUS\020\220\001\022\027\n\022DALI_QUERY_BALLAST\020\221\001\022\034\n\027DALI_" +
+      "QUERY_LAMP_FAILURE\020\222\001\022\035\n\030DALI_QUERY_LAMP" +
+      "_POWER_ON\020\223\001\022\033\n\026DALI_QUERY_LIMIT_ERROR\020\224" +
+      "\001\022\033\n\026DALI_QUERY_RESET_STATE\020\225\001\022%\n DALI_Q" +
+      "UERY_MISSING_SHORT_ADDRESS\020\226\001\022\036\n\031DALI_QU" +
+      "ERY_VERSION_NUMBER\020\227\001\022\024\n\017DALI_QUERY_DTR0" +
+      "\020\230\001\022\033\n\026DALI_QUERY_DEVICE_TYPE\020\231\001\022\034\n\027DALI" +
+      "_QUERY_PHYSICAL_MIN\020\232\001\022\035\n\030DALI_QUERY_POW" +
+      "ER_FAILURE\020\233\001\022\024\n\017DALI_QUERY_DTR1\020\234\001\022\024\n\017D" +
+      "ALI_QUERY_DTR2\020\235\001\022\036\n\031DALI_QUERY_OPERATIN" +
+      "G_MODE\020\236\001\022 \n\033DALI_QUERY_LIGHTSOURCE_TYPE" +
+      "\020\237\001\022\034\n\027DALI_QUERY_ACTUAL_LEVEL\020\240\001\022\031\n\024DAL" +
+      "I_QUERY_MAX_LEVEL\020\241\001\022\031\n\024DALI_QUERY_MIN_L" +
+      "EVEL\020\242\001\022\036\n\031DALI_QUERY_POWER_ON_LEVEL\020\243\001\022" +
+      "$\n\037DALI_QUERY_SYSTEM_FAILURE_LEVEL\020\244\001\022!\n" +
+      "\034DALI_QUERY_FADETIME_FADERATE\020\245\001\022*\n%DALI" +
+      "_QUERY_MANUFACTURER_SPECIFIC_MODE\020\246\001\022 \n\033" +
+      "DALI_QUERY_NEXT_DEVICE_TYPE\020\247\001\022\"\n\035DALI_Q" +
+      "UERY_EXTENDED_FADE_TIME\020\250\001\022$\n\037DALI_QUERY" +
+      "_CONTROL_GEAR_FAILURE\020\252\001\022\035\n\030DALI_QUERY_S" +
+      "CENE_X_LEVEL\020\260\001\022\032\n\025DALI_QUERY_GROUPS_0_7" +
+      "\020\300\001\022\033\n\026DALI_QUERY_GROUPS_8_15\020\301\001\022 \n\033DALI" +
+      "_QUERY_RANDOM_ADDRESS_H\020\302\001\022 \n\033DALI_QUERY" +
+      "_RANDOM_ADDRESS_M\020\303\001\022 \n\033DALI_QUERY_RANDO" +
+      "M_ADDRESS_L\020\304\001\022\034\n\027DALI_QUERY_READ_DTR_0_" +
+      "1\020\305\001\022 \n\033DALI_QUERY_APP_EXT_COMMANDS\020\340\001\022\"" +
+      "\n\035DALI_QUERY_EXT_VERSION_NUMBER\020\377\001\022\027\n\022DA" +
+      "LI_QUERY_COMPARE\020\204\002\022$\n\037DALI_QUERY_VERIFY" +
+      "_SHORT_ADDRESS\020\214\002\022\035\n\030DALI_QUERY_SHORT_AD" +
+      "DRESS\020\215\002*\351\027\n\017DALICommandType\022\014\n\010DALI_OFF" +
+      "\020\000\022\020\n\014DALI_FADE_UP\020\001\022\022\n\016DALI_FADE_DOWN\020\002" +
+      "\022\020\n\014DALI_STEP_UP\020\003\022\022\n\016DALI_STEP_DOWN\020\004\022\022" +
+      "\n\016DALI_MAX_LEVEL\020\005\022\022\n\016DALI_MIN_LEVEL\020\006\022\026" +
+      "\n\022DALI_STEP_DOWN_OFF\020\007\022\023\n\017DALI_ON_STEP_U" +
+      "P\020\010\022\030\n\024DALI_ENABLE_DAPC_SEQ\020\t\022!\n\035DALI_RE" +
+      "CALL_LAST_ACTIVE_LEVEL\020\n\022\026\n\022DALI_CONTINU" +
+      "OUS_UP\020\013\022\030\n\024DALI_CONTINUOUS_DOWN\020\014\022\027\n\023DA" +
+      "LI_RECALL_SCENE_0\020\020\022\027\n\023DALI_RECALL_SCENE" +
+      "_1\020\021\022\027\n\023DALI_RECALL_SCENE_2\020\022\022\027\n\023DALI_RE" +
+      "CALL_SCENE_3\020\023\022\027\n\023DALI_RECALL_SCENE_4\020\024\022" +
+      "\027\n\023DALI_RECALL_SCENE_5\020\025\022\027\n\023DALI_RECALL_" +
+      "SCENE_6\020\026\022\027\n\023DALI_RECALL_SCENE_7\020\027\022\027\n\023DA" +
+      "LI_RECALL_SCENE_8\020\030\022\027\n\023DALI_RECALL_SCENE" +
+      "_9\020\031\022\030\n\024DALI_RECALL_SCENE_10\020\032\022\030\n\024DALI_R" +
+      "ECALL_SCENE_11\020\033\022\030\n\024DALI_RECALL_SCENE_12" +
+      "\020\034\022\030\n\024DALI_RECALL_SCENE_13\020\035\022\030\n\024DALI_REC" +
+      "ALL_SCENE_14\020\036\022\030\n\024DALI_RECALL_SCENE_15\020\037" +
+      "\022\016\n\nDALI_RESET\020 \022 \n\034DALI_STORE_ACTUAL_LE" +
+      "VEL_DTR0\020!\022\035\n\031DALI_SAVE_PERSISTENT_VARS\020" +
+      "\"\022\033\n\027DALI_SET_OPERATING_MODE\020#\022\032\n\026DALI_R" +
+      "ESET_MEMORY_BANK\020$\022\030\n\024DALI_IDENTIFY_DEVI" +
+      "CE\020%\022\026\n\022DALI_SET_MAX_LEVEL\020*\022\026\n\022DALI_SET" +
+      "_MIN_LEVEL\020+\022!\n\035DALI_SET_SYSTEM_FAILURE_" +
+      "LEVEL\020,\022\033\n\027DALI_SET_POWER_ON_LEVEL\020-\022\026\n\022" +
+      "DALI_SET_FADE_TIME\020.\022\026\n\022DALI_SET_FADE_RA" +
+      "TE\020/\022\032\n\026DALI_SET_EXT_FADE_TIME\0200\022\024\n\020DALI" +
+      "_SET_SCENE_0\020@\022\024\n\020DALI_SET_SCENE_1\020A\022\024\n\020" +
+      "DALI_SET_SCENE_2\020B\022\024\n\020DALI_SET_SCENE_3\020C" +
+      "\022\024\n\020DALI_SET_SCENE_4\020D\022\024\n\020DALI_SET_SCENE" +
+      "_5\020E\022\024\n\020DALI_SET_SCENE_6\020F\022\024\n\020DALI_SET_S" +
+      "CENE_7\020G\022\024\n\020DALI_SET_SCENE_8\020H\022\024\n\020DALI_S" +
+      "ET_SCENE_9\020I\022\025\n\021DALI_SET_SCENE_10\020J\022\025\n\021D" +
+      "ALI_SET_SCENE_11\020K\022\025\n\021DALI_SET_SCENE_12\020" +
+      "L\022\025\n\021DALI_SET_SCENE_13\020M\022\025\n\021DALI_SET_SCE" +
+      "NE_14\020N\022\025\n\021DALI_SET_SCENE_15\020O\022\034\n\030DALI_R" +
+      "EMOVE_FROM_SCENE_0\020P\022\034\n\030DALI_REMOVE_FROM" +
+      "_SCENE_1\020Q\022\034\n\030DALI_REMOVE_FROM_SCENE_2\020R" +
+      "\022\034\n\030DALI_REMOVE_FROM_SCENE_3\020S\022\034\n\030DALI_R" +
+      "EMOVE_FROM_SCENE_4\020T\022\034\n\030DALI_REMOVE_FROM" +
+      "_SCENE_5\020U\022\034\n\030DALI_REMOVE_FROM_SCENE_6\020V" +
+      "\022\034\n\030DALI_REMOVE_FROM_SCENE_7\020W\022\034\n\030DALI_R" +
+      "EMOVE_FROM_SCENE_8\020X\022\034\n\030DALI_REMOVE_FROM" +
+      "_SCENE_9\020Y\022\035\n\031DALI_REMOVE_FROM_SCENE_10\020" +
+      "Z\022\035\n\031DALI_REMOVE_FROM_SCENE_11\020[\022\035\n\031DALI" +
+      "_REMOVE_FROM_SCENE_12\020\\\022\035\n\031DALI_REMOVE_F" +
+      "ROM_SCENE_13\020]\022\035\n\031DALI_REMOVE_FROM_SCENE" +
+      "_14\020^\022\035\n\031DALI_REMOVE_FROM_SCENE_15\020_\022\027\n\023" +
+      "DALI_ADD_TO_GROUP_0\020`\022\027\n\023DALI_ADD_TO_GRO" +
+      "UP_1\020a\022\027\n\023DALI_ADD_TO_GROUP_2\020b\022\027\n\023DALI_" +
+      "ADD_TO_GROUP_3\020c\022\027\n\023DALI_ADD_TO_GROUP_4\020" +
+      "d\022\027\n\023DALI_ADD_TO_GROUP_5\020e\022\027\n\023DALI_ADD_T" +
+      "O_GROUP_6\020f\022\027\n\023DALI_ADD_TO_GROUP_7\020g\022\027\n\023" +
+      "DALI_ADD_TO_GROUP_8\020h\022\027\n\023DALI_ADD_TO_GRO" +
+      "UP_9\020i\022\030\n\024DALI_ADD_TO_GROUP_10\020j\022\030\n\024DALI" +
+      "_ADD_TO_GROUP_11\020k\022\030\n\024DALI_ADD_TO_GROUP_" +
+      "12\020l\022\030\n\024DALI_ADD_TO_GROUP_13\020m\022\030\n\024DALI_A" +
+      "DD_TO_GROUP_14\020n\022\030\n\024DALI_ADD_TO_GROUP_15" +
+      "\020o\022\034\n\030DALI_REMOVE_FROM_GROUP_0\020p\022\034\n\030DALI" +
+      "_REMOVE_FROM_GROUP_1\020q\022\034\n\030DALI_REMOVE_FR" +
+      "OM_GROUP_2\020r\022\034\n\030DALI_REMOVE_FROM_GROUP_3" +
+      "\020s\022\034\n\030DALI_REMOVE_FROM_GROUP_4\020t\022\034\n\030DALI" +
+      "_REMOVE_FROM_GROUP_5\020u\022\034\n\030DALI_REMOVE_FR" +
+      "OM_GROUP_6\020v\022\034\n\030DALI_REMOVE_FROM_GROUP_7" +
+      "\020w\022\034\n\030DALI_REMOVE_FROM_GROUP_8\020x\022\034\n\030DALI" +
+      "_REMOVE_FROM_GROUP_9\020y\022\035\n\031DALI_REMOVE_FR" +
+      "OM_GROUP_10\020z\022\035\n\031DALI_REMOVE_FROM_GROUP_" +
+      "11\020{\022\035\n\031DALI_REMOVE_FROM_GROUP_12\020|\022\035\n\031D" +
+      "ALI_REMOVE_FROM_GROUP_13\020}\022\035\n\031DALI_REMOV" +
+      "E_FROM_GROUP_14\020~\022\035\n\031DALI_REMOVE_FROM_GR" +
+      "OUP_15\020\177\022\033\n\026DALI_SET_SHORT_ADDRESS\020\200\001\022\035\n" +
+      "\030DALI_ENABLE_WRITE_MEMORY\020\201\001\022\023\n\016DALI_TER" +
+      "MINATE\020\377\001\022\024\n\017DALI_INITIALISE\020\202\002\022\023\n\016DALI_" +
+      "RANDOMISE\020\203\002\022\022\n\rDALI_WITHDRAW\020\205\002\022\027\n\022DALI" +
+      "_SEARCH_ADDR_H\020\210\002\022\027\n\022DALI_SEARCH_ADDR_M\020" +
+      "\211\002\022\027\n\022DALI_SEARCH_ADDR_L\020\212\002\022\037\n\032DALI_PROG" +
+      "RAM_SHORT_ADDRESS\020\213\002*\250\001\n\025CustomDALIComma" +
+      "ndType\022\022\n\016DALI_ARC_LEVEL\020\000\022\023\n\017DALI_DAPC_" +
+      "LEVEL\020\001\022\030\n\024DALI_GROUP_ARC_LEVEL\020\002\022\030\n\024DAL" +
+      "I_BROADCAST_SCENE\020\003\022\027\n\023DALI_SCENE_ON_GRO" +
+      "UP\020\004\022\031\n\025DALI_SCENE_ON_ADDRESS\020\005*\233\004\n\021Admi" +
+      "nPropertyType\022\017\n\013DEVICE_NAME\020\000\022\020\n\014PROJEC" +
+      "T_NAME\020\001\022\r\n\tLONGITUDE\020\002\022\014\n\010LATITUDE\020\003\022\024\n" +
+      "\020LOCAL_UTC_OFFSET\020\004\022\024\n\020DAYLIGHT_SAVINGS\020" +
+      "\005\022\017\n\013POLL_ACTIVE\020\006\022\020\n\014DHCP_ENABLED\020\007\022\013\n\007" +
+      "IP_ADDR\020\010\022\014\n\010MAC_ADDR\020\t\022\016\n\nGATEWAY_IP\020\n\022" +
+      "\026\n\022NETWORK_PROPERTIES\020\013\022\025\n\021SYSTEM_PROPER" +
+      "TIES\020\014\022\024\n\020CONTROLLER_LINES\020\r\022\024\n\020EEPROM_F" +
+      "ULL_CHIP\020\016\022\017\n\013CONFIG_DATA\020\017\022\020\n\014SPEKTRA_D" +
+      "ATA\020\020\022\021\n\rDEVICE_STATUS\020\021\022\021\n\rCONFIG_STATU" +
+      "S\020\022\022\017\n\013DEVICE_TIME\020\023\022\017\n\013NTP_DETAILS\020\024\022\025\n" +
+      "\021TRIDONIC_MSENSORS\020\025\022\022\n\016SECURE_SESSION\020\026" +
+      "\022\t\n\005NONCE\020\027\022\024\n\020DALI_SENSOR_TYPE\020\030\022\021\n\rDEV" +
+      "ICE_REBOOT\020\031\022\022\n\016SYSTEM_LOGGING\020\032\022\n\n\006SUBN" +
+      "ET\020\033\022\007\n\003DNS\020\034*M\n\020AdminCommandType\022\007\n\003SET" +
+      "\020\000\022\007\n\003GET\020\001\022\007\n\003ADD\020\002\022\n\n\006REMOVE\020\003\022\t\n\005RESE" +
+      "T\020\004\022\007\n\003RUN\020\005*\265\001\n\016DALIStatusType\022\014\n\010LAMP_" +
+      "OFF\020\000\022\030\n\024CONTROL_GEAR_FAILURE\020\001\022\020\n\014LAMP_" +
+      "FAILURE\020\002\022\013\n\007LAMP_ON\020\004\022\017\n\013LIMIT_ERROR\020\010\022" +
+      "\020\n\014FADE_RUNNING\020\020\022\017\n\013RESET_STATE\020 \022\021\n\rSH" +
+      "ORT_ADDRESS\020@\022\025\n\020POWER_CYCLE_SEEN\020\200\001*\210\002\n" +
+      "\020DALIRXStatusFlag\022\013\n\007WAITING\020\000\022\023\n\017RECEIV" +
+      "ING_FRAME\020\001\022\025\n\021NO_RECEIVED_FRAME\020\002\022\030\n\024RE" +
+      "CEIVED_8_BIT_FRAME\020\003\022\031\n\025RECEIVED_16_BIT_" +
+      "FRAME\020\004\022\031\n\025RECEIVED_24_BIT_FRAME\020\005\022\032\n\026RE" +
+      "CEIVED_PARTIAL_FRAME\020\006\022\010\n\004IDLE\020\007\022\017\n\013CALI" +
+      "BRATION\020\010\022\030\n\023ERROR_WHILE_SENDING\020\376\001\022\032\n\025E" +
+      "RROR_WHILE_RECEIVING\020\377\001*\213\001\n\025DiagnosticMe" +
+      "ssageType\022\032\n\026DIAGNOSTIC_SYSTEM_INFO\020\000\022\033\n" +
+      "\027DIAGNOSTIC_INPUT_STATUS\020\001\022\024\n\020DALI_LEVEL" +
+      "_CACHE\020\002\022\023\n\017DMX_LEVEL_CACHE\020\003\022\016\n\nROOM_JO" +
+      "INS\020\004*z\n\023FirmwareCommandType\022\014\n\010FW_READY" +
+      "\020\000\022\014\n\010FW_APPLY\020\001\022\r\n\tFW_VERIFY\020\002\022\024\n\020FW_VE" +
+      "RIFY_FAILED\020\003\022\025\n\021FW_VERIFY_SUCCESS\020\004\022\013\n\007" +
+      "FW_READ\020\005*?\n\025SpektraTransitionType\022\t\n\005BL" +
+      "END\020\000\022\010\n\004SNAP\020\001\022\021\n\rFADE_TO_BLACK\020\002*\234\001\n\tL" +
+      "ogicType\022\016\n\nDALI_LEVEL\020\000\022\017\n\013INPUT_STATE\020" +
+      "\001\022\020\n\014LIST_RUNNING\020\002\022\026\n\022OCCUPANCY_DETECTE" +
+      "D\020\003\022\017\n\013DMX_PRESENT\020\004\022\017\n\013CAL_WEEKDAY\020\005\022\r\n" +
+      "\tCAL_MONTH\020\006\022\023\n\017ALARM_SCHEDULED\020\007*\200\001\n\023Lo" +
+      "gicComparisonType\022\r\n\tLESS_THAN\020\000\022\027\n\023LESS" +
+      "_THAN_OR_EQUALS\020\001\022\n\n\006EQUALS\020\002\022\r\n\tMORE_TH" +
+      "AN\020\003\022\027\n\023MORE_THAN_OR_EQUALS\020\004\022\r\n\tNOT_EQU" +
+      "AL\020\005*8\n\016DALISensorType\022\022\n\016TRIDONIC_EDALI" +
+      "\020\000\022\022\n\016STANDARD_EDALI\020\001*G\n\021SensorCommandT" +
+      "ype\022\016\n\nINITIALISE\020\000\022\010\n\004MUTE\020\001\022\n\n\006UNMUTE\020" +
+      "\002\022\014\n\010OVERRIDE\020\003*b\n\rSystemLogType\022\010\n\004BOOT" +
+      "\020\000\022\014\n\010NET_LINK\020\001\022\007\n\003NTP\020\002\022\013\n\007TRIGGER\020\003\022\013" +
+      "\n\007SPEKTRA\020\004\022\014\n\010SCHEDULE\020\005\022\010\n\004USER\020\006*m\n\017D" +
+      "ALI24InputType\022\023\n\017MOMENTARY_SHORT\020\000\022\022\n\016M" +
+      "OMENTARY_LONG\020\001\022\017\n\013LATCHED_LOW\020\002\022\020\n\014LATC" +
+      "HED_HIGH\020\003\022\016\n\nPOSITIONAL\020\004*h\n\026DALIMotion" +
+      "SensorStates\022\017\n\013MOTION_IDLE\020\000\022\023\n\017MOTION_" +
+      "DISABLED\020\001\022\022\n\016MOTION_WARNING\020\002\022\024\n\020MOTION" +
+      "_OCCUPANCY\020\003*I\n\023DALILuxSensorStates\022\020\n\014L" +
+      "UX_DISABLED\020\000\022\017\n\013LUX_ENABLED\020\001\022\017\n\013LUX_DE" +
+      "VIATE\020\002*N\n\023DALIAddressingError\022\014\n\010NO_ERR" +
+      "OR\020\000\022\n\n\006VERIFY\020\001\022\n\n\006SEARCH\020\002\022\021\n\rNO_NEW_D" +
+      "EVICE\020\003*8\n\022DALIAddressingType\022\017\n\013ADDRESS" +
+      "_NEW\020\000\022\021\n\rREADDRESS_ALL\020\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -111946,7 +115810,7 @@ public final class EDS10ProtocolBuffer {
     internal_static_DALIMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DALIMessage_descriptor,
-        new java.lang.String[] { "LineMask", "Address", "Frame25Bit", "Frame25BitReply", "Command", "CustomCommand", "Query", "Type8", "Frame16Bit", "Frame16BitReply", "Frame24Bit", "Frame24BitReply", "Type8Reply", "Arg", "Dtr", "Action", "Params", });
+        new java.lang.String[] { "LineMask", "Address", "Frame25Bit", "Frame25BitReply", "Command", "CustomCommand", "Query", "Type8", "Frame16Bit", "Frame16BitReply", "Frame24Bit", "Frame24BitReply", "Type8Reply", "Device24Setting", "Arg", "Dtr", "InstanceType", "OpCode", "Action", "Params", });
     internal_static_DALIStatusFlagMessage_descriptor =
       getDescriptor().getMessageTypes().get(34);
     internal_static_DALIStatusFlagMessage_fieldAccessorTable = new
@@ -112253,32 +116117,44 @@ public final class EDS10ProtocolBuffer {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemMetaDataReadMessage_descriptor,
         new java.lang.String[] { "InputPressCounter", "ListStartCounter", "SchedulesCounter", "ScreenOnTime", "ScreenDimTime", "ScreenSaverTime", "RebootCounter", });
-    internal_static_TriggerEvent_descriptor =
+    internal_static_EventFilter_descriptor =
       getDescriptor().getMessageTypes().get(85);
+    internal_static_EventFilter_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_EventFilter_descriptor,
+        new java.lang.String[] { "Input", "DaliArcLevel", "DaliCommand", "DaliSensor", "DaliInput", "DmxStreamChanged", "Dali24Frame", });
+    internal_static_TriggerEvent_descriptor =
+      getDescriptor().getMessageTypes().get(86);
     internal_static_TriggerEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_TriggerEvent_descriptor,
         new java.lang.String[] { "Type", "Level", "DaliCommand", "TargetAddress", "LineMask", "Payload", });
     internal_static_DALI24InputEvent_descriptor =
-      getDescriptor().getMessageTypes().get(86);
+      getDescriptor().getMessageTypes().get(87);
     internal_static_DALI24InputEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DALI24InputEvent_descriptor,
         new java.lang.String[] { "Index", "Line", "Address", "Type", "Arg", });
+    internal_static_DALI24FrameEvent_descriptor =
+      getDescriptor().getMessageTypes().get(88);
+    internal_static_DALI24FrameEvent_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_DALI24FrameEvent_descriptor,
+        new java.lang.String[] { "Line", "Frame", });
     internal_static_DALISensorEvent_descriptor =
-      getDescriptor().getMessageTypes().get(87);
+      getDescriptor().getMessageTypes().get(89);
     internal_static_DALISensorEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DALISensorEvent_descriptor,
         new java.lang.String[] { "Index", "Line", "Address", "MotionState", "LuxState", "LuxLevel", });
     internal_static_EventMessage_descriptor =
-      getDescriptor().getMessageTypes().get(88);
+      getDescriptor().getMessageTypes().get(90);
     internal_static_EventMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_EventMessage_descriptor,
-        new java.lang.String[] { "Event", "Trigger", "Inputs", "Payload", "Sensor", "Dali24Input", "EventData", });
+        new java.lang.String[] { "Event", "Trigger", "Inputs", "Payload", "Sensor", "Dali24Input", "Filter", "Dali24Frame", "EventData", });
     internal_static_EdidioMessage_descriptor =
-      getDescriptor().getMessageTypes().get(89);
+      getDescriptor().getMessageTypes().get(91);
     internal_static_EdidioMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_EdidioMessage_descriptor,

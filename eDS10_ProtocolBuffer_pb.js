@@ -33,6 +33,7 @@ goog.exportSymbol('proto.BurnInMessage', null, global);
 goog.exportSymbol('proto.BurnInMultiMessage', null, global);
 goog.exportSymbol('proto.ChangeProfileMessage', null, global);
 goog.exportSymbol('proto.CustomDALICommandType', null, global);
+goog.exportSymbol('proto.DALI24FrameEvent', null, global);
 goog.exportSymbol('proto.DALI24InputEvent', null, global);
 goog.exportSymbol('proto.DALI24InputType', null, global);
 goog.exportSymbol('proto.DALIAddressingError', null, global);
@@ -62,6 +63,7 @@ goog.exportSymbol('proto.DiagnosticMessage', null, global);
 goog.exportSymbol('proto.DiagnosticMessageType', null, global);
 goog.exportSymbol('proto.DiagnosticSystemInfoResponse', null, global);
 goog.exportSymbol('proto.EdidioMessage', null, global);
+goog.exportSymbol('proto.EventFilter', null, global);
 goog.exportSymbol('proto.EventMessage', null, global);
 goog.exportSymbol('proto.EventType', null, global);
 goog.exportSymbol('proto.ExtendedListMessage', null, global);
@@ -90,6 +92,8 @@ goog.exportSymbol('proto.LogicMultiMessage', null, global);
 goog.exportSymbol('proto.LogicType', null, global);
 goog.exportSymbol('proto.OutputMultiMessage', null, global);
 goog.exportSymbol('proto.PayloadMessage', null, global);
+goog.exportSymbol('proto.RDMDiscoveryMessage', null, global);
+goog.exportSymbol('proto.RDMDiscoveryReplyMessage', null, global);
 goog.exportSymbol('proto.RDMMessage', null, global);
 goog.exportSymbol('proto.RDMResponseMessage', null, global);
 goog.exportSymbol('proto.ReadDeviceMessage', null, global);
@@ -2531,7 +2535,8 @@ proto.DALIInputMessage.toObject = function(includeInstance, msg) {
     daliLine: jspb.Message.getFieldWithDefault(msg, 3, 0),
     buttonState: jspb.Message.getFieldWithDefault(msg, 4, 0),
     shortPress: (f = msg.getShortPress()) && proto.TriggerMessage.toObject(includeInstance, f),
-    longPress: (f = msg.getLongPress()) && proto.TriggerMessage.toObject(includeInstance, f)
+    longPress: (f = msg.getLongPress()) && proto.TriggerMessage.toObject(includeInstance, f),
+    instance: jspb.Message.getFieldWithDefault(msg, 7, 0)
   };
 
   if (includeInstance) {
@@ -2593,6 +2598,10 @@ proto.DALIInputMessage.deserializeBinaryFromReader = function(msg, reader) {
       var value = new proto.TriggerMessage;
       reader.readMessage(value,proto.TriggerMessage.deserializeBinaryFromReader);
       msg.setLongPress(value);
+      break;
+    case 7:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setInstance(value);
       break;
     default:
       reader.skipField();
@@ -2665,6 +2674,13 @@ proto.DALIInputMessage.serializeBinaryToWriter = function(message, writer) {
       6,
       f,
       proto.TriggerMessage.serializeBinaryToWriter
+    );
+  }
+  f = message.getInstance();
+  if (f !== 0) {
+    writer.writeUint32(
+      7,
+      f
     );
   }
 };
@@ -2787,6 +2803,21 @@ proto.DALIInputMessage.prototype.clearLongPress = function() {
  */
 proto.DALIInputMessage.prototype.hasLongPress = function() {
   return jspb.Message.getField(this, 6) != null;
+};
+
+
+/**
+ * optional uint32 instance = 7;
+ * @return {number}
+ */
+proto.DALIInputMessage.prototype.getInstance = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
+};
+
+
+/** @param {number} value */
+proto.DALIInputMessage.prototype.setInstance = function(value) {
+  jspb.Message.setProto3IntField(this, 7, value);
 };
 
 
@@ -8413,7 +8444,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<!Array<number>>}
  * @const
  */
-proto.DALIMessage.oneofGroups_ = [[3,4,5,6,7,8,11,12,13,14],[9,10]];
+proto.DALIMessage.oneofGroups_ = [[3,4,5,6,7,8,11,12,13,14,15],[9,10]];
 
 /**
  * @enum {number}
@@ -8429,7 +8460,8 @@ proto.DALIMessage.ActionCase = {
   FRAME_16_BIT: 11,
   FRAME_16_BIT_REPLY: 12,
   FRAME_24_BIT: 13,
-  FRAME_24_BIT_REPLY: 14
+  FRAME_24_BIT_REPLY: 14,
+  TYPE8_REPLY: 15
 };
 
 /**
@@ -8496,6 +8528,7 @@ proto.DALIMessage.toObject = function(includeInstance, msg) {
     frame16BitReply: jspb.Message.getFieldWithDefault(msg, 12, 0),
     frame24Bit: jspb.Message.getFieldWithDefault(msg, 13, 0),
     frame24BitReply: jspb.Message.getFieldWithDefault(msg, 14, 0),
+    type8Reply: jspb.Message.getFieldWithDefault(msg, 15, 0),
     arg: jspb.Message.getFieldWithDefault(msg, 9, 0),
     dtr: (f = msg.getDtr()) && proto.DTRPayloadMessage.toObject(includeInstance, f)
   };
@@ -8581,6 +8614,10 @@ proto.DALIMessage.deserializeBinaryFromReader = function(msg, reader) {
     case 14:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setFrame24BitReply(value);
+      break;
+    case 15:
+      var value = /** @type {!proto.Type8QueryType} */ (reader.readEnum());
+      msg.setType8Reply(value);
       break;
     case 9:
       var value = /** @type {number} */ (reader.readUint32());
@@ -8701,6 +8738,13 @@ proto.DALIMessage.serializeBinaryToWriter = function(message, writer) {
   if (f != null) {
     writer.writeUint32(
       14,
+      f
+    );
+  }
+  f = /** @type {!proto.Type8QueryType} */ (jspb.Message.getField(message, 15));
+  if (f != null) {
+    writer.writeEnum(
+      15,
       f
     );
   }
@@ -9039,6 +9083,35 @@ proto.DALIMessage.prototype.clearFrame24BitReply = function() {
  */
 proto.DALIMessage.prototype.hasFrame24BitReply = function() {
   return jspb.Message.getField(this, 14) != null;
+};
+
+
+/**
+ * optional Type8QueryType type8_reply = 15;
+ * @return {!proto.Type8QueryType}
+ */
+proto.DALIMessage.prototype.getType8Reply = function() {
+  return /** @type {!proto.Type8QueryType} */ (jspb.Message.getFieldWithDefault(this, 15, 0));
+};
+
+
+/** @param {!proto.Type8QueryType} value */
+proto.DALIMessage.prototype.setType8Reply = function(value) {
+  jspb.Message.setOneofField(this, 15, proto.DALIMessage.oneofGroups_[0], value);
+};
+
+
+proto.DALIMessage.prototype.clearType8Reply = function() {
+  jspb.Message.setOneofField(this, 15, proto.DALIMessage.oneofGroups_[0], undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.DALIMessage.prototype.hasType8Reply = function() {
+  return jspb.Message.getField(this, 15) != null;
 };
 
 
@@ -10907,6 +10980,365 @@ proto.RDMResponseMessage.prototype.addData = function(value, opt_index) {
 
 proto.RDMResponseMessage.prototype.clearDataList = function() {
   this.setDataList([]);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.RDMDiscoveryMessage = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.RDMDiscoveryMessage, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.RDMDiscoveryMessage.displayName = 'proto.RDMDiscoveryMessage';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.RDMDiscoveryMessage.prototype.toObject = function(opt_includeInstance) {
+  return proto.RDMDiscoveryMessage.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.RDMDiscoveryMessage} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.RDMDiscoveryMessage.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    universeMask: jspb.Message.getFieldWithDefault(msg, 1, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.RDMDiscoveryMessage}
+ */
+proto.RDMDiscoveryMessage.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.RDMDiscoveryMessage;
+  return proto.RDMDiscoveryMessage.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.RDMDiscoveryMessage} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.RDMDiscoveryMessage}
+ */
+proto.RDMDiscoveryMessage.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setUniverseMask(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.RDMDiscoveryMessage.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.RDMDiscoveryMessage.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.RDMDiscoveryMessage} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.RDMDiscoveryMessage.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getUniverseMask();
+  if (f !== 0) {
+    writer.writeUint32(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional uint32 universe_mask = 1;
+ * @return {number}
+ */
+proto.RDMDiscoveryMessage.prototype.getUniverseMask = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/** @param {number} value */
+proto.RDMDiscoveryMessage.prototype.setUniverseMask = function(value) {
+  jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.RDMDiscoveryReplyMessage = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.RDMDiscoveryReplyMessage.repeatedFields_, null);
+};
+goog.inherits(proto.RDMDiscoveryReplyMessage, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.RDMDiscoveryReplyMessage.displayName = 'proto.RDMDiscoveryReplyMessage';
+}
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.RDMDiscoveryReplyMessage.repeatedFields_ = [2];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.RDMDiscoveryReplyMessage.prototype.toObject = function(opt_includeInstance) {
+  return proto.RDMDiscoveryReplyMessage.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.RDMDiscoveryReplyMessage} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.RDMDiscoveryReplyMessage.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    discoveryCount: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    uidList: jspb.Message.getRepeatedField(msg, 2),
+    errorCode: jspb.Message.getFieldWithDefault(msg, 3, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.RDMDiscoveryReplyMessage}
+ */
+proto.RDMDiscoveryReplyMessage.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.RDMDiscoveryReplyMessage;
+  return proto.RDMDiscoveryReplyMessage.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.RDMDiscoveryReplyMessage} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.RDMDiscoveryReplyMessage}
+ */
+proto.RDMDiscoveryReplyMessage.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setDiscoveryCount(value);
+      break;
+    case 2:
+      var value = /** @type {!Array<number>} */ (reader.readPackedUint64());
+      msg.setUidList(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setErrorCode(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.RDMDiscoveryReplyMessage.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.RDMDiscoveryReplyMessage.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.RDMDiscoveryReplyMessage} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.RDMDiscoveryReplyMessage.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getDiscoveryCount();
+  if (f !== 0) {
+    writer.writeUint32(
+      1,
+      f
+    );
+  }
+  f = message.getUidList();
+  if (f.length > 0) {
+    writer.writePackedUint64(
+      2,
+      f
+    );
+  }
+  f = message.getErrorCode();
+  if (f !== 0) {
+    writer.writeUint32(
+      3,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional uint32 discovery_count = 1;
+ * @return {number}
+ */
+proto.RDMDiscoveryReplyMessage.prototype.getDiscoveryCount = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/** @param {number} value */
+proto.RDMDiscoveryReplyMessage.prototype.setDiscoveryCount = function(value) {
+  jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * repeated uint64 uid = 2;
+ * @return {!Array<number>}
+ */
+proto.RDMDiscoveryReplyMessage.prototype.getUidList = function() {
+  return /** @type {!Array<number>} */ (jspb.Message.getRepeatedField(this, 2));
+};
+
+
+/** @param {!Array<number>} value */
+proto.RDMDiscoveryReplyMessage.prototype.setUidList = function(value) {
+  jspb.Message.setField(this, 2, value || []);
+};
+
+
+/**
+ * @param {!number} value
+ * @param {number=} opt_index
+ */
+proto.RDMDiscoveryReplyMessage.prototype.addUid = function(value, opt_index) {
+  jspb.Message.addToRepeatedField(this, 2, value, opt_index);
+};
+
+
+proto.RDMDiscoveryReplyMessage.prototype.clearUidList = function() {
+  this.setUidList([]);
+};
+
+
+/**
+ * optional uint32 error_code = 3;
+ * @return {number}
+ */
+proto.RDMDiscoveryReplyMessage.prototype.getErrorCode = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/** @param {number} value */
+proto.RDMDiscoveryReplyMessage.prototype.setErrorCode = function(value) {
+  jspb.Message.setProto3IntField(this, 3, value);
 };
 
 
@@ -17372,7 +17804,12 @@ proto.AdminNetworkPropertiesMessage.toObject = function(includeInstance, msg) {
     mac: jspb.Message.getFieldWithDefault(msg, 3, ""),
     gateway: jspb.Message.getFieldWithDefault(msg, 4, ""),
     ntpserver: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    ntp: jspb.Message.getFieldWithDefault(msg, 6, false)
+    ntp: jspb.Message.getFieldWithDefault(msg, 6, false),
+    error: jspb.Message.getFieldWithDefault(msg, 7, ""),
+    ntptimeout: jspb.Message.getFieldWithDefault(msg, 8, 0),
+    subnet: jspb.Message.getFieldWithDefault(msg, 9, ""),
+    dnsPrimary: jspb.Message.getFieldWithDefault(msg, 10, ""),
+    dnsSecondary: jspb.Message.getFieldWithDefault(msg, 11, "")
   };
 
   if (includeInstance) {
@@ -17432,6 +17869,26 @@ proto.AdminNetworkPropertiesMessage.deserializeBinaryFromReader = function(msg, 
     case 6:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setNtp(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setError(value);
+      break;
+    case 8:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setNtptimeout(value);
+      break;
+    case 9:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSubnet(value);
+      break;
+    case 10:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDnsPrimary(value);
+      break;
+    case 11:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDnsSecondary(value);
       break;
     default:
       reader.skipField();
@@ -17501,6 +17958,41 @@ proto.AdminNetworkPropertiesMessage.serializeBinaryToWriter = function(message, 
   if (f) {
     writer.writeBool(
       6,
+      f
+    );
+  }
+  f = message.getError();
+  if (f.length > 0) {
+    writer.writeString(
+      7,
+      f
+    );
+  }
+  f = message.getNtptimeout();
+  if (f !== 0) {
+    writer.writeUint32(
+      8,
+      f
+    );
+  }
+  f = message.getSubnet();
+  if (f.length > 0) {
+    writer.writeString(
+      9,
+      f
+    );
+  }
+  f = message.getDnsPrimary();
+  if (f.length > 0) {
+    writer.writeString(
+      10,
+      f
+    );
+  }
+  f = message.getDnsSecondary();
+  if (f.length > 0) {
+    writer.writeString(
+      11,
       f
     );
   }
@@ -17598,6 +18090,81 @@ proto.AdminNetworkPropertiesMessage.prototype.getNtp = function() {
 /** @param {boolean} value */
 proto.AdminNetworkPropertiesMessage.prototype.setNtp = function(value) {
   jspb.Message.setProto3BooleanField(this, 6, value);
+};
+
+
+/**
+ * optional string error = 7;
+ * @return {string}
+ */
+proto.AdminNetworkPropertiesMessage.prototype.getError = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+};
+
+
+/** @param {string} value */
+proto.AdminNetworkPropertiesMessage.prototype.setError = function(value) {
+  jspb.Message.setProto3StringField(this, 7, value);
+};
+
+
+/**
+ * optional uint32 NTPTimeout = 8;
+ * @return {number}
+ */
+proto.AdminNetworkPropertiesMessage.prototype.getNtptimeout = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
+};
+
+
+/** @param {number} value */
+proto.AdminNetworkPropertiesMessage.prototype.setNtptimeout = function(value) {
+  jspb.Message.setProto3IntField(this, 8, value);
+};
+
+
+/**
+ * optional string subnet = 9;
+ * @return {string}
+ */
+proto.AdminNetworkPropertiesMessage.prototype.getSubnet = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
+};
+
+
+/** @param {string} value */
+proto.AdminNetworkPropertiesMessage.prototype.setSubnet = function(value) {
+  jspb.Message.setProto3StringField(this, 9, value);
+};
+
+
+/**
+ * optional string DNS_Primary = 10;
+ * @return {string}
+ */
+proto.AdminNetworkPropertiesMessage.prototype.getDnsPrimary = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
+};
+
+
+/** @param {string} value */
+proto.AdminNetworkPropertiesMessage.prototype.setDnsPrimary = function(value) {
+  jspb.Message.setProto3StringField(this, 10, value);
+};
+
+
+/**
+ * optional string DNS_Secondary = 11;
+ * @return {string}
+ */
+proto.AdminNetworkPropertiesMessage.prototype.getDnsSecondary = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ""));
+};
+
+
+/** @param {string} value */
+proto.AdminNetworkPropertiesMessage.prototype.setDnsSecondary = function(value) {
+  jspb.Message.setProto3StringField(this, 11, value);
 };
 
 
@@ -19142,7 +19709,8 @@ proto.FirmwareMetaMessage.toObject = function(includeInstance, msg) {
     firmwareChecksum: jspb.Message.getFieldWithDefault(msg, 4, 0),
     firmwareChunkCount: jspb.Message.getFieldWithDefault(msg, 5, 0),
     firmwareBaseAddress: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    firmwareEndAddress: jspb.Message.getFieldWithDefault(msg, 7, 0)
+    firmwareEndAddress: jspb.Message.getFieldWithDefault(msg, 7, 0),
+    firmwareIsBackup: jspb.Message.getFieldWithDefault(msg, 8, false)
   };
 
   if (includeInstance) {
@@ -19206,6 +19774,10 @@ proto.FirmwareMetaMessage.deserializeBinaryFromReader = function(msg, reader) {
     case 7:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setFirmwareEndAddress(value);
+      break;
+    case 8:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setFirmwareIsBackup(value);
       break;
     default:
       reader.skipField();
@@ -19282,6 +19854,13 @@ proto.FirmwareMetaMessage.serializeBinaryToWriter = function(message, writer) {
   if (f !== 0) {
     writer.writeUint32(
       7,
+      f
+    );
+  }
+  f = message.getFirmwareIsBackup();
+  if (f) {
+    writer.writeBool(
+      8,
       f
     );
   }
@@ -19390,6 +19969,23 @@ proto.FirmwareMetaMessage.prototype.getFirmwareEndAddress = function() {
 /** @param {number} value */
 proto.FirmwareMetaMessage.prototype.setFirmwareEndAddress = function(value) {
   jspb.Message.setProto3IntField(this, 7, value);
+};
+
+
+/**
+ * optional bool firmware_is_backup = 8;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
+ * @return {boolean}
+ */
+proto.FirmwareMetaMessage.prototype.getFirmwareIsBackup = function() {
+  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 8, false));
+};
+
+
+/** @param {boolean} value */
+proto.FirmwareMetaMessage.prototype.setFirmwareIsBackup = function(value) {
+  jspb.Message.setProto3BooleanField(this, 8, value);
 };
 
 
@@ -22095,6 +22691,324 @@ proto.SystemMetaDataReadMessage.prototype.setRebootCounter = function(value) {
  * @extends {jspb.Message}
  * @constructor
  */
+proto.EventFilter = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.EventFilter, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.EventFilter.displayName = 'proto.EventFilter';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.EventFilter.prototype.toObject = function(opt_includeInstance) {
+  return proto.EventFilter.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.EventFilter} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.EventFilter.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    input: jspb.Message.getFieldWithDefault(msg, 1, false),
+    daliArcLevel: jspb.Message.getFieldWithDefault(msg, 2, false),
+    daliCommand: jspb.Message.getFieldWithDefault(msg, 3, false),
+    daliSensor: jspb.Message.getFieldWithDefault(msg, 4, false),
+    daliInput: jspb.Message.getFieldWithDefault(msg, 5, false),
+    dmxStreamChanged: jspb.Message.getFieldWithDefault(msg, 6, false),
+    dali24Frame: jspb.Message.getFieldWithDefault(msg, 7, false)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.EventFilter}
+ */
+proto.EventFilter.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.EventFilter;
+  return proto.EventFilter.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.EventFilter} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.EventFilter}
+ */
+proto.EventFilter.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setInput(value);
+      break;
+    case 2:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setDaliArcLevel(value);
+      break;
+    case 3:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setDaliCommand(value);
+      break;
+    case 4:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setDaliSensor(value);
+      break;
+    case 5:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setDaliInput(value);
+      break;
+    case 6:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setDmxStreamChanged(value);
+      break;
+    case 7:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setDali24Frame(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.EventFilter.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.EventFilter.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.EventFilter} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.EventFilter.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getInput();
+  if (f) {
+    writer.writeBool(
+      1,
+      f
+    );
+  }
+  f = message.getDaliArcLevel();
+  if (f) {
+    writer.writeBool(
+      2,
+      f
+    );
+  }
+  f = message.getDaliCommand();
+  if (f) {
+    writer.writeBool(
+      3,
+      f
+    );
+  }
+  f = message.getDaliSensor();
+  if (f) {
+    writer.writeBool(
+      4,
+      f
+    );
+  }
+  f = message.getDaliInput();
+  if (f) {
+    writer.writeBool(
+      5,
+      f
+    );
+  }
+  f = message.getDmxStreamChanged();
+  if (f) {
+    writer.writeBool(
+      6,
+      f
+    );
+  }
+  f = message.getDali24Frame();
+  if (f) {
+    writer.writeBool(
+      7,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional bool input = 1;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
+ * @return {boolean}
+ */
+proto.EventFilter.prototype.getInput = function() {
+  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 1, false));
+};
+
+
+/** @param {boolean} value */
+proto.EventFilter.prototype.setInput = function(value) {
+  jspb.Message.setProto3BooleanField(this, 1, value);
+};
+
+
+/**
+ * optional bool dali_arc_level = 2;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
+ * @return {boolean}
+ */
+proto.EventFilter.prototype.getDaliArcLevel = function() {
+  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 2, false));
+};
+
+
+/** @param {boolean} value */
+proto.EventFilter.prototype.setDaliArcLevel = function(value) {
+  jspb.Message.setProto3BooleanField(this, 2, value);
+};
+
+
+/**
+ * optional bool dali_command = 3;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
+ * @return {boolean}
+ */
+proto.EventFilter.prototype.getDaliCommand = function() {
+  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 3, false));
+};
+
+
+/** @param {boolean} value */
+proto.EventFilter.prototype.setDaliCommand = function(value) {
+  jspb.Message.setProto3BooleanField(this, 3, value);
+};
+
+
+/**
+ * optional bool dali_sensor = 4;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
+ * @return {boolean}
+ */
+proto.EventFilter.prototype.getDaliSensor = function() {
+  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 4, false));
+};
+
+
+/** @param {boolean} value */
+proto.EventFilter.prototype.setDaliSensor = function(value) {
+  jspb.Message.setProto3BooleanField(this, 4, value);
+};
+
+
+/**
+ * optional bool dali_input = 5;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
+ * @return {boolean}
+ */
+proto.EventFilter.prototype.getDaliInput = function() {
+  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 5, false));
+};
+
+
+/** @param {boolean} value */
+proto.EventFilter.prototype.setDaliInput = function(value) {
+  jspb.Message.setProto3BooleanField(this, 5, value);
+};
+
+
+/**
+ * optional bool dmx_stream_changed = 6;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
+ * @return {boolean}
+ */
+proto.EventFilter.prototype.getDmxStreamChanged = function() {
+  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 6, false));
+};
+
+
+/** @param {boolean} value */
+proto.EventFilter.prototype.setDmxStreamChanged = function(value) {
+  jspb.Message.setProto3BooleanField(this, 6, value);
+};
+
+
+/**
+ * optional bool dali_24_frame = 7;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
+ * @return {boolean}
+ */
+proto.EventFilter.prototype.getDali24Frame = function() {
+  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 7, false));
+};
+
+
+/** @param {boolean} value */
+proto.EventFilter.prototype.setDali24Frame = function(value) {
+  jspb.Message.setProto3BooleanField(this, 7, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
 proto.TriggerEvent = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, proto.TriggerEvent.oneofGroups_);
 };
@@ -22649,6 +23563,175 @@ proto.DALI24InputEvent.prototype.setArg = function(value) {
  * @extends {jspb.Message}
  * @constructor
  */
+proto.DALI24FrameEvent = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.DALI24FrameEvent, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.DALI24FrameEvent.displayName = 'proto.DALI24FrameEvent';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.DALI24FrameEvent.prototype.toObject = function(opt_includeInstance) {
+  return proto.DALI24FrameEvent.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.DALI24FrameEvent} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.DALI24FrameEvent.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    line: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    frame: jspb.Message.getFieldWithDefault(msg, 2, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.DALI24FrameEvent}
+ */
+proto.DALI24FrameEvent.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.DALI24FrameEvent;
+  return proto.DALI24FrameEvent.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.DALI24FrameEvent} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.DALI24FrameEvent}
+ */
+proto.DALI24FrameEvent.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setLine(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setFrame(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.DALI24FrameEvent.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.DALI24FrameEvent.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.DALI24FrameEvent} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.DALI24FrameEvent.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getLine();
+  if (f !== 0) {
+    writer.writeUint32(
+      1,
+      f
+    );
+  }
+  f = message.getFrame();
+  if (f !== 0) {
+    writer.writeUint32(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional uint32 line = 1;
+ * @return {number}
+ */
+proto.DALI24FrameEvent.prototype.getLine = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/** @param {number} value */
+proto.DALI24FrameEvent.prototype.setLine = function(value) {
+  jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional uint32 frame = 2;
+ * @return {number}
+ */
+proto.DALI24FrameEvent.prototype.getFrame = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/** @param {number} value */
+proto.DALI24FrameEvent.prototype.setFrame = function(value) {
+  jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
 proto.DALISensorEvent = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
@@ -22941,7 +24024,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<!Array<number>>}
  * @const
  */
-proto.EventMessage.oneofGroups_ = [[2,3,4,6,7]];
+proto.EventMessage.oneofGroups_ = [[2,3,4,6,7,8,9]];
 
 /**
  * @enum {number}
@@ -22952,7 +24035,9 @@ proto.EventMessage.EventDataCase = {
   INPUTS: 3,
   PAYLOAD: 4,
   SENSOR: 6,
-  DALI_24_INPUT: 7
+  DALI_24_INPUT: 7,
+  FILTER: 8,
+  DALI_24_FRAME: 9
 };
 
 /**
@@ -22996,7 +24081,9 @@ proto.EventMessage.toObject = function(includeInstance, msg) {
     inputs: (f = msg.getInputs()) && proto.InputStateResponse.toObject(includeInstance, f),
     payload: (f = msg.getPayload()) && proto.PayloadMessage.toObject(includeInstance, f),
     sensor: (f = msg.getSensor()) && proto.DALISensorEvent.toObject(includeInstance, f),
-    dali24Input: (f = msg.getDali24Input()) && proto.DALI24InputEvent.toObject(includeInstance, f)
+    dali24Input: (f = msg.getDali24Input()) && proto.DALI24InputEvent.toObject(includeInstance, f),
+    filter: (f = msg.getFilter()) && proto.EventFilter.toObject(includeInstance, f),
+    dali24Frame: (f = msg.getDali24Frame()) && proto.DALI24FrameEvent.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -23061,6 +24148,16 @@ proto.EventMessage.deserializeBinaryFromReader = function(msg, reader) {
       var value = new proto.DALI24InputEvent;
       reader.readMessage(value,proto.DALI24InputEvent.deserializeBinaryFromReader);
       msg.setDali24Input(value);
+      break;
+    case 8:
+      var value = new proto.EventFilter;
+      reader.readMessage(value,proto.EventFilter.deserializeBinaryFromReader);
+      msg.setFilter(value);
+      break;
+    case 9:
+      var value = new proto.DALI24FrameEvent;
+      reader.readMessage(value,proto.DALI24FrameEvent.deserializeBinaryFromReader);
+      msg.setDali24Frame(value);
       break;
     default:
       reader.skipField();
@@ -23136,6 +24233,22 @@ proto.EventMessage.serializeBinaryToWriter = function(message, writer) {
       7,
       f,
       proto.DALI24InputEvent.serializeBinaryToWriter
+    );
+  }
+  f = message.getFilter();
+  if (f != null) {
+    writer.writeMessage(
+      8,
+      f,
+      proto.EventFilter.serializeBinaryToWriter
+    );
+  }
+  f = message.getDali24Frame();
+  if (f != null) {
+    writer.writeMessage(
+      9,
+      f,
+      proto.DALI24FrameEvent.serializeBinaryToWriter
     );
   }
 };
@@ -23306,6 +24419,66 @@ proto.EventMessage.prototype.hasDali24Input = function() {
 };
 
 
+/**
+ * optional EventFilter filter = 8;
+ * @return {?proto.EventFilter}
+ */
+proto.EventMessage.prototype.getFilter = function() {
+  return /** @type{?proto.EventFilter} */ (
+    jspb.Message.getWrapperField(this, proto.EventFilter, 8));
+};
+
+
+/** @param {?proto.EventFilter|undefined} value */
+proto.EventMessage.prototype.setFilter = function(value) {
+  jspb.Message.setOneofWrapperField(this, 8, proto.EventMessage.oneofGroups_[0], value);
+};
+
+
+proto.EventMessage.prototype.clearFilter = function() {
+  this.setFilter(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.EventMessage.prototype.hasFilter = function() {
+  return jspb.Message.getField(this, 8) != null;
+};
+
+
+/**
+ * optional DALI24FrameEvent dali_24_frame = 9;
+ * @return {?proto.DALI24FrameEvent}
+ */
+proto.EventMessage.prototype.getDali24Frame = function() {
+  return /** @type{?proto.DALI24FrameEvent} */ (
+    jspb.Message.getWrapperField(this, proto.DALI24FrameEvent, 9));
+};
+
+
+/** @param {?proto.DALI24FrameEvent|undefined} value */
+proto.EventMessage.prototype.setDali24Frame = function(value) {
+  jspb.Message.setOneofWrapperField(this, 9, proto.EventMessage.oneofGroups_[0], value);
+};
+
+
+proto.EventMessage.prototype.clearDali24Frame = function() {
+  this.setDali24Frame(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.EventMessage.prototype.hasDali24Frame = function() {
+  return jspb.Message.getField(this, 9) != null;
+};
+
+
 
 /**
  * Generated by JsPbCodeGenerator.
@@ -23332,7 +24505,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<!Array<number>>}
  * @const
  */
-proto.EdidioMessage.oneofGroups_ = [[2,3,4,5,6,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57]];
+proto.EdidioMessage.oneofGroups_ = [[2,3,4,5,6,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59]];
 
 /**
  * @enum {number}
@@ -23391,7 +24564,9 @@ proto.EdidioMessage.PayloadCase = {
   DALI_REMAPPING_MESSAGE: 54,
   SPEKTRA_SHOW_CONTROL_MESSAGE: 55,
   SPEKTRA_SHOW_MESSAGE: 56,
-  EXTENDED_SPEKTRA_SHOW_MESSAGE: 57
+  EXTENDED_SPEKTRA_SHOW_MESSAGE: 57,
+  RDM_DISCOVERY: 58,
+  RDM_DISCOVERY_REPLY: 59
 };
 
 /**
@@ -23483,7 +24658,9 @@ proto.EdidioMessage.toObject = function(includeInstance, msg) {
     daliRemappingMessage: (f = msg.getDaliRemappingMessage()) && proto.DALIRemappingMessage.toObject(includeInstance, f),
     spektraShowControlMessage: (f = msg.getSpektraShowControlMessage()) && proto.SpektraShowControlMessage.toObject(includeInstance, f),
     spektraShowMessage: (f = msg.getSpektraShowMessage()) && proto.SpektraShowMessage.toObject(includeInstance, f),
-    extendedSpektraShowMessage: (f = msg.getExtendedSpektraShowMessage()) && proto.ExtendedSpektraShowMessage.toObject(includeInstance, f)
+    extendedSpektraShowMessage: (f = msg.getExtendedSpektraShowMessage()) && proto.ExtendedSpektraShowMessage.toObject(includeInstance, f),
+    rdmDiscovery: (f = msg.getRdmDiscovery()) && proto.RDMDiscoveryMessage.toObject(includeInstance, f),
+    rdmDiscoveryReply: (f = msg.getRdmDiscoveryReply()) && proto.RDMDiscoveryReplyMessage.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -23788,6 +24965,16 @@ proto.EdidioMessage.deserializeBinaryFromReader = function(msg, reader) {
       var value = new proto.ExtendedSpektraShowMessage;
       reader.readMessage(value,proto.ExtendedSpektraShowMessage.deserializeBinaryFromReader);
       msg.setExtendedSpektraShowMessage(value);
+      break;
+    case 58:
+      var value = new proto.RDMDiscoveryMessage;
+      reader.readMessage(value,proto.RDMDiscoveryMessage.deserializeBinaryFromReader);
+      msg.setRdmDiscovery(value);
+      break;
+    case 59:
+      var value = new proto.RDMDiscoveryReplyMessage;
+      reader.readMessage(value,proto.RDMDiscoveryReplyMessage.deserializeBinaryFromReader);
+      msg.setRdmDiscoveryReply(value);
       break;
     default:
       reader.skipField();
@@ -24247,6 +25434,22 @@ proto.EdidioMessage.serializeBinaryToWriter = function(message, writer) {
       57,
       f,
       proto.ExtendedSpektraShowMessage.serializeBinaryToWriter
+    );
+  }
+  f = message.getRdmDiscovery();
+  if (f != null) {
+    writer.writeMessage(
+      58,
+      f,
+      proto.RDMDiscoveryMessage.serializeBinaryToWriter
+    );
+  }
+  f = message.getRdmDiscoveryReply();
+  if (f != null) {
+    writer.writeMessage(
+      59,
+      f,
+      proto.RDMDiscoveryReplyMessage.serializeBinaryToWriter
     );
   }
 };
@@ -25858,6 +27061,66 @@ proto.EdidioMessage.prototype.hasExtendedSpektraShowMessage = function() {
 
 
 /**
+ * optional RDMDiscoveryMessage rdm_discovery = 58;
+ * @return {?proto.RDMDiscoveryMessage}
+ */
+proto.EdidioMessage.prototype.getRdmDiscovery = function() {
+  return /** @type{?proto.RDMDiscoveryMessage} */ (
+    jspb.Message.getWrapperField(this, proto.RDMDiscoveryMessage, 58));
+};
+
+
+/** @param {?proto.RDMDiscoveryMessage|undefined} value */
+proto.EdidioMessage.prototype.setRdmDiscovery = function(value) {
+  jspb.Message.setOneofWrapperField(this, 58, proto.EdidioMessage.oneofGroups_[0], value);
+};
+
+
+proto.EdidioMessage.prototype.clearRdmDiscovery = function() {
+  this.setRdmDiscovery(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.EdidioMessage.prototype.hasRdmDiscovery = function() {
+  return jspb.Message.getField(this, 58) != null;
+};
+
+
+/**
+ * optional RDMDiscoveryReplyMessage rdm_discovery_reply = 59;
+ * @return {?proto.RDMDiscoveryReplyMessage}
+ */
+proto.EdidioMessage.prototype.getRdmDiscoveryReply = function() {
+  return /** @type{?proto.RDMDiscoveryReplyMessage} */ (
+    jspb.Message.getWrapperField(this, proto.RDMDiscoveryReplyMessage, 59));
+};
+
+
+/** @param {?proto.RDMDiscoveryReplyMessage|undefined} value */
+proto.EdidioMessage.prototype.setRdmDiscoveryReply = function(value) {
+  jspb.Message.setOneofWrapperField(this, 59, proto.EdidioMessage.oneofGroups_[0], value);
+};
+
+
+proto.EdidioMessage.prototype.clearRdmDiscoveryReply = function() {
+  this.setRdmDiscoveryReply(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.EdidioMessage.prototype.hasRdmDiscoveryReply = function() {
+  return jspb.Message.getField(this, 59) != null;
+};
+
+
+/**
  * @enum {number}
  */
 proto.TriggerOperationType = {
@@ -26108,7 +27371,8 @@ proto.LineType = {
   LINE_EMPTY: 0,
   LINE_DALI: 1,
   LINE_DMX: 2,
-  LINE_DMX_IN: 3
+  LINE_DMX_IN: 3,
+  LINE_AUTO: 4
 };
 
 /**
@@ -26121,7 +27385,8 @@ proto.EventType = {
   SENSOR_EVENT: 3,
   CONTROL_EVENT: 4,
   ROOM_JOIN_EVENT: 5,
-  DALI_24_INPUT_EVENT: 6
+  DALI_24_INPUT_EVENT: 6,
+  DALI_24_FRAME_EVENT: 7
 };
 
 /**
@@ -26256,7 +27521,9 @@ proto.AdminPropertyType = {
   NONCE: 23,
   DALI_SENSOR_TYPE: 24,
   DEVICE_REBOOT: 25,
-  SYSTEM_LOGGING: 26
+  SYSTEM_LOGGING: 26,
+  SUBNET: 27,
+  DNS: 28
 };
 
 /**
