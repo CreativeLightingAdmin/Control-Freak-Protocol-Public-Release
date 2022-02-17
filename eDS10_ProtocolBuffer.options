@@ -26,19 +26,22 @@ DiagnosticSystemInfoResponse.spektra_seq_count         int_size:IS_8
 DiagnosticSystemInfoResponse.spektra_seq_step_count    int_size:IS_8
 DiagnosticSystemInfoResponse.spektra_theme_count       int_size:IS_8
 DiagnosticSystemInfoResponse.spektra_static_count      int_size:IS_8
-DiagnosticSystemInfoResponse.proto_version             int_size:IS_8
+DiagnosticSystemInfoResponse.proto_version             int_size:IS_32
 DiagnosticSystemInfoResponse.line_count                int_size:IS_8
 DiagnosticSystemInfoResponse.lines                     max_count:4
+DiagnosticSystemInfoResponse.vendor_id                  max_size:16
 AdminProjectPropertiesMessage.device_name              max_size:32
 AdminProjectPropertiesMessage.project_name             max_size:32
 AdminNetworkPropertiesMessage.IP                       max_size:32
 AdminNetworkPropertiesMessage.MAC                      max_size:32
 AdminNetworkPropertiesMessage.gateway                  max_size:32
 AdminNetworkPropertiesMessage.NTPServer				   max_size:32
-AdminNetworkPropertiesMessage.error						max_size:32
-AdminNetworkPropertiesMessage.subnet						max_size:32
-AdminNetworkPropertiesMessage.DNS_Primary						max_size:32
-AdminNetworkPropertiesMessage.DNS_Secondary						max_size:32
+AdminNetworkPropertiesMessage.error					   max_size:32
+AdminNetworkPropertiesMessage.subnet				   max_size:32
+AdminNetworkPropertiesMessage.DNS_Primary			   max_size:32
+AdminNetworkPropertiesMessage.DNS_Secondary			   max_size:32
+AdminDNSServersMessage.DNS_Primary                     max_size:32
+AdminDNSServersMessage.DNS_Secondary                   max_size:32
 AdminControllerLinesMessage.lines                      max_count:4
 AdminConfigStatusMessage.list_status                   int_size:IS_8, max_count:32  # 32 Lists
 AdminConfigStatusMessage.burn_in_status                int_size:IS_8, max_count:2
@@ -65,6 +68,7 @@ DTRPayloadMessage.dtr                                  max_count:3, int_size:IS_
 DataMessage.data                                       max_count:256, int_size:IS_8
 DALIStatusFlagMessage.flags                            max_count:9, int_size:IS_8
 PayloadMessage.string_data                             max_size:256
+FirmwareMetaMessage.nonce                              max_count:12, int_size:IS_8
 DeviceStateMessage.list_states                         int_size:IS_8, max_count:32
 DeviceStateMessage.burn_in_states                      int_size:IS_8, max_count:2
 DeviceStateMessage.sensor_states                       int_size:IS_8, max_count:40

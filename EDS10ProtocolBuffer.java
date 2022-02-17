@@ -14,7 +14,7 @@ public final class EDS10ProtocolBuffer {
   }
   /**
    * <pre>
-   *********** ENUMERATIONS/Types ***********
+   *********** &#64;exclude ENUMERATIONS/Types ***********
    * </pre>
    *
    * Protobuf enum {@code TriggerOperationType}
@@ -277,174 +277,346 @@ public final class EDS10ProtocolBuffer {
      */
     DMX_BROADCAST(6),
     /**
+     * <pre>
+     * DEPRECATED
+     * </pre>
+     *
      * <code>DIDIO = 7;</code>
      */
     DIDIO(7),
     /**
+     * <pre>
+     * DALI Fade Up Command - Query level and set Minimum if Off
+     * </pre>
+     *
      * <code>FADE_UP_WITH_MIN = 8;</code>
      */
     FADE_UP_WITH_MIN(8),
     /**
+     * <pre>
+     * Start a List action once
+     * </pre>
+     *
      * <code>LIST_START = 9;</code>
      */
     LIST_START(9),
     /**
+     * <pre>
+     * Start a List action with repeat 
+     * </pre>
+     *
      * <code>LIST_START_CONTINUOUS = 10;</code>
      */
     LIST_START_CONTINUOUS(10),
     /**
+     * <pre>
+     * Stop a List
+     * </pre>
+     *
      * <code>LIST_STOP = 11;</code>
      */
     LIST_STOP(11),
     /**
+     * <pre>
+     * Start a Spektra Sequence
+     * </pre>
+     *
      * <code>SPEKTRA_START_SEQ = 12;</code>
      */
     SPEKTRA_START_SEQ(12),
     /**
+     * <pre>
+     * Stop a playing Spektra Sequence
+     * </pre>
+     *
      * <code>SPEKTRA_STOP_SEQ = 13;</code>
      */
     SPEKTRA_STOP_SEQ(13),
     /**
+     * <pre>
+     * Apply a Spektra Theme
+     * </pre>
+     *
      * <code>SPEKTRA_THEME = 14;</code>
      */
     SPEKTRA_THEME(14),
     /**
+     * <pre>
+     * DEPRECATED
+     * </pre>
+     *
      * <code>SPEKTRA_STATIC = 15;</code>
      */
     SPEKTRA_STATIC(15),
     /**
+     * <pre>
+     * Start the scheduled Spektra item
+     * </pre>
+     *
      * <code>SPEKTRA_SCHEDULE = 16;</code>
      */
     SPEKTRA_SCHEDULE(16),
     /**
+     * <pre>
+     * NOTE: Beta Command - Starts a Network Link with bitmask
+     * </pre>
+     *
      * <code>LINK_START = 17;</code>
      */
     LINK_START(17),
     /**
+     * <pre>
+     * NOTE: Beta Command - Stops a Network Link
+     * </pre>
+     *
      * <code>LINK_STOP = 18;</code>
      */
     LINK_STOP(18),
     /**
+     * <pre>
+     * Disable Burn-In
+     * </pre>
+     *
      * <code>DISABLE_BURN = 19;</code>
      */
     DISABLE_BURN(19),
     /**
+     * <pre>
+     * Enable Burn-In
+     * </pre>
+     *
      * <code>ENABLE_BURN = 20;</code>
      */
     ENABLE_BURN(20),
     /**
+     * <pre>
+     * Turn a Group/Addres On/Off based on query level. If DALI_GROUP_ALL, toggle based on flag
+     * </pre>
+     *
      * <code>ON_OFF_TOG = 21;</code>
      */
     ON_OFF_TOG(21),
     /**
+     * <pre>
+     * On/Off Toggle replaced by Min/Max
+     * </pre>
+     *
      * <code>MIN_MAX_TOG = 22;</code>
      */
     MIN_MAX_TOG(22),
     /**
+     * <pre>
+     * Enable Input - If latching, Input will trigger immediatly
+     * </pre>
+     *
      * <code>ENABLE_INPUT = 23;</code>
      */
     ENABLE_INPUT(23),
     /**
+     * <pre>
+     * Disable Input
+     * </pre>
+     *
      * <code>DISABLE_INPUT = 24;</code>
      */
     DISABLE_INPUT(24),
     /**
+     * <pre>
+     * Toggle Enable/Disable Input
+     * </pre>
+     *
      * <code>ENABLE_TOG_INPUT = 25;</code>
      */
     ENABLE_TOG_INPUT(25),
     /**
+     * <pre>
+     * Toggle Output State between High (~22Vdc) and Low (0Vdc)
+     * </pre>
+     *
      * <code>OUTPUT_TOG = 26;</code>
      */
     OUTPUT_TOG(26),
     /**
+     * <pre>
+     * Set Output HIGH
+     * </pre>
+     *
      * <code>OUTPUT_HIGH = 27;</code>
      */
     OUTPUT_HIGH(27),
     /**
+     * <pre>
+     * Set Output LOW
+     * </pre>
+     *
      * <code>OUTPUT_LOW = 28;</code>
      */
     OUTPUT_LOW(28),
     /**
+     * <pre>
+     * Set Output to trigger momentarily based on configuration
+     * </pre>
+     *
      * <code>OUTPUT_TRIG = 29;</code>
      */
     OUTPUT_TRIG(29),
     /**
+     * <pre>
+     * Change Profile - This action will reset sensor state
+     * </pre>
+     *
      * <code>PROFILE_CHANGE = 30;</code>
      */
     PROFILE_CHANGE(30),
     /**
+     * <pre>
+     * Long Press Fade based on Toggle Flag
+     * </pre>
+     *
      * <code>FADE_LONG_PRESS = 31;</code>
      */
     FADE_LONG_PRESS(31),
     /**
+     * <pre>
+     * Command sets clock to 11:59PM. Used for hardware time update by external Timeclock
+     * </pre>
+     *
      * <code>SYNCRO = 32;</code>
      */
     SYNCRO(32),
     /**
+     * <pre>
+     * Preset Code - See Configurator Description
+     * </pre>
+     *
      * <code>PRESET_CODE = 33;</code>
      */
     PRESET_CODE(33),
     /**
+     * <pre>
+     * Project Specific Custom Code - Talk to Creative Lighting for support
+     * </pre>
+     *
      * <code>CUSTOM_CODE = 34;</code>
      */
     CUSTOM_CODE(34),
     /**
+     * <pre>
+     * Pause Spektra sequence
+     * </pre>
+     *
      * <code>SPEKTRA_SLEEP = 35;</code>
      */
     SPEKTRA_SLEEP(35),
     /**
+     * <pre>
+     * Resume Spektra sequence
+     * </pre>
+     *
      * <code>SPEKTRA_RESUME = 36;</code>
      */
     SPEKTRA_RESUME(36),
     /**
+     * <pre>
+     * Admin Command for Hardware Reset
+     * </pre>
+     *
      * <code>DEVICE_RESET = 37;</code>
      */
     DEVICE_RESET(37),
     /**
+     * <pre>
+     * Admin Command for manual device memory save
+     * </pre>
+     *
      * <code>DEVICE_SAVE = 38;</code>
      */
     DEVICE_SAVE(38),
     /**
+     * <pre>
+     * Store Current Level to Variable
+     * </pre>
+     *
      * <code>USER_LEVEL_STORE_NEW = 39;</code>
      */
     USER_LEVEL_STORE_NEW(39),
     /**
+     * <pre>
+     * Reset User Level Variable
+     * </pre>
+     *
      * <code>USER_LEVEL_SET_DEFAULT = 40;</code>
      */
     USER_LEVEL_SET_DEFAULT(40),
     /**
+     * <pre>
+     * Recall User Level Variable
+     * </pre>
+     *
      * <code>USER_LEVEL_RECALL = 41;</code>
      */
     USER_LEVEL_RECALL(41),
     /**
+     * <pre>
+     * DEPRECATED
+     * </pre>
+     *
      * <code>ROOM_JOIN = 43;</code>
      */
     ROOM_JOIN(43),
     /**
+     * <pre>
+     * DEPRECATED
+     * </pre>
+     *
      * <code>ROOM_UNJOIN = 44;</code>
      */
     ROOM_UNJOIN(44),
     /**
+     * <pre>
+     * DALI Type 8 Warmer Command. 1 Mirek increments
+     * </pre>
+     *
      * <code>TYPE8_TC_WARMER = 45;</code>
      */
     TYPE8_TC_WARMER(45),
     /**
+     * <pre>
+     * DALI Type 8 Cooler Command. 1 Mirek increments
+     * </pre>
+     *
      * <code>TYPE8_TC_COOLER = 46;</code>
      */
     TYPE8_TC_COOLER(46),
     /**
+     * <pre>
+     * DALI Type 8 Set Colour to Mirek value
+     * </pre>
+     *
      * <code>TYPE8_TC_ACTUAL = 47;</code>
      */
     TYPE8_TC_ACTUAL(47),
     /**
+     * <pre>
+     * Not Implemented
+     * </pre>
+     *
      * <code>LOGIC_OPERATION = 48;</code>
      */
     LOGIC_OPERATION(48),
     /**
+     * <pre>
+     * Enable Alarm at Index
+     * </pre>
+     *
      * <code>ALARM_ENABLE = 49;</code>
      */
     ALARM_ENABLE(49),
     /**
+     * <pre>
+     * Disable Alarm at Index
+     * </pre>
+     *
      * <code>ALARM_DISABLE = 50;</code>
      */
     ALARM_DISABLE(50),
@@ -513,12 +685,16 @@ public final class EDS10ProtocolBuffer {
      */
     MIN_MAX_TOG_OVERRIDE(58),
     /**
+     * <pre>
+     * Not Implemented
+     * </pre>
+     *
      * <code>MAX_OFF_TOG = 59;</code>
      */
     MAX_OFF_TOG(59),
     /**
      * <pre>
-     * Non-native DALI command override (sets associated group to override mode)
+     * Not Implemented
      * </pre>
      *
      * <code>MAX_OFF_TOG_OVERRIDE = 60;</code>
@@ -572,6 +748,14 @@ public final class EDS10ProtocolBuffer {
      * <code>SPEKTRA_SHOW_CONTROL = 66;</code>
      */
     SPEKTRA_SHOW_CONTROL(66),
+    /**
+     * <pre>
+     * Selects Colour Temperature based on clock
+     * </pre>
+     *
+     * <code>CIRCADIAN_TEMPERATURE = 67;</code>
+     */
+    CIRCADIAN_TEMPERATURE(67),
     /**
      * <pre>
      * This TriggerType should always be at the bottom of the list. Add any new TriggerTypes above it (up to 253).
@@ -640,174 +824,346 @@ public final class EDS10ProtocolBuffer {
      */
     public static final int DMX_BROADCAST_VALUE = 6;
     /**
+     * <pre>
+     * DEPRECATED
+     * </pre>
+     *
      * <code>DIDIO = 7;</code>
      */
     public static final int DIDIO_VALUE = 7;
     /**
+     * <pre>
+     * DALI Fade Up Command - Query level and set Minimum if Off
+     * </pre>
+     *
      * <code>FADE_UP_WITH_MIN = 8;</code>
      */
     public static final int FADE_UP_WITH_MIN_VALUE = 8;
     /**
+     * <pre>
+     * Start a List action once
+     * </pre>
+     *
      * <code>LIST_START = 9;</code>
      */
     public static final int LIST_START_VALUE = 9;
     /**
+     * <pre>
+     * Start a List action with repeat 
+     * </pre>
+     *
      * <code>LIST_START_CONTINUOUS = 10;</code>
      */
     public static final int LIST_START_CONTINUOUS_VALUE = 10;
     /**
+     * <pre>
+     * Stop a List
+     * </pre>
+     *
      * <code>LIST_STOP = 11;</code>
      */
     public static final int LIST_STOP_VALUE = 11;
     /**
+     * <pre>
+     * Start a Spektra Sequence
+     * </pre>
+     *
      * <code>SPEKTRA_START_SEQ = 12;</code>
      */
     public static final int SPEKTRA_START_SEQ_VALUE = 12;
     /**
+     * <pre>
+     * Stop a playing Spektra Sequence
+     * </pre>
+     *
      * <code>SPEKTRA_STOP_SEQ = 13;</code>
      */
     public static final int SPEKTRA_STOP_SEQ_VALUE = 13;
     /**
+     * <pre>
+     * Apply a Spektra Theme
+     * </pre>
+     *
      * <code>SPEKTRA_THEME = 14;</code>
      */
     public static final int SPEKTRA_THEME_VALUE = 14;
     /**
+     * <pre>
+     * DEPRECATED
+     * </pre>
+     *
      * <code>SPEKTRA_STATIC = 15;</code>
      */
     public static final int SPEKTRA_STATIC_VALUE = 15;
     /**
+     * <pre>
+     * Start the scheduled Spektra item
+     * </pre>
+     *
      * <code>SPEKTRA_SCHEDULE = 16;</code>
      */
     public static final int SPEKTRA_SCHEDULE_VALUE = 16;
     /**
+     * <pre>
+     * NOTE: Beta Command - Starts a Network Link with bitmask
+     * </pre>
+     *
      * <code>LINK_START = 17;</code>
      */
     public static final int LINK_START_VALUE = 17;
     /**
+     * <pre>
+     * NOTE: Beta Command - Stops a Network Link
+     * </pre>
+     *
      * <code>LINK_STOP = 18;</code>
      */
     public static final int LINK_STOP_VALUE = 18;
     /**
+     * <pre>
+     * Disable Burn-In
+     * </pre>
+     *
      * <code>DISABLE_BURN = 19;</code>
      */
     public static final int DISABLE_BURN_VALUE = 19;
     /**
+     * <pre>
+     * Enable Burn-In
+     * </pre>
+     *
      * <code>ENABLE_BURN = 20;</code>
      */
     public static final int ENABLE_BURN_VALUE = 20;
     /**
+     * <pre>
+     * Turn a Group/Addres On/Off based on query level. If DALI_GROUP_ALL, toggle based on flag
+     * </pre>
+     *
      * <code>ON_OFF_TOG = 21;</code>
      */
     public static final int ON_OFF_TOG_VALUE = 21;
     /**
+     * <pre>
+     * On/Off Toggle replaced by Min/Max
+     * </pre>
+     *
      * <code>MIN_MAX_TOG = 22;</code>
      */
     public static final int MIN_MAX_TOG_VALUE = 22;
     /**
+     * <pre>
+     * Enable Input - If latching, Input will trigger immediatly
+     * </pre>
+     *
      * <code>ENABLE_INPUT = 23;</code>
      */
     public static final int ENABLE_INPUT_VALUE = 23;
     /**
+     * <pre>
+     * Disable Input
+     * </pre>
+     *
      * <code>DISABLE_INPUT = 24;</code>
      */
     public static final int DISABLE_INPUT_VALUE = 24;
     /**
+     * <pre>
+     * Toggle Enable/Disable Input
+     * </pre>
+     *
      * <code>ENABLE_TOG_INPUT = 25;</code>
      */
     public static final int ENABLE_TOG_INPUT_VALUE = 25;
     /**
+     * <pre>
+     * Toggle Output State between High (~22Vdc) and Low (0Vdc)
+     * </pre>
+     *
      * <code>OUTPUT_TOG = 26;</code>
      */
     public static final int OUTPUT_TOG_VALUE = 26;
     /**
+     * <pre>
+     * Set Output HIGH
+     * </pre>
+     *
      * <code>OUTPUT_HIGH = 27;</code>
      */
     public static final int OUTPUT_HIGH_VALUE = 27;
     /**
+     * <pre>
+     * Set Output LOW
+     * </pre>
+     *
      * <code>OUTPUT_LOW = 28;</code>
      */
     public static final int OUTPUT_LOW_VALUE = 28;
     /**
+     * <pre>
+     * Set Output to trigger momentarily based on configuration
+     * </pre>
+     *
      * <code>OUTPUT_TRIG = 29;</code>
      */
     public static final int OUTPUT_TRIG_VALUE = 29;
     /**
+     * <pre>
+     * Change Profile - This action will reset sensor state
+     * </pre>
+     *
      * <code>PROFILE_CHANGE = 30;</code>
      */
     public static final int PROFILE_CHANGE_VALUE = 30;
     /**
+     * <pre>
+     * Long Press Fade based on Toggle Flag
+     * </pre>
+     *
      * <code>FADE_LONG_PRESS = 31;</code>
      */
     public static final int FADE_LONG_PRESS_VALUE = 31;
     /**
+     * <pre>
+     * Command sets clock to 11:59PM. Used for hardware time update by external Timeclock
+     * </pre>
+     *
      * <code>SYNCRO = 32;</code>
      */
     public static final int SYNCRO_VALUE = 32;
     /**
+     * <pre>
+     * Preset Code - See Configurator Description
+     * </pre>
+     *
      * <code>PRESET_CODE = 33;</code>
      */
     public static final int PRESET_CODE_VALUE = 33;
     /**
+     * <pre>
+     * Project Specific Custom Code - Talk to Creative Lighting for support
+     * </pre>
+     *
      * <code>CUSTOM_CODE = 34;</code>
      */
     public static final int CUSTOM_CODE_VALUE = 34;
     /**
+     * <pre>
+     * Pause Spektra sequence
+     * </pre>
+     *
      * <code>SPEKTRA_SLEEP = 35;</code>
      */
     public static final int SPEKTRA_SLEEP_VALUE = 35;
     /**
+     * <pre>
+     * Resume Spektra sequence
+     * </pre>
+     *
      * <code>SPEKTRA_RESUME = 36;</code>
      */
     public static final int SPEKTRA_RESUME_VALUE = 36;
     /**
+     * <pre>
+     * Admin Command for Hardware Reset
+     * </pre>
+     *
      * <code>DEVICE_RESET = 37;</code>
      */
     public static final int DEVICE_RESET_VALUE = 37;
     /**
+     * <pre>
+     * Admin Command for manual device memory save
+     * </pre>
+     *
      * <code>DEVICE_SAVE = 38;</code>
      */
     public static final int DEVICE_SAVE_VALUE = 38;
     /**
+     * <pre>
+     * Store Current Level to Variable
+     * </pre>
+     *
      * <code>USER_LEVEL_STORE_NEW = 39;</code>
      */
     public static final int USER_LEVEL_STORE_NEW_VALUE = 39;
     /**
+     * <pre>
+     * Reset User Level Variable
+     * </pre>
+     *
      * <code>USER_LEVEL_SET_DEFAULT = 40;</code>
      */
     public static final int USER_LEVEL_SET_DEFAULT_VALUE = 40;
     /**
+     * <pre>
+     * Recall User Level Variable
+     * </pre>
+     *
      * <code>USER_LEVEL_RECALL = 41;</code>
      */
     public static final int USER_LEVEL_RECALL_VALUE = 41;
     /**
+     * <pre>
+     * DEPRECATED
+     * </pre>
+     *
      * <code>ROOM_JOIN = 43;</code>
      */
     public static final int ROOM_JOIN_VALUE = 43;
     /**
+     * <pre>
+     * DEPRECATED
+     * </pre>
+     *
      * <code>ROOM_UNJOIN = 44;</code>
      */
     public static final int ROOM_UNJOIN_VALUE = 44;
     /**
+     * <pre>
+     * DALI Type 8 Warmer Command. 1 Mirek increments
+     * </pre>
+     *
      * <code>TYPE8_TC_WARMER = 45;</code>
      */
     public static final int TYPE8_TC_WARMER_VALUE = 45;
     /**
+     * <pre>
+     * DALI Type 8 Cooler Command. 1 Mirek increments
+     * </pre>
+     *
      * <code>TYPE8_TC_COOLER = 46;</code>
      */
     public static final int TYPE8_TC_COOLER_VALUE = 46;
     /**
+     * <pre>
+     * DALI Type 8 Set Colour to Mirek value
+     * </pre>
+     *
      * <code>TYPE8_TC_ACTUAL = 47;</code>
      */
     public static final int TYPE8_TC_ACTUAL_VALUE = 47;
     /**
+     * <pre>
+     * Not Implemented
+     * </pre>
+     *
      * <code>LOGIC_OPERATION = 48;</code>
      */
     public static final int LOGIC_OPERATION_VALUE = 48;
     /**
+     * <pre>
+     * Enable Alarm at Index
+     * </pre>
+     *
      * <code>ALARM_ENABLE = 49;</code>
      */
     public static final int ALARM_ENABLE_VALUE = 49;
     /**
+     * <pre>
+     * Disable Alarm at Index
+     * </pre>
+     *
      * <code>ALARM_DISABLE = 50;</code>
      */
     public static final int ALARM_DISABLE_VALUE = 50;
@@ -876,12 +1232,16 @@ public final class EDS10ProtocolBuffer {
      */
     public static final int MIN_MAX_TOG_OVERRIDE_VALUE = 58;
     /**
+     * <pre>
+     * Not Implemented
+     * </pre>
+     *
      * <code>MAX_OFF_TOG = 59;</code>
      */
     public static final int MAX_OFF_TOG_VALUE = 59;
     /**
      * <pre>
-     * Non-native DALI command override (sets associated group to override mode)
+     * Not Implemented
      * </pre>
      *
      * <code>MAX_OFF_TOG_OVERRIDE = 60;</code>
@@ -935,6 +1295,14 @@ public final class EDS10ProtocolBuffer {
      * <code>SPEKTRA_SHOW_CONTROL = 66;</code>
      */
     public static final int SPEKTRA_SHOW_CONTROL_VALUE = 66;
+    /**
+     * <pre>
+     * Selects Colour Temperature based on clock
+     * </pre>
+     *
+     * <code>CIRCADIAN_TEMPERATURE = 67;</code>
+     */
+    public static final int CIRCADIAN_TEMPERATURE_VALUE = 67;
     /**
      * <pre>
      * This TriggerType should always be at the bottom of the list. Add any new TriggerTypes above it (up to 253).
@@ -1029,6 +1397,7 @@ public final class EDS10ProtocolBuffer {
         case 64: return DMX_ZONE_FADE_DOWN;
         case 65: return LOGGING_LEVEL;
         case 66: return SPEKTRA_SHOW_CONTROL;
+        case 67: return CIRCADIAN_TEMPERATURE;
         case 254: return NO_COMMAND;
         default: return null;
       }
@@ -2561,6 +2930,10 @@ public final class EDS10ProtocolBuffer {
   }
 
   /**
+   * <pre>
+   * Standard DALI Type 8 Commands - See DALI Standard
+   * </pre>
+   *
    * Protobuf enum {@code Type8CommandType}
    */
   public enum Type8CommandType
@@ -2895,6 +3268,10 @@ public final class EDS10ProtocolBuffer {
   }
 
   /**
+   * <pre>
+   * Standard DALI Type 8 Queries - See DALI Standard
+   * </pre>
+   *
    * Protobuf enum {@code Type8QueryType}
    */
   public enum Type8QueryType
@@ -3055,6 +3432,10 @@ public final class EDS10ProtocolBuffer {
   }
 
   /**
+   * <pre>
+   * Standard DALI 24 Bit Commands - See DALI Standard
+   * </pre>
+   *
    * Protobuf enum {@code DALI24DeviceSetting}
    */
   public enum DALI24DeviceSetting
@@ -3369,6 +3750,10 @@ public final class EDS10ProtocolBuffer {
   }
 
   /**
+   * <pre>
+   * Standard DALI 24 Bit Instance Types - See DALI Standard
+   * </pre>
+   *
    * Protobuf enum {@code DALI24InstanceType}
    */
   public enum DALI24InstanceType
@@ -3494,6 +3879,10 @@ public final class EDS10ProtocolBuffer {
   }
 
   /**
+   * <pre>
+   * Standard DALI 24 Bit Device Op Codes - See DALI Standard
+   * </pre>
+   *
    * Protobuf enum {@code DALI24OpCode}
    */
   public enum DALI24OpCode
@@ -3684,20 +4073,32 @@ public final class EDS10ProtocolBuffer {
   public enum LineType
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
+     * <pre>
+     * No Hardware in this slot
+     * </pre>
+     *
      * <code>LINE_EMPTY = 0;</code>
      */
     LINE_EMPTY(0),
     /**
+     * <pre>
+     * Physical DALI Board in this slot
+     * </pre>
+     *
      * <code>LINE_DALI = 1;</code>
      */
     LINE_DALI(1),
     /**
+     * <pre>
+     * Physical DMX Board in this slot
+     * </pre>
+     *
      * <code>LINE_DMX = 2;</code>
      */
     LINE_DMX(2),
     /**
      * <pre>
-     * Must be set in the case of DMX to DALI Translation.
+     * Physical DMX Board in this slot - Must be set in the case of DMX to DALI Translation.
      * </pre>
      *
      * <code>LINE_DMX_IN = 3;</code>
@@ -3705,7 +4106,7 @@ public final class EDS10ProtocolBuffer {
     LINE_DMX_IN(3),
     /**
      * <pre>
-     * Line will be determined from physical hardware
+     * Line will be determined from physical hardware - Do not use for DMX to DALI Translation
      * </pre>
      *
      * <code>LINE_AUTO = 4;</code>
@@ -3715,20 +4116,32 @@ public final class EDS10ProtocolBuffer {
     ;
 
     /**
+     * <pre>
+     * No Hardware in this slot
+     * </pre>
+     *
      * <code>LINE_EMPTY = 0;</code>
      */
     public static final int LINE_EMPTY_VALUE = 0;
     /**
+     * <pre>
+     * Physical DALI Board in this slot
+     * </pre>
+     *
      * <code>LINE_DALI = 1;</code>
      */
     public static final int LINE_DALI_VALUE = 1;
     /**
+     * <pre>
+     * Physical DMX Board in this slot
+     * </pre>
+     *
      * <code>LINE_DMX = 2;</code>
      */
     public static final int LINE_DMX_VALUE = 2;
     /**
      * <pre>
-     * Must be set in the case of DMX to DALI Translation.
+     * Physical DMX Board in this slot - Must be set in the case of DMX to DALI Translation.
      * </pre>
      *
      * <code>LINE_DMX_IN = 3;</code>
@@ -3736,7 +4149,7 @@ public final class EDS10ProtocolBuffer {
     public static final int LINE_DMX_IN_VALUE = 3;
     /**
      * <pre>
-     * Line will be determined from physical hardware
+     * Line will be determined from physical hardware - Do not use for DMX to DALI Translation
      * </pre>
      *
      * <code>LINE_AUTO = 4;</code>
@@ -4036,6 +4449,10 @@ public final class EDS10ProtocolBuffer {
   }
 
   /**
+   * <pre>
+   * Standard DALI Queries - See DALI Standard
+   * </pre>
+   *
    * Protobuf enum {@code DALIQueryType}
    */
   public enum DALIQueryType
@@ -4476,7 +4893,7 @@ public final class EDS10ProtocolBuffer {
 
   /**
    * <pre>
-   * Standard DALI commands.
+   * Standard DALI Commands - See DALI Standard
    * </pre>
    *
    * Protobuf enum {@code DALICommandType}
@@ -6367,26 +6784,50 @@ public final class EDS10ProtocolBuffer {
   public enum AdminCommandType
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
+     * <pre>
+     * Set property
+     * </pre>
+     *
      * <code>SET = 0;</code>
      */
     SET(0),
     /**
+     * <pre>
+     * Get property
+     * </pre>
+     *
      * <code>GET = 1;</code>
      */
     GET(1),
     /**
+     * <pre>
+     * Add property - Used with AdminPropertyType_TRIDONIC_MSENSORS to unmute sensors
+     * </pre>
+     *
      * <code>ADD = 2;</code>
      */
     ADD(2),
     /**
+     * <pre>
+     * Remove property - Used with AdminPropertyType_TRIDONIC_MSENSORS to mute sensors
+     * </pre>
+     *
      * <code>REMOVE = 3;</code>
      */
     REMOVE(3),
     /**
+     * <pre>
+     * Reset property - Used with AdminPropertyType_TRIDONIC_MSENSORS to reset sensors to default. Used for Memory Reset Commands
+     * </pre>
+     *
      * <code>RESET = 4;</code>
      */
     RESET(4),
     /**
+     * <pre>
+     * Run property - Used with AdminPropertyType_DEVICE_REBOOT
+     * </pre>
+     *
      * <code>RUN = 5;</code>
      */
     RUN(5),
@@ -6394,26 +6835,50 @@ public final class EDS10ProtocolBuffer {
     ;
 
     /**
+     * <pre>
+     * Set property
+     * </pre>
+     *
      * <code>SET = 0;</code>
      */
     public static final int SET_VALUE = 0;
     /**
+     * <pre>
+     * Get property
+     * </pre>
+     *
      * <code>GET = 1;</code>
      */
     public static final int GET_VALUE = 1;
     /**
+     * <pre>
+     * Add property - Used with AdminPropertyType_TRIDONIC_MSENSORS to unmute sensors
+     * </pre>
+     *
      * <code>ADD = 2;</code>
      */
     public static final int ADD_VALUE = 2;
     /**
+     * <pre>
+     * Remove property - Used with AdminPropertyType_TRIDONIC_MSENSORS to mute sensors
+     * </pre>
+     *
      * <code>REMOVE = 3;</code>
      */
     public static final int REMOVE_VALUE = 3;
     /**
+     * <pre>
+     * Reset property - Used with AdminPropertyType_TRIDONIC_MSENSORS to reset sensors to default. Used for Memory Reset Commands
+     * </pre>
+     *
      * <code>RESET = 4;</code>
      */
     public static final int RESET_VALUE = 4;
     /**
+     * <pre>
+     * Run property - Used with AdminPropertyType_DEVICE_REBOOT
+     * </pre>
+     *
      * <code>RUN = 5;</code>
      */
     public static final int RUN_VALUE = 5;
@@ -6497,7 +6962,7 @@ public final class EDS10ProtocolBuffer {
 
   /**
    * <pre>
-   * DALI status query response bitmask values
+   * DALI status query response bitmask values - See DALI Standard
    * </pre>
    *
    * Protobuf enum {@code DALIStatusType}
@@ -6677,51 +7142,99 @@ public final class EDS10ProtocolBuffer {
   }
 
   /**
+   * <pre>
+   * DALI Receive Flag 
+   * </pre>
+   *
    * Protobuf enum {@code DALIRXStatusFlag}
    */
   public enum DALIRXStatusFlag
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
+     * <pre>
+     * Internal Idle State - Should not be received
+     * </pre>
+     *
      * <code>WAITING = 0;</code>
      */
     WAITING(0),
     /**
+     * <pre>
+     * DALI Frame being Received
+     * </pre>
+     *
      * <code>RECEIVING_FRAME = 1;</code>
      */
     RECEIVING_FRAME(1),
     /**
+     * <pre>
+     * Frame was recorded - Empty Data
+     * </pre>
+     *
      * <code>NO_RECEIVED_FRAME = 2;</code>
      */
     NO_RECEIVED_FRAME(2),
     /**
+     * <pre>
+     * Frame was recorded - 8 Bit Reply
+     * </pre>
+     *
      * <code>RECEIVED_8_BIT_FRAME = 3;</code>
      */
     RECEIVED_8_BIT_FRAME(3),
     /**
+     * <pre>
+     * Frame was recorded - 16 Bit - Standard Message
+     * </pre>
+     *
      * <code>RECEIVED_16_BIT_FRAME = 4;</code>
      */
     RECEIVED_16_BIT_FRAME(4),
     /**
+     * <pre>
+     * Frame was recorded - 24 Bit - eDALI Message
+     * </pre>
+     *
      * <code>RECEIVED_24_BIT_FRAME = 5;</code>
      */
     RECEIVED_24_BIT_FRAME(5),
     /**
+     * <pre>
+     * Frame was recorded - Unusual Bit count
+     * </pre>
+     *
      * <code>RECEIVED_PARTIAL_FRAME = 6;</code>
      */
     RECEIVED_PARTIAL_FRAME(6),
     /**
+     * <pre>
+     * DALI System Idle
+     * </pre>
+     *
      * <code>IDLE = 7;</code>
      */
     IDLE(7),
     /**
+     * <pre>
+     * Inhouse DALI Calibration
+     * </pre>
+     *
      * <code>CALIBRATION = 8;</code>
      */
     CALIBRATION(8),
     /**
+     * <pre>
+     * Error while trying to Transmit DALI - Possibly no Bus Power
+     * </pre>
+     *
      * <code>ERROR_WHILE_SENDING = 254;</code>
      */
     ERROR_WHILE_SENDING(254),
     /**
+     * <pre>
+     * Error while trying to Receive - Invalid Frame Data, or no response
+     * </pre>
+     *
      * <code>ERROR_WHILE_RECEIVING = 255;</code>
      */
     ERROR_WHILE_RECEIVING(255),
@@ -6729,46 +7242,90 @@ public final class EDS10ProtocolBuffer {
     ;
 
     /**
+     * <pre>
+     * Internal Idle State - Should not be received
+     * </pre>
+     *
      * <code>WAITING = 0;</code>
      */
     public static final int WAITING_VALUE = 0;
     /**
+     * <pre>
+     * DALI Frame being Received
+     * </pre>
+     *
      * <code>RECEIVING_FRAME = 1;</code>
      */
     public static final int RECEIVING_FRAME_VALUE = 1;
     /**
+     * <pre>
+     * Frame was recorded - Empty Data
+     * </pre>
+     *
      * <code>NO_RECEIVED_FRAME = 2;</code>
      */
     public static final int NO_RECEIVED_FRAME_VALUE = 2;
     /**
+     * <pre>
+     * Frame was recorded - 8 Bit Reply
+     * </pre>
+     *
      * <code>RECEIVED_8_BIT_FRAME = 3;</code>
      */
     public static final int RECEIVED_8_BIT_FRAME_VALUE = 3;
     /**
+     * <pre>
+     * Frame was recorded - 16 Bit - Standard Message
+     * </pre>
+     *
      * <code>RECEIVED_16_BIT_FRAME = 4;</code>
      */
     public static final int RECEIVED_16_BIT_FRAME_VALUE = 4;
     /**
+     * <pre>
+     * Frame was recorded - 24 Bit - eDALI Message
+     * </pre>
+     *
      * <code>RECEIVED_24_BIT_FRAME = 5;</code>
      */
     public static final int RECEIVED_24_BIT_FRAME_VALUE = 5;
     /**
+     * <pre>
+     * Frame was recorded - Unusual Bit count
+     * </pre>
+     *
      * <code>RECEIVED_PARTIAL_FRAME = 6;</code>
      */
     public static final int RECEIVED_PARTIAL_FRAME_VALUE = 6;
     /**
+     * <pre>
+     * DALI System Idle
+     * </pre>
+     *
      * <code>IDLE = 7;</code>
      */
     public static final int IDLE_VALUE = 7;
     /**
+     * <pre>
+     * Inhouse DALI Calibration
+     * </pre>
+     *
      * <code>CALIBRATION = 8;</code>
      */
     public static final int CALIBRATION_VALUE = 8;
     /**
+     * <pre>
+     * Error while trying to Transmit DALI - Possibly no Bus Power
+     * </pre>
+     *
      * <code>ERROR_WHILE_SENDING = 254;</code>
      */
     public static final int ERROR_WHILE_SENDING_VALUE = 254;
     /**
+     * <pre>
+     * Error while trying to Receive - Invalid Frame Data, or no response
+     * </pre>
+     *
      * <code>ERROR_WHILE_RECEIVING = 255;</code>
      */
     public static final int ERROR_WHILE_RECEIVING_VALUE = 255;
@@ -6894,7 +7451,7 @@ public final class EDS10ProtocolBuffer {
     DMX_LEVEL_CACHE(3),
     /**
      * <pre>
-     * Can be used to manipulate the "Joined Rooms" state.
+     * DEPRECATED - Can be used to manipulate the "Joined Rooms" state.
      * </pre>
      *
      * <code>ROOM_JOINS = 4;</code>
@@ -6937,7 +7494,7 @@ public final class EDS10ProtocolBuffer {
     public static final int DMX_LEVEL_CACHE_VALUE = 3;
     /**
      * <pre>
-     * Can be used to manipulate the "Joined Rooms" state.
+     * DEPRECATED - Can be used to manipulate the "Joined Rooms" state.
      * </pre>
      *
      * <code>ROOM_JOINS = 4;</code>
@@ -7026,26 +7583,50 @@ public final class EDS10ProtocolBuffer {
   public enum FirmwareCommandType
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
+     * <pre>
+     * System Ready for Firmware Message
+     * </pre>
+     *
      * <code>FW_READY = 0;</code>
      */
     FW_READY(0),
     /**
+     * <pre>
+     * Sent to controller to initiaite a Firmware update
+     * </pre>
+     *
      * <code>FW_APPLY = 1;</code>
      */
     FW_APPLY(1),
     /**
+     * <pre>
+     * Sent to controller to initaite stored Firmware verification
+     * </pre>
+     *
      * <code>FW_VERIFY = 2;</code>
      */
     FW_VERIFY(2),
     /**
+     * <pre>
+     * Received from controller - Issue with stored Firmware
+     * </pre>
+     *
      * <code>FW_VERIFY_FAILED = 3;</code>
      */
     FW_VERIFY_FAILED(3),
     /**
+     * <pre>
+     * Received from controller - Stored Firmware is Valid
+     * </pre>
+     *
      * <code>FW_VERIFY_SUCCESS = 4;</code>
      */
     FW_VERIFY_SUCCESS(4),
     /**
+     * <pre>
+     * Set to controller to request information for currently stored Firmware
+     * </pre>
+     *
      * <code>FW_READ = 5;</code>
      */
     FW_READ(5),
@@ -7053,26 +7634,50 @@ public final class EDS10ProtocolBuffer {
     ;
 
     /**
+     * <pre>
+     * System Ready for Firmware Message
+     * </pre>
+     *
      * <code>FW_READY = 0;</code>
      */
     public static final int FW_READY_VALUE = 0;
     /**
+     * <pre>
+     * Sent to controller to initiaite a Firmware update
+     * </pre>
+     *
      * <code>FW_APPLY = 1;</code>
      */
     public static final int FW_APPLY_VALUE = 1;
     /**
+     * <pre>
+     * Sent to controller to initaite stored Firmware verification
+     * </pre>
+     *
      * <code>FW_VERIFY = 2;</code>
      */
     public static final int FW_VERIFY_VALUE = 2;
     /**
+     * <pre>
+     * Received from controller - Issue with stored Firmware
+     * </pre>
+     *
      * <code>FW_VERIFY_FAILED = 3;</code>
      */
     public static final int FW_VERIFY_FAILED_VALUE = 3;
     /**
+     * <pre>
+     * Received from controller - Stored Firmware is Valid
+     * </pre>
+     *
      * <code>FW_VERIFY_SUCCESS = 4;</code>
      */
     public static final int FW_VERIFY_SUCCESS_VALUE = 4;
     /**
+     * <pre>
+     * Set to controller to request information for currently stored Firmware
+     * </pre>
+     *
      * <code>FW_READ = 5;</code>
      */
     public static final int FW_READ_VALUE = 5;
@@ -7286,6 +7891,10 @@ public final class EDS10ProtocolBuffer {
   }
 
   /**
+   * <pre>
+   * Not Implemented
+   * </pre>
+   *
    * Protobuf enum {@code LogicType}
    */
   public enum LogicType
@@ -7438,6 +8047,10 @@ public final class EDS10ProtocolBuffer {
   }
 
   /**
+   * <pre>
+   * Not Implemented
+   * </pre>
+   *
    * Protobuf enum {@code LogicComparisonType}
    */
   public enum LogicComparisonType
@@ -7839,30 +8452,58 @@ public final class EDS10ProtocolBuffer {
   public enum SystemLogType
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
+     * <pre>
+     * Power Action - System has booted
+     * </pre>
+     *
      * <code>BOOT = 0;</code>
      */
     BOOT(0),
     /**
+     * <pre>
+     * Network Link Achieved/Disconnected
+     * </pre>
+     *
      * <code>NET_LINK = 1;</code>
      */
     NET_LINK(1),
     /**
+     * <pre>
+     * NTP Action
+     * </pre>
+     *
      * <code>NTP = 2;</code>
      */
     NTP(2),
     /**
+     * <pre>
+     * Trigger Action
+     * </pre>
+     *
      * <code>TRIGGER = 3;</code>
      */
     TRIGGER(3),
     /**
+     * <pre>
+     * Spektra Action
+     * </pre>
+     *
      * <code>SPEKTRA = 4;</code>
      */
     SPEKTRA(4),
     /**
+     * <pre>
+     * Alarm Action
+     * </pre>
+     *
      * <code>SCHEDULE = 5;</code>
      */
     SCHEDULE(5),
     /**
+     * <pre>
+     * User has changed Log Level
+     * </pre>
+     *
      * <code>USER = 6;</code>
      */
     USER(6),
@@ -7870,30 +8511,58 @@ public final class EDS10ProtocolBuffer {
     ;
 
     /**
+     * <pre>
+     * Power Action - System has booted
+     * </pre>
+     *
      * <code>BOOT = 0;</code>
      */
     public static final int BOOT_VALUE = 0;
     /**
+     * <pre>
+     * Network Link Achieved/Disconnected
+     * </pre>
+     *
      * <code>NET_LINK = 1;</code>
      */
     public static final int NET_LINK_VALUE = 1;
     /**
+     * <pre>
+     * NTP Action
+     * </pre>
+     *
      * <code>NTP = 2;</code>
      */
     public static final int NTP_VALUE = 2;
     /**
+     * <pre>
+     * Trigger Action
+     * </pre>
+     *
      * <code>TRIGGER = 3;</code>
      */
     public static final int TRIGGER_VALUE = 3;
     /**
+     * <pre>
+     * Spektra Action
+     * </pre>
+     *
      * <code>SPEKTRA = 4;</code>
      */
     public static final int SPEKTRA_VALUE = 4;
     /**
+     * <pre>
+     * Alarm Action
+     * </pre>
+     *
      * <code>SCHEDULE = 5;</code>
      */
     public static final int SCHEDULE_VALUE = 5;
     /**
+     * <pre>
+     * User has changed Log Level
+     * </pre>
+     *
      * <code>USER = 6;</code>
      */
     public static final int USER_VALUE = 6;
@@ -8325,23 +8994,43 @@ public final class EDS10ProtocolBuffer {
   }
 
   /**
+   * <pre>
+   * DALI Response for Addressing Error
+   * </pre>
+   *
    * Protobuf enum {@code DALIAddressingError}
    */
   public enum DALIAddressingError
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
+     * <pre>
+     * Device found and Addressed
+     * </pre>
+     *
      * <code>NO_ERROR = 0;</code>
      */
     NO_ERROR(0),
     /**
+     * <pre>
+     * Device was found, address was set, but verification failed
+     * </pre>
+     *
      * <code>VERIFY = 1;</code>
      */
     VERIFY(1),
     /**
+     * <pre>
+     * Device was found, issue with long address
+     * </pre>
+     *
      * <code>SEARCH = 2;</code>
      */
     SEARCH(2),
     /**
+     * <pre>
+     * No device found
+     * </pre>
+     *
      * <code>NO_NEW_DEVICE = 3;</code>
      */
     NO_NEW_DEVICE(3),
@@ -8349,18 +9038,34 @@ public final class EDS10ProtocolBuffer {
     ;
 
     /**
+     * <pre>
+     * Device found and Addressed
+     * </pre>
+     *
      * <code>NO_ERROR = 0;</code>
      */
     public static final int NO_ERROR_VALUE = 0;
     /**
+     * <pre>
+     * Device was found, address was set, but verification failed
+     * </pre>
+     *
      * <code>VERIFY = 1;</code>
      */
     public static final int VERIFY_VALUE = 1;
     /**
+     * <pre>
+     * Device was found, issue with long address
+     * </pre>
+     *
      * <code>SEARCH = 2;</code>
      */
     public static final int SEARCH_VALUE = 2;
     /**
+     * <pre>
+     * No device found
+     * </pre>
+     *
      * <code>NO_NEW_DEVICE = 3;</code>
      */
     public static final int NO_NEW_DEVICE_VALUE = 3;
@@ -8441,15 +9146,27 @@ public final class EDS10ProtocolBuffer {
   }
 
   /**
+   * <pre>
+   * DALI Addressing Type
+   * </pre>
+   *
    * Protobuf enum {@code DALIAddressingType}
    */
   public enum DALIAddressingType
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
+     * <pre>
+     * Only Address New devices which have their address set to MASK (255)
+     * </pre>
+     *
      * <code>ADDRESS_NEW = 0;</code>
      */
     ADDRESS_NEW(0),
     /**
+     * <pre>
+     * Address everything on the line (Standard or 24 bit) - USE CAREFULLY
+     * </pre>
+     *
      * <code>READDRESS_ALL = 1;</code>
      */
     READDRESS_ALL(1),
@@ -8457,10 +9174,18 @@ public final class EDS10ProtocolBuffer {
     ;
 
     /**
+     * <pre>
+     * Only Address New devices which have their address set to MASK (255)
+     * </pre>
+     *
      * <code>ADDRESS_NEW = 0;</code>
      */
     public static final int ADDRESS_NEW_VALUE = 0;
     /**
+     * <pre>
+     * Address everything on the line (Standard or 24 bit) - USE CAREFULLY
+     * </pre>
+     *
      * <code>READDRESS_ALL = 1;</code>
      */
     public static final int READDRESS_ALL_VALUE = 1;
@@ -9094,6 +9819,10 @@ public final class EDS10ProtocolBuffer {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * Binary Flags set with 0 (FALSE) and 1 (TRUE)
+     * </pre>
+     *
      * <code>uint32 uint_data = 1;</code>
      */
     int getUintData();
@@ -9125,7 +9854,7 @@ public final class EDS10ProtocolBuffer {
   }
   /**
    * <pre>
-   * Contains a payload.
+   * Contains a payload. Used in multiple message types. Incorrect payload type will result in AckMessage Unexpected Type.
    * </pre>
    *
    * Protobuf type {@code PayloadMessage}
@@ -9255,6 +9984,10 @@ public final class EDS10ProtocolBuffer {
 
     public static final int UINT_DATA_FIELD_NUMBER = 1;
     /**
+     * <pre>
+     * Binary Flags set with 0 (FALSE) and 1 (TRUE)
+     * </pre>
+     *
      * <code>uint32 uint_data = 1;</code>
      */
     public int getUintData() {
@@ -9522,7 +10255,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     * Contains a payload.
+     * Contains a payload. Used in multiple message types. Incorrect payload type will result in AckMessage Unexpected Type.
      * </pre>
      *
      * Protobuf type {@code PayloadMessage}
@@ -9710,6 +10443,10 @@ public final class EDS10ProtocolBuffer {
 
 
       /**
+       * <pre>
+       * Binary Flags set with 0 (FALSE) and 1 (TRUE)
+       * </pre>
+       *
        * <code>uint32 uint_data = 1;</code>
        */
       public int getUintData() {
@@ -9719,6 +10456,10 @@ public final class EDS10ProtocolBuffer {
         return 0;
       }
       /**
+       * <pre>
+       * Binary Flags set with 0 (FALSE) and 1 (TRUE)
+       * </pre>
+       *
        * <code>uint32 uint_data = 1;</code>
        */
       public Builder setUintData(int value) {
@@ -9728,6 +10469,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Binary Flags set with 0 (FALSE) and 1 (TRUE)
+       * </pre>
+       *
        * <code>uint32 uint_data = 1;</code>
        */
       public Builder clearUintData() {
@@ -9959,7 +10704,7 @@ public final class EDS10ProtocolBuffer {
   }
   /**
    * <pre>
-   * "Are You There" Message with some supplementary values for debugging
+   * "Are You There" Message with some supplementary values for debugging. "Are you there?" messages should be sent within 20 seconds to maintain a connection. However, any received message will reset this timer.
    * </pre>
    *
    * Protobuf type {@code AytMessage}
@@ -10304,7 +11049,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     * "Are You There" Message with some supplementary values for debugging
+     * "Are You There" Message with some supplementary values for debugging. "Are you there?" messages should be sent within 20 seconds to maintain a connection. However, any received message will reset this timer.
      * </pre>
      *
      * Protobuf type {@code AytMessage}
@@ -13600,7 +14345,7 @@ public final class EDS10ProtocolBuffer {
   }
   /**
    * <pre>
-   * Trigger
+   * Trigger Message Structure. Stores all information for Trigger Type Actions
    * </pre>
    *
    * Protobuf type {@code TriggerMessage}
@@ -14012,7 +14757,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     * Trigger
+     * Trigger Message Structure. Stores all information for Trigger Type Actions
      * </pre>
      *
      * Protobuf type {@code TriggerMessage}
@@ -14522,7 +15267,7 @@ public final class EDS10ProtocolBuffer {
   }
   /**
    * <pre>
-   * Date/Time
+   * Date/Time Message Structure. Year is 0-99. Month is 1 (Jan) - 12 (Dec), Date is day of the month, Day is Weekday with 1 (Monday) - 7 (Sunday)
    * </pre>
    *
    * Protobuf type {@code TimeClockMessage}
@@ -14802,7 +15547,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     * Date/Time
+     * Date/Time Message Structure. Year is 0-99. Month is 1 (Jan) - 12 (Dec), Date is day of the month, Day is Weekday with 1 (Monday) - 7 (Sunday)
      * </pre>
      *
      * Protobuf type {@code TimeClockMessage}
@@ -15118,7 +15863,7 @@ public final class EDS10ProtocolBuffer {
   }
   /**
    * <pre>
-   * Burn In Types
+   * Message to describe the two Burn-In objects
    * </pre>
    *
    * Protobuf type {@code BurnInBitsMessage}
@@ -15428,7 +16173,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     * Burn In Types
+     * Message to describe the two Burn-In objects
      * </pre>
      *
      * Protobuf type {@code BurnInBitsMessage}
@@ -15837,7 +16582,7 @@ public final class EDS10ProtocolBuffer {
   }
   /**
    * <pre>
-   * Inputs
+   * Message to describe the 12 or 24 Physical Inputs. Not sent natively, see InputMultiMessage
    * </pre>
    *
    * Protobuf type {@code IOInputMessage}
@@ -16253,7 +16998,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     * Inputs
+     * Message to describe the 12 or 24 Physical Inputs. Not sent natively, see InputMultiMessage
      * </pre>
      *
      * Protobuf type {@code IOInputMessage}
@@ -16947,7 +17692,7 @@ public final class EDS10ProtocolBuffer {
   }
   /**
    * <pre>
-   * Outputs
+   * Message to describe the 4 or 8 Physical Outputs. Not sent natively, see OutputMultiMessage
    * </pre>
    *
    * Protobuf type {@code IOOutputMessage}
@@ -17299,7 +18044,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     * Outputs
+     * Message to describe the 4 or 8 Physical Outputs. Not sent natively, see OutputMultiMessage
      * </pre>
      *
      * Protobuf type {@code IOOutputMessage}
@@ -17806,7 +18551,7 @@ public final class EDS10ProtocolBuffer {
   }
   /**
    * <pre>
-   * DALI Inputs
+   * Message to describe the (Up to) 40 DALI 2 Input Devices. Not sent natively, see DALIInputMultiMessage
    * </pre>
    *
    * Protobuf type {@code DALIInputMessage}
@@ -18312,7 +19057,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     * DALI Inputs
+     * Message to describe the (Up to) 40 DALI 2 Input Devices. Not sent natively, see DALIInputMultiMessage
      * </pre>
      *
      * Protobuf type {@code DALIInputMessage}
@@ -19117,7 +19862,7 @@ public final class EDS10ProtocolBuffer {
   }
   /**
    * <pre>
-   * IR
+   * Message to describe the Infrared Input (DEPRECATED)
    * </pre>
    *
    * Protobuf type {@code IOIRMessage}
@@ -19439,7 +20184,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     * IR
+     * Message to describe the Infrared Input (DEPRECATED)
      * </pre>
      *
      * Protobuf type {@code IOIRMessage}
@@ -19952,7 +20697,7 @@ public final class EDS10ProtocolBuffer {
 
     /**
      * <pre>
-     * The first Input button used for "Two-Button Programming"
+     * DEPRECATED - The first Input button used for "Two-Button Programming"
      * </pre>
      *
      * <code>uint32 input_1_pm = 14;</code>
@@ -19961,7 +20706,7 @@ public final class EDS10ProtocolBuffer {
 
     /**
      * <pre>
-     * The second Input button used for "Two-Button Programming:
+     * DEPRECATED - The second Input button used for "Two-Button Programming:
      * </pre>
      *
      * <code>uint32 input_2_pm = 15;</code>
@@ -20090,7 +20835,7 @@ public final class EDS10ProtocolBuffer {
   }
   /**
    * <pre>
-   * Sensors
+   * Message to describe the (Up to) 40 DALI 2 Sensors. Not sent natively, see SensorMultiMessage
    * </pre>
    *
    * Protobuf type {@code SensorMessage}
@@ -20495,7 +21240,7 @@ public final class EDS10ProtocolBuffer {
     private int input1Pm_;
     /**
      * <pre>
-     * The first Input button used for "Two-Button Programming"
+     * DEPRECATED - The first Input button used for "Two-Button Programming"
      * </pre>
      *
      * <code>uint32 input_1_pm = 14;</code>
@@ -20508,7 +21253,7 @@ public final class EDS10ProtocolBuffer {
     private int input2Pm_;
     /**
      * <pre>
-     * The second Input button used for "Two-Button Programming:
+     * DEPRECATED - The second Input button used for "Two-Button Programming:
      * </pre>
      *
      * <code>uint32 input_2_pm = 15;</code>
@@ -21097,7 +21842,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     * Sensors
+     * Message to describe the (Up to) 40 DALI 2 Sensors. Not sent natively, see SensorMultiMessage
      * </pre>
      *
      * Protobuf type {@code SensorMessage}
@@ -21899,7 +22644,7 @@ public final class EDS10ProtocolBuffer {
       private int input1Pm_ ;
       /**
        * <pre>
-       * The first Input button used for "Two-Button Programming"
+       * DEPRECATED - The first Input button used for "Two-Button Programming"
        * </pre>
        *
        * <code>uint32 input_1_pm = 14;</code>
@@ -21909,7 +22654,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * The first Input button used for "Two-Button Programming"
+       * DEPRECATED - The first Input button used for "Two-Button Programming"
        * </pre>
        *
        * <code>uint32 input_1_pm = 14;</code>
@@ -21922,7 +22667,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * The first Input button used for "Two-Button Programming"
+       * DEPRECATED - The first Input button used for "Two-Button Programming"
        * </pre>
        *
        * <code>uint32 input_1_pm = 14;</code>
@@ -21937,7 +22682,7 @@ public final class EDS10ProtocolBuffer {
       private int input2Pm_ ;
       /**
        * <pre>
-       * The second Input button used for "Two-Button Programming:
+       * DEPRECATED - The second Input button used for "Two-Button Programming:
        * </pre>
        *
        * <code>uint32 input_2_pm = 15;</code>
@@ -21947,7 +22692,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * The second Input button used for "Two-Button Programming:
+       * DEPRECATED - The second Input button used for "Two-Button Programming:
        * </pre>
        *
        * <code>uint32 input_2_pm = 15;</code>
@@ -21960,7 +22705,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * The second Input button used for "Two-Button Programming:
+       * DEPRECATED - The second Input button used for "Two-Button Programming:
        * </pre>
        *
        * <code>uint32 input_2_pm = 15;</code>
@@ -22678,31 +23423,51 @@ public final class EDS10ProtocolBuffer {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * Index of Step in List
+     * </pre>
+     *
      * <code>uint32 step_index = 1;</code>
      */
     int getStepIndex();
 
     /**
+     * <pre>
+     * Action to perform
+     * </pre>
+     *
      * <code>.TriggerMessage action = 2;</code>
      */
     boolean hasAction();
     /**
+     * <pre>
+     * Action to perform
+     * </pre>
+     *
      * <code>.TriggerMessage action = 2;</code>
      */
     EDS10ProtocolBuffer.TriggerMessage getAction();
     /**
+     * <pre>
+     * Action to perform
+     * </pre>
+     *
      * <code>.TriggerMessage action = 2;</code>
      */
     EDS10ProtocolBuffer.TriggerMessageOrBuilder getActionOrBuilder();
 
     /**
+     * <pre>
+     * Time in seconds between steps, uint16_t value 
+     * </pre>
+     *
      * <code>uint32 time_seconds = 3;</code>
      */
     int getTimeSeconds();
   }
   /**
    * <pre>
-   * List Steps
+   * List Step Structure for List Actions
    * </pre>
    *
    * Protobuf type {@code ListStepMessage}
@@ -22803,6 +23568,10 @@ public final class EDS10ProtocolBuffer {
     public static final int STEP_INDEX_FIELD_NUMBER = 1;
     private int stepIndex_;
     /**
+     * <pre>
+     * Index of Step in List
+     * </pre>
+     *
      * <code>uint32 step_index = 1;</code>
      */
     public int getStepIndex() {
@@ -22812,18 +23581,30 @@ public final class EDS10ProtocolBuffer {
     public static final int ACTION_FIELD_NUMBER = 2;
     private EDS10ProtocolBuffer.TriggerMessage action_;
     /**
+     * <pre>
+     * Action to perform
+     * </pre>
+     *
      * <code>.TriggerMessage action = 2;</code>
      */
     public boolean hasAction() {
       return action_ != null;
     }
     /**
+     * <pre>
+     * Action to perform
+     * </pre>
+     *
      * <code>.TriggerMessage action = 2;</code>
      */
     public EDS10ProtocolBuffer.TriggerMessage getAction() {
       return action_ == null ? EDS10ProtocolBuffer.TriggerMessage.getDefaultInstance() : action_;
     }
     /**
+     * <pre>
+     * Action to perform
+     * </pre>
+     *
      * <code>.TriggerMessage action = 2;</code>
      */
     public EDS10ProtocolBuffer.TriggerMessageOrBuilder getActionOrBuilder() {
@@ -22833,6 +23614,10 @@ public final class EDS10ProtocolBuffer {
     public static final int TIME_SECONDS_FIELD_NUMBER = 3;
     private int timeSeconds_;
     /**
+     * <pre>
+     * Time in seconds between steps, uint16_t value 
+     * </pre>
+     *
      * <code>uint32 time_seconds = 3;</code>
      */
     public int getTimeSeconds() {
@@ -23024,7 +23809,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     * List Steps
+     * List Step Structure for List Actions
      * </pre>
      *
      * Protobuf type {@code ListStepMessage}
@@ -23195,12 +23980,20 @@ public final class EDS10ProtocolBuffer {
 
       private int stepIndex_ ;
       /**
+       * <pre>
+       * Index of Step in List
+       * </pre>
+       *
        * <code>uint32 step_index = 1;</code>
        */
       public int getStepIndex() {
         return stepIndex_;
       }
       /**
+       * <pre>
+       * Index of Step in List
+       * </pre>
+       *
        * <code>uint32 step_index = 1;</code>
        */
       public Builder setStepIndex(int value) {
@@ -23210,6 +24003,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Index of Step in List
+       * </pre>
+       *
        * <code>uint32 step_index = 1;</code>
        */
       public Builder clearStepIndex() {
@@ -23223,12 +24020,20 @@ public final class EDS10ProtocolBuffer {
       private com.google.protobuf.SingleFieldBuilderV3<
           EDS10ProtocolBuffer.TriggerMessage, EDS10ProtocolBuffer.TriggerMessage.Builder, EDS10ProtocolBuffer.TriggerMessageOrBuilder> actionBuilder_;
       /**
+       * <pre>
+       * Action to perform
+       * </pre>
+       *
        * <code>.TriggerMessage action = 2;</code>
        */
       public boolean hasAction() {
         return actionBuilder_ != null || action_ != null;
       }
       /**
+       * <pre>
+       * Action to perform
+       * </pre>
+       *
        * <code>.TriggerMessage action = 2;</code>
        */
       public EDS10ProtocolBuffer.TriggerMessage getAction() {
@@ -23239,6 +24044,10 @@ public final class EDS10ProtocolBuffer {
         }
       }
       /**
+       * <pre>
+       * Action to perform
+       * </pre>
+       *
        * <code>.TriggerMessage action = 2;</code>
        */
       public Builder setAction(EDS10ProtocolBuffer.TriggerMessage value) {
@@ -23255,6 +24064,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Action to perform
+       * </pre>
+       *
        * <code>.TriggerMessage action = 2;</code>
        */
       public Builder setAction(
@@ -23269,6 +24082,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Action to perform
+       * </pre>
+       *
        * <code>.TriggerMessage action = 2;</code>
        */
       public Builder mergeAction(EDS10ProtocolBuffer.TriggerMessage value) {
@@ -23287,6 +24104,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Action to perform
+       * </pre>
+       *
        * <code>.TriggerMessage action = 2;</code>
        */
       public Builder clearAction() {
@@ -23301,6 +24122,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Action to perform
+       * </pre>
+       *
        * <code>.TriggerMessage action = 2;</code>
        */
       public EDS10ProtocolBuffer.TriggerMessage.Builder getActionBuilder() {
@@ -23309,6 +24134,10 @@ public final class EDS10ProtocolBuffer {
         return getActionFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * Action to perform
+       * </pre>
+       *
        * <code>.TriggerMessage action = 2;</code>
        */
       public EDS10ProtocolBuffer.TriggerMessageOrBuilder getActionOrBuilder() {
@@ -23320,6 +24149,10 @@ public final class EDS10ProtocolBuffer {
         }
       }
       /**
+       * <pre>
+       * Action to perform
+       * </pre>
+       *
        * <code>.TriggerMessage action = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -23338,12 +24171,20 @@ public final class EDS10ProtocolBuffer {
 
       private int timeSeconds_ ;
       /**
+       * <pre>
+       * Time in seconds between steps, uint16_t value 
+       * </pre>
+       *
        * <code>uint32 time_seconds = 3;</code>
        */
       public int getTimeSeconds() {
         return timeSeconds_;
       }
       /**
+       * <pre>
+       * Time in seconds between steps, uint16_t value 
+       * </pre>
+       *
        * <code>uint32 time_seconds = 3;</code>
        */
       public Builder setTimeSeconds(int value) {
@@ -23353,6 +24194,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Time in seconds between steps, uint16_t value 
+       * </pre>
+       *
        * <code>uint32 time_seconds = 3;</code>
        */
       public Builder clearTimeSeconds() {
@@ -23419,90 +24264,170 @@ public final class EDS10ProtocolBuffer {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * Alarm Index from 0 - 9
+     * </pre>
+     *
      * <code>uint32 index = 1;</code>
      */
     int getIndex();
 
     /**
+     * <pre>
+     * Enabled Flag - FALSE (0) or TRUE (1)
+     * </pre>
+     *
      * <code>bool enabled = 2;</code>
      */
     boolean getEnabled();
 
     /**
+     * <pre>
+     * Time to Start Action, or Astro Offset
+     * </pre>
+     *
      * <code>.TimeClockMessage start_time = 3;</code>
      */
     boolean hasStartTime();
     /**
+     * <pre>
+     * Time to Start Action, or Astro Offset
+     * </pre>
+     *
      * <code>.TimeClockMessage start_time = 3;</code>
      */
     EDS10ProtocolBuffer.TimeClockMessage getStartTime();
     /**
+     * <pre>
+     * Time to Start Action, or Astro Offset
+     * </pre>
+     *
      * <code>.TimeClockMessage start_time = 3;</code>
      */
     EDS10ProtocolBuffer.TimeClockMessageOrBuilder getStartTimeOrBuilder();
 
     /**
+     * <pre>
+     * Time to Stop Action, or Astro Offset
+     * </pre>
+     *
      * <code>.TimeClockMessage end_time = 4;</code>
      */
     boolean hasEndTime();
     /**
+     * <pre>
+     * Time to Stop Action, or Astro Offset
+     * </pre>
+     *
      * <code>.TimeClockMessage end_time = 4;</code>
      */
     EDS10ProtocolBuffer.TimeClockMessage getEndTime();
     /**
+     * <pre>
+     * Time to Stop Action, or Astro Offset
+     * </pre>
+     *
      * <code>.TimeClockMessage end_time = 4;</code>
      */
     EDS10ProtocolBuffer.TimeClockMessageOrBuilder getEndTimeOrBuilder();
 
     /**
+     * <pre>
+     * Trigger Action to perform at start time
+     * </pre>
+     *
      * <code>.TriggerMessage start_trigger = 5;</code>
      */
     boolean hasStartTrigger();
     /**
+     * <pre>
+     * Trigger Action to perform at start time
+     * </pre>
+     *
      * <code>.TriggerMessage start_trigger = 5;</code>
      */
     EDS10ProtocolBuffer.TriggerMessage getStartTrigger();
     /**
+     * <pre>
+     * Trigger Action to perform at start time
+     * </pre>
+     *
      * <code>.TriggerMessage start_trigger = 5;</code>
      */
     EDS10ProtocolBuffer.TriggerMessageOrBuilder getStartTriggerOrBuilder();
 
     /**
+     * <pre>
+     * Trigger Action to perform at end time
+     * </pre>
+     *
      * <code>.TriggerMessage end_trigger = 6;</code>
      */
     boolean hasEndTrigger();
     /**
+     * <pre>
+     * Trigger Action to perform at end time
+     * </pre>
+     *
      * <code>.TriggerMessage end_trigger = 6;</code>
      */
     EDS10ProtocolBuffer.TriggerMessage getEndTrigger();
     /**
+     * <pre>
+     * Trigger Action to perform at end time
+     * </pre>
+     *
      * <code>.TriggerMessage end_trigger = 6;</code>
      */
     EDS10ProtocolBuffer.TriggerMessageOrBuilder getEndTriggerOrBuilder();
 
     /**
+     * <pre>
+     * Start Time Type
+     * </pre>
+     *
      * <code>.AlarmAstroType astro_start = 7;</code>
      */
     int getAstroStartValue();
     /**
+     * <pre>
+     * Start Time Type
+     * </pre>
+     *
      * <code>.AlarmAstroType astro_start = 7;</code>
      */
     EDS10ProtocolBuffer.AlarmAstroType getAstroStart();
 
     /**
+     * <pre>
+     * End Time Type
+     * </pre>
+     *
      * <code>.AlarmAstroType astro_end = 8;</code>
      */
     int getAstroEndValue();
     /**
+     * <pre>
+     * End Time Type
+     * </pre>
+     *
      * <code>.AlarmAstroType astro_end = 8;</code>
      */
     EDS10ProtocolBuffer.AlarmAstroType getAstroEnd();
 
     /**
+     * <pre>
+     * Alarm Repeat Type
+     * </pre>
+     *
      * <code>.AlarmRepeatType repeat = 9;</code>
      */
     int getRepeatValue();
     /**
+     * <pre>
+     * Alarm Repeat Type
+     * </pre>
+     *
      * <code>.AlarmRepeatType repeat = 9;</code>
      */
     EDS10ProtocolBuffer.AlarmRepeatType getRepeat();
@@ -23554,7 +24479,7 @@ public final class EDS10ProtocolBuffer {
   }
   /**
    * <pre>
-   * Alarms
+   * Message to describe Scheduled Actions. Not sent natively, see AlarmMultiMessage
    * </pre>
    *
    * Protobuf type {@code AlarmMessage}
@@ -23745,6 +24670,10 @@ public final class EDS10ProtocolBuffer {
     public static final int INDEX_FIELD_NUMBER = 1;
     private int index_;
     /**
+     * <pre>
+     * Alarm Index from 0 - 9
+     * </pre>
+     *
      * <code>uint32 index = 1;</code>
      */
     public int getIndex() {
@@ -23754,6 +24683,10 @@ public final class EDS10ProtocolBuffer {
     public static final int ENABLED_FIELD_NUMBER = 2;
     private boolean enabled_;
     /**
+     * <pre>
+     * Enabled Flag - FALSE (0) or TRUE (1)
+     * </pre>
+     *
      * <code>bool enabled = 2;</code>
      */
     public boolean getEnabled() {
@@ -23763,18 +24696,30 @@ public final class EDS10ProtocolBuffer {
     public static final int START_TIME_FIELD_NUMBER = 3;
     private EDS10ProtocolBuffer.TimeClockMessage startTime_;
     /**
+     * <pre>
+     * Time to Start Action, or Astro Offset
+     * </pre>
+     *
      * <code>.TimeClockMessage start_time = 3;</code>
      */
     public boolean hasStartTime() {
       return startTime_ != null;
     }
     /**
+     * <pre>
+     * Time to Start Action, or Astro Offset
+     * </pre>
+     *
      * <code>.TimeClockMessage start_time = 3;</code>
      */
     public EDS10ProtocolBuffer.TimeClockMessage getStartTime() {
       return startTime_ == null ? EDS10ProtocolBuffer.TimeClockMessage.getDefaultInstance() : startTime_;
     }
     /**
+     * <pre>
+     * Time to Start Action, or Astro Offset
+     * </pre>
+     *
      * <code>.TimeClockMessage start_time = 3;</code>
      */
     public EDS10ProtocolBuffer.TimeClockMessageOrBuilder getStartTimeOrBuilder() {
@@ -23784,18 +24729,30 @@ public final class EDS10ProtocolBuffer {
     public static final int END_TIME_FIELD_NUMBER = 4;
     private EDS10ProtocolBuffer.TimeClockMessage endTime_;
     /**
+     * <pre>
+     * Time to Stop Action, or Astro Offset
+     * </pre>
+     *
      * <code>.TimeClockMessage end_time = 4;</code>
      */
     public boolean hasEndTime() {
       return endTime_ != null;
     }
     /**
+     * <pre>
+     * Time to Stop Action, or Astro Offset
+     * </pre>
+     *
      * <code>.TimeClockMessage end_time = 4;</code>
      */
     public EDS10ProtocolBuffer.TimeClockMessage getEndTime() {
       return endTime_ == null ? EDS10ProtocolBuffer.TimeClockMessage.getDefaultInstance() : endTime_;
     }
     /**
+     * <pre>
+     * Time to Stop Action, or Astro Offset
+     * </pre>
+     *
      * <code>.TimeClockMessage end_time = 4;</code>
      */
     public EDS10ProtocolBuffer.TimeClockMessageOrBuilder getEndTimeOrBuilder() {
@@ -23805,18 +24762,30 @@ public final class EDS10ProtocolBuffer {
     public static final int START_TRIGGER_FIELD_NUMBER = 5;
     private EDS10ProtocolBuffer.TriggerMessage startTrigger_;
     /**
+     * <pre>
+     * Trigger Action to perform at start time
+     * </pre>
+     *
      * <code>.TriggerMessage start_trigger = 5;</code>
      */
     public boolean hasStartTrigger() {
       return startTrigger_ != null;
     }
     /**
+     * <pre>
+     * Trigger Action to perform at start time
+     * </pre>
+     *
      * <code>.TriggerMessage start_trigger = 5;</code>
      */
     public EDS10ProtocolBuffer.TriggerMessage getStartTrigger() {
       return startTrigger_ == null ? EDS10ProtocolBuffer.TriggerMessage.getDefaultInstance() : startTrigger_;
     }
     /**
+     * <pre>
+     * Trigger Action to perform at start time
+     * </pre>
+     *
      * <code>.TriggerMessage start_trigger = 5;</code>
      */
     public EDS10ProtocolBuffer.TriggerMessageOrBuilder getStartTriggerOrBuilder() {
@@ -23826,18 +24795,30 @@ public final class EDS10ProtocolBuffer {
     public static final int END_TRIGGER_FIELD_NUMBER = 6;
     private EDS10ProtocolBuffer.TriggerMessage endTrigger_;
     /**
+     * <pre>
+     * Trigger Action to perform at end time
+     * </pre>
+     *
      * <code>.TriggerMessage end_trigger = 6;</code>
      */
     public boolean hasEndTrigger() {
       return endTrigger_ != null;
     }
     /**
+     * <pre>
+     * Trigger Action to perform at end time
+     * </pre>
+     *
      * <code>.TriggerMessage end_trigger = 6;</code>
      */
     public EDS10ProtocolBuffer.TriggerMessage getEndTrigger() {
       return endTrigger_ == null ? EDS10ProtocolBuffer.TriggerMessage.getDefaultInstance() : endTrigger_;
     }
     /**
+     * <pre>
+     * Trigger Action to perform at end time
+     * </pre>
+     *
      * <code>.TriggerMessage end_trigger = 6;</code>
      */
     public EDS10ProtocolBuffer.TriggerMessageOrBuilder getEndTriggerOrBuilder() {
@@ -23847,12 +24828,20 @@ public final class EDS10ProtocolBuffer {
     public static final int ASTRO_START_FIELD_NUMBER = 7;
     private int astroStart_;
     /**
+     * <pre>
+     * Start Time Type
+     * </pre>
+     *
      * <code>.AlarmAstroType astro_start = 7;</code>
      */
     public int getAstroStartValue() {
       return astroStart_;
     }
     /**
+     * <pre>
+     * Start Time Type
+     * </pre>
+     *
      * <code>.AlarmAstroType astro_start = 7;</code>
      */
     public EDS10ProtocolBuffer.AlarmAstroType getAstroStart() {
@@ -23864,12 +24853,20 @@ public final class EDS10ProtocolBuffer {
     public static final int ASTRO_END_FIELD_NUMBER = 8;
     private int astroEnd_;
     /**
+     * <pre>
+     * End Time Type
+     * </pre>
+     *
      * <code>.AlarmAstroType astro_end = 8;</code>
      */
     public int getAstroEndValue() {
       return astroEnd_;
     }
     /**
+     * <pre>
+     * End Time Type
+     * </pre>
+     *
      * <code>.AlarmAstroType astro_end = 8;</code>
      */
     public EDS10ProtocolBuffer.AlarmAstroType getAstroEnd() {
@@ -23881,12 +24878,20 @@ public final class EDS10ProtocolBuffer {
     public static final int REPEAT_FIELD_NUMBER = 9;
     private int repeat_;
     /**
+     * <pre>
+     * Alarm Repeat Type
+     * </pre>
+     *
      * <code>.AlarmRepeatType repeat = 9;</code>
      */
     public int getRepeatValue() {
       return repeat_;
     }
     /**
+     * <pre>
+     * Alarm Repeat Type
+     * </pre>
+     *
      * <code>.AlarmRepeatType repeat = 9;</code>
      */
     public EDS10ProtocolBuffer.AlarmRepeatType getRepeat() {
@@ -24282,7 +25287,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     * Alarms
+     * Message to describe Scheduled Actions. Not sent natively, see AlarmMultiMessage
      * </pre>
      *
      * Protobuf type {@code AlarmMessage}
@@ -24543,12 +25548,20 @@ public final class EDS10ProtocolBuffer {
 
       private int index_ ;
       /**
+       * <pre>
+       * Alarm Index from 0 - 9
+       * </pre>
+       *
        * <code>uint32 index = 1;</code>
        */
       public int getIndex() {
         return index_;
       }
       /**
+       * <pre>
+       * Alarm Index from 0 - 9
+       * </pre>
+       *
        * <code>uint32 index = 1;</code>
        */
       public Builder setIndex(int value) {
@@ -24558,6 +25571,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Alarm Index from 0 - 9
+       * </pre>
+       *
        * <code>uint32 index = 1;</code>
        */
       public Builder clearIndex() {
@@ -24569,12 +25586,20 @@ public final class EDS10ProtocolBuffer {
 
       private boolean enabled_ ;
       /**
+       * <pre>
+       * Enabled Flag - FALSE (0) or TRUE (1)
+       * </pre>
+       *
        * <code>bool enabled = 2;</code>
        */
       public boolean getEnabled() {
         return enabled_;
       }
       /**
+       * <pre>
+       * Enabled Flag - FALSE (0) or TRUE (1)
+       * </pre>
+       *
        * <code>bool enabled = 2;</code>
        */
       public Builder setEnabled(boolean value) {
@@ -24584,6 +25609,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Enabled Flag - FALSE (0) or TRUE (1)
+       * </pre>
+       *
        * <code>bool enabled = 2;</code>
        */
       public Builder clearEnabled() {
@@ -24597,12 +25626,20 @@ public final class EDS10ProtocolBuffer {
       private com.google.protobuf.SingleFieldBuilderV3<
           EDS10ProtocolBuffer.TimeClockMessage, EDS10ProtocolBuffer.TimeClockMessage.Builder, EDS10ProtocolBuffer.TimeClockMessageOrBuilder> startTimeBuilder_;
       /**
+       * <pre>
+       * Time to Start Action, or Astro Offset
+       * </pre>
+       *
        * <code>.TimeClockMessage start_time = 3;</code>
        */
       public boolean hasStartTime() {
         return startTimeBuilder_ != null || startTime_ != null;
       }
       /**
+       * <pre>
+       * Time to Start Action, or Astro Offset
+       * </pre>
+       *
        * <code>.TimeClockMessage start_time = 3;</code>
        */
       public EDS10ProtocolBuffer.TimeClockMessage getStartTime() {
@@ -24613,6 +25650,10 @@ public final class EDS10ProtocolBuffer {
         }
       }
       /**
+       * <pre>
+       * Time to Start Action, or Astro Offset
+       * </pre>
+       *
        * <code>.TimeClockMessage start_time = 3;</code>
        */
       public Builder setStartTime(EDS10ProtocolBuffer.TimeClockMessage value) {
@@ -24629,6 +25670,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Time to Start Action, or Astro Offset
+       * </pre>
+       *
        * <code>.TimeClockMessage start_time = 3;</code>
        */
       public Builder setStartTime(
@@ -24643,6 +25688,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Time to Start Action, or Astro Offset
+       * </pre>
+       *
        * <code>.TimeClockMessage start_time = 3;</code>
        */
       public Builder mergeStartTime(EDS10ProtocolBuffer.TimeClockMessage value) {
@@ -24661,6 +25710,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Time to Start Action, or Astro Offset
+       * </pre>
+       *
        * <code>.TimeClockMessage start_time = 3;</code>
        */
       public Builder clearStartTime() {
@@ -24675,6 +25728,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Time to Start Action, or Astro Offset
+       * </pre>
+       *
        * <code>.TimeClockMessage start_time = 3;</code>
        */
       public EDS10ProtocolBuffer.TimeClockMessage.Builder getStartTimeBuilder() {
@@ -24683,6 +25740,10 @@ public final class EDS10ProtocolBuffer {
         return getStartTimeFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * Time to Start Action, or Astro Offset
+       * </pre>
+       *
        * <code>.TimeClockMessage start_time = 3;</code>
        */
       public EDS10ProtocolBuffer.TimeClockMessageOrBuilder getStartTimeOrBuilder() {
@@ -24694,6 +25755,10 @@ public final class EDS10ProtocolBuffer {
         }
       }
       /**
+       * <pre>
+       * Time to Start Action, or Astro Offset
+       * </pre>
+       *
        * <code>.TimeClockMessage start_time = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -24714,12 +25779,20 @@ public final class EDS10ProtocolBuffer {
       private com.google.protobuf.SingleFieldBuilderV3<
           EDS10ProtocolBuffer.TimeClockMessage, EDS10ProtocolBuffer.TimeClockMessage.Builder, EDS10ProtocolBuffer.TimeClockMessageOrBuilder> endTimeBuilder_;
       /**
+       * <pre>
+       * Time to Stop Action, or Astro Offset
+       * </pre>
+       *
        * <code>.TimeClockMessage end_time = 4;</code>
        */
       public boolean hasEndTime() {
         return endTimeBuilder_ != null || endTime_ != null;
       }
       /**
+       * <pre>
+       * Time to Stop Action, or Astro Offset
+       * </pre>
+       *
        * <code>.TimeClockMessage end_time = 4;</code>
        */
       public EDS10ProtocolBuffer.TimeClockMessage getEndTime() {
@@ -24730,6 +25803,10 @@ public final class EDS10ProtocolBuffer {
         }
       }
       /**
+       * <pre>
+       * Time to Stop Action, or Astro Offset
+       * </pre>
+       *
        * <code>.TimeClockMessage end_time = 4;</code>
        */
       public Builder setEndTime(EDS10ProtocolBuffer.TimeClockMessage value) {
@@ -24746,6 +25823,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Time to Stop Action, or Astro Offset
+       * </pre>
+       *
        * <code>.TimeClockMessage end_time = 4;</code>
        */
       public Builder setEndTime(
@@ -24760,6 +25841,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Time to Stop Action, or Astro Offset
+       * </pre>
+       *
        * <code>.TimeClockMessage end_time = 4;</code>
        */
       public Builder mergeEndTime(EDS10ProtocolBuffer.TimeClockMessage value) {
@@ -24778,6 +25863,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Time to Stop Action, or Astro Offset
+       * </pre>
+       *
        * <code>.TimeClockMessage end_time = 4;</code>
        */
       public Builder clearEndTime() {
@@ -24792,6 +25881,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Time to Stop Action, or Astro Offset
+       * </pre>
+       *
        * <code>.TimeClockMessage end_time = 4;</code>
        */
       public EDS10ProtocolBuffer.TimeClockMessage.Builder getEndTimeBuilder() {
@@ -24800,6 +25893,10 @@ public final class EDS10ProtocolBuffer {
         return getEndTimeFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * Time to Stop Action, or Astro Offset
+       * </pre>
+       *
        * <code>.TimeClockMessage end_time = 4;</code>
        */
       public EDS10ProtocolBuffer.TimeClockMessageOrBuilder getEndTimeOrBuilder() {
@@ -24811,6 +25908,10 @@ public final class EDS10ProtocolBuffer {
         }
       }
       /**
+       * <pre>
+       * Time to Stop Action, or Astro Offset
+       * </pre>
+       *
        * <code>.TimeClockMessage end_time = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -24831,12 +25932,20 @@ public final class EDS10ProtocolBuffer {
       private com.google.protobuf.SingleFieldBuilderV3<
           EDS10ProtocolBuffer.TriggerMessage, EDS10ProtocolBuffer.TriggerMessage.Builder, EDS10ProtocolBuffer.TriggerMessageOrBuilder> startTriggerBuilder_;
       /**
+       * <pre>
+       * Trigger Action to perform at start time
+       * </pre>
+       *
        * <code>.TriggerMessage start_trigger = 5;</code>
        */
       public boolean hasStartTrigger() {
         return startTriggerBuilder_ != null || startTrigger_ != null;
       }
       /**
+       * <pre>
+       * Trigger Action to perform at start time
+       * </pre>
+       *
        * <code>.TriggerMessage start_trigger = 5;</code>
        */
       public EDS10ProtocolBuffer.TriggerMessage getStartTrigger() {
@@ -24847,6 +25956,10 @@ public final class EDS10ProtocolBuffer {
         }
       }
       /**
+       * <pre>
+       * Trigger Action to perform at start time
+       * </pre>
+       *
        * <code>.TriggerMessage start_trigger = 5;</code>
        */
       public Builder setStartTrigger(EDS10ProtocolBuffer.TriggerMessage value) {
@@ -24863,6 +25976,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Trigger Action to perform at start time
+       * </pre>
+       *
        * <code>.TriggerMessage start_trigger = 5;</code>
        */
       public Builder setStartTrigger(
@@ -24877,6 +25994,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Trigger Action to perform at start time
+       * </pre>
+       *
        * <code>.TriggerMessage start_trigger = 5;</code>
        */
       public Builder mergeStartTrigger(EDS10ProtocolBuffer.TriggerMessage value) {
@@ -24895,6 +26016,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Trigger Action to perform at start time
+       * </pre>
+       *
        * <code>.TriggerMessage start_trigger = 5;</code>
        */
       public Builder clearStartTrigger() {
@@ -24909,6 +26034,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Trigger Action to perform at start time
+       * </pre>
+       *
        * <code>.TriggerMessage start_trigger = 5;</code>
        */
       public EDS10ProtocolBuffer.TriggerMessage.Builder getStartTriggerBuilder() {
@@ -24917,6 +26046,10 @@ public final class EDS10ProtocolBuffer {
         return getStartTriggerFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * Trigger Action to perform at start time
+       * </pre>
+       *
        * <code>.TriggerMessage start_trigger = 5;</code>
        */
       public EDS10ProtocolBuffer.TriggerMessageOrBuilder getStartTriggerOrBuilder() {
@@ -24928,6 +26061,10 @@ public final class EDS10ProtocolBuffer {
         }
       }
       /**
+       * <pre>
+       * Trigger Action to perform at start time
+       * </pre>
+       *
        * <code>.TriggerMessage start_trigger = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -24948,12 +26085,20 @@ public final class EDS10ProtocolBuffer {
       private com.google.protobuf.SingleFieldBuilderV3<
           EDS10ProtocolBuffer.TriggerMessage, EDS10ProtocolBuffer.TriggerMessage.Builder, EDS10ProtocolBuffer.TriggerMessageOrBuilder> endTriggerBuilder_;
       /**
+       * <pre>
+       * Trigger Action to perform at end time
+       * </pre>
+       *
        * <code>.TriggerMessage end_trigger = 6;</code>
        */
       public boolean hasEndTrigger() {
         return endTriggerBuilder_ != null || endTrigger_ != null;
       }
       /**
+       * <pre>
+       * Trigger Action to perform at end time
+       * </pre>
+       *
        * <code>.TriggerMessage end_trigger = 6;</code>
        */
       public EDS10ProtocolBuffer.TriggerMessage getEndTrigger() {
@@ -24964,6 +26109,10 @@ public final class EDS10ProtocolBuffer {
         }
       }
       /**
+       * <pre>
+       * Trigger Action to perform at end time
+       * </pre>
+       *
        * <code>.TriggerMessage end_trigger = 6;</code>
        */
       public Builder setEndTrigger(EDS10ProtocolBuffer.TriggerMessage value) {
@@ -24980,6 +26129,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Trigger Action to perform at end time
+       * </pre>
+       *
        * <code>.TriggerMessage end_trigger = 6;</code>
        */
       public Builder setEndTrigger(
@@ -24994,6 +26147,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Trigger Action to perform at end time
+       * </pre>
+       *
        * <code>.TriggerMessage end_trigger = 6;</code>
        */
       public Builder mergeEndTrigger(EDS10ProtocolBuffer.TriggerMessage value) {
@@ -25012,6 +26169,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Trigger Action to perform at end time
+       * </pre>
+       *
        * <code>.TriggerMessage end_trigger = 6;</code>
        */
       public Builder clearEndTrigger() {
@@ -25026,6 +26187,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Trigger Action to perform at end time
+       * </pre>
+       *
        * <code>.TriggerMessage end_trigger = 6;</code>
        */
       public EDS10ProtocolBuffer.TriggerMessage.Builder getEndTriggerBuilder() {
@@ -25034,6 +26199,10 @@ public final class EDS10ProtocolBuffer {
         return getEndTriggerFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * Trigger Action to perform at end time
+       * </pre>
+       *
        * <code>.TriggerMessage end_trigger = 6;</code>
        */
       public EDS10ProtocolBuffer.TriggerMessageOrBuilder getEndTriggerOrBuilder() {
@@ -25045,6 +26214,10 @@ public final class EDS10ProtocolBuffer {
         }
       }
       /**
+       * <pre>
+       * Trigger Action to perform at end time
+       * </pre>
+       *
        * <code>.TriggerMessage end_trigger = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -25063,12 +26236,20 @@ public final class EDS10ProtocolBuffer {
 
       private int astroStart_ = 0;
       /**
+       * <pre>
+       * Start Time Type
+       * </pre>
+       *
        * <code>.AlarmAstroType astro_start = 7;</code>
        */
       public int getAstroStartValue() {
         return astroStart_;
       }
       /**
+       * <pre>
+       * Start Time Type
+       * </pre>
+       *
        * <code>.AlarmAstroType astro_start = 7;</code>
        */
       public Builder setAstroStartValue(int value) {
@@ -25077,6 +26258,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Start Time Type
+       * </pre>
+       *
        * <code>.AlarmAstroType astro_start = 7;</code>
        */
       public EDS10ProtocolBuffer.AlarmAstroType getAstroStart() {
@@ -25085,6 +26270,10 @@ public final class EDS10ProtocolBuffer {
         return result == null ? EDS10ProtocolBuffer.AlarmAstroType.UNRECOGNIZED : result;
       }
       /**
+       * <pre>
+       * Start Time Type
+       * </pre>
+       *
        * <code>.AlarmAstroType astro_start = 7;</code>
        */
       public Builder setAstroStart(EDS10ProtocolBuffer.AlarmAstroType value) {
@@ -25097,6 +26286,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Start Time Type
+       * </pre>
+       *
        * <code>.AlarmAstroType astro_start = 7;</code>
        */
       public Builder clearAstroStart() {
@@ -25108,12 +26301,20 @@ public final class EDS10ProtocolBuffer {
 
       private int astroEnd_ = 0;
       /**
+       * <pre>
+       * End Time Type
+       * </pre>
+       *
        * <code>.AlarmAstroType astro_end = 8;</code>
        */
       public int getAstroEndValue() {
         return astroEnd_;
       }
       /**
+       * <pre>
+       * End Time Type
+       * </pre>
+       *
        * <code>.AlarmAstroType astro_end = 8;</code>
        */
       public Builder setAstroEndValue(int value) {
@@ -25122,6 +26323,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * End Time Type
+       * </pre>
+       *
        * <code>.AlarmAstroType astro_end = 8;</code>
        */
       public EDS10ProtocolBuffer.AlarmAstroType getAstroEnd() {
@@ -25130,6 +26335,10 @@ public final class EDS10ProtocolBuffer {
         return result == null ? EDS10ProtocolBuffer.AlarmAstroType.UNRECOGNIZED : result;
       }
       /**
+       * <pre>
+       * End Time Type
+       * </pre>
+       *
        * <code>.AlarmAstroType astro_end = 8;</code>
        */
       public Builder setAstroEnd(EDS10ProtocolBuffer.AlarmAstroType value) {
@@ -25142,6 +26351,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * End Time Type
+       * </pre>
+       *
        * <code>.AlarmAstroType astro_end = 8;</code>
        */
       public Builder clearAstroEnd() {
@@ -25153,12 +26366,20 @@ public final class EDS10ProtocolBuffer {
 
       private int repeat_ = 0;
       /**
+       * <pre>
+       * Alarm Repeat Type
+       * </pre>
+       *
        * <code>.AlarmRepeatType repeat = 9;</code>
        */
       public int getRepeatValue() {
         return repeat_;
       }
       /**
+       * <pre>
+       * Alarm Repeat Type
+       * </pre>
+       *
        * <code>.AlarmRepeatType repeat = 9;</code>
        */
       public Builder setRepeatValue(int value) {
@@ -25167,6 +26388,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Alarm Repeat Type
+       * </pre>
+       *
        * <code>.AlarmRepeatType repeat = 9;</code>
        */
       public EDS10ProtocolBuffer.AlarmRepeatType getRepeat() {
@@ -25175,6 +26400,10 @@ public final class EDS10ProtocolBuffer {
         return result == null ? EDS10ProtocolBuffer.AlarmRepeatType.UNRECOGNIZED : result;
       }
       /**
+       * <pre>
+       * Alarm Repeat Type
+       * </pre>
+       *
        * <code>.AlarmRepeatType repeat = 9;</code>
        */
       public Builder setRepeat(EDS10ProtocolBuffer.AlarmRepeatType value) {
@@ -25187,6 +26416,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Alarm Repeat Type
+       * </pre>
+       *
        * <code>.AlarmRepeatType repeat = 9;</code>
        */
       public Builder clearRepeat() {
@@ -25487,7 +26720,7 @@ public final class EDS10ProtocolBuffer {
   }
   /**
    * <pre>
-   * Burn_In
+   * Message to describe the two Burn-In Actions. While Burn-In is active, the system will check associated DALI line and group and prevent any action other than 100% or 0%. Any value set over 1% will be forced to 100%. Not sent natively, see BurnInMultiMessage
    * </pre>
    *
    * Protobuf type {@code BurnInMessage}
@@ -25913,7 +27146,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     * Burn_In
+     * Message to describe the two Burn-In Actions. While Burn-In is active, the system will check associated DALI line and group and prevent any action other than 100% or 0%. Any value set over 1% will be forced to 100%. Not sent natively, see BurnInMultiMessage
      * </pre>
      *
      * Protobuf type {@code BurnInMessage}
@@ -26461,6 +27694,10 @@ public final class EDS10ProtocolBuffer {
     EDS10ProtocolBuffer.TriggerMessageOrBuilder getTriggerOrBuilder();
   }
   /**
+   * <pre>
+   * This message will allow an externally connected device to send a Trigger action
+   * </pre>
+   *
    * Protobuf type {@code ExternalTriggerMessage}
    */
   public  static final class ExternalTriggerMessage extends
@@ -26739,6 +27976,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * This message will allow an externally connected device to send a Trigger action
+     * </pre>
+     *
      * Protobuf type {@code ExternalTriggerMessage}
      */
     public static final class Builder extends
@@ -27132,6 +28373,10 @@ public final class EDS10ProtocolBuffer {
         int index);
   }
   /**
+   * <pre>
+   * Message used to send all Physical Inputs, for a specific profile
+   * </pre>
+   *
    * Protobuf type {@code InputMultiMessage}
    */
   public  static final class InputMultiMessage extends
@@ -27436,6 +28681,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message used to send all Physical Inputs, for a specific profile
+     * </pre>
+     *
      * Protobuf type {@code InputMultiMessage}
      */
     public static final class Builder extends
@@ -27980,6 +29229,10 @@ public final class EDS10ProtocolBuffer {
         int index);
   }
   /**
+   * <pre>
+   * Message used to send all Outputs, for a specific profile
+   * </pre>
+   *
    * Protobuf type {@code OutputMultiMessage}
    */
   public  static final class OutputMultiMessage extends
@@ -28284,6 +29537,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message used to send all Outputs, for a specific profile
+     * </pre>
+     *
      * Protobuf type {@code OutputMultiMessage}
      */
     public static final class Builder extends
@@ -28837,6 +30094,10 @@ public final class EDS10ProtocolBuffer {
         int index);
   }
   /**
+   * <pre>
+   * Message used to send all DALI Inputs, for a specific profile
+   * </pre>
+   *
    * Protobuf type {@code DALIInputMultiMessage}
    */
   public  static final class DALIInputMultiMessage extends
@@ -29171,6 +30432,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message used to send all DALI Inputs, for a specific profile
+     * </pre>
+     *
      * Protobuf type {@code DALIInputMultiMessage}
      */
     public static final class Builder extends
@@ -29759,6 +31024,10 @@ public final class EDS10ProtocolBuffer {
         int index);
   }
   /**
+   * <pre>
+   * DEPRECATED
+   * </pre>
+   *
    * Protobuf type {@code IRMultiMessage}
    */
   public  static final class IRMultiMessage extends
@@ -30063,6 +31332,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * DEPRECATED
+     * </pre>
+     *
      * Protobuf type {@code IRMultiMessage}
      */
     public static final class Builder extends
@@ -30645,6 +31918,10 @@ public final class EDS10ProtocolBuffer {
     int getTotalStepCount();
   }
   /**
+   * <pre>
+   * Message used to send a List. If more than 32 steps in the list, the ExtendedListMessage is used repeatedly to send the remainder.
+   * </pre>
+   *
    * Protobuf type {@code ListMessage}
    */
   public  static final class ListMessage extends
@@ -31029,6 +32306,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message used to send a List. If more than 32 steps in the list, the ExtendedListMessage is used repeatedly to send the remainder.
+     * </pre>
+     *
      * Protobuf type {@code ListMessage}
      */
     public static final class Builder extends
@@ -32687,6 +33968,10 @@ public final class EDS10ProtocolBuffer {
         int index);
   }
   /**
+   * <pre>
+   * Message used to send the Alarms
+   * </pre>
+   *
    * Protobuf type {@code AlarmMultiMessage}
    */
   public  static final class AlarmMultiMessage extends
@@ -32964,6 +34249,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message used to send the Alarms
+     * </pre>
+     *
      * Protobuf type {@code AlarmMultiMessage}
      */
     public static final class Builder extends
@@ -33469,6 +34758,10 @@ public final class EDS10ProtocolBuffer {
         int index);
   }
   /**
+   * <pre>
+   * Message used to send the Burn-Ins
+   * </pre>
+   *
    * Protobuf type {@code BurnInMultiMessage}
    */
   public  static final class BurnInMultiMessage extends
@@ -33746,6 +35039,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message used to send the Burn-Ins
+     * </pre>
+     *
      * Protobuf type {@code BurnInMultiMessage}
      */
     public static final class Builder extends
@@ -34338,6 +35635,10 @@ public final class EDS10ProtocolBuffer {
     EDS10ProtocolBuffer.TriggerMessageOrBuilder getActionBOrBuilder();
   }
   /**
+   * <pre>
+   * Not Currently Implemented
+   * </pre>
+   *
    * Protobuf type {@code LogicMessage}
    */
   public  static final class LogicMessage extends
@@ -34865,6 +36166,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Not Currently Implemented
+     * </pre>
+     *
      * Protobuf type {@code LogicMessage}
      */
     public static final class Builder extends
@@ -35766,6 +37071,10 @@ public final class EDS10ProtocolBuffer {
         int index);
   }
   /**
+   * <pre>
+   * Not Currently Implemented
+   * </pre>
+   *
    * Protobuf type {@code LogicMultiMessage}
    */
   public  static final class LogicMultiMessage extends
@@ -36043,6 +37352,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Not Currently Implemented
+     * </pre>
+     *
      * Protobuf type {@code LogicMultiMessage}
      */
     public static final class Builder extends
@@ -36548,7 +37861,7 @@ public final class EDS10ProtocolBuffer {
   }
   /**
    * <pre>
-   *********** SYSTEM MESSAGES ******
+   * Message used to send specific sensor commands, such as Mute, Unmute and Override. Mute will stop the sensor from talking until; Unmute, Device Reset, Profile Change, or Program. Override will prevent the sensor from changing the currently selected level until it has timed-out
    * </pre>
    *
    * Protobuf type {@code SensorCommandMessage}
@@ -36858,7 +38171,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     *********** SYSTEM MESSAGES ******
+     * Message used to send specific sensor commands, such as Mute, Unmute and Override. Mute will stop the sensor from talking until; Unmute, Device Reset, Profile Change, or Program. Override will prevent the sensor from changing the currently selected level until it has timed-out
      * </pre>
      *
      * Protobuf type {@code SensorCommandMessage}
@@ -37190,6 +38503,10 @@ public final class EDS10ProtocolBuffer {
     int getProfile();
   }
   /**
+   * <pre>
+   * Message used to change Profiles. Note that changing the profile will cause the sensors to reset
+   * </pre>
+   *
    * Protobuf type {@code ChangeProfileMessage}
    */
   public  static final class ChangeProfileMessage extends
@@ -37432,6 +38749,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message used to change Profiles. Note that changing the profile will cause the sensors to reset
+     * </pre>
+     *
      * Protobuf type {@code ChangeProfileMessage}
      */
     public static final class Builder extends
@@ -37671,6 +38992,10 @@ public final class EDS10ProtocolBuffer {
     long getIP();
   }
   /**
+   * <pre>
+   * Message used to show information on screen to aid with physical indentification
+   * </pre>
+   *
    * Protobuf type {@code IdentifyMessage}
    */
   public  static final class IdentifyMessage extends
@@ -37941,6 +39266,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message used to show information on screen to aid with physical indentification
+     * </pre>
+     *
      * Protobuf type {@code IdentifyMessage}
      */
     public static final class Builder extends
@@ -38215,6 +39544,10 @@ public final class EDS10ProtocolBuffer {
     EDS10ProtocolBuffer.TimeClockMessageOrBuilder getTimeOrBuilder();
   }
   /**
+   * <pre>
+   * Message to update the device time. Message will be affected by Day Light Savings (If selected) and will refresh currently selected schedules
+   * </pre>
+   *
    * Protobuf type {@code UpdateTimeMessage}
    */
   public  static final class UpdateTimeMessage extends
@@ -38481,6 +39814,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message to update the device time. Message will be affected by Day Light Savings (If selected) and will refresh currently selected schedules
+     * </pre>
+     *
      * Protobuf type {@code UpdateTimeMessage}
      */
     public static final class Builder extends
@@ -38837,6 +40174,10 @@ public final class EDS10ProtocolBuffer {
     int getSecondaryIndex();
   }
   /**
+   * <pre>
+   * Message used to request device information, such as inputs, lists, sensors, etc
+   * </pre>
+   *
    * Protobuf type {@code ReadDeviceMessage}
    */
   public  static final class ReadDeviceMessage extends
@@ -39169,6 +40510,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message used to request device information, such as inputs, lists, sensors, etc
+     * </pre>
+     *
      * Protobuf type {@code ReadDeviceMessage}
      */
     public static final class Builder extends
@@ -39543,6 +40888,10 @@ public final class EDS10ProtocolBuffer {
         getPayloadBytes();
   }
   /**
+   * <pre>
+   * Message used to send a secure login settings message. AES Encryption Required
+   * </pre>
+   *
    * Protobuf type {@code SecureDeviceSettingsMessage}
    */
   public  static final class SecureDeviceSettingsMessage extends
@@ -39818,6 +41167,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message used to send a secure login settings message. AES Encryption Required
+     * </pre>
+     *
      * Protobuf type {@code SecureDeviceSettingsMessage}
      */
     public static final class Builder extends
@@ -40112,7 +41465,7 @@ public final class EDS10ProtocolBuffer {
 
     /**
      * <pre>
-     * For DALI, you can use 2 bytes, for eDALI 3...
+     * For DALI, you can use 2 bytes, for eDALI 3. Format - DTR0 | DTR1 &lt;&lt; 8 | DTR2 &lt;&lt; 16
      * </pre>
      *
      * <code>repeated uint32 dtr = 1;</code>
@@ -40120,7 +41473,7 @@ public final class EDS10ProtocolBuffer {
     java.util.List<java.lang.Integer> getDtrList();
     /**
      * <pre>
-     * For DALI, you can use 2 bytes, for eDALI 3...
+     * For DALI, you can use 2 bytes, for eDALI 3. Format - DTR0 | DTR1 &lt;&lt; 8 | DTR2 &lt;&lt; 16
      * </pre>
      *
      * <code>repeated uint32 dtr = 1;</code>
@@ -40128,7 +41481,7 @@ public final class EDS10ProtocolBuffer {
     int getDtrCount();
     /**
      * <pre>
-     * For DALI, you can use 2 bytes, for eDALI 3...
+     * For DALI, you can use 2 bytes, for eDALI 3. Format - DTR0 | DTR1 &lt;&lt; 8 | DTR2 &lt;&lt; 16
      * </pre>
      *
      * <code>repeated uint32 dtr = 1;</code>
@@ -40137,7 +41490,7 @@ public final class EDS10ProtocolBuffer {
   }
   /**
    * <pre>
-   ************ DALI MESSAGES ***********
+   * DALI DTR Message structure. 
    * </pre>
    *
    * Protobuf type {@code DTRPayloadMessage}
@@ -40239,7 +41592,7 @@ public final class EDS10ProtocolBuffer {
     private java.util.List<java.lang.Integer> dtr_;
     /**
      * <pre>
-     * For DALI, you can use 2 bytes, for eDALI 3...
+     * For DALI, you can use 2 bytes, for eDALI 3. Format - DTR0 | DTR1 &lt;&lt; 8 | DTR2 &lt;&lt; 16
      * </pre>
      *
      * <code>repeated uint32 dtr = 1;</code>
@@ -40250,7 +41603,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     * For DALI, you can use 2 bytes, for eDALI 3...
+     * For DALI, you can use 2 bytes, for eDALI 3. Format - DTR0 | DTR1 &lt;&lt; 8 | DTR2 &lt;&lt; 16
      * </pre>
      *
      * <code>repeated uint32 dtr = 1;</code>
@@ -40260,7 +41613,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     * For DALI, you can use 2 bytes, for eDALI 3...
+     * For DALI, you can use 2 bytes, for eDALI 3. Format - DTR0 | DTR1 &lt;&lt; 8 | DTR2 &lt;&lt; 16
      * </pre>
      *
      * <code>repeated uint32 dtr = 1;</code>
@@ -40445,7 +41798,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     ************ DALI MESSAGES ***********
+     * DALI DTR Message structure. 
      * </pre>
      *
      * Protobuf type {@code DTRPayloadMessage}
@@ -40616,7 +41969,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * For DALI, you can use 2 bytes, for eDALI 3...
+       * For DALI, you can use 2 bytes, for eDALI 3. Format - DTR0 | DTR1 &lt;&lt; 8 | DTR2 &lt;&lt; 16
        * </pre>
        *
        * <code>repeated uint32 dtr = 1;</code>
@@ -40627,7 +41980,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * For DALI, you can use 2 bytes, for eDALI 3...
+       * For DALI, you can use 2 bytes, for eDALI 3. Format - DTR0 | DTR1 &lt;&lt; 8 | DTR2 &lt;&lt; 16
        * </pre>
        *
        * <code>repeated uint32 dtr = 1;</code>
@@ -40637,7 +41990,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * For DALI, you can use 2 bytes, for eDALI 3...
+       * For DALI, you can use 2 bytes, for eDALI 3. Format - DTR0 | DTR1 &lt;&lt; 8 | DTR2 &lt;&lt; 16
        * </pre>
        *
        * <code>repeated uint32 dtr = 1;</code>
@@ -40647,7 +42000,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * For DALI, you can use 2 bytes, for eDALI 3...
+       * For DALI, you can use 2 bytes, for eDALI 3. Format - DTR0 | DTR1 &lt;&lt; 8 | DTR2 &lt;&lt; 16
        * </pre>
        *
        * <code>repeated uint32 dtr = 1;</code>
@@ -40661,7 +42014,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * For DALI, you can use 2 bytes, for eDALI 3...
+       * For DALI, you can use 2 bytes, for eDALI 3. Format - DTR0 | DTR1 &lt;&lt; 8 | DTR2 &lt;&lt; 16
        * </pre>
        *
        * <code>repeated uint32 dtr = 1;</code>
@@ -40674,7 +42027,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * For DALI, you can use 2 bytes, for eDALI 3...
+       * For DALI, you can use 2 bytes, for eDALI 3. Format - DTR0 | DTR1 &lt;&lt; 8 | DTR2 &lt;&lt; 16
        * </pre>
        *
        * <code>repeated uint32 dtr = 1;</code>
@@ -40689,7 +42042,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * For DALI, you can use 2 bytes, for eDALI 3...
+       * For DALI, you can use 2 bytes, for eDALI 3. Format - DTR0 | DTR1 &lt;&lt; 8 | DTR2 &lt;&lt; 16
        * </pre>
        *
        * <code>repeated uint32 dtr = 1;</code>
@@ -40759,7 +42112,7 @@ public final class EDS10ProtocolBuffer {
 
     /**
      * <pre>
-     * Binary mask; e.g. selecting line 1 out of 4 looks like 0b0001
+     * Binary mask; e.g. selecting line 1 out of 4 looks like 0b0001. For non queries, line_mask can contain multiple valid lines
      * </pre>
      *
      * <code>uint32 line_mask = 1;</code>
@@ -40952,6 +42305,10 @@ public final class EDS10ProtocolBuffer {
     public EDS10ProtocolBuffer.DALIMessage.ParamsCase getParamsCase();
   }
   /**
+   * <pre>
+   * Message to send a DALI command using various DALI frame types.
+   * </pre>
+   *
    * Protobuf type {@code DALIMessage}
    */
   public  static final class DALIMessage extends
@@ -41233,7 +42590,7 @@ public final class EDS10ProtocolBuffer {
     private int lineMask_;
     /**
      * <pre>
-     * Binary mask; e.g. selecting line 1 out of 4 looks like 0b0001
+     * Binary mask; e.g. selecting line 1 out of 4 looks like 0b0001. For non queries, line_mask can contain multiple valid lines
      * </pre>
      *
      * <code>uint32 line_mask = 1;</code>
@@ -42016,6 +43373,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message to send a DALI command using various DALI frame types.
+     * </pre>
+     *
      * Protobuf type {@code DALIMessage}
      */
     public static final class Builder extends
@@ -42331,7 +43692,7 @@ public final class EDS10ProtocolBuffer {
       private int lineMask_ ;
       /**
        * <pre>
-       * Binary mask; e.g. selecting line 1 out of 4 looks like 0b0001
+       * Binary mask; e.g. selecting line 1 out of 4 looks like 0b0001. For non queries, line_mask can contain multiple valid lines
        * </pre>
        *
        * <code>uint32 line_mask = 1;</code>
@@ -42341,7 +43702,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * Binary mask; e.g. selecting line 1 out of 4 looks like 0b0001
+       * Binary mask; e.g. selecting line 1 out of 4 looks like 0b0001. For non queries, line_mask can contain multiple valid lines
        * </pre>
        *
        * <code>uint32 line_mask = 1;</code>
@@ -42354,7 +43715,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * Binary mask; e.g. selecting line 1 out of 4 looks like 0b0001
+       * Binary mask; e.g. selecting line 1 out of 4 looks like 0b0001. For non queries, line_mask can contain multiple valid lines
        * </pre>
        *
        * <code>uint32 line_mask = 1;</code>
@@ -43387,6 +44748,10 @@ public final class EDS10ProtocolBuffer {
     int getFlagsValue(int index);
   }
   /**
+   * <pre>
+   * Message reply for DALI Status Flag
+   * </pre>
+   *
    * Protobuf type {@code DALIStatusFlagMessage}
    */
   public  static final class DALIStatusFlagMessage extends
@@ -43701,6 +45066,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message reply for DALI Status Flag
+     * </pre>
+     *
      * Protobuf type {@code DALIStatusFlagMessage}
      */
     public static final class Builder extends
@@ -45354,6 +46723,10 @@ public final class EDS10ProtocolBuffer {
     int getIndex();
   }
   /**
+   * <pre>
+   * Message to invoke DALI Addressing
+   * </pre>
+   *
    * Protobuf type {@code DALIAddressingMessage}
    */
   public  static final class DALIAddressingMessage extends
@@ -45776,6 +47149,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message to invoke DALI Addressing
+     * </pre>
+     *
      * Protobuf type {@code DALIAddressingMessage}
      */
     public static final class Builder extends
@@ -46291,26 +47668,46 @@ public final class EDS10ProtocolBuffer {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * DALI Address to change
+     * </pre>
+     *
      * <code>uint32 from_address = 1;</code>
      */
     int getFromAddress();
 
     /**
+     * <pre>
+     * New address for device. If populated, this address will change to the from_address
+     * </pre>
+     *
      * <code>uint32 to_address = 2;</code>
      */
     int getToAddress();
 
     /**
+     * <pre>
+     * Affected DALI Line
+     * </pre>
+     *
      * <code>uint32 line_mask = 3;</code>
      */
     int getLineMask();
 
     /**
+     * <pre>
+     * 24 bit DALI (TRUE) or Standard (FALSE)
+     * </pre>
+     *
      * <code>bool is24Bit = 4;</code>
      */
     boolean getIs24Bit();
   }
   /**
+   * <pre>
+   * Message to invoke DALI remapping
+   * </pre>
+   *
    * Protobuf type {@code DALIRemappingMessage}
    */
   public  static final class DALIRemappingMessage extends
@@ -46408,6 +47805,10 @@ public final class EDS10ProtocolBuffer {
     public static final int FROM_ADDRESS_FIELD_NUMBER = 1;
     private int fromAddress_;
     /**
+     * <pre>
+     * DALI Address to change
+     * </pre>
+     *
      * <code>uint32 from_address = 1;</code>
      */
     public int getFromAddress() {
@@ -46417,6 +47818,10 @@ public final class EDS10ProtocolBuffer {
     public static final int TO_ADDRESS_FIELD_NUMBER = 2;
     private int toAddress_;
     /**
+     * <pre>
+     * New address for device. If populated, this address will change to the from_address
+     * </pre>
+     *
      * <code>uint32 to_address = 2;</code>
      */
     public int getToAddress() {
@@ -46426,6 +47831,10 @@ public final class EDS10ProtocolBuffer {
     public static final int LINE_MASK_FIELD_NUMBER = 3;
     private int lineMask_;
     /**
+     * <pre>
+     * Affected DALI Line
+     * </pre>
+     *
      * <code>uint32 line_mask = 3;</code>
      */
     public int getLineMask() {
@@ -46435,6 +47844,10 @@ public final class EDS10ProtocolBuffer {
     public static final int IS24BIT_FIELD_NUMBER = 4;
     private boolean is24Bit_;
     /**
+     * <pre>
+     * 24 bit DALI (TRUE) or Standard (FALSE)
+     * </pre>
+     *
      * <code>bool is24Bit = 4;</code>
      */
     public boolean getIs24Bit() {
@@ -46632,6 +48045,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message to invoke DALI remapping
+     * </pre>
+     *
      * Protobuf type {@code DALIRemappingMessage}
      */
     public static final class Builder extends
@@ -46798,12 +48215,20 @@ public final class EDS10ProtocolBuffer {
 
       private int fromAddress_ ;
       /**
+       * <pre>
+       * DALI Address to change
+       * </pre>
+       *
        * <code>uint32 from_address = 1;</code>
        */
       public int getFromAddress() {
         return fromAddress_;
       }
       /**
+       * <pre>
+       * DALI Address to change
+       * </pre>
+       *
        * <code>uint32 from_address = 1;</code>
        */
       public Builder setFromAddress(int value) {
@@ -46813,6 +48238,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * DALI Address to change
+       * </pre>
+       *
        * <code>uint32 from_address = 1;</code>
        */
       public Builder clearFromAddress() {
@@ -46824,12 +48253,20 @@ public final class EDS10ProtocolBuffer {
 
       private int toAddress_ ;
       /**
+       * <pre>
+       * New address for device. If populated, this address will change to the from_address
+       * </pre>
+       *
        * <code>uint32 to_address = 2;</code>
        */
       public int getToAddress() {
         return toAddress_;
       }
       /**
+       * <pre>
+       * New address for device. If populated, this address will change to the from_address
+       * </pre>
+       *
        * <code>uint32 to_address = 2;</code>
        */
       public Builder setToAddress(int value) {
@@ -46839,6 +48276,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * New address for device. If populated, this address will change to the from_address
+       * </pre>
+       *
        * <code>uint32 to_address = 2;</code>
        */
       public Builder clearToAddress() {
@@ -46850,12 +48291,20 @@ public final class EDS10ProtocolBuffer {
 
       private int lineMask_ ;
       /**
+       * <pre>
+       * Affected DALI Line
+       * </pre>
+       *
        * <code>uint32 line_mask = 3;</code>
        */
       public int getLineMask() {
         return lineMask_;
       }
       /**
+       * <pre>
+       * Affected DALI Line
+       * </pre>
+       *
        * <code>uint32 line_mask = 3;</code>
        */
       public Builder setLineMask(int value) {
@@ -46865,6 +48314,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Affected DALI Line
+       * </pre>
+       *
        * <code>uint32 line_mask = 3;</code>
        */
       public Builder clearLineMask() {
@@ -46876,12 +48329,20 @@ public final class EDS10ProtocolBuffer {
 
       private boolean is24Bit_ ;
       /**
+       * <pre>
+       * 24 bit DALI (TRUE) or Standard (FALSE)
+       * </pre>
+       *
        * <code>bool is24Bit = 4;</code>
        */
       public boolean getIs24Bit() {
         return is24Bit_;
       }
       /**
+       * <pre>
+       * 24 bit DALI (TRUE) or Standard (FALSE)
+       * </pre>
+       *
        * <code>bool is24Bit = 4;</code>
        */
       public Builder setIs24Bit(boolean value) {
@@ -46891,6 +48352,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * 24 bit DALI (TRUE) or Standard (FALSE)
+       * </pre>
+       *
        * <code>bool is24Bit = 4;</code>
        */
       public Builder clearIs24Bit() {
@@ -46967,7 +48432,7 @@ public final class EDS10ProtocolBuffer {
 
     /**
      * <pre>
-     * Which DMX Universes to apply the values to. Specified as a binary mask.
+     * Which DMX Universes to apply the values to. Specified as a binary mask. Can be sent to multiple.
      * </pre>
      *
      * <code>uint32 universe_mask = 2;</code>
@@ -47016,7 +48481,7 @@ public final class EDS10ProtocolBuffer {
   }
   /**
    * <pre>
-   ************* DMX MESSAGES ************
+   * Message to send DMX on requested DMX line(s)
    * </pre>
    *
    * Protobuf type {@code DMXMessage}
@@ -47162,7 +48627,7 @@ public final class EDS10ProtocolBuffer {
     private int universeMask_;
     /**
      * <pre>
-     * Which DMX Universes to apply the values to. Specified as a binary mask.
+     * Which DMX Universes to apply the values to. Specified as a binary mask. Can be sent to multiple.
      * </pre>
      *
      * <code>uint32 universe_mask = 2;</code>
@@ -47463,7 +48928,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     ************* DMX MESSAGES ************
+     * Message to send DMX on requested DMX line(s)
      * </pre>
      *
      * Protobuf type {@code DMXMessage}
@@ -47698,7 +49163,7 @@ public final class EDS10ProtocolBuffer {
       private int universeMask_ ;
       /**
        * <pre>
-       * Which DMX Universes to apply the values to. Specified as a binary mask.
+       * Which DMX Universes to apply the values to. Specified as a binary mask. Can be sent to multiple.
        * </pre>
        *
        * <code>uint32 universe_mask = 2;</code>
@@ -47708,7 +49173,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * Which DMX Universes to apply the values to. Specified as a binary mask.
+       * Which DMX Universes to apply the values to. Specified as a binary mask. Can be sent to multiple.
        * </pre>
        *
        * <code>uint32 universe_mask = 2;</code>
@@ -47721,7 +49186,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * Which DMX Universes to apply the values to. Specified as a binary mask.
+       * Which DMX Universes to apply the values to. Specified as a binary mask. Can be sent to multiple.
        * </pre>
        *
        * <code>uint32 universe_mask = 2;</code>
@@ -47970,16 +49435,28 @@ public final class EDS10ProtocolBuffer {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * Universe Mask - Must be a single universe.
+     * </pre>
+     *
      * <code>uint32 universe_mask = 1;</code>
      */
     int getUniverseMask();
 
     /**
+     * <pre>
+     * UID of device to send the message to. Can be Multi/Broadcast
+     * </pre>
+     *
      * <code>uint64 uid = 2;</code>
      */
     long getUid();
 
     /**
+     * <pre>
+     * RDM PID - See Standard
+     * </pre>
+     *
      * <code>uint32 pid = 3;</code>
      */
     int getPid();
@@ -47994,19 +49471,35 @@ public final class EDS10ProtocolBuffer {
     int getGetset();
 
     /**
+     * <pre>
+     * Length of Data to send
+     * </pre>
+     *
      * <code>uint32 datalength = 5;</code>
      */
     int getDatalength();
 
     /**
+     * <pre>
+     * Data
+     * </pre>
+     *
      * <code>repeated uint32 data = 6;</code>
      */
     java.util.List<java.lang.Integer> getDataList();
     /**
+     * <pre>
+     * Data
+     * </pre>
+     *
      * <code>repeated uint32 data = 6;</code>
      */
     int getDataCount();
     /**
+     * <pre>
+     * Data
+     * </pre>
+     *
      * <code>repeated uint32 data = 6;</code>
      */
     int getData(int index);
@@ -48145,6 +49638,10 @@ public final class EDS10ProtocolBuffer {
     public static final int UNIVERSE_MASK_FIELD_NUMBER = 1;
     private int universeMask_;
     /**
+     * <pre>
+     * Universe Mask - Must be a single universe.
+     * </pre>
+     *
      * <code>uint32 universe_mask = 1;</code>
      */
     public int getUniverseMask() {
@@ -48154,6 +49651,10 @@ public final class EDS10ProtocolBuffer {
     public static final int UID_FIELD_NUMBER = 2;
     private long uid_;
     /**
+     * <pre>
+     * UID of device to send the message to. Can be Multi/Broadcast
+     * </pre>
+     *
      * <code>uint64 uid = 2;</code>
      */
     public long getUid() {
@@ -48163,6 +49664,10 @@ public final class EDS10ProtocolBuffer {
     public static final int PID_FIELD_NUMBER = 3;
     private int pid_;
     /**
+     * <pre>
+     * RDM PID - See Standard
+     * </pre>
+     *
      * <code>uint32 pid = 3;</code>
      */
     public int getPid() {
@@ -48185,6 +49690,10 @@ public final class EDS10ProtocolBuffer {
     public static final int DATALENGTH_FIELD_NUMBER = 5;
     private int datalength_;
     /**
+     * <pre>
+     * Length of Data to send
+     * </pre>
+     *
      * <code>uint32 datalength = 5;</code>
      */
     public int getDatalength() {
@@ -48194,6 +49703,10 @@ public final class EDS10ProtocolBuffer {
     public static final int DATA_FIELD_NUMBER = 6;
     private java.util.List<java.lang.Integer> data_;
     /**
+     * <pre>
+     * Data
+     * </pre>
+     *
      * <code>repeated uint32 data = 6;</code>
      */
     public java.util.List<java.lang.Integer>
@@ -48201,12 +49714,20 @@ public final class EDS10ProtocolBuffer {
       return data_;
     }
     /**
+     * <pre>
+     * Data
+     * </pre>
+     *
      * <code>repeated uint32 data = 6;</code>
      */
     public int getDataCount() {
       return data_.size();
     }
     /**
+     * <pre>
+     * Data
+     * </pre>
+     *
      * <code>repeated uint32 data = 6;</code>
      */
     public int getData(int index) {
@@ -48641,12 +50162,20 @@ public final class EDS10ProtocolBuffer {
 
       private int universeMask_ ;
       /**
+       * <pre>
+       * Universe Mask - Must be a single universe.
+       * </pre>
+       *
        * <code>uint32 universe_mask = 1;</code>
        */
       public int getUniverseMask() {
         return universeMask_;
       }
       /**
+       * <pre>
+       * Universe Mask - Must be a single universe.
+       * </pre>
+       *
        * <code>uint32 universe_mask = 1;</code>
        */
       public Builder setUniverseMask(int value) {
@@ -48656,6 +50185,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Universe Mask - Must be a single universe.
+       * </pre>
+       *
        * <code>uint32 universe_mask = 1;</code>
        */
       public Builder clearUniverseMask() {
@@ -48667,12 +50200,20 @@ public final class EDS10ProtocolBuffer {
 
       private long uid_ ;
       /**
+       * <pre>
+       * UID of device to send the message to. Can be Multi/Broadcast
+       * </pre>
+       *
        * <code>uint64 uid = 2;</code>
        */
       public long getUid() {
         return uid_;
       }
       /**
+       * <pre>
+       * UID of device to send the message to. Can be Multi/Broadcast
+       * </pre>
+       *
        * <code>uint64 uid = 2;</code>
        */
       public Builder setUid(long value) {
@@ -48682,6 +50223,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * UID of device to send the message to. Can be Multi/Broadcast
+       * </pre>
+       *
        * <code>uint64 uid = 2;</code>
        */
       public Builder clearUid() {
@@ -48693,12 +50238,20 @@ public final class EDS10ProtocolBuffer {
 
       private int pid_ ;
       /**
+       * <pre>
+       * RDM PID - See Standard
+       * </pre>
+       *
        * <code>uint32 pid = 3;</code>
        */
       public int getPid() {
         return pid_;
       }
       /**
+       * <pre>
+       * RDM PID - See Standard
+       * </pre>
+       *
        * <code>uint32 pid = 3;</code>
        */
       public Builder setPid(int value) {
@@ -48708,6 +50261,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * RDM PID - See Standard
+       * </pre>
+       *
        * <code>uint32 pid = 3;</code>
        */
       public Builder clearPid() {
@@ -48757,12 +50314,20 @@ public final class EDS10ProtocolBuffer {
 
       private int datalength_ ;
       /**
+       * <pre>
+       * Length of Data to send
+       * </pre>
+       *
        * <code>uint32 datalength = 5;</code>
        */
       public int getDatalength() {
         return datalength_;
       }
       /**
+       * <pre>
+       * Length of Data to send
+       * </pre>
+       *
        * <code>uint32 datalength = 5;</code>
        */
       public Builder setDatalength(int value) {
@@ -48772,6 +50337,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Length of Data to send
+       * </pre>
+       *
        * <code>uint32 datalength = 5;</code>
        */
       public Builder clearDatalength() {
@@ -48789,6 +50358,10 @@ public final class EDS10ProtocolBuffer {
          }
       }
       /**
+       * <pre>
+       * Data
+       * </pre>
+       *
        * <code>repeated uint32 data = 6;</code>
        */
       public java.util.List<java.lang.Integer>
@@ -48796,18 +50369,30 @@ public final class EDS10ProtocolBuffer {
         return java.util.Collections.unmodifiableList(data_);
       }
       /**
+       * <pre>
+       * Data
+       * </pre>
+       *
        * <code>repeated uint32 data = 6;</code>
        */
       public int getDataCount() {
         return data_.size();
       }
       /**
+       * <pre>
+       * Data
+       * </pre>
+       *
        * <code>repeated uint32 data = 6;</code>
        */
       public int getData(int index) {
         return data_.get(index);
       }
       /**
+       * <pre>
+       * Data
+       * </pre>
+       *
        * <code>repeated uint32 data = 6;</code>
        */
       public Builder setData(
@@ -48818,6 +50403,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Data
+       * </pre>
+       *
        * <code>repeated uint32 data = 6;</code>
        */
       public Builder addData(int value) {
@@ -48827,6 +50416,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Data
+       * </pre>
+       *
        * <code>repeated uint32 data = 6;</code>
        */
       public Builder addAllData(
@@ -48838,6 +50431,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Data
+       * </pre>
+       *
        * <code>repeated uint32 data = 6;</code>
        */
       public Builder clearData() {
@@ -48904,36 +50501,60 @@ public final class EDS10ProtocolBuffer {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * UID of requested device
+     * </pre>
+     *
      * <code>uint64 uid = 1;</code>
      */
     long getUid();
 
     /**
+     * <pre>
+     * Message PID
+     * </pre>
+     *
      * <code>uint32 pid = 2;</code>
      */
     int getPid();
 
     /**
+     * <pre>
+     * Length of Data to receive
+     * </pre>
+     *
      * <code>uint32 datalength = 3;</code>
      */
     int getDatalength();
 
     /**
+     * <pre>
+     * Data
+     * </pre>
+     *
      * <code>repeated uint32 data = 4;</code>
      */
     java.util.List<java.lang.Integer> getDataList();
     /**
+     * <pre>
+     * Data
+     * </pre>
+     *
      * <code>repeated uint32 data = 4;</code>
      */
     int getDataCount();
     /**
+     * <pre>
+     * Data
+     * </pre>
+     *
      * <code>repeated uint32 data = 4;</code>
      */
     int getData(int index);
   }
   /**
    * <pre>
-   * RDM Response message - source uid, pid, datalength and data
+   * RDM Response message - source UID, PID, datalength and data
    * </pre>
    *
    * Protobuf type {@code RDMResponseMessage}
@@ -49053,6 +50674,10 @@ public final class EDS10ProtocolBuffer {
     public static final int UID_FIELD_NUMBER = 1;
     private long uid_;
     /**
+     * <pre>
+     * UID of requested device
+     * </pre>
+     *
      * <code>uint64 uid = 1;</code>
      */
     public long getUid() {
@@ -49062,6 +50687,10 @@ public final class EDS10ProtocolBuffer {
     public static final int PID_FIELD_NUMBER = 2;
     private int pid_;
     /**
+     * <pre>
+     * Message PID
+     * </pre>
+     *
      * <code>uint32 pid = 2;</code>
      */
     public int getPid() {
@@ -49071,6 +50700,10 @@ public final class EDS10ProtocolBuffer {
     public static final int DATALENGTH_FIELD_NUMBER = 3;
     private int datalength_;
     /**
+     * <pre>
+     * Length of Data to receive
+     * </pre>
+     *
      * <code>uint32 datalength = 3;</code>
      */
     public int getDatalength() {
@@ -49080,6 +50713,10 @@ public final class EDS10ProtocolBuffer {
     public static final int DATA_FIELD_NUMBER = 4;
     private java.util.List<java.lang.Integer> data_;
     /**
+     * <pre>
+     * Data
+     * </pre>
+     *
      * <code>repeated uint32 data = 4;</code>
      */
     public java.util.List<java.lang.Integer>
@@ -49087,12 +50724,20 @@ public final class EDS10ProtocolBuffer {
       return data_;
     }
     /**
+     * <pre>
+     * Data
+     * </pre>
+     *
      * <code>repeated uint32 data = 4;</code>
      */
     public int getDataCount() {
       return data_.size();
     }
     /**
+     * <pre>
+     * Data
+     * </pre>
+     *
      * <code>repeated uint32 data = 4;</code>
      */
     public int getData(int index) {
@@ -49309,7 +50954,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     * RDM Response message - source uid, pid, datalength and data
+     * RDM Response message - source UID, PID, datalength and data
      * </pre>
      *
      * Protobuf type {@code RDMResponseMessage}
@@ -49493,12 +51138,20 @@ public final class EDS10ProtocolBuffer {
 
       private long uid_ ;
       /**
+       * <pre>
+       * UID of requested device
+       * </pre>
+       *
        * <code>uint64 uid = 1;</code>
        */
       public long getUid() {
         return uid_;
       }
       /**
+       * <pre>
+       * UID of requested device
+       * </pre>
+       *
        * <code>uint64 uid = 1;</code>
        */
       public Builder setUid(long value) {
@@ -49508,6 +51161,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * UID of requested device
+       * </pre>
+       *
        * <code>uint64 uid = 1;</code>
        */
       public Builder clearUid() {
@@ -49519,12 +51176,20 @@ public final class EDS10ProtocolBuffer {
 
       private int pid_ ;
       /**
+       * <pre>
+       * Message PID
+       * </pre>
+       *
        * <code>uint32 pid = 2;</code>
        */
       public int getPid() {
         return pid_;
       }
       /**
+       * <pre>
+       * Message PID
+       * </pre>
+       *
        * <code>uint32 pid = 2;</code>
        */
       public Builder setPid(int value) {
@@ -49534,6 +51199,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Message PID
+       * </pre>
+       *
        * <code>uint32 pid = 2;</code>
        */
       public Builder clearPid() {
@@ -49545,12 +51214,20 @@ public final class EDS10ProtocolBuffer {
 
       private int datalength_ ;
       /**
+       * <pre>
+       * Length of Data to receive
+       * </pre>
+       *
        * <code>uint32 datalength = 3;</code>
        */
       public int getDatalength() {
         return datalength_;
       }
       /**
+       * <pre>
+       * Length of Data to receive
+       * </pre>
+       *
        * <code>uint32 datalength = 3;</code>
        */
       public Builder setDatalength(int value) {
@@ -49560,6 +51237,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Length of Data to receive
+       * </pre>
+       *
        * <code>uint32 datalength = 3;</code>
        */
       public Builder clearDatalength() {
@@ -49577,6 +51258,10 @@ public final class EDS10ProtocolBuffer {
          }
       }
       /**
+       * <pre>
+       * Data
+       * </pre>
+       *
        * <code>repeated uint32 data = 4;</code>
        */
       public java.util.List<java.lang.Integer>
@@ -49584,18 +51269,30 @@ public final class EDS10ProtocolBuffer {
         return java.util.Collections.unmodifiableList(data_);
       }
       /**
+       * <pre>
+       * Data
+       * </pre>
+       *
        * <code>repeated uint32 data = 4;</code>
        */
       public int getDataCount() {
         return data_.size();
       }
       /**
+       * <pre>
+       * Data
+       * </pre>
+       *
        * <code>repeated uint32 data = 4;</code>
        */
       public int getData(int index) {
         return data_.get(index);
       }
       /**
+       * <pre>
+       * Data
+       * </pre>
+       *
        * <code>repeated uint32 data = 4;</code>
        */
       public Builder setData(
@@ -49606,6 +51303,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Data
+       * </pre>
+       *
        * <code>repeated uint32 data = 4;</code>
        */
       public Builder addData(int value) {
@@ -49615,6 +51316,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Data
+       * </pre>
+       *
        * <code>repeated uint32 data = 4;</code>
        */
       public Builder addAllData(
@@ -49626,6 +51331,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Data
+       * </pre>
+       *
        * <code>repeated uint32 data = 4;</code>
        */
       public Builder clearData() {
@@ -49692,13 +51401,26 @@ public final class EDS10ProtocolBuffer {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * Universe Mask - Must be a single universe
+     * </pre>
+     *
      * <code>uint32 universe_mask = 1;</code>
      */
     int getUniverseMask();
+
+    /**
+     * <pre>
+     * If true, RDM module will search for additional or 'next' 128 RDM devices. If false (empty), RDM module will re-init search for up to 128 devices
+     * </pre>
+     *
+     * <code>bool isNext = 2;</code>
+     */
+    boolean getIsNext();
   }
   /**
    * <pre>
-   * RDM Discovery Message - Invokes Discovery with reply as RDMDiscoveryReplyMessage
+   * RDM Discovery Message - Invokes Discovery with reply as RDMDiscoveryReplyMessage. isNext flag allows for more than 128 devices to be discovered in additional messages.
    * </pre>
    *
    * Protobuf type {@code RDMDiscoveryMessage}
@@ -49714,6 +51436,7 @@ public final class EDS10ProtocolBuffer {
     }
     private RDMDiscoveryMessage() {
       universeMask_ = 0;
+      isNext_ = false;
     }
 
     @java.lang.Override
@@ -49743,6 +51466,11 @@ public final class EDS10ProtocolBuffer {
             case 8: {
 
               universeMask_ = input.readUInt32();
+              break;
+            }
+            case 16: {
+
+              isNext_ = input.readBool();
               break;
             }
             default: {
@@ -49780,10 +51508,27 @@ public final class EDS10ProtocolBuffer {
     public static final int UNIVERSE_MASK_FIELD_NUMBER = 1;
     private int universeMask_;
     /**
+     * <pre>
+     * Universe Mask - Must be a single universe
+     * </pre>
+     *
      * <code>uint32 universe_mask = 1;</code>
      */
     public int getUniverseMask() {
       return universeMask_;
+    }
+
+    public static final int ISNEXT_FIELD_NUMBER = 2;
+    private boolean isNext_;
+    /**
+     * <pre>
+     * If true, RDM module will search for additional or 'next' 128 RDM devices. If false (empty), RDM module will re-init search for up to 128 devices
+     * </pre>
+     *
+     * <code>bool isNext = 2;</code>
+     */
+    public boolean getIsNext() {
+      return isNext_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -49803,6 +51548,9 @@ public final class EDS10ProtocolBuffer {
       if (universeMask_ != 0) {
         output.writeUInt32(1, universeMask_);
       }
+      if (isNext_ != false) {
+        output.writeBool(2, isNext_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -49815,6 +51563,10 @@ public final class EDS10ProtocolBuffer {
       if (universeMask_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(1, universeMask_);
+      }
+      if (isNext_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(2, isNext_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -49834,6 +51586,8 @@ public final class EDS10ProtocolBuffer {
       boolean result = true;
       result = result && (getUniverseMask()
           == other.getUniverseMask());
+      result = result && (getIsNext()
+          == other.getIsNext());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -49847,6 +51601,9 @@ public final class EDS10ProtocolBuffer {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + UNIVERSE_MASK_FIELD_NUMBER;
       hash = (53 * hash) + getUniverseMask();
+      hash = (37 * hash) + ISNEXT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsNext());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -49944,7 +51701,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     * RDM Discovery Message - Invokes Discovery with reply as RDMDiscoveryReplyMessage
+     * RDM Discovery Message - Invokes Discovery with reply as RDMDiscoveryReplyMessage. isNext flag allows for more than 128 devices to be discovered in additional messages.
      * </pre>
      *
      * Protobuf type {@code RDMDiscoveryMessage}
@@ -49986,6 +51743,8 @@ public final class EDS10ProtocolBuffer {
         super.clear();
         universeMask_ = 0;
 
+        isNext_ = false;
+
         return this;
       }
 
@@ -50013,6 +51772,7 @@ public final class EDS10ProtocolBuffer {
       public EDS10ProtocolBuffer.RDMDiscoveryMessage buildPartial() {
         EDS10ProtocolBuffer.RDMDiscoveryMessage result = new EDS10ProtocolBuffer.RDMDiscoveryMessage(this);
         result.universeMask_ = universeMask_;
+        result.isNext_ = isNext_;
         onBuilt();
         return result;
       }
@@ -50064,6 +51824,9 @@ public final class EDS10ProtocolBuffer {
         if (other.getUniverseMask() != 0) {
           setUniverseMask(other.getUniverseMask());
         }
+        if (other.getIsNext() != false) {
+          setIsNext(other.getIsNext());
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -50095,12 +51858,20 @@ public final class EDS10ProtocolBuffer {
 
       private int universeMask_ ;
       /**
+       * <pre>
+       * Universe Mask - Must be a single universe
+       * </pre>
+       *
        * <code>uint32 universe_mask = 1;</code>
        */
       public int getUniverseMask() {
         return universeMask_;
       }
       /**
+       * <pre>
+       * Universe Mask - Must be a single universe
+       * </pre>
+       *
        * <code>uint32 universe_mask = 1;</code>
        */
       public Builder setUniverseMask(int value) {
@@ -50110,11 +51881,53 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Universe Mask - Must be a single universe
+       * </pre>
+       *
        * <code>uint32 universe_mask = 1;</code>
        */
       public Builder clearUniverseMask() {
         
         universeMask_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private boolean isNext_ ;
+      /**
+       * <pre>
+       * If true, RDM module will search for additional or 'next' 128 RDM devices. If false (empty), RDM module will re-init search for up to 128 devices
+       * </pre>
+       *
+       * <code>bool isNext = 2;</code>
+       */
+      public boolean getIsNext() {
+        return isNext_;
+      }
+      /**
+       * <pre>
+       * If true, RDM module will search for additional or 'next' 128 RDM devices. If false (empty), RDM module will re-init search for up to 128 devices
+       * </pre>
+       *
+       * <code>bool isNext = 2;</code>
+       */
+      public Builder setIsNext(boolean value) {
+        
+        isNext_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * If true, RDM module will search for additional or 'next' 128 RDM devices. If false (empty), RDM module will re-init search for up to 128 devices
+       * </pre>
+       *
+       * <code>bool isNext = 2;</code>
+       */
+      public Builder clearIsNext() {
+        
+        isNext_ = false;
         onChanged();
         return this;
       }
@@ -50200,7 +52013,7 @@ public final class EDS10ProtocolBuffer {
   }
   /**
    * <pre>
-   * RDM Discovery Reply with up to 
+   * RDM Discovery Reply with up to 128 devices
    * </pre>
    *
    * Protobuf type {@code RDMDiscoveryReplyMessage}
@@ -50549,7 +52362,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     * RDM Discovery Reply with up to 
+     * RDM Discovery Reply with up to 128 devices
      * </pre>
      *
      * Protobuf type {@code RDMDiscoveryReplyMessage}
@@ -50900,11 +52713,19 @@ public final class EDS10ProtocolBuffer {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * Determine Spektra zone from 0-9
+     * </pre>
+     *
      * <code>uint32 zone = 1;</code>
      */
     int getZone();
 
     /**
+     * <pre>
+     * DMX or DALI Start Address. Typically RED on the first fixture.
+     * </pre>
+     *
      * <code>uint32 start_address = 2;</code>
      */
     int getStartAddress();
@@ -50928,6 +52749,10 @@ public final class EDS10ProtocolBuffer {
     int getProtocol();
 
     /**
+     * <pre>
+     * Number of DALI or DMX fixtures connected. If more than available channels, the 'consecutive' option can be selected which will use multiple lines, starting from the first line specified above
+     * </pre>
+     *
      * <code>uint32 number_of_lights = 5;</code>
      */
     int getNumberOfLights();
@@ -51036,7 +52861,7 @@ public final class EDS10ProtocolBuffer {
   }
   /**
    * <pre>
-   ************   SPEKTRA    ************
+   * Message for Spektra Setting Information
    * </pre>
    *
    * Protobuf type {@code SpektraSettingMessage}
@@ -51219,6 +53044,10 @@ public final class EDS10ProtocolBuffer {
     public static final int ZONE_FIELD_NUMBER = 1;
     private int zone_;
     /**
+     * <pre>
+     * Determine Spektra zone from 0-9
+     * </pre>
+     *
      * <code>uint32 zone = 1;</code>
      */
     public int getZone() {
@@ -51228,6 +53057,10 @@ public final class EDS10ProtocolBuffer {
     public static final int START_ADDRESS_FIELD_NUMBER = 2;
     private int startAddress_;
     /**
+     * <pre>
+     * DMX or DALI Start Address. Typically RED on the first fixture.
+     * </pre>
+     *
      * <code>uint32 start_address = 2;</code>
      */
     public int getStartAddress() {
@@ -51263,6 +53096,10 @@ public final class EDS10ProtocolBuffer {
     public static final int NUMBER_OF_LIGHTS_FIELD_NUMBER = 5;
     private int numberOfLights_;
     /**
+     * <pre>
+     * Number of DALI or DMX fixtures connected. If more than available channels, the 'consecutive' option can be selected which will use multiple lines, starting from the first line specified above
+     * </pre>
+     *
      * <code>uint32 number_of_lights = 5;</code>
      */
     public int getNumberOfLights() {
@@ -51717,7 +53554,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     ************   SPEKTRA    ************
+     * Message for Spektra Setting Information
      * </pre>
      *
      * Protobuf type {@code SpektraSettingMessage}
@@ -51954,12 +53791,20 @@ public final class EDS10ProtocolBuffer {
 
       private int zone_ ;
       /**
+       * <pre>
+       * Determine Spektra zone from 0-9
+       * </pre>
+       *
        * <code>uint32 zone = 1;</code>
        */
       public int getZone() {
         return zone_;
       }
       /**
+       * <pre>
+       * Determine Spektra zone from 0-9
+       * </pre>
+       *
        * <code>uint32 zone = 1;</code>
        */
       public Builder setZone(int value) {
@@ -51969,6 +53814,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Determine Spektra zone from 0-9
+       * </pre>
+       *
        * <code>uint32 zone = 1;</code>
        */
       public Builder clearZone() {
@@ -51980,12 +53829,20 @@ public final class EDS10ProtocolBuffer {
 
       private int startAddress_ ;
       /**
+       * <pre>
+       * DMX or DALI Start Address. Typically RED on the first fixture.
+       * </pre>
+       *
        * <code>uint32 start_address = 2;</code>
        */
       public int getStartAddress() {
         return startAddress_;
       }
       /**
+       * <pre>
+       * DMX or DALI Start Address. Typically RED on the first fixture.
+       * </pre>
+       *
        * <code>uint32 start_address = 2;</code>
        */
       public Builder setStartAddress(int value) {
@@ -51995,6 +53852,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * DMX or DALI Start Address. Typically RED on the first fixture.
+       * </pre>
+       *
        * <code>uint32 start_address = 2;</code>
        */
       public Builder clearStartAddress() {
@@ -52082,12 +53943,20 @@ public final class EDS10ProtocolBuffer {
 
       private int numberOfLights_ ;
       /**
+       * <pre>
+       * Number of DALI or DMX fixtures connected. If more than available channels, the 'consecutive' option can be selected which will use multiple lines, starting from the first line specified above
+       * </pre>
+       *
        * <code>uint32 number_of_lights = 5;</code>
        */
       public int getNumberOfLights() {
         return numberOfLights_;
       }
       /**
+       * <pre>
+       * Number of DALI or DMX fixtures connected. If more than available channels, the 'consecutive' option can be selected which will use multiple lines, starting from the first line specified above
+       * </pre>
+       *
        * <code>uint32 number_of_lights = 5;</code>
        */
       public Builder setNumberOfLights(int value) {
@@ -52097,6 +53966,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Number of DALI or DMX fixtures connected. If more than available channels, the 'consecutive' option can be selected which will use multiple lines, starting from the first line specified above
+       * </pre>
+       *
        * <code>uint32 number_of_lights = 5;</code>
        */
       public Builder clearNumberOfLights() {
@@ -52582,6 +54455,10 @@ public final class EDS10ProtocolBuffer {
     int getChannelValue(int index);
   }
   /**
+   * <pre>
+   * Spektra Colour Channel Config Structure
+   * </pre>
+   *
    * Protobuf type {@code SpektraColourConfigMessage}
    */
   public  static final class SpektraColourConfigMessage extends
@@ -52886,6 +54763,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Spektra Colour Channel Config Structure
+     * </pre>
+     *
      * Protobuf type {@code SpektraColourConfigMessage}
      */
     public static final class Builder extends
@@ -53196,6 +55077,10 @@ public final class EDS10ProtocolBuffer {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * Index of sequence - 0 to 143
+     * </pre>
+     *
      * <code>uint32 index = 1;</code>
      */
     int getIndex();
@@ -53438,6 +55323,10 @@ public final class EDS10ProtocolBuffer {
     int getArgs(int index);
   }
   /**
+   * <pre>
+   * Spektra Sequence Configuration Message. Up to 144 sequences can be stored
+   * </pre>
+   *
    * Protobuf type {@code SpektraSequenceConfigMessage}
    */
   public  static final class SpektraSequenceConfigMessage extends
@@ -53667,6 +55556,10 @@ public final class EDS10ProtocolBuffer {
     public static final int INDEX_FIELD_NUMBER = 1;
     private int index_;
     /**
+     * <pre>
+     * Index of sequence - 0 to 143
+     * </pre>
+     *
      * <code>uint32 index = 1;</code>
      */
     public int getIndex() {
@@ -54399,6 +56292,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Spektra Sequence Configuration Message. Up to 144 sequences can be stored
+     * </pre>
+     *
      * Protobuf type {@code SpektraSequenceConfigMessage}
      */
     public static final class Builder extends
@@ -54712,12 +56609,20 @@ public final class EDS10ProtocolBuffer {
 
       private int index_ ;
       /**
+       * <pre>
+       * Index of sequence - 0 to 143
+       * </pre>
+       *
        * <code>uint32 index = 1;</code>
        */
       public int getIndex() {
         return index_;
       }
       /**
+       * <pre>
+       * Index of sequence - 0 to 143
+       * </pre>
+       *
        * <code>uint32 index = 1;</code>
        */
       public Builder setIndex(int value) {
@@ -54727,6 +56632,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Index of sequence - 0 to 143
+       * </pre>
+       *
        * <code>uint32 index = 1;</code>
        */
       public Builder clearIndex() {
@@ -55963,6 +57872,10 @@ public final class EDS10ProtocolBuffer {
     boolean getIsOverride();
   }
   /**
+   * <pre>
+   * Message to define Spektra Calendar message. Zone options available in SpektraSettingsMessage to define what will happen if no action is scheduled on a calendar day.
+   * </pre>
+   *
    * Protobuf type {@code SpektraCalendarMessage}
    */
   public  static final class SpektraCalendarMessage extends
@@ -56368,6 +58281,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message to define Spektra Calendar message. Zone options available in SpektraSettingsMessage to define what will happen if no action is scheduled on a calendar day.
+     * </pre>
+     *
      * Protobuf type {@code SpektraCalendarMessage}
      */
     public static final class Builder extends
@@ -56883,6 +58800,10 @@ public final class EDS10ProtocolBuffer {
     boolean getIsOverride();
   }
   /**
+   * <pre>
+   * Spektra Calendar Day Structure
+   * </pre>
+   *
    * Protobuf type {@code SpektraCalendarDayMessage}
    */
   public  static final class SpektraCalendarDayMessage extends
@@ -57232,6 +59153,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Spektra Calendar Day Structure
+     * </pre>
+     *
      * Protobuf type {@code SpektraCalendarDayMessage}
      */
     public static final class Builder extends
@@ -57685,6 +59610,10 @@ public final class EDS10ProtocolBuffer {
         int index);
   }
   /**
+   * <pre>
+   * Message to handle Spektra Calendar Read - This is the reply message to the read request
+   * </pre>
+   *
    * Protobuf type {@code SpektraCalendarOverviewMessage}
    */
   public  static final class SpektraCalendarOverviewMessage extends
@@ -58013,6 +59942,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message to handle Spektra Calendar Read - This is the reply message to the read request
+     * </pre>
+     *
      * Protobuf type {@code SpektraCalendarOverviewMessage}
      */
     public static final class Builder extends
@@ -58704,6 +60637,10 @@ public final class EDS10ProtocolBuffer {
         int index);
   }
   /**
+   * <pre>
+   * Message to define Spektra Theme. Up to 16 Themes
+   * </pre>
+   *
    * Protobuf type {@code SpektraThemeConfigMessage}
    */
   public  static final class SpektraThemeConfigMessage extends
@@ -59175,6 +61112,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message to define Spektra Theme. Up to 16 Themes
+     * </pre>
+     *
      * Protobuf type {@code SpektraThemeConfigMessage}
      */
     public static final class Builder extends
@@ -59983,6 +61924,10 @@ public final class EDS10ProtocolBuffer {
     int getIndex();
   }
   /**
+   * <pre>
+   * Message to request Spektra Data
+   * </pre>
+   *
    * Protobuf type {@code SpektraReadMessage}
    */
   public  static final class SpektraReadMessage extends
@@ -60259,6 +62204,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message to request Spektra Data
+     * </pre>
+     *
      * Protobuf type {@code SpektraReadMessage}
      */
     public static final class Builder extends
@@ -60539,34 +62488,62 @@ public final class EDS10ProtocolBuffer {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * Spektra Target Type - Sequence/Theme
+     * </pre>
+     *
      * <code>.SpektraTargetType type = 1;</code>
      */
     int getTypeValue();
     /**
+     * <pre>
+     * Spektra Target Type - Sequence/Theme
+     * </pre>
+     *
      * <code>.SpektraTargetType type = 1;</code>
      */
     EDS10ProtocolBuffer.SpektraTargetType getType();
 
     /**
+     * <pre>
+     * Zone (0 to 9) or Zones (255) to control
+     * </pre>
+     *
      * <code>uint32 zone = 2;</code>
      */
     int getZone();
 
     /**
+     * <pre>
+     * Index of Action. I.e. Sequence 5
+     * </pre>
+     *
      * <code>uint32 index = 3;</code>
      */
     int getIndex();
 
     /**
+     * <pre>
+     * Type of Action. Start/Resume/Stop
+     * </pre>
+     *
      * <code>.SpektraActionType action = 4;</code>
      */
     int getActionValue();
     /**
+     * <pre>
+     * Type of Action. Start/Resume/Stop
+     * </pre>
+     *
      * <code>.SpektraActionType action = 4;</code>
      */
     EDS10ProtocolBuffer.SpektraActionType getAction();
   }
   /**
+   * <pre>
+   * Message to control the Spektra Module
+   * </pre>
+   *
    * Protobuf type {@code SpektraControlMessage}
    */
   public  static final class SpektraControlMessage extends
@@ -60666,12 +62643,20 @@ public final class EDS10ProtocolBuffer {
     public static final int TYPE_FIELD_NUMBER = 1;
     private int type_;
     /**
+     * <pre>
+     * Spektra Target Type - Sequence/Theme
+     * </pre>
+     *
      * <code>.SpektraTargetType type = 1;</code>
      */
     public int getTypeValue() {
       return type_;
     }
     /**
+     * <pre>
+     * Spektra Target Type - Sequence/Theme
+     * </pre>
+     *
      * <code>.SpektraTargetType type = 1;</code>
      */
     public EDS10ProtocolBuffer.SpektraTargetType getType() {
@@ -60683,6 +62668,10 @@ public final class EDS10ProtocolBuffer {
     public static final int ZONE_FIELD_NUMBER = 2;
     private int zone_;
     /**
+     * <pre>
+     * Zone (0 to 9) or Zones (255) to control
+     * </pre>
+     *
      * <code>uint32 zone = 2;</code>
      */
     public int getZone() {
@@ -60692,6 +62681,10 @@ public final class EDS10ProtocolBuffer {
     public static final int INDEX_FIELD_NUMBER = 3;
     private int index_;
     /**
+     * <pre>
+     * Index of Action. I.e. Sequence 5
+     * </pre>
+     *
      * <code>uint32 index = 3;</code>
      */
     public int getIndex() {
@@ -60701,12 +62694,20 @@ public final class EDS10ProtocolBuffer {
     public static final int ACTION_FIELD_NUMBER = 4;
     private int action_;
     /**
+     * <pre>
+     * Type of Action. Start/Resume/Stop
+     * </pre>
+     *
      * <code>.SpektraActionType action = 4;</code>
      */
     public int getActionValue() {
       return action_;
     }
     /**
+     * <pre>
+     * Type of Action. Start/Resume/Stop
+     * </pre>
+     *
      * <code>.SpektraActionType action = 4;</code>
      */
     public EDS10ProtocolBuffer.SpektraActionType getAction() {
@@ -60903,6 +62904,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message to control the Spektra Module
+     * </pre>
+     *
      * Protobuf type {@code SpektraControlMessage}
      */
     public static final class Builder extends
@@ -61069,12 +63074,20 @@ public final class EDS10ProtocolBuffer {
 
       private int type_ = 0;
       /**
+       * <pre>
+       * Spektra Target Type - Sequence/Theme
+       * </pre>
+       *
        * <code>.SpektraTargetType type = 1;</code>
        */
       public int getTypeValue() {
         return type_;
       }
       /**
+       * <pre>
+       * Spektra Target Type - Sequence/Theme
+       * </pre>
+       *
        * <code>.SpektraTargetType type = 1;</code>
        */
       public Builder setTypeValue(int value) {
@@ -61083,6 +63096,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Spektra Target Type - Sequence/Theme
+       * </pre>
+       *
        * <code>.SpektraTargetType type = 1;</code>
        */
       public EDS10ProtocolBuffer.SpektraTargetType getType() {
@@ -61091,6 +63108,10 @@ public final class EDS10ProtocolBuffer {
         return result == null ? EDS10ProtocolBuffer.SpektraTargetType.UNRECOGNIZED : result;
       }
       /**
+       * <pre>
+       * Spektra Target Type - Sequence/Theme
+       * </pre>
+       *
        * <code>.SpektraTargetType type = 1;</code>
        */
       public Builder setType(EDS10ProtocolBuffer.SpektraTargetType value) {
@@ -61103,6 +63124,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Spektra Target Type - Sequence/Theme
+       * </pre>
+       *
        * <code>.SpektraTargetType type = 1;</code>
        */
       public Builder clearType() {
@@ -61114,12 +63139,20 @@ public final class EDS10ProtocolBuffer {
 
       private int zone_ ;
       /**
+       * <pre>
+       * Zone (0 to 9) or Zones (255) to control
+       * </pre>
+       *
        * <code>uint32 zone = 2;</code>
        */
       public int getZone() {
         return zone_;
       }
       /**
+       * <pre>
+       * Zone (0 to 9) or Zones (255) to control
+       * </pre>
+       *
        * <code>uint32 zone = 2;</code>
        */
       public Builder setZone(int value) {
@@ -61129,6 +63162,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Zone (0 to 9) or Zones (255) to control
+       * </pre>
+       *
        * <code>uint32 zone = 2;</code>
        */
       public Builder clearZone() {
@@ -61140,12 +63177,20 @@ public final class EDS10ProtocolBuffer {
 
       private int index_ ;
       /**
+       * <pre>
+       * Index of Action. I.e. Sequence 5
+       * </pre>
+       *
        * <code>uint32 index = 3;</code>
        */
       public int getIndex() {
         return index_;
       }
       /**
+       * <pre>
+       * Index of Action. I.e. Sequence 5
+       * </pre>
+       *
        * <code>uint32 index = 3;</code>
        */
       public Builder setIndex(int value) {
@@ -61155,6 +63200,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Index of Action. I.e. Sequence 5
+       * </pre>
+       *
        * <code>uint32 index = 3;</code>
        */
       public Builder clearIndex() {
@@ -61166,12 +63215,20 @@ public final class EDS10ProtocolBuffer {
 
       private int action_ = 0;
       /**
+       * <pre>
+       * Type of Action. Start/Resume/Stop
+       * </pre>
+       *
        * <code>.SpektraActionType action = 4;</code>
        */
       public int getActionValue() {
         return action_;
       }
       /**
+       * <pre>
+       * Type of Action. Start/Resume/Stop
+       * </pre>
+       *
        * <code>.SpektraActionType action = 4;</code>
        */
       public Builder setActionValue(int value) {
@@ -61180,6 +63237,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Type of Action. Start/Resume/Stop
+       * </pre>
+       *
        * <code>.SpektraActionType action = 4;</code>
        */
       public EDS10ProtocolBuffer.SpektraActionType getAction() {
@@ -61188,6 +63249,10 @@ public final class EDS10ProtocolBuffer {
         return result == null ? EDS10ProtocolBuffer.SpektraActionType.UNRECOGNIZED : result;
       }
       /**
+       * <pre>
+       * Type of Action. Start/Resume/Stop
+       * </pre>
+       *
        * <code>.SpektraActionType action = 4;</code>
        */
       public Builder setAction(EDS10ProtocolBuffer.SpektraActionType value) {
@@ -61200,6 +63265,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Type of Action. Start/Resume/Stop
+       * </pre>
+       *
        * <code>.SpektraActionType action = 4;</code>
        */
       public Builder clearAction() {
@@ -61334,7 +63403,7 @@ public final class EDS10ProtocolBuffer {
   }
   /**
    * <pre>
-   ************   SHOW    ************
+   * Currently Work In Progress
    * </pre>
    *
    * Protobuf type {@code ShowStepMessage}
@@ -61772,7 +63841,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     ************   SHOW    ************
+     * Currently Work In Progress
      * </pre>
      *
      * Protobuf type {@code ShowStepMessage}
@@ -62378,6 +64447,10 @@ public final class EDS10ProtocolBuffer {
     int getActivationsRemaining();
   }
   /**
+   * <pre>
+   * Currently Work In Progress
+   * </pre>
+   *
    * Protobuf type {@code SpektraShowMessage}
    */
   public  static final class SpektraShowMessage extends
@@ -62866,6 +64939,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Currently Work In Progress
+     * </pre>
+     *
      * Protobuf type {@code SpektraShowMessage}
      */
     public static final class Builder extends
@@ -64643,6 +66720,10 @@ public final class EDS10ProtocolBuffer {
     int getGotoStep();
   }
   /**
+   * <pre>
+   * Currently Work In Progress
+   * </pre>
+   *
    * Protobuf type {@code SpektraShowControlMessage}
    */
   public  static final class SpektraShowControlMessage extends
@@ -64949,6 +67030,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Currently Work In Progress
+     * </pre>
+     *
      * Protobuf type {@code SpektraShowControlMessage}
      */
     public static final class Builder extends
@@ -65279,7 +67364,7 @@ public final class EDS10ProtocolBuffer {
 
     /**
      * <pre>
-     * DMX IN
+     * DMX IN - Must configure line as DMX IN
      * </pre>
      *
      * <code>uint32 line_in = 1;</code>
@@ -65349,7 +67434,7 @@ public final class EDS10ProtocolBuffer {
 
     /**
      * <pre>
-     * If DMX to DALI function blocks inputs
+     * If TRUE (1), the inputs will be ignored if the internal DMX receiving flag is TRUE
      * </pre>
      *
      * <code>bool blocking = 8;</code>
@@ -65357,13 +67442,17 @@ public final class EDS10ProtocolBuffer {
     boolean getBlocking();
 
     /**
+     * <pre>
+     * Translation object is enabled (1) or disabled (0)   
+     * </pre>
+     *
      * <code>bool enabled = 9;</code>
      */
     boolean getEnabled();
   }
   /**
    * <pre>
-   ************ TRANSLATION  ************
+   * Structure to describe the DMX to DALI translation
    * </pre>
    *
    * Protobuf type {@code DMXTranslationObject}
@@ -65508,7 +67597,7 @@ public final class EDS10ProtocolBuffer {
     private int lineIn_;
     /**
      * <pre>
-     * DMX IN
+     * DMX IN - Must configure line as DMX IN
      * </pre>
      *
      * <code>uint32 line_in = 1;</code>
@@ -65608,7 +67697,7 @@ public final class EDS10ProtocolBuffer {
     private boolean blocking_;
     /**
      * <pre>
-     * If DMX to DALI function blocks inputs
+     * If TRUE (1), the inputs will be ignored if the internal DMX receiving flag is TRUE
      * </pre>
      *
      * <code>bool blocking = 8;</code>
@@ -65620,6 +67709,10 @@ public final class EDS10ProtocolBuffer {
     public static final int ENABLED_FIELD_NUMBER = 9;
     private boolean enabled_;
     /**
+     * <pre>
+     * Translation object is enabled (1) or disabled (0)   
+     * </pre>
+     *
      * <code>bool enabled = 9;</code>
      */
     public boolean getEnabled() {
@@ -65880,7 +67973,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     ************ TRANSLATION  ************
+     * Structure to describe the DMX to DALI translation
      * </pre>
      *
      * Protobuf type {@code DMXTranslationObject}
@@ -66089,7 +68182,7 @@ public final class EDS10ProtocolBuffer {
       private int lineIn_ ;
       /**
        * <pre>
-       * DMX IN
+       * DMX IN - Must configure line as DMX IN
        * </pre>
        *
        * <code>uint32 line_in = 1;</code>
@@ -66099,7 +68192,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * DMX IN
+       * DMX IN - Must configure line as DMX IN
        * </pre>
        *
        * <code>uint32 line_in = 1;</code>
@@ -66112,7 +68205,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * DMX IN
+       * DMX IN - Must configure line as DMX IN
        * </pre>
        *
        * <code>uint32 line_in = 1;</code>
@@ -66373,7 +68466,7 @@ public final class EDS10ProtocolBuffer {
       private boolean blocking_ ;
       /**
        * <pre>
-       * If DMX to DALI function blocks inputs
+       * If TRUE (1), the inputs will be ignored if the internal DMX receiving flag is TRUE
        * </pre>
        *
        * <code>bool blocking = 8;</code>
@@ -66383,7 +68476,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * If DMX to DALI function blocks inputs
+       * If TRUE (1), the inputs will be ignored if the internal DMX receiving flag is TRUE
        * </pre>
        *
        * <code>bool blocking = 8;</code>
@@ -66396,7 +68489,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * If DMX to DALI function blocks inputs
+       * If TRUE (1), the inputs will be ignored if the internal DMX receiving flag is TRUE
        * </pre>
        *
        * <code>bool blocking = 8;</code>
@@ -66410,12 +68503,20 @@ public final class EDS10ProtocolBuffer {
 
       private boolean enabled_ ;
       /**
+       * <pre>
+       * Translation object is enabled (1) or disabled (0)   
+       * </pre>
+       *
        * <code>bool enabled = 9;</code>
        */
       public boolean getEnabled() {
         return enabled_;
       }
       /**
+       * <pre>
+       * Translation object is enabled (1) or disabled (0)   
+       * </pre>
+       *
        * <code>bool enabled = 9;</code>
        */
       public Builder setEnabled(boolean value) {
@@ -66425,6 +68526,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Translation object is enabled (1) or disabled (0)   
+       * </pre>
+       *
        * <code>bool enabled = 9;</code>
        */
       public Builder clearEnabled() {
@@ -66535,6 +68640,10 @@ public final class EDS10ProtocolBuffer {
         int index);
   }
   /**
+   * <pre>
+   * Message to describe the DMX to DALI translation objects. For a 4 line controller, up to 3 objects can be created allowing for single/multi line translation to single/multi line out.
+   * </pre>
+   *
    * Protobuf type {@code DMXProtocolTranslation}
    */
   public  static final class DMXProtocolTranslation extends
@@ -66832,6 +68941,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message to describe the DMX to DALI translation objects. For a 4 line controller, up to 3 objects can be created allowing for single/multi line translation to single/multi line out.
+     * </pre>
+     *
      * Protobuf type {@code DMXProtocolTranslation}
      */
     public static final class Builder extends
@@ -67395,7 +69508,7 @@ public final class EDS10ProtocolBuffer {
   }
   /**
    * <pre>
-   * Inputs State
+   * Structure of Input state mask when InputStateResponse message is sent. 1 is HIGH, 0 is LOW. GPIO are configured as default HIGH. If not connected, a momentary input will return TRUE (1)
    * </pre>
    *
    * Protobuf type {@code InputStateMessage}
@@ -67646,7 +69759,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     * Inputs State
+     * Structure of Input state mask when InputStateResponse message is sent. 1 is HIGH, 0 is LOW. GPIO are configured as default HIGH. If not connected, a momentary input will return TRUE (1)
      * </pre>
      *
      * Protobuf type {@code InputStateMessage}
@@ -67924,6 +70037,10 @@ public final class EDS10ProtocolBuffer {
     int getInputMask();
   }
   /**
+   * <pre>
+   * Message containing the InputStateMessage mask
+   * </pre>
+   *
    * Protobuf type {@code InputStateResponse}
    */
   public  static final class InputStateResponse extends
@@ -68259,6 +70376,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message containing the InputStateMessage mask
+     * </pre>
+     *
      * Protobuf type {@code InputStateResponse}
      */
     public static final class Builder extends
@@ -68615,31 +70736,51 @@ public final class EDS10ProtocolBuffer {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * Repeated Level array
+     * </pre>
+     *
      * <code>repeated uint32 levels = 1;</code>
      */
     java.util.List<java.lang.Integer> getLevelsList();
     /**
+     * <pre>
+     * Repeated Level array
+     * </pre>
+     *
      * <code>repeated uint32 levels = 1;</code>
      */
     int getLevelsCount();
     /**
+     * <pre>
+     * Repeated Level array
+     * </pre>
+     *
      * <code>repeated uint32 levels = 1;</code>
      */
     int getLevels(int index);
 
     /**
+     * <pre>
+     * Requested Line
+     * </pre>
+     *
      * <code>uint32 line = 2;</code>
      */
     int getLine();
 
     /**
+     * <pre>
+     * Page of requested information
+     * </pre>
+     *
      * <code>uint32 page = 3;</code>
      */
     int getPage();
   }
   /**
    * <pre>
-   * DALI/DMX agnostic.
+   * Message that contains DALI polled levels. Levels are split into pages of 64 values
    * </pre>
    *
    * Protobuf type {@code LevelCacheResponse}
@@ -68753,6 +70894,10 @@ public final class EDS10ProtocolBuffer {
     public static final int LEVELS_FIELD_NUMBER = 1;
     private java.util.List<java.lang.Integer> levels_;
     /**
+     * <pre>
+     * Repeated Level array
+     * </pre>
+     *
      * <code>repeated uint32 levels = 1;</code>
      */
     public java.util.List<java.lang.Integer>
@@ -68760,12 +70905,20 @@ public final class EDS10ProtocolBuffer {
       return levels_;
     }
     /**
+     * <pre>
+     * Repeated Level array
+     * </pre>
+     *
      * <code>repeated uint32 levels = 1;</code>
      */
     public int getLevelsCount() {
       return levels_.size();
     }
     /**
+     * <pre>
+     * Repeated Level array
+     * </pre>
+     *
      * <code>repeated uint32 levels = 1;</code>
      */
     public int getLevels(int index) {
@@ -68776,6 +70929,10 @@ public final class EDS10ProtocolBuffer {
     public static final int LINE_FIELD_NUMBER = 2;
     private int line_;
     /**
+     * <pre>
+     * Requested Line
+     * </pre>
+     *
      * <code>uint32 line = 2;</code>
      */
     public int getLine() {
@@ -68785,6 +70942,10 @@ public final class EDS10ProtocolBuffer {
     public static final int PAGE_FIELD_NUMBER = 3;
     private int page_;
     /**
+     * <pre>
+     * Page of requested information
+     * </pre>
+     *
      * <code>uint32 page = 3;</code>
      */
     public int getPage() {
@@ -68988,7 +71149,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     * DALI/DMX agnostic.
+     * Message that contains DALI polled levels. Levels are split into pages of 64 values
      * </pre>
      *
      * Protobuf type {@code LevelCacheResponse}
@@ -69172,6 +71333,10 @@ public final class EDS10ProtocolBuffer {
          }
       }
       /**
+       * <pre>
+       * Repeated Level array
+       * </pre>
+       *
        * <code>repeated uint32 levels = 1;</code>
        */
       public java.util.List<java.lang.Integer>
@@ -69179,18 +71344,30 @@ public final class EDS10ProtocolBuffer {
         return java.util.Collections.unmodifiableList(levels_);
       }
       /**
+       * <pre>
+       * Repeated Level array
+       * </pre>
+       *
        * <code>repeated uint32 levels = 1;</code>
        */
       public int getLevelsCount() {
         return levels_.size();
       }
       /**
+       * <pre>
+       * Repeated Level array
+       * </pre>
+       *
        * <code>repeated uint32 levels = 1;</code>
        */
       public int getLevels(int index) {
         return levels_.get(index);
       }
       /**
+       * <pre>
+       * Repeated Level array
+       * </pre>
+       *
        * <code>repeated uint32 levels = 1;</code>
        */
       public Builder setLevels(
@@ -69201,6 +71378,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Repeated Level array
+       * </pre>
+       *
        * <code>repeated uint32 levels = 1;</code>
        */
       public Builder addLevels(int value) {
@@ -69210,6 +71391,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Repeated Level array
+       * </pre>
+       *
        * <code>repeated uint32 levels = 1;</code>
        */
       public Builder addAllLevels(
@@ -69221,6 +71406,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Repeated Level array
+       * </pre>
+       *
        * <code>repeated uint32 levels = 1;</code>
        */
       public Builder clearLevels() {
@@ -69232,12 +71421,20 @@ public final class EDS10ProtocolBuffer {
 
       private int line_ ;
       /**
+       * <pre>
+       * Requested Line
+       * </pre>
+       *
        * <code>uint32 line = 2;</code>
        */
       public int getLine() {
         return line_;
       }
       /**
+       * <pre>
+       * Requested Line
+       * </pre>
+       *
        * <code>uint32 line = 2;</code>
        */
       public Builder setLine(int value) {
@@ -69247,6 +71444,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Requested Line
+       * </pre>
+       *
        * <code>uint32 line = 2;</code>
        */
       public Builder clearLine() {
@@ -69258,12 +71459,20 @@ public final class EDS10ProtocolBuffer {
 
       private int page_ ;
       /**
+       * <pre>
+       * Page of requested information
+       * </pre>
+       *
        * <code>uint32 page = 3;</code>
        */
       public int getPage() {
         return page_;
       }
       /**
+       * <pre>
+       * Page of requested information
+       * </pre>
+       *
        * <code>uint32 page = 3;</code>
        */
       public Builder setPage(int value) {
@@ -69273,6 +71482,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Page of requested information
+       * </pre>
+       *
        * <code>uint32 page = 3;</code>
        */
       public Builder clearPage() {
@@ -69613,10 +71826,28 @@ public final class EDS10ProtocolBuffer {
      * <code>uint32 input_dali_count = 24;</code>
      */
     int getInputDaliCount();
+
+    /**
+     * <pre>
+     * Vendor ID - "Control Freak"
+     * </pre>
+     *
+     * <code>string vendor_id = 25;</code>
+     */
+    java.lang.String getVendorId();
+    /**
+     * <pre>
+     * Vendor ID - "Control Freak"
+     * </pre>
+     *
+     * <code>string vendor_id = 25;</code>
+     */
+    com.google.protobuf.ByteString
+        getVendorIdBytes();
   }
   /**
    * <pre>
-   * Get System Info
+   * Message to request system information. Contains vital information about connected devices configuration capabilities, as well as firmware and hardware version. 
    * </pre>
    *
    * Protobuf type {@code DiagnosticSystemInfoResponse}
@@ -69655,6 +71886,7 @@ public final class EDS10ProtocolBuffer {
       spektraZoneCount_ = 0;
       logicCount_ = 0;
       inputDaliCount_ = 0;
+      vendorId_ = "";
     }
 
     @java.lang.Override
@@ -69820,6 +72052,12 @@ public final class EDS10ProtocolBuffer {
             case 192: {
 
               inputDaliCount_ = input.readUInt32();
+              break;
+            }
+            case 202: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              vendorId_ = s;
               break;
             }
             default: {
@@ -70310,6 +72548,48 @@ public final class EDS10ProtocolBuffer {
       return inputDaliCount_;
     }
 
+    public static final int VENDOR_ID_FIELD_NUMBER = 25;
+    private volatile java.lang.Object vendorId_;
+    /**
+     * <pre>
+     * Vendor ID - "Control Freak"
+     * </pre>
+     *
+     * <code>string vendor_id = 25;</code>
+     */
+    public java.lang.String getVendorId() {
+      java.lang.Object ref = vendorId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        vendorId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Vendor ID - "Control Freak"
+     * </pre>
+     *
+     * <code>string vendor_id = 25;</code>
+     */
+    public com.google.protobuf.ByteString
+        getVendorIdBytes() {
+      java.lang.Object ref = vendorId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        vendorId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -70400,6 +72680,9 @@ public final class EDS10ProtocolBuffer {
       }
       if (inputDaliCount_ != 0) {
         output.writeUInt32(24, inputDaliCount_);
+      }
+      if (!getVendorIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 25, vendorId_);
       }
       unknownFields.writeTo(output);
     }
@@ -70511,6 +72794,9 @@ public final class EDS10ProtocolBuffer {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(24, inputDaliCount_);
       }
+      if (!getVendorIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(25, vendorId_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -70574,6 +72860,8 @@ public final class EDS10ProtocolBuffer {
           == other.getLogicCount());
       result = result && (getInputDaliCount()
           == other.getInputDaliCount());
+      result = result && getVendorId()
+          .equals(other.getVendorId());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -70635,6 +72923,8 @@ public final class EDS10ProtocolBuffer {
       hash = (53 * hash) + getLogicCount();
       hash = (37 * hash) + INPUT_DALI_COUNT_FIELD_NUMBER;
       hash = (53 * hash) + getInputDaliCount();
+      hash = (37 * hash) + VENDOR_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getVendorId().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -70732,7 +73022,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     * Get System Info
+     * Message to request system information. Contains vital information about connected devices configuration capabilities, as well as firmware and hardware version. 
      * </pre>
      *
      * Protobuf type {@code DiagnosticSystemInfoResponse}
@@ -70820,6 +73110,8 @@ public final class EDS10ProtocolBuffer {
 
         inputDaliCount_ = 0;
 
+        vendorId_ = "";
+
         return this;
       }
 
@@ -70876,6 +73168,7 @@ public final class EDS10ProtocolBuffer {
         result.spektraZoneCount_ = spektraZoneCount_;
         result.logicCount_ = logicCount_;
         result.inputDaliCount_ = inputDaliCount_;
+        result.vendorId_ = vendorId_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -71006,6 +73299,10 @@ public final class EDS10ProtocolBuffer {
         }
         if (other.getInputDaliCount() != 0) {
           setInputDaliCount(other.getInputDaliCount());
+        }
+        if (!other.getVendorId().isEmpty()) {
+          vendorId_ = other.vendorId_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -72229,6 +74526,95 @@ public final class EDS10ProtocolBuffer {
         onChanged();
         return this;
       }
+
+      private java.lang.Object vendorId_ = "";
+      /**
+       * <pre>
+       * Vendor ID - "Control Freak"
+       * </pre>
+       *
+       * <code>string vendor_id = 25;</code>
+       */
+      public java.lang.String getVendorId() {
+        java.lang.Object ref = vendorId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          vendorId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Vendor ID - "Control Freak"
+       * </pre>
+       *
+       * <code>string vendor_id = 25;</code>
+       */
+      public com.google.protobuf.ByteString
+          getVendorIdBytes() {
+        java.lang.Object ref = vendorId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          vendorId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Vendor ID - "Control Freak"
+       * </pre>
+       *
+       * <code>string vendor_id = 25;</code>
+       */
+      public Builder setVendorId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        vendorId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Vendor ID - "Control Freak"
+       * </pre>
+       *
+       * <code>string vendor_id = 25;</code>
+       */
+      public Builder clearVendorId() {
+        
+        vendorId_ = getDefaultInstance().getVendorId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Vendor ID - "Control Freak"
+       * </pre>
+       *
+       * <code>string vendor_id = 25;</code>
+       */
+      public Builder setVendorIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        vendorId_ = value;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -73067,6 +75453,10 @@ public final class EDS10ProtocolBuffer {
     boolean getPollActive();
   }
   /**
+   * <pre>
+   * Message to get or set Admin Properties in reference to project information. 
+   * </pre>
+   *
    * Protobuf type {@code AdminProjectPropertiesMessage}
    */
   public  static final class AdminProjectPropertiesMessage extends
@@ -73622,6 +76012,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message to get or set Admin Properties in reference to project information. 
+     * </pre>
+     *
      * Protobuf type {@code AdminProjectPropertiesMessage}
      */
     public static final class Builder extends
@@ -74428,6 +76822,10 @@ public final class EDS10ProtocolBuffer {
     int getSensorStatus(int index);
   }
   /**
+   * <pre>
+   * Message to get or set Admin Properties in reference to the device configuration
+   * </pre>
+   *
    * Protobuf type {@code AdminConfigStatusMessage}
    */
   public  static final class AdminConfigStatusMessage extends
@@ -74999,6 +77397,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message to get or set Admin Properties in reference to the device configuration
+     * </pre>
+     *
      * Protobuf type {@code AdminConfigStatusMessage}
      */
     public static final class Builder extends
@@ -75915,6 +78317,10 @@ public final class EDS10ProtocolBuffer {
         getDNSSecondaryBytes();
   }
   /**
+   * <pre>
+   * Message to get or set Admin Properties in reference to the network connection. Will require a device reboot to update - Used with AdminMessage
+   * </pre>
+   *
    * Protobuf type {@code AdminNetworkPropertiesMessage}
    */
   public  static final class AdminNetworkPropertiesMessage extends
@@ -76695,6 +79101,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message to get or set Admin Properties in reference to the network connection. Will require a device reboot to update - Used with AdminMessage
+     * </pre>
+     *
      * Protobuf type {@code AdminNetworkPropertiesMessage}
      */
     public static final class Builder extends
@@ -77787,6 +80197,773 @@ public final class EDS10ProtocolBuffer {
 
   }
 
+  public interface AdminDNSServersMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:AdminDNSServersMessage)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Primary DNS
+     * </pre>
+     *
+     * <code>string DNS_Primary = 1;</code>
+     */
+    java.lang.String getDNSPrimary();
+    /**
+     * <pre>
+     * Primary DNS
+     * </pre>
+     *
+     * <code>string DNS_Primary = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getDNSPrimaryBytes();
+
+    /**
+     * <pre>
+     * Secondary DNS
+     * </pre>
+     *
+     * <code>string DNS_Secondary = 2;</code>
+     */
+    java.lang.String getDNSSecondary();
+    /**
+     * <pre>
+     * Secondary DNS
+     * </pre>
+     *
+     * <code>string DNS_Secondary = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getDNSSecondaryBytes();
+  }
+  /**
+   * <pre>
+   * Message to set the DNS Server - Used with AdmiMessage
+   * </pre>
+   *
+   * Protobuf type {@code AdminDNSServersMessage}
+   */
+  public  static final class AdminDNSServersMessage extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:AdminDNSServersMessage)
+      AdminDNSServersMessageOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use AdminDNSServersMessage.newBuilder() to construct.
+    private AdminDNSServersMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private AdminDNSServersMessage() {
+      dNSPrimary_ = "";
+      dNSSecondary_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private AdminDNSServersMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              dNSPrimary_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              dNSSecondary_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.internal_static_AdminDNSServersMessage_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return EDS10ProtocolBuffer.internal_static_AdminDNSServersMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              EDS10ProtocolBuffer.AdminDNSServersMessage.class, EDS10ProtocolBuffer.AdminDNSServersMessage.Builder.class);
+    }
+
+    public static final int DNS_PRIMARY_FIELD_NUMBER = 1;
+    private volatile java.lang.Object dNSPrimary_;
+    /**
+     * <pre>
+     * Primary DNS
+     * </pre>
+     *
+     * <code>string DNS_Primary = 1;</code>
+     */
+    public java.lang.String getDNSPrimary() {
+      java.lang.Object ref = dNSPrimary_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        dNSPrimary_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Primary DNS
+     * </pre>
+     *
+     * <code>string DNS_Primary = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getDNSPrimaryBytes() {
+      java.lang.Object ref = dNSPrimary_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        dNSPrimary_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DNS_SECONDARY_FIELD_NUMBER = 2;
+    private volatile java.lang.Object dNSSecondary_;
+    /**
+     * <pre>
+     * Secondary DNS
+     * </pre>
+     *
+     * <code>string DNS_Secondary = 2;</code>
+     */
+    public java.lang.String getDNSSecondary() {
+      java.lang.Object ref = dNSSecondary_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        dNSSecondary_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Secondary DNS
+     * </pre>
+     *
+     * <code>string DNS_Secondary = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getDNSSecondaryBytes() {
+      java.lang.Object ref = dNSSecondary_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        dNSSecondary_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getDNSPrimaryBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, dNSPrimary_);
+      }
+      if (!getDNSSecondaryBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, dNSSecondary_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getDNSPrimaryBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, dNSPrimary_);
+      }
+      if (!getDNSSecondaryBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, dNSSecondary_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof EDS10ProtocolBuffer.AdminDNSServersMessage)) {
+        return super.equals(obj);
+      }
+      EDS10ProtocolBuffer.AdminDNSServersMessage other = (EDS10ProtocolBuffer.AdminDNSServersMessage) obj;
+
+      boolean result = true;
+      result = result && getDNSPrimary()
+          .equals(other.getDNSPrimary());
+      result = result && getDNSSecondary()
+          .equals(other.getDNSSecondary());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + DNS_PRIMARY_FIELD_NUMBER;
+      hash = (53 * hash) + getDNSPrimary().hashCode();
+      hash = (37 * hash) + DNS_SECONDARY_FIELD_NUMBER;
+      hash = (53 * hash) + getDNSSecondary().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static EDS10ProtocolBuffer.AdminDNSServersMessage parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.AdminDNSServersMessage parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.AdminDNSServersMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.AdminDNSServersMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.AdminDNSServersMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.AdminDNSServersMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.AdminDNSServersMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.AdminDNSServersMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.AdminDNSServersMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.AdminDNSServersMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.AdminDNSServersMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.AdminDNSServersMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(EDS10ProtocolBuffer.AdminDNSServersMessage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Message to set the DNS Server - Used with AdmiMessage
+     * </pre>
+     *
+     * Protobuf type {@code AdminDNSServersMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:AdminDNSServersMessage)
+        EDS10ProtocolBuffer.AdminDNSServersMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return EDS10ProtocolBuffer.internal_static_AdminDNSServersMessage_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return EDS10ProtocolBuffer.internal_static_AdminDNSServersMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                EDS10ProtocolBuffer.AdminDNSServersMessage.class, EDS10ProtocolBuffer.AdminDNSServersMessage.Builder.class);
+      }
+
+      // Construct using EDS10ProtocolBuffer.AdminDNSServersMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        dNSPrimary_ = "";
+
+        dNSSecondary_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return EDS10ProtocolBuffer.internal_static_AdminDNSServersMessage_descriptor;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.AdminDNSServersMessage getDefaultInstanceForType() {
+        return EDS10ProtocolBuffer.AdminDNSServersMessage.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.AdminDNSServersMessage build() {
+        EDS10ProtocolBuffer.AdminDNSServersMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.AdminDNSServersMessage buildPartial() {
+        EDS10ProtocolBuffer.AdminDNSServersMessage result = new EDS10ProtocolBuffer.AdminDNSServersMessage(this);
+        result.dNSPrimary_ = dNSPrimary_;
+        result.dNSSecondary_ = dNSSecondary_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof EDS10ProtocolBuffer.AdminDNSServersMessage) {
+          return mergeFrom((EDS10ProtocolBuffer.AdminDNSServersMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(EDS10ProtocolBuffer.AdminDNSServersMessage other) {
+        if (other == EDS10ProtocolBuffer.AdminDNSServersMessage.getDefaultInstance()) return this;
+        if (!other.getDNSPrimary().isEmpty()) {
+          dNSPrimary_ = other.dNSPrimary_;
+          onChanged();
+        }
+        if (!other.getDNSSecondary().isEmpty()) {
+          dNSSecondary_ = other.dNSSecondary_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        EDS10ProtocolBuffer.AdminDNSServersMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (EDS10ProtocolBuffer.AdminDNSServersMessage) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object dNSPrimary_ = "";
+      /**
+       * <pre>
+       * Primary DNS
+       * </pre>
+       *
+       * <code>string DNS_Primary = 1;</code>
+       */
+      public java.lang.String getDNSPrimary() {
+        java.lang.Object ref = dNSPrimary_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          dNSPrimary_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Primary DNS
+       * </pre>
+       *
+       * <code>string DNS_Primary = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getDNSPrimaryBytes() {
+        java.lang.Object ref = dNSPrimary_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          dNSPrimary_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Primary DNS
+       * </pre>
+       *
+       * <code>string DNS_Primary = 1;</code>
+       */
+      public Builder setDNSPrimary(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        dNSPrimary_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Primary DNS
+       * </pre>
+       *
+       * <code>string DNS_Primary = 1;</code>
+       */
+      public Builder clearDNSPrimary() {
+        
+        dNSPrimary_ = getDefaultInstance().getDNSPrimary();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Primary DNS
+       * </pre>
+       *
+       * <code>string DNS_Primary = 1;</code>
+       */
+      public Builder setDNSPrimaryBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        dNSPrimary_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object dNSSecondary_ = "";
+      /**
+       * <pre>
+       * Secondary DNS
+       * </pre>
+       *
+       * <code>string DNS_Secondary = 2;</code>
+       */
+      public java.lang.String getDNSSecondary() {
+        java.lang.Object ref = dNSSecondary_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          dNSSecondary_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Secondary DNS
+       * </pre>
+       *
+       * <code>string DNS_Secondary = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getDNSSecondaryBytes() {
+        java.lang.Object ref = dNSSecondary_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          dNSSecondary_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Secondary DNS
+       * </pre>
+       *
+       * <code>string DNS_Secondary = 2;</code>
+       */
+      public Builder setDNSSecondary(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        dNSSecondary_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Secondary DNS
+       * </pre>
+       *
+       * <code>string DNS_Secondary = 2;</code>
+       */
+      public Builder clearDNSSecondary() {
+        
+        dNSSecondary_ = getDefaultInstance().getDNSSecondary();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Secondary DNS
+       * </pre>
+       *
+       * <code>string DNS_Secondary = 2;</code>
+       */
+      public Builder setDNSSecondaryBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        dNSSecondary_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:AdminDNSServersMessage)
+    }
+
+    // @@protoc_insertion_point(class_scope:AdminDNSServersMessage)
+    private static final EDS10ProtocolBuffer.AdminDNSServersMessage DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.AdminDNSServersMessage();
+    }
+
+    public static EDS10ProtocolBuffer.AdminDNSServersMessage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<AdminDNSServersMessage>
+        PARSER = new com.google.protobuf.AbstractParser<AdminDNSServersMessage>() {
+      @java.lang.Override
+      public AdminDNSServersMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new AdminDNSServersMessage(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<AdminDNSServersMessage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AdminDNSServersMessage> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public EDS10ProtocolBuffer.AdminDNSServersMessage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface AdminControllerLinesMessageOrBuilder extends
       // @@protoc_insertion_point(interface_extends:AdminControllerLinesMessage)
       com.google.protobuf.MessageOrBuilder {
@@ -77834,6 +81011,10 @@ public final class EDS10ProtocolBuffer {
     int getLinesValue(int index);
   }
   /**
+   * <pre>
+   * Message to set the Type of Controller lines - Used with AdminMessage
+   * </pre>
+   *
    * Protobuf type {@code AdminControllerLinesMessage}
    */
   public  static final class AdminControllerLinesMessage extends
@@ -78168,6 +81349,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message to set the Type of Controller lines - Used with AdminMessage
+     * </pre>
+     *
      * Protobuf type {@code AdminControllerLinesMessage}
      */
     public static final class Builder extends
@@ -78568,6 +81753,10 @@ public final class EDS10ProtocolBuffer {
     float getBattery();
   }
   /**
+   * <pre>
+   * Message to get device temperature and battery - Used with AdminMessage
+   * </pre>
+   *
    * Protobuf type {@code AdminDeviceStatusMessage}
    */
   public  static final class AdminDeviceStatusMessage extends
@@ -78850,6 +82039,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message to get device temperature and battery - Used with AdminMessage
+     * </pre>
+     *
      * Protobuf type {@code AdminDeviceStatusMessage}
      */
     public static final class Builder extends
@@ -79196,6 +82389,10 @@ public final class EDS10ProtocolBuffer {
     int getHash(int index);
   }
   /**
+   * <pre>
+   * Message to enable/disable the Secure Login functionality
+   * </pre>
+   *
    * Protobuf type {@code AdminSecureLoginMessage}
    */
   public  static final class AdminSecureLoginMessage extends
@@ -79619,6 +82816,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message to enable/disable the Secure Login functionality
+     * </pre>
+     *
      * Protobuf type {@code AdminSecureLoginMessage}
      */
     public static final class Builder extends
@@ -80140,6 +83341,10 @@ public final class EDS10ProtocolBuffer {
     EDS10ProtocolBuffer.DALISensorType getType();
   }
   /**
+   * <pre>
+   * Message to set the DALI sensor messaging type (24 or 25 bit DALI)  - Used with AdminMessage
+   * </pre>
+   *
    * Protobuf type {@code AdminDALISensorTypeMessage}
    */
   public  static final class AdminDALISensorTypeMessage extends
@@ -80398,6 +83603,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message to set the DALI sensor messaging type (24 or 25 bit DALI)  - Used with AdminMessage
+     * </pre>
+     *
      * Protobuf type {@code AdminDALISensorTypeMessage}
      */
     public static final class Builder extends
@@ -80803,9 +84012,26 @@ public final class EDS10ProtocolBuffer {
      */
     EDS10ProtocolBuffer.AdminDALISensorTypeMessageOrBuilder getDaliSensorTypeOrBuilder();
 
+    /**
+     * <code>.AdminDNSServersMessage dns_servers = 11;</code>
+     */
+    boolean hasDnsServers();
+    /**
+     * <code>.AdminDNSServersMessage dns_servers = 11;</code>
+     */
+    EDS10ProtocolBuffer.AdminDNSServersMessage getDnsServers();
+    /**
+     * <code>.AdminDNSServersMessage dns_servers = 11;</code>
+     */
+    EDS10ProtocolBuffer.AdminDNSServersMessageOrBuilder getDnsServersOrBuilder();
+
     public EDS10ProtocolBuffer.AdminMessage.PayloadCase getPayloadCase();
   }
   /**
+   * <pre>
+   * The Main AdminMessage used with the specific oneoff message type. 
+   * </pre>
+   *
    * Protobuf type {@code AdminMessage}
    */
   public  static final class AdminMessage extends
@@ -80970,6 +84196,20 @@ public final class EDS10ProtocolBuffer {
               payloadCase_ = 10;
               break;
             }
+            case 90: {
+              EDS10ProtocolBuffer.AdminDNSServersMessage.Builder subBuilder = null;
+              if (payloadCase_ == 11) {
+                subBuilder = ((EDS10ProtocolBuffer.AdminDNSServersMessage) payload_).toBuilder();
+              }
+              payload_ =
+                  input.readMessage(EDS10ProtocolBuffer.AdminDNSServersMessage.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((EDS10ProtocolBuffer.AdminDNSServersMessage) payload_);
+                payload_ = subBuilder.buildPartial();
+              }
+              payloadCase_ = 11;
+              break;
+            }
             default: {
               if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -81014,6 +84254,7 @@ public final class EDS10ProtocolBuffer {
       CONFIG_STATUS(8),
       DEVICE_TIME(9),
       DALI_SENSOR_TYPE(10),
+      DNS_SERVERS(11),
       PAYLOAD_NOT_SET(0);
       private final int value;
       private PayloadCase(int value) {
@@ -81037,6 +84278,7 @@ public final class EDS10ProtocolBuffer {
           case 8: return CONFIG_STATUS;
           case 9: return DEVICE_TIME;
           case 10: return DALI_SENSOR_TYPE;
+          case 11: return DNS_SERVERS;
           case 0: return PAYLOAD_NOT_SET;
           default: return null;
         }
@@ -81310,6 +84552,32 @@ public final class EDS10ProtocolBuffer {
       return EDS10ProtocolBuffer.AdminDALISensorTypeMessage.getDefaultInstance();
     }
 
+    public static final int DNS_SERVERS_FIELD_NUMBER = 11;
+    /**
+     * <code>.AdminDNSServersMessage dns_servers = 11;</code>
+     */
+    public boolean hasDnsServers() {
+      return payloadCase_ == 11;
+    }
+    /**
+     * <code>.AdminDNSServersMessage dns_servers = 11;</code>
+     */
+    public EDS10ProtocolBuffer.AdminDNSServersMessage getDnsServers() {
+      if (payloadCase_ == 11) {
+         return (EDS10ProtocolBuffer.AdminDNSServersMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.AdminDNSServersMessage.getDefaultInstance();
+    }
+    /**
+     * <code>.AdminDNSServersMessage dns_servers = 11;</code>
+     */
+    public EDS10ProtocolBuffer.AdminDNSServersMessageOrBuilder getDnsServersOrBuilder() {
+      if (payloadCase_ == 11) {
+         return (EDS10ProtocolBuffer.AdminDNSServersMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.AdminDNSServersMessage.getDefaultInstance();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -81353,6 +84621,9 @@ public final class EDS10ProtocolBuffer {
       }
       if (payloadCase_ == 10) {
         output.writeMessage(10, (EDS10ProtocolBuffer.AdminDALISensorTypeMessage) payload_);
+      }
+      if (payloadCase_ == 11) {
+        output.writeMessage(11, (EDS10ProtocolBuffer.AdminDNSServersMessage) payload_);
       }
       unknownFields.writeTo(output);
     }
@@ -81402,6 +84673,10 @@ public final class EDS10ProtocolBuffer {
       if (payloadCase_ == 10) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(10, (EDS10ProtocolBuffer.AdminDALISensorTypeMessage) payload_);
+      }
+      if (payloadCase_ == 11) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(11, (EDS10ProtocolBuffer.AdminDNSServersMessage) payload_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -81457,6 +84732,10 @@ public final class EDS10ProtocolBuffer {
           result = result && getDaliSensorType()
               .equals(other.getDaliSensorType());
           break;
+        case 11:
+          result = result && getDnsServers()
+              .equals(other.getDnsServers());
+          break;
         case 0:
         default:
       }
@@ -81507,6 +84786,10 @@ public final class EDS10ProtocolBuffer {
         case 10:
           hash = (37 * hash) + DALI_SENSOR_TYPE_FIELD_NUMBER;
           hash = (53 * hash) + getDaliSensorType().hashCode();
+          break;
+        case 11:
+          hash = (37 * hash) + DNS_SERVERS_FIELD_NUMBER;
+          hash = (53 * hash) + getDnsServers().hashCode();
           break;
         case 0:
         default:
@@ -81607,6 +84890,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * The Main AdminMessage used with the specific oneoff message type. 
+     * </pre>
+     *
      * Protobuf type {@code AdminMessage}
      */
     public static final class Builder extends
@@ -81734,6 +85021,13 @@ public final class EDS10ProtocolBuffer {
             result.payload_ = daliSensorTypeBuilder_.build();
           }
         }
+        if (payloadCase_ == 11) {
+          if (dnsServersBuilder_ == null) {
+            result.payload_ = payload_;
+          } else {
+            result.payload_ = dnsServersBuilder_.build();
+          }
+        }
         result.payloadCase_ = payloadCase_;
         onBuilt();
         return result;
@@ -81820,6 +85114,10 @@ public final class EDS10ProtocolBuffer {
           }
           case DALI_SENSOR_TYPE: {
             mergeDaliSensorType(other.getDaliSensorType());
+            break;
+          }
+          case DNS_SERVERS: {
+            mergeDnsServers(other.getDnsServers());
             break;
           }
           case PAYLOAD_NOT_SET: {
@@ -83087,6 +86385,142 @@ public final class EDS10ProtocolBuffer {
         onChanged();;
         return daliSensorTypeBuilder_;
       }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.AdminDNSServersMessage, EDS10ProtocolBuffer.AdminDNSServersMessage.Builder, EDS10ProtocolBuffer.AdminDNSServersMessageOrBuilder> dnsServersBuilder_;
+      /**
+       * <code>.AdminDNSServersMessage dns_servers = 11;</code>
+       */
+      public boolean hasDnsServers() {
+        return payloadCase_ == 11;
+      }
+      /**
+       * <code>.AdminDNSServersMessage dns_servers = 11;</code>
+       */
+      public EDS10ProtocolBuffer.AdminDNSServersMessage getDnsServers() {
+        if (dnsServersBuilder_ == null) {
+          if (payloadCase_ == 11) {
+            return (EDS10ProtocolBuffer.AdminDNSServersMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.AdminDNSServersMessage.getDefaultInstance();
+        } else {
+          if (payloadCase_ == 11) {
+            return dnsServersBuilder_.getMessage();
+          }
+          return EDS10ProtocolBuffer.AdminDNSServersMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.AdminDNSServersMessage dns_servers = 11;</code>
+       */
+      public Builder setDnsServers(EDS10ProtocolBuffer.AdminDNSServersMessage value) {
+        if (dnsServersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          payload_ = value;
+          onChanged();
+        } else {
+          dnsServersBuilder_.setMessage(value);
+        }
+        payloadCase_ = 11;
+        return this;
+      }
+      /**
+       * <code>.AdminDNSServersMessage dns_servers = 11;</code>
+       */
+      public Builder setDnsServers(
+          EDS10ProtocolBuffer.AdminDNSServersMessage.Builder builderForValue) {
+        if (dnsServersBuilder_ == null) {
+          payload_ = builderForValue.build();
+          onChanged();
+        } else {
+          dnsServersBuilder_.setMessage(builderForValue.build());
+        }
+        payloadCase_ = 11;
+        return this;
+      }
+      /**
+       * <code>.AdminDNSServersMessage dns_servers = 11;</code>
+       */
+      public Builder mergeDnsServers(EDS10ProtocolBuffer.AdminDNSServersMessage value) {
+        if (dnsServersBuilder_ == null) {
+          if (payloadCase_ == 11 &&
+              payload_ != EDS10ProtocolBuffer.AdminDNSServersMessage.getDefaultInstance()) {
+            payload_ = EDS10ProtocolBuffer.AdminDNSServersMessage.newBuilder((EDS10ProtocolBuffer.AdminDNSServersMessage) payload_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            payload_ = value;
+          }
+          onChanged();
+        } else {
+          if (payloadCase_ == 11) {
+            dnsServersBuilder_.mergeFrom(value);
+          }
+          dnsServersBuilder_.setMessage(value);
+        }
+        payloadCase_ = 11;
+        return this;
+      }
+      /**
+       * <code>.AdminDNSServersMessage dns_servers = 11;</code>
+       */
+      public Builder clearDnsServers() {
+        if (dnsServersBuilder_ == null) {
+          if (payloadCase_ == 11) {
+            payloadCase_ = 0;
+            payload_ = null;
+            onChanged();
+          }
+        } else {
+          if (payloadCase_ == 11) {
+            payloadCase_ = 0;
+            payload_ = null;
+          }
+          dnsServersBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.AdminDNSServersMessage dns_servers = 11;</code>
+       */
+      public EDS10ProtocolBuffer.AdminDNSServersMessage.Builder getDnsServersBuilder() {
+        return getDnsServersFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.AdminDNSServersMessage dns_servers = 11;</code>
+       */
+      public EDS10ProtocolBuffer.AdminDNSServersMessageOrBuilder getDnsServersOrBuilder() {
+        if ((payloadCase_ == 11) && (dnsServersBuilder_ != null)) {
+          return dnsServersBuilder_.getMessageOrBuilder();
+        } else {
+          if (payloadCase_ == 11) {
+            return (EDS10ProtocolBuffer.AdminDNSServersMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.AdminDNSServersMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.AdminDNSServersMessage dns_servers = 11;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.AdminDNSServersMessage, EDS10ProtocolBuffer.AdminDNSServersMessage.Builder, EDS10ProtocolBuffer.AdminDNSServersMessageOrBuilder> 
+          getDnsServersFieldBuilder() {
+        if (dnsServersBuilder_ == null) {
+          if (!(payloadCase_ == 11)) {
+            payload_ = EDS10ProtocolBuffer.AdminDNSServersMessage.getDefaultInstance();
+          }
+          dnsServersBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.AdminDNSServersMessage, EDS10ProtocolBuffer.AdminDNSServersMessage.Builder, EDS10ProtocolBuffer.AdminDNSServersMessageOrBuilder>(
+                  (EDS10ProtocolBuffer.AdminDNSServersMessage) payload_,
+                  getParentForChildren(),
+                  isClean());
+          payload_ = null;
+        }
+        payloadCase_ = 11;
+        onChanged();;
+        return dnsServersBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -83993,7 +87427,7 @@ public final class EDS10ProtocolBuffer {
 
     /**
      * <pre>
-     * WARNING - Will Erase Stored Firmware
+     * MSB.XXX.LSB
      * </pre>
      *
      * <code>uint32 firmware_version = 1;</code>
@@ -84002,7 +87436,7 @@ public final class EDS10ProtocolBuffer {
 
     /**
      * <pre>
-     * Day/Month/Year Compiled
+     * Day/Month/Year Compiled - Deprecated, use tag = 10, 11, 12
      * </pre>
      *
      * <code>uint32 firmware_date = 2;</code>
@@ -84011,7 +87445,7 @@ public final class EDS10ProtocolBuffer {
 
     /**
      * <pre>
-     * Day/Month/Year Uploaded
+     * Day/Month/Year Uploaded - Deprecated, uses controller time
      * </pre>
      *
      * <code>uint32 firmware_date_upload = 3;</code>
@@ -84062,8 +87496,64 @@ public final class EDS10ProtocolBuffer {
      * <code>bool firmware_is_backup = 8;</code>
      */
     boolean getFirmwareIsBackup();
+
+    /**
+     * <pre>
+     * Decryption Nonce
+     * </pre>
+     *
+     * <code>repeated uint32 nonce = 9;</code>
+     */
+    java.util.List<java.lang.Integer> getNonceList();
+    /**
+     * <pre>
+     * Decryption Nonce
+     * </pre>
+     *
+     * <code>repeated uint32 nonce = 9;</code>
+     */
+    int getNonceCount();
+    /**
+     * <pre>
+     * Decryption Nonce
+     * </pre>
+     *
+     * <code>repeated uint32 nonce = 9;</code>
+     */
+    int getNonce(int index);
+
+    /**
+     * <pre>
+     * Day in Firmware File
+     * </pre>
+     *
+     * <code>uint32 firmware_date_day = 10;</code>
+     */
+    int getFirmwareDateDay();
+
+    /**
+     * <pre>
+     * Month in Firmware File
+     * </pre>
+     *
+     * <code>uint32 firmware_date_month = 11;</code>
+     */
+    int getFirmwareDateMonth();
+
+    /**
+     * <pre>
+     * Year in Firmware File 
+     * </pre>
+     *
+     * <code>uint32 firmware_date_year = 12;</code>
+     */
+    int getFirmwareDateYear();
   }
   /**
+   * <pre>
+   * Firmware Update Meta Message. Contains information on new incoming firmware. Sending this message begins the update process and will ERASE the currently stored firmware
+   * </pre>
+   *
    * Protobuf type {@code FirmwareMetaMessage}
    */
   public  static final class FirmwareMetaMessage extends
@@ -84084,6 +87574,10 @@ public final class EDS10ProtocolBuffer {
       firmwareBaseAddress_ = 0;
       firmwareEndAddress_ = 0;
       firmwareIsBackup_ = false;
+      nonce_ = java.util.Collections.emptyList();
+      firmwareDateDay_ = 0;
+      firmwareDateMonth_ = 0;
+      firmwareDateYear_ = 0;
     }
 
     @java.lang.Override
@@ -84150,6 +87644,42 @@ public final class EDS10ProtocolBuffer {
               firmwareIsBackup_ = input.readBool();
               break;
             }
+            case 72: {
+              if (!((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
+                nonce_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000100;
+              }
+              nonce_.add(input.readUInt32());
+              break;
+            }
+            case 74: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000100) == 0x00000100) && input.getBytesUntilLimit() > 0) {
+                nonce_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000100;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                nonce_.add(input.readUInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 80: {
+
+              firmwareDateDay_ = input.readUInt32();
+              break;
+            }
+            case 88: {
+
+              firmwareDateMonth_ = input.readUInt32();
+              break;
+            }
+            case 96: {
+
+              firmwareDateYear_ = input.readUInt32();
+              break;
+            }
             default: {
               if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -84165,6 +87695,9 @@ public final class EDS10ProtocolBuffer {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
+          nonce_ = java.util.Collections.unmodifiableList(nonce_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -84182,11 +87715,12 @@ public final class EDS10ProtocolBuffer {
               EDS10ProtocolBuffer.FirmwareMetaMessage.class, EDS10ProtocolBuffer.FirmwareMetaMessage.Builder.class);
     }
 
+    private int bitField0_;
     public static final int FIRMWARE_VERSION_FIELD_NUMBER = 1;
     private int firmwareVersion_;
     /**
      * <pre>
-     * WARNING - Will Erase Stored Firmware
+     * MSB.XXX.LSB
      * </pre>
      *
      * <code>uint32 firmware_version = 1;</code>
@@ -84199,7 +87733,7 @@ public final class EDS10ProtocolBuffer {
     private int firmwareDate_;
     /**
      * <pre>
-     * Day/Month/Year Compiled
+     * Day/Month/Year Compiled - Deprecated, use tag = 10, 11, 12
      * </pre>
      *
      * <code>uint32 firmware_date = 2;</code>
@@ -84212,7 +87746,7 @@ public final class EDS10ProtocolBuffer {
     private int firmwareDateUpload_;
     /**
      * <pre>
-     * Day/Month/Year Uploaded
+     * Day/Month/Year Uploaded - Deprecated, uses controller time
      * </pre>
      *
      * <code>uint32 firmware_date_upload = 3;</code>
@@ -84286,6 +87820,80 @@ public final class EDS10ProtocolBuffer {
       return firmwareIsBackup_;
     }
 
+    public static final int NONCE_FIELD_NUMBER = 9;
+    private java.util.List<java.lang.Integer> nonce_;
+    /**
+     * <pre>
+     * Decryption Nonce
+     * </pre>
+     *
+     * <code>repeated uint32 nonce = 9;</code>
+     */
+    public java.util.List<java.lang.Integer>
+        getNonceList() {
+      return nonce_;
+    }
+    /**
+     * <pre>
+     * Decryption Nonce
+     * </pre>
+     *
+     * <code>repeated uint32 nonce = 9;</code>
+     */
+    public int getNonceCount() {
+      return nonce_.size();
+    }
+    /**
+     * <pre>
+     * Decryption Nonce
+     * </pre>
+     *
+     * <code>repeated uint32 nonce = 9;</code>
+     */
+    public int getNonce(int index) {
+      return nonce_.get(index);
+    }
+    private int nonceMemoizedSerializedSize = -1;
+
+    public static final int FIRMWARE_DATE_DAY_FIELD_NUMBER = 10;
+    private int firmwareDateDay_;
+    /**
+     * <pre>
+     * Day in Firmware File
+     * </pre>
+     *
+     * <code>uint32 firmware_date_day = 10;</code>
+     */
+    public int getFirmwareDateDay() {
+      return firmwareDateDay_;
+    }
+
+    public static final int FIRMWARE_DATE_MONTH_FIELD_NUMBER = 11;
+    private int firmwareDateMonth_;
+    /**
+     * <pre>
+     * Month in Firmware File
+     * </pre>
+     *
+     * <code>uint32 firmware_date_month = 11;</code>
+     */
+    public int getFirmwareDateMonth() {
+      return firmwareDateMonth_;
+    }
+
+    public static final int FIRMWARE_DATE_YEAR_FIELD_NUMBER = 12;
+    private int firmwareDateYear_;
+    /**
+     * <pre>
+     * Year in Firmware File 
+     * </pre>
+     *
+     * <code>uint32 firmware_date_year = 12;</code>
+     */
+    public int getFirmwareDateYear() {
+      return firmwareDateYear_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -84300,6 +87908,7 @@ public final class EDS10ProtocolBuffer {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      getSerializedSize();
       if (firmwareVersion_ != 0) {
         output.writeUInt32(1, firmwareVersion_);
       }
@@ -84323,6 +87932,22 @@ public final class EDS10ProtocolBuffer {
       }
       if (firmwareIsBackup_ != false) {
         output.writeBool(8, firmwareIsBackup_);
+      }
+      if (getNonceList().size() > 0) {
+        output.writeUInt32NoTag(74);
+        output.writeUInt32NoTag(nonceMemoizedSerializedSize);
+      }
+      for (int i = 0; i < nonce_.size(); i++) {
+        output.writeUInt32NoTag(nonce_.get(i));
+      }
+      if (firmwareDateDay_ != 0) {
+        output.writeUInt32(10, firmwareDateDay_);
+      }
+      if (firmwareDateMonth_ != 0) {
+        output.writeUInt32(11, firmwareDateMonth_);
+      }
+      if (firmwareDateYear_ != 0) {
+        output.writeUInt32(12, firmwareDateYear_);
       }
       unknownFields.writeTo(output);
     }
@@ -84365,6 +87990,32 @@ public final class EDS10ProtocolBuffer {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(8, firmwareIsBackup_);
       }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < nonce_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeUInt32SizeNoTag(nonce_.get(i));
+        }
+        size += dataSize;
+        if (!getNonceList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        nonceMemoizedSerializedSize = dataSize;
+      }
+      if (firmwareDateDay_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(10, firmwareDateDay_);
+      }
+      if (firmwareDateMonth_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(11, firmwareDateMonth_);
+      }
+      if (firmwareDateYear_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(12, firmwareDateYear_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -84397,6 +88048,14 @@ public final class EDS10ProtocolBuffer {
           == other.getFirmwareEndAddress());
       result = result && (getFirmwareIsBackup()
           == other.getFirmwareIsBackup());
+      result = result && getNonceList()
+          .equals(other.getNonceList());
+      result = result && (getFirmwareDateDay()
+          == other.getFirmwareDateDay());
+      result = result && (getFirmwareDateMonth()
+          == other.getFirmwareDateMonth());
+      result = result && (getFirmwareDateYear()
+          == other.getFirmwareDateYear());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -84425,6 +88084,16 @@ public final class EDS10ProtocolBuffer {
       hash = (37 * hash) + FIRMWARE_IS_BACKUP_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getFirmwareIsBackup());
+      if (getNonceCount() > 0) {
+        hash = (37 * hash) + NONCE_FIELD_NUMBER;
+        hash = (53 * hash) + getNonceList().hashCode();
+      }
+      hash = (37 * hash) + FIRMWARE_DATE_DAY_FIELD_NUMBER;
+      hash = (53 * hash) + getFirmwareDateDay();
+      hash = (37 * hash) + FIRMWARE_DATE_MONTH_FIELD_NUMBER;
+      hash = (53 * hash) + getFirmwareDateMonth();
+      hash = (37 * hash) + FIRMWARE_DATE_YEAR_FIELD_NUMBER;
+      hash = (53 * hash) + getFirmwareDateYear();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -84521,6 +88190,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Firmware Update Meta Message. Contains information on new incoming firmware. Sending this message begins the update process and will ERASE the currently stored firmware
+     * </pre>
+     *
      * Protobuf type {@code FirmwareMetaMessage}
      */
     public static final class Builder extends
@@ -84574,6 +88247,14 @@ public final class EDS10ProtocolBuffer {
 
         firmwareIsBackup_ = false;
 
+        nonce_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000100);
+        firmwareDateDay_ = 0;
+
+        firmwareDateMonth_ = 0;
+
+        firmwareDateYear_ = 0;
+
         return this;
       }
 
@@ -84600,6 +88281,8 @@ public final class EDS10ProtocolBuffer {
       @java.lang.Override
       public EDS10ProtocolBuffer.FirmwareMetaMessage buildPartial() {
         EDS10ProtocolBuffer.FirmwareMetaMessage result = new EDS10ProtocolBuffer.FirmwareMetaMessage(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
         result.firmwareVersion_ = firmwareVersion_;
         result.firmwareDate_ = firmwareDate_;
         result.firmwareDateUpload_ = firmwareDateUpload_;
@@ -84608,6 +88291,15 @@ public final class EDS10ProtocolBuffer {
         result.firmwareBaseAddress_ = firmwareBaseAddress_;
         result.firmwareEndAddress_ = firmwareEndAddress_;
         result.firmwareIsBackup_ = firmwareIsBackup_;
+        if (((bitField0_ & 0x00000100) == 0x00000100)) {
+          nonce_ = java.util.Collections.unmodifiableList(nonce_);
+          bitField0_ = (bitField0_ & ~0x00000100);
+        }
+        result.nonce_ = nonce_;
+        result.firmwareDateDay_ = firmwareDateDay_;
+        result.firmwareDateMonth_ = firmwareDateMonth_;
+        result.firmwareDateYear_ = firmwareDateYear_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -84680,6 +88372,25 @@ public final class EDS10ProtocolBuffer {
         if (other.getFirmwareIsBackup() != false) {
           setFirmwareIsBackup(other.getFirmwareIsBackup());
         }
+        if (!other.nonce_.isEmpty()) {
+          if (nonce_.isEmpty()) {
+            nonce_ = other.nonce_;
+            bitField0_ = (bitField0_ & ~0x00000100);
+          } else {
+            ensureNonceIsMutable();
+            nonce_.addAll(other.nonce_);
+          }
+          onChanged();
+        }
+        if (other.getFirmwareDateDay() != 0) {
+          setFirmwareDateDay(other.getFirmwareDateDay());
+        }
+        if (other.getFirmwareDateMonth() != 0) {
+          setFirmwareDateMonth(other.getFirmwareDateMonth());
+        }
+        if (other.getFirmwareDateYear() != 0) {
+          setFirmwareDateYear(other.getFirmwareDateYear());
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -84708,11 +88419,12 @@ public final class EDS10ProtocolBuffer {
         }
         return this;
       }
+      private int bitField0_;
 
       private int firmwareVersion_ ;
       /**
        * <pre>
-       * WARNING - Will Erase Stored Firmware
+       * MSB.XXX.LSB
        * </pre>
        *
        * <code>uint32 firmware_version = 1;</code>
@@ -84722,7 +88434,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * WARNING - Will Erase Stored Firmware
+       * MSB.XXX.LSB
        * </pre>
        *
        * <code>uint32 firmware_version = 1;</code>
@@ -84735,7 +88447,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * WARNING - Will Erase Stored Firmware
+       * MSB.XXX.LSB
        * </pre>
        *
        * <code>uint32 firmware_version = 1;</code>
@@ -84750,7 +88462,7 @@ public final class EDS10ProtocolBuffer {
       private int firmwareDate_ ;
       /**
        * <pre>
-       * Day/Month/Year Compiled
+       * Day/Month/Year Compiled - Deprecated, use tag = 10, 11, 12
        * </pre>
        *
        * <code>uint32 firmware_date = 2;</code>
@@ -84760,7 +88472,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * Day/Month/Year Compiled
+       * Day/Month/Year Compiled - Deprecated, use tag = 10, 11, 12
        * </pre>
        *
        * <code>uint32 firmware_date = 2;</code>
@@ -84773,7 +88485,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * Day/Month/Year Compiled
+       * Day/Month/Year Compiled - Deprecated, use tag = 10, 11, 12
        * </pre>
        *
        * <code>uint32 firmware_date = 2;</code>
@@ -84788,7 +88500,7 @@ public final class EDS10ProtocolBuffer {
       private int firmwareDateUpload_ ;
       /**
        * <pre>
-       * Day/Month/Year Uploaded
+       * Day/Month/Year Uploaded - Deprecated, uses controller time
        * </pre>
        *
        * <code>uint32 firmware_date_upload = 3;</code>
@@ -84798,7 +88510,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * Day/Month/Year Uploaded
+       * Day/Month/Year Uploaded - Deprecated, uses controller time
        * </pre>
        *
        * <code>uint32 firmware_date_upload = 3;</code>
@@ -84811,7 +88523,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * Day/Month/Year Uploaded
+       * Day/Month/Year Uploaded - Deprecated, uses controller time
        * </pre>
        *
        * <code>uint32 firmware_date_upload = 3;</code>
@@ -85009,6 +88721,214 @@ public final class EDS10ProtocolBuffer {
       public Builder clearFirmwareIsBackup() {
         
         firmwareIsBackup_ = false;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<java.lang.Integer> nonce_ = java.util.Collections.emptyList();
+      private void ensureNonceIsMutable() {
+        if (!((bitField0_ & 0x00000100) == 0x00000100)) {
+          nonce_ = new java.util.ArrayList<java.lang.Integer>(nonce_);
+          bitField0_ |= 0x00000100;
+         }
+      }
+      /**
+       * <pre>
+       * Decryption Nonce
+       * </pre>
+       *
+       * <code>repeated uint32 nonce = 9;</code>
+       */
+      public java.util.List<java.lang.Integer>
+          getNonceList() {
+        return java.util.Collections.unmodifiableList(nonce_);
+      }
+      /**
+       * <pre>
+       * Decryption Nonce
+       * </pre>
+       *
+       * <code>repeated uint32 nonce = 9;</code>
+       */
+      public int getNonceCount() {
+        return nonce_.size();
+      }
+      /**
+       * <pre>
+       * Decryption Nonce
+       * </pre>
+       *
+       * <code>repeated uint32 nonce = 9;</code>
+       */
+      public int getNonce(int index) {
+        return nonce_.get(index);
+      }
+      /**
+       * <pre>
+       * Decryption Nonce
+       * </pre>
+       *
+       * <code>repeated uint32 nonce = 9;</code>
+       */
+      public Builder setNonce(
+          int index, int value) {
+        ensureNonceIsMutable();
+        nonce_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Decryption Nonce
+       * </pre>
+       *
+       * <code>repeated uint32 nonce = 9;</code>
+       */
+      public Builder addNonce(int value) {
+        ensureNonceIsMutable();
+        nonce_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Decryption Nonce
+       * </pre>
+       *
+       * <code>repeated uint32 nonce = 9;</code>
+       */
+      public Builder addAllNonce(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureNonceIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, nonce_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Decryption Nonce
+       * </pre>
+       *
+       * <code>repeated uint32 nonce = 9;</code>
+       */
+      public Builder clearNonce() {
+        nonce_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000100);
+        onChanged();
+        return this;
+      }
+
+      private int firmwareDateDay_ ;
+      /**
+       * <pre>
+       * Day in Firmware File
+       * </pre>
+       *
+       * <code>uint32 firmware_date_day = 10;</code>
+       */
+      public int getFirmwareDateDay() {
+        return firmwareDateDay_;
+      }
+      /**
+       * <pre>
+       * Day in Firmware File
+       * </pre>
+       *
+       * <code>uint32 firmware_date_day = 10;</code>
+       */
+      public Builder setFirmwareDateDay(int value) {
+        
+        firmwareDateDay_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Day in Firmware File
+       * </pre>
+       *
+       * <code>uint32 firmware_date_day = 10;</code>
+       */
+      public Builder clearFirmwareDateDay() {
+        
+        firmwareDateDay_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int firmwareDateMonth_ ;
+      /**
+       * <pre>
+       * Month in Firmware File
+       * </pre>
+       *
+       * <code>uint32 firmware_date_month = 11;</code>
+       */
+      public int getFirmwareDateMonth() {
+        return firmwareDateMonth_;
+      }
+      /**
+       * <pre>
+       * Month in Firmware File
+       * </pre>
+       *
+       * <code>uint32 firmware_date_month = 11;</code>
+       */
+      public Builder setFirmwareDateMonth(int value) {
+        
+        firmwareDateMonth_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Month in Firmware File
+       * </pre>
+       *
+       * <code>uint32 firmware_date_month = 11;</code>
+       */
+      public Builder clearFirmwareDateMonth() {
+        
+        firmwareDateMonth_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int firmwareDateYear_ ;
+      /**
+       * <pre>
+       * Year in Firmware File 
+       * </pre>
+       *
+       * <code>uint32 firmware_date_year = 12;</code>
+       */
+      public int getFirmwareDateYear() {
+        return firmwareDateYear_;
+      }
+      /**
+       * <pre>
+       * Year in Firmware File 
+       * </pre>
+       *
+       * <code>uint32 firmware_date_year = 12;</code>
+       */
+      public Builder setFirmwareDateYear(int value) {
+        
+        firmwareDateYear_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Year in Firmware File 
+       * </pre>
+       *
+       * <code>uint32 firmware_date_year = 12;</code>
+       */
+      public Builder clearFirmwareDateYear() {
+        
+        firmwareDateYear_ = 0;
         onChanged();
         return this;
       }
@@ -85608,6 +89528,10 @@ public final class EDS10ProtocolBuffer {
     EDS10ProtocolBuffer.DataMessageOrBuilder getPayloadOrBuilder();
   }
   /**
+   * <pre>
+   * Chunk of firmware to be sent via a 256 byte payload
+   * </pre>
+   *
    * Protobuf type {@code FirmwareChunkMessage}
    */
   public  static final class FirmwareChunkMessage extends
@@ -85926,6 +89850,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Chunk of firmware to be sent via a 256 byte payload
+     * </pre>
+     *
      * Protobuf type {@code FirmwareChunkMessage}
      */
     public static final class Builder extends
@@ -86336,24 +90264,44 @@ public final class EDS10ProtocolBuffer {
     int getLogsRequested();
 
     /**
+     * <pre>
+     * Array of requested logs
+     * </pre>
+     *
      * <code>repeated .SystemLogMessage logs = 3;</code>
      */
     java.util.List<EDS10ProtocolBuffer.SystemLogMessage> 
         getLogsList();
     /**
+     * <pre>
+     * Array of requested logs
+     * </pre>
+     *
      * <code>repeated .SystemLogMessage logs = 3;</code>
      */
     EDS10ProtocolBuffer.SystemLogMessage getLogs(int index);
     /**
+     * <pre>
+     * Array of requested logs
+     * </pre>
+     *
      * <code>repeated .SystemLogMessage logs = 3;</code>
      */
     int getLogsCount();
     /**
+     * <pre>
+     * Array of requested logs
+     * </pre>
+     *
      * <code>repeated .SystemLogMessage logs = 3;</code>
      */
     java.util.List<? extends EDS10ProtocolBuffer.SystemLogMessageOrBuilder> 
         getLogsOrBuilderList();
     /**
+     * <pre>
+     * Array of requested logs
+     * </pre>
+     *
      * <code>repeated .SystemLogMessage logs = 3;</code>
      */
     EDS10ProtocolBuffer.SystemLogMessageOrBuilder getLogsOrBuilder(
@@ -86361,7 +90309,7 @@ public final class EDS10ProtocolBuffer {
   }
   /**
    * <pre>
-   ***** Log Read ****
+   * Message sent to read the logs. The start address is offset for how many logs are requested. Up to 32 logs are sent in one message.
    * </pre>
    *
    * Protobuf type {@code SystemLogReadMessage}
@@ -86489,12 +90437,20 @@ public final class EDS10ProtocolBuffer {
     public static final int LOGS_FIELD_NUMBER = 3;
     private java.util.List<EDS10ProtocolBuffer.SystemLogMessage> logs_;
     /**
+     * <pre>
+     * Array of requested logs
+     * </pre>
+     *
      * <code>repeated .SystemLogMessage logs = 3;</code>
      */
     public java.util.List<EDS10ProtocolBuffer.SystemLogMessage> getLogsList() {
       return logs_;
     }
     /**
+     * <pre>
+     * Array of requested logs
+     * </pre>
+     *
      * <code>repeated .SystemLogMessage logs = 3;</code>
      */
     public java.util.List<? extends EDS10ProtocolBuffer.SystemLogMessageOrBuilder> 
@@ -86502,18 +90458,30 @@ public final class EDS10ProtocolBuffer {
       return logs_;
     }
     /**
+     * <pre>
+     * Array of requested logs
+     * </pre>
+     *
      * <code>repeated .SystemLogMessage logs = 3;</code>
      */
     public int getLogsCount() {
       return logs_.size();
     }
     /**
+     * <pre>
+     * Array of requested logs
+     * </pre>
+     *
      * <code>repeated .SystemLogMessage logs = 3;</code>
      */
     public EDS10ProtocolBuffer.SystemLogMessage getLogs(int index) {
       return logs_.get(index);
     }
     /**
+     * <pre>
+     * Array of requested logs
+     * </pre>
+     *
      * <code>repeated .SystemLogMessage logs = 3;</code>
      */
     public EDS10ProtocolBuffer.SystemLogMessageOrBuilder getLogsOrBuilder(
@@ -86703,7 +90671,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     ***** Log Read ****
+     * Message sent to read the logs. The start address is offset for how many logs are requested. Up to 32 logs are sent in one message.
      * </pre>
      *
      * Protobuf type {@code SystemLogReadMessage}
@@ -86993,6 +90961,10 @@ public final class EDS10ProtocolBuffer {
           EDS10ProtocolBuffer.SystemLogMessage, EDS10ProtocolBuffer.SystemLogMessage.Builder, EDS10ProtocolBuffer.SystemLogMessageOrBuilder> logsBuilder_;
 
       /**
+       * <pre>
+       * Array of requested logs
+       * </pre>
+       *
        * <code>repeated .SystemLogMessage logs = 3;</code>
        */
       public java.util.List<EDS10ProtocolBuffer.SystemLogMessage> getLogsList() {
@@ -87003,6 +90975,10 @@ public final class EDS10ProtocolBuffer {
         }
       }
       /**
+       * <pre>
+       * Array of requested logs
+       * </pre>
+       *
        * <code>repeated .SystemLogMessage logs = 3;</code>
        */
       public int getLogsCount() {
@@ -87013,6 +90989,10 @@ public final class EDS10ProtocolBuffer {
         }
       }
       /**
+       * <pre>
+       * Array of requested logs
+       * </pre>
+       *
        * <code>repeated .SystemLogMessage logs = 3;</code>
        */
       public EDS10ProtocolBuffer.SystemLogMessage getLogs(int index) {
@@ -87023,6 +91003,10 @@ public final class EDS10ProtocolBuffer {
         }
       }
       /**
+       * <pre>
+       * Array of requested logs
+       * </pre>
+       *
        * <code>repeated .SystemLogMessage logs = 3;</code>
        */
       public Builder setLogs(
@@ -87040,6 +91024,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Array of requested logs
+       * </pre>
+       *
        * <code>repeated .SystemLogMessage logs = 3;</code>
        */
       public Builder setLogs(
@@ -87054,6 +91042,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Array of requested logs
+       * </pre>
+       *
        * <code>repeated .SystemLogMessage logs = 3;</code>
        */
       public Builder addLogs(EDS10ProtocolBuffer.SystemLogMessage value) {
@@ -87070,6 +91062,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Array of requested logs
+       * </pre>
+       *
        * <code>repeated .SystemLogMessage logs = 3;</code>
        */
       public Builder addLogs(
@@ -87087,6 +91083,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Array of requested logs
+       * </pre>
+       *
        * <code>repeated .SystemLogMessage logs = 3;</code>
        */
       public Builder addLogs(
@@ -87101,6 +91101,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Array of requested logs
+       * </pre>
+       *
        * <code>repeated .SystemLogMessage logs = 3;</code>
        */
       public Builder addLogs(
@@ -87115,6 +91119,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Array of requested logs
+       * </pre>
+       *
        * <code>repeated .SystemLogMessage logs = 3;</code>
        */
       public Builder addAllLogs(
@@ -87130,6 +91138,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Array of requested logs
+       * </pre>
+       *
        * <code>repeated .SystemLogMessage logs = 3;</code>
        */
       public Builder clearLogs() {
@@ -87143,6 +91155,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Array of requested logs
+       * </pre>
+       *
        * <code>repeated .SystemLogMessage logs = 3;</code>
        */
       public Builder removeLogs(int index) {
@@ -87156,6 +91172,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Array of requested logs
+       * </pre>
+       *
        * <code>repeated .SystemLogMessage logs = 3;</code>
        */
       public EDS10ProtocolBuffer.SystemLogMessage.Builder getLogsBuilder(
@@ -87163,6 +91183,10 @@ public final class EDS10ProtocolBuffer {
         return getLogsFieldBuilder().getBuilder(index);
       }
       /**
+       * <pre>
+       * Array of requested logs
+       * </pre>
+       *
        * <code>repeated .SystemLogMessage logs = 3;</code>
        */
       public EDS10ProtocolBuffer.SystemLogMessageOrBuilder getLogsOrBuilder(
@@ -87173,6 +91197,10 @@ public final class EDS10ProtocolBuffer {
         }
       }
       /**
+       * <pre>
+       * Array of requested logs
+       * </pre>
+       *
        * <code>repeated .SystemLogMessage logs = 3;</code>
        */
       public java.util.List<? extends EDS10ProtocolBuffer.SystemLogMessageOrBuilder> 
@@ -87184,6 +91212,10 @@ public final class EDS10ProtocolBuffer {
         }
       }
       /**
+       * <pre>
+       * Array of requested logs
+       * </pre>
+       *
        * <code>repeated .SystemLogMessage logs = 3;</code>
        */
       public EDS10ProtocolBuffer.SystemLogMessage.Builder addLogsBuilder() {
@@ -87191,6 +91223,10 @@ public final class EDS10ProtocolBuffer {
             EDS10ProtocolBuffer.SystemLogMessage.getDefaultInstance());
       }
       /**
+       * <pre>
+       * Array of requested logs
+       * </pre>
+       *
        * <code>repeated .SystemLogMessage logs = 3;</code>
        */
       public EDS10ProtocolBuffer.SystemLogMessage.Builder addLogsBuilder(
@@ -87199,6 +91235,10 @@ public final class EDS10ProtocolBuffer {
             index, EDS10ProtocolBuffer.SystemLogMessage.getDefaultInstance());
       }
       /**
+       * <pre>
+       * Array of requested logs
+       * </pre>
+       *
        * <code>repeated .SystemLogMessage logs = 3;</code>
        */
       public java.util.List<EDS10ProtocolBuffer.SystemLogMessage.Builder> 
@@ -87286,26 +91326,14 @@ public final class EDS10ProtocolBuffer {
     int getTimeSinceBoot();
 
     /**
-     * <pre>
-     * Startup
-     * </pre>
-     *
      * <code>.SystemLogBoot boot = 2;</code>
      */
     boolean hasBoot();
     /**
-     * <pre>
-     * Startup
-     * </pre>
-     *
      * <code>.SystemLogBoot boot = 2;</code>
      */
     EDS10ProtocolBuffer.SystemLogBoot getBoot();
     /**
-     * <pre>
-     * Startup
-     * </pre>
-     *
      * <code>.SystemLogBoot boot = 2;</code>
      */
     EDS10ProtocolBuffer.SystemLogBootOrBuilder getBootOrBuilder();
@@ -87392,7 +91420,7 @@ public final class EDS10ProtocolBuffer {
   }
   /**
    * <pre>
-   ***** Log Packet ****
+   * Individual Log packet containing oneof log type of information. Logs are timestamped using the timesinceboot parameter. The boot packet will provide the time of boot, so exact times can be extracted
    * </pre>
    *
    * Protobuf type {@code SystemLogMessage}
@@ -87632,20 +91660,12 @@ public final class EDS10ProtocolBuffer {
 
     public static final int BOOT_FIELD_NUMBER = 2;
     /**
-     * <pre>
-     * Startup
-     * </pre>
-     *
      * <code>.SystemLogBoot boot = 2;</code>
      */
     public boolean hasBoot() {
       return packetCase_ == 2;
     }
     /**
-     * <pre>
-     * Startup
-     * </pre>
-     *
      * <code>.SystemLogBoot boot = 2;</code>
      */
     public EDS10ProtocolBuffer.SystemLogBoot getBoot() {
@@ -87655,10 +91675,6 @@ public final class EDS10ProtocolBuffer {
       return EDS10ProtocolBuffer.SystemLogBoot.getDefaultInstance();
     }
     /**
-     * <pre>
-     * Startup
-     * </pre>
-     *
      * <code>.SystemLogBoot boot = 2;</code>
      */
     public EDS10ProtocolBuffer.SystemLogBootOrBuilder getBootOrBuilder() {
@@ -88098,7 +92114,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     ***** Log Packet ****
+     * Individual Log packet containing oneof log type of information. Logs are timestamped using the timesinceboot parameter. The boot packet will provide the time of boot, so exact times can be extracted
      * </pre>
      *
      * Protobuf type {@code SystemLogMessage}
@@ -88388,20 +92404,12 @@ public final class EDS10ProtocolBuffer {
       private com.google.protobuf.SingleFieldBuilderV3<
           EDS10ProtocolBuffer.SystemLogBoot, EDS10ProtocolBuffer.SystemLogBoot.Builder, EDS10ProtocolBuffer.SystemLogBootOrBuilder> bootBuilder_;
       /**
-       * <pre>
-       * Startup
-       * </pre>
-       *
        * <code>.SystemLogBoot boot = 2;</code>
        */
       public boolean hasBoot() {
         return packetCase_ == 2;
       }
       /**
-       * <pre>
-       * Startup
-       * </pre>
-       *
        * <code>.SystemLogBoot boot = 2;</code>
        */
       public EDS10ProtocolBuffer.SystemLogBoot getBoot() {
@@ -88418,10 +92426,6 @@ public final class EDS10ProtocolBuffer {
         }
       }
       /**
-       * <pre>
-       * Startup
-       * </pre>
-       *
        * <code>.SystemLogBoot boot = 2;</code>
        */
       public Builder setBoot(EDS10ProtocolBuffer.SystemLogBoot value) {
@@ -88438,10 +92442,6 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
-       * <pre>
-       * Startup
-       * </pre>
-       *
        * <code>.SystemLogBoot boot = 2;</code>
        */
       public Builder setBoot(
@@ -88456,10 +92456,6 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
-       * <pre>
-       * Startup
-       * </pre>
-       *
        * <code>.SystemLogBoot boot = 2;</code>
        */
       public Builder mergeBoot(EDS10ProtocolBuffer.SystemLogBoot value) {
@@ -88482,10 +92478,6 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
-       * <pre>
-       * Startup
-       * </pre>
-       *
        * <code>.SystemLogBoot boot = 2;</code>
        */
       public Builder clearBoot() {
@@ -88505,20 +92497,12 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
-       * <pre>
-       * Startup
-       * </pre>
-       *
        * <code>.SystemLogBoot boot = 2;</code>
        */
       public EDS10ProtocolBuffer.SystemLogBoot.Builder getBootBuilder() {
         return getBootFieldBuilder().getBuilder();
       }
       /**
-       * <pre>
-       * Startup
-       * </pre>
-       *
        * <code>.SystemLogBoot boot = 2;</code>
        */
       public EDS10ProtocolBuffer.SystemLogBootOrBuilder getBootOrBuilder() {
@@ -88532,10 +92516,6 @@ public final class EDS10ProtocolBuffer {
         }
       }
       /**
-       * <pre>
-       * Startup
-       * </pre>
-       *
        * <code>.SystemLogBoot boot = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -89449,7 +93429,7 @@ public final class EDS10ProtocolBuffer {
   }
   /**
    * <pre>
-   ***** Log Types ****
+   * Message for Log Boot Type
    * </pre>
    *
    * Protobuf type {@code SystemLogBoot}
@@ -89745,7 +93725,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     ***** Log Types ****
+     * Message for Log Boot Type
      * </pre>
      *
      * Protobuf type {@code SystemLogBoot}
@@ -90113,6 +94093,10 @@ public final class EDS10ProtocolBuffer {
     boolean getIsLinked();
   }
   /**
+   * <pre>
+   * Message for Log Netlink Type
+   * </pre>
+   *
    * Protobuf type {@code SystemLogNetLink}
    */
   public  static final class SystemLogNetLink extends
@@ -90356,6 +94340,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message for Log Netlink Type
+     * </pre>
+     *
      * Protobuf type {@code SystemLogNetLink}
      */
     public static final class Builder extends
@@ -90598,6 +94586,10 @@ public final class EDS10ProtocolBuffer {
     EDS10ProtocolBuffer.TimeClockMessageOrBuilder getTimeclockOrBuilder();
   }
   /**
+   * <pre>
+   * Message for Log NTP Type
+   * </pre>
+   *
    * Protobuf type {@code SystemLogNTP}
    */
   public  static final class SystemLogNTP extends
@@ -90864,6 +94856,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message for Log NTP Type
+     * </pre>
+     *
      * Protobuf type {@code SystemLogNTP}
      */
     public static final class Builder extends
@@ -91214,6 +95210,10 @@ public final class EDS10ProtocolBuffer {
     EDS10ProtocolBuffer.ReadType getSource();
   }
   /**
+   * <pre>
+   * Message for Log Trigger Type
+   * </pre>
+   *
    * Protobuf type {@code SystemLogTrigger}
    */
   public  static final class SystemLogTrigger extends
@@ -91514,6 +95514,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message for Log Trigger Type
+     * </pre>
+     *
      * Protobuf type {@code SystemLogTrigger}
      */
     public static final class Builder extends
@@ -91916,6 +95920,10 @@ public final class EDS10ProtocolBuffer {
     int getIndex();
   }
   /**
+   * <pre>
+   * Message for Log Spektra Type
+   * </pre>
+   *
    * Protobuf type {@code SystemLogSpektra}
    */
   public  static final class SystemLogSpektra extends
@@ -92226,6 +96234,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message for Log Spektra Type
+     * </pre>
+     *
      * Protobuf type {@code SystemLogSpektra}
      */
     public static final class Builder extends
@@ -92582,6 +96594,10 @@ public final class EDS10ProtocolBuffer {
     int getHour();
   }
   /**
+   * <pre>
+   * Message for Log Schedule Type
+   * </pre>
+   *
    * Protobuf type {@code SystemLogSchedule}
    */
   public  static final class SystemLogSchedule extends
@@ -92928,6 +96944,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message for Log Schedule Type
+     * </pre>
+     *
      * Protobuf type {@code SystemLogSchedule}
      */
     public static final class Builder extends
@@ -93296,8 +97316,17 @@ public final class EDS10ProtocolBuffer {
      * <code>.TimeClockMessage timeclock = 1;</code>
      */
     EDS10ProtocolBuffer.TimeClockMessageOrBuilder getTimeclockOrBuilder();
+
+    /**
+     * <code>uint32 flags = 2;</code>
+     */
+    int getFlags();
   }
   /**
+   * <pre>
+   * Message for Log User Start Type
+   * </pre>
+   *
    * Protobuf type {@code SystemLogUserStart}
    */
   public  static final class SystemLogUserStart extends
@@ -93310,6 +97339,7 @@ public final class EDS10ProtocolBuffer {
       super(builder);
     }
     private SystemLogUserStart() {
+      flags_ = 0;
     }
 
     @java.lang.Override
@@ -93347,6 +97377,11 @@ public final class EDS10ProtocolBuffer {
                 timeclock_ = subBuilder.buildPartial();
               }
 
+              break;
+            }
+            case 16: {
+
+              flags_ = input.readUInt32();
               break;
             }
             default: {
@@ -93402,6 +97437,15 @@ public final class EDS10ProtocolBuffer {
       return getTimeclock();
     }
 
+    public static final int FLAGS_FIELD_NUMBER = 2;
+    private int flags_;
+    /**
+     * <code>uint32 flags = 2;</code>
+     */
+    public int getFlags() {
+      return flags_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -93419,6 +97463,9 @@ public final class EDS10ProtocolBuffer {
       if (timeclock_ != null) {
         output.writeMessage(1, getTimeclock());
       }
+      if (flags_ != 0) {
+        output.writeUInt32(2, flags_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -93431,6 +97478,10 @@ public final class EDS10ProtocolBuffer {
       if (timeclock_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getTimeclock());
+      }
+      if (flags_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, flags_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -93453,6 +97504,8 @@ public final class EDS10ProtocolBuffer {
         result = result && getTimeclock()
             .equals(other.getTimeclock());
       }
+      result = result && (getFlags()
+          == other.getFlags());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -93468,6 +97521,8 @@ public final class EDS10ProtocolBuffer {
         hash = (37 * hash) + TIMECLOCK_FIELD_NUMBER;
         hash = (53 * hash) + getTimeclock().hashCode();
       }
+      hash = (37 * hash) + FLAGS_FIELD_NUMBER;
+      hash = (53 * hash) + getFlags();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -93564,6 +97619,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message for Log User Start Type
+     * </pre>
+     *
      * Protobuf type {@code SystemLogUserStart}
      */
     public static final class Builder extends
@@ -93607,6 +97666,8 @@ public final class EDS10ProtocolBuffer {
           timeclock_ = null;
           timeclockBuilder_ = null;
         }
+        flags_ = 0;
+
         return this;
       }
 
@@ -93638,6 +97699,7 @@ public final class EDS10ProtocolBuffer {
         } else {
           result.timeclock_ = timeclockBuilder_.build();
         }
+        result.flags_ = flags_;
         onBuilt();
         return result;
       }
@@ -93688,6 +97750,9 @@ public final class EDS10ProtocolBuffer {
         if (other == EDS10ProtocolBuffer.SystemLogUserStart.getDefaultInstance()) return this;
         if (other.hasTimeclock()) {
           mergeTimeclock(other.getTimeclock());
+        }
+        if (other.getFlags() != 0) {
+          setFlags(other.getFlags());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -93834,6 +97899,32 @@ public final class EDS10ProtocolBuffer {
         }
         return timeclockBuilder_;
       }
+
+      private int flags_ ;
+      /**
+       * <code>uint32 flags = 2;</code>
+       */
+      public int getFlags() {
+        return flags_;
+      }
+      /**
+       * <code>uint32 flags = 2;</code>
+       */
+      public Builder setFlags(int value) {
+        
+        flags_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 flags = 2;</code>
+       */
+      public Builder clearFlags() {
+        
+        flags_ = 0;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -93967,26 +98058,46 @@ public final class EDS10ProtocolBuffer {
     int getSchedulesCounter(int index);
 
     /**
+     * <pre>
+     * Time in seconds
+     * </pre>
+     *
      * <code>uint32 screen_on_time = 4;</code>
      */
     int getScreenOnTime();
 
     /**
+     * <pre>
+     * Time in seconds
+     * </pre>
+     *
      * <code>uint32 screen_dim_time = 5;</code>
      */
     int getScreenDimTime();
 
     /**
+     * <pre>
+     * Time in seconds
+     * </pre>
+     *
      * <code>uint32 screen_saver_time = 6;</code>
      */
     int getScreenSaverTime();
 
     /**
+     * <pre>
+     * Number of reboots since Data erased
+     * </pre>
+     *
      * <code>uint32 reboot_counter = 7;</code>
      */
     int getRebootCounter();
   }
   /**
+   * <pre>
+   * Message to contain system metadata for debugging purposes
+   * </pre>
+   *
    * Protobuf type {@code SystemMetaDataReadMessage}
    */
   public  static final class SystemMetaDataReadMessage extends
@@ -94265,6 +98376,10 @@ public final class EDS10ProtocolBuffer {
     public static final int SCREEN_ON_TIME_FIELD_NUMBER = 4;
     private int screenOnTime_;
     /**
+     * <pre>
+     * Time in seconds
+     * </pre>
+     *
      * <code>uint32 screen_on_time = 4;</code>
      */
     public int getScreenOnTime() {
@@ -94274,6 +98389,10 @@ public final class EDS10ProtocolBuffer {
     public static final int SCREEN_DIM_TIME_FIELD_NUMBER = 5;
     private int screenDimTime_;
     /**
+     * <pre>
+     * Time in seconds
+     * </pre>
+     *
      * <code>uint32 screen_dim_time = 5;</code>
      */
     public int getScreenDimTime() {
@@ -94283,6 +98402,10 @@ public final class EDS10ProtocolBuffer {
     public static final int SCREEN_SAVER_TIME_FIELD_NUMBER = 6;
     private int screenSaverTime_;
     /**
+     * <pre>
+     * Time in seconds
+     * </pre>
+     *
      * <code>uint32 screen_saver_time = 6;</code>
      */
     public int getScreenSaverTime() {
@@ -94292,6 +98415,10 @@ public final class EDS10ProtocolBuffer {
     public static final int REBOOT_COUNTER_FIELD_NUMBER = 7;
     private int rebootCounter_;
     /**
+     * <pre>
+     * Number of reboots since Data erased
+     * </pre>
+     *
      * <code>uint32 reboot_counter = 7;</code>
      */
     public int getRebootCounter() {
@@ -94570,6 +98697,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message to contain system metadata for debugging purposes
+     * </pre>
+     *
      * Protobuf type {@code SystemMetaDataReadMessage}
      */
     public static final class Builder extends
@@ -95073,12 +99204,20 @@ public final class EDS10ProtocolBuffer {
 
       private int screenOnTime_ ;
       /**
+       * <pre>
+       * Time in seconds
+       * </pre>
+       *
        * <code>uint32 screen_on_time = 4;</code>
        */
       public int getScreenOnTime() {
         return screenOnTime_;
       }
       /**
+       * <pre>
+       * Time in seconds
+       * </pre>
+       *
        * <code>uint32 screen_on_time = 4;</code>
        */
       public Builder setScreenOnTime(int value) {
@@ -95088,6 +99227,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Time in seconds
+       * </pre>
+       *
        * <code>uint32 screen_on_time = 4;</code>
        */
       public Builder clearScreenOnTime() {
@@ -95099,12 +99242,20 @@ public final class EDS10ProtocolBuffer {
 
       private int screenDimTime_ ;
       /**
+       * <pre>
+       * Time in seconds
+       * </pre>
+       *
        * <code>uint32 screen_dim_time = 5;</code>
        */
       public int getScreenDimTime() {
         return screenDimTime_;
       }
       /**
+       * <pre>
+       * Time in seconds
+       * </pre>
+       *
        * <code>uint32 screen_dim_time = 5;</code>
        */
       public Builder setScreenDimTime(int value) {
@@ -95114,6 +99265,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Time in seconds
+       * </pre>
+       *
        * <code>uint32 screen_dim_time = 5;</code>
        */
       public Builder clearScreenDimTime() {
@@ -95125,12 +99280,20 @@ public final class EDS10ProtocolBuffer {
 
       private int screenSaverTime_ ;
       /**
+       * <pre>
+       * Time in seconds
+       * </pre>
+       *
        * <code>uint32 screen_saver_time = 6;</code>
        */
       public int getScreenSaverTime() {
         return screenSaverTime_;
       }
       /**
+       * <pre>
+       * Time in seconds
+       * </pre>
+       *
        * <code>uint32 screen_saver_time = 6;</code>
        */
       public Builder setScreenSaverTime(int value) {
@@ -95140,6 +99303,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Time in seconds
+       * </pre>
+       *
        * <code>uint32 screen_saver_time = 6;</code>
        */
       public Builder clearScreenSaverTime() {
@@ -95151,12 +99318,20 @@ public final class EDS10ProtocolBuffer {
 
       private int rebootCounter_ ;
       /**
+       * <pre>
+       * Number of reboots since Data erased
+       * </pre>
+       *
        * <code>uint32 reboot_counter = 7;</code>
        */
       public int getRebootCounter() {
         return rebootCounter_;
       }
       /**
+       * <pre>
+       * Number of reboots since Data erased
+       * </pre>
+       *
        * <code>uint32 reboot_counter = 7;</code>
        */
       public Builder setRebootCounter(int value) {
@@ -95166,6 +99341,10 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Number of reboots since Data erased
+       * </pre>
+       *
        * <code>uint32 reboot_counter = 7;</code>
        */
       public Builder clearRebootCounter() {
@@ -95295,6 +99474,10 @@ public final class EDS10ProtocolBuffer {
     boolean getDali24Frame();
   }
   /**
+   * <pre>
+   * Message to set Event Filter Mask
+   * </pre>
+   *
    * Protobuf type {@code EventFilter}
    */
   public  static final class EventFilter extends
@@ -95728,6 +99911,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message to set Event Filter Mask
+     * </pre>
+     *
      * Protobuf type {@code EventFilter}
      */
     public static final class Builder extends
@@ -96296,6 +100483,10 @@ public final class EDS10ProtocolBuffer {
     public EDS10ProtocolBuffer.TriggerEvent.PayloadCase getPayloadCase();
   }
   /**
+   * <pre>
+   * Message Response for Trigger Event
+   * </pre>
+   *
    * Protobuf type {@code TriggerEvent}
    */
   public  static final class TriggerEvent extends
@@ -96752,6 +100943,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message Response for Trigger Event
+     * </pre>
+     *
      * Protobuf type {@code TriggerEvent}
      */
     public static final class Builder extends
@@ -97302,6 +101497,10 @@ public final class EDS10ProtocolBuffer {
     int getArg();
   }
   /**
+   * <pre>
+   * Message Response for DALI 24 Input Event
+   * </pre>
+   *
    * Protobuf type {@code DALI24InputEvent}
    */
   public  static final class DALI24InputEvent extends
@@ -97668,6 +101867,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message Response for DALI 24 Input Event
+     * </pre>
+     *
      * Protobuf type {@code DALI24InputEvent}
      */
     public static final class Builder extends
@@ -98094,6 +102297,10 @@ public final class EDS10ProtocolBuffer {
     int getFrame();
   }
   /**
+   * <pre>
+   * Message Response for DALI 24 Frame Event
+   * </pre>
+   *
    * Protobuf type {@code DALI24FrameEvent}
    */
   public  static final class DALI24FrameEvent extends
@@ -98370,6 +102577,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message Response for DALI 24 Frame Event
+     * </pre>
+     *
      * Protobuf type {@code DALI24FrameEvent}
      */
     public static final class Builder extends
@@ -98709,6 +102920,10 @@ public final class EDS10ProtocolBuffer {
     int getLuxLevel();
   }
   /**
+   * <pre>
+   * Message Response for DALI Sensor Event
+   * </pre>
+   *
    * Protobuf type {@code DALISensorEvent}
    */
   public  static final class DALISensorEvent extends
@@ -99113,6 +103328,10 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
+     * <pre>
+     * Message Response for DALI Sensor Event
+     * </pre>
+     *
      * Protobuf type {@code DALISensorEvent}
      */
     public static final class Builder extends
@@ -114762,6 +118981,11 @@ public final class EDS10ProtocolBuffer {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_AdminNetworkPropertiesMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_AdminDNSServersMessage_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_AdminDNSServersMessage_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_AdminControllerLinesMessage_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -115039,561 +119263,569 @@ public final class EDS10ProtocolBuffer {
       "\001(\r\022\016\n\006getset\030\004 \001(\r\022\022\n\ndatalength\030\005 \001(\r\022" +
       "\014\n\004data\030\006 \003(\r\"P\n\022RDMResponseMessage\022\013\n\003u" +
       "id\030\001 \001(\004\022\013\n\003pid\030\002 \001(\r\022\022\n\ndatalength\030\003 \001(" +
-      "\r\022\014\n\004data\030\004 \003(\r\",\n\023RDMDiscoveryMessage\022\025" +
-      "\n\runiverse_mask\030\001 \001(\r\"T\n\030RDMDiscoveryRep" +
-      "lyMessage\022\027\n\017discovery_count\030\001 \001(\r\022\013\n\003ui" +
-      "d\030\002 \003(\004\022\022\n\nerror_code\030\003 \001(\r\"\337\002\n\025SpektraS" +
-      "ettingMessage\022\014\n\004zone\030\001 \001(\r\022\025\n\rstart_add" +
-      "ress\030\002 \001(\r\022\035\n\025line_or_universe_mask\030\003 \001(" +
-      "\r\022\020\n\010protocol\030\004 \001(\r\022\030\n\020number_of_lights\030" +
-      "\005 \001(\r\022\032\n\022channels_per_light\030\006 \001(\r\022\027\n\017cha" +
-      "nnel_colours\030\007 \003(\r\022?\n\025unscheduled_behavi" +
-      "our\030\010 \001(\0162 .SpektraUnscheduledBehaviourT" +
-      "ype\022\027\n\017channel_mapping\030\t \003(\r\022,\n\017line_add" +
-      "ressing\030\n \001(\0162\023.LineAddressingType\022\031\n\021zo" +
-      "ne_scale_factor\030\013 \001(\002\"3\n\032SpektraColourCo" +
-      "nfigMessage\022\025\n\rchannel_value\030\001 \003(\r\"\350\003\n\034S" +
-      "pektraSequenceConfigMessage\022\r\n\005index\030\001 \001" +
-      "(\r\022\014\n\004type\030\002 \001(\r\022*\n\ntransition\030\003 \001(\0162\026.S" +
-      "pektraTransitionType\022\031\n\021fade_time_by_10m" +
-      "s\030\004 \001(\r\022\027\n\017time_per_colour\030\005 \001(\r\022\034\n\024time" +
-      "_per_colour_unit\030\006 \001(\r\022\025\n\rtime_per_step\030" +
-      "\007 \001(\r\022\032\n\022time_per_step_unit\030\010 \001(\r\022\r\n\005ran" +
-      "ge\030\t \001(\r\022\016\n\006colour\030\n \003(\004\022\032\n\022is_randomise" +
-      "d_type\030\013 \001(\r\022\031\n\021random_types_mask\030\014 \001(\r\022" +
-      "\034\n\024is_reverse_direction\030\r \001(\r\022\032\n\022is_cycl" +
-      "e_direction\030\016 \001(\r\022\r\n\005title\030\017 \001(\t\022\037\n\027has_" +
-      "random_colour_order\030\020 \001(\010\022,\n\007colours\030\021 \003" +
-      "(\0132\033.SpektraColourConfigMessage\022\014\n\004args\030" +
-      "\022 \003(\r\"k\n\026SpektraCalendarMessage\022 \n\004type\030" +
-      "\001 \001(\0162\022.SpektraTargetType\022\r\n\005index\030\002 \001(\r" +
-      "\022\014\n\004days\030\003 \003(\010\022\022\n\nisOverride\030\004 \001(\010\"z\n\031Sp" +
-      "ektraCalendarDayMessage\022\021\n\tday_index\030\001 \001" +
-      "(\r\022 \n\004type\030\002 \001(\0162\022.SpektraTargetType\022\024\n\014" +
-      "target_index\030\003 \001(\r\022\022\n\nisOverride\030\004 \001(\010\"^" +
-      "\n\036SpektraCalendarOverviewMessage\022\022\n\nday_" +
-      "offset\030\001 \001(\r\022(\n\004days\030\002 \003(\0132\032.SpektraCale" +
-      "ndarDayMessage\"w\n\031SpektraThemeConfigMess" +
-      "age\022\r\n\005index\030\001 \001(\r\022\016\n\006colour\030\002 \003(\004\022\r\n\005ti" +
-      "tle\030\003 \001(\t\022,\n\007colours\030\004 \003(\0132\033.SpektraColo" +
-      "urConfigMessage\"E\n\022SpektraReadMessage\022 \n" +
-      "\004type\030\001 \001(\0162\022.SpektraTargetType\022\r\n\005index" +
-      "\030\002 \001(\r\"z\n\025SpektraControlMessage\022 \n\004type\030" +
-      "\001 \001(\0162\022.SpektraTargetType\022\014\n\004zone\030\002 \001(\r\022" +
-      "\r\n\005index\030\003 \001(\r\022\"\n\006action\030\004 \001(\0162\022.Spektra" +
-      "ActionType\"\325\001\n\017ShowStepMessage\022\022\n\nstep_i" +
-      "ndex\030\001 \001(\r\022\024\n\014target_index\030\002 \001(\r\022+\n\013acti" +
-      "on_type\030\003 \001(\0162\026.SpektraStepActionType\022\037\n" +
-      "\027max_random_target_index\030\004 \001(\r\022\014\n\004zone\030\005" +
-      " \001(\r\022\036\n\026max_output_level_limit\030\006 \001(\r\022\034\n\024" +
-      "time_until_next_10ms\030\007 \001(\r\"\314\001\n\022SpektraSh" +
-      "owMessage\022\022\n\nshow_index\030\001 \001(\r\022\027\n\017number_" +
-      "of_steps\030\002 \001(\r\022\036\n\004step\030\003 \003(\0132\020.ShowStepM" +
-      "essage\022\021\n\tisRunning\030\004 \001(\010\022\020\n\010isLooped\030\005 " +
-      "\001(\010\022\020\n\010isRandom\030\006 \001(\010\022\023\n\013isTemporary\030\007 \001" +
-      "(\010\022\035\n\025activations_remaining\030\010 \001(\r\"k\n\032Ext" +
-      "endedSpektraShowMessage\022\022\n\nshow_index\030\001 " +
-      "\001(\r\022\031\n\021step_index_offset\030\002 \001(\r\022\036\n\004step\030\003" +
-      " \003(\0132\020.ShowStepMessage\"W\n\031SpektraShowCon" +
-      "trolMessage\022\022\n\nshow_index\030\001 \001(\r\022\024\n\014start" +
-      "_resume\030\002 \001(\r\022\020\n\010gotoStep\030\003 \001(\r\"\272\001\n\024DMXT" +
-      "ranslationObject\022\017\n\007line_in\030\001 \001(\r\022\020\n\010lin" +
-      "e_out\030\002 \001(\r\022\031\n\021dmx_start_address\030\003 \001(\r\022\025" +
-      "\n\rchannel_count\030\004 \001(\r\022\022\n\ndali_array\030\005 \003(" +
-      "\r\022\026\n\016affected_input\030\007 \001(\r\022\020\n\010blocking\030\010 " +
-      "\001(\010\022\017\n\007enabled\030\t \001(\010\"?\n\026DMXProtocolTrans" +
-      "lation\022%\n\006object\030\001 \003(\0132\025.DMXTranslationO" +
-      "bject\"%\n\021InputStateMessage\022\020\n\010use_mask\030\001" +
-      " \001(\010\"8\n\022InputStateResponse\022\016\n\006inputs\030\001 \003" +
-      "(\r\022\022\n\ninput_mask\030\002 \001(\r\"@\n\022LevelCacheResp" +
-      "onse\022\016\n\006levels\030\001 \003(\r\022\014\n\004line\030\002 \001(\r\022\014\n\004pa" +
-      "ge\030\003 \001(\r\"\323\004\n\034DiagnosticSystemInfoRespons" +
-      "e\022\020\n\010firmware\030\001 \001(\t\022\020\n\010hardware\030\002 \001(\t\022\r\n" +
-      "\005error\030\003 \001(\t\022\023\n\013input_count\030\004 \001(\r\022\024\n\014out" +
-      "put_count\030\005 \001(\r\022\020\n\010ir_count\030\006 \001(\r\022\027\n\017lis" +
-      "t_step_count\030\007 \001(\r\022\022\n\nlist_count\030\010 \001(\r\022\023" +
-      "\n\013alarm_count\030\t \001(\r\022\024\n\014burnin_count\030\n \001(" +
-      "\r\022\031\n\021spektra_seq_count\030\013 \001(\r\022\036\n\026spektra_" +
-      "seq_step_count\030\014 \001(\r\022\033\n\023spektra_theme_co" +
-      "unt\030\r \001(\r\022\034\n\024spektra_static_count\030\016 \001(\r\022" +
-      "\025\n\rproto_version\030\017 \001(\r\022\022\n\nline_count\030\020 \001" +
-      "(\r\022\030\n\005lines\030\021 \003(\0162\t.LineType\022\025\n\rprofile_" +
-      "count\030\022 \001(\r\022\031\n\021preset_code_count\030\023 \001(\r\022\030" +
-      "\n\020user_level_count\030\024 \001(\r\022\031\n\021dmx_to_dali_" +
-      "count\030\025 \001(\r\022\032\n\022spektra_zone_count\030\026 \001(\r\022" +
-      "\023\n\013logic_count\030\027 \001(\r\022\030\n\020input_dali_count" +
-      "\030\030 \001(\r\"U\n\021DiagnosticMessage\022$\n\004type\030\001 \001(" +
-      "\0162\026.DiagnosticMessageType\022\014\n\004page\030\002 \001(\r\022" +
-      "\014\n\004line\030\003 \001(\r\"\362\001\n\035AdminProjectProperties" +
-      "Message\022\023\n\013device_name\030\002 \001(\t\022\024\n\014project_" +
-      "name\030\003 \001(\t\022\021\n\tlongitude\030\004 \001(\002\022\020\n\010latitud" +
-      "e\030\005 \001(\002\022\024\n\014local_offset\030\006 \001(\002\022\030\n\020dayligh" +
-      "t_savings\030\007 \001(\010\022\036\n\026daylight_savings_star" +
-      "t\030\010 \001(\r\022\034\n\024daylight_savings_end\030\t \001(\r\022\023\n" +
-      "\013poll_active\030\n \001(\010\"\244\001\n\030AdminConfigStatus" +
-      "Message\022\023\n\013list_status\030\001 \003(\r\022\026\n\016burn_in_" +
-      "status\030\002 \003(\r\022\024\n\014alarm_status\030\003 \001(\r\022.\n\023al" +
-      "arm_time_from_reg\030\004 \001(\0132\021.TimeClockMessa" +
-      "ge\022\025\n\rsensor_status\030\005 \003(\r\"\326\001\n\035AdminNetwo" +
-      "rkPropertiesMessage\022\014\n\004DHCP\030\001 \001(\010\022\n\n\002IP\030" +
-      "\002 \001(\t\022\013\n\003MAC\030\003 \001(\t\022\017\n\007gateway\030\004 \001(\t\022\021\n\tN" +
-      "TPServer\030\005 \001(\t\022\013\n\003NTP\030\006 \001(\010\022\r\n\005error\030\007 \001" +
-      "(\t\022\022\n\nNTPTimeout\030\010 \001(\r\022\016\n\006subnet\030\t \001(\t\022\023" +
-      "\n\013DNS_Primary\030\n \001(\t\022\025\n\rDNS_Secondary\030\013 \001" +
-      "(\t\"7\n\033AdminControllerLinesMessage\022\030\n\005lin" +
-      "es\030\001 \003(\0162\t.LineType\"@\n\030AdminDeviceStatus" +
-      "Message\022\023\n\013temperature\030\001 \001(\002\022\017\n\007battery\030" +
-      "\002 \001(\002\"I\n\027AdminSecureLoginMessage\022\020\n\010user" +
-      "name\030\001 \001(\t\022\016\n\006cnonce\030\002 \001(\t\022\014\n\004hash\030\003 \003(\r" +
-      "\";\n\032AdminDALISensorTypeMessage\022\035\n\004type\030\001" +
-      " \001(\0162\017.DALISensorType\"\204\004\n\014AdminMessage\022\"" +
-      "\n\007command\030\001 \001(\0162\021.AdminCommandType\022\"\n\006ta" +
-      "rget\030\002 \001(\0162\022.AdminPropertyType\022\037\n\004data\030\003" +
-      " \001(\0132\017.PayloadMessageH\000\022<\n\022network_prope" +
-      "rties\030\004 \001(\0132\036.AdminNetworkPropertiesMess" +
-      "ageH\000\022<\n\022project_properties\030\005 \001(\0132\036.Admi" +
-      "nProjectPropertiesMessageH\000\0228\n\020controlle" +
-      "r_lines\030\006 \001(\0132\034.AdminControllerLinesMess" +
-      "ageH\000\0222\n\rdevice_status\030\007 \001(\0132\031.AdminDevi" +
-      "ceStatusMessageH\000\0222\n\rconfig_status\030\010 \001(\013" +
-      "2\031.AdminConfigStatusMessageH\000\022)\n\013device_" +
-      "time\030\t \001(\0132\022.UpdateTimeMessageH\000\0227\n\020dali" +
-      "_sensor_type\030\n \001(\0132\033.AdminDALISensorType" +
-      "MessageH\000B\t\n\007payload\"K\n\013DataMessage\022\022\n\ni" +
-      "dentifier\030\001 \001(\r\022\013\n\003seq\030\002 \001(\r\022\r\n\005count\030\003 " +
-      "\001(\r\022\014\n\004data\030\004 \003(\r\"\366\001\n\023FirmwareMetaMessag" +
-      "e\022\030\n\020firmware_version\030\001 \001(\r\022\025\n\rfirmware_" +
-      "date\030\002 \001(\r\022\034\n\024firmware_date_upload\030\003 \001(\r" +
-      "\022\031\n\021firmware_checksum\030\004 \001(\r\022\034\n\024firmware_" +
-      "chunk_count\030\005 \001(\r\022\035\n\025firmware_base_addre" +
-      "ss\030\006 \001(\r\022\034\n\024firmware_end_address\030\007 \001(\r\022\032" +
-      "\n\022firmware_is_backup\030\010 \001(\010\";\n\026FirmwareCo" +
-      "ntrolMessage\022!\n\003cmd\030\001 \001(\0162\024.FirmwareComm" +
-      "andType\"d\n\024FirmwareChunkMessage\022\030\n\020firmw" +
-      "are_address\030\001 \001(\r\022\023\n\013total_bytes\030\002 \001(\r\022\035" +
-      "\n\007payload\030\003 \001(\0132\014.DataMessage\"j\n\024SystemL" +
-      "ogReadMessage\022\031\n\021log_start_address\030\001 \001(\r" +
-      "\022\026\n\016logs_requested\030\002 \001(\r\022\037\n\004logs\030\003 \003(\0132\021" +
-      ".SystemLogMessage\"\267\002\n\020SystemLogMessage\022\027" +
-      "\n\017time_since_boot\030\001 \001(\r\022\036\n\004boot\030\002 \001(\0132\016." +
-      "SystemLogBootH\000\022$\n\007netlink\030\003 \001(\0132\021.Syste" +
-      "mLogNetLinkH\000\022\034\n\003ntp\030\004 \001(\0132\r.SystemLogNT" +
-      "PH\000\022$\n\007trigger\030\005 \001(\0132\021.SystemLogTriggerH" +
-      "\000\022$\n\007spektra\030\006 \001(\0132\021.SystemLogSpektraH\000\022" +
-      "&\n\010schedule\030\007 \001(\0132\022.SystemLogScheduleH\000\022" +
-      "(\n\tuserstart\030\010 \001(\0132\023.SystemLogUserStartH" +
-      "\000B\010\n\006packet\"D\n\rSystemLogBoot\022$\n\ttimecloc" +
-      "k\030\001 \001(\0132\021.TimeClockMessage\022\r\n\005flags\030\002 \001(" +
-      "\r\"%\n\020SystemLogNetLink\022\021\n\tis_linked\030\001 \001(\010" +
-      "\"4\n\014SystemLogNTP\022$\n\ttimeclock\030\001 \001(\0132\021.Ti" +
-      "meClockMessage\"O\n\020SystemLogTrigger\022 \n\007tr" +
-      "igger\030\001 \001(\0132\017.TriggerMessage\022\031\n\006source\030\002" +
-      " \001(\0162\t.ReadType\"g\n\020SystemLogSpektra\022\"\n\006a" +
-      "ction\030\001 \001(\0162\022.SpektraActionType\022 \n\004type\030" +
-      "\002 \001(\0162\022.SpektraTargetType\022\r\n\005index\030\003 \001(\r" +
-      "\"a\n\021SystemLogSchedule\022\r\n\005index\030\001 \001(\r\022\017\n\007" +
-      "isStart\030\002 \001(\r\022\016\n\006second\030\003 \001(\r\022\016\n\006minute\030" +
-      "\004 \001(\r\022\014\n\004hour\030\005 \001(\r\":\n\022SystemLogUserStar" +
-      "t\022$\n\ttimeclock\030\001 \001(\0132\021.TimeClockMessage\"" +
-      "\323\001\n\031SystemMetaDataReadMessage\022\033\n\023input_p" +
-      "ress_counter\030\001 \003(\r\022\032\n\022list_start_counter" +
-      "\030\002 \003(\r\022\031\n\021schedules_counter\030\003 \003(\r\022\026\n\016scr" +
-      "een_on_time\030\004 \001(\r\022\027\n\017screen_dim_time\030\005 \001" +
-      "(\r\022\031\n\021screen_saver_time\030\006 \001(\r\022\026\n\016reboot_" +
-      "counter\030\007 \001(\r\"\246\001\n\013EventFilter\022\r\n\005input\030\001" +
-      " \001(\010\022\026\n\016dali_arc_level\030\002 \001(\010\022\024\n\014dali_com" +
-      "mand\030\003 \001(\010\022\023\n\013dali_sensor\030\004 \001(\010\022\022\n\ndali_" +
-      "input\030\005 \001(\010\022\032\n\022dmx_stream_changed\030\006 \001(\010\022" +
-      "\025\n\rdali_24_frame\030\007 \001(\010\"\233\001\n\014TriggerEvent\022" +
-      "\032\n\004type\030\001 \001(\0162\014.TriggerType\022\017\n\005level\030\002 \001" +
-      "(\rH\000\022(\n\014dali_command\030\003 \001(\0162\020.DALICommand" +
-      "TypeH\000\022\026\n\016target_address\030\004 \001(\r\022\021\n\tline_m" +
-      "ask\030\005 \001(\rB\t\n\007payload\"m\n\020DALI24InputEvent" +
-      "\022\r\n\005index\030\001 \001(\r\022\014\n\004line\030\002 \001(\r\022\017\n\007address" +
-      "\030\003 \001(\r\022\036\n\004type\030\004 \001(\0162\020.DALI24InputType\022\013" +
-      "\n\003arg\030\005 \001(\r\"/\n\020DALI24FrameEvent\022\014\n\004line\030" +
-      "\001 \001(\r\022\r\n\005frame\030\002 \001(\r\"\252\001\n\017DALISensorEvent" +
-      "\022\r\n\005index\030\001 \001(\r\022\014\n\004line\030\002 \001(\r\022\017\n\007address" +
-      "\030\003 \001(\r\022-\n\014motion_state\030\004 \001(\0162\027.DALIMotio" +
-      "nSensorStates\022\'\n\tlux_state\030\005 \001(\0162\024.DALIL" +
-      "uxSensorStates\022\021\n\tlux_level\030\006 \001(\r\"\300\002\n\014Ev" +
-      "entMessage\022\031\n\005event\030\001 \001(\0162\n.EventType\022 \n" +
-      "\007trigger\030\002 \001(\0132\r.TriggerEventH\000\022%\n\006input" +
-      "s\030\003 \001(\0132\023.InputStateResponseH\000\022\"\n\007payloa" +
-      "d\030\004 \001(\0132\017.PayloadMessageH\000\022\"\n\006sensor\030\006 \001" +
-      "(\0132\020.DALISensorEventH\000\022*\n\rdali_24_input\030" +
-      "\007 \001(\0132\021.DALI24InputEventH\000\022\036\n\006filter\030\010 \001" +
-      "(\0132\014.EventFilterH\000\022*\n\rdali_24_frame\030\t \001(" +
-      "\0132\021.DALI24FrameEventH\000B\014\n\nevent_data\"\337\024\n" +
-      "\rEdidioMessage\022\022\n\nmessage_id\030\001 \001(\r\022\032\n\003ac" +
-      "k\030\002 \001(\0132\013.AckMessageH\000\022$\n\006inputs\030\003 \001(\0132\022" +
-      ".InputMultiMessageH\000\022&\n\007outputs\030\004 \001(\0132\023." +
-      "OutputMultiMessageH\000\022\036\n\003irs\030\005 \001(\0132\017.IRMu" +
-      "ltiMessageH\000\022 \n\006sensor\030\006 \001(\0132\016.SensorMes" +
-      "sageH\000\022\034\n\004list\030\010 \001(\0132\014.ListMessageH\000\022\036\n\005" +
-      "alarm\030\n \001(\0132\r.AlarmMessageH\000\022$\n\006alarms\030\013" +
-      " \001(\0132\022.AlarmMultiMessageH\000\022\'\n\010burn_ins\030\014" +
-      " \001(\0132\023.BurnInMultiMessageH\000\022/\n\016sensor_co" +
-      "mmand\030\r \001(\0132\025.SensorCommandMessageH\000\022/\n\016" +
-      "change_profile\030\016 \001(\0132\025.ChangeProfileMess" +
-      "ageH\000\022,\n\020identify_message\030\017 \001(\0132\020.Identi" +
-      "fyMessageH\000\022)\n\013update_time\030\020 \001(\0132\022.Updat" +
-      "eTimeMessageH\000\022)\n\013read_device\030\021 \001(\0132\022.Re" +
-      "adDeviceMessageH\000\022$\n\014dali_message\030\022 \001(\0132" +
-      "\014.DALIMessageH\000\022(\n\ndali_query\030\023 \001(\0132\022.DA" +
-      "LIQueryResponseH\000\022\"\n\013dmx_message\030\024 \001(\0132\013" +
-      ".DMXMessageH\000\0223\n\020external_trigger\030\025 \001(\0132" +
-      "\027.ExternalTriggerMessageH\000\0222\n\020spektra_se" +
-      "ttings\030\026 \001(\0132\026.SpektraSettingMessageH\000\0229" +
-      "\n\020spektra_sequence\030\027 \001(\0132\035.SpektraSequen" +
-      "ceConfigMessageH\000\0223\n\020spektra_calendar\030\030 " +
-      "\001(\0132\027.SpektraCalendarMessageH\000\0223\n\rspektr" +
-      "a_theme\030\031 \001(\0132\032.SpektraThemeConfigMessag" +
-      "eH\000\022+\n\014spektra_read\030\032 \001(\0132\023.SpektraReadM" +
-      "essageH\000\0221\n\017spektra_control\030\033 \001(\0132\026.Spek" +
-      "traControlMessageH\000\0221\n\016dmx_translator\030\034 " +
-      "\001(\0132\027.DMXProtocolTranslationH\000\022+\n\rinput_" +
-      "request\030\035 \001(\0132\022.InputStateMessageH\000\022-\n\016i" +
-      "nput_response\030\036 \001(\0132\023.InputStateResponse" +
-      "H\000\0224\n\013diag_system\030\037 \001(\0132\035.DiagnosticSyst" +
-      "emInfoResponseH\000\022*\n\014diag_message\030  \001(\0132\022" +
-      ".DiagnosticMessageH\000\022&\n\radmin_message\030! " +
-      "\001(\0132\r.AdminMessageH\000\022\036\n\005event\030\" \001(\0132\r.Ev" +
-      "entMessageH\000\022>\n\026secure_device_settings\030#" +
-      " \001(\0132\034.SecureDeviceSettingsMessageH\000\022,\n\014" +
-      "firmware_new\030$ \001(\0132\024.FirmwareMetaMessage" +
-      "H\000\0223\n\020firmware_control\030% \001(\0132\027.FirmwareC" +
-      "ontrolMessageH\000\022/\n\016firmware_chunk\030& \001(\0132" +
-      "\025.FirmwareChunkMessageH\000\0223\n\024level_cache_" +
-      "response\030\' \001(\0132\023.LevelCacheResponseH\000\022-\n" +
-      "\rlist_extended\030) \001(\0132\024.ExtendedListMessa" +
-      "geH\000\022\"\n\013ayt_message\030* \001(\0132\013.AytMessageH\000" +
-      "\022\"\n\013rdm_message\030+ \001(\0132\013.RDMMessageH\000\0223\n\024" +
-      "rdm_response_message\030, \001(\0132\023.RDMResponse" +
-      "MessageH\000\022+\n\rlogic_message\030- \001(\0132\022.Logic" +
-      "MultiMessageH\000\0220\n\014secure_login\030. \001(\0132\030.A" +
-      "dminSecureLoginMessageH\000\0223\n\024device_state" +
-      "_message\030/ \001(\0132\023.DeviceStateMessageH\000\022:\n" +
-      "\024spektra_calendar_day\0300 \001(\0132\032.SpektraCal" +
-      "endarDayMessageH\000\022D\n\031spektra_calendar_ov" +
-      "erview\0301 \001(\0132\037.SpektraCalendarOverviewMe" +
-      "ssageH\000\022-\n\013inputs_dali\0302 \001(\0132\026.DALIInput" +
-      "MultiMessageH\000\022*\n\tlogs_read\0303 \001(\0132\025.Syst" +
-      "emLogReadMessageH\000\0223\n\rmetadata_read\0304 \001(" +
-      "\0132\032.SystemMetaDataReadMessageH\000\0229\n\027dali_" +
-      "addressing_message\0305 \001(\0132\026.DALIAddressin" +
-      "gMessageH\000\0227\n\026dali_remapping_message\0306 \001" +
-      "(\0132\025.DALIRemappingMessageH\000\022B\n\034spektra_s" +
-      "how_control_message\0307 \001(\0132\032.SpektraShowC" +
-      "ontrolMessageH\000\0223\n\024spektra_show_message\030" +
-      "8 \001(\0132\023.SpektraShowMessageH\000\022D\n\035extended" +
-      "_spektra_show_message\0309 \001(\0132\033.ExtendedSp" +
-      "ektraShowMessageH\000\022-\n\rrdm_discovery\030: \001(" +
-      "\0132\024.RDMDiscoveryMessageH\000\0228\n\023rdm_discove" +
-      "ry_reply\030; \001(\0132\031.RDMDiscoveryReplyMessag" +
-      "eH\000B\t\n\007payload*\233\001\n\024TriggerOperationType\022" +
-      "\r\n\tMOMENTARY\020\000\022\014\n\010LATCHING\020\001\022\024\n\020MOMENTAR" +
-      "Y_OUTPUT\020\002\022\023\n\017LATCHING_OUTPUT\020\003\022\n\n\006ROTAR" +
-      "Y\020\004\022\027\n\022MOMENTARY_DISABLED\020\200\001\022\026\n\021LATCHING" +
-      "_DISABLED\020\201\001*\263\013\n\013TriggerType\022\014\n\010DALI_ARC" +
-      "\020\000\022\020\n\014DALI_COMMAND\020\001\022\032\n\026DMX_CHANNELS_SPL" +
-      "IT_LOW\020\002\022\033\n\027DMX_CHANNELS_SPLIT_HIGH\020\003\022$\n" +
-      " DMX_MULTICAST_CHANNELS_SPLIT_LOW\020\004\022%\n!D" +
-      "MX_MULTICAST_CHANNELS_SPLIT_HIGH\020\005\022\021\n\rDM",
-      "X_BROADCAST\020\006\022\t\n\005DIDIO\020\007\022\024\n\020FADE_UP_WITH" +
-      "_MIN\020\010\022\016\n\nLIST_START\020\t\022\031\n\025LIST_START_CON" +
-      "TINUOUS\020\n\022\r\n\tLIST_STOP\020\013\022\025\n\021SPEKTRA_STAR" +
-      "T_SEQ\020\014\022\024\n\020SPEKTRA_STOP_SEQ\020\r\022\021\n\rSPEKTRA" +
-      "_THEME\020\016\022\022\n\016SPEKTRA_STATIC\020\017\022\024\n\020SPEKTRA_" +
-      "SCHEDULE\020\020\022\016\n\nLINK_START\020\021\022\r\n\tLINK_STOP\020" +
-      "\022\022\020\n\014DISABLE_BURN\020\023\022\017\n\013ENABLE_BURN\020\024\022\016\n\n" +
-      "ON_OFF_TOG\020\025\022\017\n\013MIN_MAX_TOG\020\026\022\020\n\014ENABLE_" +
-      "INPUT\020\027\022\021\n\rDISABLE_INPUT\020\030\022\024\n\020ENABLE_TOG" +
-      "_INPUT\020\031\022\016\n\nOUTPUT_TOG\020\032\022\017\n\013OUTPUT_HIGH\020" +
-      "\033\022\016\n\nOUTPUT_LOW\020\034\022\017\n\013OUTPUT_TRIG\020\035\022\022\n\016PR" +
-      "OFILE_CHANGE\020\036\022\023\n\017FADE_LONG_PRESS\020\037\022\n\n\006S" +
-      "YNCRO\020 \022\017\n\013PRESET_CODE\020!\022\017\n\013CUSTOM_CODE\020" +
-      "\"\022\021\n\rSPEKTRA_SLEEP\020#\022\022\n\016SPEKTRA_RESUME\020$" +
-      "\022\020\n\014DEVICE_RESET\020%\022\017\n\013DEVICE_SAVE\020&\022\030\n\024U" +
-      "SER_LEVEL_STORE_NEW\020\'\022\032\n\026USER_LEVEL_SET_" +
-      "DEFAULT\020(\022\025\n\021USER_LEVEL_RECALL\020)\022\r\n\tROOM" +
-      "_JOIN\020+\022\017\n\013ROOM_UNJOIN\020,\022\023\n\017TYPE8_TC_WAR" +
-      "MER\020-\022\023\n\017TYPE8_TC_COOLER\020.\022\023\n\017TYPE8_TC_A" +
-      "CTUAL\020/\022\023\n\017LOGIC_OPERATION\0200\022\020\n\014ALARM_EN" +
-      "ABLE\0201\022\021\n\rALARM_DISABLE\0202\022 \n\034DALI_CONTRO" +
-      "L_SENSOR_OVERRIDE\0203\022$\n DALI_CONTROL_SENS" +
-      "OR_TEMP_DISABLE\0204\022\036\n\032DALI_CONTROL_SENSOR" +
-      "_RESUME\0205\022\025\n\021DALI_ARC_OVERRIDE\0206\022\031\n\025DALI" +
-      "_COMMAND_OVERRIDE\0207\022\035\n\031FADE_UP_WITH_MIN_" +
-      "OVERRIDE\0208\022\027\n\023ON_OFF_TOG_OVERRIDE\0209\022\030\n\024M" +
-      "IN_MAX_TOG_OVERRIDE\020:\022\017\n\013MAX_OFF_TOG\020;\022\030" +
-      "\n\024MAX_OFF_TOG_OVERRIDE\020<\022\034\n\030FADE_LONG_PR" +
-      "ESS_OVERRIDE\020=\022\036\n\032USER_LEVEL_RECALL_OVER" +
-      "RIDE\020>\022\024\n\020DMX_ZONE_FADE_UP\020?\022\026\n\022DMX_ZONE" +
-      "_FADE_DOWN\020@\022\021\n\rLOGGING_LEVEL\020A\022\030\n\024SPEKT" +
-      "RA_SHOW_CONTROL\020B\022\017\n\nNO_COMMAND\020\376\001*\353\001\n\010R" +
-      "eadType\022\n\n\006INPUTS\020\000\022\013\n\007OUTPUTS\020\001\022\006\n\002IR\020\002" +
-      "\022\n\n\006SENSOR\020\003\022\010\n\004LIST\020\005\022\n\n\006ALARMS\020\007\022\013\n\007BU" +
-      "RN_IN\020\010\022\013\n\007PROJECT\020\t\022\013\n\007NETWORK\020\n\022\n\n\006DEV" +
-      "ICE\020\013\022\r\n\tPOLL_DATA\020\014\022\021\n\rLIST_EXTENDED\020\r\022" +
-      "\t\n\005LOGIC\020\016\022\017\n\013DALI_INPUTS\020\017\022\020\n\014SPEKTRA_S" +
-      "HOW\020\020\022\031\n\025SPEKTRA_SHOW_EXTENDED\020\021*\214\001\n\017Ala" +
-      "rmRepeatType\022\023\n\017ALARM_NO_REPEAT\020\000\022\026\n\022ALA" +
-      "RM_REPEAT_DAILY\020\001\022\031\n\025ALARM_REPEAT_WORK_D" +
-      "AY\020\002\022\027\n\023ALARM_REPEAT_WEEKLY\020\003\022\030\n\024ALARM_R" +
-      "EPEAT_MONTHLY\020\004*I\n\016AlarmAstroType\022\022\n\016ALA" +
-      "RM_NO_ASTRO\020\000\022\021\n\rALARM_SUNRUSE\020\001\022\020\n\014ALAR" +
-      "M_SUNSET\020\002*^\n\021SpektraTargetType\022\014\n\010SETTI" +
-      "NGS\020\000\022\014\n\010SEQUENCE\020\001\022\t\n\005THEME\020\002\022\n\n\006STATIC" +
-      "\020\003\022\014\n\010CALENDAR\020\004\022\010\n\004SHOW\020\005*=\n\021SpektraAct" +
-      "ionType\022\t\n\005START\020\000\022\010\n\004STOP\020\001\022\t\n\005PAUSE\020\002\022" +
-      "\010\n\004SAVE\020\003*p\n\025SpektraStepActionType\022\020\n\014RU" +
-      "N_SEQUENCE\020\000\022\016\n\nSHOW_THEME\020\001\022\016\n\nSTART_LI" +
-      "ST\020\002\022\022\n\016PAUSE_PREVIOUS\020\003\022\021\n\rSTOP_PREVIOU" +
-      "S\020\004*}\n\037SpektraUnscheduledBehaviourType\022 " +
-      "\n\034RUN_RANDOM_COLOURED_SEQUENCE\020\000\022\022\n\016RUN_" +
-      "SEQUENCE_1\020\001\022\023\n\017RESUME_PREVIOUS\020\002\022\017\n\nDO_" +
-      "NOTHING\020\376\001*6\n\022LineAddressingType\022\017\n\013INDE" +
-      "PENDENT\020\000\022\017\n\013CONSECUTIVE\020\001*\347\002\n\016AckMessag" +
-      "eType\022\021\n\rDECODE_FAILED\020\000\022\027\n\023INDEX_OUT_OF" +
-      "_BOUNDS\020\001\022\023\n\017UNEXPECTED_TYPE\020\002\022\021\n\rENCODE" +
-      "_FAILED\020\003\022\020\n\014KEY_MISMATCH\020\004\022\013\n\007SUCCESS\020\005" +
-      "\022\022\n\016INVALID_PARAMS\020\006\022\026\n\022UNEXPECTED_COMMA" +
-      "ND\020\007\022\030\n\024COMMUNICATION_FAILED\020\010\022\031\n\025COMMUN" +
-      "ICATION_TIMEOUT\020\t\022\021\n\rDATA_TOO_LONG\020\n\022\023\n\017" +
-      "UNEXPECTED_CASE\020\013\022\016\n\nSLOTS_FULL\020\014\022\020\n\014UNA" +
-      "UTHORISED\020\r\022\023\n\017PARTIAL_SUCCESS\020\016\022\022\n\016COMM" +
-      "AND_FAILED\020\017\022\016\n\nDEPRECATED\020\020*\323\004\n\020Type8Co" +
-      "mmandType\022\024\n\020SET_TEMP_X_COORD\020\000\022\024\n\020SET_T" +
-      "EMP_Y_COORD\020\001\022\014\n\010ACTIVATE\020\002\022\023\n\017X_COORD_S" +
-      "TEP_UP\020\003\022\025\n\021X_COORD_STEP_DOWN\020\004\022\023\n\017Y_COO" +
-      "RD_STEP_UP\020\005\022\025\n\021Y_COORD_STEP_DOWN\020\006\022\037\n\033S" +
-      "ET_TEMP_COLOUR_TEMPERATURE\020\007\022\"\n\036COLOUR_T" +
-      "EMPERATURE_STEP_COOLER\020\010\022\"\n\036COLOUR_TEMPE" +
-      "RATURE_STEP_WARMER\020\t\022\033\n\027SET_TEMP_PRI_N_D" +
-      "IMLEVEL\020\n\022\031\n\025SET_TEMP_RGB_DIMLEVEL\020\013\022\031\n\025" +
-      "SET_TEMP_WAF_DIMLEVEL\020\014\022\033\n\027SET_TEMP_RGBW" +
-      "AF_CONTROL\020\r\022\031\n\025COPY_REPORT_TEMPORARY\020\016\022" +
-      "\022\n\016STORE_TY_PRI_N\020\020\022\030\n\024STORE_XY_COORD_PR" +
-      "I_N\020\021\022\"\n\036STORE_COLOUR_TEMPERATURE_LIMIT\020" +
-      "\022\022\036\n\032STORE_GEAR_FEATURES_STATUS\020\023\022\032\n\026ASS" +
-      "IGN_COLOR_LINKED_CH\020\025\022\022\n\016START_AUTO_CAL\020" +
-      "\026\022\027\n\023ENABLE_DEVICE_TYPE8\0200*\230\002\n\016Type8Quer" +
-      "yType\022\024\n\020TYPE8_QUERY_NULL\020\000\022%\n TYPE8_QUE" +
-      "RY_GEAR_FEATURES_STATUS\020\367\001\022\036\n\031TYPE8_QUER" +
-      "Y_COLOUR_STATUS\020\370\001\022%\n TYPE8_QUERY_COLOUR" +
-      "_TYPE_FEATURES\020\371\001\022\035\n\030TYPE8_QUERY_COLOUR_" +
-      "VALUE\020\372\001\022\037\n\032TYPE8_QUERY_RGBWAF_CONTROL\020\373" +
-      "\001\022 \n\033TYPE8_QUERY_ASSIGNED_COLOUR\020\374\001\022 \n\033T" +
-      "YPE8_QUERY_EXT_VERSION_NUM\020\376\001*\274\006\n\023DALI24" +
-      "DeviceSetting\022\024\n\020COMMAND_IDENTIFY\020\000\022\"\n\036C" +
-      "OMMAND_RESET_POWER_CYCLE_SEEN\020\001\022\021\n\rCOMMA" +
-      "ND_RESET\020\020\022\035\n\031COMMAND_RESET_MEMORY_BANK\020" +
-      "\021\022\035\n\031COMMAND_SET_SHORT_ADDRESS\020\024\022\037\n\033COMM" +
-      "AND_ENABLE_WRITE_MEMORY\020\025\022!\n\035COMMAND_ENA" +
-      "BLE_APP_CONTROLLER\020\026\022\"\n\036COMMAND_DISABLE_" +
-      "APP_CONTROLLER\020\027\022\036\n\032COMMAND_SET_OPERATIN" +
-      "G_MODE\020\030\022%\n!COMMAND_ADD_TO_DEVICE_GROUPS" +
-      "_0_15\020\031\022&\n\"COMMAND_ADD_TO_DEVICE_GROUPS_" +
-      "15_32\020\032\022#\n\037COMMAND_REMOVE_FROM_GROUPS_0_" +
-      "15\020\033\022$\n COMMAND_REMOVE_FROM_GROUPS_16_32" +
-      "\020\034\022 \n\034COMMAND_START_QUIESCENT_MODE\020\035\022\037\n\033" +
-      "COMMAND_STOP_QUIESCENT_MODE\020\036\022$\n COMMAND" +
-      "_ENABLE_POWER_CYCLE_NOTIF\020\037\022%\n!COMMAND_D" +
-      "ISABLE_POWER_CYCLE_NOTIF\020 \022%\n!COMMAND_SA" +
-      "VE_PERSISTENT_VARIABLES\020!\022\026\n\022SET_EVENT_P" +
-      "RIORITY\020a\022\023\n\017ENABLE_INSTANCE\020b\022\024\n\020DISABL" +
-      "E_INSTANCE\020c\022\036\n\032SET_PRIMARY_INSTANCE_GRO" +
-      "UP\020d\022\030\n\024SET_INSTANCE_GROUP_1\020e\022\030\n\024SET_IN" +
-      "STANCE_GROUP_2\020f\022\024\n\020SET_EVENT_SCHEME\020g\022\024" +
-      "\n\020SET_EVENT_FILTER\020h*c\n\022DALI24InstanceTy" +
-      "pe\022\013\n\007DEFAULT\020\000\022\t\n\005INPUT\020\001\022\020\n\014ROTARY_INP" +
-      "UT\020\002\022\021\n\rMOTION_SENSOR\020\003\022\020\n\014LIGHT_SENSOR\020" +
-      "\004*\276\002\n\014DALI24OpCode\022\017\n\013OPCODE_NULL\020\000\022 \n\034S" +
-      "ENSOR_MOTION_SET_HOLD_TIMER\020!\022\"\n\036SENSOR_" +
-      "MOTION_SET_REPORT_TIMER\020\"\022$\n SENSOR_MOTI" +
-      "ON_SET_DEADTIME_TIMER\020#\022#\n\037SENSOR_MOTION" +
-      "_CANCEL_HOLD_TIMER\020$\022!\n\035SENSOR_LIGHT_SET" +
-      "_REPORT_TIMER\0200\022\037\n\033SENSOR_LIGHT_SET_HYST" +
-      "ERESIS\0201\022#\n\037SENSOR_LIGHT_SET_DEADTIME_TI" +
-      "MER\0202\022#\n\037SENSOR_LIGHT_SET_HYSTERESIS_MIN" +
-      "\0203*W\n\010LineType\022\016\n\nLINE_EMPTY\020\000\022\r\n\tLINE_D" +
-      "ALI\020\001\022\014\n\010LINE_DMX\020\002\022\017\n\013LINE_DMX_IN\020\003\022\r\n\t" +
-      "LINE_AUTO\020\004*\251\001\n\tEventType\022\014\n\010REGISTER\020\000\022" +
-      "\021\n\rTRIGGER_EVENT\020\001\022\017\n\013INPUT_EVENT\020\002\022\020\n\014S" +
-      "ENSOR_EVENT\020\003\022\021\n\rCONTROL_EVENT\020\004\022\023\n\017ROOM" +
-      "_JOIN_EVENT\020\005\022\027\n\023DALI_24_INPUT_EVENT\020\006\022\027" +
-      "\n\023DALI_24_FRAME_EVENT\020\007*\306\t\n\rDALIQueryTyp" +
-      "e\022\023\n\017DALI_QUERY_NULL\020\000\022\026\n\021DALI_QUERY_STA" +
-      "TUS\020\220\001\022\027\n\022DALI_QUERY_BALLAST\020\221\001\022\034\n\027DALI_" +
-      "QUERY_LAMP_FAILURE\020\222\001\022\035\n\030DALI_QUERY_LAMP" +
-      "_POWER_ON\020\223\001\022\033\n\026DALI_QUERY_LIMIT_ERROR\020\224" +
-      "\001\022\033\n\026DALI_QUERY_RESET_STATE\020\225\001\022%\n DALI_Q" +
-      "UERY_MISSING_SHORT_ADDRESS\020\226\001\022\036\n\031DALI_QU" +
-      "ERY_VERSION_NUMBER\020\227\001\022\024\n\017DALI_QUERY_DTR0" +
-      "\020\230\001\022\033\n\026DALI_QUERY_DEVICE_TYPE\020\231\001\022\034\n\027DALI" +
-      "_QUERY_PHYSICAL_MIN\020\232\001\022\035\n\030DALI_QUERY_POW" +
-      "ER_FAILURE\020\233\001\022\024\n\017DALI_QUERY_DTR1\020\234\001\022\024\n\017D" +
-      "ALI_QUERY_DTR2\020\235\001\022\036\n\031DALI_QUERY_OPERATIN" +
-      "G_MODE\020\236\001\022 \n\033DALI_QUERY_LIGHTSOURCE_TYPE" +
-      "\020\237\001\022\034\n\027DALI_QUERY_ACTUAL_LEVEL\020\240\001\022\031\n\024DAL" +
-      "I_QUERY_MAX_LEVEL\020\241\001\022\031\n\024DALI_QUERY_MIN_L" +
-      "EVEL\020\242\001\022\036\n\031DALI_QUERY_POWER_ON_LEVEL\020\243\001\022" +
-      "$\n\037DALI_QUERY_SYSTEM_FAILURE_LEVEL\020\244\001\022!\n" +
-      "\034DALI_QUERY_FADETIME_FADERATE\020\245\001\022*\n%DALI" +
-      "_QUERY_MANUFACTURER_SPECIFIC_MODE\020\246\001\022 \n\033" +
-      "DALI_QUERY_NEXT_DEVICE_TYPE\020\247\001\022\"\n\035DALI_Q" +
-      "UERY_EXTENDED_FADE_TIME\020\250\001\022$\n\037DALI_QUERY" +
-      "_CONTROL_GEAR_FAILURE\020\252\001\022\035\n\030DALI_QUERY_S" +
-      "CENE_X_LEVEL\020\260\001\022\032\n\025DALI_QUERY_GROUPS_0_7" +
-      "\020\300\001\022\033\n\026DALI_QUERY_GROUPS_8_15\020\301\001\022 \n\033DALI" +
-      "_QUERY_RANDOM_ADDRESS_H\020\302\001\022 \n\033DALI_QUERY" +
-      "_RANDOM_ADDRESS_M\020\303\001\022 \n\033DALI_QUERY_RANDO" +
-      "M_ADDRESS_L\020\304\001\022\034\n\027DALI_QUERY_READ_DTR_0_" +
-      "1\020\305\001\022 \n\033DALI_QUERY_APP_EXT_COMMANDS\020\340\001\022\"" +
-      "\n\035DALI_QUERY_EXT_VERSION_NUMBER\020\377\001\022\027\n\022DA" +
-      "LI_QUERY_COMPARE\020\204\002\022$\n\037DALI_QUERY_VERIFY" +
-      "_SHORT_ADDRESS\020\214\002\022\035\n\030DALI_QUERY_SHORT_AD" +
-      "DRESS\020\215\002*\351\027\n\017DALICommandType\022\014\n\010DALI_OFF" +
-      "\020\000\022\020\n\014DALI_FADE_UP\020\001\022\022\n\016DALI_FADE_DOWN\020\002" +
-      "\022\020\n\014DALI_STEP_UP\020\003\022\022\n\016DALI_STEP_DOWN\020\004\022\022" +
-      "\n\016DALI_MAX_LEVEL\020\005\022\022\n\016DALI_MIN_LEVEL\020\006\022\026" +
-      "\n\022DALI_STEP_DOWN_OFF\020\007\022\023\n\017DALI_ON_STEP_U" +
-      "P\020\010\022\030\n\024DALI_ENABLE_DAPC_SEQ\020\t\022!\n\035DALI_RE" +
-      "CALL_LAST_ACTIVE_LEVEL\020\n\022\026\n\022DALI_CONTINU" +
-      "OUS_UP\020\013\022\030\n\024DALI_CONTINUOUS_DOWN\020\014\022\027\n\023DA" +
-      "LI_RECALL_SCENE_0\020\020\022\027\n\023DALI_RECALL_SCENE" +
-      "_1\020\021\022\027\n\023DALI_RECALL_SCENE_2\020\022\022\027\n\023DALI_RE" +
-      "CALL_SCENE_3\020\023\022\027\n\023DALI_RECALL_SCENE_4\020\024\022" +
-      "\027\n\023DALI_RECALL_SCENE_5\020\025\022\027\n\023DALI_RECALL_" +
-      "SCENE_6\020\026\022\027\n\023DALI_RECALL_SCENE_7\020\027\022\027\n\023DA" +
-      "LI_RECALL_SCENE_8\020\030\022\027\n\023DALI_RECALL_SCENE" +
-      "_9\020\031\022\030\n\024DALI_RECALL_SCENE_10\020\032\022\030\n\024DALI_R" +
-      "ECALL_SCENE_11\020\033\022\030\n\024DALI_RECALL_SCENE_12" +
-      "\020\034\022\030\n\024DALI_RECALL_SCENE_13\020\035\022\030\n\024DALI_REC" +
-      "ALL_SCENE_14\020\036\022\030\n\024DALI_RECALL_SCENE_15\020\037" +
-      "\022\016\n\nDALI_RESET\020 \022 \n\034DALI_STORE_ACTUAL_LE" +
-      "VEL_DTR0\020!\022\035\n\031DALI_SAVE_PERSISTENT_VARS\020" +
-      "\"\022\033\n\027DALI_SET_OPERATING_MODE\020#\022\032\n\026DALI_R" +
-      "ESET_MEMORY_BANK\020$\022\030\n\024DALI_IDENTIFY_DEVI" +
-      "CE\020%\022\026\n\022DALI_SET_MAX_LEVEL\020*\022\026\n\022DALI_SET" +
-      "_MIN_LEVEL\020+\022!\n\035DALI_SET_SYSTEM_FAILURE_" +
-      "LEVEL\020,\022\033\n\027DALI_SET_POWER_ON_LEVEL\020-\022\026\n\022" +
-      "DALI_SET_FADE_TIME\020.\022\026\n\022DALI_SET_FADE_RA" +
-      "TE\020/\022\032\n\026DALI_SET_EXT_FADE_TIME\0200\022\024\n\020DALI" +
-      "_SET_SCENE_0\020@\022\024\n\020DALI_SET_SCENE_1\020A\022\024\n\020" +
-      "DALI_SET_SCENE_2\020B\022\024\n\020DALI_SET_SCENE_3\020C" +
-      "\022\024\n\020DALI_SET_SCENE_4\020D\022\024\n\020DALI_SET_SCENE" +
-      "_5\020E\022\024\n\020DALI_SET_SCENE_6\020F\022\024\n\020DALI_SET_S" +
-      "CENE_7\020G\022\024\n\020DALI_SET_SCENE_8\020H\022\024\n\020DALI_S" +
-      "ET_SCENE_9\020I\022\025\n\021DALI_SET_SCENE_10\020J\022\025\n\021D" +
-      "ALI_SET_SCENE_11\020K\022\025\n\021DALI_SET_SCENE_12\020" +
-      "L\022\025\n\021DALI_SET_SCENE_13\020M\022\025\n\021DALI_SET_SCE" +
-      "NE_14\020N\022\025\n\021DALI_SET_SCENE_15\020O\022\034\n\030DALI_R" +
-      "EMOVE_FROM_SCENE_0\020P\022\034\n\030DALI_REMOVE_FROM" +
-      "_SCENE_1\020Q\022\034\n\030DALI_REMOVE_FROM_SCENE_2\020R" +
-      "\022\034\n\030DALI_REMOVE_FROM_SCENE_3\020S\022\034\n\030DALI_R" +
-      "EMOVE_FROM_SCENE_4\020T\022\034\n\030DALI_REMOVE_FROM" +
-      "_SCENE_5\020U\022\034\n\030DALI_REMOVE_FROM_SCENE_6\020V" +
-      "\022\034\n\030DALI_REMOVE_FROM_SCENE_7\020W\022\034\n\030DALI_R" +
-      "EMOVE_FROM_SCENE_8\020X\022\034\n\030DALI_REMOVE_FROM" +
-      "_SCENE_9\020Y\022\035\n\031DALI_REMOVE_FROM_SCENE_10\020" +
-      "Z\022\035\n\031DALI_REMOVE_FROM_SCENE_11\020[\022\035\n\031DALI" +
-      "_REMOVE_FROM_SCENE_12\020\\\022\035\n\031DALI_REMOVE_F" +
-      "ROM_SCENE_13\020]\022\035\n\031DALI_REMOVE_FROM_SCENE" +
-      "_14\020^\022\035\n\031DALI_REMOVE_FROM_SCENE_15\020_\022\027\n\023" +
-      "DALI_ADD_TO_GROUP_0\020`\022\027\n\023DALI_ADD_TO_GRO" +
-      "UP_1\020a\022\027\n\023DALI_ADD_TO_GROUP_2\020b\022\027\n\023DALI_" +
-      "ADD_TO_GROUP_3\020c\022\027\n\023DALI_ADD_TO_GROUP_4\020" +
-      "d\022\027\n\023DALI_ADD_TO_GROUP_5\020e\022\027\n\023DALI_ADD_T" +
-      "O_GROUP_6\020f\022\027\n\023DALI_ADD_TO_GROUP_7\020g\022\027\n\023" +
-      "DALI_ADD_TO_GROUP_8\020h\022\027\n\023DALI_ADD_TO_GRO" +
-      "UP_9\020i\022\030\n\024DALI_ADD_TO_GROUP_10\020j\022\030\n\024DALI" +
-      "_ADD_TO_GROUP_11\020k\022\030\n\024DALI_ADD_TO_GROUP_" +
-      "12\020l\022\030\n\024DALI_ADD_TO_GROUP_13\020m\022\030\n\024DALI_A" +
-      "DD_TO_GROUP_14\020n\022\030\n\024DALI_ADD_TO_GROUP_15" +
-      "\020o\022\034\n\030DALI_REMOVE_FROM_GROUP_0\020p\022\034\n\030DALI" +
-      "_REMOVE_FROM_GROUP_1\020q\022\034\n\030DALI_REMOVE_FR" +
-      "OM_GROUP_2\020r\022\034\n\030DALI_REMOVE_FROM_GROUP_3" +
-      "\020s\022\034\n\030DALI_REMOVE_FROM_GROUP_4\020t\022\034\n\030DALI" +
-      "_REMOVE_FROM_GROUP_5\020u\022\034\n\030DALI_REMOVE_FR" +
-      "OM_GROUP_6\020v\022\034\n\030DALI_REMOVE_FROM_GROUP_7" +
-      "\020w\022\034\n\030DALI_REMOVE_FROM_GROUP_8\020x\022\034\n\030DALI" +
-      "_REMOVE_FROM_GROUP_9\020y\022\035\n\031DALI_REMOVE_FR" +
-      "OM_GROUP_10\020z\022\035\n\031DALI_REMOVE_FROM_GROUP_" +
-      "11\020{\022\035\n\031DALI_REMOVE_FROM_GROUP_12\020|\022\035\n\031D" +
-      "ALI_REMOVE_FROM_GROUP_13\020}\022\035\n\031DALI_REMOV" +
-      "E_FROM_GROUP_14\020~\022\035\n\031DALI_REMOVE_FROM_GR" +
-      "OUP_15\020\177\022\033\n\026DALI_SET_SHORT_ADDRESS\020\200\001\022\035\n" +
-      "\030DALI_ENABLE_WRITE_MEMORY\020\201\001\022\023\n\016DALI_TER" +
-      "MINATE\020\377\001\022\024\n\017DALI_INITIALISE\020\202\002\022\023\n\016DALI_" +
-      "RANDOMISE\020\203\002\022\022\n\rDALI_WITHDRAW\020\205\002\022\027\n\022DALI" +
-      "_SEARCH_ADDR_H\020\210\002\022\027\n\022DALI_SEARCH_ADDR_M\020" +
-      "\211\002\022\027\n\022DALI_SEARCH_ADDR_L\020\212\002\022\037\n\032DALI_PROG" +
-      "RAM_SHORT_ADDRESS\020\213\002*\250\001\n\025CustomDALIComma" +
-      "ndType\022\022\n\016DALI_ARC_LEVEL\020\000\022\023\n\017DALI_DAPC_" +
-      "LEVEL\020\001\022\030\n\024DALI_GROUP_ARC_LEVEL\020\002\022\030\n\024DAL" +
-      "I_BROADCAST_SCENE\020\003\022\027\n\023DALI_SCENE_ON_GRO" +
-      "UP\020\004\022\031\n\025DALI_SCENE_ON_ADDRESS\020\005*\233\004\n\021Admi" +
-      "nPropertyType\022\017\n\013DEVICE_NAME\020\000\022\020\n\014PROJEC" +
-      "T_NAME\020\001\022\r\n\tLONGITUDE\020\002\022\014\n\010LATITUDE\020\003\022\024\n" +
-      "\020LOCAL_UTC_OFFSET\020\004\022\024\n\020DAYLIGHT_SAVINGS\020" +
-      "\005\022\017\n\013POLL_ACTIVE\020\006\022\020\n\014DHCP_ENABLED\020\007\022\013\n\007" +
-      "IP_ADDR\020\010\022\014\n\010MAC_ADDR\020\t\022\016\n\nGATEWAY_IP\020\n\022" +
-      "\026\n\022NETWORK_PROPERTIES\020\013\022\025\n\021SYSTEM_PROPER" +
-      "TIES\020\014\022\024\n\020CONTROLLER_LINES\020\r\022\024\n\020EEPROM_F" +
-      "ULL_CHIP\020\016\022\017\n\013CONFIG_DATA\020\017\022\020\n\014SPEKTRA_D" +
-      "ATA\020\020\022\021\n\rDEVICE_STATUS\020\021\022\021\n\rCONFIG_STATU" +
-      "S\020\022\022\017\n\013DEVICE_TIME\020\023\022\017\n\013NTP_DETAILS\020\024\022\025\n" +
-      "\021TRIDONIC_MSENSORS\020\025\022\022\n\016SECURE_SESSION\020\026" +
-      "\022\t\n\005NONCE\020\027\022\024\n\020DALI_SENSOR_TYPE\020\030\022\021\n\rDEV" +
-      "ICE_REBOOT\020\031\022\022\n\016SYSTEM_LOGGING\020\032\022\n\n\006SUBN" +
-      "ET\020\033\022\007\n\003DNS\020\034*M\n\020AdminCommandType\022\007\n\003SET" +
-      "\020\000\022\007\n\003GET\020\001\022\007\n\003ADD\020\002\022\n\n\006REMOVE\020\003\022\t\n\005RESE" +
-      "T\020\004\022\007\n\003RUN\020\005*\265\001\n\016DALIStatusType\022\014\n\010LAMP_" +
-      "OFF\020\000\022\030\n\024CONTROL_GEAR_FAILURE\020\001\022\020\n\014LAMP_" +
-      "FAILURE\020\002\022\013\n\007LAMP_ON\020\004\022\017\n\013LIMIT_ERROR\020\010\022" +
-      "\020\n\014FADE_RUNNING\020\020\022\017\n\013RESET_STATE\020 \022\021\n\rSH" +
-      "ORT_ADDRESS\020@\022\025\n\020POWER_CYCLE_SEEN\020\200\001*\210\002\n" +
-      "\020DALIRXStatusFlag\022\013\n\007WAITING\020\000\022\023\n\017RECEIV" +
-      "ING_FRAME\020\001\022\025\n\021NO_RECEIVED_FRAME\020\002\022\030\n\024RE" +
-      "CEIVED_8_BIT_FRAME\020\003\022\031\n\025RECEIVED_16_BIT_" +
-      "FRAME\020\004\022\031\n\025RECEIVED_24_BIT_FRAME\020\005\022\032\n\026RE" +
-      "CEIVED_PARTIAL_FRAME\020\006\022\010\n\004IDLE\020\007\022\017\n\013CALI" +
-      "BRATION\020\010\022\030\n\023ERROR_WHILE_SENDING\020\376\001\022\032\n\025E" +
-      "RROR_WHILE_RECEIVING\020\377\001*\213\001\n\025DiagnosticMe" +
-      "ssageType\022\032\n\026DIAGNOSTIC_SYSTEM_INFO\020\000\022\033\n" +
-      "\027DIAGNOSTIC_INPUT_STATUS\020\001\022\024\n\020DALI_LEVEL" +
-      "_CACHE\020\002\022\023\n\017DMX_LEVEL_CACHE\020\003\022\016\n\nROOM_JO" +
-      "INS\020\004*z\n\023FirmwareCommandType\022\014\n\010FW_READY" +
-      "\020\000\022\014\n\010FW_APPLY\020\001\022\r\n\tFW_VERIFY\020\002\022\024\n\020FW_VE" +
-      "RIFY_FAILED\020\003\022\025\n\021FW_VERIFY_SUCCESS\020\004\022\013\n\007" +
-      "FW_READ\020\005*?\n\025SpektraTransitionType\022\t\n\005BL" +
-      "END\020\000\022\010\n\004SNAP\020\001\022\021\n\rFADE_TO_BLACK\020\002*\234\001\n\tL" +
-      "ogicType\022\016\n\nDALI_LEVEL\020\000\022\017\n\013INPUT_STATE\020" +
-      "\001\022\020\n\014LIST_RUNNING\020\002\022\026\n\022OCCUPANCY_DETECTE" +
-      "D\020\003\022\017\n\013DMX_PRESENT\020\004\022\017\n\013CAL_WEEKDAY\020\005\022\r\n" +
-      "\tCAL_MONTH\020\006\022\023\n\017ALARM_SCHEDULED\020\007*\200\001\n\023Lo" +
-      "gicComparisonType\022\r\n\tLESS_THAN\020\000\022\027\n\023LESS" +
-      "_THAN_OR_EQUALS\020\001\022\n\n\006EQUALS\020\002\022\r\n\tMORE_TH" +
-      "AN\020\003\022\027\n\023MORE_THAN_OR_EQUALS\020\004\022\r\n\tNOT_EQU" +
-      "AL\020\005*8\n\016DALISensorType\022\022\n\016TRIDONIC_EDALI" +
-      "\020\000\022\022\n\016STANDARD_EDALI\020\001*G\n\021SensorCommandT" +
-      "ype\022\016\n\nINITIALISE\020\000\022\010\n\004MUTE\020\001\022\n\n\006UNMUTE\020" +
-      "\002\022\014\n\010OVERRIDE\020\003*b\n\rSystemLogType\022\010\n\004BOOT" +
-      "\020\000\022\014\n\010NET_LINK\020\001\022\007\n\003NTP\020\002\022\013\n\007TRIGGER\020\003\022\013" +
-      "\n\007SPEKTRA\020\004\022\014\n\010SCHEDULE\020\005\022\010\n\004USER\020\006*m\n\017D" +
-      "ALI24InputType\022\023\n\017MOMENTARY_SHORT\020\000\022\022\n\016M" +
-      "OMENTARY_LONG\020\001\022\017\n\013LATCHED_LOW\020\002\022\020\n\014LATC" +
-      "HED_HIGH\020\003\022\016\n\nPOSITIONAL\020\004*h\n\026DALIMotion" +
-      "SensorStates\022\017\n\013MOTION_IDLE\020\000\022\023\n\017MOTION_" +
-      "DISABLED\020\001\022\022\n\016MOTION_WARNING\020\002\022\024\n\020MOTION" +
-      "_OCCUPANCY\020\003*I\n\023DALILuxSensorStates\022\020\n\014L" +
-      "UX_DISABLED\020\000\022\017\n\013LUX_ENABLED\020\001\022\017\n\013LUX_DE" +
-      "VIATE\020\002*N\n\023DALIAddressingError\022\014\n\010NO_ERR" +
-      "OR\020\000\022\n\n\006VERIFY\020\001\022\n\n\006SEARCH\020\002\022\021\n\rNO_NEW_D" +
-      "EVICE\020\003*8\n\022DALIAddressingType\022\017\n\013ADDRESS" +
-      "_NEW\020\000\022\021\n\rREADDRESS_ALL\020\001b\006proto3"
+      "\r\022\014\n\004data\030\004 \003(\r\"<\n\023RDMDiscoveryMessage\022\025" +
+      "\n\runiverse_mask\030\001 \001(\r\022\016\n\006isNext\030\002 \001(\010\"T\n" +
+      "\030RDMDiscoveryReplyMessage\022\027\n\017discovery_c" +
+      "ount\030\001 \001(\r\022\013\n\003uid\030\002 \003(\004\022\022\n\nerror_code\030\003 " +
+      "\001(\r\"\337\002\n\025SpektraSettingMessage\022\014\n\004zone\030\001 " +
+      "\001(\r\022\025\n\rstart_address\030\002 \001(\r\022\035\n\025line_or_un" +
+      "iverse_mask\030\003 \001(\r\022\020\n\010protocol\030\004 \001(\r\022\030\n\020n" +
+      "umber_of_lights\030\005 \001(\r\022\032\n\022channels_per_li" +
+      "ght\030\006 \001(\r\022\027\n\017channel_colours\030\007 \003(\r\022?\n\025un" +
+      "scheduled_behaviour\030\010 \001(\0162 .SpektraUnsch" +
+      "eduledBehaviourType\022\027\n\017channel_mapping\030\t" +
+      " \003(\r\022,\n\017line_addressing\030\n \001(\0162\023.LineAddr" +
+      "essingType\022\031\n\021zone_scale_factor\030\013 \001(\002\"3\n" +
+      "\032SpektraColourConfigMessage\022\025\n\rchannel_v" +
+      "alue\030\001 \003(\r\"\350\003\n\034SpektraSequenceConfigMess" +
+      "age\022\r\n\005index\030\001 \001(\r\022\014\n\004type\030\002 \001(\r\022*\n\ntran" +
+      "sition\030\003 \001(\0162\026.SpektraTransitionType\022\031\n\021" +
+      "fade_time_by_10ms\030\004 \001(\r\022\027\n\017time_per_colo" +
+      "ur\030\005 \001(\r\022\034\n\024time_per_colour_unit\030\006 \001(\r\022\025" +
+      "\n\rtime_per_step\030\007 \001(\r\022\032\n\022time_per_step_u" +
+      "nit\030\010 \001(\r\022\r\n\005range\030\t \001(\r\022\016\n\006colour\030\n \003(\004" +
+      "\022\032\n\022is_randomised_type\030\013 \001(\r\022\031\n\021random_t" +
+      "ypes_mask\030\014 \001(\r\022\034\n\024is_reverse_direction\030" +
+      "\r \001(\r\022\032\n\022is_cycle_direction\030\016 \001(\r\022\r\n\005tit" +
+      "le\030\017 \001(\t\022\037\n\027has_random_colour_order\030\020 \001(" +
+      "\010\022,\n\007colours\030\021 \003(\0132\033.SpektraColourConfig" +
+      "Message\022\014\n\004args\030\022 \003(\r\"k\n\026SpektraCalendar" +
+      "Message\022 \n\004type\030\001 \001(\0162\022.SpektraTargetTyp" +
+      "e\022\r\n\005index\030\002 \001(\r\022\014\n\004days\030\003 \003(\010\022\022\n\nisOver" +
+      "ride\030\004 \001(\010\"z\n\031SpektraCalendarDayMessage\022" +
+      "\021\n\tday_index\030\001 \001(\r\022 \n\004type\030\002 \001(\0162\022.Spekt" +
+      "raTargetType\022\024\n\014target_index\030\003 \001(\r\022\022\n\nis" +
+      "Override\030\004 \001(\010\"^\n\036SpektraCalendarOvervie" +
+      "wMessage\022\022\n\nday_offset\030\001 \001(\r\022(\n\004days\030\002 \003" +
+      "(\0132\032.SpektraCalendarDayMessage\"w\n\031Spektr" +
+      "aThemeConfigMessage\022\r\n\005index\030\001 \001(\r\022\016\n\006co" +
+      "lour\030\002 \003(\004\022\r\n\005title\030\003 \001(\t\022,\n\007colours\030\004 \003" +
+      "(\0132\033.SpektraColourConfigMessage\"E\n\022Spekt" +
+      "raReadMessage\022 \n\004type\030\001 \001(\0162\022.SpektraTar" +
+      "getType\022\r\n\005index\030\002 \001(\r\"z\n\025SpektraControl" +
+      "Message\022 \n\004type\030\001 \001(\0162\022.SpektraTargetTyp" +
+      "e\022\014\n\004zone\030\002 \001(\r\022\r\n\005index\030\003 \001(\r\022\"\n\006action" +
+      "\030\004 \001(\0162\022.SpektraActionType\"\325\001\n\017ShowStepM" +
+      "essage\022\022\n\nstep_index\030\001 \001(\r\022\024\n\014target_ind" +
+      "ex\030\002 \001(\r\022+\n\013action_type\030\003 \001(\0162\026.SpektraS" +
+      "tepActionType\022\037\n\027max_random_target_index" +
+      "\030\004 \001(\r\022\014\n\004zone\030\005 \001(\r\022\036\n\026max_output_level" +
+      "_limit\030\006 \001(\r\022\034\n\024time_until_next_10ms\030\007 \001" +
+      "(\r\"\314\001\n\022SpektraShowMessage\022\022\n\nshow_index\030" +
+      "\001 \001(\r\022\027\n\017number_of_steps\030\002 \001(\r\022\036\n\004step\030\003" +
+      " \003(\0132\020.ShowStepMessage\022\021\n\tisRunning\030\004 \001(" +
+      "\010\022\020\n\010isLooped\030\005 \001(\010\022\020\n\010isRandom\030\006 \001(\010\022\023\n" +
+      "\013isTemporary\030\007 \001(\010\022\035\n\025activations_remain" +
+      "ing\030\010 \001(\r\"k\n\032ExtendedSpektraShowMessage\022" +
+      "\022\n\nshow_index\030\001 \001(\r\022\031\n\021step_index_offset" +
+      "\030\002 \001(\r\022\036\n\004step\030\003 \003(\0132\020.ShowStepMessage\"W" +
+      "\n\031SpektraShowControlMessage\022\022\n\nshow_inde" +
+      "x\030\001 \001(\r\022\024\n\014start_resume\030\002 \001(\r\022\020\n\010gotoSte" +
+      "p\030\003 \001(\r\"\272\001\n\024DMXTranslationObject\022\017\n\007line" +
+      "_in\030\001 \001(\r\022\020\n\010line_out\030\002 \001(\r\022\031\n\021dmx_start" +
+      "_address\030\003 \001(\r\022\025\n\rchannel_count\030\004 \001(\r\022\022\n" +
+      "\ndali_array\030\005 \003(\r\022\026\n\016affected_input\030\007 \001(" +
+      "\r\022\020\n\010blocking\030\010 \001(\010\022\017\n\007enabled\030\t \001(\010\"?\n\026" +
+      "DMXProtocolTranslation\022%\n\006object\030\001 \003(\0132\025" +
+      ".DMXTranslationObject\"%\n\021InputStateMessa" +
+      "ge\022\020\n\010use_mask\030\001 \001(\010\"8\n\022InputStateRespon" +
+      "se\022\016\n\006inputs\030\001 \003(\r\022\022\n\ninput_mask\030\002 \001(\r\"@" +
+      "\n\022LevelCacheResponse\022\016\n\006levels\030\001 \003(\r\022\014\n\004" +
+      "line\030\002 \001(\r\022\014\n\004page\030\003 \001(\r\"\346\004\n\034DiagnosticS" +
+      "ystemInfoResponse\022\020\n\010firmware\030\001 \001(\t\022\020\n\010h" +
+      "ardware\030\002 \001(\t\022\r\n\005error\030\003 \001(\t\022\023\n\013input_co" +
+      "unt\030\004 \001(\r\022\024\n\014output_count\030\005 \001(\r\022\020\n\010ir_co" +
+      "unt\030\006 \001(\r\022\027\n\017list_step_count\030\007 \001(\r\022\022\n\nli" +
+      "st_count\030\010 \001(\r\022\023\n\013alarm_count\030\t \001(\r\022\024\n\014b" +
+      "urnin_count\030\n \001(\r\022\031\n\021spektra_seq_count\030\013" +
+      " \001(\r\022\036\n\026spektra_seq_step_count\030\014 \001(\r\022\033\n\023" +
+      "spektra_theme_count\030\r \001(\r\022\034\n\024spektra_sta" +
+      "tic_count\030\016 \001(\r\022\025\n\rproto_version\030\017 \001(\r\022\022" +
+      "\n\nline_count\030\020 \001(\r\022\030\n\005lines\030\021 \003(\0162\t.Line" +
+      "Type\022\025\n\rprofile_count\030\022 \001(\r\022\031\n\021preset_co" +
+      "de_count\030\023 \001(\r\022\030\n\020user_level_count\030\024 \001(\r" +
+      "\022\031\n\021dmx_to_dali_count\030\025 \001(\r\022\032\n\022spektra_z" +
+      "one_count\030\026 \001(\r\022\023\n\013logic_count\030\027 \001(\r\022\030\n\020" +
+      "input_dali_count\030\030 \001(\r\022\021\n\tvendor_id\030\031 \001(" +
+      "\t\"U\n\021DiagnosticMessage\022$\n\004type\030\001 \001(\0162\026.D" +
+      "iagnosticMessageType\022\014\n\004page\030\002 \001(\r\022\014\n\004li" +
+      "ne\030\003 \001(\r\"\362\001\n\035AdminProjectPropertiesMessa" +
+      "ge\022\023\n\013device_name\030\002 \001(\t\022\024\n\014project_name\030" +
+      "\003 \001(\t\022\021\n\tlongitude\030\004 \001(\002\022\020\n\010latitude\030\005 \001" +
+      "(\002\022\024\n\014local_offset\030\006 \001(\002\022\030\n\020daylight_sav" +
+      "ings\030\007 \001(\010\022\036\n\026daylight_savings_start\030\010 \001" +
+      "(\r\022\034\n\024daylight_savings_end\030\t \001(\r\022\023\n\013poll" +
+      "_active\030\n \001(\010\"\244\001\n\030AdminConfigStatusMessa" +
+      "ge\022\023\n\013list_status\030\001 \003(\r\022\026\n\016burn_in_statu" +
+      "s\030\002 \003(\r\022\024\n\014alarm_status\030\003 \001(\r\022.\n\023alarm_t" +
+      "ime_from_reg\030\004 \001(\0132\021.TimeClockMessage\022\025\n" +
+      "\rsensor_status\030\005 \003(\r\"\326\001\n\035AdminNetworkPro" +
+      "pertiesMessage\022\014\n\004DHCP\030\001 \001(\010\022\n\n\002IP\030\002 \001(\t" +
+      "\022\013\n\003MAC\030\003 \001(\t\022\017\n\007gateway\030\004 \001(\t\022\021\n\tNTPSer" +
+      "ver\030\005 \001(\t\022\013\n\003NTP\030\006 \001(\010\022\r\n\005error\030\007 \001(\t\022\022\n" +
+      "\nNTPTimeout\030\010 \001(\r\022\016\n\006subnet\030\t \001(\t\022\023\n\013DNS" +
+      "_Primary\030\n \001(\t\022\025\n\rDNS_Secondary\030\013 \001(\t\"D\n" +
+      "\026AdminDNSServersMessage\022\023\n\013DNS_Primary\030\001" +
+      " \001(\t\022\025\n\rDNS_Secondary\030\002 \001(\t\"7\n\033AdminCont" +
+      "rollerLinesMessage\022\030\n\005lines\030\001 \003(\0162\t.Line" +
+      "Type\"@\n\030AdminDeviceStatusMessage\022\023\n\013temp" +
+      "erature\030\001 \001(\002\022\017\n\007battery\030\002 \001(\002\"I\n\027AdminS" +
+      "ecureLoginMessage\022\020\n\010username\030\001 \001(\t\022\016\n\006c" +
+      "nonce\030\002 \001(\t\022\014\n\004hash\030\003 \003(\r\";\n\032AdminDALISe" +
+      "nsorTypeMessage\022\035\n\004type\030\001 \001(\0162\017.DALISens" +
+      "orType\"\264\004\n\014AdminMessage\022\"\n\007command\030\001 \001(\016" +
+      "2\021.AdminCommandType\022\"\n\006target\030\002 \001(\0162\022.Ad" +
+      "minPropertyType\022\037\n\004data\030\003 \001(\0132\017.PayloadM" +
+      "essageH\000\022<\n\022network_properties\030\004 \001(\0132\036.A" +
+      "dminNetworkPropertiesMessageH\000\022<\n\022projec" +
+      "t_properties\030\005 \001(\0132\036.AdminProjectPropert" +
+      "iesMessageH\000\0228\n\020controller_lines\030\006 \001(\0132\034" +
+      ".AdminControllerLinesMessageH\000\0222\n\rdevice" +
+      "_status\030\007 \001(\0132\031.AdminDeviceStatusMessage" +
+      "H\000\0222\n\rconfig_status\030\010 \001(\0132\031.AdminConfigS" +
+      "tatusMessageH\000\022)\n\013device_time\030\t \001(\0132\022.Up" +
+      "dateTimeMessageH\000\0227\n\020dali_sensor_type\030\n " +
+      "\001(\0132\033.AdminDALISensorTypeMessageH\000\022.\n\013dn" +
+      "s_servers\030\013 \001(\0132\027.AdminDNSServersMessage" +
+      "H\000B\t\n\007payload\"K\n\013DataMessage\022\022\n\nidentifi" +
+      "er\030\001 \001(\r\022\013\n\003seq\030\002 \001(\r\022\r\n\005count\030\003 \001(\r\022\014\n\004" +
+      "data\030\004 \003(\r\"\331\002\n\023FirmwareMetaMessage\022\030\n\020fi" +
+      "rmware_version\030\001 \001(\r\022\025\n\rfirmware_date\030\002 " +
+      "\001(\r\022\034\n\024firmware_date_upload\030\003 \001(\r\022\031\n\021fir" +
+      "mware_checksum\030\004 \001(\r\022\034\n\024firmware_chunk_c" +
+      "ount\030\005 \001(\r\022\035\n\025firmware_base_address\030\006 \001(" +
+      "\r\022\034\n\024firmware_end_address\030\007 \001(\r\022\032\n\022firmw" +
+      "are_is_backup\030\010 \001(\010\022\r\n\005nonce\030\t \003(\r\022\031\n\021fi" +
+      "rmware_date_day\030\n \001(\r\022\033\n\023firmware_date_m" +
+      "onth\030\013 \001(\r\022\032\n\022firmware_date_year\030\014 \001(\r\";" +
+      "\n\026FirmwareControlMessage\022!\n\003cmd\030\001 \001(\0162\024." +
+      "FirmwareCommandType\"d\n\024FirmwareChunkMess" +
+      "age\022\030\n\020firmware_address\030\001 \001(\r\022\023\n\013total_b" +
+      "ytes\030\002 \001(\r\022\035\n\007payload\030\003 \001(\0132\014.DataMessag" +
+      "e\"j\n\024SystemLogReadMessage\022\031\n\021log_start_a" +
+      "ddress\030\001 \001(\r\022\026\n\016logs_requested\030\002 \001(\r\022\037\n\004" +
+      "logs\030\003 \003(\0132\021.SystemLogMessage\"\267\002\n\020System" +
+      "LogMessage\022\027\n\017time_since_boot\030\001 \001(\r\022\036\n\004b" +
+      "oot\030\002 \001(\0132\016.SystemLogBootH\000\022$\n\007netlink\030\003" +
+      " \001(\0132\021.SystemLogNetLinkH\000\022\034\n\003ntp\030\004 \001(\0132\r" +
+      ".SystemLogNTPH\000\022$\n\007trigger\030\005 \001(\0132\021.Syste" +
+      "mLogTriggerH\000\022$\n\007spektra\030\006 \001(\0132\021.SystemL" +
+      "ogSpektraH\000\022&\n\010schedule\030\007 \001(\0132\022.SystemLo" +
+      "gScheduleH\000\022(\n\tuserstart\030\010 \001(\0132\023.SystemL" +
+      "ogUserStartH\000B\010\n\006packet\"D\n\rSystemLogBoot" +
+      "\022$\n\ttimeclock\030\001 \001(\0132\021.TimeClockMessage\022\r" +
+      "\n\005flags\030\002 \001(\r\"%\n\020SystemLogNetLink\022\021\n\tis_" +
+      "linked\030\001 \001(\010\"4\n\014SystemLogNTP\022$\n\ttimecloc" +
+      "k\030\001 \001(\0132\021.TimeClockMessage\"O\n\020SystemLogT" +
+      "rigger\022 \n\007trigger\030\001 \001(\0132\017.TriggerMessage" +
+      "\022\031\n\006source\030\002 \001(\0162\t.ReadType\"g\n\020SystemLog" +
+      "Spektra\022\"\n\006action\030\001 \001(\0162\022.SpektraActionT" +
+      "ype\022 \n\004type\030\002 \001(\0162\022.SpektraTargetType\022\r\n" +
+      "\005index\030\003 \001(\r\"a\n\021SystemLogSchedule\022\r\n\005ind" +
+      "ex\030\001 \001(\r\022\017\n\007isStart\030\002 \001(\r\022\016\n\006second\030\003 \001(" +
+      "\r\022\016\n\006minute\030\004 \001(\r\022\014\n\004hour\030\005 \001(\r\"I\n\022Syste" +
+      "mLogUserStart\022$\n\ttimeclock\030\001 \001(\0132\021.TimeC" +
+      "lockMessage\022\r\n\005flags\030\002 \001(\r\"\323\001\n\031SystemMet" +
+      "aDataReadMessage\022\033\n\023input_press_counter\030" +
+      "\001 \003(\r\022\032\n\022list_start_counter\030\002 \003(\r\022\031\n\021sch" +
+      "edules_counter\030\003 \003(\r\022\026\n\016screen_on_time\030\004" +
+      " \001(\r\022\027\n\017screen_dim_time\030\005 \001(\r\022\031\n\021screen_" +
+      "saver_time\030\006 \001(\r\022\026\n\016reboot_counter\030\007 \001(\r" +
+      "\"\246\001\n\013EventFilter\022\r\n\005input\030\001 \001(\010\022\026\n\016dali_" +
+      "arc_level\030\002 \001(\010\022\024\n\014dali_command\030\003 \001(\010\022\023\n" +
+      "\013dali_sensor\030\004 \001(\010\022\022\n\ndali_input\030\005 \001(\010\022\032" +
+      "\n\022dmx_stream_changed\030\006 \001(\010\022\025\n\rdali_24_fr" +
+      "ame\030\007 \001(\010\"\233\001\n\014TriggerEvent\022\032\n\004type\030\001 \001(\016" +
+      "2\014.TriggerType\022\017\n\005level\030\002 \001(\rH\000\022(\n\014dali_" +
+      "command\030\003 \001(\0162\020.DALICommandTypeH\000\022\026\n\016tar" +
+      "get_address\030\004 \001(\r\022\021\n\tline_mask\030\005 \001(\rB\t\n\007" +
+      "payload\"m\n\020DALI24InputEvent\022\r\n\005index\030\001 \001" +
+      "(\r\022\014\n\004line\030\002 \001(\r\022\017\n\007address\030\003 \001(\r\022\036\n\004typ" +
+      "e\030\004 \001(\0162\020.DALI24InputType\022\013\n\003arg\030\005 \001(\r\"/" +
+      "\n\020DALI24FrameEvent\022\014\n\004line\030\001 \001(\r\022\r\n\005fram" +
+      "e\030\002 \001(\r\"\252\001\n\017DALISensorEvent\022\r\n\005index\030\001 \001" +
+      "(\r\022\014\n\004line\030\002 \001(\r\022\017\n\007address\030\003 \001(\r\022-\n\014mot" +
+      "ion_state\030\004 \001(\0162\027.DALIMotionSensorStates" +
+      "\022\'\n\tlux_state\030\005 \001(\0162\024.DALILuxSensorState" +
+      "s\022\021\n\tlux_level\030\006 \001(\r\"\300\002\n\014EventMessage\022\031\n" +
+      "\005event\030\001 \001(\0162\n.EventType\022 \n\007trigger\030\002 \001(" +
+      "\0132\r.TriggerEventH\000\022%\n\006inputs\030\003 \001(\0132\023.Inp" +
+      "utStateResponseH\000\022\"\n\007payload\030\004 \001(\0132\017.Pay" +
+      "loadMessageH\000\022\"\n\006sensor\030\006 \001(\0132\020.DALISens" +
+      "orEventH\000\022*\n\rdali_24_input\030\007 \001(\0132\021.DALI2" +
+      "4InputEventH\000\022\036\n\006filter\030\010 \001(\0132\014.EventFil" +
+      "terH\000\022*\n\rdali_24_frame\030\t \001(\0132\021.DALI24Fra" +
+      "meEventH\000B\014\n\nevent_data\"\337\024\n\rEdidioMessag" +
+      "e\022\022\n\nmessage_id\030\001 \001(\r\022\032\n\003ack\030\002 \001(\0132\013.Ack" +
+      "MessageH\000\022$\n\006inputs\030\003 \001(\0132\022.InputMultiMe" +
+      "ssageH\000\022&\n\007outputs\030\004 \001(\0132\023.OutputMultiMe" +
+      "ssageH\000\022\036\n\003irs\030\005 \001(\0132\017.IRMultiMessageH\000\022" +
+      " \n\006sensor\030\006 \001(\0132\016.SensorMessageH\000\022\034\n\004lis" +
+      "t\030\010 \001(\0132\014.ListMessageH\000\022\036\n\005alarm\030\n \001(\0132\r" +
+      ".AlarmMessageH\000\022$\n\006alarms\030\013 \001(\0132\022.AlarmM" +
+      "ultiMessageH\000\022\'\n\010burn_ins\030\014 \001(\0132\023.BurnIn" +
+      "MultiMessageH\000\022/\n\016sensor_command\030\r \001(\0132\025" +
+      ".SensorCommandMessageH\000\022/\n\016change_profil" +
+      "e\030\016 \001(\0132\025.ChangeProfileMessageH\000\022,\n\020iden" +
+      "tify_message\030\017 \001(\0132\020.IdentifyMessageH\000\022)" +
+      "\n\013update_time\030\020 \001(\0132\022.UpdateTimeMessageH" +
+      "\000\022)\n\013read_device\030\021 \001(\0132\022.ReadDeviceMessa" +
+      "geH\000\022$\n\014dali_message\030\022 \001(\0132\014.DALIMessage" +
+      "H\000\022(\n\ndali_query\030\023 \001(\0132\022.DALIQueryRespon" +
+      "seH\000\022\"\n\013dmx_message\030\024 \001(\0132\013.DMXMessageH\000" +
+      "\0223\n\020external_trigger\030\025 \001(\0132\027.ExternalTri" +
+      "ggerMessageH\000\0222\n\020spektra_settings\030\026 \001(\0132" +
+      "\026.SpektraSettingMessageH\000\0229\n\020spektra_seq" +
+      "uence\030\027 \001(\0132\035.SpektraSequenceConfigMessa" +
+      "geH\000\0223\n\020spektra_calendar\030\030 \001(\0132\027.Spektra" +
+      "CalendarMessageH\000\0223\n\rspektra_theme\030\031 \001(\013" +
+      "2\032.SpektraThemeConfigMessageH\000\022+\n\014spektr" +
+      "a_read\030\032 \001(\0132\023.SpektraReadMessageH\000\0221\n\017s" +
+      "pektra_control\030\033 \001(\0132\026.SpektraControlMes" +
+      "sageH\000\0221\n\016dmx_translator\030\034 \001(\0132\027.DMXProt" +
+      "ocolTranslationH\000\022+\n\rinput_request\030\035 \001(\013" +
+      "2\022.InputStateMessageH\000\022-\n\016input_response" +
+      "\030\036 \001(\0132\023.InputStateResponseH\000\0224\n\013diag_sy" +
+      "stem\030\037 \001(\0132\035.DiagnosticSystemInfoRespons" +
+      "eH\000\022*\n\014diag_message\030  \001(\0132\022.DiagnosticMe" +
+      "ssageH\000\022&\n\radmin_message\030! \001(\0132\r.AdminMe" +
+      "ssageH\000\022\036\n\005event\030\" \001(\0132\r.EventMessageH\000\022" +
+      ">\n\026secure_device_settings\030# \001(\0132\034.Secure" +
+      "DeviceSettingsMessageH\000\022,\n\014firmware_new\030" +
+      "$ \001(\0132\024.FirmwareMetaMessageH\000\0223\n\020firmwar" +
+      "e_control\030% \001(\0132\027.FirmwareControlMessage" +
+      "H\000\022/\n\016firmware_chunk\030& \001(\0132\025.FirmwareChu" +
+      "nkMessageH\000\0223\n\024level_cache_response\030\' \001(" +
+      "\0132\023.LevelCacheResponseH\000\022-\n\rlist_extende" +
+      "d\030) \001(\0132\024.ExtendedListMessageH\000\022\"\n\013ayt_m" +
+      "essage\030* \001(\0132\013.AytMessageH\000\022\"\n\013rdm_messa" +
+      "ge\030+ \001(\0132\013.RDMMessageH\000\0223\n\024rdm_response_" +
+      "message\030, \001(\0132\023.RDMResponseMessageH\000\022+\n\r" +
+      "logic_message\030- \001(\0132\022.LogicMultiMessageH" +
+      "\000\0220\n\014secure_login\030. \001(\0132\030.AdminSecureLog" +
+      "inMessageH\000\0223\n\024device_state_message\030/ \001(" +
+      "\0132\023.DeviceStateMessageH\000\022:\n\024spektra_cale" +
+      "ndar_day\0300 \001(\0132\032.SpektraCalendarDayMessa" +
+      "geH\000\022D\n\031spektra_calendar_overview\0301 \001(\0132" +
+      "\037.SpektraCalendarOverviewMessageH\000\022-\n\013in" +
+      "puts_dali\0302 \001(\0132\026.DALIInputMultiMessageH" +
+      "\000\022*\n\tlogs_read\0303 \001(\0132\025.SystemLogReadMess" +
+      "ageH\000\0223\n\rmetadata_read\0304 \001(\0132\032.SystemMet" +
+      "aDataReadMessageH\000\0229\n\027dali_addressing_me" +
+      "ssage\0305 \001(\0132\026.DALIAddressingMessageH\000\0227\n" +
+      "\026dali_remapping_message\0306 \001(\0132\025.DALIRema" +
+      "ppingMessageH\000\022B\n\034spektra_show_control_m" +
+      "essage\0307 \001(\0132\032.SpektraShowControlMessage" +
+      "H\000\0223\n\024spektra_show_message\0308 \001(\0132\023.Spekt" +
+      "raShowMessageH\000\022D\n\035extended_spektra_show" +
+      "_message\0309 \001(\0132\033.ExtendedSpektraShowMess" +
+      "ageH\000\022-\n\rrdm_discovery\030: \001(\0132\024.RDMDiscov" +
+      "eryMessageH\000\0228\n\023rdm_discovery_reply\030; \001(" +
+      "\0132\031.RDMDiscoveryReplyMessageH\000B\t\n\007payloa" +
+      "d*\233\001\n\024TriggerOperationType\022\r\n\tMOMENTARY\020" +
+      "\000\022\014\n\010LATCHING\020\001\022\024\n\020MOMENTARY_OUTPUT\020\002\022\023\n",
+      "\017LATCHING_OUTPUT\020\003\022\n\n\006ROTARY\020\004\022\027\n\022MOMENT" +
+      "ARY_DISABLED\020\200\001\022\026\n\021LATCHING_DISABLED\020\201\001*" +
+      "\316\013\n\013TriggerType\022\014\n\010DALI_ARC\020\000\022\020\n\014DALI_CO" +
+      "MMAND\020\001\022\032\n\026DMX_CHANNELS_SPLIT_LOW\020\002\022\033\n\027D" +
+      "MX_CHANNELS_SPLIT_HIGH\020\003\022$\n DMX_MULTICAS" +
+      "T_CHANNELS_SPLIT_LOW\020\004\022%\n!DMX_MULTICAST_" +
+      "CHANNELS_SPLIT_HIGH\020\005\022\021\n\rDMX_BROADCAST\020\006" +
+      "\022\t\n\005DIDIO\020\007\022\024\n\020FADE_UP_WITH_MIN\020\010\022\016\n\nLIS" +
+      "T_START\020\t\022\031\n\025LIST_START_CONTINUOUS\020\n\022\r\n\t" +
+      "LIST_STOP\020\013\022\025\n\021SPEKTRA_START_SEQ\020\014\022\024\n\020SP" +
+      "EKTRA_STOP_SEQ\020\r\022\021\n\rSPEKTRA_THEME\020\016\022\022\n\016S" +
+      "PEKTRA_STATIC\020\017\022\024\n\020SPEKTRA_SCHEDULE\020\020\022\016\n" +
+      "\nLINK_START\020\021\022\r\n\tLINK_STOP\020\022\022\020\n\014DISABLE_" +
+      "BURN\020\023\022\017\n\013ENABLE_BURN\020\024\022\016\n\nON_OFF_TOG\020\025\022" +
+      "\017\n\013MIN_MAX_TOG\020\026\022\020\n\014ENABLE_INPUT\020\027\022\021\n\rDI" +
+      "SABLE_INPUT\020\030\022\024\n\020ENABLE_TOG_INPUT\020\031\022\016\n\nO" +
+      "UTPUT_TOG\020\032\022\017\n\013OUTPUT_HIGH\020\033\022\016\n\nOUTPUT_L" +
+      "OW\020\034\022\017\n\013OUTPUT_TRIG\020\035\022\022\n\016PROFILE_CHANGE\020" +
+      "\036\022\023\n\017FADE_LONG_PRESS\020\037\022\n\n\006SYNCRO\020 \022\017\n\013PR" +
+      "ESET_CODE\020!\022\017\n\013CUSTOM_CODE\020\"\022\021\n\rSPEKTRA_" +
+      "SLEEP\020#\022\022\n\016SPEKTRA_RESUME\020$\022\020\n\014DEVICE_RE" +
+      "SET\020%\022\017\n\013DEVICE_SAVE\020&\022\030\n\024USER_LEVEL_STO" +
+      "RE_NEW\020\'\022\032\n\026USER_LEVEL_SET_DEFAULT\020(\022\025\n\021" +
+      "USER_LEVEL_RECALL\020)\022\r\n\tROOM_JOIN\020+\022\017\n\013RO" +
+      "OM_UNJOIN\020,\022\023\n\017TYPE8_TC_WARMER\020-\022\023\n\017TYPE" +
+      "8_TC_COOLER\020.\022\023\n\017TYPE8_TC_ACTUAL\020/\022\023\n\017LO" +
+      "GIC_OPERATION\0200\022\020\n\014ALARM_ENABLE\0201\022\021\n\rALA" +
+      "RM_DISABLE\0202\022 \n\034DALI_CONTROL_SENSOR_OVER" +
+      "RIDE\0203\022$\n DALI_CONTROL_SENSOR_TEMP_DISAB" +
+      "LE\0204\022\036\n\032DALI_CONTROL_SENSOR_RESUME\0205\022\025\n\021" +
+      "DALI_ARC_OVERRIDE\0206\022\031\n\025DALI_COMMAND_OVER" +
+      "RIDE\0207\022\035\n\031FADE_UP_WITH_MIN_OVERRIDE\0208\022\027\n" +
+      "\023ON_OFF_TOG_OVERRIDE\0209\022\030\n\024MIN_MAX_TOG_OV" +
+      "ERRIDE\020:\022\017\n\013MAX_OFF_TOG\020;\022\030\n\024MAX_OFF_TOG" +
+      "_OVERRIDE\020<\022\034\n\030FADE_LONG_PRESS_OVERRIDE\020" +
+      "=\022\036\n\032USER_LEVEL_RECALL_OVERRIDE\020>\022\024\n\020DMX" +
+      "_ZONE_FADE_UP\020?\022\026\n\022DMX_ZONE_FADE_DOWN\020@\022" +
+      "\021\n\rLOGGING_LEVEL\020A\022\030\n\024SPEKTRA_SHOW_CONTR" +
+      "OL\020B\022\031\n\025CIRCADIAN_TEMPERATURE\020C\022\017\n\nNO_CO" +
+      "MMAND\020\376\001*\353\001\n\010ReadType\022\n\n\006INPUTS\020\000\022\013\n\007OUT" +
+      "PUTS\020\001\022\006\n\002IR\020\002\022\n\n\006SENSOR\020\003\022\010\n\004LIST\020\005\022\n\n\006" +
+      "ALARMS\020\007\022\013\n\007BURN_IN\020\010\022\013\n\007PROJECT\020\t\022\013\n\007NE" +
+      "TWORK\020\n\022\n\n\006DEVICE\020\013\022\r\n\tPOLL_DATA\020\014\022\021\n\rLI" +
+      "ST_EXTENDED\020\r\022\t\n\005LOGIC\020\016\022\017\n\013DALI_INPUTS\020" +
+      "\017\022\020\n\014SPEKTRA_SHOW\020\020\022\031\n\025SPEKTRA_SHOW_EXTE" +
+      "NDED\020\021*\214\001\n\017AlarmRepeatType\022\023\n\017ALARM_NO_R" +
+      "EPEAT\020\000\022\026\n\022ALARM_REPEAT_DAILY\020\001\022\031\n\025ALARM" +
+      "_REPEAT_WORK_DAY\020\002\022\027\n\023ALARM_REPEAT_WEEKL" +
+      "Y\020\003\022\030\n\024ALARM_REPEAT_MONTHLY\020\004*I\n\016AlarmAs" +
+      "troType\022\022\n\016ALARM_NO_ASTRO\020\000\022\021\n\rALARM_SUN" +
+      "RUSE\020\001\022\020\n\014ALARM_SUNSET\020\002*^\n\021SpektraTarge" +
+      "tType\022\014\n\010SETTINGS\020\000\022\014\n\010SEQUENCE\020\001\022\t\n\005THE" +
+      "ME\020\002\022\n\n\006STATIC\020\003\022\014\n\010CALENDAR\020\004\022\010\n\004SHOW\020\005" +
+      "*=\n\021SpektraActionType\022\t\n\005START\020\000\022\010\n\004STOP" +
+      "\020\001\022\t\n\005PAUSE\020\002\022\010\n\004SAVE\020\003*p\n\025SpektraStepAc" +
+      "tionType\022\020\n\014RUN_SEQUENCE\020\000\022\016\n\nSHOW_THEME" +
+      "\020\001\022\016\n\nSTART_LIST\020\002\022\022\n\016PAUSE_PREVIOUS\020\003\022\021" +
+      "\n\rSTOP_PREVIOUS\020\004*}\n\037SpektraUnscheduledB" +
+      "ehaviourType\022 \n\034RUN_RANDOM_COLOURED_SEQU" +
+      "ENCE\020\000\022\022\n\016RUN_SEQUENCE_1\020\001\022\023\n\017RESUME_PRE" +
+      "VIOUS\020\002\022\017\n\nDO_NOTHING\020\376\001*6\n\022LineAddressi" +
+      "ngType\022\017\n\013INDEPENDENT\020\000\022\017\n\013CONSECUTIVE\020\001" +
+      "*\347\002\n\016AckMessageType\022\021\n\rDECODE_FAILED\020\000\022\027" +
+      "\n\023INDEX_OUT_OF_BOUNDS\020\001\022\023\n\017UNEXPECTED_TY" +
+      "PE\020\002\022\021\n\rENCODE_FAILED\020\003\022\020\n\014KEY_MISMATCH\020" +
+      "\004\022\013\n\007SUCCESS\020\005\022\022\n\016INVALID_PARAMS\020\006\022\026\n\022UN" +
+      "EXPECTED_COMMAND\020\007\022\030\n\024COMMUNICATION_FAIL" +
+      "ED\020\010\022\031\n\025COMMUNICATION_TIMEOUT\020\t\022\021\n\rDATA_" +
+      "TOO_LONG\020\n\022\023\n\017UNEXPECTED_CASE\020\013\022\016\n\nSLOTS" +
+      "_FULL\020\014\022\020\n\014UNAUTHORISED\020\r\022\023\n\017PARTIAL_SUC" +
+      "CESS\020\016\022\022\n\016COMMAND_FAILED\020\017\022\016\n\nDEPRECATED" +
+      "\020\020*\323\004\n\020Type8CommandType\022\024\n\020SET_TEMP_X_CO" +
+      "ORD\020\000\022\024\n\020SET_TEMP_Y_COORD\020\001\022\014\n\010ACTIVATE\020" +
+      "\002\022\023\n\017X_COORD_STEP_UP\020\003\022\025\n\021X_COORD_STEP_D" +
+      "OWN\020\004\022\023\n\017Y_COORD_STEP_UP\020\005\022\025\n\021Y_COORD_ST" +
+      "EP_DOWN\020\006\022\037\n\033SET_TEMP_COLOUR_TEMPERATURE" +
+      "\020\007\022\"\n\036COLOUR_TEMPERATURE_STEP_COOLER\020\010\022\"" +
+      "\n\036COLOUR_TEMPERATURE_STEP_WARMER\020\t\022\033\n\027SE" +
+      "T_TEMP_PRI_N_DIMLEVEL\020\n\022\031\n\025SET_TEMP_RGB_" +
+      "DIMLEVEL\020\013\022\031\n\025SET_TEMP_WAF_DIMLEVEL\020\014\022\033\n" +
+      "\027SET_TEMP_RGBWAF_CONTROL\020\r\022\031\n\025COPY_REPOR" +
+      "T_TEMPORARY\020\016\022\022\n\016STORE_TY_PRI_N\020\020\022\030\n\024STO" +
+      "RE_XY_COORD_PRI_N\020\021\022\"\n\036STORE_COLOUR_TEMP" +
+      "ERATURE_LIMIT\020\022\022\036\n\032STORE_GEAR_FEATURES_S" +
+      "TATUS\020\023\022\032\n\026ASSIGN_COLOR_LINKED_CH\020\025\022\022\n\016S" +
+      "TART_AUTO_CAL\020\026\022\027\n\023ENABLE_DEVICE_TYPE8\0200" +
+      "*\230\002\n\016Type8QueryType\022\024\n\020TYPE8_QUERY_NULL\020" +
+      "\000\022%\n TYPE8_QUERY_GEAR_FEATURES_STATUS\020\367\001" +
+      "\022\036\n\031TYPE8_QUERY_COLOUR_STATUS\020\370\001\022%\n TYPE" +
+      "8_QUERY_COLOUR_TYPE_FEATURES\020\371\001\022\035\n\030TYPE8" +
+      "_QUERY_COLOUR_VALUE\020\372\001\022\037\n\032TYPE8_QUERY_RG" +
+      "BWAF_CONTROL\020\373\001\022 \n\033TYPE8_QUERY_ASSIGNED_" +
+      "COLOUR\020\374\001\022 \n\033TYPE8_QUERY_EXT_VERSION_NUM" +
+      "\020\376\001*\274\006\n\023DALI24DeviceSetting\022\024\n\020COMMAND_I" +
+      "DENTIFY\020\000\022\"\n\036COMMAND_RESET_POWER_CYCLE_S" +
+      "EEN\020\001\022\021\n\rCOMMAND_RESET\020\020\022\035\n\031COMMAND_RESE" +
+      "T_MEMORY_BANK\020\021\022\035\n\031COMMAND_SET_SHORT_ADD" +
+      "RESS\020\024\022\037\n\033COMMAND_ENABLE_WRITE_MEMORY\020\025\022" +
+      "!\n\035COMMAND_ENABLE_APP_CONTROLLER\020\026\022\"\n\036CO" +
+      "MMAND_DISABLE_APP_CONTROLLER\020\027\022\036\n\032COMMAN" +
+      "D_SET_OPERATING_MODE\020\030\022%\n!COMMAND_ADD_TO" +
+      "_DEVICE_GROUPS_0_15\020\031\022&\n\"COMMAND_ADD_TO_" +
+      "DEVICE_GROUPS_15_32\020\032\022#\n\037COMMAND_REMOVE_" +
+      "FROM_GROUPS_0_15\020\033\022$\n COMMAND_REMOVE_FRO" +
+      "M_GROUPS_16_32\020\034\022 \n\034COMMAND_START_QUIESC" +
+      "ENT_MODE\020\035\022\037\n\033COMMAND_STOP_QUIESCENT_MOD" +
+      "E\020\036\022$\n COMMAND_ENABLE_POWER_CYCLE_NOTIF\020" +
+      "\037\022%\n!COMMAND_DISABLE_POWER_CYCLE_NOTIF\020 " +
+      "\022%\n!COMMAND_SAVE_PERSISTENT_VARIABLES\020!\022" +
+      "\026\n\022SET_EVENT_PRIORITY\020a\022\023\n\017ENABLE_INSTAN" +
+      "CE\020b\022\024\n\020DISABLE_INSTANCE\020c\022\036\n\032SET_PRIMAR" +
+      "Y_INSTANCE_GROUP\020d\022\030\n\024SET_INSTANCE_GROUP" +
+      "_1\020e\022\030\n\024SET_INSTANCE_GROUP_2\020f\022\024\n\020SET_EV" +
+      "ENT_SCHEME\020g\022\024\n\020SET_EVENT_FILTER\020h*c\n\022DA" +
+      "LI24InstanceType\022\013\n\007DEFAULT\020\000\022\t\n\005INPUT\020\001" +
+      "\022\020\n\014ROTARY_INPUT\020\002\022\021\n\rMOTION_SENSOR\020\003\022\020\n" +
+      "\014LIGHT_SENSOR\020\004*\276\002\n\014DALI24OpCode\022\017\n\013OPCO" +
+      "DE_NULL\020\000\022 \n\034SENSOR_MOTION_SET_HOLD_TIME" +
+      "R\020!\022\"\n\036SENSOR_MOTION_SET_REPORT_TIMER\020\"\022" +
+      "$\n SENSOR_MOTION_SET_DEADTIME_TIMER\020#\022#\n" +
+      "\037SENSOR_MOTION_CANCEL_HOLD_TIMER\020$\022!\n\035SE" +
+      "NSOR_LIGHT_SET_REPORT_TIMER\0200\022\037\n\033SENSOR_" +
+      "LIGHT_SET_HYSTERESIS\0201\022#\n\037SENSOR_LIGHT_S" +
+      "ET_DEADTIME_TIMER\0202\022#\n\037SENSOR_LIGHT_SET_" +
+      "HYSTERESIS_MIN\0203*W\n\010LineType\022\016\n\nLINE_EMP" +
+      "TY\020\000\022\r\n\tLINE_DALI\020\001\022\014\n\010LINE_DMX\020\002\022\017\n\013LIN" +
+      "E_DMX_IN\020\003\022\r\n\tLINE_AUTO\020\004*\251\001\n\tEventType\022" +
+      "\014\n\010REGISTER\020\000\022\021\n\rTRIGGER_EVENT\020\001\022\017\n\013INPU" +
+      "T_EVENT\020\002\022\020\n\014SENSOR_EVENT\020\003\022\021\n\rCONTROL_E" +
+      "VENT\020\004\022\023\n\017ROOM_JOIN_EVENT\020\005\022\027\n\023DALI_24_I" +
+      "NPUT_EVENT\020\006\022\027\n\023DALI_24_FRAME_EVENT\020\007*\306\t" +
+      "\n\rDALIQueryType\022\023\n\017DALI_QUERY_NULL\020\000\022\026\n\021" +
+      "DALI_QUERY_STATUS\020\220\001\022\027\n\022DALI_QUERY_BALLA" +
+      "ST\020\221\001\022\034\n\027DALI_QUERY_LAMP_FAILURE\020\222\001\022\035\n\030D" +
+      "ALI_QUERY_LAMP_POWER_ON\020\223\001\022\033\n\026DALI_QUERY" +
+      "_LIMIT_ERROR\020\224\001\022\033\n\026DALI_QUERY_RESET_STAT" +
+      "E\020\225\001\022%\n DALI_QUERY_MISSING_SHORT_ADDRESS" +
+      "\020\226\001\022\036\n\031DALI_QUERY_VERSION_NUMBER\020\227\001\022\024\n\017D" +
+      "ALI_QUERY_DTR0\020\230\001\022\033\n\026DALI_QUERY_DEVICE_T" +
+      "YPE\020\231\001\022\034\n\027DALI_QUERY_PHYSICAL_MIN\020\232\001\022\035\n\030" +
+      "DALI_QUERY_POWER_FAILURE\020\233\001\022\024\n\017DALI_QUER" +
+      "Y_DTR1\020\234\001\022\024\n\017DALI_QUERY_DTR2\020\235\001\022\036\n\031DALI_" +
+      "QUERY_OPERATING_MODE\020\236\001\022 \n\033DALI_QUERY_LI" +
+      "GHTSOURCE_TYPE\020\237\001\022\034\n\027DALI_QUERY_ACTUAL_L" +
+      "EVEL\020\240\001\022\031\n\024DALI_QUERY_MAX_LEVEL\020\241\001\022\031\n\024DA" +
+      "LI_QUERY_MIN_LEVEL\020\242\001\022\036\n\031DALI_QUERY_POWE" +
+      "R_ON_LEVEL\020\243\001\022$\n\037DALI_QUERY_SYSTEM_FAILU" +
+      "RE_LEVEL\020\244\001\022!\n\034DALI_QUERY_FADETIME_FADER" +
+      "ATE\020\245\001\022*\n%DALI_QUERY_MANUFACTURER_SPECIF" +
+      "IC_MODE\020\246\001\022 \n\033DALI_QUERY_NEXT_DEVICE_TYP" +
+      "E\020\247\001\022\"\n\035DALI_QUERY_EXTENDED_FADE_TIME\020\250\001" +
+      "\022$\n\037DALI_QUERY_CONTROL_GEAR_FAILURE\020\252\001\022\035" +
+      "\n\030DALI_QUERY_SCENE_X_LEVEL\020\260\001\022\032\n\025DALI_QU" +
+      "ERY_GROUPS_0_7\020\300\001\022\033\n\026DALI_QUERY_GROUPS_8" +
+      "_15\020\301\001\022 \n\033DALI_QUERY_RANDOM_ADDRESS_H\020\302\001" +
+      "\022 \n\033DALI_QUERY_RANDOM_ADDRESS_M\020\303\001\022 \n\033DA" +
+      "LI_QUERY_RANDOM_ADDRESS_L\020\304\001\022\034\n\027DALI_QUE" +
+      "RY_READ_DTR_0_1\020\305\001\022 \n\033DALI_QUERY_APP_EXT" +
+      "_COMMANDS\020\340\001\022\"\n\035DALI_QUERY_EXT_VERSION_N" +
+      "UMBER\020\377\001\022\027\n\022DALI_QUERY_COMPARE\020\204\002\022$\n\037DAL" +
+      "I_QUERY_VERIFY_SHORT_ADDRESS\020\214\002\022\035\n\030DALI_" +
+      "QUERY_SHORT_ADDRESS\020\215\002*\351\027\n\017DALICommandTy" +
+      "pe\022\014\n\010DALI_OFF\020\000\022\020\n\014DALI_FADE_UP\020\001\022\022\n\016DA" +
+      "LI_FADE_DOWN\020\002\022\020\n\014DALI_STEP_UP\020\003\022\022\n\016DALI" +
+      "_STEP_DOWN\020\004\022\022\n\016DALI_MAX_LEVEL\020\005\022\022\n\016DALI" +
+      "_MIN_LEVEL\020\006\022\026\n\022DALI_STEP_DOWN_OFF\020\007\022\023\n\017" +
+      "DALI_ON_STEP_UP\020\010\022\030\n\024DALI_ENABLE_DAPC_SE" +
+      "Q\020\t\022!\n\035DALI_RECALL_LAST_ACTIVE_LEVEL\020\n\022\026" +
+      "\n\022DALI_CONTINUOUS_UP\020\013\022\030\n\024DALI_CONTINUOU" +
+      "S_DOWN\020\014\022\027\n\023DALI_RECALL_SCENE_0\020\020\022\027\n\023DAL" +
+      "I_RECALL_SCENE_1\020\021\022\027\n\023DALI_RECALL_SCENE_" +
+      "2\020\022\022\027\n\023DALI_RECALL_SCENE_3\020\023\022\027\n\023DALI_REC" +
+      "ALL_SCENE_4\020\024\022\027\n\023DALI_RECALL_SCENE_5\020\025\022\027" +
+      "\n\023DALI_RECALL_SCENE_6\020\026\022\027\n\023DALI_RECALL_S" +
+      "CENE_7\020\027\022\027\n\023DALI_RECALL_SCENE_8\020\030\022\027\n\023DAL" +
+      "I_RECALL_SCENE_9\020\031\022\030\n\024DALI_RECALL_SCENE_" +
+      "10\020\032\022\030\n\024DALI_RECALL_SCENE_11\020\033\022\030\n\024DALI_R" +
+      "ECALL_SCENE_12\020\034\022\030\n\024DALI_RECALL_SCENE_13" +
+      "\020\035\022\030\n\024DALI_RECALL_SCENE_14\020\036\022\030\n\024DALI_REC" +
+      "ALL_SCENE_15\020\037\022\016\n\nDALI_RESET\020 \022 \n\034DALI_S" +
+      "TORE_ACTUAL_LEVEL_DTR0\020!\022\035\n\031DALI_SAVE_PE" +
+      "RSISTENT_VARS\020\"\022\033\n\027DALI_SET_OPERATING_MO" +
+      "DE\020#\022\032\n\026DALI_RESET_MEMORY_BANK\020$\022\030\n\024DALI" +
+      "_IDENTIFY_DEVICE\020%\022\026\n\022DALI_SET_MAX_LEVEL" +
+      "\020*\022\026\n\022DALI_SET_MIN_LEVEL\020+\022!\n\035DALI_SET_S" +
+      "YSTEM_FAILURE_LEVEL\020,\022\033\n\027DALI_SET_POWER_" +
+      "ON_LEVEL\020-\022\026\n\022DALI_SET_FADE_TIME\020.\022\026\n\022DA" +
+      "LI_SET_FADE_RATE\020/\022\032\n\026DALI_SET_EXT_FADE_" +
+      "TIME\0200\022\024\n\020DALI_SET_SCENE_0\020@\022\024\n\020DALI_SET" +
+      "_SCENE_1\020A\022\024\n\020DALI_SET_SCENE_2\020B\022\024\n\020DALI" +
+      "_SET_SCENE_3\020C\022\024\n\020DALI_SET_SCENE_4\020D\022\024\n\020" +
+      "DALI_SET_SCENE_5\020E\022\024\n\020DALI_SET_SCENE_6\020F" +
+      "\022\024\n\020DALI_SET_SCENE_7\020G\022\024\n\020DALI_SET_SCENE" +
+      "_8\020H\022\024\n\020DALI_SET_SCENE_9\020I\022\025\n\021DALI_SET_S" +
+      "CENE_10\020J\022\025\n\021DALI_SET_SCENE_11\020K\022\025\n\021DALI" +
+      "_SET_SCENE_12\020L\022\025\n\021DALI_SET_SCENE_13\020M\022\025" +
+      "\n\021DALI_SET_SCENE_14\020N\022\025\n\021DALI_SET_SCENE_" +
+      "15\020O\022\034\n\030DALI_REMOVE_FROM_SCENE_0\020P\022\034\n\030DA" +
+      "LI_REMOVE_FROM_SCENE_1\020Q\022\034\n\030DALI_REMOVE_" +
+      "FROM_SCENE_2\020R\022\034\n\030DALI_REMOVE_FROM_SCENE" +
+      "_3\020S\022\034\n\030DALI_REMOVE_FROM_SCENE_4\020T\022\034\n\030DA" +
+      "LI_REMOVE_FROM_SCENE_5\020U\022\034\n\030DALI_REMOVE_" +
+      "FROM_SCENE_6\020V\022\034\n\030DALI_REMOVE_FROM_SCENE" +
+      "_7\020W\022\034\n\030DALI_REMOVE_FROM_SCENE_8\020X\022\034\n\030DA" +
+      "LI_REMOVE_FROM_SCENE_9\020Y\022\035\n\031DALI_REMOVE_" +
+      "FROM_SCENE_10\020Z\022\035\n\031DALI_REMOVE_FROM_SCEN" +
+      "E_11\020[\022\035\n\031DALI_REMOVE_FROM_SCENE_12\020\\\022\035\n" +
+      "\031DALI_REMOVE_FROM_SCENE_13\020]\022\035\n\031DALI_REM" +
+      "OVE_FROM_SCENE_14\020^\022\035\n\031DALI_REMOVE_FROM_" +
+      "SCENE_15\020_\022\027\n\023DALI_ADD_TO_GROUP_0\020`\022\027\n\023D" +
+      "ALI_ADD_TO_GROUP_1\020a\022\027\n\023DALI_ADD_TO_GROU" +
+      "P_2\020b\022\027\n\023DALI_ADD_TO_GROUP_3\020c\022\027\n\023DALI_A" +
+      "DD_TO_GROUP_4\020d\022\027\n\023DALI_ADD_TO_GROUP_5\020e" +
+      "\022\027\n\023DALI_ADD_TO_GROUP_6\020f\022\027\n\023DALI_ADD_TO" +
+      "_GROUP_7\020g\022\027\n\023DALI_ADD_TO_GROUP_8\020h\022\027\n\023D" +
+      "ALI_ADD_TO_GROUP_9\020i\022\030\n\024DALI_ADD_TO_GROU" +
+      "P_10\020j\022\030\n\024DALI_ADD_TO_GROUP_11\020k\022\030\n\024DALI" +
+      "_ADD_TO_GROUP_12\020l\022\030\n\024DALI_ADD_TO_GROUP_" +
+      "13\020m\022\030\n\024DALI_ADD_TO_GROUP_14\020n\022\030\n\024DALI_A" +
+      "DD_TO_GROUP_15\020o\022\034\n\030DALI_REMOVE_FROM_GRO" +
+      "UP_0\020p\022\034\n\030DALI_REMOVE_FROM_GROUP_1\020q\022\034\n\030" +
+      "DALI_REMOVE_FROM_GROUP_2\020r\022\034\n\030DALI_REMOV" +
+      "E_FROM_GROUP_3\020s\022\034\n\030DALI_REMOVE_FROM_GRO" +
+      "UP_4\020t\022\034\n\030DALI_REMOVE_FROM_GROUP_5\020u\022\034\n\030" +
+      "DALI_REMOVE_FROM_GROUP_6\020v\022\034\n\030DALI_REMOV" +
+      "E_FROM_GROUP_7\020w\022\034\n\030DALI_REMOVE_FROM_GRO" +
+      "UP_8\020x\022\034\n\030DALI_REMOVE_FROM_GROUP_9\020y\022\035\n\031" +
+      "DALI_REMOVE_FROM_GROUP_10\020z\022\035\n\031DALI_REMO" +
+      "VE_FROM_GROUP_11\020{\022\035\n\031DALI_REMOVE_FROM_G" +
+      "ROUP_12\020|\022\035\n\031DALI_REMOVE_FROM_GROUP_13\020}" +
+      "\022\035\n\031DALI_REMOVE_FROM_GROUP_14\020~\022\035\n\031DALI_" +
+      "REMOVE_FROM_GROUP_15\020\177\022\033\n\026DALI_SET_SHORT" +
+      "_ADDRESS\020\200\001\022\035\n\030DALI_ENABLE_WRITE_MEMORY\020" +
+      "\201\001\022\023\n\016DALI_TERMINATE\020\377\001\022\024\n\017DALI_INITIALI" +
+      "SE\020\202\002\022\023\n\016DALI_RANDOMISE\020\203\002\022\022\n\rDALI_WITHD" +
+      "RAW\020\205\002\022\027\n\022DALI_SEARCH_ADDR_H\020\210\002\022\027\n\022DALI_" +
+      "SEARCH_ADDR_M\020\211\002\022\027\n\022DALI_SEARCH_ADDR_L\020\212" +
+      "\002\022\037\n\032DALI_PROGRAM_SHORT_ADDRESS\020\213\002*\250\001\n\025C" +
+      "ustomDALICommandType\022\022\n\016DALI_ARC_LEVEL\020\000" +
+      "\022\023\n\017DALI_DAPC_LEVEL\020\001\022\030\n\024DALI_GROUP_ARC_" +
+      "LEVEL\020\002\022\030\n\024DALI_BROADCAST_SCENE\020\003\022\027\n\023DAL" +
+      "I_SCENE_ON_GROUP\020\004\022\031\n\025DALI_SCENE_ON_ADDR" +
+      "ESS\020\005*\233\004\n\021AdminPropertyType\022\017\n\013DEVICE_NA" +
+      "ME\020\000\022\020\n\014PROJECT_NAME\020\001\022\r\n\tLONGITUDE\020\002\022\014\n" +
+      "\010LATITUDE\020\003\022\024\n\020LOCAL_UTC_OFFSET\020\004\022\024\n\020DAY" +
+      "LIGHT_SAVINGS\020\005\022\017\n\013POLL_ACTIVE\020\006\022\020\n\014DHCP" +
+      "_ENABLED\020\007\022\013\n\007IP_ADDR\020\010\022\014\n\010MAC_ADDR\020\t\022\016\n" +
+      "\nGATEWAY_IP\020\n\022\026\n\022NETWORK_PROPERTIES\020\013\022\025\n" +
+      "\021SYSTEM_PROPERTIES\020\014\022\024\n\020CONTROLLER_LINES" +
+      "\020\r\022\024\n\020EEPROM_FULL_CHIP\020\016\022\017\n\013CONFIG_DATA\020" +
+      "\017\022\020\n\014SPEKTRA_DATA\020\020\022\021\n\rDEVICE_STATUS\020\021\022\021" +
+      "\n\rCONFIG_STATUS\020\022\022\017\n\013DEVICE_TIME\020\023\022\017\n\013NT" +
+      "P_DETAILS\020\024\022\025\n\021TRIDONIC_MSENSORS\020\025\022\022\n\016SE" +
+      "CURE_SESSION\020\026\022\t\n\005NONCE\020\027\022\024\n\020DALI_SENSOR" +
+      "_TYPE\020\030\022\021\n\rDEVICE_REBOOT\020\031\022\022\n\016SYSTEM_LOG" +
+      "GING\020\032\022\n\n\006SUBNET\020\033\022\007\n\003DNS\020\034*M\n\020AdminComm" +
+      "andType\022\007\n\003SET\020\000\022\007\n\003GET\020\001\022\007\n\003ADD\020\002\022\n\n\006RE" +
+      "MOVE\020\003\022\t\n\005RESET\020\004\022\007\n\003RUN\020\005*\265\001\n\016DALIStatu" +
+      "sType\022\014\n\010LAMP_OFF\020\000\022\030\n\024CONTROL_GEAR_FAIL" +
+      "URE\020\001\022\020\n\014LAMP_FAILURE\020\002\022\013\n\007LAMP_ON\020\004\022\017\n\013" +
+      "LIMIT_ERROR\020\010\022\020\n\014FADE_RUNNING\020\020\022\017\n\013RESET" +
+      "_STATE\020 \022\021\n\rSHORT_ADDRESS\020@\022\025\n\020POWER_CYC" +
+      "LE_SEEN\020\200\001*\210\002\n\020DALIRXStatusFlag\022\013\n\007WAITI" +
+      "NG\020\000\022\023\n\017RECEIVING_FRAME\020\001\022\025\n\021NO_RECEIVED" +
+      "_FRAME\020\002\022\030\n\024RECEIVED_8_BIT_FRAME\020\003\022\031\n\025RE" +
+      "CEIVED_16_BIT_FRAME\020\004\022\031\n\025RECEIVED_24_BIT" +
+      "_FRAME\020\005\022\032\n\026RECEIVED_PARTIAL_FRAME\020\006\022\010\n\004" +
+      "IDLE\020\007\022\017\n\013CALIBRATION\020\010\022\030\n\023ERROR_WHILE_S" +
+      "ENDING\020\376\001\022\032\n\025ERROR_WHILE_RECEIVING\020\377\001*\213\001" +
+      "\n\025DiagnosticMessageType\022\032\n\026DIAGNOSTIC_SY" +
+      "STEM_INFO\020\000\022\033\n\027DIAGNOSTIC_INPUT_STATUS\020\001" +
+      "\022\024\n\020DALI_LEVEL_CACHE\020\002\022\023\n\017DMX_LEVEL_CACH" +
+      "E\020\003\022\016\n\nROOM_JOINS\020\004*z\n\023FirmwareCommandTy" +
+      "pe\022\014\n\010FW_READY\020\000\022\014\n\010FW_APPLY\020\001\022\r\n\tFW_VER" +
+      "IFY\020\002\022\024\n\020FW_VERIFY_FAILED\020\003\022\025\n\021FW_VERIFY" +
+      "_SUCCESS\020\004\022\013\n\007FW_READ\020\005*?\n\025SpektraTransi" +
+      "tionType\022\t\n\005BLEND\020\000\022\010\n\004SNAP\020\001\022\021\n\rFADE_TO" +
+      "_BLACK\020\002*\234\001\n\tLogicType\022\016\n\nDALI_LEVEL\020\000\022\017" +
+      "\n\013INPUT_STATE\020\001\022\020\n\014LIST_RUNNING\020\002\022\026\n\022OCC" +
+      "UPANCY_DETECTED\020\003\022\017\n\013DMX_PRESENT\020\004\022\017\n\013CA" +
+      "L_WEEKDAY\020\005\022\r\n\tCAL_MONTH\020\006\022\023\n\017ALARM_SCHE" +
+      "DULED\020\007*\200\001\n\023LogicComparisonType\022\r\n\tLESS_" +
+      "THAN\020\000\022\027\n\023LESS_THAN_OR_EQUALS\020\001\022\n\n\006EQUAL" +
+      "S\020\002\022\r\n\tMORE_THAN\020\003\022\027\n\023MORE_THAN_OR_EQUAL" +
+      "S\020\004\022\r\n\tNOT_EQUAL\020\005*8\n\016DALISensorType\022\022\n\016" +
+      "TRIDONIC_EDALI\020\000\022\022\n\016STANDARD_EDALI\020\001*G\n\021" +
+      "SensorCommandType\022\016\n\nINITIALISE\020\000\022\010\n\004MUT" +
+      "E\020\001\022\n\n\006UNMUTE\020\002\022\014\n\010OVERRIDE\020\003*b\n\rSystemL" +
+      "ogType\022\010\n\004BOOT\020\000\022\014\n\010NET_LINK\020\001\022\007\n\003NTP\020\002\022" +
+      "\013\n\007TRIGGER\020\003\022\013\n\007SPEKTRA\020\004\022\014\n\010SCHEDULE\020\005\022" +
+      "\010\n\004USER\020\006*m\n\017DALI24InputType\022\023\n\017MOMENTAR" +
+      "Y_SHORT\020\000\022\022\n\016MOMENTARY_LONG\020\001\022\017\n\013LATCHED" +
+      "_LOW\020\002\022\020\n\014LATCHED_HIGH\020\003\022\016\n\nPOSITIONAL\020\004" +
+      "*h\n\026DALIMotionSensorStates\022\017\n\013MOTION_IDL" +
+      "E\020\000\022\023\n\017MOTION_DISABLED\020\001\022\022\n\016MOTION_WARNI" +
+      "NG\020\002\022\024\n\020MOTION_OCCUPANCY\020\003*I\n\023DALILuxSen" +
+      "sorStates\022\020\n\014LUX_DISABLED\020\000\022\017\n\013LUX_ENABL" +
+      "ED\020\001\022\017\n\013LUX_DEVIATE\020\002*N\n\023DALIAddressingE" +
+      "rror\022\014\n\010NO_ERROR\020\000\022\n\n\006VERIFY\020\001\022\n\n\006SEARCH" +
+      "\020\002\022\021\n\rNO_NEW_DEVICE\020\003*8\n\022DALIAddressingT" +
+      "ype\022\017\n\013ADDRESS_NEW\020\000\022\021\n\rREADDRESS_ALL\020\001b" +
+      "\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -115858,7 +120090,7 @@ public final class EDS10ProtocolBuffer {
     internal_static_RDMDiscoveryMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_RDMDiscoveryMessage_descriptor,
-        new java.lang.String[] { "UniverseMask", });
+        new java.lang.String[] { "UniverseMask", "IsNext", });
     internal_static_RDMDiscoveryReplyMessage_descriptor =
       getDescriptor().getMessageTypes().get(42);
     internal_static_RDMDiscoveryReplyMessage_fieldAccessorTable = new
@@ -115978,7 +120210,7 @@ public final class EDS10ProtocolBuffer {
     internal_static_DiagnosticSystemInfoResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DiagnosticSystemInfoResponse_descriptor,
-        new java.lang.String[] { "Firmware", "Hardware", "Error", "InputCount", "OutputCount", "IrCount", "ListStepCount", "ListCount", "AlarmCount", "BurninCount", "SpektraSeqCount", "SpektraSeqStepCount", "SpektraThemeCount", "SpektraStaticCount", "ProtoVersion", "LineCount", "Lines", "ProfileCount", "PresetCodeCount", "UserLevelCount", "DmxToDaliCount", "SpektraZoneCount", "LogicCount", "InputDaliCount", });
+        new java.lang.String[] { "Firmware", "Hardware", "Error", "InputCount", "OutputCount", "IrCount", "ListStepCount", "ListCount", "AlarmCount", "BurninCount", "SpektraSeqCount", "SpektraSeqStepCount", "SpektraThemeCount", "SpektraStaticCount", "ProtoVersion", "LineCount", "Lines", "ProfileCount", "PresetCodeCount", "UserLevelCount", "DmxToDaliCount", "SpektraZoneCount", "LogicCount", "InputDaliCount", "VendorId", });
     internal_static_DiagnosticMessage_descriptor =
       getDescriptor().getMessageTypes().get(62);
     internal_static_DiagnosticMessage_fieldAccessorTable = new
@@ -116003,158 +120235,164 @@ public final class EDS10ProtocolBuffer {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminNetworkPropertiesMessage_descriptor,
         new java.lang.String[] { "DHCP", "IP", "MAC", "Gateway", "NTPServer", "NTP", "Error", "NTPTimeout", "Subnet", "DNSPrimary", "DNSSecondary", });
-    internal_static_AdminControllerLinesMessage_descriptor =
+    internal_static_AdminDNSServersMessage_descriptor =
       getDescriptor().getMessageTypes().get(66);
+    internal_static_AdminDNSServersMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_AdminDNSServersMessage_descriptor,
+        new java.lang.String[] { "DNSPrimary", "DNSSecondary", });
+    internal_static_AdminControllerLinesMessage_descriptor =
+      getDescriptor().getMessageTypes().get(67);
     internal_static_AdminControllerLinesMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminControllerLinesMessage_descriptor,
         new java.lang.String[] { "Lines", });
     internal_static_AdminDeviceStatusMessage_descriptor =
-      getDescriptor().getMessageTypes().get(67);
+      getDescriptor().getMessageTypes().get(68);
     internal_static_AdminDeviceStatusMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminDeviceStatusMessage_descriptor,
         new java.lang.String[] { "Temperature", "Battery", });
     internal_static_AdminSecureLoginMessage_descriptor =
-      getDescriptor().getMessageTypes().get(68);
+      getDescriptor().getMessageTypes().get(69);
     internal_static_AdminSecureLoginMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminSecureLoginMessage_descriptor,
         new java.lang.String[] { "Username", "Cnonce", "Hash", });
     internal_static_AdminDALISensorTypeMessage_descriptor =
-      getDescriptor().getMessageTypes().get(69);
+      getDescriptor().getMessageTypes().get(70);
     internal_static_AdminDALISensorTypeMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminDALISensorTypeMessage_descriptor,
         new java.lang.String[] { "Type", });
     internal_static_AdminMessage_descriptor =
-      getDescriptor().getMessageTypes().get(70);
+      getDescriptor().getMessageTypes().get(71);
     internal_static_AdminMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminMessage_descriptor,
-        new java.lang.String[] { "Command", "Target", "Data", "NetworkProperties", "ProjectProperties", "ControllerLines", "DeviceStatus", "ConfigStatus", "DeviceTime", "DaliSensorType", "Payload", });
+        new java.lang.String[] { "Command", "Target", "Data", "NetworkProperties", "ProjectProperties", "ControllerLines", "DeviceStatus", "ConfigStatus", "DeviceTime", "DaliSensorType", "DnsServers", "Payload", });
     internal_static_DataMessage_descriptor =
-      getDescriptor().getMessageTypes().get(71);
+      getDescriptor().getMessageTypes().get(72);
     internal_static_DataMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DataMessage_descriptor,
         new java.lang.String[] { "Identifier", "Seq", "Count", "Data", });
     internal_static_FirmwareMetaMessage_descriptor =
-      getDescriptor().getMessageTypes().get(72);
+      getDescriptor().getMessageTypes().get(73);
     internal_static_FirmwareMetaMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_FirmwareMetaMessage_descriptor,
-        new java.lang.String[] { "FirmwareVersion", "FirmwareDate", "FirmwareDateUpload", "FirmwareChecksum", "FirmwareChunkCount", "FirmwareBaseAddress", "FirmwareEndAddress", "FirmwareIsBackup", });
+        new java.lang.String[] { "FirmwareVersion", "FirmwareDate", "FirmwareDateUpload", "FirmwareChecksum", "FirmwareChunkCount", "FirmwareBaseAddress", "FirmwareEndAddress", "FirmwareIsBackup", "Nonce", "FirmwareDateDay", "FirmwareDateMonth", "FirmwareDateYear", });
     internal_static_FirmwareControlMessage_descriptor =
-      getDescriptor().getMessageTypes().get(73);
+      getDescriptor().getMessageTypes().get(74);
     internal_static_FirmwareControlMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_FirmwareControlMessage_descriptor,
         new java.lang.String[] { "Cmd", });
     internal_static_FirmwareChunkMessage_descriptor =
-      getDescriptor().getMessageTypes().get(74);
+      getDescriptor().getMessageTypes().get(75);
     internal_static_FirmwareChunkMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_FirmwareChunkMessage_descriptor,
         new java.lang.String[] { "FirmwareAddress", "TotalBytes", "Payload", });
     internal_static_SystemLogReadMessage_descriptor =
-      getDescriptor().getMessageTypes().get(75);
+      getDescriptor().getMessageTypes().get(76);
     internal_static_SystemLogReadMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogReadMessage_descriptor,
         new java.lang.String[] { "LogStartAddress", "LogsRequested", "Logs", });
     internal_static_SystemLogMessage_descriptor =
-      getDescriptor().getMessageTypes().get(76);
+      getDescriptor().getMessageTypes().get(77);
     internal_static_SystemLogMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogMessage_descriptor,
         new java.lang.String[] { "TimeSinceBoot", "Boot", "Netlink", "Ntp", "Trigger", "Spektra", "Schedule", "Userstart", "Packet", });
     internal_static_SystemLogBoot_descriptor =
-      getDescriptor().getMessageTypes().get(77);
+      getDescriptor().getMessageTypes().get(78);
     internal_static_SystemLogBoot_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogBoot_descriptor,
         new java.lang.String[] { "Timeclock", "Flags", });
     internal_static_SystemLogNetLink_descriptor =
-      getDescriptor().getMessageTypes().get(78);
+      getDescriptor().getMessageTypes().get(79);
     internal_static_SystemLogNetLink_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogNetLink_descriptor,
         new java.lang.String[] { "IsLinked", });
     internal_static_SystemLogNTP_descriptor =
-      getDescriptor().getMessageTypes().get(79);
+      getDescriptor().getMessageTypes().get(80);
     internal_static_SystemLogNTP_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogNTP_descriptor,
         new java.lang.String[] { "Timeclock", });
     internal_static_SystemLogTrigger_descriptor =
-      getDescriptor().getMessageTypes().get(80);
+      getDescriptor().getMessageTypes().get(81);
     internal_static_SystemLogTrigger_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogTrigger_descriptor,
         new java.lang.String[] { "Trigger", "Source", });
     internal_static_SystemLogSpektra_descriptor =
-      getDescriptor().getMessageTypes().get(81);
+      getDescriptor().getMessageTypes().get(82);
     internal_static_SystemLogSpektra_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogSpektra_descriptor,
         new java.lang.String[] { "Action", "Type", "Index", });
     internal_static_SystemLogSchedule_descriptor =
-      getDescriptor().getMessageTypes().get(82);
+      getDescriptor().getMessageTypes().get(83);
     internal_static_SystemLogSchedule_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogSchedule_descriptor,
         new java.lang.String[] { "Index", "IsStart", "Second", "Minute", "Hour", });
     internal_static_SystemLogUserStart_descriptor =
-      getDescriptor().getMessageTypes().get(83);
+      getDescriptor().getMessageTypes().get(84);
     internal_static_SystemLogUserStart_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogUserStart_descriptor,
-        new java.lang.String[] { "Timeclock", });
+        new java.lang.String[] { "Timeclock", "Flags", });
     internal_static_SystemMetaDataReadMessage_descriptor =
-      getDescriptor().getMessageTypes().get(84);
+      getDescriptor().getMessageTypes().get(85);
     internal_static_SystemMetaDataReadMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemMetaDataReadMessage_descriptor,
         new java.lang.String[] { "InputPressCounter", "ListStartCounter", "SchedulesCounter", "ScreenOnTime", "ScreenDimTime", "ScreenSaverTime", "RebootCounter", });
     internal_static_EventFilter_descriptor =
-      getDescriptor().getMessageTypes().get(85);
+      getDescriptor().getMessageTypes().get(86);
     internal_static_EventFilter_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_EventFilter_descriptor,
         new java.lang.String[] { "Input", "DaliArcLevel", "DaliCommand", "DaliSensor", "DaliInput", "DmxStreamChanged", "Dali24Frame", });
     internal_static_TriggerEvent_descriptor =
-      getDescriptor().getMessageTypes().get(86);
+      getDescriptor().getMessageTypes().get(87);
     internal_static_TriggerEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_TriggerEvent_descriptor,
         new java.lang.String[] { "Type", "Level", "DaliCommand", "TargetAddress", "LineMask", "Payload", });
     internal_static_DALI24InputEvent_descriptor =
-      getDescriptor().getMessageTypes().get(87);
+      getDescriptor().getMessageTypes().get(88);
     internal_static_DALI24InputEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DALI24InputEvent_descriptor,
         new java.lang.String[] { "Index", "Line", "Address", "Type", "Arg", });
     internal_static_DALI24FrameEvent_descriptor =
-      getDescriptor().getMessageTypes().get(88);
+      getDescriptor().getMessageTypes().get(89);
     internal_static_DALI24FrameEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DALI24FrameEvent_descriptor,
         new java.lang.String[] { "Line", "Frame", });
     internal_static_DALISensorEvent_descriptor =
-      getDescriptor().getMessageTypes().get(89);
+      getDescriptor().getMessageTypes().get(90);
     internal_static_DALISensorEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DALISensorEvent_descriptor,
         new java.lang.String[] { "Index", "Line", "Address", "MotionState", "LuxState", "LuxLevel", });
     internal_static_EventMessage_descriptor =
-      getDescriptor().getMessageTypes().get(90);
+      getDescriptor().getMessageTypes().get(91);
     internal_static_EventMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_EventMessage_descriptor,
         new java.lang.String[] { "Event", "Trigger", "Inputs", "Payload", "Sensor", "Dali24Input", "Filter", "Dali24Frame", "EventData", });
     internal_static_EdidioMessage_descriptor =
-      getDescriptor().getMessageTypes().get(91);
+      getDescriptor().getMessageTypes().get(92);
     internal_static_EdidioMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_EdidioMessage_descriptor,

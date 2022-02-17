@@ -17,6 +17,7 @@ goog.exportSymbol('proto.AdminCommandType', null, global);
 goog.exportSymbol('proto.AdminConfigStatusMessage', null, global);
 goog.exportSymbol('proto.AdminControllerLinesMessage', null, global);
 goog.exportSymbol('proto.AdminDALISensorTypeMessage', null, global);
+goog.exportSymbol('proto.AdminDNSServersMessage', null, global);
 goog.exportSymbol('proto.AdminDeviceStatusMessage', null, global);
 goog.exportSymbol('proto.AdminMessage', null, global);
 goog.exportSymbol('proto.AdminNetworkPropertiesMessage', null, global);
@@ -33,9 +34,12 @@ goog.exportSymbol('proto.BurnInMessage', null, global);
 goog.exportSymbol('proto.BurnInMultiMessage', null, global);
 goog.exportSymbol('proto.ChangeProfileMessage', null, global);
 goog.exportSymbol('proto.CustomDALICommandType', null, global);
+goog.exportSymbol('proto.DALI24DeviceSetting', null, global);
 goog.exportSymbol('proto.DALI24FrameEvent', null, global);
 goog.exportSymbol('proto.DALI24InputEvent', null, global);
 goog.exportSymbol('proto.DALI24InputType', null, global);
+goog.exportSymbol('proto.DALI24InstanceType', null, global);
+goog.exportSymbol('proto.DALI24OpCode', null, global);
 goog.exportSymbol('proto.DALIAddressingError', null, global);
 goog.exportSymbol('proto.DALIAddressingMessage', null, global);
 goog.exportSymbol('proto.DALIAddressingType', null, global);
@@ -8444,7 +8448,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<!Array<number>>}
  * @const
  */
-proto.DALIMessage.oneofGroups_ = [[3,4,5,6,7,8,11,12,13,14,15],[9,10]];
+proto.DALIMessage.oneofGroups_ = [[3,4,5,6,7,8,11,12,13,14,15,16],[9,10]];
 
 /**
  * @enum {number}
@@ -8461,7 +8465,8 @@ proto.DALIMessage.ActionCase = {
   FRAME_16_BIT_REPLY: 12,
   FRAME_24_BIT: 13,
   FRAME_24_BIT_REPLY: 14,
-  TYPE8_REPLY: 15
+  TYPE8_REPLY: 15,
+  DEVICE24_SETTING: 16
 };
 
 /**
@@ -8529,8 +8534,11 @@ proto.DALIMessage.toObject = function(includeInstance, msg) {
     frame24Bit: jspb.Message.getFieldWithDefault(msg, 13, 0),
     frame24BitReply: jspb.Message.getFieldWithDefault(msg, 14, 0),
     type8Reply: jspb.Message.getFieldWithDefault(msg, 15, 0),
+    device24Setting: jspb.Message.getFieldWithDefault(msg, 16, 0),
     arg: jspb.Message.getFieldWithDefault(msg, 9, 0),
-    dtr: (f = msg.getDtr()) && proto.DTRPayloadMessage.toObject(includeInstance, f)
+    dtr: (f = msg.getDtr()) && proto.DTRPayloadMessage.toObject(includeInstance, f),
+    instanceType: jspb.Message.getFieldWithDefault(msg, 17, 0),
+    opCode: jspb.Message.getFieldWithDefault(msg, 18, 0)
   };
 
   if (includeInstance) {
@@ -8619,6 +8627,10 @@ proto.DALIMessage.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {!proto.Type8QueryType} */ (reader.readEnum());
       msg.setType8Reply(value);
       break;
+    case 16:
+      var value = /** @type {!proto.DALI24DeviceSetting} */ (reader.readEnum());
+      msg.setDevice24Setting(value);
+      break;
     case 9:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setArg(value);
@@ -8627,6 +8639,14 @@ proto.DALIMessage.deserializeBinaryFromReader = function(msg, reader) {
       var value = new proto.DTRPayloadMessage;
       reader.readMessage(value,proto.DTRPayloadMessage.deserializeBinaryFromReader);
       msg.setDtr(value);
+      break;
+    case 17:
+      var value = /** @type {!proto.DALI24InstanceType} */ (reader.readEnum());
+      msg.setInstanceType(value);
+      break;
+    case 18:
+      var value = /** @type {!proto.DALI24OpCode} */ (reader.readEnum());
+      msg.setOpCode(value);
       break;
     default:
       reader.skipField();
@@ -8748,6 +8768,13 @@ proto.DALIMessage.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = /** @type {!proto.DALI24DeviceSetting} */ (jspb.Message.getField(message, 16));
+  if (f != null) {
+    writer.writeEnum(
+      16,
+      f
+    );
+  }
   f = /** @type {number} */ (jspb.Message.getField(message, 9));
   if (f != null) {
     writer.writeUint32(
@@ -8761,6 +8788,20 @@ proto.DALIMessage.serializeBinaryToWriter = function(message, writer) {
       10,
       f,
       proto.DTRPayloadMessage.serializeBinaryToWriter
+    );
+  }
+  f = message.getInstanceType();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      17,
+      f
+    );
+  }
+  f = message.getOpCode();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      18,
+      f
     );
   }
 };
@@ -9116,6 +9157,35 @@ proto.DALIMessage.prototype.hasType8Reply = function() {
 
 
 /**
+ * optional DALI24DeviceSetting device24_setting = 16;
+ * @return {!proto.DALI24DeviceSetting}
+ */
+proto.DALIMessage.prototype.getDevice24Setting = function() {
+  return /** @type {!proto.DALI24DeviceSetting} */ (jspb.Message.getFieldWithDefault(this, 16, 0));
+};
+
+
+/** @param {!proto.DALI24DeviceSetting} value */
+proto.DALIMessage.prototype.setDevice24Setting = function(value) {
+  jspb.Message.setOneofField(this, 16, proto.DALIMessage.oneofGroups_[0], value);
+};
+
+
+proto.DALIMessage.prototype.clearDevice24Setting = function() {
+  jspb.Message.setOneofField(this, 16, proto.DALIMessage.oneofGroups_[0], undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.DALIMessage.prototype.hasDevice24Setting = function() {
+  return jspb.Message.getField(this, 16) != null;
+};
+
+
+/**
  * optional uint32 arg = 9;
  * @return {number}
  */
@@ -9171,6 +9241,36 @@ proto.DALIMessage.prototype.clearDtr = function() {
  */
 proto.DALIMessage.prototype.hasDtr = function() {
   return jspb.Message.getField(this, 10) != null;
+};
+
+
+/**
+ * optional DALI24InstanceType instance_type = 17;
+ * @return {!proto.DALI24InstanceType}
+ */
+proto.DALIMessage.prototype.getInstanceType = function() {
+  return /** @type {!proto.DALI24InstanceType} */ (jspb.Message.getFieldWithDefault(this, 17, 0));
+};
+
+
+/** @param {!proto.DALI24InstanceType} value */
+proto.DALIMessage.prototype.setInstanceType = function(value) {
+  jspb.Message.setProto3EnumField(this, 17, value);
+};
+
+
+/**
+ * optional DALI24OpCode op_code = 18;
+ * @return {!proto.DALI24OpCode}
+ */
+proto.DALIMessage.prototype.getOpCode = function() {
+  return /** @type {!proto.DALI24OpCode} */ (jspb.Message.getFieldWithDefault(this, 18, 0));
+};
+
+
+/** @param {!proto.DALI24OpCode} value */
+proto.DALIMessage.prototype.setOpCode = function(value) {
+  jspb.Message.setProto3EnumField(this, 18, value);
 };
 
 
@@ -18179,6 +18279,175 @@ proto.AdminNetworkPropertiesMessage.prototype.setDnsSecondary = function(value) 
  * @extends {jspb.Message}
  * @constructor
  */
+proto.AdminDNSServersMessage = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.AdminDNSServersMessage, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.AdminDNSServersMessage.displayName = 'proto.AdminDNSServersMessage';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.AdminDNSServersMessage.prototype.toObject = function(opt_includeInstance) {
+  return proto.AdminDNSServersMessage.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.AdminDNSServersMessage} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.AdminDNSServersMessage.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    dnsPrimary: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    dnsSecondary: jspb.Message.getFieldWithDefault(msg, 2, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.AdminDNSServersMessage}
+ */
+proto.AdminDNSServersMessage.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.AdminDNSServersMessage;
+  return proto.AdminDNSServersMessage.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.AdminDNSServersMessage} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.AdminDNSServersMessage}
+ */
+proto.AdminDNSServersMessage.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDnsPrimary(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDnsSecondary(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.AdminDNSServersMessage.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.AdminDNSServersMessage.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.AdminDNSServersMessage} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.AdminDNSServersMessage.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getDnsPrimary();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getDnsSecondary();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string DNS_Primary = 1;
+ * @return {string}
+ */
+proto.AdminDNSServersMessage.prototype.getDnsPrimary = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/** @param {string} value */
+proto.AdminDNSServersMessage.prototype.setDnsPrimary = function(value) {
+  jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string DNS_Secondary = 2;
+ * @return {string}
+ */
+proto.AdminDNSServersMessage.prototype.getDnsSecondary = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/** @param {string} value */
+proto.AdminDNSServersMessage.prototype.setDnsSecondary = function(value) {
+  jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
 proto.AdminControllerLinesMessage = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, proto.AdminControllerLinesMessage.repeatedFields_, null);
 };
@@ -18885,7 +19154,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<!Array<number>>}
  * @const
  */
-proto.AdminMessage.oneofGroups_ = [[3,4,5,6,7,8,9,10]];
+proto.AdminMessage.oneofGroups_ = [[3,4,5,6,7,8,9,10,11]];
 
 /**
  * @enum {number}
@@ -18899,7 +19168,8 @@ proto.AdminMessage.PayloadCase = {
   DEVICE_STATUS: 7,
   CONFIG_STATUS: 8,
   DEVICE_TIME: 9,
-  DALI_SENSOR_TYPE: 10
+  DALI_SENSOR_TYPE: 10,
+  DNS_SERVERS: 11
 };
 
 /**
@@ -18947,7 +19217,8 @@ proto.AdminMessage.toObject = function(includeInstance, msg) {
     deviceStatus: (f = msg.getDeviceStatus()) && proto.AdminDeviceStatusMessage.toObject(includeInstance, f),
     configStatus: (f = msg.getConfigStatus()) && proto.AdminConfigStatusMessage.toObject(includeInstance, f),
     deviceTime: (f = msg.getDeviceTime()) && proto.UpdateTimeMessage.toObject(includeInstance, f),
-    daliSensorType: (f = msg.getDaliSensorType()) && proto.AdminDALISensorTypeMessage.toObject(includeInstance, f)
+    daliSensorType: (f = msg.getDaliSensorType()) && proto.AdminDALISensorTypeMessage.toObject(includeInstance, f),
+    dnsServers: (f = msg.getDnsServers()) && proto.AdminDNSServersMessage.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -19031,6 +19302,11 @@ proto.AdminMessage.deserializeBinaryFromReader = function(msg, reader) {
       var value = new proto.AdminDALISensorTypeMessage;
       reader.readMessage(value,proto.AdminDALISensorTypeMessage.deserializeBinaryFromReader);
       msg.setDaliSensorType(value);
+      break;
+    case 11:
+      var value = new proto.AdminDNSServersMessage;
+      reader.readMessage(value,proto.AdminDNSServersMessage.deserializeBinaryFromReader);
+      msg.setDnsServers(value);
       break;
     default:
       reader.skipField();
@@ -19137,6 +19413,14 @@ proto.AdminMessage.serializeBinaryToWriter = function(message, writer) {
       10,
       f,
       proto.AdminDALISensorTypeMessage.serializeBinaryToWriter
+    );
+  }
+  f = message.getDnsServers();
+  if (f != null) {
+    writer.writeMessage(
+      11,
+      f,
+      proto.AdminDNSServersMessage.serializeBinaryToWriter
     );
   }
 };
@@ -19412,6 +19696,36 @@ proto.AdminMessage.prototype.hasDaliSensorType = function() {
 };
 
 
+/**
+ * optional AdminDNSServersMessage dns_servers = 11;
+ * @return {?proto.AdminDNSServersMessage}
+ */
+proto.AdminMessage.prototype.getDnsServers = function() {
+  return /** @type{?proto.AdminDNSServersMessage} */ (
+    jspb.Message.getWrapperField(this, proto.AdminDNSServersMessage, 11));
+};
+
+
+/** @param {?proto.AdminDNSServersMessage|undefined} value */
+proto.AdminMessage.prototype.setDnsServers = function(value) {
+  jspb.Message.setOneofWrapperField(this, 11, proto.AdminMessage.oneofGroups_[0], value);
+};
+
+
+proto.AdminMessage.prototype.clearDnsServers = function() {
+  this.setDnsServers(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.AdminMessage.prototype.hasDnsServers = function() {
+  return jspb.Message.getField(this, 11) != null;
+};
+
+
 
 /**
  * Generated by JsPbCodeGenerator.
@@ -19668,12 +19982,19 @@ proto.DataMessage.prototype.clearDataList = function() {
  * @constructor
  */
 proto.FirmwareMetaMessage = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.FirmwareMetaMessage.repeatedFields_, null);
 };
 goog.inherits(proto.FirmwareMetaMessage, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   proto.FirmwareMetaMessage.displayName = 'proto.FirmwareMetaMessage';
 }
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.FirmwareMetaMessage.repeatedFields_ = [9];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -19710,7 +20031,11 @@ proto.FirmwareMetaMessage.toObject = function(includeInstance, msg) {
     firmwareChunkCount: jspb.Message.getFieldWithDefault(msg, 5, 0),
     firmwareBaseAddress: jspb.Message.getFieldWithDefault(msg, 6, 0),
     firmwareEndAddress: jspb.Message.getFieldWithDefault(msg, 7, 0),
-    firmwareIsBackup: jspb.Message.getFieldWithDefault(msg, 8, false)
+    firmwareIsBackup: jspb.Message.getFieldWithDefault(msg, 8, false),
+    nonceList: jspb.Message.getRepeatedField(msg, 9),
+    firmwareDateDay: jspb.Message.getFieldWithDefault(msg, 10, 0),
+    firmwareDateMonth: jspb.Message.getFieldWithDefault(msg, 11, 0),
+    firmwareDateYear: jspb.Message.getFieldWithDefault(msg, 12, 0)
   };
 
   if (includeInstance) {
@@ -19778,6 +20103,22 @@ proto.FirmwareMetaMessage.deserializeBinaryFromReader = function(msg, reader) {
     case 8:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setFirmwareIsBackup(value);
+      break;
+    case 9:
+      var value = /** @type {!Array<number>} */ (reader.readPackedUint32());
+      msg.setNonceList(value);
+      break;
+    case 10:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setFirmwareDateDay(value);
+      break;
+    case 11:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setFirmwareDateMonth(value);
+      break;
+    case 12:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setFirmwareDateYear(value);
       break;
     default:
       reader.skipField();
@@ -19861,6 +20202,34 @@ proto.FirmwareMetaMessage.serializeBinaryToWriter = function(message, writer) {
   if (f) {
     writer.writeBool(
       8,
+      f
+    );
+  }
+  f = message.getNonceList();
+  if (f.length > 0) {
+    writer.writePackedUint32(
+      9,
+      f
+    );
+  }
+  f = message.getFirmwareDateDay();
+  if (f !== 0) {
+    writer.writeUint32(
+      10,
+      f
+    );
+  }
+  f = message.getFirmwareDateMonth();
+  if (f !== 0) {
+    writer.writeUint32(
+      11,
+      f
+    );
+  }
+  f = message.getFirmwareDateYear();
+  if (f !== 0) {
+    writer.writeUint32(
+      12,
       f
     );
   }
@@ -19986,6 +20355,80 @@ proto.FirmwareMetaMessage.prototype.getFirmwareIsBackup = function() {
 /** @param {boolean} value */
 proto.FirmwareMetaMessage.prototype.setFirmwareIsBackup = function(value) {
   jspb.Message.setProto3BooleanField(this, 8, value);
+};
+
+
+/**
+ * repeated uint32 nonce = 9;
+ * @return {!Array<number>}
+ */
+proto.FirmwareMetaMessage.prototype.getNonceList = function() {
+  return /** @type {!Array<number>} */ (jspb.Message.getRepeatedField(this, 9));
+};
+
+
+/** @param {!Array<number>} value */
+proto.FirmwareMetaMessage.prototype.setNonceList = function(value) {
+  jspb.Message.setField(this, 9, value || []);
+};
+
+
+/**
+ * @param {!number} value
+ * @param {number=} opt_index
+ */
+proto.FirmwareMetaMessage.prototype.addNonce = function(value, opt_index) {
+  jspb.Message.addToRepeatedField(this, 9, value, opt_index);
+};
+
+
+proto.FirmwareMetaMessage.prototype.clearNonceList = function() {
+  this.setNonceList([]);
+};
+
+
+/**
+ * optional uint32 firmware_date_day = 10;
+ * @return {number}
+ */
+proto.FirmwareMetaMessage.prototype.getFirmwareDateDay = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 10, 0));
+};
+
+
+/** @param {number} value */
+proto.FirmwareMetaMessage.prototype.setFirmwareDateDay = function(value) {
+  jspb.Message.setProto3IntField(this, 10, value);
+};
+
+
+/**
+ * optional uint32 firmware_date_month = 11;
+ * @return {number}
+ */
+proto.FirmwareMetaMessage.prototype.getFirmwareDateMonth = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 11, 0));
+};
+
+
+/** @param {number} value */
+proto.FirmwareMetaMessage.prototype.setFirmwareDateMonth = function(value) {
+  jspb.Message.setProto3IntField(this, 11, value);
+};
+
+
+/**
+ * optional uint32 firmware_date_year = 12;
+ * @return {number}
+ */
+proto.FirmwareMetaMessage.prototype.getFirmwareDateYear = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 12, 0));
+};
+
+
+/** @param {number} value */
+proto.FirmwareMetaMessage.prototype.setFirmwareDateYear = function(value) {
+  jspb.Message.setProto3IntField(this, 12, value);
 };
 
 
@@ -22215,7 +22658,8 @@ proto.SystemLogUserStart.prototype.toObject = function(opt_includeInstance) {
  */
 proto.SystemLogUserStart.toObject = function(includeInstance, msg) {
   var f, obj = {
-    timeclock: (f = msg.getTimeclock()) && proto.TimeClockMessage.toObject(includeInstance, f)
+    timeclock: (f = msg.getTimeclock()) && proto.TimeClockMessage.toObject(includeInstance, f),
+    flags: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
   if (includeInstance) {
@@ -22257,6 +22701,10 @@ proto.SystemLogUserStart.deserializeBinaryFromReader = function(msg, reader) {
       reader.readMessage(value,proto.TimeClockMessage.deserializeBinaryFromReader);
       msg.setTimeclock(value);
       break;
+    case 2:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setFlags(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -22294,6 +22742,13 @@ proto.SystemLogUserStart.serializeBinaryToWriter = function(message, writer) {
       proto.TimeClockMessage.serializeBinaryToWriter
     );
   }
+  f = message.getFlags();
+  if (f !== 0) {
+    writer.writeUint32(
+      2,
+      f
+    );
+  }
 };
 
 
@@ -22324,6 +22779,21 @@ proto.SystemLogUserStart.prototype.clearTimeclock = function() {
  */
 proto.SystemLogUserStart.prototype.hasTimeclock = function() {
   return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional uint32 flags = 2;
+ * @return {number}
+ */
+proto.SystemLogUserStart.prototype.getFlags = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/** @param {number} value */
+proto.SystemLogUserStart.prototype.setFlags = function(value) {
+  jspb.Message.setProto3IntField(this, 2, value);
 };
 
 
@@ -27367,6 +27837,64 @@ proto.Type8QueryType = {
 /**
  * @enum {number}
  */
+proto.DALI24DeviceSetting = {
+  COMMAND_IDENTIFY: 0,
+  COMMAND_RESET_POWER_CYCLE_SEEN: 1,
+  COMMAND_RESET: 16,
+  COMMAND_RESET_MEMORY_BANK: 17,
+  COMMAND_SET_SHORT_ADDRESS: 20,
+  COMMAND_ENABLE_WRITE_MEMORY: 21,
+  COMMAND_ENABLE_APP_CONTROLLER: 22,
+  COMMAND_DISABLE_APP_CONTROLLER: 23,
+  COMMAND_SET_OPERATING_MODE: 24,
+  COMMAND_ADD_TO_DEVICE_GROUPS_0_15: 25,
+  COMMAND_ADD_TO_DEVICE_GROUPS_15_32: 26,
+  COMMAND_REMOVE_FROM_GROUPS_0_15: 27,
+  COMMAND_REMOVE_FROM_GROUPS_16_32: 28,
+  COMMAND_START_QUIESCENT_MODE: 29,
+  COMMAND_STOP_QUIESCENT_MODE: 30,
+  COMMAND_ENABLE_POWER_CYCLE_NOTIF: 31,
+  COMMAND_DISABLE_POWER_CYCLE_NOTIF: 32,
+  COMMAND_SAVE_PERSISTENT_VARIABLES: 33,
+  SET_EVENT_PRIORITY: 97,
+  ENABLE_INSTANCE: 98,
+  DISABLE_INSTANCE: 99,
+  SET_PRIMARY_INSTANCE_GROUP: 100,
+  SET_INSTANCE_GROUP_1: 101,
+  SET_INSTANCE_GROUP_2: 102,
+  SET_EVENT_SCHEME: 103,
+  SET_EVENT_FILTER: 104
+};
+
+/**
+ * @enum {number}
+ */
+proto.DALI24InstanceType = {
+  DEFAULT: 0,
+  INPUT: 1,
+  ROTARY_INPUT: 2,
+  MOTION_SENSOR: 3,
+  LIGHT_SENSOR: 4
+};
+
+/**
+ * @enum {number}
+ */
+proto.DALI24OpCode = {
+  OPCODE_NULL: 0,
+  SENSOR_MOTION_SET_HOLD_TIMER: 33,
+  SENSOR_MOTION_SET_REPORT_TIMER: 34,
+  SENSOR_MOTION_SET_DEADTIME_TIMER: 35,
+  SENSOR_MOTION_CANCEL_HOLD_TIMER: 36,
+  SENSOR_LIGHT_SET_REPORT_TIMER: 48,
+  SENSOR_LIGHT_SET_HYSTERESIS: 49,
+  SENSOR_LIGHT_SET_DEADTIME_TIMER: 50,
+  SENSOR_LIGHT_SET_HYSTERESIS_MIN: 51
+};
+
+/**
+ * @enum {number}
+ */
 proto.LineType = {
   LINE_EMPTY: 0,
   LINE_DALI: 1,
@@ -27449,7 +27977,24 @@ proto.DALICommandType = {
   DALI_ON_STEP_UP: 8,
   DALI_ENABLE_DAPC_SEQ: 9,
   DALI_RECALL_LAST_ACTIVE_LEVEL: 10,
-  DALI_RECALL_SCENE_X: 16,
+  DALI_CONTINUOUS_UP: 11,
+  DALI_CONTINUOUS_DOWN: 12,
+  DALI_RECALL_SCENE_0: 16,
+  DALI_RECALL_SCENE_1: 17,
+  DALI_RECALL_SCENE_2: 18,
+  DALI_RECALL_SCENE_3: 19,
+  DALI_RECALL_SCENE_4: 20,
+  DALI_RECALL_SCENE_5: 21,
+  DALI_RECALL_SCENE_6: 22,
+  DALI_RECALL_SCENE_7: 23,
+  DALI_RECALL_SCENE_8: 24,
+  DALI_RECALL_SCENE_9: 25,
+  DALI_RECALL_SCENE_10: 26,
+  DALI_RECALL_SCENE_11: 27,
+  DALI_RECALL_SCENE_12: 28,
+  DALI_RECALL_SCENE_13: 29,
+  DALI_RECALL_SCENE_14: 30,
+  DALI_RECALL_SCENE_15: 31,
   DALI_RESET: 32,
   DALI_STORE_ACTUAL_LEVEL_DTR0: 33,
   DALI_SAVE_PERSISTENT_VARS: 34,
@@ -27463,10 +28008,70 @@ proto.DALICommandType = {
   DALI_SET_FADE_TIME: 46,
   DALI_SET_FADE_RATE: 47,
   DALI_SET_EXT_FADE_TIME: 48,
-  DALI_SET_SCENE_X: 64,
-  DALI_REMOVE_FROM_SCENE_X: 80,
-  DALI_ADD_TO_GROUP_X: 96,
-  DALI_REMOVE_FROM_GROUP_X: 112,
+  DALI_SET_SCENE_0: 64,
+  DALI_SET_SCENE_1: 65,
+  DALI_SET_SCENE_2: 66,
+  DALI_SET_SCENE_3: 67,
+  DALI_SET_SCENE_4: 68,
+  DALI_SET_SCENE_5: 69,
+  DALI_SET_SCENE_6: 70,
+  DALI_SET_SCENE_7: 71,
+  DALI_SET_SCENE_8: 72,
+  DALI_SET_SCENE_9: 73,
+  DALI_SET_SCENE_10: 74,
+  DALI_SET_SCENE_11: 75,
+  DALI_SET_SCENE_12: 76,
+  DALI_SET_SCENE_13: 77,
+  DALI_SET_SCENE_14: 78,
+  DALI_SET_SCENE_15: 79,
+  DALI_REMOVE_FROM_SCENE_0: 80,
+  DALI_REMOVE_FROM_SCENE_1: 81,
+  DALI_REMOVE_FROM_SCENE_2: 82,
+  DALI_REMOVE_FROM_SCENE_3: 83,
+  DALI_REMOVE_FROM_SCENE_4: 84,
+  DALI_REMOVE_FROM_SCENE_5: 85,
+  DALI_REMOVE_FROM_SCENE_6: 86,
+  DALI_REMOVE_FROM_SCENE_7: 87,
+  DALI_REMOVE_FROM_SCENE_8: 88,
+  DALI_REMOVE_FROM_SCENE_9: 89,
+  DALI_REMOVE_FROM_SCENE_10: 90,
+  DALI_REMOVE_FROM_SCENE_11: 91,
+  DALI_REMOVE_FROM_SCENE_12: 92,
+  DALI_REMOVE_FROM_SCENE_13: 93,
+  DALI_REMOVE_FROM_SCENE_14: 94,
+  DALI_REMOVE_FROM_SCENE_15: 95,
+  DALI_ADD_TO_GROUP_0: 96,
+  DALI_ADD_TO_GROUP_1: 97,
+  DALI_ADD_TO_GROUP_2: 98,
+  DALI_ADD_TO_GROUP_3: 99,
+  DALI_ADD_TO_GROUP_4: 100,
+  DALI_ADD_TO_GROUP_5: 101,
+  DALI_ADD_TO_GROUP_6: 102,
+  DALI_ADD_TO_GROUP_7: 103,
+  DALI_ADD_TO_GROUP_8: 104,
+  DALI_ADD_TO_GROUP_9: 105,
+  DALI_ADD_TO_GROUP_10: 106,
+  DALI_ADD_TO_GROUP_11: 107,
+  DALI_ADD_TO_GROUP_12: 108,
+  DALI_ADD_TO_GROUP_13: 109,
+  DALI_ADD_TO_GROUP_14: 110,
+  DALI_ADD_TO_GROUP_15: 111,
+  DALI_REMOVE_FROM_GROUP_0: 112,
+  DALI_REMOVE_FROM_GROUP_1: 113,
+  DALI_REMOVE_FROM_GROUP_2: 114,
+  DALI_REMOVE_FROM_GROUP_3: 115,
+  DALI_REMOVE_FROM_GROUP_4: 116,
+  DALI_REMOVE_FROM_GROUP_5: 117,
+  DALI_REMOVE_FROM_GROUP_6: 118,
+  DALI_REMOVE_FROM_GROUP_7: 119,
+  DALI_REMOVE_FROM_GROUP_8: 120,
+  DALI_REMOVE_FROM_GROUP_9: 121,
+  DALI_REMOVE_FROM_GROUP_10: 122,
+  DALI_REMOVE_FROM_GROUP_11: 123,
+  DALI_REMOVE_FROM_GROUP_12: 124,
+  DALI_REMOVE_FROM_GROUP_13: 125,
+  DALI_REMOVE_FROM_GROUP_14: 126,
+  DALI_REMOVE_FROM_GROUP_15: 127,
   DALI_SET_SHORT_ADDRESS: 128,
   DALI_ENABLE_WRITE_MEMORY: 129,
   DALI_TERMINATE: 255,
