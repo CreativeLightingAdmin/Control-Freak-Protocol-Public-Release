@@ -1,5 +1,5 @@
 // The eDIDIO S10 Protocol Buffer Structure
-// Version Number 1.1.5
+// Version Number 1.1.6
 
 syntax = "proto3";
 
@@ -206,13 +206,13 @@ enum Type8CommandType {
 // Standard DALI Type 8 Queries - See DALI Standard
 enum Type8QueryType {
     TYPE8_QUERY_NULL                  = 0; // Required as the first "default" element for the Protocol. Will not perform any action.
-    TYPE8_QUERY_GEAR_FEATURES_STATUS  = 247;
-    TYPE8_QUERY_COLOUR_STATUS         = 248;
-    TYPE8_QUERY_COLOUR_TYPE_FEATURES  = 249;
-    TYPE8_QUERY_COLOUR_VALUE          = 250;
-    TYPE8_QUERY_RGBWAF_CONTROL        = 251;
-    TYPE8_QUERY_ASSIGNED_COLOUR       = 252;
-    TYPE8_QUERY_EXT_VERSION_NUM       = 254;
+    TYPE8_QUERY_GEAR_FEATURES_STATUS  = 1;        // 247
+    TYPE8_QUERY_COLOUR_STATUS         = 2;        // 248
+    TYPE8_QUERY_COLOUR_TYPE_FEATURES  = 3;        // 249
+    TYPE8_QUERY_COLOUR_VALUE          = 4;        // 250
+    TYPE8_QUERY_RGBWAF_CONTROL        = 5;        // 251
+    TYPE8_QUERY_ASSIGNED_COLOUR       = 6;        // 252
+    TYPE8_QUERY_EXT_VERSION_NUM       = 8;        // 254
 }
 
 // Standard DALI 24 Bit Commands - See DALI Standard
