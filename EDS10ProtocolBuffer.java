@@ -4303,12 +4303,12 @@ public final class EDS10ProtocolBuffer {
     REGISTER(0),
     /**
      * <pre>
-     * Emitted when a 16-bit DALI Frame is received.
+     * Emitted when trigger runs an action listed in TriggerType.
      * </pre>
      *
-     * <code>DALI_EVENT = 1;</code>
+     * <code>TRIGGER_EVENT = 1;</code>
      */
-    DALI_EVENT(1),
+    TRIGGER_EVENT(1),
     /**
      * <pre>
      * Emitted when a physical Input is triggered.
@@ -4357,14 +4357,6 @@ public final class EDS10ProtocolBuffer {
      * <code>DALI_24_FRAME_EVENT = 7;</code>
      */
     DALI_24_FRAME_EVENT(7),
-    /**
-     * <pre>
-     * Emitted when a trigger runs an action listed in TriggerType
-     * </pre>
-     *
-     * <code>TRIGGER_EVENT = 8;</code>
-     */
-    TRIGGER_EVENT(8),
     UNRECOGNIZED(-1),
     ;
 
@@ -4378,12 +4370,12 @@ public final class EDS10ProtocolBuffer {
     public static final int REGISTER_VALUE = 0;
     /**
      * <pre>
-     * Emitted when a 16-bit DALI Frame is received.
+     * Emitted when trigger runs an action listed in TriggerType.
      * </pre>
      *
-     * <code>DALI_EVENT = 1;</code>
+     * <code>TRIGGER_EVENT = 1;</code>
      */
-    public static final int DALI_EVENT_VALUE = 1;
+    public static final int TRIGGER_EVENT_VALUE = 1;
     /**
      * <pre>
      * Emitted when a physical Input is triggered.
@@ -4432,14 +4424,6 @@ public final class EDS10ProtocolBuffer {
      * <code>DALI_24_FRAME_EVENT = 7;</code>
      */
     public static final int DALI_24_FRAME_EVENT_VALUE = 7;
-    /**
-     * <pre>
-     * Emitted when a trigger runs an action listed in TriggerType
-     * </pre>
-     *
-     * <code>TRIGGER_EVENT = 8;</code>
-     */
-    public static final int TRIGGER_EVENT_VALUE = 8;
 
 
     public final int getNumber() {
@@ -4461,14 +4445,13 @@ public final class EDS10ProtocolBuffer {
     public static EventType forNumber(int value) {
       switch (value) {
         case 0: return REGISTER;
-        case 1: return DALI_EVENT;
+        case 1: return TRIGGER_EVENT;
         case 2: return INPUT_EVENT;
         case 3: return SENSOR_EVENT;
         case 4: return CONTROL_EVENT;
         case 5: return ROOM_JOIN_EVENT;
         case 6: return DALI_24_INPUT_EVENT;
         case 7: return DALI_24_FRAME_EVENT;
-        case 8: return TRIGGER_EVENT;
         default: return null;
       }
     }
@@ -104297,29 +104280,17 @@ public final class EDS10ProtocolBuffer {
     EDS10ProtocolBuffer.EventType getEvent();
 
     /**
-     * <pre>
-     * DALI Trigger Event
-     * </pre>
-     *
-     * <code>.TriggerEvent dali = 2;</code>
+     * <code>.TriggerEvent trigger = 2;</code>
      */
-    boolean hasDali();
+    boolean hasTrigger();
     /**
-     * <pre>
-     * DALI Trigger Event
-     * </pre>
-     *
-     * <code>.TriggerEvent dali = 2;</code>
+     * <code>.TriggerEvent trigger = 2;</code>
      */
-    EDS10ProtocolBuffer.TriggerEvent getDali();
+    EDS10ProtocolBuffer.TriggerEvent getTrigger();
     /**
-     * <pre>
-     * DALI Trigger Event
-     * </pre>
-     *
-     * <code>.TriggerEvent dali = 2;</code>
+     * <code>.TriggerEvent trigger = 2;</code>
      */
-    EDS10ProtocolBuffer.TriggerEventOrBuilder getDaliOrBuilder();
+    EDS10ProtocolBuffer.TriggerEventOrBuilder getTriggerOrBuilder();
 
     /**
      * <code>.InputStateResponse inputs = 3;</code>
@@ -104410,31 +104381,6 @@ public final class EDS10ProtocolBuffer {
      * <code>.DALI24FrameEvent dali_24_frame = 9;</code>
      */
     EDS10ProtocolBuffer.DALI24FrameEventOrBuilder getDali24FrameOrBuilder();
-
-    /**
-     * <pre>
-     * High Level (List, Sensor, Input, Schedule) with source
-     * </pre>
-     *
-     * <code>.TriggerEvent trigger = 10;</code>
-     */
-    boolean hasTrigger();
-    /**
-     * <pre>
-     * High Level (List, Sensor, Input, Schedule) with source
-     * </pre>
-     *
-     * <code>.TriggerEvent trigger = 10;</code>
-     */
-    EDS10ProtocolBuffer.TriggerEvent getTrigger();
-    /**
-     * <pre>
-     * High Level (List, Sensor, Input, Schedule) with source
-     * </pre>
-     *
-     * <code>.TriggerEvent trigger = 10;</code>
-     */
-    EDS10ProtocolBuffer.TriggerEventOrBuilder getTriggerOrBuilder();
 
     public EDS10ProtocolBuffer.EventMessage.EventDataCase getEventDataCase();
   }
@@ -104587,20 +104533,6 @@ public final class EDS10ProtocolBuffer {
               eventDataCase_ = 9;
               break;
             }
-            case 82: {
-              EDS10ProtocolBuffer.TriggerEvent.Builder subBuilder = null;
-              if (eventDataCase_ == 10) {
-                subBuilder = ((EDS10ProtocolBuffer.TriggerEvent) eventData_).toBuilder();
-              }
-              eventData_ =
-                  input.readMessage(EDS10ProtocolBuffer.TriggerEvent.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom((EDS10ProtocolBuffer.TriggerEvent) eventData_);
-                eventData_ = subBuilder.buildPartial();
-              }
-              eventDataCase_ = 10;
-              break;
-            }
             default: {
               if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -104637,14 +104569,13 @@ public final class EDS10ProtocolBuffer {
     private java.lang.Object eventData_;
     public enum EventDataCase
         implements com.google.protobuf.Internal.EnumLite {
-      DALI(2),
+      TRIGGER(2),
       INPUTS(3),
       PAYLOAD(4),
       SENSOR(6),
       DALI_24_INPUT(7),
       FILTER(8),
       DALI_24_FRAME(9),
-      TRIGGER(10),
       EVENTDATA_NOT_SET(0);
       private final int value;
       private EventDataCase(int value) {
@@ -104660,14 +104591,13 @@ public final class EDS10ProtocolBuffer {
 
       public static EventDataCase forNumber(int value) {
         switch (value) {
-          case 2: return DALI;
+          case 2: return TRIGGER;
           case 3: return INPUTS;
           case 4: return PAYLOAD;
           case 6: return SENSOR;
           case 7: return DALI_24_INPUT;
           case 8: return FILTER;
           case 9: return DALI_24_FRAME;
-          case 10: return TRIGGER;
           case 0: return EVENTDATA_NOT_SET;
           default: return null;
         }
@@ -104700,38 +104630,26 @@ public final class EDS10ProtocolBuffer {
       return result == null ? EDS10ProtocolBuffer.EventType.UNRECOGNIZED : result;
     }
 
-    public static final int DALI_FIELD_NUMBER = 2;
+    public static final int TRIGGER_FIELD_NUMBER = 2;
     /**
-     * <pre>
-     * DALI Trigger Event
-     * </pre>
-     *
-     * <code>.TriggerEvent dali = 2;</code>
+     * <code>.TriggerEvent trigger = 2;</code>
      */
-    public boolean hasDali() {
+    public boolean hasTrigger() {
       return eventDataCase_ == 2;
     }
     /**
-     * <pre>
-     * DALI Trigger Event
-     * </pre>
-     *
-     * <code>.TriggerEvent dali = 2;</code>
+     * <code>.TriggerEvent trigger = 2;</code>
      */
-    public EDS10ProtocolBuffer.TriggerEvent getDali() {
+    public EDS10ProtocolBuffer.TriggerEvent getTrigger() {
       if (eventDataCase_ == 2) {
          return (EDS10ProtocolBuffer.TriggerEvent) eventData_;
       }
       return EDS10ProtocolBuffer.TriggerEvent.getDefaultInstance();
     }
     /**
-     * <pre>
-     * DALI Trigger Event
-     * </pre>
-     *
-     * <code>.TriggerEvent dali = 2;</code>
+     * <code>.TriggerEvent trigger = 2;</code>
      */
-    public EDS10ProtocolBuffer.TriggerEventOrBuilder getDaliOrBuilder() {
+    public EDS10ProtocolBuffer.TriggerEventOrBuilder getTriggerOrBuilder() {
       if (eventDataCase_ == 2) {
          return (EDS10ProtocolBuffer.TriggerEvent) eventData_;
       }
@@ -104906,44 +104824,6 @@ public final class EDS10ProtocolBuffer {
       return EDS10ProtocolBuffer.DALI24FrameEvent.getDefaultInstance();
     }
 
-    public static final int TRIGGER_FIELD_NUMBER = 10;
-    /**
-     * <pre>
-     * High Level (List, Sensor, Input, Schedule) with source
-     * </pre>
-     *
-     * <code>.TriggerEvent trigger = 10;</code>
-     */
-    public boolean hasTrigger() {
-      return eventDataCase_ == 10;
-    }
-    /**
-     * <pre>
-     * High Level (List, Sensor, Input, Schedule) with source
-     * </pre>
-     *
-     * <code>.TriggerEvent trigger = 10;</code>
-     */
-    public EDS10ProtocolBuffer.TriggerEvent getTrigger() {
-      if (eventDataCase_ == 10) {
-         return (EDS10ProtocolBuffer.TriggerEvent) eventData_;
-      }
-      return EDS10ProtocolBuffer.TriggerEvent.getDefaultInstance();
-    }
-    /**
-     * <pre>
-     * High Level (List, Sensor, Input, Schedule) with source
-     * </pre>
-     *
-     * <code>.TriggerEvent trigger = 10;</code>
-     */
-    public EDS10ProtocolBuffer.TriggerEventOrBuilder getTriggerOrBuilder() {
-      if (eventDataCase_ == 10) {
-         return (EDS10ProtocolBuffer.TriggerEvent) eventData_;
-      }
-      return EDS10ProtocolBuffer.TriggerEvent.getDefaultInstance();
-    }
-
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -104981,9 +104861,6 @@ public final class EDS10ProtocolBuffer {
       }
       if (eventDataCase_ == 9) {
         output.writeMessage(9, (EDS10ProtocolBuffer.DALI24FrameEvent) eventData_);
-      }
-      if (eventDataCase_ == 10) {
-        output.writeMessage(10, (EDS10ProtocolBuffer.TriggerEvent) eventData_);
       }
       unknownFields.writeTo(output);
     }
@@ -105026,10 +104903,6 @@ public final class EDS10ProtocolBuffer {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(9, (EDS10ProtocolBuffer.DALI24FrameEvent) eventData_);
       }
-      if (eventDataCase_ == 10) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(10, (EDS10ProtocolBuffer.TriggerEvent) eventData_);
-      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -105052,8 +104925,8 @@ public final class EDS10ProtocolBuffer {
       if (!result) return false;
       switch (eventDataCase_) {
         case 2:
-          result = result && getDali()
-              .equals(other.getDali());
+          result = result && getTrigger()
+              .equals(other.getTrigger());
           break;
         case 3:
           result = result && getInputs()
@@ -105079,10 +104952,6 @@ public final class EDS10ProtocolBuffer {
           result = result && getDali24Frame()
               .equals(other.getDali24Frame());
           break;
-        case 10:
-          result = result && getTrigger()
-              .equals(other.getTrigger());
-          break;
         case 0:
         default:
       }
@@ -105101,8 +104970,8 @@ public final class EDS10ProtocolBuffer {
       hash = (53 * hash) + event_;
       switch (eventDataCase_) {
         case 2:
-          hash = (37 * hash) + DALI_FIELD_NUMBER;
-          hash = (53 * hash) + getDali().hashCode();
+          hash = (37 * hash) + TRIGGER_FIELD_NUMBER;
+          hash = (53 * hash) + getTrigger().hashCode();
           break;
         case 3:
           hash = (37 * hash) + INPUTS_FIELD_NUMBER;
@@ -105127,10 +104996,6 @@ public final class EDS10ProtocolBuffer {
         case 9:
           hash = (37 * hash) + DALI_24_FRAME_FIELD_NUMBER;
           hash = (53 * hash) + getDali24Frame().hashCode();
-          break;
-        case 10:
-          hash = (37 * hash) + TRIGGER_FIELD_NUMBER;
-          hash = (53 * hash) + getTrigger().hashCode();
           break;
         case 0:
         default:
@@ -105305,10 +105170,10 @@ public final class EDS10ProtocolBuffer {
         EDS10ProtocolBuffer.EventMessage result = new EDS10ProtocolBuffer.EventMessage(this);
         result.event_ = event_;
         if (eventDataCase_ == 2) {
-          if (daliBuilder_ == null) {
+          if (triggerBuilder_ == null) {
             result.eventData_ = eventData_;
           } else {
-            result.eventData_ = daliBuilder_.build();
+            result.eventData_ = triggerBuilder_.build();
           }
         }
         if (eventDataCase_ == 3) {
@@ -105351,13 +105216,6 @@ public final class EDS10ProtocolBuffer {
             result.eventData_ = eventData_;
           } else {
             result.eventData_ = dali24FrameBuilder_.build();
-          }
-        }
-        if (eventDataCase_ == 10) {
-          if (triggerBuilder_ == null) {
-            result.eventData_ = eventData_;
-          } else {
-            result.eventData_ = triggerBuilder_.build();
           }
         }
         result.eventDataCase_ = eventDataCase_;
@@ -105413,8 +105271,8 @@ public final class EDS10ProtocolBuffer {
           setEventValue(other.getEventValue());
         }
         switch (other.getEventDataCase()) {
-          case DALI: {
-            mergeDali(other.getDali());
+          case TRIGGER: {
+            mergeTrigger(other.getTrigger());
             break;
           }
           case INPUTS: {
@@ -105439,10 +105297,6 @@ public final class EDS10ProtocolBuffer {
           }
           case DALI_24_FRAME: {
             mergeDali24Frame(other.getDali24Frame());
-            break;
-          }
-          case TRIGGER: {
-            mergeTrigger(other.getTrigger());
             break;
           }
           case EVENTDATA_NOT_SET: {
@@ -105539,84 +105393,64 @@ public final class EDS10ProtocolBuffer {
       }
 
       private com.google.protobuf.SingleFieldBuilderV3<
-          EDS10ProtocolBuffer.TriggerEvent, EDS10ProtocolBuffer.TriggerEvent.Builder, EDS10ProtocolBuffer.TriggerEventOrBuilder> daliBuilder_;
+          EDS10ProtocolBuffer.TriggerEvent, EDS10ProtocolBuffer.TriggerEvent.Builder, EDS10ProtocolBuffer.TriggerEventOrBuilder> triggerBuilder_;
       /**
-       * <pre>
-       * DALI Trigger Event
-       * </pre>
-       *
-       * <code>.TriggerEvent dali = 2;</code>
+       * <code>.TriggerEvent trigger = 2;</code>
        */
-      public boolean hasDali() {
+      public boolean hasTrigger() {
         return eventDataCase_ == 2;
       }
       /**
-       * <pre>
-       * DALI Trigger Event
-       * </pre>
-       *
-       * <code>.TriggerEvent dali = 2;</code>
+       * <code>.TriggerEvent trigger = 2;</code>
        */
-      public EDS10ProtocolBuffer.TriggerEvent getDali() {
-        if (daliBuilder_ == null) {
+      public EDS10ProtocolBuffer.TriggerEvent getTrigger() {
+        if (triggerBuilder_ == null) {
           if (eventDataCase_ == 2) {
             return (EDS10ProtocolBuffer.TriggerEvent) eventData_;
           }
           return EDS10ProtocolBuffer.TriggerEvent.getDefaultInstance();
         } else {
           if (eventDataCase_ == 2) {
-            return daliBuilder_.getMessage();
+            return triggerBuilder_.getMessage();
           }
           return EDS10ProtocolBuffer.TriggerEvent.getDefaultInstance();
         }
       }
       /**
-       * <pre>
-       * DALI Trigger Event
-       * </pre>
-       *
-       * <code>.TriggerEvent dali = 2;</code>
+       * <code>.TriggerEvent trigger = 2;</code>
        */
-      public Builder setDali(EDS10ProtocolBuffer.TriggerEvent value) {
-        if (daliBuilder_ == null) {
+      public Builder setTrigger(EDS10ProtocolBuffer.TriggerEvent value) {
+        if (triggerBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
           eventData_ = value;
           onChanged();
         } else {
-          daliBuilder_.setMessage(value);
+          triggerBuilder_.setMessage(value);
         }
         eventDataCase_ = 2;
         return this;
       }
       /**
-       * <pre>
-       * DALI Trigger Event
-       * </pre>
-       *
-       * <code>.TriggerEvent dali = 2;</code>
+       * <code>.TriggerEvent trigger = 2;</code>
        */
-      public Builder setDali(
+      public Builder setTrigger(
           EDS10ProtocolBuffer.TriggerEvent.Builder builderForValue) {
-        if (daliBuilder_ == null) {
+        if (triggerBuilder_ == null) {
           eventData_ = builderForValue.build();
           onChanged();
         } else {
-          daliBuilder_.setMessage(builderForValue.build());
+          triggerBuilder_.setMessage(builderForValue.build());
         }
         eventDataCase_ = 2;
         return this;
       }
       /**
-       * <pre>
-       * DALI Trigger Event
-       * </pre>
-       *
-       * <code>.TriggerEvent dali = 2;</code>
+       * <code>.TriggerEvent trigger = 2;</code>
        */
-      public Builder mergeDali(EDS10ProtocolBuffer.TriggerEvent value) {
-        if (daliBuilder_ == null) {
+      public Builder mergeTrigger(EDS10ProtocolBuffer.TriggerEvent value) {
+        if (triggerBuilder_ == null) {
           if (eventDataCase_ == 2 &&
               eventData_ != EDS10ProtocolBuffer.TriggerEvent.getDefaultInstance()) {
             eventData_ = EDS10ProtocolBuffer.TriggerEvent.newBuilder((EDS10ProtocolBuffer.TriggerEvent) eventData_)
@@ -105627,22 +105461,18 @@ public final class EDS10ProtocolBuffer {
           onChanged();
         } else {
           if (eventDataCase_ == 2) {
-            daliBuilder_.mergeFrom(value);
+            triggerBuilder_.mergeFrom(value);
           }
-          daliBuilder_.setMessage(value);
+          triggerBuilder_.setMessage(value);
         }
         eventDataCase_ = 2;
         return this;
       }
       /**
-       * <pre>
-       * DALI Trigger Event
-       * </pre>
-       *
-       * <code>.TriggerEvent dali = 2;</code>
+       * <code>.TriggerEvent trigger = 2;</code>
        */
-      public Builder clearDali() {
-        if (daliBuilder_ == null) {
+      public Builder clearTrigger() {
+        if (triggerBuilder_ == null) {
           if (eventDataCase_ == 2) {
             eventDataCase_ = 0;
             eventData_ = null;
@@ -105653,30 +105483,22 @@ public final class EDS10ProtocolBuffer {
             eventDataCase_ = 0;
             eventData_ = null;
           }
-          daliBuilder_.clear();
+          triggerBuilder_.clear();
         }
         return this;
       }
       /**
-       * <pre>
-       * DALI Trigger Event
-       * </pre>
-       *
-       * <code>.TriggerEvent dali = 2;</code>
+       * <code>.TriggerEvent trigger = 2;</code>
        */
-      public EDS10ProtocolBuffer.TriggerEvent.Builder getDaliBuilder() {
-        return getDaliFieldBuilder().getBuilder();
+      public EDS10ProtocolBuffer.TriggerEvent.Builder getTriggerBuilder() {
+        return getTriggerFieldBuilder().getBuilder();
       }
       /**
-       * <pre>
-       * DALI Trigger Event
-       * </pre>
-       *
-       * <code>.TriggerEvent dali = 2;</code>
+       * <code>.TriggerEvent trigger = 2;</code>
        */
-      public EDS10ProtocolBuffer.TriggerEventOrBuilder getDaliOrBuilder() {
-        if ((eventDataCase_ == 2) && (daliBuilder_ != null)) {
-          return daliBuilder_.getMessageOrBuilder();
+      public EDS10ProtocolBuffer.TriggerEventOrBuilder getTriggerOrBuilder() {
+        if ((eventDataCase_ == 2) && (triggerBuilder_ != null)) {
+          return triggerBuilder_.getMessageOrBuilder();
         } else {
           if (eventDataCase_ == 2) {
             return (EDS10ProtocolBuffer.TriggerEvent) eventData_;
@@ -105685,20 +105507,16 @@ public final class EDS10ProtocolBuffer {
         }
       }
       /**
-       * <pre>
-       * DALI Trigger Event
-       * </pre>
-       *
-       * <code>.TriggerEvent dali = 2;</code>
+       * <code>.TriggerEvent trigger = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           EDS10ProtocolBuffer.TriggerEvent, EDS10ProtocolBuffer.TriggerEvent.Builder, EDS10ProtocolBuffer.TriggerEventOrBuilder> 
-          getDaliFieldBuilder() {
-        if (daliBuilder_ == null) {
+          getTriggerFieldBuilder() {
+        if (triggerBuilder_ == null) {
           if (!(eventDataCase_ == 2)) {
             eventData_ = EDS10ProtocolBuffer.TriggerEvent.getDefaultInstance();
           }
-          daliBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          triggerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               EDS10ProtocolBuffer.TriggerEvent, EDS10ProtocolBuffer.TriggerEvent.Builder, EDS10ProtocolBuffer.TriggerEventOrBuilder>(
                   (EDS10ProtocolBuffer.TriggerEvent) eventData_,
                   getParentForChildren(),
@@ -105707,7 +105525,7 @@ public final class EDS10ProtocolBuffer {
         }
         eventDataCase_ = 2;
         onChanged();;
-        return daliBuilder_;
+        return triggerBuilder_;
       }
 
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -106560,178 +106378,6 @@ public final class EDS10ProtocolBuffer {
         eventDataCase_ = 9;
         onChanged();;
         return dali24FrameBuilder_;
-      }
-
-      private com.google.protobuf.SingleFieldBuilderV3<
-          EDS10ProtocolBuffer.TriggerEvent, EDS10ProtocolBuffer.TriggerEvent.Builder, EDS10ProtocolBuffer.TriggerEventOrBuilder> triggerBuilder_;
-      /**
-       * <pre>
-       * High Level (List, Sensor, Input, Schedule) with source
-       * </pre>
-       *
-       * <code>.TriggerEvent trigger = 10;</code>
-       */
-      public boolean hasTrigger() {
-        return eventDataCase_ == 10;
-      }
-      /**
-       * <pre>
-       * High Level (List, Sensor, Input, Schedule) with source
-       * </pre>
-       *
-       * <code>.TriggerEvent trigger = 10;</code>
-       */
-      public EDS10ProtocolBuffer.TriggerEvent getTrigger() {
-        if (triggerBuilder_ == null) {
-          if (eventDataCase_ == 10) {
-            return (EDS10ProtocolBuffer.TriggerEvent) eventData_;
-          }
-          return EDS10ProtocolBuffer.TriggerEvent.getDefaultInstance();
-        } else {
-          if (eventDataCase_ == 10) {
-            return triggerBuilder_.getMessage();
-          }
-          return EDS10ProtocolBuffer.TriggerEvent.getDefaultInstance();
-        }
-      }
-      /**
-       * <pre>
-       * High Level (List, Sensor, Input, Schedule) with source
-       * </pre>
-       *
-       * <code>.TriggerEvent trigger = 10;</code>
-       */
-      public Builder setTrigger(EDS10ProtocolBuffer.TriggerEvent value) {
-        if (triggerBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          eventData_ = value;
-          onChanged();
-        } else {
-          triggerBuilder_.setMessage(value);
-        }
-        eventDataCase_ = 10;
-        return this;
-      }
-      /**
-       * <pre>
-       * High Level (List, Sensor, Input, Schedule) with source
-       * </pre>
-       *
-       * <code>.TriggerEvent trigger = 10;</code>
-       */
-      public Builder setTrigger(
-          EDS10ProtocolBuffer.TriggerEvent.Builder builderForValue) {
-        if (triggerBuilder_ == null) {
-          eventData_ = builderForValue.build();
-          onChanged();
-        } else {
-          triggerBuilder_.setMessage(builderForValue.build());
-        }
-        eventDataCase_ = 10;
-        return this;
-      }
-      /**
-       * <pre>
-       * High Level (List, Sensor, Input, Schedule) with source
-       * </pre>
-       *
-       * <code>.TriggerEvent trigger = 10;</code>
-       */
-      public Builder mergeTrigger(EDS10ProtocolBuffer.TriggerEvent value) {
-        if (triggerBuilder_ == null) {
-          if (eventDataCase_ == 10 &&
-              eventData_ != EDS10ProtocolBuffer.TriggerEvent.getDefaultInstance()) {
-            eventData_ = EDS10ProtocolBuffer.TriggerEvent.newBuilder((EDS10ProtocolBuffer.TriggerEvent) eventData_)
-                .mergeFrom(value).buildPartial();
-          } else {
-            eventData_ = value;
-          }
-          onChanged();
-        } else {
-          if (eventDataCase_ == 10) {
-            triggerBuilder_.mergeFrom(value);
-          }
-          triggerBuilder_.setMessage(value);
-        }
-        eventDataCase_ = 10;
-        return this;
-      }
-      /**
-       * <pre>
-       * High Level (List, Sensor, Input, Schedule) with source
-       * </pre>
-       *
-       * <code>.TriggerEvent trigger = 10;</code>
-       */
-      public Builder clearTrigger() {
-        if (triggerBuilder_ == null) {
-          if (eventDataCase_ == 10) {
-            eventDataCase_ = 0;
-            eventData_ = null;
-            onChanged();
-          }
-        } else {
-          if (eventDataCase_ == 10) {
-            eventDataCase_ = 0;
-            eventData_ = null;
-          }
-          triggerBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <pre>
-       * High Level (List, Sensor, Input, Schedule) with source
-       * </pre>
-       *
-       * <code>.TriggerEvent trigger = 10;</code>
-       */
-      public EDS10ProtocolBuffer.TriggerEvent.Builder getTriggerBuilder() {
-        return getTriggerFieldBuilder().getBuilder();
-      }
-      /**
-       * <pre>
-       * High Level (List, Sensor, Input, Schedule) with source
-       * </pre>
-       *
-       * <code>.TriggerEvent trigger = 10;</code>
-       */
-      public EDS10ProtocolBuffer.TriggerEventOrBuilder getTriggerOrBuilder() {
-        if ((eventDataCase_ == 10) && (triggerBuilder_ != null)) {
-          return triggerBuilder_.getMessageOrBuilder();
-        } else {
-          if (eventDataCase_ == 10) {
-            return (EDS10ProtocolBuffer.TriggerEvent) eventData_;
-          }
-          return EDS10ProtocolBuffer.TriggerEvent.getDefaultInstance();
-        }
-      }
-      /**
-       * <pre>
-       * High Level (List, Sensor, Input, Schedule) with source
-       * </pre>
-       *
-       * <code>.TriggerEvent trigger = 10;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          EDS10ProtocolBuffer.TriggerEvent, EDS10ProtocolBuffer.TriggerEvent.Builder, EDS10ProtocolBuffer.TriggerEventOrBuilder> 
-          getTriggerFieldBuilder() {
-        if (triggerBuilder_ == null) {
-          if (!(eventDataCase_ == 10)) {
-            eventData_ = EDS10ProtocolBuffer.TriggerEvent.getDefaultInstance();
-          }
-          triggerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              EDS10ProtocolBuffer.TriggerEvent, EDS10ProtocolBuffer.TriggerEvent.Builder, EDS10ProtocolBuffer.TriggerEventOrBuilder>(
-                  (EDS10ProtocolBuffer.TriggerEvent) eventData_,
-                  getParentForChildren(),
-                  isClean());
-          eventData_ = null;
-        }
-        eventDataCase_ = 10;
-        onChanged();;
-        return triggerBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -120275,386 +119921,385 @@ public final class EDS10ProtocolBuffer {
       "\n\005index\030\001 \001(\r\022\014\n\004line\030\002 \001(\r\022\017\n\007address\030\003" +
       " \001(\r\022-\n\014motion_state\030\004 \001(\0162\027.DALIMotionS" +
       "ensorStates\022\'\n\tlux_state\030\005 \001(\0162\024.DALILux" +
-      "SensorStates\022\021\n\tlux_level\030\006 \001(\r\"\337\002\n\014Even" +
-      "tMessage\022\031\n\005event\030\001 \001(\0162\n.EventType\022\035\n\004d" +
-      "ali\030\002 \001(\0132\r.TriggerEventH\000\022%\n\006inputs\030\003 \001" +
-      "(\0132\023.InputStateResponseH\000\022\"\n\007payload\030\004 \001" +
-      "(\0132\017.PayloadMessageH\000\022\"\n\006sensor\030\006 \001(\0132\020." +
-      "DALISensorEventH\000\022*\n\rdali_24_input\030\007 \001(\013" +
-      "2\021.DALI24InputEventH\000\022\036\n\006filter\030\010 \001(\0132\014." +
-      "EventFilterH\000\022*\n\rdali_24_frame\030\t \001(\0132\021.D" +
-      "ALI24FrameEventH\000\022 \n\007trigger\030\n \001(\0132\r.Tri" +
-      "ggerEventH\000B\014\n\nevent_data\"\337\024\n\rEdidioMess" +
-      "age\022\022\n\nmessage_id\030\001 \001(\r\022\032\n\003ack\030\002 \001(\0132\013.A" +
-      "ckMessageH\000\022$\n\006inputs\030\003 \001(\0132\022.InputMulti" +
-      "MessageH\000\022&\n\007outputs\030\004 \001(\0132\023.OutputMulti" +
-      "MessageH\000\022\036\n\003irs\030\005 \001(\0132\017.IRMultiMessageH" +
-      "\000\022 \n\006sensor\030\006 \001(\0132\016.SensorMessageH\000\022\034\n\004l" +
-      "ist\030\010 \001(\0132\014.ListMessageH\000\022\036\n\005alarm\030\n \001(\013" +
-      "2\r.AlarmMessageH\000\022$\n\006alarms\030\013 \001(\0132\022.Alar" +
-      "mMultiMessageH\000\022\'\n\010burn_ins\030\014 \001(\0132\023.Burn" +
-      "InMultiMessageH\000\022/\n\016sensor_command\030\r \001(\013" +
-      "2\025.SensorCommandMessageH\000\022/\n\016change_prof" +
-      "ile\030\016 \001(\0132\025.ChangeProfileMessageH\000\022,\n\020id" +
-      "entify_message\030\017 \001(\0132\020.IdentifyMessageH\000" +
-      "\022)\n\013update_time\030\020 \001(\0132\022.UpdateTimeMessag" +
-      "eH\000\022)\n\013read_device\030\021 \001(\0132\022.ReadDeviceMes" +
-      "sageH\000\022$\n\014dali_message\030\022 \001(\0132\014.DALIMessa" +
-      "geH\000\022(\n\ndali_query\030\023 \001(\0132\022.DALIQueryResp" +
-      "onseH\000\022\"\n\013dmx_message\030\024 \001(\0132\013.DMXMessage" +
-      "H\000\0223\n\020external_trigger\030\025 \001(\0132\027.ExternalT" +
-      "riggerMessageH\000\0222\n\020spektra_settings\030\026 \001(" +
-      "\0132\026.SpektraSettingMessageH\000\0229\n\020spektra_s" +
-      "equence\030\027 \001(\0132\035.SpektraSequenceConfigMes" +
-      "sageH\000\0223\n\020spektra_calendar\030\030 \001(\0132\027.Spekt" +
-      "raCalendarMessageH\000\0223\n\rspektra_theme\030\031 \001" +
-      "(\0132\032.SpektraThemeConfigMessageH\000\022+\n\014spek" +
-      "tra_read\030\032 \001(\0132\023.SpektraReadMessageH\000\0221\n" +
-      "\017spektra_control\030\033 \001(\0132\026.SpektraControlM" +
-      "essageH\000\0221\n\016dmx_translator\030\034 \001(\0132\027.DMXPr" +
-      "otocolTranslationH\000\022+\n\rinput_request\030\035 \001" +
-      "(\0132\022.InputStateMessageH\000\022-\n\016input_respon" +
-      "se\030\036 \001(\0132\023.InputStateResponseH\000\0224\n\013diag_" +
-      "system\030\037 \001(\0132\035.DiagnosticSystemInfoRespo" +
-      "nseH\000\022*\n\014diag_message\030  \001(\0132\022.Diagnostic" +
-      "MessageH\000\022&\n\radmin_message\030! \001(\0132\r.Admin" +
-      "MessageH\000\022\036\n\005event\030\" \001(\0132\r.EventMessageH" +
-      "\000\022>\n\026secure_device_settings\030# \001(\0132\034.Secu" +
-      "reDeviceSettingsMessageH\000\022,\n\014firmware_ne" +
-      "w\030$ \001(\0132\024.FirmwareMetaMessageH\000\0223\n\020firmw" +
-      "are_control\030% \001(\0132\027.FirmwareControlMessa" +
-      "geH\000\022/\n\016firmware_chunk\030& \001(\0132\025.FirmwareC" +
-      "hunkMessageH\000\0223\n\024level_cache_response\030\' " +
-      "\001(\0132\023.LevelCacheResponseH\000\022-\n\rlist_exten" +
-      "ded\030) \001(\0132\024.ExtendedListMessageH\000\022\"\n\013ayt" +
-      "_message\030* \001(\0132\013.AytMessageH\000\022\"\n\013rdm_mes" +
-      "sage\030+ \001(\0132\013.RDMMessageH\000\0223\n\024rdm_respons" +
-      "e_message\030, \001(\0132\023.RDMResponseMessageH\000\022+" +
-      "\n\rlogic_message\030- \001(\0132\022.LogicMultiMessag" +
-      "eH\000\0220\n\014secure_login\030. \001(\0132\030.AdminSecureL" +
-      "oginMessageH\000\0223\n\024device_state_message\030/ " +
-      "\001(\0132\023.DeviceStateMessageH\000\022:\n\024spektra_ca" +
-      "lendar_day\0300 \001(\0132\032.SpektraCalendarDayMes" +
-      "sageH\000\022D\n\031spektra_calendar_overview\0301 \001(" +
-      "\0132\037.SpektraCalendarOverviewMessageH\000\022-\n\013" +
-      "inputs_dali\0302 \001(\0132\026.DALIInputMultiMessag" +
-      "eH\000\022*\n\tlogs_read\0303 \001(\0132\025.SystemLogReadMe" +
-      "ssageH\000\0223\n\rmetadata_read\0304 \001(\0132\032.SystemM" +
-      "etaDataReadMessageH\000\0229\n\027dali_addressing_" +
-      "message\0305 \001(\0132\026.DALIAddressingMessageH\000\022" +
-      "7\n\026dali_remapping_message\0306 \001(\0132\025.DALIRe" +
-      "mappingMessageH\000\022B\n\034spektra_show_control" +
-      "_message\0307 \001(\0132\032.SpektraShowControlMessa" +
-      "geH\000\0223\n\024spektra_show_message\0308 \001(\0132\023.Spe" +
-      "ktraShowMessageH\000\022D\n\035extended_spektra_sh" +
-      "ow_message\0309 \001(\0132\033.ExtendedSpektraShowMe" +
-      "ssageH\000\022-\n\rrdm_discovery\030: \001(\0132\024.RDMDisc" +
-      "overyMessageH\000\0228\n\023rdm_discovery_reply\030; ",
-      "\001(\0132\031.RDMDiscoveryReplyMessageH\000B\t\n\007payl" +
-      "oad*\233\001\n\024TriggerOperationType\022\r\n\tMOMENTAR" +
-      "Y\020\000\022\014\n\010LATCHING\020\001\022\024\n\020MOMENTARY_OUTPUT\020\002\022" +
-      "\023\n\017LATCHING_OUTPUT\020\003\022\n\n\006ROTARY\020\004\022\027\n\022MOME" +
-      "NTARY_DISABLED\020\200\001\022\026\n\021LATCHING_DISABLED\020\201" +
-      "\001*\316\013\n\013TriggerType\022\014\n\010DALI_ARC\020\000\022\020\n\014DALI_" +
-      "COMMAND\020\001\022\032\n\026DMX_CHANNELS_SPLIT_LOW\020\002\022\033\n" +
-      "\027DMX_CHANNELS_SPLIT_HIGH\020\003\022$\n DMX_MULTIC" +
-      "AST_CHANNELS_SPLIT_LOW\020\004\022%\n!DMX_MULTICAS" +
-      "T_CHANNELS_SPLIT_HIGH\020\005\022\021\n\rDMX_BROADCAST" +
-      "\020\006\022\t\n\005DIDIO\020\007\022\024\n\020FADE_UP_WITH_MIN\020\010\022\016\n\nL" +
-      "IST_START\020\t\022\031\n\025LIST_START_CONTINUOUS\020\n\022\r" +
-      "\n\tLIST_STOP\020\013\022\025\n\021SPEKTRA_START_SEQ\020\014\022\024\n\020" +
-      "SPEKTRA_STOP_SEQ\020\r\022\021\n\rSPEKTRA_THEME\020\016\022\022\n" +
-      "\016SPEKTRA_STATIC\020\017\022\024\n\020SPEKTRA_SCHEDULE\020\020\022" +
-      "\016\n\nLINK_START\020\021\022\r\n\tLINK_STOP\020\022\022\020\n\014DISABL" +
-      "E_BURN\020\023\022\017\n\013ENABLE_BURN\020\024\022\016\n\nON_OFF_TOG\020" +
-      "\025\022\017\n\013MIN_MAX_TOG\020\026\022\020\n\014ENABLE_INPUT\020\027\022\021\n\r" +
-      "DISABLE_INPUT\020\030\022\024\n\020ENABLE_TOG_INPUT\020\031\022\016\n" +
-      "\nOUTPUT_TOG\020\032\022\017\n\013OUTPUT_HIGH\020\033\022\016\n\nOUTPUT" +
-      "_LOW\020\034\022\017\n\013OUTPUT_TRIG\020\035\022\022\n\016PROFILE_CHANG" +
-      "E\020\036\022\023\n\017FADE_LONG_PRESS\020\037\022\n\n\006SYNCRO\020 \022\017\n\013" +
-      "PRESET_CODE\020!\022\017\n\013CUSTOM_CODE\020\"\022\021\n\rSPEKTR" +
-      "A_SLEEP\020#\022\022\n\016SPEKTRA_RESUME\020$\022\020\n\014DEVICE_" +
-      "RESET\020%\022\017\n\013DEVICE_SAVE\020&\022\030\n\024USER_LEVEL_S" +
-      "TORE_NEW\020\'\022\032\n\026USER_LEVEL_SET_DEFAULT\020(\022\025" +
-      "\n\021USER_LEVEL_RECALL\020)\022\r\n\tROOM_JOIN\020+\022\017\n\013" +
-      "ROOM_UNJOIN\020,\022\023\n\017TYPE8_TC_WARMER\020-\022\023\n\017TY" +
-      "PE8_TC_COOLER\020.\022\023\n\017TYPE8_TC_ACTUAL\020/\022\023\n\017" +
-      "LOGIC_OPERATION\0200\022\020\n\014ALARM_ENABLE\0201\022\021\n\rA" +
-      "LARM_DISABLE\0202\022 \n\034DALI_CONTROL_SENSOR_OV" +
-      "ERRIDE\0203\022$\n DALI_CONTROL_SENSOR_TEMP_DIS" +
-      "ABLE\0204\022\036\n\032DALI_CONTROL_SENSOR_RESUME\0205\022\025" +
-      "\n\021DALI_ARC_OVERRIDE\0206\022\031\n\025DALI_COMMAND_OV" +
-      "ERRIDE\0207\022\035\n\031FADE_UP_WITH_MIN_OVERRIDE\0208\022" +
-      "\027\n\023ON_OFF_TOG_OVERRIDE\0209\022\030\n\024MIN_MAX_TOG_" +
-      "OVERRIDE\020:\022\017\n\013MAX_OFF_TOG\020;\022\030\n\024MAX_OFF_T" +
-      "OG_OVERRIDE\020<\022\034\n\030FADE_LONG_PRESS_OVERRID" +
-      "E\020=\022\036\n\032USER_LEVEL_RECALL_OVERRIDE\020>\022\024\n\020D" +
-      "MX_ZONE_FADE_UP\020?\022\026\n\022DMX_ZONE_FADE_DOWN\020" +
-      "@\022\021\n\rLOGGING_LEVEL\020A\022\030\n\024SPEKTRA_SHOW_CON" +
-      "TROL\020B\022\031\n\025CIRCADIAN_TEMPERATURE\020C\022\017\n\nNO_" +
-      "COMMAND\020\376\001*\353\001\n\010ReadType\022\n\n\006INPUTS\020\000\022\013\n\007O" +
-      "UTPUTS\020\001\022\006\n\002IR\020\002\022\n\n\006SENSOR\020\003\022\010\n\004LIST\020\005\022\n" +
-      "\n\006ALARMS\020\007\022\013\n\007BURN_IN\020\010\022\013\n\007PROJECT\020\t\022\013\n\007" +
-      "NETWORK\020\n\022\n\n\006DEVICE\020\013\022\r\n\tPOLL_DATA\020\014\022\021\n\r" +
-      "LIST_EXTENDED\020\r\022\t\n\005LOGIC\020\016\022\017\n\013DALI_INPUT" +
-      "S\020\017\022\020\n\014SPEKTRA_SHOW\020\020\022\031\n\025SPEKTRA_SHOW_EX" +
-      "TENDED\020\021*\214\001\n\017AlarmRepeatType\022\023\n\017ALARM_NO" +
-      "_REPEAT\020\000\022\026\n\022ALARM_REPEAT_DAILY\020\001\022\031\n\025ALA" +
-      "RM_REPEAT_WORK_DAY\020\002\022\027\n\023ALARM_REPEAT_WEE" +
-      "KLY\020\003\022\030\n\024ALARM_REPEAT_MONTHLY\020\004*I\n\016Alarm" +
-      "AstroType\022\022\n\016ALARM_NO_ASTRO\020\000\022\021\n\rALARM_S" +
-      "UNRUSE\020\001\022\020\n\014ALARM_SUNSET\020\002*^\n\021SpektraTar" +
-      "getType\022\014\n\010SETTINGS\020\000\022\014\n\010SEQUENCE\020\001\022\t\n\005T" +
-      "HEME\020\002\022\n\n\006STATIC\020\003\022\014\n\010CALENDAR\020\004\022\010\n\004SHOW" +
-      "\020\005*=\n\021SpektraActionType\022\t\n\005START\020\000\022\010\n\004ST" +
-      "OP\020\001\022\t\n\005PAUSE\020\002\022\010\n\004SAVE\020\003*p\n\025SpektraStep" +
-      "ActionType\022\020\n\014RUN_SEQUENCE\020\000\022\016\n\nSHOW_THE" +
-      "ME\020\001\022\016\n\nSTART_LIST\020\002\022\022\n\016PAUSE_PREVIOUS\020\003" +
-      "\022\021\n\rSTOP_PREVIOUS\020\004*}\n\037SpektraUnschedule" +
-      "dBehaviourType\022 \n\034RUN_RANDOM_COLOURED_SE" +
-      "QUENCE\020\000\022\022\n\016RUN_SEQUENCE_1\020\001\022\023\n\017RESUME_P" +
-      "REVIOUS\020\002\022\017\n\nDO_NOTHING\020\376\001*6\n\022LineAddres" +
-      "singType\022\017\n\013INDEPENDENT\020\000\022\017\n\013CONSECUTIVE" +
-      "\020\001*\347\002\n\016AckMessageType\022\021\n\rDECODE_FAILED\020\000" +
-      "\022\027\n\023INDEX_OUT_OF_BOUNDS\020\001\022\023\n\017UNEXPECTED_" +
-      "TYPE\020\002\022\021\n\rENCODE_FAILED\020\003\022\020\n\014KEY_MISMATC" +
-      "H\020\004\022\013\n\007SUCCESS\020\005\022\022\n\016INVALID_PARAMS\020\006\022\026\n\022" +
-      "UNEXPECTED_COMMAND\020\007\022\030\n\024COMMUNICATION_FA" +
-      "ILED\020\010\022\031\n\025COMMUNICATION_TIMEOUT\020\t\022\021\n\rDAT" +
-      "A_TOO_LONG\020\n\022\023\n\017UNEXPECTED_CASE\020\013\022\016\n\nSLO" +
-      "TS_FULL\020\014\022\020\n\014UNAUTHORISED\020\r\022\023\n\017PARTIAL_S" +
-      "UCCESS\020\016\022\022\n\016COMMAND_FAILED\020\017\022\016\n\nDEPRECAT" +
-      "ED\020\020*\323\004\n\020Type8CommandType\022\024\n\020SET_TEMP_X_" +
-      "COORD\020\000\022\024\n\020SET_TEMP_Y_COORD\020\001\022\014\n\010ACTIVAT" +
-      "E\020\002\022\023\n\017X_COORD_STEP_UP\020\003\022\025\n\021X_COORD_STEP" +
-      "_DOWN\020\004\022\023\n\017Y_COORD_STEP_UP\020\005\022\025\n\021Y_COORD_" +
-      "STEP_DOWN\020\006\022\037\n\033SET_TEMP_COLOUR_TEMPERATU" +
-      "RE\020\007\022\"\n\036COLOUR_TEMPERATURE_STEP_COOLER\020\010" +
-      "\022\"\n\036COLOUR_TEMPERATURE_STEP_WARMER\020\t\022\033\n\027" +
-      "SET_TEMP_PRI_N_DIMLEVEL\020\n\022\031\n\025SET_TEMP_RG" +
-      "B_DIMLEVEL\020\013\022\031\n\025SET_TEMP_WAF_DIMLEVEL\020\014\022" +
-      "\033\n\027SET_TEMP_RGBWAF_CONTROL\020\r\022\031\n\025COPY_REP" +
-      "ORT_TEMPORARY\020\016\022\022\n\016STORE_TY_PRI_N\020\020\022\030\n\024S" +
-      "TORE_XY_COORD_PRI_N\020\021\022\"\n\036STORE_COLOUR_TE" +
-      "MPERATURE_LIMIT\020\022\022\036\n\032STORE_GEAR_FEATURES" +
-      "_STATUS\020\023\022\032\n\026ASSIGN_COLOR_LINKED_CH\020\025\022\022\n" +
-      "\016START_AUTO_CAL\020\026\022\027\n\023ENABLE_DEVICE_TYPE8" +
-      "\0200*\221\002\n\016Type8QueryType\022\024\n\020TYPE8_QUERY_NUL" +
-      "L\020\000\022$\n TYPE8_QUERY_GEAR_FEATURES_STATUS\020" +
-      "\001\022\035\n\031TYPE8_QUERY_COLOUR_STATUS\020\002\022$\n TYPE" +
-      "8_QUERY_COLOUR_TYPE_FEATURES\020\003\022\034\n\030TYPE8_" +
-      "QUERY_COLOUR_VALUE\020\004\022\036\n\032TYPE8_QUERY_RGBW" +
-      "AF_CONTROL\020\005\022\037\n\033TYPE8_QUERY_ASSIGNED_COL" +
-      "OUR\020\006\022\037\n\033TYPE8_QUERY_EXT_VERSION_NUM\020\010*\274" +
-      "\006\n\023DALI24DeviceSetting\022\024\n\020COMMAND_IDENTI" +
-      "FY\020\000\022\"\n\036COMMAND_RESET_POWER_CYCLE_SEEN\020\001" +
-      "\022\021\n\rCOMMAND_RESET\020\020\022\035\n\031COMMAND_RESET_MEM" +
-      "ORY_BANK\020\021\022\035\n\031COMMAND_SET_SHORT_ADDRESS\020" +
-      "\024\022\037\n\033COMMAND_ENABLE_WRITE_MEMORY\020\025\022!\n\035CO" +
-      "MMAND_ENABLE_APP_CONTROLLER\020\026\022\"\n\036COMMAND" +
-      "_DISABLE_APP_CONTROLLER\020\027\022\036\n\032COMMAND_SET" +
-      "_OPERATING_MODE\020\030\022%\n!COMMAND_ADD_TO_DEVI" +
-      "CE_GROUPS_0_15\020\031\022&\n\"COMMAND_ADD_TO_DEVIC" +
-      "E_GROUPS_15_32\020\032\022#\n\037COMMAND_REMOVE_FROM_" +
-      "GROUPS_0_15\020\033\022$\n COMMAND_REMOVE_FROM_GRO" +
-      "UPS_16_32\020\034\022 \n\034COMMAND_START_QUIESCENT_M" +
-      "ODE\020\035\022\037\n\033COMMAND_STOP_QUIESCENT_MODE\020\036\022$" +
-      "\n COMMAND_ENABLE_POWER_CYCLE_NOTIF\020\037\022%\n!" +
-      "COMMAND_DISABLE_POWER_CYCLE_NOTIF\020 \022%\n!C" +
-      "OMMAND_SAVE_PERSISTENT_VARIABLES\020!\022\026\n\022SE" +
-      "T_EVENT_PRIORITY\020a\022\023\n\017ENABLE_INSTANCE\020b\022" +
-      "\024\n\020DISABLE_INSTANCE\020c\022\036\n\032SET_PRIMARY_INS" +
-      "TANCE_GROUP\020d\022\030\n\024SET_INSTANCE_GROUP_1\020e\022" +
-      "\030\n\024SET_INSTANCE_GROUP_2\020f\022\024\n\020SET_EVENT_S" +
-      "CHEME\020g\022\024\n\020SET_EVENT_FILTER\020h*c\n\022DALI24I" +
-      "nstanceType\022\013\n\007DEFAULT\020\000\022\t\n\005INPUT\020\001\022\020\n\014R" +
-      "OTARY_INPUT\020\002\022\021\n\rMOTION_SENSOR\020\003\022\020\n\014LIGH" +
-      "T_SENSOR\020\004*\276\002\n\014DALI24OpCode\022\017\n\013OPCODE_NU" +
-      "LL\020\000\022 \n\034SENSOR_MOTION_SET_HOLD_TIMER\020!\022\"" +
-      "\n\036SENSOR_MOTION_SET_REPORT_TIMER\020\"\022$\n SE" +
-      "NSOR_MOTION_SET_DEADTIME_TIMER\020#\022#\n\037SENS" +
-      "OR_MOTION_CANCEL_HOLD_TIMER\020$\022!\n\035SENSOR_" +
-      "LIGHT_SET_REPORT_TIMER\0200\022\037\n\033SENSOR_LIGHT" +
-      "_SET_HYSTERESIS\0201\022#\n\037SENSOR_LIGHT_SET_DE" +
-      "ADTIME_TIMER\0202\022#\n\037SENSOR_LIGHT_SET_HYSTE" +
-      "RESIS_MIN\0203*W\n\010LineType\022\016\n\nLINE_EMPTY\020\000\022" +
-      "\r\n\tLINE_DALI\020\001\022\014\n\010LINE_DMX\020\002\022\017\n\013LINE_DMX" +
-      "_IN\020\003\022\r\n\tLINE_AUTO\020\004*\271\001\n\tEventType\022\014\n\010RE" +
-      "GISTER\020\000\022\016\n\nDALI_EVENT\020\001\022\017\n\013INPUT_EVENT\020" +
-      "\002\022\020\n\014SENSOR_EVENT\020\003\022\021\n\rCONTROL_EVENT\020\004\022\023" +
-      "\n\017ROOM_JOIN_EVENT\020\005\022\027\n\023DALI_24_INPUT_EVE" +
-      "NT\020\006\022\027\n\023DALI_24_FRAME_EVENT\020\007\022\021\n\rTRIGGER" +
-      "_EVENT\020\010*\306\t\n\rDALIQueryType\022\023\n\017DALI_QUERY" +
-      "_NULL\020\000\022\026\n\021DALI_QUERY_STATUS\020\220\001\022\027\n\022DALI_" +
-      "QUERY_BALLAST\020\221\001\022\034\n\027DALI_QUERY_LAMP_FAIL" +
-      "URE\020\222\001\022\035\n\030DALI_QUERY_LAMP_POWER_ON\020\223\001\022\033\n" +
-      "\026DALI_QUERY_LIMIT_ERROR\020\224\001\022\033\n\026DALI_QUERY" +
-      "_RESET_STATE\020\225\001\022%\n DALI_QUERY_MISSING_SH" +
-      "ORT_ADDRESS\020\226\001\022\036\n\031DALI_QUERY_VERSION_NUM" +
-      "BER\020\227\001\022\024\n\017DALI_QUERY_DTR0\020\230\001\022\033\n\026DALI_QUE" +
-      "RY_DEVICE_TYPE\020\231\001\022\034\n\027DALI_QUERY_PHYSICAL" +
-      "_MIN\020\232\001\022\035\n\030DALI_QUERY_POWER_FAILURE\020\233\001\022\024" +
-      "\n\017DALI_QUERY_DTR1\020\234\001\022\024\n\017DALI_QUERY_DTR2\020" +
-      "\235\001\022\036\n\031DALI_QUERY_OPERATING_MODE\020\236\001\022 \n\033DA" +
-      "LI_QUERY_LIGHTSOURCE_TYPE\020\237\001\022\034\n\027DALI_QUE" +
-      "RY_ACTUAL_LEVEL\020\240\001\022\031\n\024DALI_QUERY_MAX_LEV" +
-      "EL\020\241\001\022\031\n\024DALI_QUERY_MIN_LEVEL\020\242\001\022\036\n\031DALI" +
-      "_QUERY_POWER_ON_LEVEL\020\243\001\022$\n\037DALI_QUERY_S" +
-      "YSTEM_FAILURE_LEVEL\020\244\001\022!\n\034DALI_QUERY_FAD" +
-      "ETIME_FADERATE\020\245\001\022*\n%DALI_QUERY_MANUFACT" +
-      "URER_SPECIFIC_MODE\020\246\001\022 \n\033DALI_QUERY_NEXT" +
-      "_DEVICE_TYPE\020\247\001\022\"\n\035DALI_QUERY_EXTENDED_F" +
-      "ADE_TIME\020\250\001\022$\n\037DALI_QUERY_CONTROL_GEAR_F" +
-      "AILURE\020\252\001\022\035\n\030DALI_QUERY_SCENE_X_LEVEL\020\260\001" +
-      "\022\032\n\025DALI_QUERY_GROUPS_0_7\020\300\001\022\033\n\026DALI_QUE" +
-      "RY_GROUPS_8_15\020\301\001\022 \n\033DALI_QUERY_RANDOM_A" +
-      "DDRESS_H\020\302\001\022 \n\033DALI_QUERY_RANDOM_ADDRESS" +
-      "_M\020\303\001\022 \n\033DALI_QUERY_RANDOM_ADDRESS_L\020\304\001\022" +
-      "\034\n\027DALI_QUERY_READ_DTR_0_1\020\305\001\022 \n\033DALI_QU" +
-      "ERY_APP_EXT_COMMANDS\020\340\001\022\"\n\035DALI_QUERY_EX" +
-      "T_VERSION_NUMBER\020\377\001\022\027\n\022DALI_QUERY_COMPAR" +
-      "E\020\204\002\022$\n\037DALI_QUERY_VERIFY_SHORT_ADDRESS\020" +
-      "\214\002\022\035\n\030DALI_QUERY_SHORT_ADDRESS\020\215\002*\351\027\n\017DA" +
-      "LICommandType\022\014\n\010DALI_OFF\020\000\022\020\n\014DALI_FADE" +
-      "_UP\020\001\022\022\n\016DALI_FADE_DOWN\020\002\022\020\n\014DALI_STEP_U" +
-      "P\020\003\022\022\n\016DALI_STEP_DOWN\020\004\022\022\n\016DALI_MAX_LEVE" +
-      "L\020\005\022\022\n\016DALI_MIN_LEVEL\020\006\022\026\n\022DALI_STEP_DOW" +
-      "N_OFF\020\007\022\023\n\017DALI_ON_STEP_UP\020\010\022\030\n\024DALI_ENA" +
-      "BLE_DAPC_SEQ\020\t\022!\n\035DALI_RECALL_LAST_ACTIV" +
-      "E_LEVEL\020\n\022\026\n\022DALI_CONTINUOUS_UP\020\013\022\030\n\024DAL" +
-      "I_CONTINUOUS_DOWN\020\014\022\027\n\023DALI_RECALL_SCENE" +
-      "_0\020\020\022\027\n\023DALI_RECALL_SCENE_1\020\021\022\027\n\023DALI_RE" +
-      "CALL_SCENE_2\020\022\022\027\n\023DALI_RECALL_SCENE_3\020\023\022" +
-      "\027\n\023DALI_RECALL_SCENE_4\020\024\022\027\n\023DALI_RECALL_" +
-      "SCENE_5\020\025\022\027\n\023DALI_RECALL_SCENE_6\020\026\022\027\n\023DA" +
-      "LI_RECALL_SCENE_7\020\027\022\027\n\023DALI_RECALL_SCENE" +
-      "_8\020\030\022\027\n\023DALI_RECALL_SCENE_9\020\031\022\030\n\024DALI_RE" +
-      "CALL_SCENE_10\020\032\022\030\n\024DALI_RECALL_SCENE_11\020" +
-      "\033\022\030\n\024DALI_RECALL_SCENE_12\020\034\022\030\n\024DALI_RECA" +
-      "LL_SCENE_13\020\035\022\030\n\024DALI_RECALL_SCENE_14\020\036\022" +
-      "\030\n\024DALI_RECALL_SCENE_15\020\037\022\016\n\nDALI_RESET\020" +
-      " \022 \n\034DALI_STORE_ACTUAL_LEVEL_DTR0\020!\022\035\n\031D" +
-      "ALI_SAVE_PERSISTENT_VARS\020\"\022\033\n\027DALI_SET_O" +
-      "PERATING_MODE\020#\022\032\n\026DALI_RESET_MEMORY_BAN" +
-      "K\020$\022\030\n\024DALI_IDENTIFY_DEVICE\020%\022\026\n\022DALI_SE" +
-      "T_MAX_LEVEL\020*\022\026\n\022DALI_SET_MIN_LEVEL\020+\022!\n" +
-      "\035DALI_SET_SYSTEM_FAILURE_LEVEL\020,\022\033\n\027DALI" +
-      "_SET_POWER_ON_LEVEL\020-\022\026\n\022DALI_SET_FADE_T" +
-      "IME\020.\022\026\n\022DALI_SET_FADE_RATE\020/\022\032\n\026DALI_SE" +
-      "T_EXT_FADE_TIME\0200\022\024\n\020DALI_SET_SCENE_0\020@\022" +
-      "\024\n\020DALI_SET_SCENE_1\020A\022\024\n\020DALI_SET_SCENE_" +
-      "2\020B\022\024\n\020DALI_SET_SCENE_3\020C\022\024\n\020DALI_SET_SC" +
-      "ENE_4\020D\022\024\n\020DALI_SET_SCENE_5\020E\022\024\n\020DALI_SE" +
-      "T_SCENE_6\020F\022\024\n\020DALI_SET_SCENE_7\020G\022\024\n\020DAL" +
-      "I_SET_SCENE_8\020H\022\024\n\020DALI_SET_SCENE_9\020I\022\025\n" +
-      "\021DALI_SET_SCENE_10\020J\022\025\n\021DALI_SET_SCENE_1" +
-      "1\020K\022\025\n\021DALI_SET_SCENE_12\020L\022\025\n\021DALI_SET_S" +
-      "CENE_13\020M\022\025\n\021DALI_SET_SCENE_14\020N\022\025\n\021DALI" +
-      "_SET_SCENE_15\020O\022\034\n\030DALI_REMOVE_FROM_SCEN" +
-      "E_0\020P\022\034\n\030DALI_REMOVE_FROM_SCENE_1\020Q\022\034\n\030D" +
-      "ALI_REMOVE_FROM_SCENE_2\020R\022\034\n\030DALI_REMOVE" +
-      "_FROM_SCENE_3\020S\022\034\n\030DALI_REMOVE_FROM_SCEN" +
-      "E_4\020T\022\034\n\030DALI_REMOVE_FROM_SCENE_5\020U\022\034\n\030D" +
-      "ALI_REMOVE_FROM_SCENE_6\020V\022\034\n\030DALI_REMOVE" +
-      "_FROM_SCENE_7\020W\022\034\n\030DALI_REMOVE_FROM_SCEN" +
-      "E_8\020X\022\034\n\030DALI_REMOVE_FROM_SCENE_9\020Y\022\035\n\031D" +
-      "ALI_REMOVE_FROM_SCENE_10\020Z\022\035\n\031DALI_REMOV" +
-      "E_FROM_SCENE_11\020[\022\035\n\031DALI_REMOVE_FROM_SC" +
-      "ENE_12\020\\\022\035\n\031DALI_REMOVE_FROM_SCENE_13\020]\022" +
-      "\035\n\031DALI_REMOVE_FROM_SCENE_14\020^\022\035\n\031DALI_R" +
-      "EMOVE_FROM_SCENE_15\020_\022\027\n\023DALI_ADD_TO_GRO" +
-      "UP_0\020`\022\027\n\023DALI_ADD_TO_GROUP_1\020a\022\027\n\023DALI_" +
-      "ADD_TO_GROUP_2\020b\022\027\n\023DALI_ADD_TO_GROUP_3\020" +
-      "c\022\027\n\023DALI_ADD_TO_GROUP_4\020d\022\027\n\023DALI_ADD_T" +
-      "O_GROUP_5\020e\022\027\n\023DALI_ADD_TO_GROUP_6\020f\022\027\n\023" +
-      "DALI_ADD_TO_GROUP_7\020g\022\027\n\023DALI_ADD_TO_GRO" +
-      "UP_8\020h\022\027\n\023DALI_ADD_TO_GROUP_9\020i\022\030\n\024DALI_" +
-      "ADD_TO_GROUP_10\020j\022\030\n\024DALI_ADD_TO_GROUP_1" +
-      "1\020k\022\030\n\024DALI_ADD_TO_GROUP_12\020l\022\030\n\024DALI_AD" +
-      "D_TO_GROUP_13\020m\022\030\n\024DALI_ADD_TO_GROUP_14\020" +
-      "n\022\030\n\024DALI_ADD_TO_GROUP_15\020o\022\034\n\030DALI_REMO" +
-      "VE_FROM_GROUP_0\020p\022\034\n\030DALI_REMOVE_FROM_GR" +
-      "OUP_1\020q\022\034\n\030DALI_REMOVE_FROM_GROUP_2\020r\022\034\n" +
-      "\030DALI_REMOVE_FROM_GROUP_3\020s\022\034\n\030DALI_REMO" +
-      "VE_FROM_GROUP_4\020t\022\034\n\030DALI_REMOVE_FROM_GR" +
-      "OUP_5\020u\022\034\n\030DALI_REMOVE_FROM_GROUP_6\020v\022\034\n" +
-      "\030DALI_REMOVE_FROM_GROUP_7\020w\022\034\n\030DALI_REMO" +
-      "VE_FROM_GROUP_8\020x\022\034\n\030DALI_REMOVE_FROM_GR" +
-      "OUP_9\020y\022\035\n\031DALI_REMOVE_FROM_GROUP_10\020z\022\035" +
-      "\n\031DALI_REMOVE_FROM_GROUP_11\020{\022\035\n\031DALI_RE" +
-      "MOVE_FROM_GROUP_12\020|\022\035\n\031DALI_REMOVE_FROM" +
-      "_GROUP_13\020}\022\035\n\031DALI_REMOVE_FROM_GROUP_14" +
-      "\020~\022\035\n\031DALI_REMOVE_FROM_GROUP_15\020\177\022\033\n\026DAL" +
-      "I_SET_SHORT_ADDRESS\020\200\001\022\035\n\030DALI_ENABLE_WR" +
-      "ITE_MEMORY\020\201\001\022\023\n\016DALI_TERMINATE\020\377\001\022\024\n\017DA" +
-      "LI_INITIALISE\020\202\002\022\023\n\016DALI_RANDOMISE\020\203\002\022\022\n" +
-      "\rDALI_WITHDRAW\020\205\002\022\027\n\022DALI_SEARCH_ADDR_H\020" +
-      "\210\002\022\027\n\022DALI_SEARCH_ADDR_M\020\211\002\022\027\n\022DALI_SEAR" +
-      "CH_ADDR_L\020\212\002\022\037\n\032DALI_PROGRAM_SHORT_ADDRE" +
-      "SS\020\213\002*\250\001\n\025CustomDALICommandType\022\022\n\016DALI_" +
-      "ARC_LEVEL\020\000\022\023\n\017DALI_DAPC_LEVEL\020\001\022\030\n\024DALI" +
-      "_GROUP_ARC_LEVEL\020\002\022\030\n\024DALI_BROADCAST_SCE" +
-      "NE\020\003\022\027\n\023DALI_SCENE_ON_GROUP\020\004\022\031\n\025DALI_SC" +
-      "ENE_ON_ADDRESS\020\005*\233\004\n\021AdminPropertyType\022\017" +
-      "\n\013DEVICE_NAME\020\000\022\020\n\014PROJECT_NAME\020\001\022\r\n\tLON" +
-      "GITUDE\020\002\022\014\n\010LATITUDE\020\003\022\024\n\020LOCAL_UTC_OFFS" +
-      "ET\020\004\022\024\n\020DAYLIGHT_SAVINGS\020\005\022\017\n\013POLL_ACTIV" +
-      "E\020\006\022\020\n\014DHCP_ENABLED\020\007\022\013\n\007IP_ADDR\020\010\022\014\n\010MA" +
-      "C_ADDR\020\t\022\016\n\nGATEWAY_IP\020\n\022\026\n\022NETWORK_PROP" +
-      "ERTIES\020\013\022\025\n\021SYSTEM_PROPERTIES\020\014\022\024\n\020CONTR" +
-      "OLLER_LINES\020\r\022\024\n\020EEPROM_FULL_CHIP\020\016\022\017\n\013C" +
-      "ONFIG_DATA\020\017\022\020\n\014SPEKTRA_DATA\020\020\022\021\n\rDEVICE" +
-      "_STATUS\020\021\022\021\n\rCONFIG_STATUS\020\022\022\017\n\013DEVICE_T" +
-      "IME\020\023\022\017\n\013NTP_DETAILS\020\024\022\025\n\021TRIDONIC_MSENS" +
-      "ORS\020\025\022\022\n\016SECURE_SESSION\020\026\022\t\n\005NONCE\020\027\022\024\n\020" +
-      "DALI_SENSOR_TYPE\020\030\022\021\n\rDEVICE_REBOOT\020\031\022\022\n" +
-      "\016SYSTEM_LOGGING\020\032\022\n\n\006SUBNET\020\033\022\007\n\003DNS\020\034*M" +
-      "\n\020AdminCommandType\022\007\n\003SET\020\000\022\007\n\003GET\020\001\022\007\n\003" +
-      "ADD\020\002\022\n\n\006REMOVE\020\003\022\t\n\005RESET\020\004\022\007\n\003RUN\020\005*\265\001" +
-      "\n\016DALIStatusType\022\014\n\010LAMP_OFF\020\000\022\030\n\024CONTRO" +
-      "L_GEAR_FAILURE\020\001\022\020\n\014LAMP_FAILURE\020\002\022\013\n\007LA" +
-      "MP_ON\020\004\022\017\n\013LIMIT_ERROR\020\010\022\020\n\014FADE_RUNNING" +
-      "\020\020\022\017\n\013RESET_STATE\020 \022\021\n\rSHORT_ADDRESS\020@\022\025" +
-      "\n\020POWER_CYCLE_SEEN\020\200\001*\210\002\n\020DALIRXStatusFl" +
-      "ag\022\013\n\007WAITING\020\000\022\023\n\017RECEIVING_FRAME\020\001\022\025\n\021" +
-      "NO_RECEIVED_FRAME\020\002\022\030\n\024RECEIVED_8_BIT_FR" +
-      "AME\020\003\022\031\n\025RECEIVED_16_BIT_FRAME\020\004\022\031\n\025RECE" +
-      "IVED_24_BIT_FRAME\020\005\022\032\n\026RECEIVED_PARTIAL_" +
-      "FRAME\020\006\022\010\n\004IDLE\020\007\022\017\n\013CALIBRATION\020\010\022\030\n\023ER" +
-      "ROR_WHILE_SENDING\020\376\001\022\032\n\025ERROR_WHILE_RECE" +
-      "IVING\020\377\001*\213\001\n\025DiagnosticMessageType\022\032\n\026DI" +
-      "AGNOSTIC_SYSTEM_INFO\020\000\022\033\n\027DIAGNOSTIC_INP" +
-      "UT_STATUS\020\001\022\024\n\020DALI_LEVEL_CACHE\020\002\022\023\n\017DMX" +
-      "_LEVEL_CACHE\020\003\022\016\n\nROOM_JOINS\020\004*z\n\023Firmwa" +
-      "reCommandType\022\014\n\010FW_READY\020\000\022\014\n\010FW_APPLY\020" +
-      "\001\022\r\n\tFW_VERIFY\020\002\022\024\n\020FW_VERIFY_FAILED\020\003\022\025" +
-      "\n\021FW_VERIFY_SUCCESS\020\004\022\013\n\007FW_READ\020\005*?\n\025Sp" +
-      "ektraTransitionType\022\t\n\005BLEND\020\000\022\010\n\004SNAP\020\001" +
-      "\022\021\n\rFADE_TO_BLACK\020\002*\234\001\n\tLogicType\022\016\n\nDAL" +
-      "I_LEVEL\020\000\022\017\n\013INPUT_STATE\020\001\022\020\n\014LIST_RUNNI" +
-      "NG\020\002\022\026\n\022OCCUPANCY_DETECTED\020\003\022\017\n\013DMX_PRES" +
-      "ENT\020\004\022\017\n\013CAL_WEEKDAY\020\005\022\r\n\tCAL_MONTH\020\006\022\023\n" +
-      "\017ALARM_SCHEDULED\020\007*\200\001\n\023LogicComparisonTy" +
-      "pe\022\r\n\tLESS_THAN\020\000\022\027\n\023LESS_THAN_OR_EQUALS" +
-      "\020\001\022\n\n\006EQUALS\020\002\022\r\n\tMORE_THAN\020\003\022\027\n\023MORE_TH" +
-      "AN_OR_EQUALS\020\004\022\r\n\tNOT_EQUAL\020\005*8\n\016DALISen" +
-      "sorType\022\022\n\016TRIDONIC_EDALI\020\000\022\022\n\016STANDARD_" +
-      "EDALI\020\001*G\n\021SensorCommandType\022\016\n\nINITIALI" +
-      "SE\020\000\022\010\n\004MUTE\020\001\022\n\n\006UNMUTE\020\002\022\014\n\010OVERRIDE\020\003" +
-      "*b\n\rSystemLogType\022\010\n\004BOOT\020\000\022\014\n\010NET_LINK\020" +
-      "\001\022\007\n\003NTP\020\002\022\013\n\007TRIGGER\020\003\022\013\n\007SPEKTRA\020\004\022\014\n\010" +
-      "SCHEDULE\020\005\022\010\n\004USER\020\006*m\n\017DALI24InputType\022" +
-      "\023\n\017MOMENTARY_SHORT\020\000\022\022\n\016MOMENTARY_LONG\020\001" +
-      "\022\017\n\013LATCHED_LOW\020\002\022\020\n\014LATCHED_HIGH\020\003\022\016\n\nP" +
-      "OSITIONAL\020\004*h\n\026DALIMotionSensorStates\022\017\n" +
-      "\013MOTION_IDLE\020\000\022\023\n\017MOTION_DISABLED\020\001\022\022\n\016M" +
-      "OTION_WARNING\020\002\022\024\n\020MOTION_OCCUPANCY\020\003*I\n" +
-      "\023DALILuxSensorStates\022\020\n\014LUX_DISABLED\020\000\022\017" +
-      "\n\013LUX_ENABLED\020\001\022\017\n\013LUX_DEVIATE\020\002*N\n\023DALI" +
-      "AddressingError\022\014\n\010NO_ERROR\020\000\022\n\n\006VERIFY\020" +
-      "\001\022\n\n\006SEARCH\020\002\022\021\n\rNO_NEW_DEVICE\020\003*8\n\022DALI" +
-      "AddressingType\022\017\n\013ADDRESS_NEW\020\000\022\021\n\rREADD" +
-      "RESS_ALL\020\001b\006proto3"
+      "SensorStates\022\021\n\tlux_level\030\006 \001(\r\"\300\002\n\014Even" +
+      "tMessage\022\031\n\005event\030\001 \001(\0162\n.EventType\022 \n\007t" +
+      "rigger\030\002 \001(\0132\r.TriggerEventH\000\022%\n\006inputs\030" +
+      "\003 \001(\0132\023.InputStateResponseH\000\022\"\n\007payload\030" +
+      "\004 \001(\0132\017.PayloadMessageH\000\022\"\n\006sensor\030\006 \001(\013" +
+      "2\020.DALISensorEventH\000\022*\n\rdali_24_input\030\007 " +
+      "\001(\0132\021.DALI24InputEventH\000\022\036\n\006filter\030\010 \001(\013" +
+      "2\014.EventFilterH\000\022*\n\rdali_24_frame\030\t \001(\0132" +
+      "\021.DALI24FrameEventH\000B\014\n\nevent_data\"\337\024\n\rE" +
+      "didioMessage\022\022\n\nmessage_id\030\001 \001(\r\022\032\n\003ack\030" +
+      "\002 \001(\0132\013.AckMessageH\000\022$\n\006inputs\030\003 \001(\0132\022.I" +
+      "nputMultiMessageH\000\022&\n\007outputs\030\004 \001(\0132\023.Ou" +
+      "tputMultiMessageH\000\022\036\n\003irs\030\005 \001(\0132\017.IRMult" +
+      "iMessageH\000\022 \n\006sensor\030\006 \001(\0132\016.SensorMessa" +
+      "geH\000\022\034\n\004list\030\010 \001(\0132\014.ListMessageH\000\022\036\n\005al" +
+      "arm\030\n \001(\0132\r.AlarmMessageH\000\022$\n\006alarms\030\013 \001" +
+      "(\0132\022.AlarmMultiMessageH\000\022\'\n\010burn_ins\030\014 \001" +
+      "(\0132\023.BurnInMultiMessageH\000\022/\n\016sensor_comm" +
+      "and\030\r \001(\0132\025.SensorCommandMessageH\000\022/\n\016ch" +
+      "ange_profile\030\016 \001(\0132\025.ChangeProfileMessag" +
+      "eH\000\022,\n\020identify_message\030\017 \001(\0132\020.Identify" +
+      "MessageH\000\022)\n\013update_time\030\020 \001(\0132\022.UpdateT" +
+      "imeMessageH\000\022)\n\013read_device\030\021 \001(\0132\022.Read" +
+      "DeviceMessageH\000\022$\n\014dali_message\030\022 \001(\0132\014." +
+      "DALIMessageH\000\022(\n\ndali_query\030\023 \001(\0132\022.DALI" +
+      "QueryResponseH\000\022\"\n\013dmx_message\030\024 \001(\0132\013.D" +
+      "MXMessageH\000\0223\n\020external_trigger\030\025 \001(\0132\027." +
+      "ExternalTriggerMessageH\000\0222\n\020spektra_sett" +
+      "ings\030\026 \001(\0132\026.SpektraSettingMessageH\000\0229\n\020" +
+      "spektra_sequence\030\027 \001(\0132\035.SpektraSequence" +
+      "ConfigMessageH\000\0223\n\020spektra_calendar\030\030 \001(" +
+      "\0132\027.SpektraCalendarMessageH\000\0223\n\rspektra_" +
+      "theme\030\031 \001(\0132\032.SpektraThemeConfigMessageH" +
+      "\000\022+\n\014spektra_read\030\032 \001(\0132\023.SpektraReadMes" +
+      "sageH\000\0221\n\017spektra_control\030\033 \001(\0132\026.Spektr" +
+      "aControlMessageH\000\0221\n\016dmx_translator\030\034 \001(" +
+      "\0132\027.DMXProtocolTranslationH\000\022+\n\rinput_re" +
+      "quest\030\035 \001(\0132\022.InputStateMessageH\000\022-\n\016inp" +
+      "ut_response\030\036 \001(\0132\023.InputStateResponseH\000" +
+      "\0224\n\013diag_system\030\037 \001(\0132\035.DiagnosticSystem" +
+      "InfoResponseH\000\022*\n\014diag_message\030  \001(\0132\022.D" +
+      "iagnosticMessageH\000\022&\n\radmin_message\030! \001(" +
+      "\0132\r.AdminMessageH\000\022\036\n\005event\030\" \001(\0132\r.Even" +
+      "tMessageH\000\022>\n\026secure_device_settings\030# \001" +
+      "(\0132\034.SecureDeviceSettingsMessageH\000\022,\n\014fi" +
+      "rmware_new\030$ \001(\0132\024.FirmwareMetaMessageH\000" +
+      "\0223\n\020firmware_control\030% \001(\0132\027.FirmwareCon" +
+      "trolMessageH\000\022/\n\016firmware_chunk\030& \001(\0132\025." +
+      "FirmwareChunkMessageH\000\0223\n\024level_cache_re" +
+      "sponse\030\' \001(\0132\023.LevelCacheResponseH\000\022-\n\rl" +
+      "ist_extended\030) \001(\0132\024.ExtendedListMessage" +
+      "H\000\022\"\n\013ayt_message\030* \001(\0132\013.AytMessageH\000\022\"" +
+      "\n\013rdm_message\030+ \001(\0132\013.RDMMessageH\000\0223\n\024rd" +
+      "m_response_message\030, \001(\0132\023.RDMResponseMe" +
+      "ssageH\000\022+\n\rlogic_message\030- \001(\0132\022.LogicMu" +
+      "ltiMessageH\000\0220\n\014secure_login\030. \001(\0132\030.Adm" +
+      "inSecureLoginMessageH\000\0223\n\024device_state_m" +
+      "essage\030/ \001(\0132\023.DeviceStateMessageH\000\022:\n\024s" +
+      "pektra_calendar_day\0300 \001(\0132\032.SpektraCalen" +
+      "darDayMessageH\000\022D\n\031spektra_calendar_over" +
+      "view\0301 \001(\0132\037.SpektraCalendarOverviewMess" +
+      "ageH\000\022-\n\013inputs_dali\0302 \001(\0132\026.DALIInputMu" +
+      "ltiMessageH\000\022*\n\tlogs_read\0303 \001(\0132\025.System" +
+      "LogReadMessageH\000\0223\n\rmetadata_read\0304 \001(\0132" +
+      "\032.SystemMetaDataReadMessageH\000\0229\n\027dali_ad" +
+      "dressing_message\0305 \001(\0132\026.DALIAddressingM" +
+      "essageH\000\0227\n\026dali_remapping_message\0306 \001(\013" +
+      "2\025.DALIRemappingMessageH\000\022B\n\034spektra_sho" +
+      "w_control_message\0307 \001(\0132\032.SpektraShowCon" +
+      "trolMessageH\000\0223\n\024spektra_show_message\0308 " +
+      "\001(\0132\023.SpektraShowMessageH\000\022D\n\035extended_s" +
+      "pektra_show_message\0309 \001(\0132\033.ExtendedSpek" +
+      "traShowMessageH\000\022-\n\rrdm_discovery\030: \001(\0132" +
+      "\024.RDMDiscoveryMessageH\000\0228\n\023rdm_discovery" +
+      "_reply\030; \001(\0132\031.RDMDiscoveryReplyMessageH",
+      "\000B\t\n\007payload*\233\001\n\024TriggerOperationType\022\r\n" +
+      "\tMOMENTARY\020\000\022\014\n\010LATCHING\020\001\022\024\n\020MOMENTARY_" +
+      "OUTPUT\020\002\022\023\n\017LATCHING_OUTPUT\020\003\022\n\n\006ROTARY\020" +
+      "\004\022\027\n\022MOMENTARY_DISABLED\020\200\001\022\026\n\021LATCHING_D" +
+      "ISABLED\020\201\001*\316\013\n\013TriggerType\022\014\n\010DALI_ARC\020\000" +
+      "\022\020\n\014DALI_COMMAND\020\001\022\032\n\026DMX_CHANNELS_SPLIT" +
+      "_LOW\020\002\022\033\n\027DMX_CHANNELS_SPLIT_HIGH\020\003\022$\n D" +
+      "MX_MULTICAST_CHANNELS_SPLIT_LOW\020\004\022%\n!DMX" +
+      "_MULTICAST_CHANNELS_SPLIT_HIGH\020\005\022\021\n\rDMX_" +
+      "BROADCAST\020\006\022\t\n\005DIDIO\020\007\022\024\n\020FADE_UP_WITH_M" +
+      "IN\020\010\022\016\n\nLIST_START\020\t\022\031\n\025LIST_START_CONTI" +
+      "NUOUS\020\n\022\r\n\tLIST_STOP\020\013\022\025\n\021SPEKTRA_START_" +
+      "SEQ\020\014\022\024\n\020SPEKTRA_STOP_SEQ\020\r\022\021\n\rSPEKTRA_T" +
+      "HEME\020\016\022\022\n\016SPEKTRA_STATIC\020\017\022\024\n\020SPEKTRA_SC" +
+      "HEDULE\020\020\022\016\n\nLINK_START\020\021\022\r\n\tLINK_STOP\020\022\022" +
+      "\020\n\014DISABLE_BURN\020\023\022\017\n\013ENABLE_BURN\020\024\022\016\n\nON" +
+      "_OFF_TOG\020\025\022\017\n\013MIN_MAX_TOG\020\026\022\020\n\014ENABLE_IN" +
+      "PUT\020\027\022\021\n\rDISABLE_INPUT\020\030\022\024\n\020ENABLE_TOG_I" +
+      "NPUT\020\031\022\016\n\nOUTPUT_TOG\020\032\022\017\n\013OUTPUT_HIGH\020\033\022" +
+      "\016\n\nOUTPUT_LOW\020\034\022\017\n\013OUTPUT_TRIG\020\035\022\022\n\016PROF" +
+      "ILE_CHANGE\020\036\022\023\n\017FADE_LONG_PRESS\020\037\022\n\n\006SYN" +
+      "CRO\020 \022\017\n\013PRESET_CODE\020!\022\017\n\013CUSTOM_CODE\020\"\022" +
+      "\021\n\rSPEKTRA_SLEEP\020#\022\022\n\016SPEKTRA_RESUME\020$\022\020" +
+      "\n\014DEVICE_RESET\020%\022\017\n\013DEVICE_SAVE\020&\022\030\n\024USE" +
+      "R_LEVEL_STORE_NEW\020\'\022\032\n\026USER_LEVEL_SET_DE" +
+      "FAULT\020(\022\025\n\021USER_LEVEL_RECALL\020)\022\r\n\tROOM_J" +
+      "OIN\020+\022\017\n\013ROOM_UNJOIN\020,\022\023\n\017TYPE8_TC_WARME" +
+      "R\020-\022\023\n\017TYPE8_TC_COOLER\020.\022\023\n\017TYPE8_TC_ACT" +
+      "UAL\020/\022\023\n\017LOGIC_OPERATION\0200\022\020\n\014ALARM_ENAB" +
+      "LE\0201\022\021\n\rALARM_DISABLE\0202\022 \n\034DALI_CONTROL_" +
+      "SENSOR_OVERRIDE\0203\022$\n DALI_CONTROL_SENSOR" +
+      "_TEMP_DISABLE\0204\022\036\n\032DALI_CONTROL_SENSOR_R" +
+      "ESUME\0205\022\025\n\021DALI_ARC_OVERRIDE\0206\022\031\n\025DALI_C" +
+      "OMMAND_OVERRIDE\0207\022\035\n\031FADE_UP_WITH_MIN_OV" +
+      "ERRIDE\0208\022\027\n\023ON_OFF_TOG_OVERRIDE\0209\022\030\n\024MIN" +
+      "_MAX_TOG_OVERRIDE\020:\022\017\n\013MAX_OFF_TOG\020;\022\030\n\024" +
+      "MAX_OFF_TOG_OVERRIDE\020<\022\034\n\030FADE_LONG_PRES" +
+      "S_OVERRIDE\020=\022\036\n\032USER_LEVEL_RECALL_OVERRI" +
+      "DE\020>\022\024\n\020DMX_ZONE_FADE_UP\020?\022\026\n\022DMX_ZONE_F" +
+      "ADE_DOWN\020@\022\021\n\rLOGGING_LEVEL\020A\022\030\n\024SPEKTRA" +
+      "_SHOW_CONTROL\020B\022\031\n\025CIRCADIAN_TEMPERATURE" +
+      "\020C\022\017\n\nNO_COMMAND\020\376\001*\353\001\n\010ReadType\022\n\n\006INPU" +
+      "TS\020\000\022\013\n\007OUTPUTS\020\001\022\006\n\002IR\020\002\022\n\n\006SENSOR\020\003\022\010\n" +
+      "\004LIST\020\005\022\n\n\006ALARMS\020\007\022\013\n\007BURN_IN\020\010\022\013\n\007PROJ" +
+      "ECT\020\t\022\013\n\007NETWORK\020\n\022\n\n\006DEVICE\020\013\022\r\n\tPOLL_D" +
+      "ATA\020\014\022\021\n\rLIST_EXTENDED\020\r\022\t\n\005LOGIC\020\016\022\017\n\013D" +
+      "ALI_INPUTS\020\017\022\020\n\014SPEKTRA_SHOW\020\020\022\031\n\025SPEKTR" +
+      "A_SHOW_EXTENDED\020\021*\214\001\n\017AlarmRepeatType\022\023\n" +
+      "\017ALARM_NO_REPEAT\020\000\022\026\n\022ALARM_REPEAT_DAILY" +
+      "\020\001\022\031\n\025ALARM_REPEAT_WORK_DAY\020\002\022\027\n\023ALARM_R" +
+      "EPEAT_WEEKLY\020\003\022\030\n\024ALARM_REPEAT_MONTHLY\020\004" +
+      "*I\n\016AlarmAstroType\022\022\n\016ALARM_NO_ASTRO\020\000\022\021" +
+      "\n\rALARM_SUNRUSE\020\001\022\020\n\014ALARM_SUNSET\020\002*^\n\021S" +
+      "pektraTargetType\022\014\n\010SETTINGS\020\000\022\014\n\010SEQUEN" +
+      "CE\020\001\022\t\n\005THEME\020\002\022\n\n\006STATIC\020\003\022\014\n\010CALENDAR\020" +
+      "\004\022\010\n\004SHOW\020\005*=\n\021SpektraActionType\022\t\n\005STAR" +
+      "T\020\000\022\010\n\004STOP\020\001\022\t\n\005PAUSE\020\002\022\010\n\004SAVE\020\003*p\n\025Sp" +
+      "ektraStepActionType\022\020\n\014RUN_SEQUENCE\020\000\022\016\n" +
+      "\nSHOW_THEME\020\001\022\016\n\nSTART_LIST\020\002\022\022\n\016PAUSE_P" +
+      "REVIOUS\020\003\022\021\n\rSTOP_PREVIOUS\020\004*}\n\037SpektraU" +
+      "nscheduledBehaviourType\022 \n\034RUN_RANDOM_CO" +
+      "LOURED_SEQUENCE\020\000\022\022\n\016RUN_SEQUENCE_1\020\001\022\023\n" +
+      "\017RESUME_PREVIOUS\020\002\022\017\n\nDO_NOTHING\020\376\001*6\n\022L" +
+      "ineAddressingType\022\017\n\013INDEPENDENT\020\000\022\017\n\013CO" +
+      "NSECUTIVE\020\001*\347\002\n\016AckMessageType\022\021\n\rDECODE" +
+      "_FAILED\020\000\022\027\n\023INDEX_OUT_OF_BOUNDS\020\001\022\023\n\017UN" +
+      "EXPECTED_TYPE\020\002\022\021\n\rENCODE_FAILED\020\003\022\020\n\014KE" +
+      "Y_MISMATCH\020\004\022\013\n\007SUCCESS\020\005\022\022\n\016INVALID_PAR" +
+      "AMS\020\006\022\026\n\022UNEXPECTED_COMMAND\020\007\022\030\n\024COMMUNI" +
+      "CATION_FAILED\020\010\022\031\n\025COMMUNICATION_TIMEOUT" +
+      "\020\t\022\021\n\rDATA_TOO_LONG\020\n\022\023\n\017UNEXPECTED_CASE" +
+      "\020\013\022\016\n\nSLOTS_FULL\020\014\022\020\n\014UNAUTHORISED\020\r\022\023\n\017" +
+      "PARTIAL_SUCCESS\020\016\022\022\n\016COMMAND_FAILED\020\017\022\016\n" +
+      "\nDEPRECATED\020\020*\323\004\n\020Type8CommandType\022\024\n\020SE" +
+      "T_TEMP_X_COORD\020\000\022\024\n\020SET_TEMP_Y_COORD\020\001\022\014" +
+      "\n\010ACTIVATE\020\002\022\023\n\017X_COORD_STEP_UP\020\003\022\025\n\021X_C" +
+      "OORD_STEP_DOWN\020\004\022\023\n\017Y_COORD_STEP_UP\020\005\022\025\n" +
+      "\021Y_COORD_STEP_DOWN\020\006\022\037\n\033SET_TEMP_COLOUR_" +
+      "TEMPERATURE\020\007\022\"\n\036COLOUR_TEMPERATURE_STEP" +
+      "_COOLER\020\010\022\"\n\036COLOUR_TEMPERATURE_STEP_WAR" +
+      "MER\020\t\022\033\n\027SET_TEMP_PRI_N_DIMLEVEL\020\n\022\031\n\025SE" +
+      "T_TEMP_RGB_DIMLEVEL\020\013\022\031\n\025SET_TEMP_WAF_DI" +
+      "MLEVEL\020\014\022\033\n\027SET_TEMP_RGBWAF_CONTROL\020\r\022\031\n" +
+      "\025COPY_REPORT_TEMPORARY\020\016\022\022\n\016STORE_TY_PRI" +
+      "_N\020\020\022\030\n\024STORE_XY_COORD_PRI_N\020\021\022\"\n\036STORE_" +
+      "COLOUR_TEMPERATURE_LIMIT\020\022\022\036\n\032STORE_GEAR" +
+      "_FEATURES_STATUS\020\023\022\032\n\026ASSIGN_COLOR_LINKE" +
+      "D_CH\020\025\022\022\n\016START_AUTO_CAL\020\026\022\027\n\023ENABLE_DEV" +
+      "ICE_TYPE8\0200*\221\002\n\016Type8QueryType\022\024\n\020TYPE8_" +
+      "QUERY_NULL\020\000\022$\n TYPE8_QUERY_GEAR_FEATURE" +
+      "S_STATUS\020\001\022\035\n\031TYPE8_QUERY_COLOUR_STATUS\020" +
+      "\002\022$\n TYPE8_QUERY_COLOUR_TYPE_FEATURES\020\003\022" +
+      "\034\n\030TYPE8_QUERY_COLOUR_VALUE\020\004\022\036\n\032TYPE8_Q" +
+      "UERY_RGBWAF_CONTROL\020\005\022\037\n\033TYPE8_QUERY_ASS" +
+      "IGNED_COLOUR\020\006\022\037\n\033TYPE8_QUERY_EXT_VERSIO" +
+      "N_NUM\020\010*\274\006\n\023DALI24DeviceSetting\022\024\n\020COMMA" +
+      "ND_IDENTIFY\020\000\022\"\n\036COMMAND_RESET_POWER_CYC" +
+      "LE_SEEN\020\001\022\021\n\rCOMMAND_RESET\020\020\022\035\n\031COMMAND_" +
+      "RESET_MEMORY_BANK\020\021\022\035\n\031COMMAND_SET_SHORT" +
+      "_ADDRESS\020\024\022\037\n\033COMMAND_ENABLE_WRITE_MEMOR" +
+      "Y\020\025\022!\n\035COMMAND_ENABLE_APP_CONTROLLER\020\026\022\"" +
+      "\n\036COMMAND_DISABLE_APP_CONTROLLER\020\027\022\036\n\032CO" +
+      "MMAND_SET_OPERATING_MODE\020\030\022%\n!COMMAND_AD" +
+      "D_TO_DEVICE_GROUPS_0_15\020\031\022&\n\"COMMAND_ADD" +
+      "_TO_DEVICE_GROUPS_15_32\020\032\022#\n\037COMMAND_REM" +
+      "OVE_FROM_GROUPS_0_15\020\033\022$\n COMMAND_REMOVE" +
+      "_FROM_GROUPS_16_32\020\034\022 \n\034COMMAND_START_QU" +
+      "IESCENT_MODE\020\035\022\037\n\033COMMAND_STOP_QUIESCENT" +
+      "_MODE\020\036\022$\n COMMAND_ENABLE_POWER_CYCLE_NO" +
+      "TIF\020\037\022%\n!COMMAND_DISABLE_POWER_CYCLE_NOT" +
+      "IF\020 \022%\n!COMMAND_SAVE_PERSISTENT_VARIABLE" +
+      "S\020!\022\026\n\022SET_EVENT_PRIORITY\020a\022\023\n\017ENABLE_IN" +
+      "STANCE\020b\022\024\n\020DISABLE_INSTANCE\020c\022\036\n\032SET_PR" +
+      "IMARY_INSTANCE_GROUP\020d\022\030\n\024SET_INSTANCE_G" +
+      "ROUP_1\020e\022\030\n\024SET_INSTANCE_GROUP_2\020f\022\024\n\020SE" +
+      "T_EVENT_SCHEME\020g\022\024\n\020SET_EVENT_FILTER\020h*c" +
+      "\n\022DALI24InstanceType\022\013\n\007DEFAULT\020\000\022\t\n\005INP" +
+      "UT\020\001\022\020\n\014ROTARY_INPUT\020\002\022\021\n\rMOTION_SENSOR\020" +
+      "\003\022\020\n\014LIGHT_SENSOR\020\004*\276\002\n\014DALI24OpCode\022\017\n\013" +
+      "OPCODE_NULL\020\000\022 \n\034SENSOR_MOTION_SET_HOLD_" +
+      "TIMER\020!\022\"\n\036SENSOR_MOTION_SET_REPORT_TIME" +
+      "R\020\"\022$\n SENSOR_MOTION_SET_DEADTIME_TIMER\020" +
+      "#\022#\n\037SENSOR_MOTION_CANCEL_HOLD_TIMER\020$\022!" +
+      "\n\035SENSOR_LIGHT_SET_REPORT_TIMER\0200\022\037\n\033SEN" +
+      "SOR_LIGHT_SET_HYSTERESIS\0201\022#\n\037SENSOR_LIG" +
+      "HT_SET_DEADTIME_TIMER\0202\022#\n\037SENSOR_LIGHT_" +
+      "SET_HYSTERESIS_MIN\0203*W\n\010LineType\022\016\n\nLINE" +
+      "_EMPTY\020\000\022\r\n\tLINE_DALI\020\001\022\014\n\010LINE_DMX\020\002\022\017\n" +
+      "\013LINE_DMX_IN\020\003\022\r\n\tLINE_AUTO\020\004*\251\001\n\tEventT" +
+      "ype\022\014\n\010REGISTER\020\000\022\021\n\rTRIGGER_EVENT\020\001\022\017\n\013" +
+      "INPUT_EVENT\020\002\022\020\n\014SENSOR_EVENT\020\003\022\021\n\rCONTR" +
+      "OL_EVENT\020\004\022\023\n\017ROOM_JOIN_EVENT\020\005\022\027\n\023DALI_" +
+      "24_INPUT_EVENT\020\006\022\027\n\023DALI_24_FRAME_EVENT\020" +
+      "\007*\306\t\n\rDALIQueryType\022\023\n\017DALI_QUERY_NULL\020\000" +
+      "\022\026\n\021DALI_QUERY_STATUS\020\220\001\022\027\n\022DALI_QUERY_B" +
+      "ALLAST\020\221\001\022\034\n\027DALI_QUERY_LAMP_FAILURE\020\222\001\022" +
+      "\035\n\030DALI_QUERY_LAMP_POWER_ON\020\223\001\022\033\n\026DALI_Q" +
+      "UERY_LIMIT_ERROR\020\224\001\022\033\n\026DALI_QUERY_RESET_" +
+      "STATE\020\225\001\022%\n DALI_QUERY_MISSING_SHORT_ADD" +
+      "RESS\020\226\001\022\036\n\031DALI_QUERY_VERSION_NUMBER\020\227\001\022" +
+      "\024\n\017DALI_QUERY_DTR0\020\230\001\022\033\n\026DALI_QUERY_DEVI" +
+      "CE_TYPE\020\231\001\022\034\n\027DALI_QUERY_PHYSICAL_MIN\020\232\001" +
+      "\022\035\n\030DALI_QUERY_POWER_FAILURE\020\233\001\022\024\n\017DALI_" +
+      "QUERY_DTR1\020\234\001\022\024\n\017DALI_QUERY_DTR2\020\235\001\022\036\n\031D" +
+      "ALI_QUERY_OPERATING_MODE\020\236\001\022 \n\033DALI_QUER" +
+      "Y_LIGHTSOURCE_TYPE\020\237\001\022\034\n\027DALI_QUERY_ACTU" +
+      "AL_LEVEL\020\240\001\022\031\n\024DALI_QUERY_MAX_LEVEL\020\241\001\022\031" +
+      "\n\024DALI_QUERY_MIN_LEVEL\020\242\001\022\036\n\031DALI_QUERY_" +
+      "POWER_ON_LEVEL\020\243\001\022$\n\037DALI_QUERY_SYSTEM_F" +
+      "AILURE_LEVEL\020\244\001\022!\n\034DALI_QUERY_FADETIME_F" +
+      "ADERATE\020\245\001\022*\n%DALI_QUERY_MANUFACTURER_SP" +
+      "ECIFIC_MODE\020\246\001\022 \n\033DALI_QUERY_NEXT_DEVICE" +
+      "_TYPE\020\247\001\022\"\n\035DALI_QUERY_EXTENDED_FADE_TIM" +
+      "E\020\250\001\022$\n\037DALI_QUERY_CONTROL_GEAR_FAILURE\020" +
+      "\252\001\022\035\n\030DALI_QUERY_SCENE_X_LEVEL\020\260\001\022\032\n\025DAL" +
+      "I_QUERY_GROUPS_0_7\020\300\001\022\033\n\026DALI_QUERY_GROU" +
+      "PS_8_15\020\301\001\022 \n\033DALI_QUERY_RANDOM_ADDRESS_" +
+      "H\020\302\001\022 \n\033DALI_QUERY_RANDOM_ADDRESS_M\020\303\001\022 " +
+      "\n\033DALI_QUERY_RANDOM_ADDRESS_L\020\304\001\022\034\n\027DALI" +
+      "_QUERY_READ_DTR_0_1\020\305\001\022 \n\033DALI_QUERY_APP" +
+      "_EXT_COMMANDS\020\340\001\022\"\n\035DALI_QUERY_EXT_VERSI" +
+      "ON_NUMBER\020\377\001\022\027\n\022DALI_QUERY_COMPARE\020\204\002\022$\n" +
+      "\037DALI_QUERY_VERIFY_SHORT_ADDRESS\020\214\002\022\035\n\030D" +
+      "ALI_QUERY_SHORT_ADDRESS\020\215\002*\351\027\n\017DALIComma" +
+      "ndType\022\014\n\010DALI_OFF\020\000\022\020\n\014DALI_FADE_UP\020\001\022\022" +
+      "\n\016DALI_FADE_DOWN\020\002\022\020\n\014DALI_STEP_UP\020\003\022\022\n\016" +
+      "DALI_STEP_DOWN\020\004\022\022\n\016DALI_MAX_LEVEL\020\005\022\022\n\016" +
+      "DALI_MIN_LEVEL\020\006\022\026\n\022DALI_STEP_DOWN_OFF\020\007" +
+      "\022\023\n\017DALI_ON_STEP_UP\020\010\022\030\n\024DALI_ENABLE_DAP" +
+      "C_SEQ\020\t\022!\n\035DALI_RECALL_LAST_ACTIVE_LEVEL" +
+      "\020\n\022\026\n\022DALI_CONTINUOUS_UP\020\013\022\030\n\024DALI_CONTI" +
+      "NUOUS_DOWN\020\014\022\027\n\023DALI_RECALL_SCENE_0\020\020\022\027\n" +
+      "\023DALI_RECALL_SCENE_1\020\021\022\027\n\023DALI_RECALL_SC" +
+      "ENE_2\020\022\022\027\n\023DALI_RECALL_SCENE_3\020\023\022\027\n\023DALI" +
+      "_RECALL_SCENE_4\020\024\022\027\n\023DALI_RECALL_SCENE_5" +
+      "\020\025\022\027\n\023DALI_RECALL_SCENE_6\020\026\022\027\n\023DALI_RECA" +
+      "LL_SCENE_7\020\027\022\027\n\023DALI_RECALL_SCENE_8\020\030\022\027\n" +
+      "\023DALI_RECALL_SCENE_9\020\031\022\030\n\024DALI_RECALL_SC" +
+      "ENE_10\020\032\022\030\n\024DALI_RECALL_SCENE_11\020\033\022\030\n\024DA" +
+      "LI_RECALL_SCENE_12\020\034\022\030\n\024DALI_RECALL_SCEN" +
+      "E_13\020\035\022\030\n\024DALI_RECALL_SCENE_14\020\036\022\030\n\024DALI" +
+      "_RECALL_SCENE_15\020\037\022\016\n\nDALI_RESET\020 \022 \n\034DA" +
+      "LI_STORE_ACTUAL_LEVEL_DTR0\020!\022\035\n\031DALI_SAV" +
+      "E_PERSISTENT_VARS\020\"\022\033\n\027DALI_SET_OPERATIN" +
+      "G_MODE\020#\022\032\n\026DALI_RESET_MEMORY_BANK\020$\022\030\n\024" +
+      "DALI_IDENTIFY_DEVICE\020%\022\026\n\022DALI_SET_MAX_L" +
+      "EVEL\020*\022\026\n\022DALI_SET_MIN_LEVEL\020+\022!\n\035DALI_S" +
+      "ET_SYSTEM_FAILURE_LEVEL\020,\022\033\n\027DALI_SET_PO" +
+      "WER_ON_LEVEL\020-\022\026\n\022DALI_SET_FADE_TIME\020.\022\026" +
+      "\n\022DALI_SET_FADE_RATE\020/\022\032\n\026DALI_SET_EXT_F" +
+      "ADE_TIME\0200\022\024\n\020DALI_SET_SCENE_0\020@\022\024\n\020DALI" +
+      "_SET_SCENE_1\020A\022\024\n\020DALI_SET_SCENE_2\020B\022\024\n\020" +
+      "DALI_SET_SCENE_3\020C\022\024\n\020DALI_SET_SCENE_4\020D" +
+      "\022\024\n\020DALI_SET_SCENE_5\020E\022\024\n\020DALI_SET_SCENE" +
+      "_6\020F\022\024\n\020DALI_SET_SCENE_7\020G\022\024\n\020DALI_SET_S" +
+      "CENE_8\020H\022\024\n\020DALI_SET_SCENE_9\020I\022\025\n\021DALI_S" +
+      "ET_SCENE_10\020J\022\025\n\021DALI_SET_SCENE_11\020K\022\025\n\021" +
+      "DALI_SET_SCENE_12\020L\022\025\n\021DALI_SET_SCENE_13" +
+      "\020M\022\025\n\021DALI_SET_SCENE_14\020N\022\025\n\021DALI_SET_SC" +
+      "ENE_15\020O\022\034\n\030DALI_REMOVE_FROM_SCENE_0\020P\022\034" +
+      "\n\030DALI_REMOVE_FROM_SCENE_1\020Q\022\034\n\030DALI_REM" +
+      "OVE_FROM_SCENE_2\020R\022\034\n\030DALI_REMOVE_FROM_S" +
+      "CENE_3\020S\022\034\n\030DALI_REMOVE_FROM_SCENE_4\020T\022\034" +
+      "\n\030DALI_REMOVE_FROM_SCENE_5\020U\022\034\n\030DALI_REM" +
+      "OVE_FROM_SCENE_6\020V\022\034\n\030DALI_REMOVE_FROM_S" +
+      "CENE_7\020W\022\034\n\030DALI_REMOVE_FROM_SCENE_8\020X\022\034" +
+      "\n\030DALI_REMOVE_FROM_SCENE_9\020Y\022\035\n\031DALI_REM" +
+      "OVE_FROM_SCENE_10\020Z\022\035\n\031DALI_REMOVE_FROM_" +
+      "SCENE_11\020[\022\035\n\031DALI_REMOVE_FROM_SCENE_12\020" +
+      "\\\022\035\n\031DALI_REMOVE_FROM_SCENE_13\020]\022\035\n\031DALI" +
+      "_REMOVE_FROM_SCENE_14\020^\022\035\n\031DALI_REMOVE_F" +
+      "ROM_SCENE_15\020_\022\027\n\023DALI_ADD_TO_GROUP_0\020`\022" +
+      "\027\n\023DALI_ADD_TO_GROUP_1\020a\022\027\n\023DALI_ADD_TO_" +
+      "GROUP_2\020b\022\027\n\023DALI_ADD_TO_GROUP_3\020c\022\027\n\023DA" +
+      "LI_ADD_TO_GROUP_4\020d\022\027\n\023DALI_ADD_TO_GROUP" +
+      "_5\020e\022\027\n\023DALI_ADD_TO_GROUP_6\020f\022\027\n\023DALI_AD" +
+      "D_TO_GROUP_7\020g\022\027\n\023DALI_ADD_TO_GROUP_8\020h\022" +
+      "\027\n\023DALI_ADD_TO_GROUP_9\020i\022\030\n\024DALI_ADD_TO_" +
+      "GROUP_10\020j\022\030\n\024DALI_ADD_TO_GROUP_11\020k\022\030\n\024" +
+      "DALI_ADD_TO_GROUP_12\020l\022\030\n\024DALI_ADD_TO_GR" +
+      "OUP_13\020m\022\030\n\024DALI_ADD_TO_GROUP_14\020n\022\030\n\024DA" +
+      "LI_ADD_TO_GROUP_15\020o\022\034\n\030DALI_REMOVE_FROM" +
+      "_GROUP_0\020p\022\034\n\030DALI_REMOVE_FROM_GROUP_1\020q" +
+      "\022\034\n\030DALI_REMOVE_FROM_GROUP_2\020r\022\034\n\030DALI_R" +
+      "EMOVE_FROM_GROUP_3\020s\022\034\n\030DALI_REMOVE_FROM" +
+      "_GROUP_4\020t\022\034\n\030DALI_REMOVE_FROM_GROUP_5\020u" +
+      "\022\034\n\030DALI_REMOVE_FROM_GROUP_6\020v\022\034\n\030DALI_R" +
+      "EMOVE_FROM_GROUP_7\020w\022\034\n\030DALI_REMOVE_FROM" +
+      "_GROUP_8\020x\022\034\n\030DALI_REMOVE_FROM_GROUP_9\020y" +
+      "\022\035\n\031DALI_REMOVE_FROM_GROUP_10\020z\022\035\n\031DALI_" +
+      "REMOVE_FROM_GROUP_11\020{\022\035\n\031DALI_REMOVE_FR" +
+      "OM_GROUP_12\020|\022\035\n\031DALI_REMOVE_FROM_GROUP_" +
+      "13\020}\022\035\n\031DALI_REMOVE_FROM_GROUP_14\020~\022\035\n\031D" +
+      "ALI_REMOVE_FROM_GROUP_15\020\177\022\033\n\026DALI_SET_S" +
+      "HORT_ADDRESS\020\200\001\022\035\n\030DALI_ENABLE_WRITE_MEM" +
+      "ORY\020\201\001\022\023\n\016DALI_TERMINATE\020\377\001\022\024\n\017DALI_INIT" +
+      "IALISE\020\202\002\022\023\n\016DALI_RANDOMISE\020\203\002\022\022\n\rDALI_W" +
+      "ITHDRAW\020\205\002\022\027\n\022DALI_SEARCH_ADDR_H\020\210\002\022\027\n\022D" +
+      "ALI_SEARCH_ADDR_M\020\211\002\022\027\n\022DALI_SEARCH_ADDR" +
+      "_L\020\212\002\022\037\n\032DALI_PROGRAM_SHORT_ADDRESS\020\213\002*\250" +
+      "\001\n\025CustomDALICommandType\022\022\n\016DALI_ARC_LEV" +
+      "EL\020\000\022\023\n\017DALI_DAPC_LEVEL\020\001\022\030\n\024DALI_GROUP_" +
+      "ARC_LEVEL\020\002\022\030\n\024DALI_BROADCAST_SCENE\020\003\022\027\n" +
+      "\023DALI_SCENE_ON_GROUP\020\004\022\031\n\025DALI_SCENE_ON_" +
+      "ADDRESS\020\005*\233\004\n\021AdminPropertyType\022\017\n\013DEVIC" +
+      "E_NAME\020\000\022\020\n\014PROJECT_NAME\020\001\022\r\n\tLONGITUDE\020" +
+      "\002\022\014\n\010LATITUDE\020\003\022\024\n\020LOCAL_UTC_OFFSET\020\004\022\024\n" +
+      "\020DAYLIGHT_SAVINGS\020\005\022\017\n\013POLL_ACTIVE\020\006\022\020\n\014" +
+      "DHCP_ENABLED\020\007\022\013\n\007IP_ADDR\020\010\022\014\n\010MAC_ADDR\020" +
+      "\t\022\016\n\nGATEWAY_IP\020\n\022\026\n\022NETWORK_PROPERTIES\020" +
+      "\013\022\025\n\021SYSTEM_PROPERTIES\020\014\022\024\n\020CONTROLLER_L" +
+      "INES\020\r\022\024\n\020EEPROM_FULL_CHIP\020\016\022\017\n\013CONFIG_D" +
+      "ATA\020\017\022\020\n\014SPEKTRA_DATA\020\020\022\021\n\rDEVICE_STATUS" +
+      "\020\021\022\021\n\rCONFIG_STATUS\020\022\022\017\n\013DEVICE_TIME\020\023\022\017" +
+      "\n\013NTP_DETAILS\020\024\022\025\n\021TRIDONIC_MSENSORS\020\025\022\022" +
+      "\n\016SECURE_SESSION\020\026\022\t\n\005NONCE\020\027\022\024\n\020DALI_SE" +
+      "NSOR_TYPE\020\030\022\021\n\rDEVICE_REBOOT\020\031\022\022\n\016SYSTEM" +
+      "_LOGGING\020\032\022\n\n\006SUBNET\020\033\022\007\n\003DNS\020\034*M\n\020Admin" +
+      "CommandType\022\007\n\003SET\020\000\022\007\n\003GET\020\001\022\007\n\003ADD\020\002\022\n" +
+      "\n\006REMOVE\020\003\022\t\n\005RESET\020\004\022\007\n\003RUN\020\005*\265\001\n\016DALIS" +
+      "tatusType\022\014\n\010LAMP_OFF\020\000\022\030\n\024CONTROL_GEAR_" +
+      "FAILURE\020\001\022\020\n\014LAMP_FAILURE\020\002\022\013\n\007LAMP_ON\020\004" +
+      "\022\017\n\013LIMIT_ERROR\020\010\022\020\n\014FADE_RUNNING\020\020\022\017\n\013R" +
+      "ESET_STATE\020 \022\021\n\rSHORT_ADDRESS\020@\022\025\n\020POWER" +
+      "_CYCLE_SEEN\020\200\001*\210\002\n\020DALIRXStatusFlag\022\013\n\007W" +
+      "AITING\020\000\022\023\n\017RECEIVING_FRAME\020\001\022\025\n\021NO_RECE" +
+      "IVED_FRAME\020\002\022\030\n\024RECEIVED_8_BIT_FRAME\020\003\022\031" +
+      "\n\025RECEIVED_16_BIT_FRAME\020\004\022\031\n\025RECEIVED_24" +
+      "_BIT_FRAME\020\005\022\032\n\026RECEIVED_PARTIAL_FRAME\020\006" +
+      "\022\010\n\004IDLE\020\007\022\017\n\013CALIBRATION\020\010\022\030\n\023ERROR_WHI" +
+      "LE_SENDING\020\376\001\022\032\n\025ERROR_WHILE_RECEIVING\020\377" +
+      "\001*\213\001\n\025DiagnosticMessageType\022\032\n\026DIAGNOSTI" +
+      "C_SYSTEM_INFO\020\000\022\033\n\027DIAGNOSTIC_INPUT_STAT" +
+      "US\020\001\022\024\n\020DALI_LEVEL_CACHE\020\002\022\023\n\017DMX_LEVEL_" +
+      "CACHE\020\003\022\016\n\nROOM_JOINS\020\004*z\n\023FirmwareComma" +
+      "ndType\022\014\n\010FW_READY\020\000\022\014\n\010FW_APPLY\020\001\022\r\n\tFW" +
+      "_VERIFY\020\002\022\024\n\020FW_VERIFY_FAILED\020\003\022\025\n\021FW_VE" +
+      "RIFY_SUCCESS\020\004\022\013\n\007FW_READ\020\005*?\n\025SpektraTr" +
+      "ansitionType\022\t\n\005BLEND\020\000\022\010\n\004SNAP\020\001\022\021\n\rFAD" +
+      "E_TO_BLACK\020\002*\234\001\n\tLogicType\022\016\n\nDALI_LEVEL" +
+      "\020\000\022\017\n\013INPUT_STATE\020\001\022\020\n\014LIST_RUNNING\020\002\022\026\n" +
+      "\022OCCUPANCY_DETECTED\020\003\022\017\n\013DMX_PRESENT\020\004\022\017" +
+      "\n\013CAL_WEEKDAY\020\005\022\r\n\tCAL_MONTH\020\006\022\023\n\017ALARM_" +
+      "SCHEDULED\020\007*\200\001\n\023LogicComparisonType\022\r\n\tL" +
+      "ESS_THAN\020\000\022\027\n\023LESS_THAN_OR_EQUALS\020\001\022\n\n\006E" +
+      "QUALS\020\002\022\r\n\tMORE_THAN\020\003\022\027\n\023MORE_THAN_OR_E" +
+      "QUALS\020\004\022\r\n\tNOT_EQUAL\020\005*8\n\016DALISensorType" +
+      "\022\022\n\016TRIDONIC_EDALI\020\000\022\022\n\016STANDARD_EDALI\020\001" +
+      "*G\n\021SensorCommandType\022\016\n\nINITIALISE\020\000\022\010\n" +
+      "\004MUTE\020\001\022\n\n\006UNMUTE\020\002\022\014\n\010OVERRIDE\020\003*b\n\rSys" +
+      "temLogType\022\010\n\004BOOT\020\000\022\014\n\010NET_LINK\020\001\022\007\n\003NT" +
+      "P\020\002\022\013\n\007TRIGGER\020\003\022\013\n\007SPEKTRA\020\004\022\014\n\010SCHEDUL" +
+      "E\020\005\022\010\n\004USER\020\006*m\n\017DALI24InputType\022\023\n\017MOME" +
+      "NTARY_SHORT\020\000\022\022\n\016MOMENTARY_LONG\020\001\022\017\n\013LAT" +
+      "CHED_LOW\020\002\022\020\n\014LATCHED_HIGH\020\003\022\016\n\nPOSITION" +
+      "AL\020\004*h\n\026DALIMotionSensorStates\022\017\n\013MOTION" +
+      "_IDLE\020\000\022\023\n\017MOTION_DISABLED\020\001\022\022\n\016MOTION_W" +
+      "ARNING\020\002\022\024\n\020MOTION_OCCUPANCY\020\003*I\n\023DALILu" +
+      "xSensorStates\022\020\n\014LUX_DISABLED\020\000\022\017\n\013LUX_E" +
+      "NABLED\020\001\022\017\n\013LUX_DEVIATE\020\002*N\n\023DALIAddress" +
+      "ingError\022\014\n\010NO_ERROR\020\000\022\n\n\006VERIFY\020\001\022\n\n\006SE" +
+      "ARCH\020\002\022\021\n\rNO_NEW_DEVICE\020\003*8\n\022DALIAddress" +
+      "ingType\022\017\n\013ADDRESS_NEW\020\000\022\021\n\rREADDRESS_AL" +
+      "L\020\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -121219,7 +120864,7 @@ public final class EDS10ProtocolBuffer {
     internal_static_EventMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_EventMessage_descriptor,
-        new java.lang.String[] { "Event", "Dali", "Inputs", "Payload", "Sensor", "Dali24Input", "Filter", "Dali24Frame", "Trigger", "EventData", });
+        new java.lang.String[] { "Event", "Trigger", "Inputs", "Payload", "Sensor", "Dali24Input", "Filter", "Dali24Frame", "EventData", });
     internal_static_EdidioMessage_descriptor =
       getDescriptor().getMessageTypes().get(92);
     internal_static_EdidioMessage_fieldAccessorTable = new
