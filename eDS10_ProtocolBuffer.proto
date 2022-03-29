@@ -1,5 +1,5 @@
 // The eDIDIO S10 Protocol Buffer Structure
-// Version Number 1.1.6
+// Version Number 1.1.7
 
 syntax = "proto3";
 
@@ -1422,6 +1422,7 @@ message EventFilter {
     bool dali_input                  = 5; // 24-bit DALI Inputs
     bool dmx_stream_changed          = 6; // DMX output stream changes
     bool dali_24_frame               = 7; // Raw 24-bit DALI frames
+    bool trigger_message             = 8; // High Level Trigger from Input/List/Sensor/Schedule
 }
 
 // Message Response for Trigger Event
@@ -1433,6 +1434,10 @@ message TriggerEvent {
     }
     uint32 target_address             = 4; // The target address for the TriggerType (if applicable)
     uint32 line_mask                  = 5; // The Line(s) on wich the Trigger occurred (if applicable)
+    uint32 zone                       = 6; // The zone of the Trigger (if applicable)
+    uint32 value                      = 7; // The value of the Trigger (if applicable)
+    uint32 query_index                = 8; // The query_index of the Trigger (if applicable)
+    uint32 source                     = 9; // The source of the trigger (input/list/sensor) (if applicable)
 }
 
 // Message Response for DALI 24 Input Event
