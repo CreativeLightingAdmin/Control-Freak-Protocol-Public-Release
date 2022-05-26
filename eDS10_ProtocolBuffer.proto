@@ -1,5 +1,5 @@
 // The eDIDIO S10 Protocol Buffer Structure
-// Version Number 1.1.7
+// Version Number 1.1.8
 
 syntax = "proto3";
 
@@ -186,7 +186,7 @@ enum Type8CommandType {
     X_COORD_STEP_DOWN                    = 4;   // Activate Not Required
     Y_COORD_STEP_UP                      = 5;   // Activate Not Required
     Y_COORD_STEP_DOWN                    = 6;   // Activate Not Required
-    SET_TEMP_COLOUR_TEMPERATURE          = 7;   // Calls ACTIVATE internally. DTR1 | DTR as Mirek Value
+    SET_TEMP_COLOUR_TEMPERATURE          = 7;   // DTR1 | DTR as Mirek Value
     COLOUR_TEMPERATURE_STEP_COOLER       = 8;   // Activate Not Required
     COLOUR_TEMPERATURE_STEP_WARMER       = 9;   // Activate Not Required
     SET_TEMP_PRI_N_DIMLEVEL              = 10;
@@ -201,6 +201,7 @@ enum Type8CommandType {
     ASSIGN_COLOR_LINKED_CH               = 21;
     START_AUTO_CAL                       = 22;
     ENABLE_DEVICE_TYPE8                  = 48; 
+    SET_XY_COORDINATE                    = 50;  // Manufacturer Specific combined XY command
 }
 
 // Standard DALI Type 8 Queries - See DALI Standard
@@ -915,7 +916,7 @@ uint32 line_mask                             = 1; // Binary mask; e.g. selecting
         DALI24DeviceSetting device24_setting = 16; // Settings for DALI 24 Bit Devices
     }
     oneof params {
-        uint32 arg                           = 9;   // 'arg' rather than level for methods where you need a scene number.
+        uint32 arg                           = 9;   // 'arg' rather than level for methods where you need a scene number. XY Command uses X << 16 | Y
         DTRPayloadMessage dtr                = 10;
     }
     DALI24InstanceType instance_type         = 17;  // Instance for 24 bit device - Commands are sent via Type
@@ -1204,6 +1205,7 @@ message DiagnosticSystemInfoResponse {
 	uint32 logic_count			   = 23; // Number of supported Logic Mappings
 	uint32 input_dali_count 	   = 24; // Number of supported DALI Inputs
     string vendor_id               = 25; // Vendor ID - "Control Freak"
+    uint32 selected_profile        = 26; // Currently Selected Profile
 }
 
 // Request a diagnostic response message of a given type.
