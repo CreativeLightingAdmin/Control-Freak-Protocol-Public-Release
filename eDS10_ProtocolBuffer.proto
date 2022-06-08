@@ -1,5 +1,5 @@
 // The eDIDIO S10 Protocol Buffer Structure
-// Version Number 1.1.8
+// Version Number 1.1.9
 
 syntax = "proto3";
 
@@ -659,6 +659,7 @@ message DeviceStateMessage {
     repeated uint32 zone_sleep_states   = 12;   // Sleep State of each Spektra Zone (TRUE / FALSE)
     repeated uint32 zone_indexes        = 13;   // Index of the selected Sequence, Theme, or Static colour for each Zone
 	uint64 dali_input_state			    = 14;	// DALI Input state mask
+    uint32 output_state                 = 15;   // Output state mask
 }
 
 /****** @exclude CONFIGURABLE MESSAGES ******/

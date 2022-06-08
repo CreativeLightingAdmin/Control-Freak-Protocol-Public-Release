@@ -11829,6 +11829,15 @@ public final class EDS10ProtocolBuffer {
      * <code>uint64 dali_input_state = 14;</code>
      */
     long getDaliInputState();
+
+    /**
+     * <pre>
+     * Output state mask
+     * </pre>
+     *
+     * <code>uint32 output_state = 15;</code>
+     */
+    int getOutputState();
   }
   /**
    * <pre>
@@ -11859,6 +11868,7 @@ public final class EDS10ProtocolBuffer {
       zoneSleepStates_ = java.util.Collections.emptyList();
       zoneIndexes_ = java.util.Collections.emptyList();
       daliInputState_ = 0L;
+      outputState_ = 0;
     }
 
     @java.lang.Override
@@ -12065,6 +12075,11 @@ public final class EDS10ProtocolBuffer {
             case 112: {
 
               daliInputState_ = input.readUInt64();
+              break;
+            }
+            case 120: {
+
+              outputState_ = input.readUInt32();
               break;
             }
             default: {
@@ -12472,6 +12487,19 @@ public final class EDS10ProtocolBuffer {
       return daliInputState_;
     }
 
+    public static final int OUTPUT_STATE_FIELD_NUMBER = 15;
+    private int outputState_;
+    /**
+     * <pre>
+     * Output state mask
+     * </pre>
+     *
+     * <code>uint32 output_state = 15;</code>
+     */
+    public int getOutputState() {
+      return outputState_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -12552,6 +12580,9 @@ public final class EDS10ProtocolBuffer {
       }
       if (daliInputState_ != 0L) {
         output.writeUInt64(14, daliInputState_);
+      }
+      if (outputState_ != 0) {
+        output.writeUInt32(15, outputState_);
       }
       unknownFields.writeTo(output);
     }
@@ -12678,6 +12709,10 @@ public final class EDS10ProtocolBuffer {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt64Size(14, daliInputState_);
       }
+      if (outputState_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(15, outputState_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -12732,6 +12767,8 @@ public final class EDS10ProtocolBuffer {
           .equals(other.getZoneIndexesList());
       result = result && (getDaliInputState()
           == other.getDaliInputState());
+      result = result && (getOutputState()
+          == other.getOutputState());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -12790,6 +12827,8 @@ public final class EDS10ProtocolBuffer {
       hash = (37 * hash) + DALI_INPUT_STATE_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getDaliInputState());
+      hash = (37 * hash) + OUTPUT_STATE_FIELD_NUMBER;
+      hash = (53 * hash) + getOutputState();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -12963,6 +13002,8 @@ public final class EDS10ProtocolBuffer {
         bitField0_ = (bitField0_ & ~0x00001000);
         daliInputState_ = 0L;
 
+        outputState_ = 0;
+
         return this;
       }
 
@@ -13037,6 +13078,7 @@ public final class EDS10ProtocolBuffer {
         }
         result.zoneIndexes_ = zoneIndexes_;
         result.daliInputState_ = daliInputState_;
+        result.outputState_ = outputState_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -13169,6 +13211,9 @@ public final class EDS10ProtocolBuffer {
         }
         if (other.getDaliInputState() != 0L) {
           setDaliInputState(other.getDaliInputState());
+        }
+        if (other.getOutputState() != 0) {
+          setOutputState(other.getOutputState());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -14294,6 +14339,44 @@ public final class EDS10ProtocolBuffer {
       public Builder clearDaliInputState() {
         
         daliInputState_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int outputState_ ;
+      /**
+       * <pre>
+       * Output state mask
+       * </pre>
+       *
+       * <code>uint32 output_state = 15;</code>
+       */
+      public int getOutputState() {
+        return outputState_;
+      }
+      /**
+       * <pre>
+       * Output state mask
+       * </pre>
+       *
+       * <code>uint32 output_state = 15;</code>
+       */
+      public Builder setOutputState(int value) {
+        
+        outputState_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Output state mask
+       * </pre>
+       *
+       * <code>uint32 output_state = 15;</code>
+       */
+      public Builder clearOutputState() {
+        
+        outputState_ = 0;
         onChanged();
         return this;
       }
@@ -119702,7 +119785,7 @@ public final class EDS10ProtocolBuffer {
       "loat_data\030\002 \001(\002H\000\022\023\n\013string_data\030\003 \001(\tB\006" +
       "\n\004data\"Y\n\nAytMessage\022\025\n\rtimesinceboot\030\001 " +
       "\001(\r\022\023\n\013temperature\030\002 \001(\002\022\037\n\004time\030\003 \001(\0132\021" +
-      ".TimeClockMessage\"\333\002\n\022DeviceStateMessage" +
+      ".TimeClockMessage\"\361\002\n\022DeviceStateMessage" +
       "\022\016\n\006uptime\030\001 \001(\r\022\014\n\004temp\030\002 \001(\002\022\014\n\004vbat\030\003" +
       " \001(\002\022 \n\005clock\030\004 \001(\0132\021.TimeClockMessage\022\022" +
       "\n\nnext_alarm\030\005 \001(\r\022*\n\017next_alarm_time\030\006 " +
@@ -119711,696 +119794,697 @@ public final class EDS10ProtocolBuffer {
       "es\030\t \003(\r\022\025\n\rsensor_states\030\n \003(\r\022\023\n\013zone_" +
       "states\030\013 \003(\r\022\031\n\021zone_sleep_states\030\014 \003(\r\022" +
       "\024\n\014zone_indexes\030\r \003(\r\022\030\n\020dali_input_stat" +
-      "e\030\016 \001(\004\"\207\001\n\016TriggerMessage\022\032\n\004type\030\001 \001(\016" +
-      "2\014.TriggerType\022\014\n\004zone\030\002 \001(\r\022\021\n\tline_mas" +
-      "k\030\003 \001(\r\022\024\n\014target_index\030\004 \001(\r\022\r\n\005value\030\005" +
-      " \001(\r\022\023\n\013query_index\030\006 \001(\r\".\n\020TimeClockMe" +
-      "ssage\022\014\n\004date\030\001 \001(\r\022\014\n\004time\030\002 \001(\r\"S\n\021Bur" +
-      "nInBitsMessage\022\023\n\013light_state\030\001 \001(\r\022\024\n\014r" +
-      "unning_flag\030\002 \001(\r\022\023\n\013enable_flag\030\003 \001(\r\"\227" +
-      "\001\n\016IOInputMessage\022\r\n\005index\030\001 \001(\r\022+\n\014butt" +
-      "on_state\030\002 \001(\0162\025.TriggerOperationType\022$\n" +
-      "\013short_press\030\003 \001(\0132\017.TriggerMessage\022#\n\nl" +
-      "ong_press\030\004 \001(\0132\017.TriggerMessage\"|\n\017IOOu" +
-      "tputMessage\022\r\n\005index\030\001 \001(\r\022\025\n\rinitial_le" +
-      "vel\030\002 \001(\r\022\036\n\026time_trigger_is_active\030\003 \001(" +
-      "\r\022#\n\004type\030\004 \001(\0162\025.TriggerOperationType\"\317" +
-      "\001\n\020DALIInputMessage\022\r\n\005index\030\001 \001(\r\022\017\n\007ad" +
-      "dress\030\002 \001(\r\022\021\n\tdali_line\030\003 \001(\r\022+\n\014button" +
-      "_state\030\004 \001(\0162\025.TriggerOperationType\022$\n\013s" +
-      "hort_press\030\005 \001(\0132\017.TriggerMessage\022#\n\nlon" +
-      "g_press\030\006 \001(\0132\017.TriggerMessage\022\020\n\010instan" +
-      "ce\030\007 \001(\r\"L\n\013IOIRMessage\022\r\n\005index\030\001 \001(\r\022\037" +
-      "\n\006action\030\002 \001(\0132\017.TriggerMessage\022\r\n\005codes" +
-      "\030\003 \001(\r\"\313\004\n\rSensorMessage\022\017\n\007profile\030\001 \001(" +
-      "\r\022\r\n\005index\030\002 \001(\r\022\026\n\016sensor_address\030\003 \001(\r" +
-      "\022\030\n\020sensor_dali_line\030\004 \001(\r\022\025\n\raddress_qu" +
-      "ery\030\005 \001(\r\022\031\n\021control_dali_line\030\006 \001(\r\022\025\n\r" +
-      "control_group\030\007 \001(\r\022\026\n\016light_setpoint\030\010 " +
-      "\001(\r\022\030\n\020warning_setpoint\030\t \001(\r\022\023\n\013motion_" +
-      "only\030\n \001(\r\022\026\n\016timeout_values\030\013 \001(\r\022\026\n\016wa" +
-      "rning_values\030\014 \001(\r\022\026\n\016disable_values\030\r \001" +
-      "(\r\022\022\n\ninput_1_pm\030\016 \001(\r\022\022\n\ninput_2_pm\030\017 \001" +
-      "(\r\022\025\n\rsensor_states\030\020 \001(\r\022\026\n\016motion_sens" +
-      "ors\030\021 \001(\r\022\023\n\013lux_sensors\030\022 \001(\r\022\020\n\010off_fl" +
-      "ag\030\023 \001(\r\022\025\n\ris_programmed\030\024 \001(\010\022*\n\021detec" +
-      "tion_trigger\030\025 \001(\0132\017.TriggerMessage\022(\n\017w" +
-      "arning_trigger\030\026 \001(\0132\017.TriggerMessage\022%\n" +
-      "\014idle_trigger\030\027 \001(\0132\017.TriggerMessage\"\\\n\017" +
-      "ListStepMessage\022\022\n\nstep_index\030\001 \001(\r\022\037\n\006a" +
-      "ction\030\002 \001(\0132\017.TriggerMessage\022\024\n\014time_sec" +
-      "onds\030\003 \001(\r\"\274\003\n\014AlarmMessage\022\r\n\005index\030\001 \001" +
-      "(\r\022\017\n\007enabled\030\002 \001(\010\022%\n\nstart_time\030\003 \001(\0132" +
-      "\021.TimeClockMessage\022#\n\010end_time\030\004 \001(\0132\021.T" +
-      "imeClockMessage\022&\n\rstart_trigger\030\005 \001(\0132\017" +
-      ".TriggerMessage\022$\n\013end_trigger\030\006 \001(\0132\017.T" +
-      "riggerMessage\022$\n\013astro_start\030\007 \001(\0162\017.Ala" +
-      "rmAstroType\022\"\n\tastro_end\030\010 \001(\0162\017.AlarmAs" +
-      "troType\022 \n\006repeat\030\t \001(\0162\020.AlarmRepeatTyp" +
-      "e\022\032\n\022repeat_day_bitmask\030\n \001(\r\022\034\n\024repeat_" +
-      "month_bitmask\030\013 \001(\r\022\016\n\006yearly\030\014 \001(\010\022\036\n\026s" +
-      "tart_offset_is_before\030\r \001(\010\022\034\n\024end_offse" +
-      "t_is_before\030\016 \001(\010\"\231\001\n\rBurnInMessage\022\r\n\005i" +
-      "ndex\030\001 \001(\r\022\014\n\004line\030\002 \001(\r\022\017\n\007address\030\003 \001(" +
-      "\r\022\025\n\rquery_address\030\004 \001(\r\022\014\n\004time\030\005 \001(\r\022\021" +
-      "\n\tremaining\030\006 \001(\r\022\"\n\006states\030\007 \001(\0132\022.Burn" +
-      "InBitsMessage\":\n\026ExternalTriggerMessage\022" +
-      " \n\007trigger\030\001 \001(\0132\017.TriggerMessage\"E\n\021Inp" +
-      "utMultiMessage\022\017\n\007profile\030\001 \001(\r\022\037\n\006input" +
-      "s\030\002 \003(\0132\017.IOInputMessage\"H\n\022OutputMultiM" +
-      "essage\022\017\n\007profile\030\001 \001(\r\022!\n\007outputs\030\002 \003(\013" +
-      "2\020.IOOutputMessage\"g\n\025DALIInputMultiMess" +
-      "age\022\017\n\007profile\030\001 \001(\r\022\032\n\022input_index_offs" +
-      "et\030\002 \001(\r\022!\n\006inputs\030\003 \003(\0132\021.DALIInputMess" +
-      "age\"<\n\016IRMultiMessage\022\017\n\007profile\030\001 \001(\r\022\031" +
-      "\n\003irs\030\002 \003(\0132\014.IOIRMessage\"o\n\013ListMessage" +
-      "\022\022\n\nlist_index\030\001 \001(\r\022\036\n\004step\030\002 \003(\0132\020.Lis" +
-      "tStepMessage\022\022\n\nlist_state\030\003 \001(\r\022\030\n\020tota" +
-      "l_step_count\030\004 \001(\r\"d\n\023ExtendedListMessag" +
-      "e\022\022\n\nlist_index\030\001 \001(\r\022\031\n\021step_index_offs" +
-      "et\030\002 \001(\r\022\036\n\004step\030\003 \003(\0132\020.ListStepMessage" +
-      "\"1\n\021AlarmMultiMessage\022\034\n\005alarm\030\001 \003(\0132\r.A" +
-      "larmMessage\"4\n\022BurnInMultiMessage\022\036\n\006bur" +
-      "nin\030\001 \003(\0132\016.BurnInMessage\"\347\001\n\014LogicMessa" +
-      "ge\022\r\n\005index\030\001 \001(\r\022\017\n\007enabled\030\002 \001(\010\022*\n\021co" +
-      "mparison_object\030\003 \001(\0132\017.TriggerMessage\022\030" +
-      "\n\020comparison_value\030\004 \001(\r\022-\n\017comparison_t" +
-      "ype\030\005 \001(\0162\024.LogicComparisonType\022 \n\007actio" +
-      "nA\030\006 \001(\0132\017.TriggerMessage\022 \n\007actionB\030\007 \001" +
-      "(\0132\017.TriggerMessage\"1\n\021LogicMultiMessage" +
-      "\022\034\n\005logic\030\001 \003(\0132\r.LogicMessage\"X\n\024Sensor" +
-      "CommandMessage\022\017\n\007command\030\001 \001(\r\022\r\n\005index" +
-      "\030\002 \001(\r\022 \n\004type\030\003 \001(\0162\022.SensorCommandType" +
-      "\"\'\n\024ChangeProfileMessage\022\017\n\007profile\030\001 \001(" +
-      "\r\"*\n\017IdentifyMessage\022\013\n\003MAC\030\001 \001(\004\022\n\n\002IP\030" +
-      "\002 \001(\004\"4\n\021UpdateTimeMessage\022\037\n\004time\030\001 \001(\013" +
-      "2\021.TimeClockMessage\"e\n\021ReadDeviceMessage" +
-      "\022\017\n\007profile\030\001 \001(\r\022\027\n\004type\030\002 \001(\0162\t.ReadTy" +
-      "pe\022\r\n\005index\030\003 \001(\r\022\027\n\017secondary_index\030\004 \001" +
-      "(\r\".\n\033SecureDeviceSettingsMessage\022\017\n\007pay" +
-      "load\030\001 \001(\t\" \n\021DTRPayloadMessage\022\013\n\003dtr\030\001" +
-      " \003(\r\"\333\004\n\013DALIMessage\022\021\n\tline_mask\030\001 \001(\r\022" +
-      "\017\n\007address\030\002 \001(\r\022\026\n\014frame_25_bit\030\003 \001(\rH\000" +
-      "\022\034\n\022frame_25_bit_reply\030\004 \001(\rH\000\022#\n\007comman" +
-      "d\030\005 \001(\0162\020.DALICommandTypeH\000\0220\n\016custom_co" +
-      "mmand\030\006 \001(\0162\026.CustomDALICommandTypeH\000\022\037\n" +
-      "\005query\030\007 \001(\0162\016.DALIQueryTypeH\000\022\"\n\005type8\030" +
-      "\010 \001(\0162\021.Type8CommandTypeH\000\022\026\n\014frame_16_b" +
-      "it\030\013 \001(\rH\000\022\034\n\022frame_16_bit_reply\030\014 \001(\rH\000" +
-      "\022\026\n\014frame_24_bit\030\r \001(\rH\000\022\034\n\022frame_24_bit" +
-      "_reply\030\016 \001(\rH\000\022&\n\013type8_reply\030\017 \001(\0162\017.Ty" +
-      "pe8QueryTypeH\000\0220\n\020device24_setting\030\020 \001(\016" +
-      "2\024.DALI24DeviceSettingH\000\022\r\n\003arg\030\t \001(\rH\001\022" +
-      "!\n\003dtr\030\n \001(\0132\022.DTRPayloadMessageH\001\022*\n\rin" +
-      "stance_type\030\021 \001(\0162\023.DALI24InstanceType\022\036" +
-      "\n\007op_code\030\022 \001(\0162\r.DALI24OpCodeB\010\n\006action" +
-      "B\010\n\006params\"7\n\025DALIStatusFlagMessage\022\036\n\005f" +
-      "lags\030\001 \003(\0162\017.DALIStatusType\"\275\001\n\021DALIQuer" +
-      "yResponse\022.\n\014status_flags\030\001 \001(\0132\026.DALISt" +
-      "atusFlagMessageH\000\022\037\n\004data\030\002 \001(\0132\017.Payloa" +
-      "dMessageH\000\022$\n\tdali_flag\030\003 \001(\0162\021.DALIRXSt" +
-      "atusFlag\022&\n\rresponse_data\030\004 \001(\0132\017.Payloa" +
-      "dMessageB\t\n\007payload\"\252\001\n\025DALIAddressingMe" +
-      "ssage\022!\n\004type\030\001 \001(\0162\023.DALIAddressingType" +
-      "\022\026\n\016initialisation\030\002 \001(\010\022\021\n\tline_mask\030\003 " +
-      "\001(\r\022\017\n\007is24Bit\030\004 \001(\010\022#\n\005error\030\005 \001(\0162\024.DA" +
-      "LIAddressingError\022\r\n\005index\030\006 \001(\r\"d\n\024DALI" +
-      "RemappingMessage\022\024\n\014from_address\030\001 \001(\r\022\022" +
-      "\n\nto_address\030\002 \001(\r\022\021\n\tline_mask\030\003 \001(\r\022\017\n" +
-      "\007is24Bit\030\004 \001(\010\"|\n\nDMXMessage\022\014\n\004zone\030\001 \001" +
-      "(\r\022\025\n\runiverse_mask\030\002 \001(\r\022\017\n\007channel\030\003 \001" +
-      "(\r\022\016\n\006repeat\030\004 \001(\r\022\r\n\005level\030\005 \003(\r\022\031\n\021fad" +
-      "e_time_by_10ms\030\006 \001(\r\"o\n\nRDMMessage\022\025\n\run" +
-      "iverse_mask\030\001 \001(\r\022\013\n\003uid\030\002 \001(\004\022\013\n\003pid\030\003 " +
-      "\001(\r\022\016\n\006getset\030\004 \001(\r\022\022\n\ndatalength\030\005 \001(\r\022" +
-      "\014\n\004data\030\006 \003(\r\"P\n\022RDMResponseMessage\022\013\n\003u" +
-      "id\030\001 \001(\004\022\013\n\003pid\030\002 \001(\r\022\022\n\ndatalength\030\003 \001(" +
-      "\r\022\014\n\004data\030\004 \003(\r\"<\n\023RDMDiscoveryMessage\022\025" +
-      "\n\runiverse_mask\030\001 \001(\r\022\016\n\006isNext\030\002 \001(\010\"T\n" +
-      "\030RDMDiscoveryReplyMessage\022\027\n\017discovery_c" +
-      "ount\030\001 \001(\r\022\013\n\003uid\030\002 \003(\004\022\022\n\nerror_code\030\003 " +
-      "\001(\r\"\337\002\n\025SpektraSettingMessage\022\014\n\004zone\030\001 " +
-      "\001(\r\022\025\n\rstart_address\030\002 \001(\r\022\035\n\025line_or_un" +
-      "iverse_mask\030\003 \001(\r\022\020\n\010protocol\030\004 \001(\r\022\030\n\020n" +
-      "umber_of_lights\030\005 \001(\r\022\032\n\022channels_per_li" +
-      "ght\030\006 \001(\r\022\027\n\017channel_colours\030\007 \003(\r\022?\n\025un" +
-      "scheduled_behaviour\030\010 \001(\0162 .SpektraUnsch" +
-      "eduledBehaviourType\022\027\n\017channel_mapping\030\t" +
-      " \003(\r\022,\n\017line_addressing\030\n \001(\0162\023.LineAddr" +
-      "essingType\022\031\n\021zone_scale_factor\030\013 \001(\002\"3\n" +
-      "\032SpektraColourConfigMessage\022\025\n\rchannel_v" +
-      "alue\030\001 \003(\r\"\350\003\n\034SpektraSequenceConfigMess" +
-      "age\022\r\n\005index\030\001 \001(\r\022\014\n\004type\030\002 \001(\r\022*\n\ntran" +
-      "sition\030\003 \001(\0162\026.SpektraTransitionType\022\031\n\021" +
-      "fade_time_by_10ms\030\004 \001(\r\022\027\n\017time_per_colo" +
-      "ur\030\005 \001(\r\022\034\n\024time_per_colour_unit\030\006 \001(\r\022\025" +
-      "\n\rtime_per_step\030\007 \001(\r\022\032\n\022time_per_step_u" +
-      "nit\030\010 \001(\r\022\r\n\005range\030\t \001(\r\022\016\n\006colour\030\n \003(\004" +
-      "\022\032\n\022is_randomised_type\030\013 \001(\r\022\031\n\021random_t" +
-      "ypes_mask\030\014 \001(\r\022\034\n\024is_reverse_direction\030" +
-      "\r \001(\r\022\032\n\022is_cycle_direction\030\016 \001(\r\022\r\n\005tit" +
-      "le\030\017 \001(\t\022\037\n\027has_random_colour_order\030\020 \001(" +
-      "\010\022,\n\007colours\030\021 \003(\0132\033.SpektraColourConfig" +
-      "Message\022\014\n\004args\030\022 \003(\r\"k\n\026SpektraCalendar" +
-      "Message\022 \n\004type\030\001 \001(\0162\022.SpektraTargetTyp" +
-      "e\022\r\n\005index\030\002 \001(\r\022\014\n\004days\030\003 \003(\010\022\022\n\nisOver" +
-      "ride\030\004 \001(\010\"z\n\031SpektraCalendarDayMessage\022" +
-      "\021\n\tday_index\030\001 \001(\r\022 \n\004type\030\002 \001(\0162\022.Spekt" +
-      "raTargetType\022\024\n\014target_index\030\003 \001(\r\022\022\n\nis" +
-      "Override\030\004 \001(\010\"^\n\036SpektraCalendarOvervie" +
-      "wMessage\022\022\n\nday_offset\030\001 \001(\r\022(\n\004days\030\002 \003" +
-      "(\0132\032.SpektraCalendarDayMessage\"w\n\031Spektr" +
-      "aThemeConfigMessage\022\r\n\005index\030\001 \001(\r\022\016\n\006co" +
-      "lour\030\002 \003(\004\022\r\n\005title\030\003 \001(\t\022,\n\007colours\030\004 \003" +
-      "(\0132\033.SpektraColourConfigMessage\"E\n\022Spekt" +
-      "raReadMessage\022 \n\004type\030\001 \001(\0162\022.SpektraTar" +
-      "getType\022\r\n\005index\030\002 \001(\r\"z\n\025SpektraControl" +
-      "Message\022 \n\004type\030\001 \001(\0162\022.SpektraTargetTyp" +
-      "e\022\014\n\004zone\030\002 \001(\r\022\r\n\005index\030\003 \001(\r\022\"\n\006action" +
-      "\030\004 \001(\0162\022.SpektraActionType\"\325\001\n\017ShowStepM" +
-      "essage\022\022\n\nstep_index\030\001 \001(\r\022\024\n\014target_ind" +
-      "ex\030\002 \001(\r\022+\n\013action_type\030\003 \001(\0162\026.SpektraS" +
-      "tepActionType\022\037\n\027max_random_target_index" +
-      "\030\004 \001(\r\022\014\n\004zone\030\005 \001(\r\022\036\n\026max_output_level" +
-      "_limit\030\006 \001(\r\022\034\n\024time_until_next_10ms\030\007 \001" +
-      "(\r\"\314\001\n\022SpektraShowMessage\022\022\n\nshow_index\030" +
-      "\001 \001(\r\022\027\n\017number_of_steps\030\002 \001(\r\022\036\n\004step\030\003" +
-      " \003(\0132\020.ShowStepMessage\022\021\n\tisRunning\030\004 \001(" +
-      "\010\022\020\n\010isLooped\030\005 \001(\010\022\020\n\010isRandom\030\006 \001(\010\022\023\n" +
-      "\013isTemporary\030\007 \001(\010\022\035\n\025activations_remain" +
-      "ing\030\010 \001(\r\"k\n\032ExtendedSpektraShowMessage\022" +
-      "\022\n\nshow_index\030\001 \001(\r\022\031\n\021step_index_offset" +
-      "\030\002 \001(\r\022\036\n\004step\030\003 \003(\0132\020.ShowStepMessage\"W" +
-      "\n\031SpektraShowControlMessage\022\022\n\nshow_inde" +
-      "x\030\001 \001(\r\022\024\n\014start_resume\030\002 \001(\r\022\020\n\010gotoSte" +
-      "p\030\003 \001(\r\"\272\001\n\024DMXTranslationObject\022\017\n\007line" +
-      "_in\030\001 \001(\r\022\020\n\010line_out\030\002 \001(\r\022\031\n\021dmx_start" +
-      "_address\030\003 \001(\r\022\025\n\rchannel_count\030\004 \001(\r\022\022\n" +
-      "\ndali_array\030\005 \003(\r\022\026\n\016affected_input\030\007 \001(" +
-      "\r\022\020\n\010blocking\030\010 \001(\010\022\017\n\007enabled\030\t \001(\010\"?\n\026" +
-      "DMXProtocolTranslation\022%\n\006object\030\001 \003(\0132\025" +
-      ".DMXTranslationObject\"%\n\021InputStateMessa" +
-      "ge\022\020\n\010use_mask\030\001 \001(\010\"8\n\022InputStateRespon" +
-      "se\022\016\n\006inputs\030\001 \003(\r\022\022\n\ninput_mask\030\002 \001(\r\"@" +
-      "\n\022LevelCacheResponse\022\016\n\006levels\030\001 \003(\r\022\014\n\004" +
-      "line\030\002 \001(\r\022\014\n\004page\030\003 \001(\r\"\200\005\n\034DiagnosticS" +
-      "ystemInfoResponse\022\020\n\010firmware\030\001 \001(\t\022\020\n\010h" +
-      "ardware\030\002 \001(\t\022\r\n\005error\030\003 \001(\t\022\023\n\013input_co" +
-      "unt\030\004 \001(\r\022\024\n\014output_count\030\005 \001(\r\022\020\n\010ir_co" +
-      "unt\030\006 \001(\r\022\027\n\017list_step_count\030\007 \001(\r\022\022\n\nli" +
-      "st_count\030\010 \001(\r\022\023\n\013alarm_count\030\t \001(\r\022\024\n\014b" +
-      "urnin_count\030\n \001(\r\022\031\n\021spektra_seq_count\030\013" +
-      " \001(\r\022\036\n\026spektra_seq_step_count\030\014 \001(\r\022\033\n\023" +
-      "spektra_theme_count\030\r \001(\r\022\034\n\024spektra_sta" +
-      "tic_count\030\016 \001(\r\022\025\n\rproto_version\030\017 \001(\r\022\022" +
-      "\n\nline_count\030\020 \001(\r\022\030\n\005lines\030\021 \003(\0162\t.Line" +
-      "Type\022\025\n\rprofile_count\030\022 \001(\r\022\031\n\021preset_co" +
-      "de_count\030\023 \001(\r\022\030\n\020user_level_count\030\024 \001(\r" +
-      "\022\031\n\021dmx_to_dali_count\030\025 \001(\r\022\032\n\022spektra_z" +
-      "one_count\030\026 \001(\r\022\023\n\013logic_count\030\027 \001(\r\022\030\n\020" +
-      "input_dali_count\030\030 \001(\r\022\021\n\tvendor_id\030\031 \001(" +
-      "\t\022\030\n\020selected_profile\030\032 \001(\r\"U\n\021Diagnosti" +
-      "cMessage\022$\n\004type\030\001 \001(\0162\026.DiagnosticMessa" +
-      "geType\022\014\n\004page\030\002 \001(\r\022\014\n\004line\030\003 \001(\r\"\362\001\n\035A" +
-      "dminProjectPropertiesMessage\022\023\n\013device_n" +
-      "ame\030\002 \001(\t\022\024\n\014project_name\030\003 \001(\t\022\021\n\tlongi" +
-      "tude\030\004 \001(\002\022\020\n\010latitude\030\005 \001(\002\022\024\n\014local_of" +
-      "fset\030\006 \001(\002\022\030\n\020daylight_savings\030\007 \001(\010\022\036\n\026" +
-      "daylight_savings_start\030\010 \001(\r\022\034\n\024daylight" +
-      "_savings_end\030\t \001(\r\022\023\n\013poll_active\030\n \001(\010\"" +
-      "\244\001\n\030AdminConfigStatusMessage\022\023\n\013list_sta" +
-      "tus\030\001 \003(\r\022\026\n\016burn_in_status\030\002 \003(\r\022\024\n\014ala" +
-      "rm_status\030\003 \001(\r\022.\n\023alarm_time_from_reg\030\004" +
-      " \001(\0132\021.TimeClockMessage\022\025\n\rsensor_status" +
-      "\030\005 \003(\r\"\326\001\n\035AdminNetworkPropertiesMessage" +
-      "\022\014\n\004DHCP\030\001 \001(\010\022\n\n\002IP\030\002 \001(\t\022\013\n\003MAC\030\003 \001(\t\022" +
-      "\017\n\007gateway\030\004 \001(\t\022\021\n\tNTPServer\030\005 \001(\t\022\013\n\003N" +
-      "TP\030\006 \001(\010\022\r\n\005error\030\007 \001(\t\022\022\n\nNTPTimeout\030\010 " +
-      "\001(\r\022\016\n\006subnet\030\t \001(\t\022\023\n\013DNS_Primary\030\n \001(\t" +
-      "\022\025\n\rDNS_Secondary\030\013 \001(\t\"D\n\026AdminDNSServe" +
-      "rsMessage\022\023\n\013DNS_Primary\030\001 \001(\t\022\025\n\rDNS_Se" +
-      "condary\030\002 \001(\t\"7\n\033AdminControllerLinesMes" +
-      "sage\022\030\n\005lines\030\001 \003(\0162\t.LineType\"@\n\030AdminD" +
-      "eviceStatusMessage\022\023\n\013temperature\030\001 \001(\002\022" +
-      "\017\n\007battery\030\002 \001(\002\"I\n\027AdminSecureLoginMess" +
-      "age\022\020\n\010username\030\001 \001(\t\022\016\n\006cnonce\030\002 \001(\t\022\014\n" +
-      "\004hash\030\003 \003(\r\";\n\032AdminDALISensorTypeMessag" +
-      "e\022\035\n\004type\030\001 \001(\0162\017.DALISensorType\"\264\004\n\014Adm" +
-      "inMessage\022\"\n\007command\030\001 \001(\0162\021.AdminComman" +
-      "dType\022\"\n\006target\030\002 \001(\0162\022.AdminPropertyTyp" +
-      "e\022\037\n\004data\030\003 \001(\0132\017.PayloadMessageH\000\022<\n\022ne" +
-      "twork_properties\030\004 \001(\0132\036.AdminNetworkPro" +
-      "pertiesMessageH\000\022<\n\022project_properties\030\005" +
-      " \001(\0132\036.AdminProjectPropertiesMessageH\000\0228" +
-      "\n\020controller_lines\030\006 \001(\0132\034.AdminControll" +
-      "erLinesMessageH\000\0222\n\rdevice_status\030\007 \001(\0132" +
-      "\031.AdminDeviceStatusMessageH\000\0222\n\rconfig_s" +
-      "tatus\030\010 \001(\0132\031.AdminConfigStatusMessageH\000" +
-      "\022)\n\013device_time\030\t \001(\0132\022.UpdateTimeMessag" +
-      "eH\000\0227\n\020dali_sensor_type\030\n \001(\0132\033.AdminDAL" +
-      "ISensorTypeMessageH\000\022.\n\013dns_servers\030\013 \001(" +
-      "\0132\027.AdminDNSServersMessageH\000B\t\n\007payload\"" +
-      "K\n\013DataMessage\022\022\n\nidentifier\030\001 \001(\r\022\013\n\003se" +
-      "q\030\002 \001(\r\022\r\n\005count\030\003 \001(\r\022\014\n\004data\030\004 \003(\r\"\331\002\n" +
-      "\023FirmwareMetaMessage\022\030\n\020firmware_version" +
-      "\030\001 \001(\r\022\025\n\rfirmware_date\030\002 \001(\r\022\034\n\024firmwar" +
-      "e_date_upload\030\003 \001(\r\022\031\n\021firmware_checksum" +
-      "\030\004 \001(\r\022\034\n\024firmware_chunk_count\030\005 \001(\r\022\035\n\025" +
-      "firmware_base_address\030\006 \001(\r\022\034\n\024firmware_" +
-      "end_address\030\007 \001(\r\022\032\n\022firmware_is_backup\030" +
-      "\010 \001(\010\022\r\n\005nonce\030\t \003(\r\022\031\n\021firmware_date_da" +
-      "y\030\n \001(\r\022\033\n\023firmware_date_month\030\013 \001(\r\022\032\n\022" +
-      "firmware_date_year\030\014 \001(\r\";\n\026FirmwareCont" +
-      "rolMessage\022!\n\003cmd\030\001 \001(\0162\024.FirmwareComman" +
-      "dType\"d\n\024FirmwareChunkMessage\022\030\n\020firmwar" +
-      "e_address\030\001 \001(\r\022\023\n\013total_bytes\030\002 \001(\r\022\035\n\007" +
-      "payload\030\003 \001(\0132\014.DataMessage\"j\n\024SystemLog" +
-      "ReadMessage\022\031\n\021log_start_address\030\001 \001(\r\022\026" +
-      "\n\016logs_requested\030\002 \001(\r\022\037\n\004logs\030\003 \003(\0132\021.S" +
-      "ystemLogMessage\"\267\002\n\020SystemLogMessage\022\027\n\017" +
-      "time_since_boot\030\001 \001(\r\022\036\n\004boot\030\002 \001(\0132\016.Sy" +
-      "stemLogBootH\000\022$\n\007netlink\030\003 \001(\0132\021.SystemL" +
-      "ogNetLinkH\000\022\034\n\003ntp\030\004 \001(\0132\r.SystemLogNTPH" +
-      "\000\022$\n\007trigger\030\005 \001(\0132\021.SystemLogTriggerH\000\022" +
-      "$\n\007spektra\030\006 \001(\0132\021.SystemLogSpektraH\000\022&\n" +
-      "\010schedule\030\007 \001(\0132\022.SystemLogScheduleH\000\022(\n" +
-      "\tuserstart\030\010 \001(\0132\023.SystemLogUserStartH\000B" +
-      "\010\n\006packet\"D\n\rSystemLogBoot\022$\n\ttimeclock\030" +
-      "\001 \001(\0132\021.TimeClockMessage\022\r\n\005flags\030\002 \001(\r\"" +
-      "%\n\020SystemLogNetLink\022\021\n\tis_linked\030\001 \001(\010\"4" +
-      "\n\014SystemLogNTP\022$\n\ttimeclock\030\001 \001(\0132\021.Time" +
-      "ClockMessage\"O\n\020SystemLogTrigger\022 \n\007trig" +
-      "ger\030\001 \001(\0132\017.TriggerMessage\022\031\n\006source\030\002 \001" +
-      "(\0162\t.ReadType\"g\n\020SystemLogSpektra\022\"\n\006act" +
-      "ion\030\001 \001(\0162\022.SpektraActionType\022 \n\004type\030\002 " +
-      "\001(\0162\022.SpektraTargetType\022\r\n\005index\030\003 \001(\r\"a" +
-      "\n\021SystemLogSchedule\022\r\n\005index\030\001 \001(\r\022\017\n\007is" +
-      "Start\030\002 \001(\r\022\016\n\006second\030\003 \001(\r\022\016\n\006minute\030\004 " +
-      "\001(\r\022\014\n\004hour\030\005 \001(\r\"I\n\022SystemLogUserStart\022" +
-      "$\n\ttimeclock\030\001 \001(\0132\021.TimeClockMessage\022\r\n" +
-      "\005flags\030\002 \001(\r\"\323\001\n\031SystemMetaDataReadMessa" +
-      "ge\022\033\n\023input_press_counter\030\001 \003(\r\022\032\n\022list_" +
-      "start_counter\030\002 \003(\r\022\031\n\021schedules_counter" +
-      "\030\003 \003(\r\022\026\n\016screen_on_time\030\004 \001(\r\022\027\n\017screen" +
-      "_dim_time\030\005 \001(\r\022\031\n\021screen_saver_time\030\006 \001" +
-      "(\r\022\026\n\016reboot_counter\030\007 \001(\r\"\277\001\n\013EventFilt" +
-      "er\022\r\n\005input\030\001 \001(\010\022\026\n\016dali_arc_level\030\002 \001(" +
-      "\010\022\024\n\014dali_command\030\003 \001(\010\022\023\n\013dali_sensor\030\004" +
-      " \001(\010\022\022\n\ndali_input\030\005 \001(\010\022\032\n\022dmx_stream_c" +
-      "hanged\030\006 \001(\010\022\025\n\rdali_24_frame\030\007 \001(\010\022\027\n\017t" +
-      "rigger_message\030\010 \001(\010\"\335\001\n\014TriggerEvent\022\032\n" +
-      "\004type\030\001 \001(\0162\014.TriggerType\022\017\n\005level\030\002 \001(\r" +
-      "H\000\022(\n\014dali_command\030\003 \001(\0162\020.DALICommandTy" +
-      "peH\000\022\026\n\016target_address\030\004 \001(\r\022\021\n\tline_mas" +
-      "k\030\005 \001(\r\022\014\n\004zone\030\006 \001(\r\022\r\n\005value\030\007 \001(\r\022\023\n\013" +
-      "query_index\030\010 \001(\r\022\016\n\006source\030\t \001(\rB\t\n\007pay" +
-      "load\"m\n\020DALI24InputEvent\022\r\n\005index\030\001 \001(\r\022" +
-      "\014\n\004line\030\002 \001(\r\022\017\n\007address\030\003 \001(\r\022\036\n\004type\030\004" +
-      " \001(\0162\020.DALI24InputType\022\013\n\003arg\030\005 \001(\r\"/\n\020D" +
-      "ALI24FrameEvent\022\014\n\004line\030\001 \001(\r\022\r\n\005frame\030\002" +
-      " \001(\r\"\252\001\n\017DALISensorEvent\022\r\n\005index\030\001 \001(\r\022" +
-      "\014\n\004line\030\002 \001(\r\022\017\n\007address\030\003 \001(\r\022-\n\014motion" +
-      "_state\030\004 \001(\0162\027.DALIMotionSensorStates\022\'\n" +
-      "\tlux_state\030\005 \001(\0162\024.DALILuxSensorStates\022\021" +
-      "\n\tlux_level\030\006 \001(\r\"\300\002\n\014EventMessage\022\031\n\005ev" +
-      "ent\030\001 \001(\0162\n.EventType\022 \n\007trigger\030\002 \001(\0132\r" +
-      ".TriggerEventH\000\022%\n\006inputs\030\003 \001(\0132\023.InputS" +
-      "tateResponseH\000\022\"\n\007payload\030\004 \001(\0132\017.Payloa" +
-      "dMessageH\000\022\"\n\006sensor\030\006 \001(\0132\020.DALISensorE" +
-      "ventH\000\022*\n\rdali_24_input\030\007 \001(\0132\021.DALI24In" +
-      "putEventH\000\022\036\n\006filter\030\010 \001(\0132\014.EventFilter" +
-      "H\000\022*\n\rdali_24_frame\030\t \001(\0132\021.DALI24FrameE" +
-      "ventH\000B\014\n\nevent_data\"\337\024\n\rEdidioMessage\022\022" +
-      "\n\nmessage_id\030\001 \001(\r\022\032\n\003ack\030\002 \001(\0132\013.AckMes" +
-      "sageH\000\022$\n\006inputs\030\003 \001(\0132\022.InputMultiMessa" +
-      "geH\000\022&\n\007outputs\030\004 \001(\0132\023.OutputMultiMessa" +
-      "geH\000\022\036\n\003irs\030\005 \001(\0132\017.IRMultiMessageH\000\022 \n\006" +
-      "sensor\030\006 \001(\0132\016.SensorMessageH\000\022\034\n\004list\030\010" +
-      " \001(\0132\014.ListMessageH\000\022\036\n\005alarm\030\n \001(\0132\r.Al" +
-      "armMessageH\000\022$\n\006alarms\030\013 \001(\0132\022.AlarmMult" +
-      "iMessageH\000\022\'\n\010burn_ins\030\014 \001(\0132\023.BurnInMul" +
-      "tiMessageH\000\022/\n\016sensor_command\030\r \001(\0132\025.Se" +
-      "nsorCommandMessageH\000\022/\n\016change_profile\030\016" +
-      " \001(\0132\025.ChangeProfileMessageH\000\022,\n\020identif" +
-      "y_message\030\017 \001(\0132\020.IdentifyMessageH\000\022)\n\013u" +
-      "pdate_time\030\020 \001(\0132\022.UpdateTimeMessageH\000\022)" +
-      "\n\013read_device\030\021 \001(\0132\022.ReadDeviceMessageH" +
-      "\000\022$\n\014dali_message\030\022 \001(\0132\014.DALIMessageH\000\022" +
-      "(\n\ndali_query\030\023 \001(\0132\022.DALIQueryResponseH" +
-      "\000\022\"\n\013dmx_message\030\024 \001(\0132\013.DMXMessageH\000\0223\n" +
-      "\020external_trigger\030\025 \001(\0132\027.ExternalTrigge" +
-      "rMessageH\000\0222\n\020spektra_settings\030\026 \001(\0132\026.S" +
-      "pektraSettingMessageH\000\0229\n\020spektra_sequen" +
-      "ce\030\027 \001(\0132\035.SpektraSequenceConfigMessageH" +
-      "\000\0223\n\020spektra_calendar\030\030 \001(\0132\027.SpektraCal" +
-      "endarMessageH\000\0223\n\rspektra_theme\030\031 \001(\0132\032." +
-      "SpektraThemeConfigMessageH\000\022+\n\014spektra_r" +
-      "ead\030\032 \001(\0132\023.SpektraReadMessageH\000\0221\n\017spek" +
-      "tra_control\030\033 \001(\0132\026.SpektraControlMessag" +
-      "eH\000\0221\n\016dmx_translator\030\034 \001(\0132\027.DMXProtoco" +
-      "lTranslationH\000\022+\n\rinput_request\030\035 \001(\0132\022." +
-      "InputStateMessageH\000\022-\n\016input_response\030\036 " +
-      "\001(\0132\023.InputStateResponseH\000\0224\n\013diag_syste" +
-      "m\030\037 \001(\0132\035.DiagnosticSystemInfoResponseH\000" +
-      "\022*\n\014diag_message\030  \001(\0132\022.DiagnosticMessa" +
-      "geH\000\022&\n\radmin_message\030! \001(\0132\r.AdminMessa" +
-      "geH\000\022\036\n\005event\030\" \001(\0132\r.EventMessageH\000\022>\n\026" +
-      "secure_device_settings\030# \001(\0132\034.SecureDev" +
-      "iceSettingsMessageH\000\022,\n\014firmware_new\030$ \001" +
-      "(\0132\024.FirmwareMetaMessageH\000\0223\n\020firmware_c" +
-      "ontrol\030% \001(\0132\027.FirmwareControlMessageH\000\022" +
-      "/\n\016firmware_chunk\030& \001(\0132\025.FirmwareChunkM" +
-      "essageH\000\0223\n\024level_cache_response\030\' \001(\0132\023" +
-      ".LevelCacheResponseH\000\022-\n\rlist_extended\030)" +
-      " \001(\0132\024.ExtendedListMessageH\000\022\"\n\013ayt_mess" +
-      "age\030* \001(\0132\013.AytMessageH\000\022\"\n\013rdm_message\030" +
-      "+ \001(\0132\013.RDMMessageH\000\0223\n\024rdm_response_mes" +
-      "sage\030, \001(\0132\023.RDMResponseMessageH\000\022+\n\rlog" +
-      "ic_message\030- \001(\0132\022.LogicMultiMessageH\000\0220" +
-      "\n\014secure_login\030. \001(\0132\030.AdminSecureLoginM" +
-      "essageH\000\0223\n\024device_state_message\030/ \001(\0132\023" +
-      ".DeviceStateMessageH\000\022:\n\024spektra_calenda" +
-      "r_day\0300 \001(\0132\032.SpektraCalendarDayMessageH" +
-      "\000\022D\n\031spektra_calendar_overview\0301 \001(\0132\037.S" +
-      "pektraCalendarOverviewMessageH\000\022-\n\013input" +
-      "s_dali\0302 \001(\0132\026.DALIInputMultiMessageH\000\022*" +
-      "\n\tlogs_read\0303 \001(\0132\025.SystemLogReadMessage" +
-      "H\000\0223\n\rmetadata_read\0304 \001(\0132\032.SystemMetaDa" +
-      "taReadMessageH\000\0229\n\027dali_addressing_messa" +
-      "ge\0305 \001(\0132\026.DALIAddressingMessageH\000\0227\n\026da" +
-      "li_remapping_message\0306 \001(\0132\025.DALIRemappi" +
-      "ngMessageH\000\022B\n\034spektra_show_control_mess" +
-      "age\0307 \001(\0132\032.SpektraShowControlMessageH\000\022" +
-      "3\n\024spektra_show_message\0308 \001(\0132\023.SpektraS" +
-      "howMessageH\000\022D\n\035extended_spektra_show_me" +
-      "ssage\0309 \001(\0132\033.ExtendedSpektraShowMessage" +
-      "H\000\022-\n\rrdm_discovery\030: \001(\0132\024.RDMDiscovery" +
-      "MessageH\000\0228\n\023rdm_discovery_reply\030; \001(\0132\031",
-      ".RDMDiscoveryReplyMessageH\000B\t\n\007payload*\233" +
-      "\001\n\024TriggerOperationType\022\r\n\tMOMENTARY\020\000\022\014" +
-      "\n\010LATCHING\020\001\022\024\n\020MOMENTARY_OUTPUT\020\002\022\023\n\017LA" +
-      "TCHING_OUTPUT\020\003\022\n\n\006ROTARY\020\004\022\027\n\022MOMENTARY" +
-      "_DISABLED\020\200\001\022\026\n\021LATCHING_DISABLED\020\201\001*\316\013\n" +
-      "\013TriggerType\022\014\n\010DALI_ARC\020\000\022\020\n\014DALI_COMMA" +
-      "ND\020\001\022\032\n\026DMX_CHANNELS_SPLIT_LOW\020\002\022\033\n\027DMX_" +
-      "CHANNELS_SPLIT_HIGH\020\003\022$\n DMX_MULTICAST_C" +
-      "HANNELS_SPLIT_LOW\020\004\022%\n!DMX_MULTICAST_CHA" +
-      "NNELS_SPLIT_HIGH\020\005\022\021\n\rDMX_BROADCAST\020\006\022\t\n" +
-      "\005DIDIO\020\007\022\024\n\020FADE_UP_WITH_MIN\020\010\022\016\n\nLIST_S" +
-      "TART\020\t\022\031\n\025LIST_START_CONTINUOUS\020\n\022\r\n\tLIS" +
-      "T_STOP\020\013\022\025\n\021SPEKTRA_START_SEQ\020\014\022\024\n\020SPEKT" +
-      "RA_STOP_SEQ\020\r\022\021\n\rSPEKTRA_THEME\020\016\022\022\n\016SPEK" +
-      "TRA_STATIC\020\017\022\024\n\020SPEKTRA_SCHEDULE\020\020\022\016\n\nLI" +
-      "NK_START\020\021\022\r\n\tLINK_STOP\020\022\022\020\n\014DISABLE_BUR" +
-      "N\020\023\022\017\n\013ENABLE_BURN\020\024\022\016\n\nON_OFF_TOG\020\025\022\017\n\013" +
-      "MIN_MAX_TOG\020\026\022\020\n\014ENABLE_INPUT\020\027\022\021\n\rDISAB" +
-      "LE_INPUT\020\030\022\024\n\020ENABLE_TOG_INPUT\020\031\022\016\n\nOUTP" +
-      "UT_TOG\020\032\022\017\n\013OUTPUT_HIGH\020\033\022\016\n\nOUTPUT_LOW\020" +
-      "\034\022\017\n\013OUTPUT_TRIG\020\035\022\022\n\016PROFILE_CHANGE\020\036\022\023" +
-      "\n\017FADE_LONG_PRESS\020\037\022\n\n\006SYNCRO\020 \022\017\n\013PRESE" +
-      "T_CODE\020!\022\017\n\013CUSTOM_CODE\020\"\022\021\n\rSPEKTRA_SLE" +
-      "EP\020#\022\022\n\016SPEKTRA_RESUME\020$\022\020\n\014DEVICE_RESET" +
-      "\020%\022\017\n\013DEVICE_SAVE\020&\022\030\n\024USER_LEVEL_STORE_" +
-      "NEW\020\'\022\032\n\026USER_LEVEL_SET_DEFAULT\020(\022\025\n\021USE" +
-      "R_LEVEL_RECALL\020)\022\r\n\tROOM_JOIN\020+\022\017\n\013ROOM_" +
-      "UNJOIN\020,\022\023\n\017TYPE8_TC_WARMER\020-\022\023\n\017TYPE8_T" +
-      "C_COOLER\020.\022\023\n\017TYPE8_TC_ACTUAL\020/\022\023\n\017LOGIC" +
-      "_OPERATION\0200\022\020\n\014ALARM_ENABLE\0201\022\021\n\rALARM_" +
-      "DISABLE\0202\022 \n\034DALI_CONTROL_SENSOR_OVERRID" +
-      "E\0203\022$\n DALI_CONTROL_SENSOR_TEMP_DISABLE\020" +
-      "4\022\036\n\032DALI_CONTROL_SENSOR_RESUME\0205\022\025\n\021DAL" +
-      "I_ARC_OVERRIDE\0206\022\031\n\025DALI_COMMAND_OVERRID" +
-      "E\0207\022\035\n\031FADE_UP_WITH_MIN_OVERRIDE\0208\022\027\n\023ON" +
-      "_OFF_TOG_OVERRIDE\0209\022\030\n\024MIN_MAX_TOG_OVERR" +
-      "IDE\020:\022\017\n\013MAX_OFF_TOG\020;\022\030\n\024MAX_OFF_TOG_OV" +
-      "ERRIDE\020<\022\034\n\030FADE_LONG_PRESS_OVERRIDE\020=\022\036" +
-      "\n\032USER_LEVEL_RECALL_OVERRIDE\020>\022\024\n\020DMX_ZO" +
-      "NE_FADE_UP\020?\022\026\n\022DMX_ZONE_FADE_DOWN\020@\022\021\n\r" +
-      "LOGGING_LEVEL\020A\022\030\n\024SPEKTRA_SHOW_CONTROL\020" +
-      "B\022\031\n\025CIRCADIAN_TEMPERATURE\020C\022\017\n\nNO_COMMA" +
-      "ND\020\376\001*\353\001\n\010ReadType\022\n\n\006INPUTS\020\000\022\013\n\007OUTPUT" +
-      "S\020\001\022\006\n\002IR\020\002\022\n\n\006SENSOR\020\003\022\010\n\004LIST\020\005\022\n\n\006ALA" +
-      "RMS\020\007\022\013\n\007BURN_IN\020\010\022\013\n\007PROJECT\020\t\022\013\n\007NETWO" +
-      "RK\020\n\022\n\n\006DEVICE\020\013\022\r\n\tPOLL_DATA\020\014\022\021\n\rLIST_" +
-      "EXTENDED\020\r\022\t\n\005LOGIC\020\016\022\017\n\013DALI_INPUTS\020\017\022\020" +
-      "\n\014SPEKTRA_SHOW\020\020\022\031\n\025SPEKTRA_SHOW_EXTENDE" +
-      "D\020\021*\214\001\n\017AlarmRepeatType\022\023\n\017ALARM_NO_REPE" +
-      "AT\020\000\022\026\n\022ALARM_REPEAT_DAILY\020\001\022\031\n\025ALARM_RE" +
-      "PEAT_WORK_DAY\020\002\022\027\n\023ALARM_REPEAT_WEEKLY\020\003" +
-      "\022\030\n\024ALARM_REPEAT_MONTHLY\020\004*I\n\016AlarmAstro" +
-      "Type\022\022\n\016ALARM_NO_ASTRO\020\000\022\021\n\rALARM_SUNRUS" +
-      "E\020\001\022\020\n\014ALARM_SUNSET\020\002*^\n\021SpektraTargetTy" +
-      "pe\022\014\n\010SETTINGS\020\000\022\014\n\010SEQUENCE\020\001\022\t\n\005THEME\020" +
-      "\002\022\n\n\006STATIC\020\003\022\014\n\010CALENDAR\020\004\022\010\n\004SHOW\020\005*=\n" +
-      "\021SpektraActionType\022\t\n\005START\020\000\022\010\n\004STOP\020\001\022" +
-      "\t\n\005PAUSE\020\002\022\010\n\004SAVE\020\003*p\n\025SpektraStepActio" +
-      "nType\022\020\n\014RUN_SEQUENCE\020\000\022\016\n\nSHOW_THEME\020\001\022" +
-      "\016\n\nSTART_LIST\020\002\022\022\n\016PAUSE_PREVIOUS\020\003\022\021\n\rS" +
-      "TOP_PREVIOUS\020\004*}\n\037SpektraUnscheduledBeha" +
-      "viourType\022 \n\034RUN_RANDOM_COLOURED_SEQUENC" +
-      "E\020\000\022\022\n\016RUN_SEQUENCE_1\020\001\022\023\n\017RESUME_PREVIO" +
-      "US\020\002\022\017\n\nDO_NOTHING\020\376\001*6\n\022LineAddressingT" +
-      "ype\022\017\n\013INDEPENDENT\020\000\022\017\n\013CONSECUTIVE\020\001*\347\002" +
-      "\n\016AckMessageType\022\021\n\rDECODE_FAILED\020\000\022\027\n\023I" +
-      "NDEX_OUT_OF_BOUNDS\020\001\022\023\n\017UNEXPECTED_TYPE\020" +
-      "\002\022\021\n\rENCODE_FAILED\020\003\022\020\n\014KEY_MISMATCH\020\004\022\013" +
-      "\n\007SUCCESS\020\005\022\022\n\016INVALID_PARAMS\020\006\022\026\n\022UNEXP" +
-      "ECTED_COMMAND\020\007\022\030\n\024COMMUNICATION_FAILED\020" +
-      "\010\022\031\n\025COMMUNICATION_TIMEOUT\020\t\022\021\n\rDATA_TOO" +
-      "_LONG\020\n\022\023\n\017UNEXPECTED_CASE\020\013\022\016\n\nSLOTS_FU" +
-      "LL\020\014\022\020\n\014UNAUTHORISED\020\r\022\023\n\017PARTIAL_SUCCES" +
-      "S\020\016\022\022\n\016COMMAND_FAILED\020\017\022\016\n\nDEPRECATED\020\020*" +
-      "\352\004\n\020Type8CommandType\022\024\n\020SET_TEMP_X_COORD" +
-      "\020\000\022\024\n\020SET_TEMP_Y_COORD\020\001\022\014\n\010ACTIVATE\020\002\022\023" +
-      "\n\017X_COORD_STEP_UP\020\003\022\025\n\021X_COORD_STEP_DOWN" +
-      "\020\004\022\023\n\017Y_COORD_STEP_UP\020\005\022\025\n\021Y_COORD_STEP_" +
-      "DOWN\020\006\022\037\n\033SET_TEMP_COLOUR_TEMPERATURE\020\007\022" +
-      "\"\n\036COLOUR_TEMPERATURE_STEP_COOLER\020\010\022\"\n\036C" +
-      "OLOUR_TEMPERATURE_STEP_WARMER\020\t\022\033\n\027SET_T" +
-      "EMP_PRI_N_DIMLEVEL\020\n\022\031\n\025SET_TEMP_RGB_DIM" +
-      "LEVEL\020\013\022\031\n\025SET_TEMP_WAF_DIMLEVEL\020\014\022\033\n\027SE" +
-      "T_TEMP_RGBWAF_CONTROL\020\r\022\031\n\025COPY_REPORT_T" +
-      "EMPORARY\020\016\022\022\n\016STORE_TY_PRI_N\020\020\022\030\n\024STORE_" +
-      "XY_COORD_PRI_N\020\021\022\"\n\036STORE_COLOUR_TEMPERA" +
-      "TURE_LIMIT\020\022\022\036\n\032STORE_GEAR_FEATURES_STAT" +
-      "US\020\023\022\032\n\026ASSIGN_COLOR_LINKED_CH\020\025\022\022\n\016STAR" +
-      "T_AUTO_CAL\020\026\022\027\n\023ENABLE_DEVICE_TYPE8\0200\022\025\n" +
-      "\021SET_XY_COORDINATE\0202*\221\002\n\016Type8QueryType\022" +
-      "\024\n\020TYPE8_QUERY_NULL\020\000\022$\n TYPE8_QUERY_GEA" +
-      "R_FEATURES_STATUS\020\001\022\035\n\031TYPE8_QUERY_COLOU" +
-      "R_STATUS\020\002\022$\n TYPE8_QUERY_COLOUR_TYPE_FE" +
-      "ATURES\020\003\022\034\n\030TYPE8_QUERY_COLOUR_VALUE\020\004\022\036" +
-      "\n\032TYPE8_QUERY_RGBWAF_CONTROL\020\005\022\037\n\033TYPE8_" +
-      "QUERY_ASSIGNED_COLOUR\020\006\022\037\n\033TYPE8_QUERY_E" +
-      "XT_VERSION_NUM\020\010*\274\006\n\023DALI24DeviceSetting" +
-      "\022\024\n\020COMMAND_IDENTIFY\020\000\022\"\n\036COMMAND_RESET_" +
-      "POWER_CYCLE_SEEN\020\001\022\021\n\rCOMMAND_RESET\020\020\022\035\n" +
-      "\031COMMAND_RESET_MEMORY_BANK\020\021\022\035\n\031COMMAND_" +
-      "SET_SHORT_ADDRESS\020\024\022\037\n\033COMMAND_ENABLE_WR" +
-      "ITE_MEMORY\020\025\022!\n\035COMMAND_ENABLE_APP_CONTR" +
-      "OLLER\020\026\022\"\n\036COMMAND_DISABLE_APP_CONTROLLE" +
-      "R\020\027\022\036\n\032COMMAND_SET_OPERATING_MODE\020\030\022%\n!C" +
-      "OMMAND_ADD_TO_DEVICE_GROUPS_0_15\020\031\022&\n\"CO" +
-      "MMAND_ADD_TO_DEVICE_GROUPS_15_32\020\032\022#\n\037CO" +
-      "MMAND_REMOVE_FROM_GROUPS_0_15\020\033\022$\n COMMA" +
-      "ND_REMOVE_FROM_GROUPS_16_32\020\034\022 \n\034COMMAND" +
-      "_START_QUIESCENT_MODE\020\035\022\037\n\033COMMAND_STOP_" +
-      "QUIESCENT_MODE\020\036\022$\n COMMAND_ENABLE_POWER" +
-      "_CYCLE_NOTIF\020\037\022%\n!COMMAND_DISABLE_POWER_" +
-      "CYCLE_NOTIF\020 \022%\n!COMMAND_SAVE_PERSISTENT" +
-      "_VARIABLES\020!\022\026\n\022SET_EVENT_PRIORITY\020a\022\023\n\017" +
-      "ENABLE_INSTANCE\020b\022\024\n\020DISABLE_INSTANCE\020c\022" +
-      "\036\n\032SET_PRIMARY_INSTANCE_GROUP\020d\022\030\n\024SET_I" +
-      "NSTANCE_GROUP_1\020e\022\030\n\024SET_INSTANCE_GROUP_" +
-      "2\020f\022\024\n\020SET_EVENT_SCHEME\020g\022\024\n\020SET_EVENT_F" +
-      "ILTER\020h*c\n\022DALI24InstanceType\022\013\n\007DEFAULT" +
-      "\020\000\022\t\n\005INPUT\020\001\022\020\n\014ROTARY_INPUT\020\002\022\021\n\rMOTIO" +
-      "N_SENSOR\020\003\022\020\n\014LIGHT_SENSOR\020\004*\276\002\n\014DALI24O" +
-      "pCode\022\017\n\013OPCODE_NULL\020\000\022 \n\034SENSOR_MOTION_" +
-      "SET_HOLD_TIMER\020!\022\"\n\036SENSOR_MOTION_SET_RE" +
-      "PORT_TIMER\020\"\022$\n SENSOR_MOTION_SET_DEADTI" +
-      "ME_TIMER\020#\022#\n\037SENSOR_MOTION_CANCEL_HOLD_" +
-      "TIMER\020$\022!\n\035SENSOR_LIGHT_SET_REPORT_TIMER" +
-      "\0200\022\037\n\033SENSOR_LIGHT_SET_HYSTERESIS\0201\022#\n\037S" +
-      "ENSOR_LIGHT_SET_DEADTIME_TIMER\0202\022#\n\037SENS" +
-      "OR_LIGHT_SET_HYSTERESIS_MIN\0203*W\n\010LineTyp" +
-      "e\022\016\n\nLINE_EMPTY\020\000\022\r\n\tLINE_DALI\020\001\022\014\n\010LINE" +
-      "_DMX\020\002\022\017\n\013LINE_DMX_IN\020\003\022\r\n\tLINE_AUTO\020\004*\251" +
-      "\001\n\tEventType\022\014\n\010REGISTER\020\000\022\021\n\rTRIGGER_EV" +
-      "ENT\020\001\022\017\n\013INPUT_EVENT\020\002\022\020\n\014SENSOR_EVENT\020\003" +
-      "\022\021\n\rCONTROL_EVENT\020\004\022\023\n\017ROOM_JOIN_EVENT\020\005" +
-      "\022\027\n\023DALI_24_INPUT_EVENT\020\006\022\027\n\023DALI_24_FRA" +
-      "ME_EVENT\020\007*\306\t\n\rDALIQueryType\022\023\n\017DALI_QUE" +
-      "RY_NULL\020\000\022\026\n\021DALI_QUERY_STATUS\020\220\001\022\027\n\022DAL" +
-      "I_QUERY_BALLAST\020\221\001\022\034\n\027DALI_QUERY_LAMP_FA" +
-      "ILURE\020\222\001\022\035\n\030DALI_QUERY_LAMP_POWER_ON\020\223\001\022" +
-      "\033\n\026DALI_QUERY_LIMIT_ERROR\020\224\001\022\033\n\026DALI_QUE" +
-      "RY_RESET_STATE\020\225\001\022%\n DALI_QUERY_MISSING_" +
-      "SHORT_ADDRESS\020\226\001\022\036\n\031DALI_QUERY_VERSION_N" +
-      "UMBER\020\227\001\022\024\n\017DALI_QUERY_DTR0\020\230\001\022\033\n\026DALI_Q" +
-      "UERY_DEVICE_TYPE\020\231\001\022\034\n\027DALI_QUERY_PHYSIC" +
-      "AL_MIN\020\232\001\022\035\n\030DALI_QUERY_POWER_FAILURE\020\233\001" +
-      "\022\024\n\017DALI_QUERY_DTR1\020\234\001\022\024\n\017DALI_QUERY_DTR" +
-      "2\020\235\001\022\036\n\031DALI_QUERY_OPERATING_MODE\020\236\001\022 \n\033" +
-      "DALI_QUERY_LIGHTSOURCE_TYPE\020\237\001\022\034\n\027DALI_Q" +
-      "UERY_ACTUAL_LEVEL\020\240\001\022\031\n\024DALI_QUERY_MAX_L" +
-      "EVEL\020\241\001\022\031\n\024DALI_QUERY_MIN_LEVEL\020\242\001\022\036\n\031DA" +
-      "LI_QUERY_POWER_ON_LEVEL\020\243\001\022$\n\037DALI_QUERY" +
-      "_SYSTEM_FAILURE_LEVEL\020\244\001\022!\n\034DALI_QUERY_F" +
-      "ADETIME_FADERATE\020\245\001\022*\n%DALI_QUERY_MANUFA" +
-      "CTURER_SPECIFIC_MODE\020\246\001\022 \n\033DALI_QUERY_NE" +
-      "XT_DEVICE_TYPE\020\247\001\022\"\n\035DALI_QUERY_EXTENDED" +
-      "_FADE_TIME\020\250\001\022$\n\037DALI_QUERY_CONTROL_GEAR" +
-      "_FAILURE\020\252\001\022\035\n\030DALI_QUERY_SCENE_X_LEVEL\020" +
-      "\260\001\022\032\n\025DALI_QUERY_GROUPS_0_7\020\300\001\022\033\n\026DALI_Q" +
-      "UERY_GROUPS_8_15\020\301\001\022 \n\033DALI_QUERY_RANDOM" +
-      "_ADDRESS_H\020\302\001\022 \n\033DALI_QUERY_RANDOM_ADDRE" +
-      "SS_M\020\303\001\022 \n\033DALI_QUERY_RANDOM_ADDRESS_L\020\304" +
-      "\001\022\034\n\027DALI_QUERY_READ_DTR_0_1\020\305\001\022 \n\033DALI_" +
-      "QUERY_APP_EXT_COMMANDS\020\340\001\022\"\n\035DALI_QUERY_" +
-      "EXT_VERSION_NUMBER\020\377\001\022\027\n\022DALI_QUERY_COMP" +
-      "ARE\020\204\002\022$\n\037DALI_QUERY_VERIFY_SHORT_ADDRES" +
-      "S\020\214\002\022\035\n\030DALI_QUERY_SHORT_ADDRESS\020\215\002*\351\027\n\017" +
-      "DALICommandType\022\014\n\010DALI_OFF\020\000\022\020\n\014DALI_FA" +
-      "DE_UP\020\001\022\022\n\016DALI_FADE_DOWN\020\002\022\020\n\014DALI_STEP" +
-      "_UP\020\003\022\022\n\016DALI_STEP_DOWN\020\004\022\022\n\016DALI_MAX_LE" +
-      "VEL\020\005\022\022\n\016DALI_MIN_LEVEL\020\006\022\026\n\022DALI_STEP_D" +
-      "OWN_OFF\020\007\022\023\n\017DALI_ON_STEP_UP\020\010\022\030\n\024DALI_E" +
-      "NABLE_DAPC_SEQ\020\t\022!\n\035DALI_RECALL_LAST_ACT" +
-      "IVE_LEVEL\020\n\022\026\n\022DALI_CONTINUOUS_UP\020\013\022\030\n\024D" +
-      "ALI_CONTINUOUS_DOWN\020\014\022\027\n\023DALI_RECALL_SCE" +
-      "NE_0\020\020\022\027\n\023DALI_RECALL_SCENE_1\020\021\022\027\n\023DALI_" +
-      "RECALL_SCENE_2\020\022\022\027\n\023DALI_RECALL_SCENE_3\020" +
-      "\023\022\027\n\023DALI_RECALL_SCENE_4\020\024\022\027\n\023DALI_RECAL" +
-      "L_SCENE_5\020\025\022\027\n\023DALI_RECALL_SCENE_6\020\026\022\027\n\023" +
-      "DALI_RECALL_SCENE_7\020\027\022\027\n\023DALI_RECALL_SCE" +
-      "NE_8\020\030\022\027\n\023DALI_RECALL_SCENE_9\020\031\022\030\n\024DALI_" +
-      "RECALL_SCENE_10\020\032\022\030\n\024DALI_RECALL_SCENE_1" +
-      "1\020\033\022\030\n\024DALI_RECALL_SCENE_12\020\034\022\030\n\024DALI_RE" +
-      "CALL_SCENE_13\020\035\022\030\n\024DALI_RECALL_SCENE_14\020" +
-      "\036\022\030\n\024DALI_RECALL_SCENE_15\020\037\022\016\n\nDALI_RESE" +
-      "T\020 \022 \n\034DALI_STORE_ACTUAL_LEVEL_DTR0\020!\022\035\n" +
-      "\031DALI_SAVE_PERSISTENT_VARS\020\"\022\033\n\027DALI_SET" +
-      "_OPERATING_MODE\020#\022\032\n\026DALI_RESET_MEMORY_B" +
-      "ANK\020$\022\030\n\024DALI_IDENTIFY_DEVICE\020%\022\026\n\022DALI_" +
-      "SET_MAX_LEVEL\020*\022\026\n\022DALI_SET_MIN_LEVEL\020+\022" +
-      "!\n\035DALI_SET_SYSTEM_FAILURE_LEVEL\020,\022\033\n\027DA" +
-      "LI_SET_POWER_ON_LEVEL\020-\022\026\n\022DALI_SET_FADE" +
-      "_TIME\020.\022\026\n\022DALI_SET_FADE_RATE\020/\022\032\n\026DALI_" +
-      "SET_EXT_FADE_TIME\0200\022\024\n\020DALI_SET_SCENE_0\020" +
-      "@\022\024\n\020DALI_SET_SCENE_1\020A\022\024\n\020DALI_SET_SCEN" +
-      "E_2\020B\022\024\n\020DALI_SET_SCENE_3\020C\022\024\n\020DALI_SET_" +
-      "SCENE_4\020D\022\024\n\020DALI_SET_SCENE_5\020E\022\024\n\020DALI_" +
-      "SET_SCENE_6\020F\022\024\n\020DALI_SET_SCENE_7\020G\022\024\n\020D" +
-      "ALI_SET_SCENE_8\020H\022\024\n\020DALI_SET_SCENE_9\020I\022" +
-      "\025\n\021DALI_SET_SCENE_10\020J\022\025\n\021DALI_SET_SCENE" +
-      "_11\020K\022\025\n\021DALI_SET_SCENE_12\020L\022\025\n\021DALI_SET" +
-      "_SCENE_13\020M\022\025\n\021DALI_SET_SCENE_14\020N\022\025\n\021DA" +
-      "LI_SET_SCENE_15\020O\022\034\n\030DALI_REMOVE_FROM_SC" +
-      "ENE_0\020P\022\034\n\030DALI_REMOVE_FROM_SCENE_1\020Q\022\034\n" +
-      "\030DALI_REMOVE_FROM_SCENE_2\020R\022\034\n\030DALI_REMO" +
-      "VE_FROM_SCENE_3\020S\022\034\n\030DALI_REMOVE_FROM_SC" +
-      "ENE_4\020T\022\034\n\030DALI_REMOVE_FROM_SCENE_5\020U\022\034\n" +
-      "\030DALI_REMOVE_FROM_SCENE_6\020V\022\034\n\030DALI_REMO" +
-      "VE_FROM_SCENE_7\020W\022\034\n\030DALI_REMOVE_FROM_SC" +
-      "ENE_8\020X\022\034\n\030DALI_REMOVE_FROM_SCENE_9\020Y\022\035\n" +
-      "\031DALI_REMOVE_FROM_SCENE_10\020Z\022\035\n\031DALI_REM" +
-      "OVE_FROM_SCENE_11\020[\022\035\n\031DALI_REMOVE_FROM_" +
-      "SCENE_12\020\\\022\035\n\031DALI_REMOVE_FROM_SCENE_13\020" +
-      "]\022\035\n\031DALI_REMOVE_FROM_SCENE_14\020^\022\035\n\031DALI" +
-      "_REMOVE_FROM_SCENE_15\020_\022\027\n\023DALI_ADD_TO_G" +
-      "ROUP_0\020`\022\027\n\023DALI_ADD_TO_GROUP_1\020a\022\027\n\023DAL" +
-      "I_ADD_TO_GROUP_2\020b\022\027\n\023DALI_ADD_TO_GROUP_" +
-      "3\020c\022\027\n\023DALI_ADD_TO_GROUP_4\020d\022\027\n\023DALI_ADD" +
-      "_TO_GROUP_5\020e\022\027\n\023DALI_ADD_TO_GROUP_6\020f\022\027" +
-      "\n\023DALI_ADD_TO_GROUP_7\020g\022\027\n\023DALI_ADD_TO_G" +
-      "ROUP_8\020h\022\027\n\023DALI_ADD_TO_GROUP_9\020i\022\030\n\024DAL" +
-      "I_ADD_TO_GROUP_10\020j\022\030\n\024DALI_ADD_TO_GROUP" +
-      "_11\020k\022\030\n\024DALI_ADD_TO_GROUP_12\020l\022\030\n\024DALI_" +
-      "ADD_TO_GROUP_13\020m\022\030\n\024DALI_ADD_TO_GROUP_1" +
-      "4\020n\022\030\n\024DALI_ADD_TO_GROUP_15\020o\022\034\n\030DALI_RE" +
-      "MOVE_FROM_GROUP_0\020p\022\034\n\030DALI_REMOVE_FROM_" +
-      "GROUP_1\020q\022\034\n\030DALI_REMOVE_FROM_GROUP_2\020r\022" +
-      "\034\n\030DALI_REMOVE_FROM_GROUP_3\020s\022\034\n\030DALI_RE" +
-      "MOVE_FROM_GROUP_4\020t\022\034\n\030DALI_REMOVE_FROM_" +
-      "GROUP_5\020u\022\034\n\030DALI_REMOVE_FROM_GROUP_6\020v\022" +
-      "\034\n\030DALI_REMOVE_FROM_GROUP_7\020w\022\034\n\030DALI_RE" +
-      "MOVE_FROM_GROUP_8\020x\022\034\n\030DALI_REMOVE_FROM_" +
-      "GROUP_9\020y\022\035\n\031DALI_REMOVE_FROM_GROUP_10\020z" +
-      "\022\035\n\031DALI_REMOVE_FROM_GROUP_11\020{\022\035\n\031DALI_" +
-      "REMOVE_FROM_GROUP_12\020|\022\035\n\031DALI_REMOVE_FR" +
-      "OM_GROUP_13\020}\022\035\n\031DALI_REMOVE_FROM_GROUP_" +
-      "14\020~\022\035\n\031DALI_REMOVE_FROM_GROUP_15\020\177\022\033\n\026D" +
-      "ALI_SET_SHORT_ADDRESS\020\200\001\022\035\n\030DALI_ENABLE_" +
-      "WRITE_MEMORY\020\201\001\022\023\n\016DALI_TERMINATE\020\377\001\022\024\n\017" +
-      "DALI_INITIALISE\020\202\002\022\023\n\016DALI_RANDOMISE\020\203\002\022" +
-      "\022\n\rDALI_WITHDRAW\020\205\002\022\027\n\022DALI_SEARCH_ADDR_" +
-      "H\020\210\002\022\027\n\022DALI_SEARCH_ADDR_M\020\211\002\022\027\n\022DALI_SE" +
-      "ARCH_ADDR_L\020\212\002\022\037\n\032DALI_PROGRAM_SHORT_ADD" +
-      "RESS\020\213\002*\250\001\n\025CustomDALICommandType\022\022\n\016DAL" +
-      "I_ARC_LEVEL\020\000\022\023\n\017DALI_DAPC_LEVEL\020\001\022\030\n\024DA" +
-      "LI_GROUP_ARC_LEVEL\020\002\022\030\n\024DALI_BROADCAST_S" +
-      "CENE\020\003\022\027\n\023DALI_SCENE_ON_GROUP\020\004\022\031\n\025DALI_" +
-      "SCENE_ON_ADDRESS\020\005*\233\004\n\021AdminPropertyType" +
-      "\022\017\n\013DEVICE_NAME\020\000\022\020\n\014PROJECT_NAME\020\001\022\r\n\tL" +
-      "ONGITUDE\020\002\022\014\n\010LATITUDE\020\003\022\024\n\020LOCAL_UTC_OF" +
-      "FSET\020\004\022\024\n\020DAYLIGHT_SAVINGS\020\005\022\017\n\013POLL_ACT" +
-      "IVE\020\006\022\020\n\014DHCP_ENABLED\020\007\022\013\n\007IP_ADDR\020\010\022\014\n\010" +
-      "MAC_ADDR\020\t\022\016\n\nGATEWAY_IP\020\n\022\026\n\022NETWORK_PR" +
-      "OPERTIES\020\013\022\025\n\021SYSTEM_PROPERTIES\020\014\022\024\n\020CON" +
-      "TROLLER_LINES\020\r\022\024\n\020EEPROM_FULL_CHIP\020\016\022\017\n" +
-      "\013CONFIG_DATA\020\017\022\020\n\014SPEKTRA_DATA\020\020\022\021\n\rDEVI" +
-      "CE_STATUS\020\021\022\021\n\rCONFIG_STATUS\020\022\022\017\n\013DEVICE" +
-      "_TIME\020\023\022\017\n\013NTP_DETAILS\020\024\022\025\n\021TRIDONIC_MSE" +
-      "NSORS\020\025\022\022\n\016SECURE_SESSION\020\026\022\t\n\005NONCE\020\027\022\024" +
-      "\n\020DALI_SENSOR_TYPE\020\030\022\021\n\rDEVICE_REBOOT\020\031\022" +
-      "\022\n\016SYSTEM_LOGGING\020\032\022\n\n\006SUBNET\020\033\022\007\n\003DNS\020\034" +
-      "*M\n\020AdminCommandType\022\007\n\003SET\020\000\022\007\n\003GET\020\001\022\007" +
-      "\n\003ADD\020\002\022\n\n\006REMOVE\020\003\022\t\n\005RESET\020\004\022\007\n\003RUN\020\005*" +
-      "\265\001\n\016DALIStatusType\022\014\n\010LAMP_OFF\020\000\022\030\n\024CONT" +
-      "ROL_GEAR_FAILURE\020\001\022\020\n\014LAMP_FAILURE\020\002\022\013\n\007" +
-      "LAMP_ON\020\004\022\017\n\013LIMIT_ERROR\020\010\022\020\n\014FADE_RUNNI" +
-      "NG\020\020\022\017\n\013RESET_STATE\020 \022\021\n\rSHORT_ADDRESS\020@" +
-      "\022\025\n\020POWER_CYCLE_SEEN\020\200\001*\210\002\n\020DALIRXStatus" +
-      "Flag\022\013\n\007WAITING\020\000\022\023\n\017RECEIVING_FRAME\020\001\022\025" +
-      "\n\021NO_RECEIVED_FRAME\020\002\022\030\n\024RECEIVED_8_BIT_" +
-      "FRAME\020\003\022\031\n\025RECEIVED_16_BIT_FRAME\020\004\022\031\n\025RE" +
-      "CEIVED_24_BIT_FRAME\020\005\022\032\n\026RECEIVED_PARTIA" +
-      "L_FRAME\020\006\022\010\n\004IDLE\020\007\022\017\n\013CALIBRATION\020\010\022\030\n\023" +
-      "ERROR_WHILE_SENDING\020\376\001\022\032\n\025ERROR_WHILE_RE" +
-      "CEIVING\020\377\001*\213\001\n\025DiagnosticMessageType\022\032\n\026" +
-      "DIAGNOSTIC_SYSTEM_INFO\020\000\022\033\n\027DIAGNOSTIC_I" +
-      "NPUT_STATUS\020\001\022\024\n\020DALI_LEVEL_CACHE\020\002\022\023\n\017D" +
-      "MX_LEVEL_CACHE\020\003\022\016\n\nROOM_JOINS\020\004*z\n\023Firm" +
-      "wareCommandType\022\014\n\010FW_READY\020\000\022\014\n\010FW_APPL" +
-      "Y\020\001\022\r\n\tFW_VERIFY\020\002\022\024\n\020FW_VERIFY_FAILED\020\003" +
-      "\022\025\n\021FW_VERIFY_SUCCESS\020\004\022\013\n\007FW_READ\020\005*?\n\025" +
-      "SpektraTransitionType\022\t\n\005BLEND\020\000\022\010\n\004SNAP" +
-      "\020\001\022\021\n\rFADE_TO_BLACK\020\002*\234\001\n\tLogicType\022\016\n\nD" +
-      "ALI_LEVEL\020\000\022\017\n\013INPUT_STATE\020\001\022\020\n\014LIST_RUN" +
-      "NING\020\002\022\026\n\022OCCUPANCY_DETECTED\020\003\022\017\n\013DMX_PR" +
-      "ESENT\020\004\022\017\n\013CAL_WEEKDAY\020\005\022\r\n\tCAL_MONTH\020\006\022" +
-      "\023\n\017ALARM_SCHEDULED\020\007*\200\001\n\023LogicComparison" +
-      "Type\022\r\n\tLESS_THAN\020\000\022\027\n\023LESS_THAN_OR_EQUA" +
-      "LS\020\001\022\n\n\006EQUALS\020\002\022\r\n\tMORE_THAN\020\003\022\027\n\023MORE_" +
-      "THAN_OR_EQUALS\020\004\022\r\n\tNOT_EQUAL\020\005*8\n\016DALIS" +
-      "ensorType\022\022\n\016TRIDONIC_EDALI\020\000\022\022\n\016STANDAR" +
-      "D_EDALI\020\001*G\n\021SensorCommandType\022\016\n\nINITIA" +
-      "LISE\020\000\022\010\n\004MUTE\020\001\022\n\n\006UNMUTE\020\002\022\014\n\010OVERRIDE" +
-      "\020\003*b\n\rSystemLogType\022\010\n\004BOOT\020\000\022\014\n\010NET_LIN" +
-      "K\020\001\022\007\n\003NTP\020\002\022\013\n\007TRIGGER\020\003\022\013\n\007SPEKTRA\020\004\022\014" +
-      "\n\010SCHEDULE\020\005\022\010\n\004USER\020\006*m\n\017DALI24InputTyp" +
-      "e\022\023\n\017MOMENTARY_SHORT\020\000\022\022\n\016MOMENTARY_LONG" +
-      "\020\001\022\017\n\013LATCHED_LOW\020\002\022\020\n\014LATCHED_HIGH\020\003\022\016\n" +
-      "\nPOSITIONAL\020\004*h\n\026DALIMotionSensorStates\022" +
-      "\017\n\013MOTION_IDLE\020\000\022\023\n\017MOTION_DISABLED\020\001\022\022\n" +
-      "\016MOTION_WARNING\020\002\022\024\n\020MOTION_OCCUPANCY\020\003*" +
-      "I\n\023DALILuxSensorStates\022\020\n\014LUX_DISABLED\020\000" +
-      "\022\017\n\013LUX_ENABLED\020\001\022\017\n\013LUX_DEVIATE\020\002*N\n\023DA" +
-      "LIAddressingError\022\014\n\010NO_ERROR\020\000\022\n\n\006VERIF" +
-      "Y\020\001\022\n\n\006SEARCH\020\002\022\021\n\rNO_NEW_DEVICE\020\003*8\n\022DA" +
-      "LIAddressingType\022\017\n\013ADDRESS_NEW\020\000\022\021\n\rREA" +
-      "DDRESS_ALL\020\001b\006proto3"
+      "e\030\016 \001(\004\022\024\n\014output_state\030\017 \001(\r\"\207\001\n\016Trigge" +
+      "rMessage\022\032\n\004type\030\001 \001(\0162\014.TriggerType\022\014\n\004" +
+      "zone\030\002 \001(\r\022\021\n\tline_mask\030\003 \001(\r\022\024\n\014target_" +
+      "index\030\004 \001(\r\022\r\n\005value\030\005 \001(\r\022\023\n\013query_inde" +
+      "x\030\006 \001(\r\".\n\020TimeClockMessage\022\014\n\004date\030\001 \001(" +
+      "\r\022\014\n\004time\030\002 \001(\r\"S\n\021BurnInBitsMessage\022\023\n\013" +
+      "light_state\030\001 \001(\r\022\024\n\014running_flag\030\002 \001(\r\022" +
+      "\023\n\013enable_flag\030\003 \001(\r\"\227\001\n\016IOInputMessage\022" +
+      "\r\n\005index\030\001 \001(\r\022+\n\014button_state\030\002 \001(\0162\025.T" +
+      "riggerOperationType\022$\n\013short_press\030\003 \001(\013" +
+      "2\017.TriggerMessage\022#\n\nlong_press\030\004 \001(\0132\017." +
+      "TriggerMessage\"|\n\017IOOutputMessage\022\r\n\005ind" +
+      "ex\030\001 \001(\r\022\025\n\rinitial_level\030\002 \001(\r\022\036\n\026time_" +
+      "trigger_is_active\030\003 \001(\r\022#\n\004type\030\004 \001(\0162\025." +
+      "TriggerOperationType\"\317\001\n\020DALIInputMessag" +
+      "e\022\r\n\005index\030\001 \001(\r\022\017\n\007address\030\002 \001(\r\022\021\n\tdal" +
+      "i_line\030\003 \001(\r\022+\n\014button_state\030\004 \001(\0162\025.Tri" +
+      "ggerOperationType\022$\n\013short_press\030\005 \001(\0132\017" +
+      ".TriggerMessage\022#\n\nlong_press\030\006 \001(\0132\017.Tr" +
+      "iggerMessage\022\020\n\010instance\030\007 \001(\r\"L\n\013IOIRMe" +
+      "ssage\022\r\n\005index\030\001 \001(\r\022\037\n\006action\030\002 \001(\0132\017.T" +
+      "riggerMessage\022\r\n\005codes\030\003 \001(\r\"\313\004\n\rSensorM" +
+      "essage\022\017\n\007profile\030\001 \001(\r\022\r\n\005index\030\002 \001(\r\022\026" +
+      "\n\016sensor_address\030\003 \001(\r\022\030\n\020sensor_dali_li" +
+      "ne\030\004 \001(\r\022\025\n\raddress_query\030\005 \001(\r\022\031\n\021contr" +
+      "ol_dali_line\030\006 \001(\r\022\025\n\rcontrol_group\030\007 \001(" +
+      "\r\022\026\n\016light_setpoint\030\010 \001(\r\022\030\n\020warning_set" +
+      "point\030\t \001(\r\022\023\n\013motion_only\030\n \001(\r\022\026\n\016time" +
+      "out_values\030\013 \001(\r\022\026\n\016warning_values\030\014 \001(\r" +
+      "\022\026\n\016disable_values\030\r \001(\r\022\022\n\ninput_1_pm\030\016" +
+      " \001(\r\022\022\n\ninput_2_pm\030\017 \001(\r\022\025\n\rsensor_state" +
+      "s\030\020 \001(\r\022\026\n\016motion_sensors\030\021 \001(\r\022\023\n\013lux_s" +
+      "ensors\030\022 \001(\r\022\020\n\010off_flag\030\023 \001(\r\022\025\n\ris_pro" +
+      "grammed\030\024 \001(\010\022*\n\021detection_trigger\030\025 \001(\013" +
+      "2\017.TriggerMessage\022(\n\017warning_trigger\030\026 \001" +
+      "(\0132\017.TriggerMessage\022%\n\014idle_trigger\030\027 \001(" +
+      "\0132\017.TriggerMessage\"\\\n\017ListStepMessage\022\022\n" +
+      "\nstep_index\030\001 \001(\r\022\037\n\006action\030\002 \001(\0132\017.Trig" +
+      "gerMessage\022\024\n\014time_seconds\030\003 \001(\r\"\274\003\n\014Ala" +
+      "rmMessage\022\r\n\005index\030\001 \001(\r\022\017\n\007enabled\030\002 \001(" +
+      "\010\022%\n\nstart_time\030\003 \001(\0132\021.TimeClockMessage" +
+      "\022#\n\010end_time\030\004 \001(\0132\021.TimeClockMessage\022&\n" +
+      "\rstart_trigger\030\005 \001(\0132\017.TriggerMessage\022$\n" +
+      "\013end_trigger\030\006 \001(\0132\017.TriggerMessage\022$\n\013a" +
+      "stro_start\030\007 \001(\0162\017.AlarmAstroType\022\"\n\tast" +
+      "ro_end\030\010 \001(\0162\017.AlarmAstroType\022 \n\006repeat\030" +
+      "\t \001(\0162\020.AlarmRepeatType\022\032\n\022repeat_day_bi" +
+      "tmask\030\n \001(\r\022\034\n\024repeat_month_bitmask\030\013 \001(" +
+      "\r\022\016\n\006yearly\030\014 \001(\010\022\036\n\026start_offset_is_bef" +
+      "ore\030\r \001(\010\022\034\n\024end_offset_is_before\030\016 \001(\010\"" +
+      "\231\001\n\rBurnInMessage\022\r\n\005index\030\001 \001(\r\022\014\n\004line" +
+      "\030\002 \001(\r\022\017\n\007address\030\003 \001(\r\022\025\n\rquery_address" +
+      "\030\004 \001(\r\022\014\n\004time\030\005 \001(\r\022\021\n\tremaining\030\006 \001(\r\022" +
+      "\"\n\006states\030\007 \001(\0132\022.BurnInBitsMessage\":\n\026E" +
+      "xternalTriggerMessage\022 \n\007trigger\030\001 \001(\0132\017" +
+      ".TriggerMessage\"E\n\021InputMultiMessage\022\017\n\007" +
+      "profile\030\001 \001(\r\022\037\n\006inputs\030\002 \003(\0132\017.IOInputM" +
+      "essage\"H\n\022OutputMultiMessage\022\017\n\007profile\030" +
+      "\001 \001(\r\022!\n\007outputs\030\002 \003(\0132\020.IOOutputMessage" +
+      "\"g\n\025DALIInputMultiMessage\022\017\n\007profile\030\001 \001" +
+      "(\r\022\032\n\022input_index_offset\030\002 \001(\r\022!\n\006inputs" +
+      "\030\003 \003(\0132\021.DALIInputMessage\"<\n\016IRMultiMess" +
+      "age\022\017\n\007profile\030\001 \001(\r\022\031\n\003irs\030\002 \003(\0132\014.IOIR" +
+      "Message\"o\n\013ListMessage\022\022\n\nlist_index\030\001 \001" +
+      "(\r\022\036\n\004step\030\002 \003(\0132\020.ListStepMessage\022\022\n\nli" +
+      "st_state\030\003 \001(\r\022\030\n\020total_step_count\030\004 \001(\r" +
+      "\"d\n\023ExtendedListMessage\022\022\n\nlist_index\030\001 " +
+      "\001(\r\022\031\n\021step_index_offset\030\002 \001(\r\022\036\n\004step\030\003" +
+      " \003(\0132\020.ListStepMessage\"1\n\021AlarmMultiMess" +
+      "age\022\034\n\005alarm\030\001 \003(\0132\r.AlarmMessage\"4\n\022Bur" +
+      "nInMultiMessage\022\036\n\006burnin\030\001 \003(\0132\016.BurnIn" +
+      "Message\"\347\001\n\014LogicMessage\022\r\n\005index\030\001 \001(\r\022" +
+      "\017\n\007enabled\030\002 \001(\010\022*\n\021comparison_object\030\003 " +
+      "\001(\0132\017.TriggerMessage\022\030\n\020comparison_value" +
+      "\030\004 \001(\r\022-\n\017comparison_type\030\005 \001(\0162\024.LogicC" +
+      "omparisonType\022 \n\007actionA\030\006 \001(\0132\017.Trigger" +
+      "Message\022 \n\007actionB\030\007 \001(\0132\017.TriggerMessag" +
+      "e\"1\n\021LogicMultiMessage\022\034\n\005logic\030\001 \003(\0132\r." +
+      "LogicMessage\"X\n\024SensorCommandMessage\022\017\n\007" +
+      "command\030\001 \001(\r\022\r\n\005index\030\002 \001(\r\022 \n\004type\030\003 \001" +
+      "(\0162\022.SensorCommandType\"\'\n\024ChangeProfileM" +
+      "essage\022\017\n\007profile\030\001 \001(\r\"*\n\017IdentifyMessa" +
+      "ge\022\013\n\003MAC\030\001 \001(\004\022\n\n\002IP\030\002 \001(\004\"4\n\021UpdateTim" +
+      "eMessage\022\037\n\004time\030\001 \001(\0132\021.TimeClockMessag" +
+      "e\"e\n\021ReadDeviceMessage\022\017\n\007profile\030\001 \001(\r\022" +
+      "\027\n\004type\030\002 \001(\0162\t.ReadType\022\r\n\005index\030\003 \001(\r\022" +
+      "\027\n\017secondary_index\030\004 \001(\r\".\n\033SecureDevice" +
+      "SettingsMessage\022\017\n\007payload\030\001 \001(\t\" \n\021DTRP" +
+      "ayloadMessage\022\013\n\003dtr\030\001 \003(\r\"\333\004\n\013DALIMessa" +
+      "ge\022\021\n\tline_mask\030\001 \001(\r\022\017\n\007address\030\002 \001(\r\022\026" +
+      "\n\014frame_25_bit\030\003 \001(\rH\000\022\034\n\022frame_25_bit_r" +
+      "eply\030\004 \001(\rH\000\022#\n\007command\030\005 \001(\0162\020.DALIComm" +
+      "andTypeH\000\0220\n\016custom_command\030\006 \001(\0162\026.Cust" +
+      "omDALICommandTypeH\000\022\037\n\005query\030\007 \001(\0162\016.DAL" +
+      "IQueryTypeH\000\022\"\n\005type8\030\010 \001(\0162\021.Type8Comma" +
+      "ndTypeH\000\022\026\n\014frame_16_bit\030\013 \001(\rH\000\022\034\n\022fram" +
+      "e_16_bit_reply\030\014 \001(\rH\000\022\026\n\014frame_24_bit\030\r" +
+      " \001(\rH\000\022\034\n\022frame_24_bit_reply\030\016 \001(\rH\000\022&\n\013" +
+      "type8_reply\030\017 \001(\0162\017.Type8QueryTypeH\000\0220\n\020" +
+      "device24_setting\030\020 \001(\0162\024.DALI24DeviceSet" +
+      "tingH\000\022\r\n\003arg\030\t \001(\rH\001\022!\n\003dtr\030\n \001(\0132\022.DTR" +
+      "PayloadMessageH\001\022*\n\rinstance_type\030\021 \001(\0162" +
+      "\023.DALI24InstanceType\022\036\n\007op_code\030\022 \001(\0162\r." +
+      "DALI24OpCodeB\010\n\006actionB\010\n\006params\"7\n\025DALI" +
+      "StatusFlagMessage\022\036\n\005flags\030\001 \003(\0162\017.DALIS" +
+      "tatusType\"\275\001\n\021DALIQueryResponse\022.\n\014statu" +
+      "s_flags\030\001 \001(\0132\026.DALIStatusFlagMessageH\000\022" +
+      "\037\n\004data\030\002 \001(\0132\017.PayloadMessageH\000\022$\n\tdali" +
+      "_flag\030\003 \001(\0162\021.DALIRXStatusFlag\022&\n\rrespon" +
+      "se_data\030\004 \001(\0132\017.PayloadMessageB\t\n\007payloa" +
+      "d\"\252\001\n\025DALIAddressingMessage\022!\n\004type\030\001 \001(" +
+      "\0162\023.DALIAddressingType\022\026\n\016initialisation" +
+      "\030\002 \001(\010\022\021\n\tline_mask\030\003 \001(\r\022\017\n\007is24Bit\030\004 \001" +
+      "(\010\022#\n\005error\030\005 \001(\0162\024.DALIAddressingError\022" +
+      "\r\n\005index\030\006 \001(\r\"d\n\024DALIRemappingMessage\022\024" +
+      "\n\014from_address\030\001 \001(\r\022\022\n\nto_address\030\002 \001(\r" +
+      "\022\021\n\tline_mask\030\003 \001(\r\022\017\n\007is24Bit\030\004 \001(\010\"|\n\n" +
+      "DMXMessage\022\014\n\004zone\030\001 \001(\r\022\025\n\runiverse_mas" +
+      "k\030\002 \001(\r\022\017\n\007channel\030\003 \001(\r\022\016\n\006repeat\030\004 \001(\r" +
+      "\022\r\n\005level\030\005 \003(\r\022\031\n\021fade_time_by_10ms\030\006 \001" +
+      "(\r\"o\n\nRDMMessage\022\025\n\runiverse_mask\030\001 \001(\r\022" +
+      "\013\n\003uid\030\002 \001(\004\022\013\n\003pid\030\003 \001(\r\022\016\n\006getset\030\004 \001(" +
+      "\r\022\022\n\ndatalength\030\005 \001(\r\022\014\n\004data\030\006 \003(\r\"P\n\022R" +
+      "DMResponseMessage\022\013\n\003uid\030\001 \001(\004\022\013\n\003pid\030\002 " +
+      "\001(\r\022\022\n\ndatalength\030\003 \001(\r\022\014\n\004data\030\004 \003(\r\"<\n" +
+      "\023RDMDiscoveryMessage\022\025\n\runiverse_mask\030\001 " +
+      "\001(\r\022\016\n\006isNext\030\002 \001(\010\"T\n\030RDMDiscoveryReply" +
+      "Message\022\027\n\017discovery_count\030\001 \001(\r\022\013\n\003uid\030" +
+      "\002 \003(\004\022\022\n\nerror_code\030\003 \001(\r\"\337\002\n\025SpektraSet" +
+      "tingMessage\022\014\n\004zone\030\001 \001(\r\022\025\n\rstart_addre" +
+      "ss\030\002 \001(\r\022\035\n\025line_or_universe_mask\030\003 \001(\r\022" +
+      "\020\n\010protocol\030\004 \001(\r\022\030\n\020number_of_lights\030\005 " +
+      "\001(\r\022\032\n\022channels_per_light\030\006 \001(\r\022\027\n\017chann" +
+      "el_colours\030\007 \003(\r\022?\n\025unscheduled_behaviou" +
+      "r\030\010 \001(\0162 .SpektraUnscheduledBehaviourTyp" +
+      "e\022\027\n\017channel_mapping\030\t \003(\r\022,\n\017line_addre" +
+      "ssing\030\n \001(\0162\023.LineAddressingType\022\031\n\021zone" +
+      "_scale_factor\030\013 \001(\002\"3\n\032SpektraColourConf" +
+      "igMessage\022\025\n\rchannel_value\030\001 \003(\r\"\350\003\n\034Spe" +
+      "ktraSequenceConfigMessage\022\r\n\005index\030\001 \001(\r" +
+      "\022\014\n\004type\030\002 \001(\r\022*\n\ntransition\030\003 \001(\0162\026.Spe" +
+      "ktraTransitionType\022\031\n\021fade_time_by_10ms\030" +
+      "\004 \001(\r\022\027\n\017time_per_colour\030\005 \001(\r\022\034\n\024time_p" +
+      "er_colour_unit\030\006 \001(\r\022\025\n\rtime_per_step\030\007 " +
+      "\001(\r\022\032\n\022time_per_step_unit\030\010 \001(\r\022\r\n\005range" +
+      "\030\t \001(\r\022\016\n\006colour\030\n \003(\004\022\032\n\022is_randomised_" +
+      "type\030\013 \001(\r\022\031\n\021random_types_mask\030\014 \001(\r\022\034\n" +
+      "\024is_reverse_direction\030\r \001(\r\022\032\n\022is_cycle_" +
+      "direction\030\016 \001(\r\022\r\n\005title\030\017 \001(\t\022\037\n\027has_ra" +
+      "ndom_colour_order\030\020 \001(\010\022,\n\007colours\030\021 \003(\013" +
+      "2\033.SpektraColourConfigMessage\022\014\n\004args\030\022 " +
+      "\003(\r\"k\n\026SpektraCalendarMessage\022 \n\004type\030\001 " +
+      "\001(\0162\022.SpektraTargetType\022\r\n\005index\030\002 \001(\r\022\014" +
+      "\n\004days\030\003 \003(\010\022\022\n\nisOverride\030\004 \001(\010\"z\n\031Spek" +
+      "traCalendarDayMessage\022\021\n\tday_index\030\001 \001(\r" +
+      "\022 \n\004type\030\002 \001(\0162\022.SpektraTargetType\022\024\n\014ta" +
+      "rget_index\030\003 \001(\r\022\022\n\nisOverride\030\004 \001(\010\"^\n\036" +
+      "SpektraCalendarOverviewMessage\022\022\n\nday_of" +
+      "fset\030\001 \001(\r\022(\n\004days\030\002 \003(\0132\032.SpektraCalend" +
+      "arDayMessage\"w\n\031SpektraThemeConfigMessag" +
+      "e\022\r\n\005index\030\001 \001(\r\022\016\n\006colour\030\002 \003(\004\022\r\n\005titl" +
+      "e\030\003 \001(\t\022,\n\007colours\030\004 \003(\0132\033.SpektraColour" +
+      "ConfigMessage\"E\n\022SpektraReadMessage\022 \n\004t" +
+      "ype\030\001 \001(\0162\022.SpektraTargetType\022\r\n\005index\030\002" +
+      " \001(\r\"z\n\025SpektraControlMessage\022 \n\004type\030\001 " +
+      "\001(\0162\022.SpektraTargetType\022\014\n\004zone\030\002 \001(\r\022\r\n" +
+      "\005index\030\003 \001(\r\022\"\n\006action\030\004 \001(\0162\022.SpektraAc" +
+      "tionType\"\325\001\n\017ShowStepMessage\022\022\n\nstep_ind" +
+      "ex\030\001 \001(\r\022\024\n\014target_index\030\002 \001(\r\022+\n\013action" +
+      "_type\030\003 \001(\0162\026.SpektraStepActionType\022\037\n\027m" +
+      "ax_random_target_index\030\004 \001(\r\022\014\n\004zone\030\005 \001" +
+      "(\r\022\036\n\026max_output_level_limit\030\006 \001(\r\022\034\n\024ti" +
+      "me_until_next_10ms\030\007 \001(\r\"\314\001\n\022SpektraShow" +
+      "Message\022\022\n\nshow_index\030\001 \001(\r\022\027\n\017number_of" +
+      "_steps\030\002 \001(\r\022\036\n\004step\030\003 \003(\0132\020.ShowStepMes" +
+      "sage\022\021\n\tisRunning\030\004 \001(\010\022\020\n\010isLooped\030\005 \001(" +
+      "\010\022\020\n\010isRandom\030\006 \001(\010\022\023\n\013isTemporary\030\007 \001(\010" +
+      "\022\035\n\025activations_remaining\030\010 \001(\r\"k\n\032Exten" +
+      "dedSpektraShowMessage\022\022\n\nshow_index\030\001 \001(" +
+      "\r\022\031\n\021step_index_offset\030\002 \001(\r\022\036\n\004step\030\003 \003" +
+      "(\0132\020.ShowStepMessage\"W\n\031SpektraShowContr" +
+      "olMessage\022\022\n\nshow_index\030\001 \001(\r\022\024\n\014start_r" +
+      "esume\030\002 \001(\r\022\020\n\010gotoStep\030\003 \001(\r\"\272\001\n\024DMXTra" +
+      "nslationObject\022\017\n\007line_in\030\001 \001(\r\022\020\n\010line_" +
+      "out\030\002 \001(\r\022\031\n\021dmx_start_address\030\003 \001(\r\022\025\n\r" +
+      "channel_count\030\004 \001(\r\022\022\n\ndali_array\030\005 \003(\r\022" +
+      "\026\n\016affected_input\030\007 \001(\r\022\020\n\010blocking\030\010 \001(" +
+      "\010\022\017\n\007enabled\030\t \001(\010\"?\n\026DMXProtocolTransla" +
+      "tion\022%\n\006object\030\001 \003(\0132\025.DMXTranslationObj" +
+      "ect\"%\n\021InputStateMessage\022\020\n\010use_mask\030\001 \001" +
+      "(\010\"8\n\022InputStateResponse\022\016\n\006inputs\030\001 \003(\r" +
+      "\022\022\n\ninput_mask\030\002 \001(\r\"@\n\022LevelCacheRespon" +
+      "se\022\016\n\006levels\030\001 \003(\r\022\014\n\004line\030\002 \001(\r\022\014\n\004page" +
+      "\030\003 \001(\r\"\200\005\n\034DiagnosticSystemInfoResponse\022" +
+      "\020\n\010firmware\030\001 \001(\t\022\020\n\010hardware\030\002 \001(\t\022\r\n\005e" +
+      "rror\030\003 \001(\t\022\023\n\013input_count\030\004 \001(\r\022\024\n\014outpu" +
+      "t_count\030\005 \001(\r\022\020\n\010ir_count\030\006 \001(\r\022\027\n\017list_" +
+      "step_count\030\007 \001(\r\022\022\n\nlist_count\030\010 \001(\r\022\023\n\013" +
+      "alarm_count\030\t \001(\r\022\024\n\014burnin_count\030\n \001(\r\022" +
+      "\031\n\021spektra_seq_count\030\013 \001(\r\022\036\n\026spektra_se" +
+      "q_step_count\030\014 \001(\r\022\033\n\023spektra_theme_coun" +
+      "t\030\r \001(\r\022\034\n\024spektra_static_count\030\016 \001(\r\022\025\n" +
+      "\rproto_version\030\017 \001(\r\022\022\n\nline_count\030\020 \001(\r" +
+      "\022\030\n\005lines\030\021 \003(\0162\t.LineType\022\025\n\rprofile_co" +
+      "unt\030\022 \001(\r\022\031\n\021preset_code_count\030\023 \001(\r\022\030\n\020" +
+      "user_level_count\030\024 \001(\r\022\031\n\021dmx_to_dali_co" +
+      "unt\030\025 \001(\r\022\032\n\022spektra_zone_count\030\026 \001(\r\022\023\n" +
+      "\013logic_count\030\027 \001(\r\022\030\n\020input_dali_count\030\030" +
+      " \001(\r\022\021\n\tvendor_id\030\031 \001(\t\022\030\n\020selected_prof" +
+      "ile\030\032 \001(\r\"U\n\021DiagnosticMessage\022$\n\004type\030\001" +
+      " \001(\0162\026.DiagnosticMessageType\022\014\n\004page\030\002 \001" +
+      "(\r\022\014\n\004line\030\003 \001(\r\"\362\001\n\035AdminProjectPropert" +
+      "iesMessage\022\023\n\013device_name\030\002 \001(\t\022\024\n\014proje" +
+      "ct_name\030\003 \001(\t\022\021\n\tlongitude\030\004 \001(\002\022\020\n\010lati" +
+      "tude\030\005 \001(\002\022\024\n\014local_offset\030\006 \001(\002\022\030\n\020dayl" +
+      "ight_savings\030\007 \001(\010\022\036\n\026daylight_savings_s" +
+      "tart\030\010 \001(\r\022\034\n\024daylight_savings_end\030\t \001(\r" +
+      "\022\023\n\013poll_active\030\n \001(\010\"\244\001\n\030AdminConfigSta" +
+      "tusMessage\022\023\n\013list_status\030\001 \003(\r\022\026\n\016burn_" +
+      "in_status\030\002 \003(\r\022\024\n\014alarm_status\030\003 \001(\r\022.\n" +
+      "\023alarm_time_from_reg\030\004 \001(\0132\021.TimeClockMe" +
+      "ssage\022\025\n\rsensor_status\030\005 \003(\r\"\326\001\n\035AdminNe" +
+      "tworkPropertiesMessage\022\014\n\004DHCP\030\001 \001(\010\022\n\n\002" +
+      "IP\030\002 \001(\t\022\013\n\003MAC\030\003 \001(\t\022\017\n\007gateway\030\004 \001(\t\022\021" +
+      "\n\tNTPServer\030\005 \001(\t\022\013\n\003NTP\030\006 \001(\010\022\r\n\005error\030" +
+      "\007 \001(\t\022\022\n\nNTPTimeout\030\010 \001(\r\022\016\n\006subnet\030\t \001(" +
+      "\t\022\023\n\013DNS_Primary\030\n \001(\t\022\025\n\rDNS_Secondary\030" +
+      "\013 \001(\t\"D\n\026AdminDNSServersMessage\022\023\n\013DNS_P" +
+      "rimary\030\001 \001(\t\022\025\n\rDNS_Secondary\030\002 \001(\t\"7\n\033A" +
+      "dminControllerLinesMessage\022\030\n\005lines\030\001 \003(" +
+      "\0162\t.LineType\"@\n\030AdminDeviceStatusMessage" +
+      "\022\023\n\013temperature\030\001 \001(\002\022\017\n\007battery\030\002 \001(\002\"I" +
+      "\n\027AdminSecureLoginMessage\022\020\n\010username\030\001 " +
+      "\001(\t\022\016\n\006cnonce\030\002 \001(\t\022\014\n\004hash\030\003 \003(\r\";\n\032Adm" +
+      "inDALISensorTypeMessage\022\035\n\004type\030\001 \001(\0162\017." +
+      "DALISensorType\"\264\004\n\014AdminMessage\022\"\n\007comma" +
+      "nd\030\001 \001(\0162\021.AdminCommandType\022\"\n\006target\030\002 " +
+      "\001(\0162\022.AdminPropertyType\022\037\n\004data\030\003 \001(\0132\017." +
+      "PayloadMessageH\000\022<\n\022network_properties\030\004" +
+      " \001(\0132\036.AdminNetworkPropertiesMessageH\000\022<" +
+      "\n\022project_properties\030\005 \001(\0132\036.AdminProjec" +
+      "tPropertiesMessageH\000\0228\n\020controller_lines" +
+      "\030\006 \001(\0132\034.AdminControllerLinesMessageH\000\0222" +
+      "\n\rdevice_status\030\007 \001(\0132\031.AdminDeviceStatu" +
+      "sMessageH\000\0222\n\rconfig_status\030\010 \001(\0132\031.Admi" +
+      "nConfigStatusMessageH\000\022)\n\013device_time\030\t " +
+      "\001(\0132\022.UpdateTimeMessageH\000\0227\n\020dali_sensor" +
+      "_type\030\n \001(\0132\033.AdminDALISensorTypeMessage" +
+      "H\000\022.\n\013dns_servers\030\013 \001(\0132\027.AdminDNSServer" +
+      "sMessageH\000B\t\n\007payload\"K\n\013DataMessage\022\022\n\n" +
+      "identifier\030\001 \001(\r\022\013\n\003seq\030\002 \001(\r\022\r\n\005count\030\003" +
+      " \001(\r\022\014\n\004data\030\004 \003(\r\"\331\002\n\023FirmwareMetaMessa" +
+      "ge\022\030\n\020firmware_version\030\001 \001(\r\022\025\n\rfirmware" +
+      "_date\030\002 \001(\r\022\034\n\024firmware_date_upload\030\003 \001(" +
+      "\r\022\031\n\021firmware_checksum\030\004 \001(\r\022\034\n\024firmware" +
+      "_chunk_count\030\005 \001(\r\022\035\n\025firmware_base_addr" +
+      "ess\030\006 \001(\r\022\034\n\024firmware_end_address\030\007 \001(\r\022" +
+      "\032\n\022firmware_is_backup\030\010 \001(\010\022\r\n\005nonce\030\t \003" +
+      "(\r\022\031\n\021firmware_date_day\030\n \001(\r\022\033\n\023firmwar" +
+      "e_date_month\030\013 \001(\r\022\032\n\022firmware_date_year" +
+      "\030\014 \001(\r\";\n\026FirmwareControlMessage\022!\n\003cmd\030" +
+      "\001 \001(\0162\024.FirmwareCommandType\"d\n\024FirmwareC" +
+      "hunkMessage\022\030\n\020firmware_address\030\001 \001(\r\022\023\n" +
+      "\013total_bytes\030\002 \001(\r\022\035\n\007payload\030\003 \001(\0132\014.Da" +
+      "taMessage\"j\n\024SystemLogReadMessage\022\031\n\021log" +
+      "_start_address\030\001 \001(\r\022\026\n\016logs_requested\030\002" +
+      " \001(\r\022\037\n\004logs\030\003 \003(\0132\021.SystemLogMessage\"\267\002" +
+      "\n\020SystemLogMessage\022\027\n\017time_since_boot\030\001 " +
+      "\001(\r\022\036\n\004boot\030\002 \001(\0132\016.SystemLogBootH\000\022$\n\007n" +
+      "etlink\030\003 \001(\0132\021.SystemLogNetLinkH\000\022\034\n\003ntp" +
+      "\030\004 \001(\0132\r.SystemLogNTPH\000\022$\n\007trigger\030\005 \001(\013" +
+      "2\021.SystemLogTriggerH\000\022$\n\007spektra\030\006 \001(\0132\021" +
+      ".SystemLogSpektraH\000\022&\n\010schedule\030\007 \001(\0132\022." +
+      "SystemLogScheduleH\000\022(\n\tuserstart\030\010 \001(\0132\023" +
+      ".SystemLogUserStartH\000B\010\n\006packet\"D\n\rSyste" +
+      "mLogBoot\022$\n\ttimeclock\030\001 \001(\0132\021.TimeClockM" +
+      "essage\022\r\n\005flags\030\002 \001(\r\"%\n\020SystemLogNetLin" +
+      "k\022\021\n\tis_linked\030\001 \001(\010\"4\n\014SystemLogNTP\022$\n\t" +
+      "timeclock\030\001 \001(\0132\021.TimeClockMessage\"O\n\020Sy" +
+      "stemLogTrigger\022 \n\007trigger\030\001 \001(\0132\017.Trigge" +
+      "rMessage\022\031\n\006source\030\002 \001(\0162\t.ReadType\"g\n\020S" +
+      "ystemLogSpektra\022\"\n\006action\030\001 \001(\0162\022.Spektr" +
+      "aActionType\022 \n\004type\030\002 \001(\0162\022.SpektraTarge" +
+      "tType\022\r\n\005index\030\003 \001(\r\"a\n\021SystemLogSchedul" +
+      "e\022\r\n\005index\030\001 \001(\r\022\017\n\007isStart\030\002 \001(\r\022\016\n\006sec" +
+      "ond\030\003 \001(\r\022\016\n\006minute\030\004 \001(\r\022\014\n\004hour\030\005 \001(\r\"" +
+      "I\n\022SystemLogUserStart\022$\n\ttimeclock\030\001 \001(\013" +
+      "2\021.TimeClockMessage\022\r\n\005flags\030\002 \001(\r\"\323\001\n\031S" +
+      "ystemMetaDataReadMessage\022\033\n\023input_press_" +
+      "counter\030\001 \003(\r\022\032\n\022list_start_counter\030\002 \003(" +
+      "\r\022\031\n\021schedules_counter\030\003 \003(\r\022\026\n\016screen_o" +
+      "n_time\030\004 \001(\r\022\027\n\017screen_dim_time\030\005 \001(\r\022\031\n" +
+      "\021screen_saver_time\030\006 \001(\r\022\026\n\016reboot_count" +
+      "er\030\007 \001(\r\"\277\001\n\013EventFilter\022\r\n\005input\030\001 \001(\010\022" +
+      "\026\n\016dali_arc_level\030\002 \001(\010\022\024\n\014dali_command\030" +
+      "\003 \001(\010\022\023\n\013dali_sensor\030\004 \001(\010\022\022\n\ndali_input" +
+      "\030\005 \001(\010\022\032\n\022dmx_stream_changed\030\006 \001(\010\022\025\n\rda" +
+      "li_24_frame\030\007 \001(\010\022\027\n\017trigger_message\030\010 \001" +
+      "(\010\"\335\001\n\014TriggerEvent\022\032\n\004type\030\001 \001(\0162\014.Trig" +
+      "gerType\022\017\n\005level\030\002 \001(\rH\000\022(\n\014dali_command" +
+      "\030\003 \001(\0162\020.DALICommandTypeH\000\022\026\n\016target_add" +
+      "ress\030\004 \001(\r\022\021\n\tline_mask\030\005 \001(\r\022\014\n\004zone\030\006 " +
+      "\001(\r\022\r\n\005value\030\007 \001(\r\022\023\n\013query_index\030\010 \001(\r\022" +
+      "\016\n\006source\030\t \001(\rB\t\n\007payload\"m\n\020DALI24Inpu" +
+      "tEvent\022\r\n\005index\030\001 \001(\r\022\014\n\004line\030\002 \001(\r\022\017\n\007a" +
+      "ddress\030\003 \001(\r\022\036\n\004type\030\004 \001(\0162\020.DALI24Input" +
+      "Type\022\013\n\003arg\030\005 \001(\r\"/\n\020DALI24FrameEvent\022\014\n" +
+      "\004line\030\001 \001(\r\022\r\n\005frame\030\002 \001(\r\"\252\001\n\017DALISenso" +
+      "rEvent\022\r\n\005index\030\001 \001(\r\022\014\n\004line\030\002 \001(\r\022\017\n\007a" +
+      "ddress\030\003 \001(\r\022-\n\014motion_state\030\004 \001(\0162\027.DAL" +
+      "IMotionSensorStates\022\'\n\tlux_state\030\005 \001(\0162\024" +
+      ".DALILuxSensorStates\022\021\n\tlux_level\030\006 \001(\r\"" +
+      "\300\002\n\014EventMessage\022\031\n\005event\030\001 \001(\0162\n.EventT" +
+      "ype\022 \n\007trigger\030\002 \001(\0132\r.TriggerEventH\000\022%\n" +
+      "\006inputs\030\003 \001(\0132\023.InputStateResponseH\000\022\"\n\007" +
+      "payload\030\004 \001(\0132\017.PayloadMessageH\000\022\"\n\006sens" +
+      "or\030\006 \001(\0132\020.DALISensorEventH\000\022*\n\rdali_24_" +
+      "input\030\007 \001(\0132\021.DALI24InputEventH\000\022\036\n\006filt" +
+      "er\030\010 \001(\0132\014.EventFilterH\000\022*\n\rdali_24_fram" +
+      "e\030\t \001(\0132\021.DALI24FrameEventH\000B\014\n\nevent_da" +
+      "ta\"\337\024\n\rEdidioMessage\022\022\n\nmessage_id\030\001 \001(\r" +
+      "\022\032\n\003ack\030\002 \001(\0132\013.AckMessageH\000\022$\n\006inputs\030\003" +
+      " \001(\0132\022.InputMultiMessageH\000\022&\n\007outputs\030\004 " +
+      "\001(\0132\023.OutputMultiMessageH\000\022\036\n\003irs\030\005 \001(\0132" +
+      "\017.IRMultiMessageH\000\022 \n\006sensor\030\006 \001(\0132\016.Sen" +
+      "sorMessageH\000\022\034\n\004list\030\010 \001(\0132\014.ListMessage" +
+      "H\000\022\036\n\005alarm\030\n \001(\0132\r.AlarmMessageH\000\022$\n\006al" +
+      "arms\030\013 \001(\0132\022.AlarmMultiMessageH\000\022\'\n\010burn" +
+      "_ins\030\014 \001(\0132\023.BurnInMultiMessageH\000\022/\n\016sen" +
+      "sor_command\030\r \001(\0132\025.SensorCommandMessage" +
+      "H\000\022/\n\016change_profile\030\016 \001(\0132\025.ChangeProfi" +
+      "leMessageH\000\022,\n\020identify_message\030\017 \001(\0132\020." +
+      "IdentifyMessageH\000\022)\n\013update_time\030\020 \001(\0132\022" +
+      ".UpdateTimeMessageH\000\022)\n\013read_device\030\021 \001(" +
+      "\0132\022.ReadDeviceMessageH\000\022$\n\014dali_message\030" +
+      "\022 \001(\0132\014.DALIMessageH\000\022(\n\ndali_query\030\023 \001(" +
+      "\0132\022.DALIQueryResponseH\000\022\"\n\013dmx_message\030\024" +
+      " \001(\0132\013.DMXMessageH\000\0223\n\020external_trigger\030" +
+      "\025 \001(\0132\027.ExternalTriggerMessageH\000\0222\n\020spek" +
+      "tra_settings\030\026 \001(\0132\026.SpektraSettingMessa" +
+      "geH\000\0229\n\020spektra_sequence\030\027 \001(\0132\035.Spektra" +
+      "SequenceConfigMessageH\000\0223\n\020spektra_calen" +
+      "dar\030\030 \001(\0132\027.SpektraCalendarMessageH\000\0223\n\r" +
+      "spektra_theme\030\031 \001(\0132\032.SpektraThemeConfig" +
+      "MessageH\000\022+\n\014spektra_read\030\032 \001(\0132\023.Spektr" +
+      "aReadMessageH\000\0221\n\017spektra_control\030\033 \001(\0132" +
+      "\026.SpektraControlMessageH\000\0221\n\016dmx_transla" +
+      "tor\030\034 \001(\0132\027.DMXProtocolTranslationH\000\022+\n\r" +
+      "input_request\030\035 \001(\0132\022.InputStateMessageH" +
+      "\000\022-\n\016input_response\030\036 \001(\0132\023.InputStateRe" +
+      "sponseH\000\0224\n\013diag_system\030\037 \001(\0132\035.Diagnost" +
+      "icSystemInfoResponseH\000\022*\n\014diag_message\030 " +
+      " \001(\0132\022.DiagnosticMessageH\000\022&\n\radmin_mess" +
+      "age\030! \001(\0132\r.AdminMessageH\000\022\036\n\005event\030\" \001(" +
+      "\0132\r.EventMessageH\000\022>\n\026secure_device_sett" +
+      "ings\030# \001(\0132\034.SecureDeviceSettingsMessage" +
+      "H\000\022,\n\014firmware_new\030$ \001(\0132\024.FirmwareMetaM" +
+      "essageH\000\0223\n\020firmware_control\030% \001(\0132\027.Fir" +
+      "mwareControlMessageH\000\022/\n\016firmware_chunk\030" +
+      "& \001(\0132\025.FirmwareChunkMessageH\000\0223\n\024level_" +
+      "cache_response\030\' \001(\0132\023.LevelCacheRespons" +
+      "eH\000\022-\n\rlist_extended\030) \001(\0132\024.ExtendedLis" +
+      "tMessageH\000\022\"\n\013ayt_message\030* \001(\0132\013.AytMes" +
+      "sageH\000\022\"\n\013rdm_message\030+ \001(\0132\013.RDMMessage" +
+      "H\000\0223\n\024rdm_response_message\030, \001(\0132\023.RDMRe" +
+      "sponseMessageH\000\022+\n\rlogic_message\030- \001(\0132\022" +
+      ".LogicMultiMessageH\000\0220\n\014secure_login\030. \001" +
+      "(\0132\030.AdminSecureLoginMessageH\000\0223\n\024device" +
+      "_state_message\030/ \001(\0132\023.DeviceStateMessag" +
+      "eH\000\022:\n\024spektra_calendar_day\0300 \001(\0132\032.Spek" +
+      "traCalendarDayMessageH\000\022D\n\031spektra_calen" +
+      "dar_overview\0301 \001(\0132\037.SpektraCalendarOver" +
+      "viewMessageH\000\022-\n\013inputs_dali\0302 \001(\0132\026.DAL" +
+      "IInputMultiMessageH\000\022*\n\tlogs_read\0303 \001(\0132" +
+      "\025.SystemLogReadMessageH\000\0223\n\rmetadata_rea" +
+      "d\0304 \001(\0132\032.SystemMetaDataReadMessageH\000\0229\n" +
+      "\027dali_addressing_message\0305 \001(\0132\026.DALIAdd" +
+      "ressingMessageH\000\0227\n\026dali_remapping_messa" +
+      "ge\0306 \001(\0132\025.DALIRemappingMessageH\000\022B\n\034spe" +
+      "ktra_show_control_message\0307 \001(\0132\032.Spektr" +
+      "aShowControlMessageH\000\0223\n\024spektra_show_me" +
+      "ssage\0308 \001(\0132\023.SpektraShowMessageH\000\022D\n\035ex" +
+      "tended_spektra_show_message\0309 \001(\0132\033.Exte" +
+      "ndedSpektraShowMessageH\000\022-\n\rrdm_discover" +
+      "y\030: \001(\0132\024.RDMDiscoveryMessageH\000\0228\n\023rdm_d",
+      "iscovery_reply\030; \001(\0132\031.RDMDiscoveryReply" +
+      "MessageH\000B\t\n\007payload*\233\001\n\024TriggerOperatio" +
+      "nType\022\r\n\tMOMENTARY\020\000\022\014\n\010LATCHING\020\001\022\024\n\020MO" +
+      "MENTARY_OUTPUT\020\002\022\023\n\017LATCHING_OUTPUT\020\003\022\n\n" +
+      "\006ROTARY\020\004\022\027\n\022MOMENTARY_DISABLED\020\200\001\022\026\n\021LA" +
+      "TCHING_DISABLED\020\201\001*\316\013\n\013TriggerType\022\014\n\010DA" +
+      "LI_ARC\020\000\022\020\n\014DALI_COMMAND\020\001\022\032\n\026DMX_CHANNE" +
+      "LS_SPLIT_LOW\020\002\022\033\n\027DMX_CHANNELS_SPLIT_HIG" +
+      "H\020\003\022$\n DMX_MULTICAST_CHANNELS_SPLIT_LOW\020" +
+      "\004\022%\n!DMX_MULTICAST_CHANNELS_SPLIT_HIGH\020\005" +
+      "\022\021\n\rDMX_BROADCAST\020\006\022\t\n\005DIDIO\020\007\022\024\n\020FADE_U" +
+      "P_WITH_MIN\020\010\022\016\n\nLIST_START\020\t\022\031\n\025LIST_STA" +
+      "RT_CONTINUOUS\020\n\022\r\n\tLIST_STOP\020\013\022\025\n\021SPEKTR" +
+      "A_START_SEQ\020\014\022\024\n\020SPEKTRA_STOP_SEQ\020\r\022\021\n\rS" +
+      "PEKTRA_THEME\020\016\022\022\n\016SPEKTRA_STATIC\020\017\022\024\n\020SP" +
+      "EKTRA_SCHEDULE\020\020\022\016\n\nLINK_START\020\021\022\r\n\tLINK" +
+      "_STOP\020\022\022\020\n\014DISABLE_BURN\020\023\022\017\n\013ENABLE_BURN" +
+      "\020\024\022\016\n\nON_OFF_TOG\020\025\022\017\n\013MIN_MAX_TOG\020\026\022\020\n\014E" +
+      "NABLE_INPUT\020\027\022\021\n\rDISABLE_INPUT\020\030\022\024\n\020ENAB" +
+      "LE_TOG_INPUT\020\031\022\016\n\nOUTPUT_TOG\020\032\022\017\n\013OUTPUT" +
+      "_HIGH\020\033\022\016\n\nOUTPUT_LOW\020\034\022\017\n\013OUTPUT_TRIG\020\035" +
+      "\022\022\n\016PROFILE_CHANGE\020\036\022\023\n\017FADE_LONG_PRESS\020" +
+      "\037\022\n\n\006SYNCRO\020 \022\017\n\013PRESET_CODE\020!\022\017\n\013CUSTOM" +
+      "_CODE\020\"\022\021\n\rSPEKTRA_SLEEP\020#\022\022\n\016SPEKTRA_RE" +
+      "SUME\020$\022\020\n\014DEVICE_RESET\020%\022\017\n\013DEVICE_SAVE\020" +
+      "&\022\030\n\024USER_LEVEL_STORE_NEW\020\'\022\032\n\026USER_LEVE" +
+      "L_SET_DEFAULT\020(\022\025\n\021USER_LEVEL_RECALL\020)\022\r" +
+      "\n\tROOM_JOIN\020+\022\017\n\013ROOM_UNJOIN\020,\022\023\n\017TYPE8_" +
+      "TC_WARMER\020-\022\023\n\017TYPE8_TC_COOLER\020.\022\023\n\017TYPE" +
+      "8_TC_ACTUAL\020/\022\023\n\017LOGIC_OPERATION\0200\022\020\n\014AL" +
+      "ARM_ENABLE\0201\022\021\n\rALARM_DISABLE\0202\022 \n\034DALI_" +
+      "CONTROL_SENSOR_OVERRIDE\0203\022$\n DALI_CONTRO" +
+      "L_SENSOR_TEMP_DISABLE\0204\022\036\n\032DALI_CONTROL_" +
+      "SENSOR_RESUME\0205\022\025\n\021DALI_ARC_OVERRIDE\0206\022\031" +
+      "\n\025DALI_COMMAND_OVERRIDE\0207\022\035\n\031FADE_UP_WIT" +
+      "H_MIN_OVERRIDE\0208\022\027\n\023ON_OFF_TOG_OVERRIDE\020" +
+      "9\022\030\n\024MIN_MAX_TOG_OVERRIDE\020:\022\017\n\013MAX_OFF_T" +
+      "OG\020;\022\030\n\024MAX_OFF_TOG_OVERRIDE\020<\022\034\n\030FADE_L" +
+      "ONG_PRESS_OVERRIDE\020=\022\036\n\032USER_LEVEL_RECAL" +
+      "L_OVERRIDE\020>\022\024\n\020DMX_ZONE_FADE_UP\020?\022\026\n\022DM" +
+      "X_ZONE_FADE_DOWN\020@\022\021\n\rLOGGING_LEVEL\020A\022\030\n" +
+      "\024SPEKTRA_SHOW_CONTROL\020B\022\031\n\025CIRCADIAN_TEM" +
+      "PERATURE\020C\022\017\n\nNO_COMMAND\020\376\001*\353\001\n\010ReadType" +
+      "\022\n\n\006INPUTS\020\000\022\013\n\007OUTPUTS\020\001\022\006\n\002IR\020\002\022\n\n\006SEN" +
+      "SOR\020\003\022\010\n\004LIST\020\005\022\n\n\006ALARMS\020\007\022\013\n\007BURN_IN\020\010" +
+      "\022\013\n\007PROJECT\020\t\022\013\n\007NETWORK\020\n\022\n\n\006DEVICE\020\013\022\r" +
+      "\n\tPOLL_DATA\020\014\022\021\n\rLIST_EXTENDED\020\r\022\t\n\005LOGI" +
+      "C\020\016\022\017\n\013DALI_INPUTS\020\017\022\020\n\014SPEKTRA_SHOW\020\020\022\031" +
+      "\n\025SPEKTRA_SHOW_EXTENDED\020\021*\214\001\n\017AlarmRepea" +
+      "tType\022\023\n\017ALARM_NO_REPEAT\020\000\022\026\n\022ALARM_REPE" +
+      "AT_DAILY\020\001\022\031\n\025ALARM_REPEAT_WORK_DAY\020\002\022\027\n" +
+      "\023ALARM_REPEAT_WEEKLY\020\003\022\030\n\024ALARM_REPEAT_M" +
+      "ONTHLY\020\004*I\n\016AlarmAstroType\022\022\n\016ALARM_NO_A" +
+      "STRO\020\000\022\021\n\rALARM_SUNRUSE\020\001\022\020\n\014ALARM_SUNSE" +
+      "T\020\002*^\n\021SpektraTargetType\022\014\n\010SETTINGS\020\000\022\014" +
+      "\n\010SEQUENCE\020\001\022\t\n\005THEME\020\002\022\n\n\006STATIC\020\003\022\014\n\010C" +
+      "ALENDAR\020\004\022\010\n\004SHOW\020\005*=\n\021SpektraActionType" +
+      "\022\t\n\005START\020\000\022\010\n\004STOP\020\001\022\t\n\005PAUSE\020\002\022\010\n\004SAVE" +
+      "\020\003*p\n\025SpektraStepActionType\022\020\n\014RUN_SEQUE" +
+      "NCE\020\000\022\016\n\nSHOW_THEME\020\001\022\016\n\nSTART_LIST\020\002\022\022\n" +
+      "\016PAUSE_PREVIOUS\020\003\022\021\n\rSTOP_PREVIOUS\020\004*}\n\037" +
+      "SpektraUnscheduledBehaviourType\022 \n\034RUN_R" +
+      "ANDOM_COLOURED_SEQUENCE\020\000\022\022\n\016RUN_SEQUENC" +
+      "E_1\020\001\022\023\n\017RESUME_PREVIOUS\020\002\022\017\n\nDO_NOTHING" +
+      "\020\376\001*6\n\022LineAddressingType\022\017\n\013INDEPENDENT" +
+      "\020\000\022\017\n\013CONSECUTIVE\020\001*\347\002\n\016AckMessageType\022\021" +
+      "\n\rDECODE_FAILED\020\000\022\027\n\023INDEX_OUT_OF_BOUNDS" +
+      "\020\001\022\023\n\017UNEXPECTED_TYPE\020\002\022\021\n\rENCODE_FAILED" +
+      "\020\003\022\020\n\014KEY_MISMATCH\020\004\022\013\n\007SUCCESS\020\005\022\022\n\016INV" +
+      "ALID_PARAMS\020\006\022\026\n\022UNEXPECTED_COMMAND\020\007\022\030\n" +
+      "\024COMMUNICATION_FAILED\020\010\022\031\n\025COMMUNICATION" +
+      "_TIMEOUT\020\t\022\021\n\rDATA_TOO_LONG\020\n\022\023\n\017UNEXPEC" +
+      "TED_CASE\020\013\022\016\n\nSLOTS_FULL\020\014\022\020\n\014UNAUTHORIS" +
+      "ED\020\r\022\023\n\017PARTIAL_SUCCESS\020\016\022\022\n\016COMMAND_FAI" +
+      "LED\020\017\022\016\n\nDEPRECATED\020\020*\352\004\n\020Type8CommandTy" +
+      "pe\022\024\n\020SET_TEMP_X_COORD\020\000\022\024\n\020SET_TEMP_Y_C" +
+      "OORD\020\001\022\014\n\010ACTIVATE\020\002\022\023\n\017X_COORD_STEP_UP\020" +
+      "\003\022\025\n\021X_COORD_STEP_DOWN\020\004\022\023\n\017Y_COORD_STEP" +
+      "_UP\020\005\022\025\n\021Y_COORD_STEP_DOWN\020\006\022\037\n\033SET_TEMP" +
+      "_COLOUR_TEMPERATURE\020\007\022\"\n\036COLOUR_TEMPERAT" +
+      "URE_STEP_COOLER\020\010\022\"\n\036COLOUR_TEMPERATURE_" +
+      "STEP_WARMER\020\t\022\033\n\027SET_TEMP_PRI_N_DIMLEVEL" +
+      "\020\n\022\031\n\025SET_TEMP_RGB_DIMLEVEL\020\013\022\031\n\025SET_TEM" +
+      "P_WAF_DIMLEVEL\020\014\022\033\n\027SET_TEMP_RGBWAF_CONT" +
+      "ROL\020\r\022\031\n\025COPY_REPORT_TEMPORARY\020\016\022\022\n\016STOR" +
+      "E_TY_PRI_N\020\020\022\030\n\024STORE_XY_COORD_PRI_N\020\021\022\"" +
+      "\n\036STORE_COLOUR_TEMPERATURE_LIMIT\020\022\022\036\n\032ST" +
+      "ORE_GEAR_FEATURES_STATUS\020\023\022\032\n\026ASSIGN_COL" +
+      "OR_LINKED_CH\020\025\022\022\n\016START_AUTO_CAL\020\026\022\027\n\023EN" +
+      "ABLE_DEVICE_TYPE8\0200\022\025\n\021SET_XY_COORDINATE" +
+      "\0202*\221\002\n\016Type8QueryType\022\024\n\020TYPE8_QUERY_NUL" +
+      "L\020\000\022$\n TYPE8_QUERY_GEAR_FEATURES_STATUS\020" +
+      "\001\022\035\n\031TYPE8_QUERY_COLOUR_STATUS\020\002\022$\n TYPE" +
+      "8_QUERY_COLOUR_TYPE_FEATURES\020\003\022\034\n\030TYPE8_" +
+      "QUERY_COLOUR_VALUE\020\004\022\036\n\032TYPE8_QUERY_RGBW" +
+      "AF_CONTROL\020\005\022\037\n\033TYPE8_QUERY_ASSIGNED_COL" +
+      "OUR\020\006\022\037\n\033TYPE8_QUERY_EXT_VERSION_NUM\020\010*\274" +
+      "\006\n\023DALI24DeviceSetting\022\024\n\020COMMAND_IDENTI" +
+      "FY\020\000\022\"\n\036COMMAND_RESET_POWER_CYCLE_SEEN\020\001" +
+      "\022\021\n\rCOMMAND_RESET\020\020\022\035\n\031COMMAND_RESET_MEM" +
+      "ORY_BANK\020\021\022\035\n\031COMMAND_SET_SHORT_ADDRESS\020" +
+      "\024\022\037\n\033COMMAND_ENABLE_WRITE_MEMORY\020\025\022!\n\035CO" +
+      "MMAND_ENABLE_APP_CONTROLLER\020\026\022\"\n\036COMMAND" +
+      "_DISABLE_APP_CONTROLLER\020\027\022\036\n\032COMMAND_SET" +
+      "_OPERATING_MODE\020\030\022%\n!COMMAND_ADD_TO_DEVI" +
+      "CE_GROUPS_0_15\020\031\022&\n\"COMMAND_ADD_TO_DEVIC" +
+      "E_GROUPS_15_32\020\032\022#\n\037COMMAND_REMOVE_FROM_" +
+      "GROUPS_0_15\020\033\022$\n COMMAND_REMOVE_FROM_GRO" +
+      "UPS_16_32\020\034\022 \n\034COMMAND_START_QUIESCENT_M" +
+      "ODE\020\035\022\037\n\033COMMAND_STOP_QUIESCENT_MODE\020\036\022$" +
+      "\n COMMAND_ENABLE_POWER_CYCLE_NOTIF\020\037\022%\n!" +
+      "COMMAND_DISABLE_POWER_CYCLE_NOTIF\020 \022%\n!C" +
+      "OMMAND_SAVE_PERSISTENT_VARIABLES\020!\022\026\n\022SE" +
+      "T_EVENT_PRIORITY\020a\022\023\n\017ENABLE_INSTANCE\020b\022" +
+      "\024\n\020DISABLE_INSTANCE\020c\022\036\n\032SET_PRIMARY_INS" +
+      "TANCE_GROUP\020d\022\030\n\024SET_INSTANCE_GROUP_1\020e\022" +
+      "\030\n\024SET_INSTANCE_GROUP_2\020f\022\024\n\020SET_EVENT_S" +
+      "CHEME\020g\022\024\n\020SET_EVENT_FILTER\020h*c\n\022DALI24I" +
+      "nstanceType\022\013\n\007DEFAULT\020\000\022\t\n\005INPUT\020\001\022\020\n\014R" +
+      "OTARY_INPUT\020\002\022\021\n\rMOTION_SENSOR\020\003\022\020\n\014LIGH" +
+      "T_SENSOR\020\004*\276\002\n\014DALI24OpCode\022\017\n\013OPCODE_NU" +
+      "LL\020\000\022 \n\034SENSOR_MOTION_SET_HOLD_TIMER\020!\022\"" +
+      "\n\036SENSOR_MOTION_SET_REPORT_TIMER\020\"\022$\n SE" +
+      "NSOR_MOTION_SET_DEADTIME_TIMER\020#\022#\n\037SENS" +
+      "OR_MOTION_CANCEL_HOLD_TIMER\020$\022!\n\035SENSOR_" +
+      "LIGHT_SET_REPORT_TIMER\0200\022\037\n\033SENSOR_LIGHT" +
+      "_SET_HYSTERESIS\0201\022#\n\037SENSOR_LIGHT_SET_DE" +
+      "ADTIME_TIMER\0202\022#\n\037SENSOR_LIGHT_SET_HYSTE" +
+      "RESIS_MIN\0203*W\n\010LineType\022\016\n\nLINE_EMPTY\020\000\022" +
+      "\r\n\tLINE_DALI\020\001\022\014\n\010LINE_DMX\020\002\022\017\n\013LINE_DMX" +
+      "_IN\020\003\022\r\n\tLINE_AUTO\020\004*\251\001\n\tEventType\022\014\n\010RE" +
+      "GISTER\020\000\022\021\n\rTRIGGER_EVENT\020\001\022\017\n\013INPUT_EVE" +
+      "NT\020\002\022\020\n\014SENSOR_EVENT\020\003\022\021\n\rCONTROL_EVENT\020" +
+      "\004\022\023\n\017ROOM_JOIN_EVENT\020\005\022\027\n\023DALI_24_INPUT_" +
+      "EVENT\020\006\022\027\n\023DALI_24_FRAME_EVENT\020\007*\306\t\n\rDAL" +
+      "IQueryType\022\023\n\017DALI_QUERY_NULL\020\000\022\026\n\021DALI_" +
+      "QUERY_STATUS\020\220\001\022\027\n\022DALI_QUERY_BALLAST\020\221\001" +
+      "\022\034\n\027DALI_QUERY_LAMP_FAILURE\020\222\001\022\035\n\030DALI_Q" +
+      "UERY_LAMP_POWER_ON\020\223\001\022\033\n\026DALI_QUERY_LIMI" +
+      "T_ERROR\020\224\001\022\033\n\026DALI_QUERY_RESET_STATE\020\225\001\022" +
+      "%\n DALI_QUERY_MISSING_SHORT_ADDRESS\020\226\001\022\036" +
+      "\n\031DALI_QUERY_VERSION_NUMBER\020\227\001\022\024\n\017DALI_Q" +
+      "UERY_DTR0\020\230\001\022\033\n\026DALI_QUERY_DEVICE_TYPE\020\231" +
+      "\001\022\034\n\027DALI_QUERY_PHYSICAL_MIN\020\232\001\022\035\n\030DALI_" +
+      "QUERY_POWER_FAILURE\020\233\001\022\024\n\017DALI_QUERY_DTR" +
+      "1\020\234\001\022\024\n\017DALI_QUERY_DTR2\020\235\001\022\036\n\031DALI_QUERY" +
+      "_OPERATING_MODE\020\236\001\022 \n\033DALI_QUERY_LIGHTSO" +
+      "URCE_TYPE\020\237\001\022\034\n\027DALI_QUERY_ACTUAL_LEVEL\020" +
+      "\240\001\022\031\n\024DALI_QUERY_MAX_LEVEL\020\241\001\022\031\n\024DALI_QU" +
+      "ERY_MIN_LEVEL\020\242\001\022\036\n\031DALI_QUERY_POWER_ON_" +
+      "LEVEL\020\243\001\022$\n\037DALI_QUERY_SYSTEM_FAILURE_LE" +
+      "VEL\020\244\001\022!\n\034DALI_QUERY_FADETIME_FADERATE\020\245" +
+      "\001\022*\n%DALI_QUERY_MANUFACTURER_SPECIFIC_MO" +
+      "DE\020\246\001\022 \n\033DALI_QUERY_NEXT_DEVICE_TYPE\020\247\001\022" +
+      "\"\n\035DALI_QUERY_EXTENDED_FADE_TIME\020\250\001\022$\n\037D" +
+      "ALI_QUERY_CONTROL_GEAR_FAILURE\020\252\001\022\035\n\030DAL" +
+      "I_QUERY_SCENE_X_LEVEL\020\260\001\022\032\n\025DALI_QUERY_G" +
+      "ROUPS_0_7\020\300\001\022\033\n\026DALI_QUERY_GROUPS_8_15\020\301" +
+      "\001\022 \n\033DALI_QUERY_RANDOM_ADDRESS_H\020\302\001\022 \n\033D" +
+      "ALI_QUERY_RANDOM_ADDRESS_M\020\303\001\022 \n\033DALI_QU" +
+      "ERY_RANDOM_ADDRESS_L\020\304\001\022\034\n\027DALI_QUERY_RE" +
+      "AD_DTR_0_1\020\305\001\022 \n\033DALI_QUERY_APP_EXT_COMM" +
+      "ANDS\020\340\001\022\"\n\035DALI_QUERY_EXT_VERSION_NUMBER" +
+      "\020\377\001\022\027\n\022DALI_QUERY_COMPARE\020\204\002\022$\n\037DALI_QUE" +
+      "RY_VERIFY_SHORT_ADDRESS\020\214\002\022\035\n\030DALI_QUERY" +
+      "_SHORT_ADDRESS\020\215\002*\351\027\n\017DALICommandType\022\014\n" +
+      "\010DALI_OFF\020\000\022\020\n\014DALI_FADE_UP\020\001\022\022\n\016DALI_FA" +
+      "DE_DOWN\020\002\022\020\n\014DALI_STEP_UP\020\003\022\022\n\016DALI_STEP" +
+      "_DOWN\020\004\022\022\n\016DALI_MAX_LEVEL\020\005\022\022\n\016DALI_MIN_" +
+      "LEVEL\020\006\022\026\n\022DALI_STEP_DOWN_OFF\020\007\022\023\n\017DALI_" +
+      "ON_STEP_UP\020\010\022\030\n\024DALI_ENABLE_DAPC_SEQ\020\t\022!" +
+      "\n\035DALI_RECALL_LAST_ACTIVE_LEVEL\020\n\022\026\n\022DAL" +
+      "I_CONTINUOUS_UP\020\013\022\030\n\024DALI_CONTINUOUS_DOW" +
+      "N\020\014\022\027\n\023DALI_RECALL_SCENE_0\020\020\022\027\n\023DALI_REC" +
+      "ALL_SCENE_1\020\021\022\027\n\023DALI_RECALL_SCENE_2\020\022\022\027" +
+      "\n\023DALI_RECALL_SCENE_3\020\023\022\027\n\023DALI_RECALL_S" +
+      "CENE_4\020\024\022\027\n\023DALI_RECALL_SCENE_5\020\025\022\027\n\023DAL" +
+      "I_RECALL_SCENE_6\020\026\022\027\n\023DALI_RECALL_SCENE_" +
+      "7\020\027\022\027\n\023DALI_RECALL_SCENE_8\020\030\022\027\n\023DALI_REC" +
+      "ALL_SCENE_9\020\031\022\030\n\024DALI_RECALL_SCENE_10\020\032\022" +
+      "\030\n\024DALI_RECALL_SCENE_11\020\033\022\030\n\024DALI_RECALL" +
+      "_SCENE_12\020\034\022\030\n\024DALI_RECALL_SCENE_13\020\035\022\030\n" +
+      "\024DALI_RECALL_SCENE_14\020\036\022\030\n\024DALI_RECALL_S" +
+      "CENE_15\020\037\022\016\n\nDALI_RESET\020 \022 \n\034DALI_STORE_" +
+      "ACTUAL_LEVEL_DTR0\020!\022\035\n\031DALI_SAVE_PERSIST" +
+      "ENT_VARS\020\"\022\033\n\027DALI_SET_OPERATING_MODE\020#\022" +
+      "\032\n\026DALI_RESET_MEMORY_BANK\020$\022\030\n\024DALI_IDEN" +
+      "TIFY_DEVICE\020%\022\026\n\022DALI_SET_MAX_LEVEL\020*\022\026\n" +
+      "\022DALI_SET_MIN_LEVEL\020+\022!\n\035DALI_SET_SYSTEM" +
+      "_FAILURE_LEVEL\020,\022\033\n\027DALI_SET_POWER_ON_LE" +
+      "VEL\020-\022\026\n\022DALI_SET_FADE_TIME\020.\022\026\n\022DALI_SE" +
+      "T_FADE_RATE\020/\022\032\n\026DALI_SET_EXT_FADE_TIME\020" +
+      "0\022\024\n\020DALI_SET_SCENE_0\020@\022\024\n\020DALI_SET_SCEN" +
+      "E_1\020A\022\024\n\020DALI_SET_SCENE_2\020B\022\024\n\020DALI_SET_" +
+      "SCENE_3\020C\022\024\n\020DALI_SET_SCENE_4\020D\022\024\n\020DALI_" +
+      "SET_SCENE_5\020E\022\024\n\020DALI_SET_SCENE_6\020F\022\024\n\020D" +
+      "ALI_SET_SCENE_7\020G\022\024\n\020DALI_SET_SCENE_8\020H\022" +
+      "\024\n\020DALI_SET_SCENE_9\020I\022\025\n\021DALI_SET_SCENE_" +
+      "10\020J\022\025\n\021DALI_SET_SCENE_11\020K\022\025\n\021DALI_SET_" +
+      "SCENE_12\020L\022\025\n\021DALI_SET_SCENE_13\020M\022\025\n\021DAL" +
+      "I_SET_SCENE_14\020N\022\025\n\021DALI_SET_SCENE_15\020O\022" +
+      "\034\n\030DALI_REMOVE_FROM_SCENE_0\020P\022\034\n\030DALI_RE" +
+      "MOVE_FROM_SCENE_1\020Q\022\034\n\030DALI_REMOVE_FROM_" +
+      "SCENE_2\020R\022\034\n\030DALI_REMOVE_FROM_SCENE_3\020S\022" +
+      "\034\n\030DALI_REMOVE_FROM_SCENE_4\020T\022\034\n\030DALI_RE" +
+      "MOVE_FROM_SCENE_5\020U\022\034\n\030DALI_REMOVE_FROM_" +
+      "SCENE_6\020V\022\034\n\030DALI_REMOVE_FROM_SCENE_7\020W\022" +
+      "\034\n\030DALI_REMOVE_FROM_SCENE_8\020X\022\034\n\030DALI_RE" +
+      "MOVE_FROM_SCENE_9\020Y\022\035\n\031DALI_REMOVE_FROM_" +
+      "SCENE_10\020Z\022\035\n\031DALI_REMOVE_FROM_SCENE_11\020" +
+      "[\022\035\n\031DALI_REMOVE_FROM_SCENE_12\020\\\022\035\n\031DALI" +
+      "_REMOVE_FROM_SCENE_13\020]\022\035\n\031DALI_REMOVE_F" +
+      "ROM_SCENE_14\020^\022\035\n\031DALI_REMOVE_FROM_SCENE" +
+      "_15\020_\022\027\n\023DALI_ADD_TO_GROUP_0\020`\022\027\n\023DALI_A" +
+      "DD_TO_GROUP_1\020a\022\027\n\023DALI_ADD_TO_GROUP_2\020b" +
+      "\022\027\n\023DALI_ADD_TO_GROUP_3\020c\022\027\n\023DALI_ADD_TO" +
+      "_GROUP_4\020d\022\027\n\023DALI_ADD_TO_GROUP_5\020e\022\027\n\023D" +
+      "ALI_ADD_TO_GROUP_6\020f\022\027\n\023DALI_ADD_TO_GROU" +
+      "P_7\020g\022\027\n\023DALI_ADD_TO_GROUP_8\020h\022\027\n\023DALI_A" +
+      "DD_TO_GROUP_9\020i\022\030\n\024DALI_ADD_TO_GROUP_10\020" +
+      "j\022\030\n\024DALI_ADD_TO_GROUP_11\020k\022\030\n\024DALI_ADD_" +
+      "TO_GROUP_12\020l\022\030\n\024DALI_ADD_TO_GROUP_13\020m\022" +
+      "\030\n\024DALI_ADD_TO_GROUP_14\020n\022\030\n\024DALI_ADD_TO" +
+      "_GROUP_15\020o\022\034\n\030DALI_REMOVE_FROM_GROUP_0\020" +
+      "p\022\034\n\030DALI_REMOVE_FROM_GROUP_1\020q\022\034\n\030DALI_" +
+      "REMOVE_FROM_GROUP_2\020r\022\034\n\030DALI_REMOVE_FRO" +
+      "M_GROUP_3\020s\022\034\n\030DALI_REMOVE_FROM_GROUP_4\020" +
+      "t\022\034\n\030DALI_REMOVE_FROM_GROUP_5\020u\022\034\n\030DALI_" +
+      "REMOVE_FROM_GROUP_6\020v\022\034\n\030DALI_REMOVE_FRO" +
+      "M_GROUP_7\020w\022\034\n\030DALI_REMOVE_FROM_GROUP_8\020" +
+      "x\022\034\n\030DALI_REMOVE_FROM_GROUP_9\020y\022\035\n\031DALI_" +
+      "REMOVE_FROM_GROUP_10\020z\022\035\n\031DALI_REMOVE_FR" +
+      "OM_GROUP_11\020{\022\035\n\031DALI_REMOVE_FROM_GROUP_" +
+      "12\020|\022\035\n\031DALI_REMOVE_FROM_GROUP_13\020}\022\035\n\031D" +
+      "ALI_REMOVE_FROM_GROUP_14\020~\022\035\n\031DALI_REMOV" +
+      "E_FROM_GROUP_15\020\177\022\033\n\026DALI_SET_SHORT_ADDR" +
+      "ESS\020\200\001\022\035\n\030DALI_ENABLE_WRITE_MEMORY\020\201\001\022\023\n" +
+      "\016DALI_TERMINATE\020\377\001\022\024\n\017DALI_INITIALISE\020\202\002" +
+      "\022\023\n\016DALI_RANDOMISE\020\203\002\022\022\n\rDALI_WITHDRAW\020\205" +
+      "\002\022\027\n\022DALI_SEARCH_ADDR_H\020\210\002\022\027\n\022DALI_SEARC" +
+      "H_ADDR_M\020\211\002\022\027\n\022DALI_SEARCH_ADDR_L\020\212\002\022\037\n\032" +
+      "DALI_PROGRAM_SHORT_ADDRESS\020\213\002*\250\001\n\025Custom" +
+      "DALICommandType\022\022\n\016DALI_ARC_LEVEL\020\000\022\023\n\017D" +
+      "ALI_DAPC_LEVEL\020\001\022\030\n\024DALI_GROUP_ARC_LEVEL" +
+      "\020\002\022\030\n\024DALI_BROADCAST_SCENE\020\003\022\027\n\023DALI_SCE" +
+      "NE_ON_GROUP\020\004\022\031\n\025DALI_SCENE_ON_ADDRESS\020\005" +
+      "*\233\004\n\021AdminPropertyType\022\017\n\013DEVICE_NAME\020\000\022" +
+      "\020\n\014PROJECT_NAME\020\001\022\r\n\tLONGITUDE\020\002\022\014\n\010LATI" +
+      "TUDE\020\003\022\024\n\020LOCAL_UTC_OFFSET\020\004\022\024\n\020DAYLIGHT" +
+      "_SAVINGS\020\005\022\017\n\013POLL_ACTIVE\020\006\022\020\n\014DHCP_ENAB" +
+      "LED\020\007\022\013\n\007IP_ADDR\020\010\022\014\n\010MAC_ADDR\020\t\022\016\n\nGATE" +
+      "WAY_IP\020\n\022\026\n\022NETWORK_PROPERTIES\020\013\022\025\n\021SYST" +
+      "EM_PROPERTIES\020\014\022\024\n\020CONTROLLER_LINES\020\r\022\024\n" +
+      "\020EEPROM_FULL_CHIP\020\016\022\017\n\013CONFIG_DATA\020\017\022\020\n\014" +
+      "SPEKTRA_DATA\020\020\022\021\n\rDEVICE_STATUS\020\021\022\021\n\rCON" +
+      "FIG_STATUS\020\022\022\017\n\013DEVICE_TIME\020\023\022\017\n\013NTP_DET" +
+      "AILS\020\024\022\025\n\021TRIDONIC_MSENSORS\020\025\022\022\n\016SECURE_" +
+      "SESSION\020\026\022\t\n\005NONCE\020\027\022\024\n\020DALI_SENSOR_TYPE" +
+      "\020\030\022\021\n\rDEVICE_REBOOT\020\031\022\022\n\016SYSTEM_LOGGING\020" +
+      "\032\022\n\n\006SUBNET\020\033\022\007\n\003DNS\020\034*M\n\020AdminCommandTy" +
+      "pe\022\007\n\003SET\020\000\022\007\n\003GET\020\001\022\007\n\003ADD\020\002\022\n\n\006REMOVE\020" +
+      "\003\022\t\n\005RESET\020\004\022\007\n\003RUN\020\005*\265\001\n\016DALIStatusType" +
+      "\022\014\n\010LAMP_OFF\020\000\022\030\n\024CONTROL_GEAR_FAILURE\020\001" +
+      "\022\020\n\014LAMP_FAILURE\020\002\022\013\n\007LAMP_ON\020\004\022\017\n\013LIMIT" +
+      "_ERROR\020\010\022\020\n\014FADE_RUNNING\020\020\022\017\n\013RESET_STAT" +
+      "E\020 \022\021\n\rSHORT_ADDRESS\020@\022\025\n\020POWER_CYCLE_SE" +
+      "EN\020\200\001*\210\002\n\020DALIRXStatusFlag\022\013\n\007WAITING\020\000\022" +
+      "\023\n\017RECEIVING_FRAME\020\001\022\025\n\021NO_RECEIVED_FRAM" +
+      "E\020\002\022\030\n\024RECEIVED_8_BIT_FRAME\020\003\022\031\n\025RECEIVE" +
+      "D_16_BIT_FRAME\020\004\022\031\n\025RECEIVED_24_BIT_FRAM" +
+      "E\020\005\022\032\n\026RECEIVED_PARTIAL_FRAME\020\006\022\010\n\004IDLE\020" +
+      "\007\022\017\n\013CALIBRATION\020\010\022\030\n\023ERROR_WHILE_SENDIN" +
+      "G\020\376\001\022\032\n\025ERROR_WHILE_RECEIVING\020\377\001*\213\001\n\025Dia" +
+      "gnosticMessageType\022\032\n\026DIAGNOSTIC_SYSTEM_" +
+      "INFO\020\000\022\033\n\027DIAGNOSTIC_INPUT_STATUS\020\001\022\024\n\020D" +
+      "ALI_LEVEL_CACHE\020\002\022\023\n\017DMX_LEVEL_CACHE\020\003\022\016" +
+      "\n\nROOM_JOINS\020\004*z\n\023FirmwareCommandType\022\014\n" +
+      "\010FW_READY\020\000\022\014\n\010FW_APPLY\020\001\022\r\n\tFW_VERIFY\020\002" +
+      "\022\024\n\020FW_VERIFY_FAILED\020\003\022\025\n\021FW_VERIFY_SUCC" +
+      "ESS\020\004\022\013\n\007FW_READ\020\005*?\n\025SpektraTransitionT" +
+      "ype\022\t\n\005BLEND\020\000\022\010\n\004SNAP\020\001\022\021\n\rFADE_TO_BLAC" +
+      "K\020\002*\234\001\n\tLogicType\022\016\n\nDALI_LEVEL\020\000\022\017\n\013INP" +
+      "UT_STATE\020\001\022\020\n\014LIST_RUNNING\020\002\022\026\n\022OCCUPANC" +
+      "Y_DETECTED\020\003\022\017\n\013DMX_PRESENT\020\004\022\017\n\013CAL_WEE" +
+      "KDAY\020\005\022\r\n\tCAL_MONTH\020\006\022\023\n\017ALARM_SCHEDULED" +
+      "\020\007*\200\001\n\023LogicComparisonType\022\r\n\tLESS_THAN\020" +
+      "\000\022\027\n\023LESS_THAN_OR_EQUALS\020\001\022\n\n\006EQUALS\020\002\022\r" +
+      "\n\tMORE_THAN\020\003\022\027\n\023MORE_THAN_OR_EQUALS\020\004\022\r" +
+      "\n\tNOT_EQUAL\020\005*8\n\016DALISensorType\022\022\n\016TRIDO" +
+      "NIC_EDALI\020\000\022\022\n\016STANDARD_EDALI\020\001*G\n\021Senso" +
+      "rCommandType\022\016\n\nINITIALISE\020\000\022\010\n\004MUTE\020\001\022\n" +
+      "\n\006UNMUTE\020\002\022\014\n\010OVERRIDE\020\003*b\n\rSystemLogTyp" +
+      "e\022\010\n\004BOOT\020\000\022\014\n\010NET_LINK\020\001\022\007\n\003NTP\020\002\022\013\n\007TR" +
+      "IGGER\020\003\022\013\n\007SPEKTRA\020\004\022\014\n\010SCHEDULE\020\005\022\010\n\004US" +
+      "ER\020\006*m\n\017DALI24InputType\022\023\n\017MOMENTARY_SHO" +
+      "RT\020\000\022\022\n\016MOMENTARY_LONG\020\001\022\017\n\013LATCHED_LOW\020" +
+      "\002\022\020\n\014LATCHED_HIGH\020\003\022\016\n\nPOSITIONAL\020\004*h\n\026D" +
+      "ALIMotionSensorStates\022\017\n\013MOTION_IDLE\020\000\022\023" +
+      "\n\017MOTION_DISABLED\020\001\022\022\n\016MOTION_WARNING\020\002\022" +
+      "\024\n\020MOTION_OCCUPANCY\020\003*I\n\023DALILuxSensorSt" +
+      "ates\022\020\n\014LUX_DISABLED\020\000\022\017\n\013LUX_ENABLED\020\001\022" +
+      "\017\n\013LUX_DEVIATE\020\002*N\n\023DALIAddressingError\022" +
+      "\014\n\010NO_ERROR\020\000\022\n\n\006VERIFY\020\001\022\n\n\006SEARCH\020\002\022\021\n" +
+      "\rNO_NEW_DEVICE\020\003*8\n\022DALIAddressingType\022\017" +
+      "\n\013ADDRESS_NEW\020\000\022\021\n\rREADDRESS_ALL\020\001b\006prot" +
+      "o3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -120437,7 +120521,7 @@ public final class EDS10ProtocolBuffer {
     internal_static_DeviceStateMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DeviceStateMessage_descriptor,
-        new java.lang.String[] { "Uptime", "Temp", "Vbat", "Clock", "NextAlarm", "NextAlarmTime", "InputState", "ListStates", "BurnInStates", "SensorStates", "ZoneStates", "ZoneSleepStates", "ZoneIndexes", "DaliInputState", });
+        new java.lang.String[] { "Uptime", "Temp", "Vbat", "Clock", "NextAlarm", "NextAlarmTime", "InputState", "ListStates", "BurnInStates", "SensorStates", "ZoneStates", "ZoneSleepStates", "ZoneIndexes", "DaliInputState", "OutputState", });
     internal_static_TriggerMessage_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_TriggerMessage_fieldAccessorTable = new
