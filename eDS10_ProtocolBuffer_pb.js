@@ -814,8 +814,7 @@ proto.DeviceStateMessage.toObject = function(includeInstance, msg) {
     zoneStatesList: jspb.Message.getRepeatedField(msg, 11),
     zoneSleepStatesList: jspb.Message.getRepeatedField(msg, 12),
     zoneIndexesList: jspb.Message.getRepeatedField(msg, 13),
-    daliInputState: jspb.Message.getFieldWithDefault(msg, 14, 0),
-    outputState: jspb.Message.getFieldWithDefault(msg, 15, 0)
+    daliInputState: jspb.Message.getFieldWithDefault(msg, 14, 0)
   };
 
   if (includeInstance) {
@@ -909,10 +908,6 @@ proto.DeviceStateMessage.deserializeBinaryFromReader = function(msg, reader) {
     case 14:
       var value = /** @type {number} */ (reader.readUint64());
       msg.setDaliInputState(value);
-      break;
-    case 15:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setOutputState(value);
       break;
     default:
       reader.skipField();
@@ -1040,13 +1035,6 @@ proto.DeviceStateMessage.serializeBinaryToWriter = function(message, writer) {
   if (f !== 0) {
     writer.writeUint64(
       14,
-      f
-    );
-  }
-  f = message.getOutputState();
-  if (f !== 0) {
-    writer.writeUint32(
-      15,
       f
     );
   }
@@ -1374,21 +1362,6 @@ proto.DeviceStateMessage.prototype.getDaliInputState = function() {
 /** @param {number} value */
 proto.DeviceStateMessage.prototype.setDaliInputState = function(value) {
   jspb.Message.setProto3IntField(this, 14, value);
-};
-
-
-/**
- * optional uint32 output_state = 15;
- * @return {number}
- */
-proto.DeviceStateMessage.prototype.getOutputState = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 15, 0));
-};
-
-
-/** @param {number} value */
-proto.DeviceStateMessage.prototype.setOutputState = function(value) {
-  jspb.Message.setProto3IntField(this, 15, value);
 };
 
 
@@ -11157,8 +11130,7 @@ proto.RDMDiscoveryMessage.prototype.toObject = function(opt_includeInstance) {
  */
 proto.RDMDiscoveryMessage.toObject = function(includeInstance, msg) {
   var f, obj = {
-    universeMask: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    isnext: jspb.Message.getFieldWithDefault(msg, 2, false)
+    universeMask: jspb.Message.getFieldWithDefault(msg, 1, 0)
   };
 
   if (includeInstance) {
@@ -11199,10 +11171,6 @@ proto.RDMDiscoveryMessage.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {number} */ (reader.readUint32());
       msg.setUniverseMask(value);
       break;
-    case 2:
-      var value = /** @type {boolean} */ (reader.readBool());
-      msg.setIsnext(value);
-      break;
     default:
       reader.skipField();
       break;
@@ -11239,13 +11207,6 @@ proto.RDMDiscoveryMessage.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getIsnext();
-  if (f) {
-    writer.writeBool(
-      2,
-      f
-    );
-  }
 };
 
 
@@ -11261,23 +11222,6 @@ proto.RDMDiscoveryMessage.prototype.getUniverseMask = function() {
 /** @param {number} value */
 proto.RDMDiscoveryMessage.prototype.setUniverseMask = function(value) {
   jspb.Message.setProto3IntField(this, 1, value);
-};
-
-
-/**
- * optional bool isNext = 2;
- * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
- * You should avoid comparisons like {@code val === true/false} in those cases.
- * @return {boolean}
- */
-proto.RDMDiscoveryMessage.prototype.getIsnext = function() {
-  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 2, false));
-};
-
-
-/** @param {boolean} value */
-proto.RDMDiscoveryMessage.prototype.setIsnext = function(value) {
-  jspb.Message.setProto3BooleanField(this, 2, value);
 };
 
 
@@ -16327,9 +16271,7 @@ proto.DiagnosticSystemInfoResponse.toObject = function(includeInstance, msg) {
     dmxToDaliCount: jspb.Message.getFieldWithDefault(msg, 21, 0),
     spektraZoneCount: jspb.Message.getFieldWithDefault(msg, 22, 0),
     logicCount: jspb.Message.getFieldWithDefault(msg, 23, 0),
-    inputDaliCount: jspb.Message.getFieldWithDefault(msg, 24, 0),
-    vendorId: jspb.Message.getFieldWithDefault(msg, 25, ""),
-    selectedProfile: jspb.Message.getFieldWithDefault(msg, 26, 0)
+    inputDaliCount: jspb.Message.getFieldWithDefault(msg, 24, 0)
   };
 
   if (includeInstance) {
@@ -16461,14 +16403,6 @@ proto.DiagnosticSystemInfoResponse.deserializeBinaryFromReader = function(msg, r
     case 24:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setInputDaliCount(value);
-      break;
-    case 25:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setVendorId(value);
-      break;
-    case 26:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setSelectedProfile(value);
       break;
     default:
       reader.skipField();
@@ -16664,20 +16598,6 @@ proto.DiagnosticSystemInfoResponse.serializeBinaryToWriter = function(message, w
   if (f !== 0) {
     writer.writeUint32(
       24,
-      f
-    );
-  }
-  f = message.getVendorId();
-  if (f.length > 0) {
-    writer.writeString(
-      25,
-      f
-    );
-  }
-  f = message.getSelectedProfile();
-  if (f !== 0) {
-    writer.writeUint32(
-      26,
       f
     );
   }
@@ -17055,36 +16975,6 @@ proto.DiagnosticSystemInfoResponse.prototype.getInputDaliCount = function() {
 /** @param {number} value */
 proto.DiagnosticSystemInfoResponse.prototype.setInputDaliCount = function(value) {
   jspb.Message.setProto3IntField(this, 24, value);
-};
-
-
-/**
- * optional string vendor_id = 25;
- * @return {string}
- */
-proto.DiagnosticSystemInfoResponse.prototype.getVendorId = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 25, ""));
-};
-
-
-/** @param {string} value */
-proto.DiagnosticSystemInfoResponse.prototype.setVendorId = function(value) {
-  jspb.Message.setProto3StringField(this, 25, value);
-};
-
-
-/**
- * optional uint32 selected_profile = 26;
- * @return {number}
- */
-proto.DiagnosticSystemInfoResponse.prototype.getSelectedProfile = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 26, 0));
-};
-
-
-/** @param {number} value */
-proto.DiagnosticSystemInfoResponse.prototype.setSelectedProfile = function(value) {
-  jspb.Message.setProto3IntField(this, 26, value);
 };
 
 
@@ -23313,8 +23203,7 @@ proto.EventFilter.toObject = function(includeInstance, msg) {
     daliSensor: jspb.Message.getFieldWithDefault(msg, 4, false),
     daliInput: jspb.Message.getFieldWithDefault(msg, 5, false),
     dmxStreamChanged: jspb.Message.getFieldWithDefault(msg, 6, false),
-    dali24Frame: jspb.Message.getFieldWithDefault(msg, 7, false),
-    triggerMessage: jspb.Message.getFieldWithDefault(msg, 8, false)
+    dali24Frame: jspb.Message.getFieldWithDefault(msg, 7, false)
   };
 
   if (includeInstance) {
@@ -23378,10 +23267,6 @@ proto.EventFilter.deserializeBinaryFromReader = function(msg, reader) {
     case 7:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setDali24Frame(value);
-      break;
-    case 8:
-      var value = /** @type {boolean} */ (reader.readBool());
-      msg.setTriggerMessage(value);
       break;
     default:
       reader.skipField();
@@ -23458,13 +23343,6 @@ proto.EventFilter.serializeBinaryToWriter = function(message, writer) {
   if (f) {
     writer.writeBool(
       7,
-      f
-    );
-  }
-  f = message.getTriggerMessage();
-  if (f) {
-    writer.writeBool(
-      8,
       f
     );
   }
@@ -23590,23 +23468,6 @@ proto.EventFilter.prototype.setDali24Frame = function(value) {
 };
 
 
-/**
- * optional bool trigger_message = 8;
- * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
- * You should avoid comparisons like {@code val === true/false} in those cases.
- * @return {boolean}
- */
-proto.EventFilter.prototype.getTriggerMessage = function() {
-  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 8, false));
-};
-
-
-/** @param {boolean} value */
-proto.EventFilter.prototype.setTriggerMessage = function(value) {
-  jspb.Message.setProto3BooleanField(this, 8, value);
-};
-
-
 
 /**
  * Generated by JsPbCodeGenerator.
@@ -23684,11 +23545,7 @@ proto.TriggerEvent.toObject = function(includeInstance, msg) {
     level: jspb.Message.getFieldWithDefault(msg, 2, 0),
     daliCommand: jspb.Message.getFieldWithDefault(msg, 3, 0),
     targetAddress: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    lineMask: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    zone: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    value: jspb.Message.getFieldWithDefault(msg, 7, 0),
-    queryIndex: jspb.Message.getFieldWithDefault(msg, 8, 0),
-    source: jspb.Message.getFieldWithDefault(msg, 9, 0)
+    lineMask: jspb.Message.getFieldWithDefault(msg, 5, 0)
   };
 
   if (includeInstance) {
@@ -23744,22 +23601,6 @@ proto.TriggerEvent.deserializeBinaryFromReader = function(msg, reader) {
     case 5:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setLineMask(value);
-      break;
-    case 6:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setZone(value);
-      break;
-    case 7:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setValue(value);
-      break;
-    case 8:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setQueryIndex(value);
-      break;
-    case 9:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setSource(value);
       break;
     default:
       reader.skipField();
@@ -23822,34 +23663,6 @@ proto.TriggerEvent.serializeBinaryToWriter = function(message, writer) {
   if (f !== 0) {
     writer.writeUint32(
       5,
-      f
-    );
-  }
-  f = message.getZone();
-  if (f !== 0) {
-    writer.writeUint32(
-      6,
-      f
-    );
-  }
-  f = message.getValue();
-  if (f !== 0) {
-    writer.writeUint32(
-      7,
-      f
-    );
-  }
-  f = message.getQueryIndex();
-  if (f !== 0) {
-    writer.writeUint32(
-      8,
-      f
-    );
-  }
-  f = message.getSource();
-  if (f !== 0) {
-    writer.writeUint32(
-      9,
       f
     );
   }
@@ -23956,66 +23769,6 @@ proto.TriggerEvent.prototype.getLineMask = function() {
 /** @param {number} value */
 proto.TriggerEvent.prototype.setLineMask = function(value) {
   jspb.Message.setProto3IntField(this, 5, value);
-};
-
-
-/**
- * optional uint32 zone = 6;
- * @return {number}
- */
-proto.TriggerEvent.prototype.getZone = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
-};
-
-
-/** @param {number} value */
-proto.TriggerEvent.prototype.setZone = function(value) {
-  jspb.Message.setProto3IntField(this, 6, value);
-};
-
-
-/**
- * optional uint32 value = 7;
- * @return {number}
- */
-proto.TriggerEvent.prototype.getValue = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
-};
-
-
-/** @param {number} value */
-proto.TriggerEvent.prototype.setValue = function(value) {
-  jspb.Message.setProto3IntField(this, 7, value);
-};
-
-
-/**
- * optional uint32 query_index = 8;
- * @return {number}
- */
-proto.TriggerEvent.prototype.getQueryIndex = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
-};
-
-
-/** @param {number} value */
-proto.TriggerEvent.prototype.setQueryIndex = function(value) {
-  jspb.Message.setProto3IntField(this, 8, value);
-};
-
-
-/**
- * optional uint32 source = 9;
- * @return {number}
- */
-proto.TriggerEvent.prototype.getSource = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 9, 0));
-};
-
-
-/** @param {number} value */
-proto.TriggerEvent.prototype.setSource = function(value) {
-  jspb.Message.setProto3IntField(this, 9, value);
 };
 
 
@@ -27920,7 +27673,6 @@ proto.TriggerType = {
   DMX_ZONE_FADE_DOWN: 64,
   LOGGING_LEVEL: 65,
   SPEKTRA_SHOW_CONTROL: 66,
-  CIRCADIAN_TEMPERATURE: 67,
   NO_COMMAND: 254
 };
 
@@ -28065,8 +27817,7 @@ proto.Type8CommandType = {
   STORE_GEAR_FEATURES_STATUS: 19,
   ASSIGN_COLOR_LINKED_CH: 21,
   START_AUTO_CAL: 22,
-  ENABLE_DEVICE_TYPE8: 48,
-  SET_XY_COORDINATE: 50
+  ENABLE_DEVICE_TYPE8: 48
 };
 
 /**
@@ -28074,13 +27825,13 @@ proto.Type8CommandType = {
  */
 proto.Type8QueryType = {
   TYPE8_QUERY_NULL: 0,
-  TYPE8_QUERY_GEAR_FEATURES_STATUS: 1,
-  TYPE8_QUERY_COLOUR_STATUS: 2,
-  TYPE8_QUERY_COLOUR_TYPE_FEATURES: 3,
-  TYPE8_QUERY_COLOUR_VALUE: 4,
-  TYPE8_QUERY_RGBWAF_CONTROL: 5,
-  TYPE8_QUERY_ASSIGNED_COLOUR: 6,
-  TYPE8_QUERY_EXT_VERSION_NUM: 8
+  TYPE8_QUERY_GEAR_FEATURES_STATUS: 247,
+  TYPE8_QUERY_COLOUR_STATUS: 248,
+  TYPE8_QUERY_COLOUR_TYPE_FEATURES: 249,
+  TYPE8_QUERY_COLOUR_VALUE: 250,
+  TYPE8_QUERY_RGBWAF_CONTROL: 251,
+  TYPE8_QUERY_ASSIGNED_COLOUR: 252,
+  TYPE8_QUERY_EXT_VERSION_NUM: 254
 };
 
 /**

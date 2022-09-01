@@ -1,5 +1,5 @@
 // The eDIDIO S10 Protocol Buffer Structure
-// Version Number 1.1.9
+// Version Number 1.1.11
 
 syntax = "proto3";
 
@@ -456,11 +456,12 @@ enum DALICommandType {
 // Non-native DALI Commands provided as quality-of-life functions.
 enum CustomDALICommandType {
     DALI_ARC_LEVEL                 = 0; // DALI Arc level (0 - 254)
-    DALI_DAPC_LEVEL                = 1; // Runs a DALI_ENABLE_DAPC_SEQUENCE if needed.
-    DALI_GROUP_ARC_LEVEL           = 2; // Specified by Group ID (0 - 15)
-    DALI_BROADCAST_SCENE           = 3; // No specific Address required, sent to all Devices
-    DALI_SCENE_ON_GROUP            = 4; // Specified by Group ID (0 - 15)
-    DALI_SCENE_ON_ADDRESS          = 5; // Specified by Address (0 - 63)
+    DALI_DAPC_LEVEL                = 1; // Runs a DALI_ENABLE_DAPC_SEQUENCE if needed.          // DEPRECATED
+    DALI_GROUP_ARC_LEVEL           = 2; // Specified by Group ID (0 - 15)                       // DEPRECATED
+    DALI_BROADCAST_SCENE           = 3; // No specific Address required, sent to all Devices    // DEPRECATED
+    DALI_SCENE_ON_GROUP            = 4; // Specified by Group ID (0 - 15)                       // DEPRECATED
+    DALI_SCENE_ON_ADDRESS          = 5; // Specified by Address (0 - 63)                        // DEPRECATED
+    DALI_QUERY_MULTI_TYPES         = 6; // Query multi-device types, returned as a bitmask
 }
 
 enum AdminPropertyType {
