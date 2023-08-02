@@ -758,6 +758,30 @@ public final class EDS10ProtocolBuffer {
     CIRCADIAN_TEMPERATURE(67),
     /**
      * <pre>
+     * Mute Sensor at Index (or all with Index 255)
+     * </pre>
+     *
+     * <code>DALI_CONTROL_SENSOR_MUTE = 68;</code>
+     */
+    DALI_CONTROL_SENSOR_MUTE(68),
+    /**
+     * <pre>
+     * Unmute to Sensor at Index (or all with Index 255)
+     * </pre>
+     *
+     * <code>DALI_CONTROL_SENSOR_UNMUTE = 69;</code>
+     */
+    DALI_CONTROL_SENSOR_UNMUTE(69),
+    /**
+     * <pre>
+     * Allow you to specify the maximum Spektra Sequence or Theme output intensity (10 to 100)%
+     * </pre>
+     *
+     * <code>SPEKTRA_INTENSITY = 70;</code>
+     */
+    SPEKTRA_INTENSITY(70),
+    /**
+     * <pre>
      * This TriggerType should always be at the bottom of the list. Add any new TriggerTypes above it (up to 253).
      * </pre>
      *
@@ -1305,6 +1329,30 @@ public final class EDS10ProtocolBuffer {
     public static final int CIRCADIAN_TEMPERATURE_VALUE = 67;
     /**
      * <pre>
+     * Mute Sensor at Index (or all with Index 255)
+     * </pre>
+     *
+     * <code>DALI_CONTROL_SENSOR_MUTE = 68;</code>
+     */
+    public static final int DALI_CONTROL_SENSOR_MUTE_VALUE = 68;
+    /**
+     * <pre>
+     * Unmute to Sensor at Index (or all with Index 255)
+     * </pre>
+     *
+     * <code>DALI_CONTROL_SENSOR_UNMUTE = 69;</code>
+     */
+    public static final int DALI_CONTROL_SENSOR_UNMUTE_VALUE = 69;
+    /**
+     * <pre>
+     * Allow you to specify the maximum Spektra Sequence or Theme output intensity (10 to 100)%
+     * </pre>
+     *
+     * <code>SPEKTRA_INTENSITY = 70;</code>
+     */
+    public static final int SPEKTRA_INTENSITY_VALUE = 70;
+    /**
+     * <pre>
      * This TriggerType should always be at the bottom of the list. Add any new TriggerTypes above it (up to 253).
      * </pre>
      *
@@ -1398,6 +1446,9 @@ public final class EDS10ProtocolBuffer {
         case 65: return LOGGING_LEVEL;
         case 66: return SPEKTRA_SHOW_CONTROL;
         case 67: return CIRCADIAN_TEMPERATURE;
+        case 68: return DALI_CONTROL_SENSOR_MUTE;
+        case 69: return DALI_CONTROL_SENSOR_UNMUTE;
+        case 70: return SPEKTRA_INTENSITY;
         case 254: return NO_COMMAND;
         default: return null;
       }
@@ -4336,7 +4387,7 @@ public final class EDS10ProtocolBuffer {
     INPUT_EVENT(2),
     /**
      * <pre>
-     * Emitted when a Sensor (Tridonic or 24-Bit) is triggered.
+     * Emitted when a Sensor (24-bit DALI or 25-bit Tridonic) is triggered.
      * </pre>
      *
      * <code>SENSOR_EVENT = 3;</code>
@@ -4403,7 +4454,7 @@ public final class EDS10ProtocolBuffer {
     public static final int INPUT_EVENT_VALUE = 2;
     /**
      * <pre>
-     * Emitted when a Sensor (Tridonic or 24-Bit) is triggered.
+     * Emitted when a Sensor (24-bit DALI or 25-bit Tridonic) is triggered.
      * </pre>
      *
      * <code>SENSOR_EVENT = 3;</code>
@@ -6470,12 +6521,12 @@ public final class EDS10ProtocolBuffer {
     NTP_DETAILS(20),
     /**
      * <pre>
-     * Provides actions for Tridonic MSensor control: "ADD" to un-mute all. "REMOVE" to mute all. "RESET" to remove all.
+     * Provides actions for DALI Sensor control: "ADD" to un-mute all. "REMOVE" to mute all. "RESET" to clear all (unprogram).
      * </pre>
      *
-     * <code>TRIDONIC_MSENSORS = 21;</code>
+     * <code>DALI_SENSORS = 21;</code>
      */
-    TRIDONIC_MSENSORS(21),
+    DALI_SENSORS(21),
     /**
      * <pre>
      * Allows you to Get or Set the "Secure Session" status of the device
@@ -6705,12 +6756,12 @@ public final class EDS10ProtocolBuffer {
     public static final int NTP_DETAILS_VALUE = 20;
     /**
      * <pre>
-     * Provides actions for Tridonic MSensor control: "ADD" to un-mute all. "REMOVE" to mute all. "RESET" to remove all.
+     * Provides actions for DALI Sensor control: "ADD" to un-mute all. "REMOVE" to mute all. "RESET" to clear all (unprogram).
      * </pre>
      *
-     * <code>TRIDONIC_MSENSORS = 21;</code>
+     * <code>DALI_SENSORS = 21;</code>
      */
-    public static final int TRIDONIC_MSENSORS_VALUE = 21;
+    public static final int DALI_SENSORS_VALUE = 21;
     /**
      * <pre>
      * Allows you to Get or Set the "Secure Session" status of the device
@@ -6808,7 +6859,7 @@ public final class EDS10ProtocolBuffer {
         case 18: return CONFIG_STATUS;
         case 19: return DEVICE_TIME;
         case 20: return NTP_DETAILS;
-        case 21: return TRIDONIC_MSENSORS;
+        case 21: return DALI_SENSORS;
         case 22: return SECURE_SESSION;
         case 23: return NONCE;
         case 24: return DALI_SENSOR_TYPE;
@@ -6869,6 +6920,10 @@ public final class EDS10ProtocolBuffer {
   }
 
   /**
+   * <pre>
+   * Used with AdminPropertyType
+   * </pre>
+   *
    * Protobuf enum {@code AdminCommandType}
    */
   public enum AdminCommandType
@@ -6891,7 +6946,7 @@ public final class EDS10ProtocolBuffer {
     GET(1),
     /**
      * <pre>
-     * Add property - Used with AdminPropertyType_TRIDONIC_MSENSORS to unmute sensors
+     * Add property
      * </pre>
      *
      * <code>ADD = 2;</code>
@@ -6899,7 +6954,7 @@ public final class EDS10ProtocolBuffer {
     ADD(2),
     /**
      * <pre>
-     * Remove property - Used with AdminPropertyType_TRIDONIC_MSENSORS to mute sensors
+     * Remove property
      * </pre>
      *
      * <code>REMOVE = 3;</code>
@@ -6907,7 +6962,7 @@ public final class EDS10ProtocolBuffer {
     REMOVE(3),
     /**
      * <pre>
-     * Reset property - Used with AdminPropertyType_TRIDONIC_MSENSORS to reset sensors to default. Used for Memory Reset Commands
+     * Reset property
      * </pre>
      *
      * <code>RESET = 4;</code>
@@ -6915,7 +6970,7 @@ public final class EDS10ProtocolBuffer {
     RESET(4),
     /**
      * <pre>
-     * Run property - Used with AdminPropertyType_DEVICE_REBOOT
+     * Run property
      * </pre>
      *
      * <code>RUN = 5;</code>
@@ -6942,7 +6997,7 @@ public final class EDS10ProtocolBuffer {
     public static final int GET_VALUE = 1;
     /**
      * <pre>
-     * Add property - Used with AdminPropertyType_TRIDONIC_MSENSORS to unmute sensors
+     * Add property
      * </pre>
      *
      * <code>ADD = 2;</code>
@@ -6950,7 +7005,7 @@ public final class EDS10ProtocolBuffer {
     public static final int ADD_VALUE = 2;
     /**
      * <pre>
-     * Remove property - Used with AdminPropertyType_TRIDONIC_MSENSORS to mute sensors
+     * Remove property
      * </pre>
      *
      * <code>REMOVE = 3;</code>
@@ -6958,7 +7013,7 @@ public final class EDS10ProtocolBuffer {
     public static final int REMOVE_VALUE = 3;
     /**
      * <pre>
-     * Reset property - Used with AdminPropertyType_TRIDONIC_MSENSORS to reset sensors to default. Used for Memory Reset Commands
+     * Reset property
      * </pre>
      *
      * <code>RESET = 4;</code>
@@ -6966,7 +7021,7 @@ public final class EDS10ProtocolBuffer {
     public static final int RESET_VALUE = 4;
     /**
      * <pre>
-     * Run property - Used with AdminPropertyType_DEVICE_REBOOT
+     * Run property
      * </pre>
      *
      * <code>RUN = 5;</code>
@@ -7547,6 +7602,14 @@ public final class EDS10ProtocolBuffer {
      * <code>ROOM_JOINS = 4;</code>
      */
     ROOM_JOINS(4),
+    /**
+     * <pre>
+     * Can be used to retrieve the current entries of the in-memory DALI status cache.
+     * </pre>
+     *
+     * <code>DALI_STATUS_CACHE = 5;</code>
+     */
+    DALI_STATUS_CACHE(5),
     UNRECOGNIZED(-1),
     ;
 
@@ -7590,6 +7653,14 @@ public final class EDS10ProtocolBuffer {
      * <code>ROOM_JOINS = 4;</code>
      */
     public static final int ROOM_JOINS_VALUE = 4;
+    /**
+     * <pre>
+     * Can be used to retrieve the current entries of the in-memory DALI status cache.
+     * </pre>
+     *
+     * <code>DALI_STATUS_CACHE = 5;</code>
+     */
+    public static final int DALI_STATUS_CACHE_VALUE = 5;
 
 
     public final int getNumber() {
@@ -7615,6 +7686,7 @@ public final class EDS10ProtocolBuffer {
         case 2: return DALI_LEVEL_CACHE;
         case 3: return DMX_LEVEL_CACHE;
         case 4: return ROOM_JOINS;
+        case 5: return DALI_STATUS_CACHE;
         default: return null;
       }
     }
@@ -7981,10 +8053,6 @@ public final class EDS10ProtocolBuffer {
   }
 
   /**
-   * <pre>
-   * Not Implemented
-   * </pre>
-   *
    * Protobuf enum {@code LogicType}
    */
   public enum LogicType
@@ -8021,6 +8089,22 @@ public final class EDS10ProtocolBuffer {
      * <code>ALARM_SCHEDULED = 7;</code>
      */
     ALARM_SCHEDULED(7),
+    /**
+     * <pre>
+     * Any DALI Error Status?
+     * </pre>
+     *
+     * <code>DALI_CACHE_STATUS = 8;</code>
+     */
+    DALI_CACHE_STATUS(8),
+    /**
+     * <pre>
+     * Target_index is error bitmask filter [LSB DALI Poll Error, DALI Line Error, Ethernet Link Dropped, Over Temperature, OLED Error, Spare, Spare, Spare MSB]
+     * </pre>
+     *
+     * <code>HAS_ERROR = 9;</code>
+     */
+    HAS_ERROR(9),
     UNRECOGNIZED(-1),
     ;
 
@@ -8056,6 +8140,22 @@ public final class EDS10ProtocolBuffer {
      * <code>ALARM_SCHEDULED = 7;</code>
      */
     public static final int ALARM_SCHEDULED_VALUE = 7;
+    /**
+     * <pre>
+     * Any DALI Error Status?
+     * </pre>
+     *
+     * <code>DALI_CACHE_STATUS = 8;</code>
+     */
+    public static final int DALI_CACHE_STATUS_VALUE = 8;
+    /**
+     * <pre>
+     * Target_index is error bitmask filter [LSB DALI Poll Error, DALI Line Error, Ethernet Link Dropped, Over Temperature, OLED Error, Spare, Spare, Spare MSB]
+     * </pre>
+     *
+     * <code>HAS_ERROR = 9;</code>
+     */
+    public static final int HAS_ERROR_VALUE = 9;
 
 
     public final int getNumber() {
@@ -8084,6 +8184,8 @@ public final class EDS10ProtocolBuffer {
         case 5: return CAL_WEEKDAY;
         case 6: return CAL_MONTH;
         case 7: return ALARM_SCHEDULED;
+        case 8: return DALI_CACHE_STATUS;
+        case 9: return HAS_ERROR;
         default: return null;
       }
     }
@@ -8137,10 +8239,6 @@ public final class EDS10ProtocolBuffer {
   }
 
   /**
-   * <pre>
-   * Not Implemented
-   * </pre>
-   *
    * Protobuf enum {@code LogicComparisonType}
    */
   public enum LogicComparisonType
@@ -8169,6 +8267,18 @@ public final class EDS10ProtocolBuffer {
      * <code>NOT_EQUAL = 5;</code>
      */
     NOT_EQUAL(5),
+    /**
+     * <code>BIT_OR = 6;</code>
+     */
+    BIT_OR(6),
+    /**
+     * <code>BIT_AND = 7;</code>
+     */
+    BIT_AND(7),
+    /**
+     * <code>BIT_XOR = 8;</code>
+     */
+    BIT_XOR(8),
     UNRECOGNIZED(-1),
     ;
 
@@ -8196,6 +8306,18 @@ public final class EDS10ProtocolBuffer {
      * <code>NOT_EQUAL = 5;</code>
      */
     public static final int NOT_EQUAL_VALUE = 5;
+    /**
+     * <code>BIT_OR = 6;</code>
+     */
+    public static final int BIT_OR_VALUE = 6;
+    /**
+     * <code>BIT_AND = 7;</code>
+     */
+    public static final int BIT_AND_VALUE = 7;
+    /**
+     * <code>BIT_XOR = 8;</code>
+     */
+    public static final int BIT_XOR_VALUE = 8;
 
 
     public final int getNumber() {
@@ -8222,6 +8344,9 @@ public final class EDS10ProtocolBuffer {
         case 3: return MORE_THAN;
         case 4: return MORE_THAN_OR_EQUALS;
         case 5: return NOT_EQUAL;
+        case 6: return BIT_OR;
+        case 7: return BIT_AND;
+        case 8: return BIT_XOR;
         default: return null;
       }
     }
@@ -8395,7 +8520,7 @@ public final class EDS10ProtocolBuffer {
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
      * <pre>
-     * Applies default settings to all known (programmed) Sensors and resets their state
+     * Applies default settings to all Sensors (broadcast) and resets their detection state
      * </pre>
      *
      * <code>INITIALISE = 0;</code>
@@ -8425,12 +8550,20 @@ public final class EDS10ProtocolBuffer {
      * <code>OVERRIDE = 3;</code>
      */
     OVERRIDE(3),
+    /**
+     * <pre>
+     * Starts the 'Identify' behaviour of a Sensor (typically this involves rapid flashing of the status LED for several seconds)
+     * </pre>
+     *
+     * <code>IDENTIFY = 4;</code>
+     */
+    IDENTIFY(4),
     UNRECOGNIZED(-1),
     ;
 
     /**
      * <pre>
-     * Applies default settings to all known (programmed) Sensors and resets their state
+     * Applies default settings to all Sensors (broadcast) and resets their detection state
      * </pre>
      *
      * <code>INITIALISE = 0;</code>
@@ -8460,6 +8593,14 @@ public final class EDS10ProtocolBuffer {
      * <code>OVERRIDE = 3;</code>
      */
     public static final int OVERRIDE_VALUE = 3;
+    /**
+     * <pre>
+     * Starts the 'Identify' behaviour of a Sensor (typically this involves rapid flashing of the status LED for several seconds)
+     * </pre>
+     *
+     * <code>IDENTIFY = 4;</code>
+     */
+    public static final int IDENTIFY_VALUE = 4;
 
 
     public final int getNumber() {
@@ -8484,6 +8625,7 @@ public final class EDS10ProtocolBuffer {
         case 1: return MUTE;
         case 2: return UNMUTE;
         case 3: return OVERRIDE;
+        case 4: return IDENTIFY;
         default: return null;
       }
     }
@@ -11740,7 +11882,7 @@ public final class EDS10ProtocolBuffer {
 
     /**
      * <pre>
-     * State of each Tridonic MSensor (IDLE / DISABLED / WARNING / OCCUPANCY)
+     * State of each DALI Sensor (IDLE / DISABLED / WARNING / OCCUPANCY)
      * </pre>
      *
      * <code>repeated uint32 sensor_states = 10;</code>
@@ -11748,7 +11890,7 @@ public final class EDS10ProtocolBuffer {
     java.util.List<java.lang.Integer> getSensorStatesList();
     /**
      * <pre>
-     * State of each Tridonic MSensor (IDLE / DISABLED / WARNING / OCCUPANCY)
+     * State of each DALI Sensor (IDLE / DISABLED / WARNING / OCCUPANCY)
      * </pre>
      *
      * <code>repeated uint32 sensor_states = 10;</code>
@@ -11756,7 +11898,7 @@ public final class EDS10ProtocolBuffer {
     int getSensorStatesCount();
     /**
      * <pre>
-     * State of each Tridonic MSensor (IDLE / DISABLED / WARNING / OCCUPANCY)
+     * State of each DALI Sensor (IDLE / DISABLED / WARNING / OCCUPANCY)
      * </pre>
      *
      * <code>repeated uint32 sensor_states = 10;</code>
@@ -12355,7 +12497,7 @@ public final class EDS10ProtocolBuffer {
     private java.util.List<java.lang.Integer> sensorStates_;
     /**
      * <pre>
-     * State of each Tridonic MSensor (IDLE / DISABLED / WARNING / OCCUPANCY)
+     * State of each DALI Sensor (IDLE / DISABLED / WARNING / OCCUPANCY)
      * </pre>
      *
      * <code>repeated uint32 sensor_states = 10;</code>
@@ -12366,7 +12508,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     * State of each Tridonic MSensor (IDLE / DISABLED / WARNING / OCCUPANCY)
+     * State of each DALI Sensor (IDLE / DISABLED / WARNING / OCCUPANCY)
      * </pre>
      *
      * <code>repeated uint32 sensor_states = 10;</code>
@@ -12376,7 +12518,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     * State of each Tridonic MSensor (IDLE / DISABLED / WARNING / OCCUPANCY)
+     * State of each DALI Sensor (IDLE / DISABLED / WARNING / OCCUPANCY)
      * </pre>
      *
      * <code>repeated uint32 sensor_states = 10;</code>
@@ -13955,7 +14097,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * State of each Tridonic MSensor (IDLE / DISABLED / WARNING / OCCUPANCY)
+       * State of each DALI Sensor (IDLE / DISABLED / WARNING / OCCUPANCY)
        * </pre>
        *
        * <code>repeated uint32 sensor_states = 10;</code>
@@ -13966,7 +14108,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * State of each Tridonic MSensor (IDLE / DISABLED / WARNING / OCCUPANCY)
+       * State of each DALI Sensor (IDLE / DISABLED / WARNING / OCCUPANCY)
        * </pre>
        *
        * <code>repeated uint32 sensor_states = 10;</code>
@@ -13976,7 +14118,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * State of each Tridonic MSensor (IDLE / DISABLED / WARNING / OCCUPANCY)
+       * State of each DALI Sensor (IDLE / DISABLED / WARNING / OCCUPANCY)
        * </pre>
        *
        * <code>repeated uint32 sensor_states = 10;</code>
@@ -13986,7 +14128,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * State of each Tridonic MSensor (IDLE / DISABLED / WARNING / OCCUPANCY)
+       * State of each DALI Sensor (IDLE / DISABLED / WARNING / OCCUPANCY)
        * </pre>
        *
        * <code>repeated uint32 sensor_states = 10;</code>
@@ -14000,7 +14142,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * State of each Tridonic MSensor (IDLE / DISABLED / WARNING / OCCUPANCY)
+       * State of each DALI Sensor (IDLE / DISABLED / WARNING / OCCUPANCY)
        * </pre>
        *
        * <code>repeated uint32 sensor_states = 10;</code>
@@ -14013,7 +14155,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * State of each Tridonic MSensor (IDLE / DISABLED / WARNING / OCCUPANCY)
+       * State of each DALI Sensor (IDLE / DISABLED / WARNING / OCCUPANCY)
        * </pre>
        *
        * <code>repeated uint32 sensor_states = 10;</code>
@@ -14028,7 +14170,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * State of each Tridonic MSensor (IDLE / DISABLED / WARNING / OCCUPANCY)
+       * State of each DALI Sensor (IDLE / DISABLED / WARNING / OCCUPANCY)
        * </pre>
        *
        * <code>repeated uint32 sensor_states = 10;</code>
@@ -38034,7 +38176,7 @@ public final class EDS10ProtocolBuffer {
   }
   /**
    * <pre>
-   * Message used to send specific sensor commands, such as Mute, Unmute and Override. Mute will stop the sensor from talking until; Unmute, Device Reset, Profile Change, or Program. Override will prevent the sensor from changing the currently selected level until it has timed-out
+   * Message used to send specific sensor commands, such as Mute, Unmute and Override. Mute will stop the sensor from talking until; Unmute, Profile Change, or Program. Override will prevent the sensor from changing the currently selected level until it has timed-out
    * </pre>
    *
    * Protobuf type {@code SensorCommandMessage}
@@ -38344,7 +38486,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     * Message used to send specific sensor commands, such as Mute, Unmute and Override. Mute will stop the sensor from talking until; Unmute, Device Reset, Profile Change, or Program. Override will prevent the sensor from changing the currently selected level until it has timed-out
+     * Message used to send specific sensor commands, such as Mute, Unmute and Override. Mute will stop the sensor from talking until; Unmute, Profile Change, or Program. Override will prevent the sensor from changing the currently selected level until it has timed-out
      * </pre>
      *
      * Protobuf type {@code SensorCommandMessage}
@@ -48585,6 +48727,1649 @@ public final class EDS10ProtocolBuffer {
 
     @java.lang.Override
     public EDS10ProtocolBuffer.DALIRemappingMessage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface DALIAddressableObjectOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:DALIAddressableObject)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Which DALI Line is this Device on?
+     * </pre>
+     *
+     * <code>uint32 line = 1;</code>
+     */
+    int getLine();
+
+    /**
+     * <pre>
+     * What is the Short Address of this Device?
+     * </pre>
+     *
+     * <code>uint32 address = 2;</code>
+     */
+    int getAddress();
+  }
+  /**
+   * Protobuf type {@code DALIAddressableObject}
+   */
+  public  static final class DALIAddressableObject extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:DALIAddressableObject)
+      DALIAddressableObjectOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use DALIAddressableObject.newBuilder() to construct.
+    private DALIAddressableObject(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private DALIAddressableObject() {
+      line_ = 0;
+      address_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DALIAddressableObject(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              line_ = input.readUInt32();
+              break;
+            }
+            case 16: {
+
+              address_ = input.readUInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.internal_static_DALIAddressableObject_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return EDS10ProtocolBuffer.internal_static_DALIAddressableObject_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              EDS10ProtocolBuffer.DALIAddressableObject.class, EDS10ProtocolBuffer.DALIAddressableObject.Builder.class);
+    }
+
+    public static final int LINE_FIELD_NUMBER = 1;
+    private int line_;
+    /**
+     * <pre>
+     * Which DALI Line is this Device on?
+     * </pre>
+     *
+     * <code>uint32 line = 1;</code>
+     */
+    public int getLine() {
+      return line_;
+    }
+
+    public static final int ADDRESS_FIELD_NUMBER = 2;
+    private int address_;
+    /**
+     * <pre>
+     * What is the Short Address of this Device?
+     * </pre>
+     *
+     * <code>uint32 address = 2;</code>
+     */
+    public int getAddress() {
+      return address_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (line_ != 0) {
+        output.writeUInt32(1, line_);
+      }
+      if (address_ != 0) {
+        output.writeUInt32(2, address_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (line_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, line_);
+      }
+      if (address_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, address_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof EDS10ProtocolBuffer.DALIAddressableObject)) {
+        return super.equals(obj);
+      }
+      EDS10ProtocolBuffer.DALIAddressableObject other = (EDS10ProtocolBuffer.DALIAddressableObject) obj;
+
+      boolean result = true;
+      result = result && (getLine()
+          == other.getLine());
+      result = result && (getAddress()
+          == other.getAddress());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + LINE_FIELD_NUMBER;
+      hash = (53 * hash) + getLine();
+      hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
+      hash = (53 * hash) + getAddress();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static EDS10ProtocolBuffer.DALIAddressableObject parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.DALIAddressableObject parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALIAddressableObject parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.DALIAddressableObject parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALIAddressableObject parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.DALIAddressableObject parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALIAddressableObject parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.DALIAddressableObject parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALIAddressableObject parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.DALIAddressableObject parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALIAddressableObject parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.DALIAddressableObject parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(EDS10ProtocolBuffer.DALIAddressableObject prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code DALIAddressableObject}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:DALIAddressableObject)
+        EDS10ProtocolBuffer.DALIAddressableObjectOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return EDS10ProtocolBuffer.internal_static_DALIAddressableObject_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return EDS10ProtocolBuffer.internal_static_DALIAddressableObject_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                EDS10ProtocolBuffer.DALIAddressableObject.class, EDS10ProtocolBuffer.DALIAddressableObject.Builder.class);
+      }
+
+      // Construct using EDS10ProtocolBuffer.DALIAddressableObject.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        line_ = 0;
+
+        address_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return EDS10ProtocolBuffer.internal_static_DALIAddressableObject_descriptor;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.DALIAddressableObject getDefaultInstanceForType() {
+        return EDS10ProtocolBuffer.DALIAddressableObject.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.DALIAddressableObject build() {
+        EDS10ProtocolBuffer.DALIAddressableObject result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.DALIAddressableObject buildPartial() {
+        EDS10ProtocolBuffer.DALIAddressableObject result = new EDS10ProtocolBuffer.DALIAddressableObject(this);
+        result.line_ = line_;
+        result.address_ = address_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof EDS10ProtocolBuffer.DALIAddressableObject) {
+          return mergeFrom((EDS10ProtocolBuffer.DALIAddressableObject)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(EDS10ProtocolBuffer.DALIAddressableObject other) {
+        if (other == EDS10ProtocolBuffer.DALIAddressableObject.getDefaultInstance()) return this;
+        if (other.getLine() != 0) {
+          setLine(other.getLine());
+        }
+        if (other.getAddress() != 0) {
+          setAddress(other.getAddress());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        EDS10ProtocolBuffer.DALIAddressableObject parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (EDS10ProtocolBuffer.DALIAddressableObject) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int line_ ;
+      /**
+       * <pre>
+       * Which DALI Line is this Device on?
+       * </pre>
+       *
+       * <code>uint32 line = 1;</code>
+       */
+      public int getLine() {
+        return line_;
+      }
+      /**
+       * <pre>
+       * Which DALI Line is this Device on?
+       * </pre>
+       *
+       * <code>uint32 line = 1;</code>
+       */
+      public Builder setLine(int value) {
+        
+        line_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Which DALI Line is this Device on?
+       * </pre>
+       *
+       * <code>uint32 line = 1;</code>
+       */
+      public Builder clearLine() {
+        
+        line_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int address_ ;
+      /**
+       * <pre>
+       * What is the Short Address of this Device?
+       * </pre>
+       *
+       * <code>uint32 address = 2;</code>
+       */
+      public int getAddress() {
+        return address_;
+      }
+      /**
+       * <pre>
+       * What is the Short Address of this Device?
+       * </pre>
+       *
+       * <code>uint32 address = 2;</code>
+       */
+      public Builder setAddress(int value) {
+        
+        address_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * What is the Short Address of this Device?
+       * </pre>
+       *
+       * <code>uint32 address = 2;</code>
+       */
+      public Builder clearAddress() {
+        
+        address_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:DALIAddressableObject)
+    }
+
+    // @@protoc_insertion_point(class_scope:DALIAddressableObject)
+    private static final EDS10ProtocolBuffer.DALIAddressableObject DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.DALIAddressableObject();
+    }
+
+    public static EDS10ProtocolBuffer.DALIAddressableObject getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<DALIAddressableObject>
+        PARSER = new com.google.protobuf.AbstractParser<DALIAddressableObject>() {
+      @java.lang.Override
+      public DALIAddressableObject parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DALIAddressableObject(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<DALIAddressableObject> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DALIAddressableObject> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public EDS10ProtocolBuffer.DALIAddressableObject getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface DALIIdentifyDuplicatesMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:DALIIdentifyDuplicatesMessage)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Which DALI Line(s) to check
+     * </pre>
+     *
+     * <code>uint32 line_mask = 1;</code>
+     */
+    int getLineMask();
+
+    /**
+     * <pre>
+     * Use 24-bit DALI (DALI v2) or standard 16-bit DALI if FALSE
+     * </pre>
+     *
+     * <code>bool is24Bit = 2;</code>
+     */
+    boolean getIs24Bit();
+
+    /**
+     * <pre>
+     * A collection of DALI Devices which *may* be using duplicated Short Addresses
+     * </pre>
+     *
+     * <code>repeated .DALIAddressableObject possible_duplicates = 3;</code>
+     */
+    java.util.List<EDS10ProtocolBuffer.DALIAddressableObject> 
+        getPossibleDuplicatesList();
+    /**
+     * <pre>
+     * A collection of DALI Devices which *may* be using duplicated Short Addresses
+     * </pre>
+     *
+     * <code>repeated .DALIAddressableObject possible_duplicates = 3;</code>
+     */
+    EDS10ProtocolBuffer.DALIAddressableObject getPossibleDuplicates(int index);
+    /**
+     * <pre>
+     * A collection of DALI Devices which *may* be using duplicated Short Addresses
+     * </pre>
+     *
+     * <code>repeated .DALIAddressableObject possible_duplicates = 3;</code>
+     */
+    int getPossibleDuplicatesCount();
+    /**
+     * <pre>
+     * A collection of DALI Devices which *may* be using duplicated Short Addresses
+     * </pre>
+     *
+     * <code>repeated .DALIAddressableObject possible_duplicates = 3;</code>
+     */
+    java.util.List<? extends EDS10ProtocolBuffer.DALIAddressableObjectOrBuilder> 
+        getPossibleDuplicatesOrBuilderList();
+    /**
+     * <pre>
+     * A collection of DALI Devices which *may* be using duplicated Short Addresses
+     * </pre>
+     *
+     * <code>repeated .DALIAddressableObject possible_duplicates = 3;</code>
+     */
+    EDS10ProtocolBuffer.DALIAddressableObjectOrBuilder getPossibleDuplicatesOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code DALIIdentifyDuplicatesMessage}
+   */
+  public  static final class DALIIdentifyDuplicatesMessage extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:DALIIdentifyDuplicatesMessage)
+      DALIIdentifyDuplicatesMessageOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use DALIIdentifyDuplicatesMessage.newBuilder() to construct.
+    private DALIIdentifyDuplicatesMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private DALIIdentifyDuplicatesMessage() {
+      lineMask_ = 0;
+      is24Bit_ = false;
+      possibleDuplicates_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DALIIdentifyDuplicatesMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              lineMask_ = input.readUInt32();
+              break;
+            }
+            case 16: {
+
+              is24Bit_ = input.readBool();
+              break;
+            }
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                possibleDuplicates_ = new java.util.ArrayList<EDS10ProtocolBuffer.DALIAddressableObject>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              possibleDuplicates_.add(
+                  input.readMessage(EDS10ProtocolBuffer.DALIAddressableObject.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          possibleDuplicates_ = java.util.Collections.unmodifiableList(possibleDuplicates_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return EDS10ProtocolBuffer.internal_static_DALIIdentifyDuplicatesMessage_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return EDS10ProtocolBuffer.internal_static_DALIIdentifyDuplicatesMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage.class, EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int LINE_MASK_FIELD_NUMBER = 1;
+    private int lineMask_;
+    /**
+     * <pre>
+     * Which DALI Line(s) to check
+     * </pre>
+     *
+     * <code>uint32 line_mask = 1;</code>
+     */
+    public int getLineMask() {
+      return lineMask_;
+    }
+
+    public static final int IS24BIT_FIELD_NUMBER = 2;
+    private boolean is24Bit_;
+    /**
+     * <pre>
+     * Use 24-bit DALI (DALI v2) or standard 16-bit DALI if FALSE
+     * </pre>
+     *
+     * <code>bool is24Bit = 2;</code>
+     */
+    public boolean getIs24Bit() {
+      return is24Bit_;
+    }
+
+    public static final int POSSIBLE_DUPLICATES_FIELD_NUMBER = 3;
+    private java.util.List<EDS10ProtocolBuffer.DALIAddressableObject> possibleDuplicates_;
+    /**
+     * <pre>
+     * A collection of DALI Devices which *may* be using duplicated Short Addresses
+     * </pre>
+     *
+     * <code>repeated .DALIAddressableObject possible_duplicates = 3;</code>
+     */
+    public java.util.List<EDS10ProtocolBuffer.DALIAddressableObject> getPossibleDuplicatesList() {
+      return possibleDuplicates_;
+    }
+    /**
+     * <pre>
+     * A collection of DALI Devices which *may* be using duplicated Short Addresses
+     * </pre>
+     *
+     * <code>repeated .DALIAddressableObject possible_duplicates = 3;</code>
+     */
+    public java.util.List<? extends EDS10ProtocolBuffer.DALIAddressableObjectOrBuilder> 
+        getPossibleDuplicatesOrBuilderList() {
+      return possibleDuplicates_;
+    }
+    /**
+     * <pre>
+     * A collection of DALI Devices which *may* be using duplicated Short Addresses
+     * </pre>
+     *
+     * <code>repeated .DALIAddressableObject possible_duplicates = 3;</code>
+     */
+    public int getPossibleDuplicatesCount() {
+      return possibleDuplicates_.size();
+    }
+    /**
+     * <pre>
+     * A collection of DALI Devices which *may* be using duplicated Short Addresses
+     * </pre>
+     *
+     * <code>repeated .DALIAddressableObject possible_duplicates = 3;</code>
+     */
+    public EDS10ProtocolBuffer.DALIAddressableObject getPossibleDuplicates(int index) {
+      return possibleDuplicates_.get(index);
+    }
+    /**
+     * <pre>
+     * A collection of DALI Devices which *may* be using duplicated Short Addresses
+     * </pre>
+     *
+     * <code>repeated .DALIAddressableObject possible_duplicates = 3;</code>
+     */
+    public EDS10ProtocolBuffer.DALIAddressableObjectOrBuilder getPossibleDuplicatesOrBuilder(
+        int index) {
+      return possibleDuplicates_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (lineMask_ != 0) {
+        output.writeUInt32(1, lineMask_);
+      }
+      if (is24Bit_ != false) {
+        output.writeBool(2, is24Bit_);
+      }
+      for (int i = 0; i < possibleDuplicates_.size(); i++) {
+        output.writeMessage(3, possibleDuplicates_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (lineMask_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, lineMask_);
+      }
+      if (is24Bit_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(2, is24Bit_);
+      }
+      for (int i = 0; i < possibleDuplicates_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, possibleDuplicates_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage)) {
+        return super.equals(obj);
+      }
+      EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage other = (EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage) obj;
+
+      boolean result = true;
+      result = result && (getLineMask()
+          == other.getLineMask());
+      result = result && (getIs24Bit()
+          == other.getIs24Bit());
+      result = result && getPossibleDuplicatesList()
+          .equals(other.getPossibleDuplicatesList());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + LINE_MASK_FIELD_NUMBER;
+      hash = (53 * hash) + getLineMask();
+      hash = (37 * hash) + IS24BIT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIs24Bit());
+      if (getPossibleDuplicatesCount() > 0) {
+        hash = (37 * hash) + POSSIBLE_DUPLICATES_FIELD_NUMBER;
+        hash = (53 * hash) + getPossibleDuplicatesList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code DALIIdentifyDuplicatesMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:DALIIdentifyDuplicatesMessage)
+        EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return EDS10ProtocolBuffer.internal_static_DALIIdentifyDuplicatesMessage_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return EDS10ProtocolBuffer.internal_static_DALIIdentifyDuplicatesMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage.class, EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage.Builder.class);
+      }
+
+      // Construct using EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getPossibleDuplicatesFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        lineMask_ = 0;
+
+        is24Bit_ = false;
+
+        if (possibleDuplicatesBuilder_ == null) {
+          possibleDuplicates_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          possibleDuplicatesBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return EDS10ProtocolBuffer.internal_static_DALIIdentifyDuplicatesMessage_descriptor;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage getDefaultInstanceForType() {
+        return EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage build() {
+        EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage buildPartial() {
+        EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage result = new EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        result.lineMask_ = lineMask_;
+        result.is24Bit_ = is24Bit_;
+        if (possibleDuplicatesBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            possibleDuplicates_ = java.util.Collections.unmodifiableList(possibleDuplicates_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.possibleDuplicates_ = possibleDuplicates_;
+        } else {
+          result.possibleDuplicates_ = possibleDuplicatesBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage) {
+          return mergeFrom((EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage other) {
+        if (other == EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage.getDefaultInstance()) return this;
+        if (other.getLineMask() != 0) {
+          setLineMask(other.getLineMask());
+        }
+        if (other.getIs24Bit() != false) {
+          setIs24Bit(other.getIs24Bit());
+        }
+        if (possibleDuplicatesBuilder_ == null) {
+          if (!other.possibleDuplicates_.isEmpty()) {
+            if (possibleDuplicates_.isEmpty()) {
+              possibleDuplicates_ = other.possibleDuplicates_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensurePossibleDuplicatesIsMutable();
+              possibleDuplicates_.addAll(other.possibleDuplicates_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.possibleDuplicates_.isEmpty()) {
+            if (possibleDuplicatesBuilder_.isEmpty()) {
+              possibleDuplicatesBuilder_.dispose();
+              possibleDuplicatesBuilder_ = null;
+              possibleDuplicates_ = other.possibleDuplicates_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              possibleDuplicatesBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getPossibleDuplicatesFieldBuilder() : null;
+            } else {
+              possibleDuplicatesBuilder_.addAllMessages(other.possibleDuplicates_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int lineMask_ ;
+      /**
+       * <pre>
+       * Which DALI Line(s) to check
+       * </pre>
+       *
+       * <code>uint32 line_mask = 1;</code>
+       */
+      public int getLineMask() {
+        return lineMask_;
+      }
+      /**
+       * <pre>
+       * Which DALI Line(s) to check
+       * </pre>
+       *
+       * <code>uint32 line_mask = 1;</code>
+       */
+      public Builder setLineMask(int value) {
+        
+        lineMask_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Which DALI Line(s) to check
+       * </pre>
+       *
+       * <code>uint32 line_mask = 1;</code>
+       */
+      public Builder clearLineMask() {
+        
+        lineMask_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private boolean is24Bit_ ;
+      /**
+       * <pre>
+       * Use 24-bit DALI (DALI v2) or standard 16-bit DALI if FALSE
+       * </pre>
+       *
+       * <code>bool is24Bit = 2;</code>
+       */
+      public boolean getIs24Bit() {
+        return is24Bit_;
+      }
+      /**
+       * <pre>
+       * Use 24-bit DALI (DALI v2) or standard 16-bit DALI if FALSE
+       * </pre>
+       *
+       * <code>bool is24Bit = 2;</code>
+       */
+      public Builder setIs24Bit(boolean value) {
+        
+        is24Bit_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Use 24-bit DALI (DALI v2) or standard 16-bit DALI if FALSE
+       * </pre>
+       *
+       * <code>bool is24Bit = 2;</code>
+       */
+      public Builder clearIs24Bit() {
+        
+        is24Bit_ = false;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<EDS10ProtocolBuffer.DALIAddressableObject> possibleDuplicates_ =
+        java.util.Collections.emptyList();
+      private void ensurePossibleDuplicatesIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          possibleDuplicates_ = new java.util.ArrayList<EDS10ProtocolBuffer.DALIAddressableObject>(possibleDuplicates_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          EDS10ProtocolBuffer.DALIAddressableObject, EDS10ProtocolBuffer.DALIAddressableObject.Builder, EDS10ProtocolBuffer.DALIAddressableObjectOrBuilder> possibleDuplicatesBuilder_;
+
+      /**
+       * <pre>
+       * A collection of DALI Devices which *may* be using duplicated Short Addresses
+       * </pre>
+       *
+       * <code>repeated .DALIAddressableObject possible_duplicates = 3;</code>
+       */
+      public java.util.List<EDS10ProtocolBuffer.DALIAddressableObject> getPossibleDuplicatesList() {
+        if (possibleDuplicatesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(possibleDuplicates_);
+        } else {
+          return possibleDuplicatesBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <pre>
+       * A collection of DALI Devices which *may* be using duplicated Short Addresses
+       * </pre>
+       *
+       * <code>repeated .DALIAddressableObject possible_duplicates = 3;</code>
+       */
+      public int getPossibleDuplicatesCount() {
+        if (possibleDuplicatesBuilder_ == null) {
+          return possibleDuplicates_.size();
+        } else {
+          return possibleDuplicatesBuilder_.getCount();
+        }
+      }
+      /**
+       * <pre>
+       * A collection of DALI Devices which *may* be using duplicated Short Addresses
+       * </pre>
+       *
+       * <code>repeated .DALIAddressableObject possible_duplicates = 3;</code>
+       */
+      public EDS10ProtocolBuffer.DALIAddressableObject getPossibleDuplicates(int index) {
+        if (possibleDuplicatesBuilder_ == null) {
+          return possibleDuplicates_.get(index);
+        } else {
+          return possibleDuplicatesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <pre>
+       * A collection of DALI Devices which *may* be using duplicated Short Addresses
+       * </pre>
+       *
+       * <code>repeated .DALIAddressableObject possible_duplicates = 3;</code>
+       */
+      public Builder setPossibleDuplicates(
+          int index, EDS10ProtocolBuffer.DALIAddressableObject value) {
+        if (possibleDuplicatesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePossibleDuplicatesIsMutable();
+          possibleDuplicates_.set(index, value);
+          onChanged();
+        } else {
+          possibleDuplicatesBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * A collection of DALI Devices which *may* be using duplicated Short Addresses
+       * </pre>
+       *
+       * <code>repeated .DALIAddressableObject possible_duplicates = 3;</code>
+       */
+      public Builder setPossibleDuplicates(
+          int index, EDS10ProtocolBuffer.DALIAddressableObject.Builder builderForValue) {
+        if (possibleDuplicatesBuilder_ == null) {
+          ensurePossibleDuplicatesIsMutable();
+          possibleDuplicates_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          possibleDuplicatesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * A collection of DALI Devices which *may* be using duplicated Short Addresses
+       * </pre>
+       *
+       * <code>repeated .DALIAddressableObject possible_duplicates = 3;</code>
+       */
+      public Builder addPossibleDuplicates(EDS10ProtocolBuffer.DALIAddressableObject value) {
+        if (possibleDuplicatesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePossibleDuplicatesIsMutable();
+          possibleDuplicates_.add(value);
+          onChanged();
+        } else {
+          possibleDuplicatesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * A collection of DALI Devices which *may* be using duplicated Short Addresses
+       * </pre>
+       *
+       * <code>repeated .DALIAddressableObject possible_duplicates = 3;</code>
+       */
+      public Builder addPossibleDuplicates(
+          int index, EDS10ProtocolBuffer.DALIAddressableObject value) {
+        if (possibleDuplicatesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePossibleDuplicatesIsMutable();
+          possibleDuplicates_.add(index, value);
+          onChanged();
+        } else {
+          possibleDuplicatesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * A collection of DALI Devices which *may* be using duplicated Short Addresses
+       * </pre>
+       *
+       * <code>repeated .DALIAddressableObject possible_duplicates = 3;</code>
+       */
+      public Builder addPossibleDuplicates(
+          EDS10ProtocolBuffer.DALIAddressableObject.Builder builderForValue) {
+        if (possibleDuplicatesBuilder_ == null) {
+          ensurePossibleDuplicatesIsMutable();
+          possibleDuplicates_.add(builderForValue.build());
+          onChanged();
+        } else {
+          possibleDuplicatesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * A collection of DALI Devices which *may* be using duplicated Short Addresses
+       * </pre>
+       *
+       * <code>repeated .DALIAddressableObject possible_duplicates = 3;</code>
+       */
+      public Builder addPossibleDuplicates(
+          int index, EDS10ProtocolBuffer.DALIAddressableObject.Builder builderForValue) {
+        if (possibleDuplicatesBuilder_ == null) {
+          ensurePossibleDuplicatesIsMutable();
+          possibleDuplicates_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          possibleDuplicatesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * A collection of DALI Devices which *may* be using duplicated Short Addresses
+       * </pre>
+       *
+       * <code>repeated .DALIAddressableObject possible_duplicates = 3;</code>
+       */
+      public Builder addAllPossibleDuplicates(
+          java.lang.Iterable<? extends EDS10ProtocolBuffer.DALIAddressableObject> values) {
+        if (possibleDuplicatesBuilder_ == null) {
+          ensurePossibleDuplicatesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, possibleDuplicates_);
+          onChanged();
+        } else {
+          possibleDuplicatesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * A collection of DALI Devices which *may* be using duplicated Short Addresses
+       * </pre>
+       *
+       * <code>repeated .DALIAddressableObject possible_duplicates = 3;</code>
+       */
+      public Builder clearPossibleDuplicates() {
+        if (possibleDuplicatesBuilder_ == null) {
+          possibleDuplicates_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          possibleDuplicatesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * A collection of DALI Devices which *may* be using duplicated Short Addresses
+       * </pre>
+       *
+       * <code>repeated .DALIAddressableObject possible_duplicates = 3;</code>
+       */
+      public Builder removePossibleDuplicates(int index) {
+        if (possibleDuplicatesBuilder_ == null) {
+          ensurePossibleDuplicatesIsMutable();
+          possibleDuplicates_.remove(index);
+          onChanged();
+        } else {
+          possibleDuplicatesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * A collection of DALI Devices which *may* be using duplicated Short Addresses
+       * </pre>
+       *
+       * <code>repeated .DALIAddressableObject possible_duplicates = 3;</code>
+       */
+      public EDS10ProtocolBuffer.DALIAddressableObject.Builder getPossibleDuplicatesBuilder(
+          int index) {
+        return getPossibleDuplicatesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <pre>
+       * A collection of DALI Devices which *may* be using duplicated Short Addresses
+       * </pre>
+       *
+       * <code>repeated .DALIAddressableObject possible_duplicates = 3;</code>
+       */
+      public EDS10ProtocolBuffer.DALIAddressableObjectOrBuilder getPossibleDuplicatesOrBuilder(
+          int index) {
+        if (possibleDuplicatesBuilder_ == null) {
+          return possibleDuplicates_.get(index);  } else {
+          return possibleDuplicatesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <pre>
+       * A collection of DALI Devices which *may* be using duplicated Short Addresses
+       * </pre>
+       *
+       * <code>repeated .DALIAddressableObject possible_duplicates = 3;</code>
+       */
+      public java.util.List<? extends EDS10ProtocolBuffer.DALIAddressableObjectOrBuilder> 
+           getPossibleDuplicatesOrBuilderList() {
+        if (possibleDuplicatesBuilder_ != null) {
+          return possibleDuplicatesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(possibleDuplicates_);
+        }
+      }
+      /**
+       * <pre>
+       * A collection of DALI Devices which *may* be using duplicated Short Addresses
+       * </pre>
+       *
+       * <code>repeated .DALIAddressableObject possible_duplicates = 3;</code>
+       */
+      public EDS10ProtocolBuffer.DALIAddressableObject.Builder addPossibleDuplicatesBuilder() {
+        return getPossibleDuplicatesFieldBuilder().addBuilder(
+            EDS10ProtocolBuffer.DALIAddressableObject.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * A collection of DALI Devices which *may* be using duplicated Short Addresses
+       * </pre>
+       *
+       * <code>repeated .DALIAddressableObject possible_duplicates = 3;</code>
+       */
+      public EDS10ProtocolBuffer.DALIAddressableObject.Builder addPossibleDuplicatesBuilder(
+          int index) {
+        return getPossibleDuplicatesFieldBuilder().addBuilder(
+            index, EDS10ProtocolBuffer.DALIAddressableObject.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * A collection of DALI Devices which *may* be using duplicated Short Addresses
+       * </pre>
+       *
+       * <code>repeated .DALIAddressableObject possible_duplicates = 3;</code>
+       */
+      public java.util.List<EDS10ProtocolBuffer.DALIAddressableObject.Builder> 
+           getPossibleDuplicatesBuilderList() {
+        return getPossibleDuplicatesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          EDS10ProtocolBuffer.DALIAddressableObject, EDS10ProtocolBuffer.DALIAddressableObject.Builder, EDS10ProtocolBuffer.DALIAddressableObjectOrBuilder> 
+          getPossibleDuplicatesFieldBuilder() {
+        if (possibleDuplicatesBuilder_ == null) {
+          possibleDuplicatesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              EDS10ProtocolBuffer.DALIAddressableObject, EDS10ProtocolBuffer.DALIAddressableObject.Builder, EDS10ProtocolBuffer.DALIAddressableObjectOrBuilder>(
+                  possibleDuplicates_,
+                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  getParentForChildren(),
+                  isClean());
+          possibleDuplicates_ = null;
+        }
+        return possibleDuplicatesBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:DALIIdentifyDuplicatesMessage)
+    }
+
+    // @@protoc_insertion_point(class_scope:DALIIdentifyDuplicatesMessage)
+    private static final EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage();
+    }
+
+    public static EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<DALIIdentifyDuplicatesMessage>
+        PARSER = new com.google.protobuf.AbstractParser<DALIIdentifyDuplicatesMessage>() {
+      @java.lang.Override
+      public DALIIdentifyDuplicatesMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DALIIdentifyDuplicatesMessage(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<DALIIdentifyDuplicatesMessage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DALIIdentifyDuplicatesMessage> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -75701,12 +77486,12 @@ public final class EDS10ProtocolBuffer {
 
     /**
      * <pre>
-     * Should the device be polling the DALI line to cache arc levels
+     * Should the device be polling the DALI line to cache arc levels. If not 0, it is the polling interval in seconds
      * </pre>
      *
-     * <code>bool poll_active = 10;</code>
+     * <code>uint32 poll_active = 10;</code>
      */
-    boolean getPollActive();
+    int getPollActive();
   }
   /**
    * <pre>
@@ -75733,7 +77518,7 @@ public final class EDS10ProtocolBuffer {
       daylightSavings_ = false;
       daylightSavingsStart_ = 0;
       daylightSavingsEnd_ = 0;
-      pollActive_ = false;
+      pollActive_ = 0;
     }
 
     @java.lang.Override
@@ -75804,7 +77589,7 @@ public final class EDS10ProtocolBuffer {
             }
             case 80: {
 
-              pollActive_ = input.readBool();
+              pollActive_ = input.readUInt32();
               break;
             }
             default: {
@@ -76002,15 +77787,15 @@ public final class EDS10ProtocolBuffer {
     }
 
     public static final int POLL_ACTIVE_FIELD_NUMBER = 10;
-    private boolean pollActive_;
+    private int pollActive_;
     /**
      * <pre>
-     * Should the device be polling the DALI line to cache arc levels
+     * Should the device be polling the DALI line to cache arc levels. If not 0, it is the polling interval in seconds
      * </pre>
      *
-     * <code>bool poll_active = 10;</code>
+     * <code>uint32 poll_active = 10;</code>
      */
-    public boolean getPollActive() {
+    public int getPollActive() {
       return pollActive_;
     }
 
@@ -76052,8 +77837,8 @@ public final class EDS10ProtocolBuffer {
       if (daylightSavingsEnd_ != 0) {
         output.writeUInt32(9, daylightSavingsEnd_);
       }
-      if (pollActive_ != false) {
-        output.writeBool(10, pollActive_);
+      if (pollActive_ != 0) {
+        output.writeUInt32(10, pollActive_);
       }
       unknownFields.writeTo(output);
     }
@@ -76094,9 +77879,9 @@ public final class EDS10ProtocolBuffer {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(9, daylightSavingsEnd_);
       }
-      if (pollActive_ != false) {
+      if (pollActive_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(10, pollActive_);
+          .computeUInt32Size(10, pollActive_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -76170,8 +77955,7 @@ public final class EDS10ProtocolBuffer {
       hash = (37 * hash) + DAYLIGHT_SAVINGS_END_FIELD_NUMBER;
       hash = (53 * hash) + getDaylightSavingsEnd();
       hash = (37 * hash) + POLL_ACTIVE_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getPollActive());
+      hash = (53 * hash) + getPollActive();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -76325,7 +78109,7 @@ public final class EDS10ProtocolBuffer {
 
         daylightSavingsEnd_ = 0;
 
-        pollActive_ = false;
+        pollActive_ = 0;
 
         return this;
       }
@@ -76436,7 +78220,7 @@ public final class EDS10ProtocolBuffer {
         if (other.getDaylightSavingsEnd() != 0) {
           setDaylightSavingsEnd(other.getDaylightSavingsEnd());
         }
-        if (other.getPollActive() != false) {
+        if (other.getPollActive() != 0) {
           setPollActive(other.getPollActive());
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -76874,25 +78658,25 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
 
-      private boolean pollActive_ ;
+      private int pollActive_ ;
       /**
        * <pre>
-       * Should the device be polling the DALI line to cache arc levels
+       * Should the device be polling the DALI line to cache arc levels. If not 0, it is the polling interval in seconds
        * </pre>
        *
-       * <code>bool poll_active = 10;</code>
+       * <code>uint32 poll_active = 10;</code>
        */
-      public boolean getPollActive() {
+      public int getPollActive() {
         return pollActive_;
       }
       /**
        * <pre>
-       * Should the device be polling the DALI line to cache arc levels
+       * Should the device be polling the DALI line to cache arc levels. If not 0, it is the polling interval in seconds
        * </pre>
        *
-       * <code>bool poll_active = 10;</code>
+       * <code>uint32 poll_active = 10;</code>
        */
-      public Builder setPollActive(boolean value) {
+      public Builder setPollActive(int value) {
         
         pollActive_ = value;
         onChanged();
@@ -76900,14 +78684,14 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * Should the device be polling the DALI line to cache arc levels
+       * Should the device be polling the DALI line to cache arc levels. If not 0, it is the polling interval in seconds
        * </pre>
        *
-       * <code>bool poll_active = 10;</code>
+       * <code>uint32 poll_active = 10;</code>
        */
       public Builder clearPollActive() {
         
-        pollActive_ = false;
+        pollActive_ = 0;
         onChanged();
         return this;
       }
@@ -77054,7 +78838,7 @@ public final class EDS10ProtocolBuffer {
 
     /**
      * <pre>
-     * State of each Tridonic MSensor (IDLE / DISABLED / WARNING / OCCUPANCY)
+     * State of each DALI Sensor (IDLE / DISABLED / WARNING / OCCUPANCY)
      * </pre>
      *
      * <code>repeated uint32 sensor_status = 5;</code>
@@ -77062,7 +78846,7 @@ public final class EDS10ProtocolBuffer {
     java.util.List<java.lang.Integer> getSensorStatusList();
     /**
      * <pre>
-     * State of each Tridonic MSensor (IDLE / DISABLED / WARNING / OCCUPANCY)
+     * State of each DALI Sensor (IDLE / DISABLED / WARNING / OCCUPANCY)
      * </pre>
      *
      * <code>repeated uint32 sensor_status = 5;</code>
@@ -77070,7 +78854,7 @@ public final class EDS10ProtocolBuffer {
     int getSensorStatusCount();
     /**
      * <pre>
-     * State of each Tridonic MSensor (IDLE / DISABLED / WARNING / OCCUPANCY)
+     * State of each DALI Sensor (IDLE / DISABLED / WARNING / OCCUPANCY)
      * </pre>
      *
      * <code>repeated uint32 sensor_status = 5;</code>
@@ -77367,7 +79151,7 @@ public final class EDS10ProtocolBuffer {
     private java.util.List<java.lang.Integer> sensorStatus_;
     /**
      * <pre>
-     * State of each Tridonic MSensor (IDLE / DISABLED / WARNING / OCCUPANCY)
+     * State of each DALI Sensor (IDLE / DISABLED / WARNING / OCCUPANCY)
      * </pre>
      *
      * <code>repeated uint32 sensor_status = 5;</code>
@@ -77378,7 +79162,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     * State of each Tridonic MSensor (IDLE / DISABLED / WARNING / OCCUPANCY)
+     * State of each DALI Sensor (IDLE / DISABLED / WARNING / OCCUPANCY)
      * </pre>
      *
      * <code>repeated uint32 sensor_status = 5;</code>
@@ -77388,7 +79172,7 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     * State of each Tridonic MSensor (IDLE / DISABLED / WARNING / OCCUPANCY)
+     * State of each DALI Sensor (IDLE / DISABLED / WARNING / OCCUPANCY)
      * </pre>
      *
      * <code>repeated uint32 sensor_status = 5;</code>
@@ -78260,7 +80044,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * State of each Tridonic MSensor (IDLE / DISABLED / WARNING / OCCUPANCY)
+       * State of each DALI Sensor (IDLE / DISABLED / WARNING / OCCUPANCY)
        * </pre>
        *
        * <code>repeated uint32 sensor_status = 5;</code>
@@ -78271,7 +80055,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * State of each Tridonic MSensor (IDLE / DISABLED / WARNING / OCCUPANCY)
+       * State of each DALI Sensor (IDLE / DISABLED / WARNING / OCCUPANCY)
        * </pre>
        *
        * <code>repeated uint32 sensor_status = 5;</code>
@@ -78281,7 +80065,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * State of each Tridonic MSensor (IDLE / DISABLED / WARNING / OCCUPANCY)
+       * State of each DALI Sensor (IDLE / DISABLED / WARNING / OCCUPANCY)
        * </pre>
        *
        * <code>repeated uint32 sensor_status = 5;</code>
@@ -78291,7 +80075,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * State of each Tridonic MSensor (IDLE / DISABLED / WARNING / OCCUPANCY)
+       * State of each DALI Sensor (IDLE / DISABLED / WARNING / OCCUPANCY)
        * </pre>
        *
        * <code>repeated uint32 sensor_status = 5;</code>
@@ -78305,7 +80089,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * State of each Tridonic MSensor (IDLE / DISABLED / WARNING / OCCUPANCY)
+       * State of each DALI Sensor (IDLE / DISABLED / WARNING / OCCUPANCY)
        * </pre>
        *
        * <code>repeated uint32 sensor_status = 5;</code>
@@ -78318,7 +80102,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * State of each Tridonic MSensor (IDLE / DISABLED / WARNING / OCCUPANCY)
+       * State of each DALI Sensor (IDLE / DISABLED / WARNING / OCCUPANCY)
        * </pre>
        *
        * <code>repeated uint32 sensor_status = 5;</code>
@@ -78333,7 +80117,7 @@ public final class EDS10ProtocolBuffer {
       }
       /**
        * <pre>
-       * State of each Tridonic MSensor (IDLE / DISABLED / WARNING / OCCUPANCY)
+       * State of each DALI Sensor (IDLE / DISABLED / WARNING / OCCUPANCY)
        * </pre>
        *
        * <code>repeated uint32 sensor_status = 5;</code>
@@ -107396,6 +109180,19 @@ public final class EDS10ProtocolBuffer {
      */
     EDS10ProtocolBuffer.RDMDiscoveryReplyMessageOrBuilder getRdmDiscoveryReplyOrBuilder();
 
+    /**
+     * <code>.DALIIdentifyDuplicatesMessage dali_identify_duplicates = 60;</code>
+     */
+    boolean hasDaliIdentifyDuplicates();
+    /**
+     * <code>.DALIIdentifyDuplicatesMessage dali_identify_duplicates = 60;</code>
+     */
+    EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage getDaliIdentifyDuplicates();
+    /**
+     * <code>.DALIIdentifyDuplicatesMessage dali_identify_duplicates = 60;</code>
+     */
+    EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessageOrBuilder getDaliIdentifyDuplicatesOrBuilder();
+
     public EDS10ProtocolBuffer.EdidioMessage.PayloadCase getPayloadCase();
   }
   /**
@@ -108218,6 +110015,20 @@ public final class EDS10ProtocolBuffer {
               payloadCase_ = 59;
               break;
             }
+            case 482: {
+              EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage.Builder subBuilder = null;
+              if (payloadCase_ == 60) {
+                subBuilder = ((EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage) payload_).toBuilder();
+              }
+              payload_ =
+                  input.readMessage(EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage) payload_);
+                payload_ = subBuilder.buildPartial();
+              }
+              payloadCase_ = 60;
+              break;
+            }
             default: {
               if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -108309,6 +110120,7 @@ public final class EDS10ProtocolBuffer {
       EXTENDED_SPEKTRA_SHOW_MESSAGE(57),
       RDM_DISCOVERY(58),
       RDM_DISCOVERY_REPLY(59),
+      DALI_IDENTIFY_DUPLICATES(60),
       PAYLOAD_NOT_SET(0);
       private final int value;
       private PayloadCase(int value) {
@@ -108379,6 +110191,7 @@ public final class EDS10ProtocolBuffer {
           case 57: return EXTENDED_SPEKTRA_SHOW_MESSAGE;
           case 58: return RDM_DISCOVERY;
           case 59: return RDM_DISCOVERY_REPLY;
+          case 60: return DALI_IDENTIFY_DUPLICATES;
           case 0: return PAYLOAD_NOT_SET;
           default: return null;
         }
@@ -109873,6 +111686,32 @@ public final class EDS10ProtocolBuffer {
       return EDS10ProtocolBuffer.RDMDiscoveryReplyMessage.getDefaultInstance();
     }
 
+    public static final int DALI_IDENTIFY_DUPLICATES_FIELD_NUMBER = 60;
+    /**
+     * <code>.DALIIdentifyDuplicatesMessage dali_identify_duplicates = 60;</code>
+     */
+    public boolean hasDaliIdentifyDuplicates() {
+      return payloadCase_ == 60;
+    }
+    /**
+     * <code>.DALIIdentifyDuplicatesMessage dali_identify_duplicates = 60;</code>
+     */
+    public EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage getDaliIdentifyDuplicates() {
+      if (payloadCase_ == 60) {
+         return (EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage.getDefaultInstance();
+    }
+    /**
+     * <code>.DALIIdentifyDuplicatesMessage dali_identify_duplicates = 60;</code>
+     */
+    public EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessageOrBuilder getDaliIdentifyDuplicatesOrBuilder() {
+      if (payloadCase_ == 60) {
+         return (EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage.getDefaultInstance();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -110054,6 +111893,9 @@ public final class EDS10ProtocolBuffer {
       }
       if (payloadCase_ == 59) {
         output.writeMessage(59, (EDS10ProtocolBuffer.RDMDiscoveryReplyMessage) payload_);
+      }
+      if (payloadCase_ == 60) {
+        output.writeMessage(60, (EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage) payload_);
       }
       unknownFields.writeTo(output);
     }
@@ -110287,6 +112129,10 @@ public final class EDS10ProtocolBuffer {
       if (payloadCase_ == 59) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(59, (EDS10ProtocolBuffer.RDMDiscoveryReplyMessage) payload_);
+      }
+      if (payloadCase_ == 60) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(60, (EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage) payload_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -110530,6 +112376,10 @@ public final class EDS10ProtocolBuffer {
           result = result && getRdmDiscoveryReply()
               .equals(other.getRdmDiscoveryReply());
           break;
+        case 60:
+          result = result && getDaliIdentifyDuplicates()
+              .equals(other.getDaliIdentifyDuplicates());
+          break;
         case 0:
         default:
       }
@@ -110766,6 +112616,10 @@ public final class EDS10ProtocolBuffer {
         case 59:
           hash = (37 * hash) + RDM_DISCOVERY_REPLY_FIELD_NUMBER;
           hash = (53 * hash) + getRdmDiscoveryReply().hashCode();
+          break;
+        case 60:
+          hash = (37 * hash) + DALI_IDENTIFY_DUPLICATES_FIELD_NUMBER;
+          hash = (53 * hash) + getDaliIdentifyDuplicates().hashCode();
           break;
         case 0:
         default:
@@ -111323,6 +113177,13 @@ public final class EDS10ProtocolBuffer {
             result.payload_ = rdmDiscoveryReplyBuilder_.build();
           }
         }
+        if (payloadCase_ == 60) {
+          if (daliIdentifyDuplicatesBuilder_ == null) {
+            result.payload_ = payload_;
+          } else {
+            result.payload_ = daliIdentifyDuplicatesBuilder_.build();
+          }
+        }
         result.payloadCase_ = payloadCase_;
         onBuilt();
         return result;
@@ -111594,6 +113455,10 @@ public final class EDS10ProtocolBuffer {
           }
           case RDM_DISCOVERY_REPLY: {
             mergeRdmDiscoveryReply(other.getRdmDiscoveryReply());
+            break;
+          }
+          case DALI_IDENTIFY_DUPLICATES: {
+            mergeDaliIdentifyDuplicates(other.getDaliIdentifyDuplicates());
             break;
           }
           case PAYLOAD_NOT_SET: {
@@ -119269,6 +121134,142 @@ public final class EDS10ProtocolBuffer {
         onChanged();;
         return rdmDiscoveryReplyBuilder_;
       }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage, EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage.Builder, EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessageOrBuilder> daliIdentifyDuplicatesBuilder_;
+      /**
+       * <code>.DALIIdentifyDuplicatesMessage dali_identify_duplicates = 60;</code>
+       */
+      public boolean hasDaliIdentifyDuplicates() {
+        return payloadCase_ == 60;
+      }
+      /**
+       * <code>.DALIIdentifyDuplicatesMessage dali_identify_duplicates = 60;</code>
+       */
+      public EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage getDaliIdentifyDuplicates() {
+        if (daliIdentifyDuplicatesBuilder_ == null) {
+          if (payloadCase_ == 60) {
+            return (EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage.getDefaultInstance();
+        } else {
+          if (payloadCase_ == 60) {
+            return daliIdentifyDuplicatesBuilder_.getMessage();
+          }
+          return EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.DALIIdentifyDuplicatesMessage dali_identify_duplicates = 60;</code>
+       */
+      public Builder setDaliIdentifyDuplicates(EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage value) {
+        if (daliIdentifyDuplicatesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          payload_ = value;
+          onChanged();
+        } else {
+          daliIdentifyDuplicatesBuilder_.setMessage(value);
+        }
+        payloadCase_ = 60;
+        return this;
+      }
+      /**
+       * <code>.DALIIdentifyDuplicatesMessage dali_identify_duplicates = 60;</code>
+       */
+      public Builder setDaliIdentifyDuplicates(
+          EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage.Builder builderForValue) {
+        if (daliIdentifyDuplicatesBuilder_ == null) {
+          payload_ = builderForValue.build();
+          onChanged();
+        } else {
+          daliIdentifyDuplicatesBuilder_.setMessage(builderForValue.build());
+        }
+        payloadCase_ = 60;
+        return this;
+      }
+      /**
+       * <code>.DALIIdentifyDuplicatesMessage dali_identify_duplicates = 60;</code>
+       */
+      public Builder mergeDaliIdentifyDuplicates(EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage value) {
+        if (daliIdentifyDuplicatesBuilder_ == null) {
+          if (payloadCase_ == 60 &&
+              payload_ != EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage.getDefaultInstance()) {
+            payload_ = EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage.newBuilder((EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage) payload_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            payload_ = value;
+          }
+          onChanged();
+        } else {
+          if (payloadCase_ == 60) {
+            daliIdentifyDuplicatesBuilder_.mergeFrom(value);
+          }
+          daliIdentifyDuplicatesBuilder_.setMessage(value);
+        }
+        payloadCase_ = 60;
+        return this;
+      }
+      /**
+       * <code>.DALIIdentifyDuplicatesMessage dali_identify_duplicates = 60;</code>
+       */
+      public Builder clearDaliIdentifyDuplicates() {
+        if (daliIdentifyDuplicatesBuilder_ == null) {
+          if (payloadCase_ == 60) {
+            payloadCase_ = 0;
+            payload_ = null;
+            onChanged();
+          }
+        } else {
+          if (payloadCase_ == 60) {
+            payloadCase_ = 0;
+            payload_ = null;
+          }
+          daliIdentifyDuplicatesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.DALIIdentifyDuplicatesMessage dali_identify_duplicates = 60;</code>
+       */
+      public EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage.Builder getDaliIdentifyDuplicatesBuilder() {
+        return getDaliIdentifyDuplicatesFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.DALIIdentifyDuplicatesMessage dali_identify_duplicates = 60;</code>
+       */
+      public EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessageOrBuilder getDaliIdentifyDuplicatesOrBuilder() {
+        if ((payloadCase_ == 60) && (daliIdentifyDuplicatesBuilder_ != null)) {
+          return daliIdentifyDuplicatesBuilder_.getMessageOrBuilder();
+        } else {
+          if (payloadCase_ == 60) {
+            return (EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.DALIIdentifyDuplicatesMessage dali_identify_duplicates = 60;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage, EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage.Builder, EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessageOrBuilder> 
+          getDaliIdentifyDuplicatesFieldBuilder() {
+        if (daliIdentifyDuplicatesBuilder_ == null) {
+          if (!(payloadCase_ == 60)) {
+            payload_ = EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage.getDefaultInstance();
+          }
+          daliIdentifyDuplicatesBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage, EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage.Builder, EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessageOrBuilder>(
+                  (EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage) payload_,
+                  getParentForChildren(),
+                  isClean());
+          payload_ = null;
+        }
+        payloadCase_ = 60;
+        onChanged();;
+        return daliIdentifyDuplicatesBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -119512,6 +121513,16 @@ public final class EDS10ProtocolBuffer {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_DALIRemappingMessage_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_DALIAddressableObject_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_DALIAddressableObject_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_DALIIdentifyDuplicatesMessage_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_DALIIdentifyDuplicatesMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_DMXMessage_descriptor;
   private static final 
@@ -119927,581 +121938,592 @@ public final class EDS10ProtocolBuffer {
       "(\010\022#\n\005error\030\005 \001(\0162\024.DALIAddressingError\022" +
       "\r\n\005index\030\006 \001(\r\"d\n\024DALIRemappingMessage\022\024" +
       "\n\014from_address\030\001 \001(\r\022\022\n\nto_address\030\002 \001(\r" +
-      "\022\021\n\tline_mask\030\003 \001(\r\022\017\n\007is24Bit\030\004 \001(\010\"|\n\n" +
-      "DMXMessage\022\014\n\004zone\030\001 \001(\r\022\025\n\runiverse_mas" +
-      "k\030\002 \001(\r\022\017\n\007channel\030\003 \001(\r\022\016\n\006repeat\030\004 \001(\r" +
-      "\022\r\n\005level\030\005 \003(\r\022\031\n\021fade_time_by_10ms\030\006 \001" +
-      "(\r\"o\n\nRDMMessage\022\025\n\runiverse_mask\030\001 \001(\r\022" +
-      "\013\n\003uid\030\002 \001(\004\022\013\n\003pid\030\003 \001(\r\022\016\n\006getset\030\004 \001(" +
-      "\r\022\022\n\ndatalength\030\005 \001(\r\022\014\n\004data\030\006 \003(\r\"P\n\022R" +
-      "DMResponseMessage\022\013\n\003uid\030\001 \001(\004\022\013\n\003pid\030\002 " +
-      "\001(\r\022\022\n\ndatalength\030\003 \001(\r\022\014\n\004data\030\004 \003(\r\"<\n" +
-      "\023RDMDiscoveryMessage\022\025\n\runiverse_mask\030\001 " +
-      "\001(\r\022\016\n\006isNext\030\002 \001(\010\"T\n\030RDMDiscoveryReply" +
-      "Message\022\027\n\017discovery_count\030\001 \001(\r\022\013\n\003uid\030" +
-      "\002 \003(\004\022\022\n\nerror_code\030\003 \001(\r\"\337\002\n\025SpektraSet" +
-      "tingMessage\022\014\n\004zone\030\001 \001(\r\022\025\n\rstart_addre" +
-      "ss\030\002 \001(\r\022\035\n\025line_or_universe_mask\030\003 \001(\r\022" +
-      "\020\n\010protocol\030\004 \001(\r\022\030\n\020number_of_lights\030\005 " +
-      "\001(\r\022\032\n\022channels_per_light\030\006 \001(\r\022\027\n\017chann" +
-      "el_colours\030\007 \003(\r\022?\n\025unscheduled_behaviou" +
-      "r\030\010 \001(\0162 .SpektraUnscheduledBehaviourTyp" +
-      "e\022\027\n\017channel_mapping\030\t \003(\r\022,\n\017line_addre" +
-      "ssing\030\n \001(\0162\023.LineAddressingType\022\031\n\021zone" +
-      "_scale_factor\030\013 \001(\002\"3\n\032SpektraColourConf" +
-      "igMessage\022\025\n\rchannel_value\030\001 \003(\r\"\350\003\n\034Spe" +
-      "ktraSequenceConfigMessage\022\r\n\005index\030\001 \001(\r" +
-      "\022\014\n\004type\030\002 \001(\r\022*\n\ntransition\030\003 \001(\0162\026.Spe" +
-      "ktraTransitionType\022\031\n\021fade_time_by_10ms\030" +
-      "\004 \001(\r\022\027\n\017time_per_colour\030\005 \001(\r\022\034\n\024time_p" +
-      "er_colour_unit\030\006 \001(\r\022\025\n\rtime_per_step\030\007 " +
-      "\001(\r\022\032\n\022time_per_step_unit\030\010 \001(\r\022\r\n\005range" +
-      "\030\t \001(\r\022\016\n\006colour\030\n \003(\004\022\032\n\022is_randomised_" +
-      "type\030\013 \001(\r\022\031\n\021random_types_mask\030\014 \001(\r\022\034\n" +
-      "\024is_reverse_direction\030\r \001(\r\022\032\n\022is_cycle_" +
-      "direction\030\016 \001(\r\022\r\n\005title\030\017 \001(\t\022\037\n\027has_ra" +
-      "ndom_colour_order\030\020 \001(\010\022,\n\007colours\030\021 \003(\013" +
-      "2\033.SpektraColourConfigMessage\022\014\n\004args\030\022 " +
-      "\003(\r\"k\n\026SpektraCalendarMessage\022 \n\004type\030\001 " +
-      "\001(\0162\022.SpektraTargetType\022\r\n\005index\030\002 \001(\r\022\014" +
-      "\n\004days\030\003 \003(\010\022\022\n\nisOverride\030\004 \001(\010\"z\n\031Spek" +
-      "traCalendarDayMessage\022\021\n\tday_index\030\001 \001(\r" +
-      "\022 \n\004type\030\002 \001(\0162\022.SpektraTargetType\022\024\n\014ta" +
-      "rget_index\030\003 \001(\r\022\022\n\nisOverride\030\004 \001(\010\"^\n\036" +
-      "SpektraCalendarOverviewMessage\022\022\n\nday_of" +
-      "fset\030\001 \001(\r\022(\n\004days\030\002 \003(\0132\032.SpektraCalend" +
-      "arDayMessage\"w\n\031SpektraThemeConfigMessag" +
-      "e\022\r\n\005index\030\001 \001(\r\022\016\n\006colour\030\002 \003(\004\022\r\n\005titl" +
-      "e\030\003 \001(\t\022,\n\007colours\030\004 \003(\0132\033.SpektraColour" +
-      "ConfigMessage\"E\n\022SpektraReadMessage\022 \n\004t" +
-      "ype\030\001 \001(\0162\022.SpektraTargetType\022\r\n\005index\030\002" +
-      " \001(\r\"z\n\025SpektraControlMessage\022 \n\004type\030\001 " +
-      "\001(\0162\022.SpektraTargetType\022\014\n\004zone\030\002 \001(\r\022\r\n" +
-      "\005index\030\003 \001(\r\022\"\n\006action\030\004 \001(\0162\022.SpektraAc" +
-      "tionType\"\325\001\n\017ShowStepMessage\022\022\n\nstep_ind" +
-      "ex\030\001 \001(\r\022\024\n\014target_index\030\002 \001(\r\022+\n\013action" +
-      "_type\030\003 \001(\0162\026.SpektraStepActionType\022\037\n\027m" +
-      "ax_random_target_index\030\004 \001(\r\022\014\n\004zone\030\005 \001" +
-      "(\r\022\036\n\026max_output_level_limit\030\006 \001(\r\022\034\n\024ti" +
-      "me_until_next_10ms\030\007 \001(\r\"\314\001\n\022SpektraShow" +
-      "Message\022\022\n\nshow_index\030\001 \001(\r\022\027\n\017number_of" +
-      "_steps\030\002 \001(\r\022\036\n\004step\030\003 \003(\0132\020.ShowStepMes" +
-      "sage\022\021\n\tisRunning\030\004 \001(\010\022\020\n\010isLooped\030\005 \001(" +
-      "\010\022\020\n\010isRandom\030\006 \001(\010\022\023\n\013isTemporary\030\007 \001(\010" +
-      "\022\035\n\025activations_remaining\030\010 \001(\r\"k\n\032Exten" +
-      "dedSpektraShowMessage\022\022\n\nshow_index\030\001 \001(" +
-      "\r\022\031\n\021step_index_offset\030\002 \001(\r\022\036\n\004step\030\003 \003" +
-      "(\0132\020.ShowStepMessage\"W\n\031SpektraShowContr" +
-      "olMessage\022\022\n\nshow_index\030\001 \001(\r\022\024\n\014start_r" +
-      "esume\030\002 \001(\r\022\020\n\010gotoStep\030\003 \001(\r\"\272\001\n\024DMXTra" +
-      "nslationObject\022\017\n\007line_in\030\001 \001(\r\022\020\n\010line_" +
-      "out\030\002 \001(\r\022\031\n\021dmx_start_address\030\003 \001(\r\022\025\n\r" +
-      "channel_count\030\004 \001(\r\022\022\n\ndali_array\030\005 \003(\r\022" +
-      "\026\n\016affected_input\030\007 \001(\r\022\020\n\010blocking\030\010 \001(" +
-      "\010\022\017\n\007enabled\030\t \001(\010\"?\n\026DMXProtocolTransla" +
-      "tion\022%\n\006object\030\001 \003(\0132\025.DMXTranslationObj" +
-      "ect\"%\n\021InputStateMessage\022\020\n\010use_mask\030\001 \001" +
-      "(\010\"8\n\022InputStateResponse\022\016\n\006inputs\030\001 \003(\r" +
-      "\022\022\n\ninput_mask\030\002 \001(\r\"@\n\022LevelCacheRespon" +
-      "se\022\016\n\006levels\030\001 \003(\r\022\014\n\004line\030\002 \001(\r\022\014\n\004page" +
-      "\030\003 \001(\r\"\200\005\n\034DiagnosticSystemInfoResponse\022" +
-      "\020\n\010firmware\030\001 \001(\t\022\020\n\010hardware\030\002 \001(\t\022\r\n\005e" +
-      "rror\030\003 \001(\t\022\023\n\013input_count\030\004 \001(\r\022\024\n\014outpu" +
-      "t_count\030\005 \001(\r\022\020\n\010ir_count\030\006 \001(\r\022\027\n\017list_" +
-      "step_count\030\007 \001(\r\022\022\n\nlist_count\030\010 \001(\r\022\023\n\013" +
-      "alarm_count\030\t \001(\r\022\024\n\014burnin_count\030\n \001(\r\022" +
-      "\031\n\021spektra_seq_count\030\013 \001(\r\022\036\n\026spektra_se" +
-      "q_step_count\030\014 \001(\r\022\033\n\023spektra_theme_coun" +
-      "t\030\r \001(\r\022\034\n\024spektra_static_count\030\016 \001(\r\022\025\n" +
-      "\rproto_version\030\017 \001(\r\022\022\n\nline_count\030\020 \001(\r" +
-      "\022\030\n\005lines\030\021 \003(\0162\t.LineType\022\025\n\rprofile_co" +
-      "unt\030\022 \001(\r\022\031\n\021preset_code_count\030\023 \001(\r\022\030\n\020" +
-      "user_level_count\030\024 \001(\r\022\031\n\021dmx_to_dali_co" +
-      "unt\030\025 \001(\r\022\032\n\022spektra_zone_count\030\026 \001(\r\022\023\n" +
-      "\013logic_count\030\027 \001(\r\022\030\n\020input_dali_count\030\030" +
-      " \001(\r\022\021\n\tvendor_id\030\031 \001(\t\022\030\n\020selected_prof" +
-      "ile\030\032 \001(\r\"U\n\021DiagnosticMessage\022$\n\004type\030\001" +
-      " \001(\0162\026.DiagnosticMessageType\022\014\n\004page\030\002 \001" +
-      "(\r\022\014\n\004line\030\003 \001(\r\"\362\001\n\035AdminProjectPropert" +
-      "iesMessage\022\023\n\013device_name\030\002 \001(\t\022\024\n\014proje" +
-      "ct_name\030\003 \001(\t\022\021\n\tlongitude\030\004 \001(\002\022\020\n\010lati" +
-      "tude\030\005 \001(\002\022\024\n\014local_offset\030\006 \001(\002\022\030\n\020dayl" +
-      "ight_savings\030\007 \001(\010\022\036\n\026daylight_savings_s" +
-      "tart\030\010 \001(\r\022\034\n\024daylight_savings_end\030\t \001(\r" +
-      "\022\023\n\013poll_active\030\n \001(\010\"\244\001\n\030AdminConfigSta" +
-      "tusMessage\022\023\n\013list_status\030\001 \003(\r\022\026\n\016burn_" +
-      "in_status\030\002 \003(\r\022\024\n\014alarm_status\030\003 \001(\r\022.\n" +
-      "\023alarm_time_from_reg\030\004 \001(\0132\021.TimeClockMe" +
-      "ssage\022\025\n\rsensor_status\030\005 \003(\r\"\326\001\n\035AdminNe" +
-      "tworkPropertiesMessage\022\014\n\004DHCP\030\001 \001(\010\022\n\n\002" +
-      "IP\030\002 \001(\t\022\013\n\003MAC\030\003 \001(\t\022\017\n\007gateway\030\004 \001(\t\022\021" +
-      "\n\tNTPServer\030\005 \001(\t\022\013\n\003NTP\030\006 \001(\010\022\r\n\005error\030" +
-      "\007 \001(\t\022\022\n\nNTPTimeout\030\010 \001(\r\022\016\n\006subnet\030\t \001(" +
-      "\t\022\023\n\013DNS_Primary\030\n \001(\t\022\025\n\rDNS_Secondary\030" +
-      "\013 \001(\t\"D\n\026AdminDNSServersMessage\022\023\n\013DNS_P" +
-      "rimary\030\001 \001(\t\022\025\n\rDNS_Secondary\030\002 \001(\t\"7\n\033A" +
-      "dminControllerLinesMessage\022\030\n\005lines\030\001 \003(" +
-      "\0162\t.LineType\"@\n\030AdminDeviceStatusMessage" +
-      "\022\023\n\013temperature\030\001 \001(\002\022\017\n\007battery\030\002 \001(\002\"I" +
-      "\n\027AdminSecureLoginMessage\022\020\n\010username\030\001 " +
-      "\001(\t\022\016\n\006cnonce\030\002 \001(\t\022\014\n\004hash\030\003 \003(\r\";\n\032Adm" +
-      "inDALISensorTypeMessage\022\035\n\004type\030\001 \001(\0162\017." +
-      "DALISensorType\"\264\004\n\014AdminMessage\022\"\n\007comma" +
-      "nd\030\001 \001(\0162\021.AdminCommandType\022\"\n\006target\030\002 " +
-      "\001(\0162\022.AdminPropertyType\022\037\n\004data\030\003 \001(\0132\017." +
-      "PayloadMessageH\000\022<\n\022network_properties\030\004" +
-      " \001(\0132\036.AdminNetworkPropertiesMessageH\000\022<" +
-      "\n\022project_properties\030\005 \001(\0132\036.AdminProjec" +
-      "tPropertiesMessageH\000\0228\n\020controller_lines" +
-      "\030\006 \001(\0132\034.AdminControllerLinesMessageH\000\0222" +
-      "\n\rdevice_status\030\007 \001(\0132\031.AdminDeviceStatu" +
-      "sMessageH\000\0222\n\rconfig_status\030\010 \001(\0132\031.Admi" +
-      "nConfigStatusMessageH\000\022)\n\013device_time\030\t " +
-      "\001(\0132\022.UpdateTimeMessageH\000\0227\n\020dali_sensor" +
-      "_type\030\n \001(\0132\033.AdminDALISensorTypeMessage" +
-      "H\000\022.\n\013dns_servers\030\013 \001(\0132\027.AdminDNSServer" +
-      "sMessageH\000B\t\n\007payload\"K\n\013DataMessage\022\022\n\n" +
-      "identifier\030\001 \001(\r\022\013\n\003seq\030\002 \001(\r\022\r\n\005count\030\003" +
-      " \001(\r\022\014\n\004data\030\004 \003(\r\"\331\002\n\023FirmwareMetaMessa" +
-      "ge\022\030\n\020firmware_version\030\001 \001(\r\022\025\n\rfirmware" +
-      "_date\030\002 \001(\r\022\034\n\024firmware_date_upload\030\003 \001(" +
-      "\r\022\031\n\021firmware_checksum\030\004 \001(\r\022\034\n\024firmware" +
-      "_chunk_count\030\005 \001(\r\022\035\n\025firmware_base_addr" +
-      "ess\030\006 \001(\r\022\034\n\024firmware_end_address\030\007 \001(\r\022" +
-      "\032\n\022firmware_is_backup\030\010 \001(\010\022\r\n\005nonce\030\t \003" +
-      "(\r\022\031\n\021firmware_date_day\030\n \001(\r\022\033\n\023firmwar" +
-      "e_date_month\030\013 \001(\r\022\032\n\022firmware_date_year" +
-      "\030\014 \001(\r\";\n\026FirmwareControlMessage\022!\n\003cmd\030" +
-      "\001 \001(\0162\024.FirmwareCommandType\"d\n\024FirmwareC" +
-      "hunkMessage\022\030\n\020firmware_address\030\001 \001(\r\022\023\n" +
-      "\013total_bytes\030\002 \001(\r\022\035\n\007payload\030\003 \001(\0132\014.Da" +
-      "taMessage\"j\n\024SystemLogReadMessage\022\031\n\021log" +
-      "_start_address\030\001 \001(\r\022\026\n\016logs_requested\030\002" +
-      " \001(\r\022\037\n\004logs\030\003 \003(\0132\021.SystemLogMessage\"\267\002" +
-      "\n\020SystemLogMessage\022\027\n\017time_since_boot\030\001 " +
-      "\001(\r\022\036\n\004boot\030\002 \001(\0132\016.SystemLogBootH\000\022$\n\007n" +
-      "etlink\030\003 \001(\0132\021.SystemLogNetLinkH\000\022\034\n\003ntp" +
-      "\030\004 \001(\0132\r.SystemLogNTPH\000\022$\n\007trigger\030\005 \001(\013" +
-      "2\021.SystemLogTriggerH\000\022$\n\007spektra\030\006 \001(\0132\021" +
-      ".SystemLogSpektraH\000\022&\n\010schedule\030\007 \001(\0132\022." +
-      "SystemLogScheduleH\000\022(\n\tuserstart\030\010 \001(\0132\023" +
-      ".SystemLogUserStartH\000B\010\n\006packet\"D\n\rSyste" +
-      "mLogBoot\022$\n\ttimeclock\030\001 \001(\0132\021.TimeClockM" +
-      "essage\022\r\n\005flags\030\002 \001(\r\"%\n\020SystemLogNetLin" +
-      "k\022\021\n\tis_linked\030\001 \001(\010\"4\n\014SystemLogNTP\022$\n\t" +
-      "timeclock\030\001 \001(\0132\021.TimeClockMessage\"O\n\020Sy" +
-      "stemLogTrigger\022 \n\007trigger\030\001 \001(\0132\017.Trigge" +
-      "rMessage\022\031\n\006source\030\002 \001(\0162\t.ReadType\"g\n\020S" +
-      "ystemLogSpektra\022\"\n\006action\030\001 \001(\0162\022.Spektr" +
-      "aActionType\022 \n\004type\030\002 \001(\0162\022.SpektraTarge" +
-      "tType\022\r\n\005index\030\003 \001(\r\"a\n\021SystemLogSchedul" +
-      "e\022\r\n\005index\030\001 \001(\r\022\017\n\007isStart\030\002 \001(\r\022\016\n\006sec" +
-      "ond\030\003 \001(\r\022\016\n\006minute\030\004 \001(\r\022\014\n\004hour\030\005 \001(\r\"" +
-      "I\n\022SystemLogUserStart\022$\n\ttimeclock\030\001 \001(\013" +
-      "2\021.TimeClockMessage\022\r\n\005flags\030\002 \001(\r\"\323\001\n\031S" +
-      "ystemMetaDataReadMessage\022\033\n\023input_press_" +
-      "counter\030\001 \003(\r\022\032\n\022list_start_counter\030\002 \003(" +
-      "\r\022\031\n\021schedules_counter\030\003 \003(\r\022\026\n\016screen_o" +
-      "n_time\030\004 \001(\r\022\027\n\017screen_dim_time\030\005 \001(\r\022\031\n" +
-      "\021screen_saver_time\030\006 \001(\r\022\026\n\016reboot_count" +
-      "er\030\007 \001(\r\"\277\001\n\013EventFilter\022\r\n\005input\030\001 \001(\010\022" +
-      "\026\n\016dali_arc_level\030\002 \001(\010\022\024\n\014dali_command\030" +
-      "\003 \001(\010\022\023\n\013dali_sensor\030\004 \001(\010\022\022\n\ndali_input" +
-      "\030\005 \001(\010\022\032\n\022dmx_stream_changed\030\006 \001(\010\022\025\n\rda" +
-      "li_24_frame\030\007 \001(\010\022\027\n\017trigger_message\030\010 \001" +
-      "(\010\"\335\001\n\014TriggerEvent\022\032\n\004type\030\001 \001(\0162\014.Trig" +
-      "gerType\022\017\n\005level\030\002 \001(\rH\000\022(\n\014dali_command" +
-      "\030\003 \001(\0162\020.DALICommandTypeH\000\022\026\n\016target_add" +
-      "ress\030\004 \001(\r\022\021\n\tline_mask\030\005 \001(\r\022\014\n\004zone\030\006 " +
-      "\001(\r\022\r\n\005value\030\007 \001(\r\022\023\n\013query_index\030\010 \001(\r\022" +
-      "\016\n\006source\030\t \001(\rB\t\n\007payload\"m\n\020DALI24Inpu" +
-      "tEvent\022\r\n\005index\030\001 \001(\r\022\014\n\004line\030\002 \001(\r\022\017\n\007a" +
-      "ddress\030\003 \001(\r\022\036\n\004type\030\004 \001(\0162\020.DALI24Input" +
-      "Type\022\013\n\003arg\030\005 \001(\r\"/\n\020DALI24FrameEvent\022\014\n" +
-      "\004line\030\001 \001(\r\022\r\n\005frame\030\002 \001(\r\"\252\001\n\017DALISenso" +
-      "rEvent\022\r\n\005index\030\001 \001(\r\022\014\n\004line\030\002 \001(\r\022\017\n\007a" +
-      "ddress\030\003 \001(\r\022-\n\014motion_state\030\004 \001(\0162\027.DAL" +
-      "IMotionSensorStates\022\'\n\tlux_state\030\005 \001(\0162\024" +
-      ".DALILuxSensorStates\022\021\n\tlux_level\030\006 \001(\r\"" +
-      "\300\002\n\014EventMessage\022\031\n\005event\030\001 \001(\0162\n.EventT" +
-      "ype\022 \n\007trigger\030\002 \001(\0132\r.TriggerEventH\000\022%\n" +
-      "\006inputs\030\003 \001(\0132\023.InputStateResponseH\000\022\"\n\007" +
-      "payload\030\004 \001(\0132\017.PayloadMessageH\000\022\"\n\006sens" +
-      "or\030\006 \001(\0132\020.DALISensorEventH\000\022*\n\rdali_24_" +
-      "input\030\007 \001(\0132\021.DALI24InputEventH\000\022\036\n\006filt" +
-      "er\030\010 \001(\0132\014.EventFilterH\000\022*\n\rdali_24_fram" +
-      "e\030\t \001(\0132\021.DALI24FrameEventH\000B\014\n\nevent_da" +
-      "ta\"\337\024\n\rEdidioMessage\022\022\n\nmessage_id\030\001 \001(\r" +
-      "\022\032\n\003ack\030\002 \001(\0132\013.AckMessageH\000\022$\n\006inputs\030\003" +
-      " \001(\0132\022.InputMultiMessageH\000\022&\n\007outputs\030\004 " +
-      "\001(\0132\023.OutputMultiMessageH\000\022\036\n\003irs\030\005 \001(\0132" +
-      "\017.IRMultiMessageH\000\022 \n\006sensor\030\006 \001(\0132\016.Sen" +
-      "sorMessageH\000\022\034\n\004list\030\010 \001(\0132\014.ListMessage" +
-      "H\000\022\036\n\005alarm\030\n \001(\0132\r.AlarmMessageH\000\022$\n\006al" +
-      "arms\030\013 \001(\0132\022.AlarmMultiMessageH\000\022\'\n\010burn" +
-      "_ins\030\014 \001(\0132\023.BurnInMultiMessageH\000\022/\n\016sen" +
-      "sor_command\030\r \001(\0132\025.SensorCommandMessage" +
-      "H\000\022/\n\016change_profile\030\016 \001(\0132\025.ChangeProfi" +
-      "leMessageH\000\022,\n\020identify_message\030\017 \001(\0132\020." +
-      "IdentifyMessageH\000\022)\n\013update_time\030\020 \001(\0132\022" +
-      ".UpdateTimeMessageH\000\022)\n\013read_device\030\021 \001(" +
-      "\0132\022.ReadDeviceMessageH\000\022$\n\014dali_message\030" +
-      "\022 \001(\0132\014.DALIMessageH\000\022(\n\ndali_query\030\023 \001(" +
-      "\0132\022.DALIQueryResponseH\000\022\"\n\013dmx_message\030\024" +
-      " \001(\0132\013.DMXMessageH\000\0223\n\020external_trigger\030" +
-      "\025 \001(\0132\027.ExternalTriggerMessageH\000\0222\n\020spek" +
-      "tra_settings\030\026 \001(\0132\026.SpektraSettingMessa" +
-      "geH\000\0229\n\020spektra_sequence\030\027 \001(\0132\035.Spektra" +
-      "SequenceConfigMessageH\000\0223\n\020spektra_calen" +
-      "dar\030\030 \001(\0132\027.SpektraCalendarMessageH\000\0223\n\r" +
-      "spektra_theme\030\031 \001(\0132\032.SpektraThemeConfig" +
-      "MessageH\000\022+\n\014spektra_read\030\032 \001(\0132\023.Spektr" +
-      "aReadMessageH\000\0221\n\017spektra_control\030\033 \001(\0132" +
-      "\026.SpektraControlMessageH\000\0221\n\016dmx_transla" +
-      "tor\030\034 \001(\0132\027.DMXProtocolTranslationH\000\022+\n\r" +
-      "input_request\030\035 \001(\0132\022.InputStateMessageH" +
-      "\000\022-\n\016input_response\030\036 \001(\0132\023.InputStateRe" +
-      "sponseH\000\0224\n\013diag_system\030\037 \001(\0132\035.Diagnost" +
-      "icSystemInfoResponseH\000\022*\n\014diag_message\030 " +
-      " \001(\0132\022.DiagnosticMessageH\000\022&\n\radmin_mess" +
-      "age\030! \001(\0132\r.AdminMessageH\000\022\036\n\005event\030\" \001(" +
-      "\0132\r.EventMessageH\000\022>\n\026secure_device_sett" +
-      "ings\030# \001(\0132\034.SecureDeviceSettingsMessage" +
-      "H\000\022,\n\014firmware_new\030$ \001(\0132\024.FirmwareMetaM" +
-      "essageH\000\0223\n\020firmware_control\030% \001(\0132\027.Fir" +
-      "mwareControlMessageH\000\022/\n\016firmware_chunk\030" +
-      "& \001(\0132\025.FirmwareChunkMessageH\000\0223\n\024level_" +
-      "cache_response\030\' \001(\0132\023.LevelCacheRespons" +
-      "eH\000\022-\n\rlist_extended\030) \001(\0132\024.ExtendedLis" +
-      "tMessageH\000\022\"\n\013ayt_message\030* \001(\0132\013.AytMes" +
-      "sageH\000\022\"\n\013rdm_message\030+ \001(\0132\013.RDMMessage" +
-      "H\000\0223\n\024rdm_response_message\030, \001(\0132\023.RDMRe" +
-      "sponseMessageH\000\022+\n\rlogic_message\030- \001(\0132\022" +
-      ".LogicMultiMessageH\000\0220\n\014secure_login\030. \001" +
-      "(\0132\030.AdminSecureLoginMessageH\000\0223\n\024device" +
-      "_state_message\030/ \001(\0132\023.DeviceStateMessag" +
-      "eH\000\022:\n\024spektra_calendar_day\0300 \001(\0132\032.Spek" +
-      "traCalendarDayMessageH\000\022D\n\031spektra_calen" +
-      "dar_overview\0301 \001(\0132\037.SpektraCalendarOver" +
-      "viewMessageH\000\022-\n\013inputs_dali\0302 \001(\0132\026.DAL" +
-      "IInputMultiMessageH\000\022*\n\tlogs_read\0303 \001(\0132" +
-      "\025.SystemLogReadMessageH\000\0223\n\rmetadata_rea" +
-      "d\0304 \001(\0132\032.SystemMetaDataReadMessageH\000\0229\n" +
-      "\027dali_addressing_message\0305 \001(\0132\026.DALIAdd" +
-      "ressingMessageH\000\0227\n\026dali_remapping_messa" +
-      "ge\0306 \001(\0132\025.DALIRemappingMessageH\000\022B\n\034spe" +
-      "ktra_show_control_message\0307 \001(\0132\032.Spektr" +
-      "aShowControlMessageH\000\0223\n\024spektra_show_me" +
-      "ssage\0308 \001(\0132\023.SpektraShowMessageH\000\022D\n\035ex" +
-      "tended_spektra_show_message\0309 \001(\0132\033.Exte" +
-      "ndedSpektraShowMessageH\000\022-\n\rrdm_discover" +
-      "y\030: \001(\0132\024.RDMDiscoveryMessageH\000\0228\n\023rdm_d",
-      "iscovery_reply\030; \001(\0132\031.RDMDiscoveryReply" +
-      "MessageH\000B\t\n\007payload*\233\001\n\024TriggerOperatio" +
-      "nType\022\r\n\tMOMENTARY\020\000\022\014\n\010LATCHING\020\001\022\024\n\020MO" +
-      "MENTARY_OUTPUT\020\002\022\023\n\017LATCHING_OUTPUT\020\003\022\n\n" +
-      "\006ROTARY\020\004\022\027\n\022MOMENTARY_DISABLED\020\200\001\022\026\n\021LA" +
-      "TCHING_DISABLED\020\201\001*\316\013\n\013TriggerType\022\014\n\010DA" +
-      "LI_ARC\020\000\022\020\n\014DALI_COMMAND\020\001\022\032\n\026DMX_CHANNE" +
-      "LS_SPLIT_LOW\020\002\022\033\n\027DMX_CHANNELS_SPLIT_HIG" +
-      "H\020\003\022$\n DMX_MULTICAST_CHANNELS_SPLIT_LOW\020" +
-      "\004\022%\n!DMX_MULTICAST_CHANNELS_SPLIT_HIGH\020\005" +
-      "\022\021\n\rDMX_BROADCAST\020\006\022\t\n\005DIDIO\020\007\022\024\n\020FADE_U" +
-      "P_WITH_MIN\020\010\022\016\n\nLIST_START\020\t\022\031\n\025LIST_STA" +
-      "RT_CONTINUOUS\020\n\022\r\n\tLIST_STOP\020\013\022\025\n\021SPEKTR" +
-      "A_START_SEQ\020\014\022\024\n\020SPEKTRA_STOP_SEQ\020\r\022\021\n\rS" +
-      "PEKTRA_THEME\020\016\022\022\n\016SPEKTRA_STATIC\020\017\022\024\n\020SP" +
-      "EKTRA_SCHEDULE\020\020\022\016\n\nLINK_START\020\021\022\r\n\tLINK" +
-      "_STOP\020\022\022\020\n\014DISABLE_BURN\020\023\022\017\n\013ENABLE_BURN" +
-      "\020\024\022\016\n\nON_OFF_TOG\020\025\022\017\n\013MIN_MAX_TOG\020\026\022\020\n\014E" +
-      "NABLE_INPUT\020\027\022\021\n\rDISABLE_INPUT\020\030\022\024\n\020ENAB" +
-      "LE_TOG_INPUT\020\031\022\016\n\nOUTPUT_TOG\020\032\022\017\n\013OUTPUT" +
-      "_HIGH\020\033\022\016\n\nOUTPUT_LOW\020\034\022\017\n\013OUTPUT_TRIG\020\035" +
-      "\022\022\n\016PROFILE_CHANGE\020\036\022\023\n\017FADE_LONG_PRESS\020" +
-      "\037\022\n\n\006SYNCRO\020 \022\017\n\013PRESET_CODE\020!\022\017\n\013CUSTOM" +
-      "_CODE\020\"\022\021\n\rSPEKTRA_SLEEP\020#\022\022\n\016SPEKTRA_RE" +
-      "SUME\020$\022\020\n\014DEVICE_RESET\020%\022\017\n\013DEVICE_SAVE\020" +
-      "&\022\030\n\024USER_LEVEL_STORE_NEW\020\'\022\032\n\026USER_LEVE" +
-      "L_SET_DEFAULT\020(\022\025\n\021USER_LEVEL_RECALL\020)\022\r" +
-      "\n\tROOM_JOIN\020+\022\017\n\013ROOM_UNJOIN\020,\022\023\n\017TYPE8_" +
-      "TC_WARMER\020-\022\023\n\017TYPE8_TC_COOLER\020.\022\023\n\017TYPE" +
-      "8_TC_ACTUAL\020/\022\023\n\017LOGIC_OPERATION\0200\022\020\n\014AL" +
-      "ARM_ENABLE\0201\022\021\n\rALARM_DISABLE\0202\022 \n\034DALI_" +
-      "CONTROL_SENSOR_OVERRIDE\0203\022$\n DALI_CONTRO" +
-      "L_SENSOR_TEMP_DISABLE\0204\022\036\n\032DALI_CONTROL_" +
-      "SENSOR_RESUME\0205\022\025\n\021DALI_ARC_OVERRIDE\0206\022\031" +
-      "\n\025DALI_COMMAND_OVERRIDE\0207\022\035\n\031FADE_UP_WIT" +
-      "H_MIN_OVERRIDE\0208\022\027\n\023ON_OFF_TOG_OVERRIDE\020" +
-      "9\022\030\n\024MIN_MAX_TOG_OVERRIDE\020:\022\017\n\013MAX_OFF_T" +
-      "OG\020;\022\030\n\024MAX_OFF_TOG_OVERRIDE\020<\022\034\n\030FADE_L" +
-      "ONG_PRESS_OVERRIDE\020=\022\036\n\032USER_LEVEL_RECAL" +
-      "L_OVERRIDE\020>\022\024\n\020DMX_ZONE_FADE_UP\020?\022\026\n\022DM" +
-      "X_ZONE_FADE_DOWN\020@\022\021\n\rLOGGING_LEVEL\020A\022\030\n" +
-      "\024SPEKTRA_SHOW_CONTROL\020B\022\031\n\025CIRCADIAN_TEM" +
-      "PERATURE\020C\022\017\n\nNO_COMMAND\020\376\001*\353\001\n\010ReadType" +
-      "\022\n\n\006INPUTS\020\000\022\013\n\007OUTPUTS\020\001\022\006\n\002IR\020\002\022\n\n\006SEN" +
-      "SOR\020\003\022\010\n\004LIST\020\005\022\n\n\006ALARMS\020\007\022\013\n\007BURN_IN\020\010" +
-      "\022\013\n\007PROJECT\020\t\022\013\n\007NETWORK\020\n\022\n\n\006DEVICE\020\013\022\r" +
-      "\n\tPOLL_DATA\020\014\022\021\n\rLIST_EXTENDED\020\r\022\t\n\005LOGI" +
-      "C\020\016\022\017\n\013DALI_INPUTS\020\017\022\020\n\014SPEKTRA_SHOW\020\020\022\031" +
-      "\n\025SPEKTRA_SHOW_EXTENDED\020\021*\214\001\n\017AlarmRepea" +
-      "tType\022\023\n\017ALARM_NO_REPEAT\020\000\022\026\n\022ALARM_REPE" +
-      "AT_DAILY\020\001\022\031\n\025ALARM_REPEAT_WORK_DAY\020\002\022\027\n" +
-      "\023ALARM_REPEAT_WEEKLY\020\003\022\030\n\024ALARM_REPEAT_M" +
-      "ONTHLY\020\004*I\n\016AlarmAstroType\022\022\n\016ALARM_NO_A" +
-      "STRO\020\000\022\021\n\rALARM_SUNRUSE\020\001\022\020\n\014ALARM_SUNSE" +
-      "T\020\002*^\n\021SpektraTargetType\022\014\n\010SETTINGS\020\000\022\014" +
-      "\n\010SEQUENCE\020\001\022\t\n\005THEME\020\002\022\n\n\006STATIC\020\003\022\014\n\010C" +
-      "ALENDAR\020\004\022\010\n\004SHOW\020\005*=\n\021SpektraActionType" +
-      "\022\t\n\005START\020\000\022\010\n\004STOP\020\001\022\t\n\005PAUSE\020\002\022\010\n\004SAVE" +
-      "\020\003*p\n\025SpektraStepActionType\022\020\n\014RUN_SEQUE" +
-      "NCE\020\000\022\016\n\nSHOW_THEME\020\001\022\016\n\nSTART_LIST\020\002\022\022\n" +
-      "\016PAUSE_PREVIOUS\020\003\022\021\n\rSTOP_PREVIOUS\020\004*}\n\037" +
-      "SpektraUnscheduledBehaviourType\022 \n\034RUN_R" +
-      "ANDOM_COLOURED_SEQUENCE\020\000\022\022\n\016RUN_SEQUENC" +
-      "E_1\020\001\022\023\n\017RESUME_PREVIOUS\020\002\022\017\n\nDO_NOTHING" +
-      "\020\376\001*6\n\022LineAddressingType\022\017\n\013INDEPENDENT" +
-      "\020\000\022\017\n\013CONSECUTIVE\020\001*\347\002\n\016AckMessageType\022\021" +
-      "\n\rDECODE_FAILED\020\000\022\027\n\023INDEX_OUT_OF_BOUNDS" +
-      "\020\001\022\023\n\017UNEXPECTED_TYPE\020\002\022\021\n\rENCODE_FAILED" +
-      "\020\003\022\020\n\014KEY_MISMATCH\020\004\022\013\n\007SUCCESS\020\005\022\022\n\016INV" +
-      "ALID_PARAMS\020\006\022\026\n\022UNEXPECTED_COMMAND\020\007\022\030\n" +
-      "\024COMMUNICATION_FAILED\020\010\022\031\n\025COMMUNICATION" +
-      "_TIMEOUT\020\t\022\021\n\rDATA_TOO_LONG\020\n\022\023\n\017UNEXPEC" +
-      "TED_CASE\020\013\022\016\n\nSLOTS_FULL\020\014\022\020\n\014UNAUTHORIS" +
-      "ED\020\r\022\023\n\017PARTIAL_SUCCESS\020\016\022\022\n\016COMMAND_FAI" +
-      "LED\020\017\022\016\n\nDEPRECATED\020\020*\352\004\n\020Type8CommandTy" +
-      "pe\022\024\n\020SET_TEMP_X_COORD\020\000\022\024\n\020SET_TEMP_Y_C" +
-      "OORD\020\001\022\014\n\010ACTIVATE\020\002\022\023\n\017X_COORD_STEP_UP\020" +
-      "\003\022\025\n\021X_COORD_STEP_DOWN\020\004\022\023\n\017Y_COORD_STEP" +
-      "_UP\020\005\022\025\n\021Y_COORD_STEP_DOWN\020\006\022\037\n\033SET_TEMP" +
-      "_COLOUR_TEMPERATURE\020\007\022\"\n\036COLOUR_TEMPERAT" +
-      "URE_STEP_COOLER\020\010\022\"\n\036COLOUR_TEMPERATURE_" +
-      "STEP_WARMER\020\t\022\033\n\027SET_TEMP_PRI_N_DIMLEVEL" +
-      "\020\n\022\031\n\025SET_TEMP_RGB_DIMLEVEL\020\013\022\031\n\025SET_TEM" +
-      "P_WAF_DIMLEVEL\020\014\022\033\n\027SET_TEMP_RGBWAF_CONT" +
-      "ROL\020\r\022\031\n\025COPY_REPORT_TEMPORARY\020\016\022\022\n\016STOR" +
-      "E_TY_PRI_N\020\020\022\030\n\024STORE_XY_COORD_PRI_N\020\021\022\"" +
-      "\n\036STORE_COLOUR_TEMPERATURE_LIMIT\020\022\022\036\n\032ST" +
-      "ORE_GEAR_FEATURES_STATUS\020\023\022\032\n\026ASSIGN_COL" +
-      "OR_LINKED_CH\020\025\022\022\n\016START_AUTO_CAL\020\026\022\027\n\023EN" +
-      "ABLE_DEVICE_TYPE8\0200\022\025\n\021SET_XY_COORDINATE" +
-      "\0202*\221\002\n\016Type8QueryType\022\024\n\020TYPE8_QUERY_NUL" +
-      "L\020\000\022$\n TYPE8_QUERY_GEAR_FEATURES_STATUS\020" +
-      "\001\022\035\n\031TYPE8_QUERY_COLOUR_STATUS\020\002\022$\n TYPE" +
-      "8_QUERY_COLOUR_TYPE_FEATURES\020\003\022\034\n\030TYPE8_" +
-      "QUERY_COLOUR_VALUE\020\004\022\036\n\032TYPE8_QUERY_RGBW" +
-      "AF_CONTROL\020\005\022\037\n\033TYPE8_QUERY_ASSIGNED_COL" +
-      "OUR\020\006\022\037\n\033TYPE8_QUERY_EXT_VERSION_NUM\020\010*\274" +
-      "\006\n\023DALI24DeviceSetting\022\024\n\020COMMAND_IDENTI" +
-      "FY\020\000\022\"\n\036COMMAND_RESET_POWER_CYCLE_SEEN\020\001" +
-      "\022\021\n\rCOMMAND_RESET\020\020\022\035\n\031COMMAND_RESET_MEM" +
-      "ORY_BANK\020\021\022\035\n\031COMMAND_SET_SHORT_ADDRESS\020" +
-      "\024\022\037\n\033COMMAND_ENABLE_WRITE_MEMORY\020\025\022!\n\035CO" +
-      "MMAND_ENABLE_APP_CONTROLLER\020\026\022\"\n\036COMMAND" +
-      "_DISABLE_APP_CONTROLLER\020\027\022\036\n\032COMMAND_SET" +
-      "_OPERATING_MODE\020\030\022%\n!COMMAND_ADD_TO_DEVI" +
-      "CE_GROUPS_0_15\020\031\022&\n\"COMMAND_ADD_TO_DEVIC" +
-      "E_GROUPS_15_32\020\032\022#\n\037COMMAND_REMOVE_FROM_" +
-      "GROUPS_0_15\020\033\022$\n COMMAND_REMOVE_FROM_GRO" +
-      "UPS_16_32\020\034\022 \n\034COMMAND_START_QUIESCENT_M" +
-      "ODE\020\035\022\037\n\033COMMAND_STOP_QUIESCENT_MODE\020\036\022$" +
-      "\n COMMAND_ENABLE_POWER_CYCLE_NOTIF\020\037\022%\n!" +
-      "COMMAND_DISABLE_POWER_CYCLE_NOTIF\020 \022%\n!C" +
-      "OMMAND_SAVE_PERSISTENT_VARIABLES\020!\022\026\n\022SE" +
-      "T_EVENT_PRIORITY\020a\022\023\n\017ENABLE_INSTANCE\020b\022" +
-      "\024\n\020DISABLE_INSTANCE\020c\022\036\n\032SET_PRIMARY_INS" +
-      "TANCE_GROUP\020d\022\030\n\024SET_INSTANCE_GROUP_1\020e\022" +
-      "\030\n\024SET_INSTANCE_GROUP_2\020f\022\024\n\020SET_EVENT_S" +
-      "CHEME\020g\022\024\n\020SET_EVENT_FILTER\020h*c\n\022DALI24I" +
-      "nstanceType\022\013\n\007DEFAULT\020\000\022\t\n\005INPUT\020\001\022\020\n\014R" +
-      "OTARY_INPUT\020\002\022\021\n\rMOTION_SENSOR\020\003\022\020\n\014LIGH" +
-      "T_SENSOR\020\004*\276\002\n\014DALI24OpCode\022\017\n\013OPCODE_NU" +
-      "LL\020\000\022 \n\034SENSOR_MOTION_SET_HOLD_TIMER\020!\022\"" +
-      "\n\036SENSOR_MOTION_SET_REPORT_TIMER\020\"\022$\n SE" +
-      "NSOR_MOTION_SET_DEADTIME_TIMER\020#\022#\n\037SENS" +
-      "OR_MOTION_CANCEL_HOLD_TIMER\020$\022!\n\035SENSOR_" +
-      "LIGHT_SET_REPORT_TIMER\0200\022\037\n\033SENSOR_LIGHT" +
-      "_SET_HYSTERESIS\0201\022#\n\037SENSOR_LIGHT_SET_DE" +
-      "ADTIME_TIMER\0202\022#\n\037SENSOR_LIGHT_SET_HYSTE" +
-      "RESIS_MIN\0203*W\n\010LineType\022\016\n\nLINE_EMPTY\020\000\022" +
-      "\r\n\tLINE_DALI\020\001\022\014\n\010LINE_DMX\020\002\022\017\n\013LINE_DMX" +
-      "_IN\020\003\022\r\n\tLINE_AUTO\020\004*\251\001\n\tEventType\022\014\n\010RE" +
-      "GISTER\020\000\022\021\n\rTRIGGER_EVENT\020\001\022\017\n\013INPUT_EVE" +
-      "NT\020\002\022\020\n\014SENSOR_EVENT\020\003\022\021\n\rCONTROL_EVENT\020" +
-      "\004\022\023\n\017ROOM_JOIN_EVENT\020\005\022\027\n\023DALI_24_INPUT_" +
-      "EVENT\020\006\022\027\n\023DALI_24_FRAME_EVENT\020\007*\306\t\n\rDAL" +
-      "IQueryType\022\023\n\017DALI_QUERY_NULL\020\000\022\026\n\021DALI_" +
-      "QUERY_STATUS\020\220\001\022\027\n\022DALI_QUERY_BALLAST\020\221\001" +
-      "\022\034\n\027DALI_QUERY_LAMP_FAILURE\020\222\001\022\035\n\030DALI_Q" +
-      "UERY_LAMP_POWER_ON\020\223\001\022\033\n\026DALI_QUERY_LIMI" +
-      "T_ERROR\020\224\001\022\033\n\026DALI_QUERY_RESET_STATE\020\225\001\022" +
-      "%\n DALI_QUERY_MISSING_SHORT_ADDRESS\020\226\001\022\036" +
-      "\n\031DALI_QUERY_VERSION_NUMBER\020\227\001\022\024\n\017DALI_Q" +
-      "UERY_DTR0\020\230\001\022\033\n\026DALI_QUERY_DEVICE_TYPE\020\231" +
-      "\001\022\034\n\027DALI_QUERY_PHYSICAL_MIN\020\232\001\022\035\n\030DALI_" +
-      "QUERY_POWER_FAILURE\020\233\001\022\024\n\017DALI_QUERY_DTR" +
-      "1\020\234\001\022\024\n\017DALI_QUERY_DTR2\020\235\001\022\036\n\031DALI_QUERY" +
-      "_OPERATING_MODE\020\236\001\022 \n\033DALI_QUERY_LIGHTSO" +
-      "URCE_TYPE\020\237\001\022\034\n\027DALI_QUERY_ACTUAL_LEVEL\020" +
-      "\240\001\022\031\n\024DALI_QUERY_MAX_LEVEL\020\241\001\022\031\n\024DALI_QU" +
-      "ERY_MIN_LEVEL\020\242\001\022\036\n\031DALI_QUERY_POWER_ON_" +
-      "LEVEL\020\243\001\022$\n\037DALI_QUERY_SYSTEM_FAILURE_LE" +
-      "VEL\020\244\001\022!\n\034DALI_QUERY_FADETIME_FADERATE\020\245" +
-      "\001\022*\n%DALI_QUERY_MANUFACTURER_SPECIFIC_MO" +
-      "DE\020\246\001\022 \n\033DALI_QUERY_NEXT_DEVICE_TYPE\020\247\001\022" +
-      "\"\n\035DALI_QUERY_EXTENDED_FADE_TIME\020\250\001\022$\n\037D" +
-      "ALI_QUERY_CONTROL_GEAR_FAILURE\020\252\001\022\035\n\030DAL" +
-      "I_QUERY_SCENE_X_LEVEL\020\260\001\022\032\n\025DALI_QUERY_G" +
-      "ROUPS_0_7\020\300\001\022\033\n\026DALI_QUERY_GROUPS_8_15\020\301" +
-      "\001\022 \n\033DALI_QUERY_RANDOM_ADDRESS_H\020\302\001\022 \n\033D" +
-      "ALI_QUERY_RANDOM_ADDRESS_M\020\303\001\022 \n\033DALI_QU" +
-      "ERY_RANDOM_ADDRESS_L\020\304\001\022\034\n\027DALI_QUERY_RE" +
-      "AD_DTR_0_1\020\305\001\022 \n\033DALI_QUERY_APP_EXT_COMM" +
-      "ANDS\020\340\001\022\"\n\035DALI_QUERY_EXT_VERSION_NUMBER" +
-      "\020\377\001\022\027\n\022DALI_QUERY_COMPARE\020\204\002\022$\n\037DALI_QUE" +
-      "RY_VERIFY_SHORT_ADDRESS\020\214\002\022\035\n\030DALI_QUERY" +
-      "_SHORT_ADDRESS\020\215\002*\351\027\n\017DALICommandType\022\014\n" +
-      "\010DALI_OFF\020\000\022\020\n\014DALI_FADE_UP\020\001\022\022\n\016DALI_FA" +
-      "DE_DOWN\020\002\022\020\n\014DALI_STEP_UP\020\003\022\022\n\016DALI_STEP" +
-      "_DOWN\020\004\022\022\n\016DALI_MAX_LEVEL\020\005\022\022\n\016DALI_MIN_" +
-      "LEVEL\020\006\022\026\n\022DALI_STEP_DOWN_OFF\020\007\022\023\n\017DALI_" +
-      "ON_STEP_UP\020\010\022\030\n\024DALI_ENABLE_DAPC_SEQ\020\t\022!" +
-      "\n\035DALI_RECALL_LAST_ACTIVE_LEVEL\020\n\022\026\n\022DAL" +
-      "I_CONTINUOUS_UP\020\013\022\030\n\024DALI_CONTINUOUS_DOW" +
-      "N\020\014\022\027\n\023DALI_RECALL_SCENE_0\020\020\022\027\n\023DALI_REC" +
-      "ALL_SCENE_1\020\021\022\027\n\023DALI_RECALL_SCENE_2\020\022\022\027" +
-      "\n\023DALI_RECALL_SCENE_3\020\023\022\027\n\023DALI_RECALL_S" +
-      "CENE_4\020\024\022\027\n\023DALI_RECALL_SCENE_5\020\025\022\027\n\023DAL" +
-      "I_RECALL_SCENE_6\020\026\022\027\n\023DALI_RECALL_SCENE_" +
-      "7\020\027\022\027\n\023DALI_RECALL_SCENE_8\020\030\022\027\n\023DALI_REC" +
-      "ALL_SCENE_9\020\031\022\030\n\024DALI_RECALL_SCENE_10\020\032\022" +
-      "\030\n\024DALI_RECALL_SCENE_11\020\033\022\030\n\024DALI_RECALL" +
-      "_SCENE_12\020\034\022\030\n\024DALI_RECALL_SCENE_13\020\035\022\030\n" +
-      "\024DALI_RECALL_SCENE_14\020\036\022\030\n\024DALI_RECALL_S" +
-      "CENE_15\020\037\022\016\n\nDALI_RESET\020 \022 \n\034DALI_STORE_" +
-      "ACTUAL_LEVEL_DTR0\020!\022\035\n\031DALI_SAVE_PERSIST" +
-      "ENT_VARS\020\"\022\033\n\027DALI_SET_OPERATING_MODE\020#\022" +
-      "\032\n\026DALI_RESET_MEMORY_BANK\020$\022\030\n\024DALI_IDEN" +
-      "TIFY_DEVICE\020%\022\026\n\022DALI_SET_MAX_LEVEL\020*\022\026\n" +
-      "\022DALI_SET_MIN_LEVEL\020+\022!\n\035DALI_SET_SYSTEM" +
-      "_FAILURE_LEVEL\020,\022\033\n\027DALI_SET_POWER_ON_LE" +
-      "VEL\020-\022\026\n\022DALI_SET_FADE_TIME\020.\022\026\n\022DALI_SE" +
-      "T_FADE_RATE\020/\022\032\n\026DALI_SET_EXT_FADE_TIME\020" +
-      "0\022\024\n\020DALI_SET_SCENE_0\020@\022\024\n\020DALI_SET_SCEN" +
-      "E_1\020A\022\024\n\020DALI_SET_SCENE_2\020B\022\024\n\020DALI_SET_" +
-      "SCENE_3\020C\022\024\n\020DALI_SET_SCENE_4\020D\022\024\n\020DALI_" +
-      "SET_SCENE_5\020E\022\024\n\020DALI_SET_SCENE_6\020F\022\024\n\020D" +
-      "ALI_SET_SCENE_7\020G\022\024\n\020DALI_SET_SCENE_8\020H\022" +
-      "\024\n\020DALI_SET_SCENE_9\020I\022\025\n\021DALI_SET_SCENE_" +
-      "10\020J\022\025\n\021DALI_SET_SCENE_11\020K\022\025\n\021DALI_SET_" +
-      "SCENE_12\020L\022\025\n\021DALI_SET_SCENE_13\020M\022\025\n\021DAL" +
-      "I_SET_SCENE_14\020N\022\025\n\021DALI_SET_SCENE_15\020O\022" +
-      "\034\n\030DALI_REMOVE_FROM_SCENE_0\020P\022\034\n\030DALI_RE" +
-      "MOVE_FROM_SCENE_1\020Q\022\034\n\030DALI_REMOVE_FROM_" +
-      "SCENE_2\020R\022\034\n\030DALI_REMOVE_FROM_SCENE_3\020S\022" +
-      "\034\n\030DALI_REMOVE_FROM_SCENE_4\020T\022\034\n\030DALI_RE" +
-      "MOVE_FROM_SCENE_5\020U\022\034\n\030DALI_REMOVE_FROM_" +
-      "SCENE_6\020V\022\034\n\030DALI_REMOVE_FROM_SCENE_7\020W\022" +
-      "\034\n\030DALI_REMOVE_FROM_SCENE_8\020X\022\034\n\030DALI_RE" +
-      "MOVE_FROM_SCENE_9\020Y\022\035\n\031DALI_REMOVE_FROM_" +
-      "SCENE_10\020Z\022\035\n\031DALI_REMOVE_FROM_SCENE_11\020" +
-      "[\022\035\n\031DALI_REMOVE_FROM_SCENE_12\020\\\022\035\n\031DALI" +
-      "_REMOVE_FROM_SCENE_13\020]\022\035\n\031DALI_REMOVE_F" +
-      "ROM_SCENE_14\020^\022\035\n\031DALI_REMOVE_FROM_SCENE" +
-      "_15\020_\022\027\n\023DALI_ADD_TO_GROUP_0\020`\022\027\n\023DALI_A" +
-      "DD_TO_GROUP_1\020a\022\027\n\023DALI_ADD_TO_GROUP_2\020b" +
-      "\022\027\n\023DALI_ADD_TO_GROUP_3\020c\022\027\n\023DALI_ADD_TO" +
-      "_GROUP_4\020d\022\027\n\023DALI_ADD_TO_GROUP_5\020e\022\027\n\023D" +
-      "ALI_ADD_TO_GROUP_6\020f\022\027\n\023DALI_ADD_TO_GROU" +
-      "P_7\020g\022\027\n\023DALI_ADD_TO_GROUP_8\020h\022\027\n\023DALI_A" +
-      "DD_TO_GROUP_9\020i\022\030\n\024DALI_ADD_TO_GROUP_10\020" +
-      "j\022\030\n\024DALI_ADD_TO_GROUP_11\020k\022\030\n\024DALI_ADD_" +
-      "TO_GROUP_12\020l\022\030\n\024DALI_ADD_TO_GROUP_13\020m\022" +
-      "\030\n\024DALI_ADD_TO_GROUP_14\020n\022\030\n\024DALI_ADD_TO" +
-      "_GROUP_15\020o\022\034\n\030DALI_REMOVE_FROM_GROUP_0\020" +
-      "p\022\034\n\030DALI_REMOVE_FROM_GROUP_1\020q\022\034\n\030DALI_" +
-      "REMOVE_FROM_GROUP_2\020r\022\034\n\030DALI_REMOVE_FRO" +
-      "M_GROUP_3\020s\022\034\n\030DALI_REMOVE_FROM_GROUP_4\020" +
-      "t\022\034\n\030DALI_REMOVE_FROM_GROUP_5\020u\022\034\n\030DALI_" +
-      "REMOVE_FROM_GROUP_6\020v\022\034\n\030DALI_REMOVE_FRO" +
-      "M_GROUP_7\020w\022\034\n\030DALI_REMOVE_FROM_GROUP_8\020" +
-      "x\022\034\n\030DALI_REMOVE_FROM_GROUP_9\020y\022\035\n\031DALI_" +
-      "REMOVE_FROM_GROUP_10\020z\022\035\n\031DALI_REMOVE_FR" +
-      "OM_GROUP_11\020{\022\035\n\031DALI_REMOVE_FROM_GROUP_" +
-      "12\020|\022\035\n\031DALI_REMOVE_FROM_GROUP_13\020}\022\035\n\031D" +
-      "ALI_REMOVE_FROM_GROUP_14\020~\022\035\n\031DALI_REMOV" +
-      "E_FROM_GROUP_15\020\177\022\033\n\026DALI_SET_SHORT_ADDR" +
-      "ESS\020\200\001\022\035\n\030DALI_ENABLE_WRITE_MEMORY\020\201\001\022\023\n" +
-      "\016DALI_TERMINATE\020\377\001\022\024\n\017DALI_INITIALISE\020\202\002" +
-      "\022\023\n\016DALI_RANDOMISE\020\203\002\022\022\n\rDALI_WITHDRAW\020\205" +
-      "\002\022\027\n\022DALI_SEARCH_ADDR_H\020\210\002\022\027\n\022DALI_SEARC" +
-      "H_ADDR_M\020\211\002\022\027\n\022DALI_SEARCH_ADDR_L\020\212\002\022\037\n\032" +
-      "DALI_PROGRAM_SHORT_ADDRESS\020\213\002*\304\001\n\025Custom" +
-      "DALICommandType\022\022\n\016DALI_ARC_LEVEL\020\000\022\023\n\017D" +
-      "ALI_DAPC_LEVEL\020\001\022\030\n\024DALI_GROUP_ARC_LEVEL" +
-      "\020\002\022\030\n\024DALI_BROADCAST_SCENE\020\003\022\027\n\023DALI_SCE" +
-      "NE_ON_GROUP\020\004\022\031\n\025DALI_SCENE_ON_ADDRESS\020\005" +
-      "\022\032\n\026DALI_QUERY_MULTI_TYPES\020\006*\233\004\n\021AdminPr" +
-      "opertyType\022\017\n\013DEVICE_NAME\020\000\022\020\n\014PROJECT_N" +
-      "AME\020\001\022\r\n\tLONGITUDE\020\002\022\014\n\010LATITUDE\020\003\022\024\n\020LO" +
-      "CAL_UTC_OFFSET\020\004\022\024\n\020DAYLIGHT_SAVINGS\020\005\022\017" +
-      "\n\013POLL_ACTIVE\020\006\022\020\n\014DHCP_ENABLED\020\007\022\013\n\007IP_" +
-      "ADDR\020\010\022\014\n\010MAC_ADDR\020\t\022\016\n\nGATEWAY_IP\020\n\022\026\n\022" +
-      "NETWORK_PROPERTIES\020\013\022\025\n\021SYSTEM_PROPERTIE" +
-      "S\020\014\022\024\n\020CONTROLLER_LINES\020\r\022\024\n\020EEPROM_FULL" +
-      "_CHIP\020\016\022\017\n\013CONFIG_DATA\020\017\022\020\n\014SPEKTRA_DATA" +
-      "\020\020\022\021\n\rDEVICE_STATUS\020\021\022\021\n\rCONFIG_STATUS\020\022" +
-      "\022\017\n\013DEVICE_TIME\020\023\022\017\n\013NTP_DETAILS\020\024\022\025\n\021TR" +
-      "IDONIC_MSENSORS\020\025\022\022\n\016SECURE_SESSION\020\026\022\t\n" +
-      "\005NONCE\020\027\022\024\n\020DALI_SENSOR_TYPE\020\030\022\021\n\rDEVICE" +
-      "_REBOOT\020\031\022\022\n\016SYSTEM_LOGGING\020\032\022\n\n\006SUBNET\020" +
-      "\033\022\007\n\003DNS\020\034*M\n\020AdminCommandType\022\007\n\003SET\020\000\022" +
-      "\007\n\003GET\020\001\022\007\n\003ADD\020\002\022\n\n\006REMOVE\020\003\022\t\n\005RESET\020\004" +
-      "\022\007\n\003RUN\020\005*\265\001\n\016DALIStatusType\022\014\n\010LAMP_OFF" +
-      "\020\000\022\030\n\024CONTROL_GEAR_FAILURE\020\001\022\020\n\014LAMP_FAI" +
-      "LURE\020\002\022\013\n\007LAMP_ON\020\004\022\017\n\013LIMIT_ERROR\020\010\022\020\n\014" +
-      "FADE_RUNNING\020\020\022\017\n\013RESET_STATE\020 \022\021\n\rSHORT" +
-      "_ADDRESS\020@\022\025\n\020POWER_CYCLE_SEEN\020\200\001*\210\002\n\020DA" +
-      "LIRXStatusFlag\022\013\n\007WAITING\020\000\022\023\n\017RECEIVING" +
-      "_FRAME\020\001\022\025\n\021NO_RECEIVED_FRAME\020\002\022\030\n\024RECEI" +
-      "VED_8_BIT_FRAME\020\003\022\031\n\025RECEIVED_16_BIT_FRA" +
-      "ME\020\004\022\031\n\025RECEIVED_24_BIT_FRAME\020\005\022\032\n\026RECEI" +
-      "VED_PARTIAL_FRAME\020\006\022\010\n\004IDLE\020\007\022\017\n\013CALIBRA" +
-      "TION\020\010\022\030\n\023ERROR_WHILE_SENDING\020\376\001\022\032\n\025ERRO" +
-      "R_WHILE_RECEIVING\020\377\001*\213\001\n\025DiagnosticMessa" +
-      "geType\022\032\n\026DIAGNOSTIC_SYSTEM_INFO\020\000\022\033\n\027DI" +
-      "AGNOSTIC_INPUT_STATUS\020\001\022\024\n\020DALI_LEVEL_CA" +
-      "CHE\020\002\022\023\n\017DMX_LEVEL_CACHE\020\003\022\016\n\nROOM_JOINS" +
-      "\020\004*z\n\023FirmwareCommandType\022\014\n\010FW_READY\020\000\022" +
-      "\014\n\010FW_APPLY\020\001\022\r\n\tFW_VERIFY\020\002\022\024\n\020FW_VERIF" +
-      "Y_FAILED\020\003\022\025\n\021FW_VERIFY_SUCCESS\020\004\022\013\n\007FW_" +
-      "READ\020\005*?\n\025SpektraTransitionType\022\t\n\005BLEND" +
-      "\020\000\022\010\n\004SNAP\020\001\022\021\n\rFADE_TO_BLACK\020\002*\234\001\n\tLogi" +
-      "cType\022\016\n\nDALI_LEVEL\020\000\022\017\n\013INPUT_STATE\020\001\022\020" +
-      "\n\014LIST_RUNNING\020\002\022\026\n\022OCCUPANCY_DETECTED\020\003" +
-      "\022\017\n\013DMX_PRESENT\020\004\022\017\n\013CAL_WEEKDAY\020\005\022\r\n\tCA" +
-      "L_MONTH\020\006\022\023\n\017ALARM_SCHEDULED\020\007*\200\001\n\023Logic" +
-      "ComparisonType\022\r\n\tLESS_THAN\020\000\022\027\n\023LESS_TH" +
-      "AN_OR_EQUALS\020\001\022\n\n\006EQUALS\020\002\022\r\n\tMORE_THAN\020" +
-      "\003\022\027\n\023MORE_THAN_OR_EQUALS\020\004\022\r\n\tNOT_EQUAL\020" +
-      "\005*8\n\016DALISensorType\022\022\n\016TRIDONIC_EDALI\020\000\022" +
-      "\022\n\016STANDARD_EDALI\020\001*G\n\021SensorCommandType" +
-      "\022\016\n\nINITIALISE\020\000\022\010\n\004MUTE\020\001\022\n\n\006UNMUTE\020\002\022\014" +
-      "\n\010OVERRIDE\020\003*b\n\rSystemLogType\022\010\n\004BOOT\020\000\022" +
-      "\014\n\010NET_LINK\020\001\022\007\n\003NTP\020\002\022\013\n\007TRIGGER\020\003\022\013\n\007S" +
-      "PEKTRA\020\004\022\014\n\010SCHEDULE\020\005\022\010\n\004USER\020\006*m\n\017DALI" +
-      "24InputType\022\023\n\017MOMENTARY_SHORT\020\000\022\022\n\016MOME" +
-      "NTARY_LONG\020\001\022\017\n\013LATCHED_LOW\020\002\022\020\n\014LATCHED" +
-      "_HIGH\020\003\022\016\n\nPOSITIONAL\020\004*h\n\026DALIMotionSen" +
-      "sorStates\022\017\n\013MOTION_IDLE\020\000\022\023\n\017MOTION_DIS" +
-      "ABLED\020\001\022\022\n\016MOTION_WARNING\020\002\022\024\n\020MOTION_OC" +
-      "CUPANCY\020\003*I\n\023DALILuxSensorStates\022\020\n\014LUX_" +
-      "DISABLED\020\000\022\017\n\013LUX_ENABLED\020\001\022\017\n\013LUX_DEVIA" +
-      "TE\020\002*N\n\023DALIAddressingError\022\014\n\010NO_ERROR\020" +
-      "\000\022\n\n\006VERIFY\020\001\022\n\n\006SEARCH\020\002\022\021\n\rNO_NEW_DEVI" +
-      "CE\020\003*8\n\022DALIAddressingType\022\017\n\013ADDRESS_NE" +
-      "W\020\000\022\021\n\rREADDRESS_ALL\020\001b\006proto3"
+      "\022\021\n\tline_mask\030\003 \001(\r\022\017\n\007is24Bit\030\004 \001(\010\"6\n\025" +
+      "DALIAddressableObject\022\014\n\004line\030\001 \001(\r\022\017\n\007a" +
+      "ddress\030\002 \001(\r\"x\n\035DALIIdentifyDuplicatesMe" +
+      "ssage\022\021\n\tline_mask\030\001 \001(\r\022\017\n\007is24Bit\030\002 \001(" +
+      "\010\0223\n\023possible_duplicates\030\003 \003(\0132\026.DALIAdd" +
+      "ressableObject\"|\n\nDMXMessage\022\014\n\004zone\030\001 \001" +
+      "(\r\022\025\n\runiverse_mask\030\002 \001(\r\022\017\n\007channel\030\003 \001" +
+      "(\r\022\016\n\006repeat\030\004 \001(\r\022\r\n\005level\030\005 \003(\r\022\031\n\021fad" +
+      "e_time_by_10ms\030\006 \001(\r\"o\n\nRDMMessage\022\025\n\run" +
+      "iverse_mask\030\001 \001(\r\022\013\n\003uid\030\002 \001(\004\022\013\n\003pid\030\003 " +
+      "\001(\r\022\016\n\006getset\030\004 \001(\r\022\022\n\ndatalength\030\005 \001(\r\022" +
+      "\014\n\004data\030\006 \003(\r\"P\n\022RDMResponseMessage\022\013\n\003u" +
+      "id\030\001 \001(\004\022\013\n\003pid\030\002 \001(\r\022\022\n\ndatalength\030\003 \001(" +
+      "\r\022\014\n\004data\030\004 \003(\r\"<\n\023RDMDiscoveryMessage\022\025" +
+      "\n\runiverse_mask\030\001 \001(\r\022\016\n\006isNext\030\002 \001(\010\"T\n" +
+      "\030RDMDiscoveryReplyMessage\022\027\n\017discovery_c" +
+      "ount\030\001 \001(\r\022\013\n\003uid\030\002 \003(\004\022\022\n\nerror_code\030\003 " +
+      "\001(\r\"\337\002\n\025SpektraSettingMessage\022\014\n\004zone\030\001 " +
+      "\001(\r\022\025\n\rstart_address\030\002 \001(\r\022\035\n\025line_or_un" +
+      "iverse_mask\030\003 \001(\r\022\020\n\010protocol\030\004 \001(\r\022\030\n\020n" +
+      "umber_of_lights\030\005 \001(\r\022\032\n\022channels_per_li" +
+      "ght\030\006 \001(\r\022\027\n\017channel_colours\030\007 \003(\r\022?\n\025un" +
+      "scheduled_behaviour\030\010 \001(\0162 .SpektraUnsch" +
+      "eduledBehaviourType\022\027\n\017channel_mapping\030\t" +
+      " \003(\r\022,\n\017line_addressing\030\n \001(\0162\023.LineAddr" +
+      "essingType\022\031\n\021zone_scale_factor\030\013 \001(\002\"3\n" +
+      "\032SpektraColourConfigMessage\022\025\n\rchannel_v" +
+      "alue\030\001 \003(\r\"\350\003\n\034SpektraSequenceConfigMess" +
+      "age\022\r\n\005index\030\001 \001(\r\022\014\n\004type\030\002 \001(\r\022*\n\ntran" +
+      "sition\030\003 \001(\0162\026.SpektraTransitionType\022\031\n\021" +
+      "fade_time_by_10ms\030\004 \001(\r\022\027\n\017time_per_colo" +
+      "ur\030\005 \001(\r\022\034\n\024time_per_colour_unit\030\006 \001(\r\022\025" +
+      "\n\rtime_per_step\030\007 \001(\r\022\032\n\022time_per_step_u" +
+      "nit\030\010 \001(\r\022\r\n\005range\030\t \001(\r\022\016\n\006colour\030\n \003(\004" +
+      "\022\032\n\022is_randomised_type\030\013 \001(\r\022\031\n\021random_t" +
+      "ypes_mask\030\014 \001(\r\022\034\n\024is_reverse_direction\030" +
+      "\r \001(\r\022\032\n\022is_cycle_direction\030\016 \001(\r\022\r\n\005tit" +
+      "le\030\017 \001(\t\022\037\n\027has_random_colour_order\030\020 \001(" +
+      "\010\022,\n\007colours\030\021 \003(\0132\033.SpektraColourConfig" +
+      "Message\022\014\n\004args\030\022 \003(\r\"k\n\026SpektraCalendar" +
+      "Message\022 \n\004type\030\001 \001(\0162\022.SpektraTargetTyp" +
+      "e\022\r\n\005index\030\002 \001(\r\022\014\n\004days\030\003 \003(\010\022\022\n\nisOver" +
+      "ride\030\004 \001(\010\"z\n\031SpektraCalendarDayMessage\022" +
+      "\021\n\tday_index\030\001 \001(\r\022 \n\004type\030\002 \001(\0162\022.Spekt" +
+      "raTargetType\022\024\n\014target_index\030\003 \001(\r\022\022\n\nis" +
+      "Override\030\004 \001(\010\"^\n\036SpektraCalendarOvervie" +
+      "wMessage\022\022\n\nday_offset\030\001 \001(\r\022(\n\004days\030\002 \003" +
+      "(\0132\032.SpektraCalendarDayMessage\"w\n\031Spektr" +
+      "aThemeConfigMessage\022\r\n\005index\030\001 \001(\r\022\016\n\006co" +
+      "lour\030\002 \003(\004\022\r\n\005title\030\003 \001(\t\022,\n\007colours\030\004 \003" +
+      "(\0132\033.SpektraColourConfigMessage\"E\n\022Spekt" +
+      "raReadMessage\022 \n\004type\030\001 \001(\0162\022.SpektraTar" +
+      "getType\022\r\n\005index\030\002 \001(\r\"z\n\025SpektraControl" +
+      "Message\022 \n\004type\030\001 \001(\0162\022.SpektraTargetTyp" +
+      "e\022\014\n\004zone\030\002 \001(\r\022\r\n\005index\030\003 \001(\r\022\"\n\006action" +
+      "\030\004 \001(\0162\022.SpektraActionType\"\325\001\n\017ShowStepM" +
+      "essage\022\022\n\nstep_index\030\001 \001(\r\022\024\n\014target_ind" +
+      "ex\030\002 \001(\r\022+\n\013action_type\030\003 \001(\0162\026.SpektraS" +
+      "tepActionType\022\037\n\027max_random_target_index" +
+      "\030\004 \001(\r\022\014\n\004zone\030\005 \001(\r\022\036\n\026max_output_level" +
+      "_limit\030\006 \001(\r\022\034\n\024time_until_next_10ms\030\007 \001" +
+      "(\r\"\314\001\n\022SpektraShowMessage\022\022\n\nshow_index\030" +
+      "\001 \001(\r\022\027\n\017number_of_steps\030\002 \001(\r\022\036\n\004step\030\003" +
+      " \003(\0132\020.ShowStepMessage\022\021\n\tisRunning\030\004 \001(" +
+      "\010\022\020\n\010isLooped\030\005 \001(\010\022\020\n\010isRandom\030\006 \001(\010\022\023\n" +
+      "\013isTemporary\030\007 \001(\010\022\035\n\025activations_remain" +
+      "ing\030\010 \001(\r\"k\n\032ExtendedSpektraShowMessage\022" +
+      "\022\n\nshow_index\030\001 \001(\r\022\031\n\021step_index_offset" +
+      "\030\002 \001(\r\022\036\n\004step\030\003 \003(\0132\020.ShowStepMessage\"W" +
+      "\n\031SpektraShowControlMessage\022\022\n\nshow_inde" +
+      "x\030\001 \001(\r\022\024\n\014start_resume\030\002 \001(\r\022\020\n\010gotoSte" +
+      "p\030\003 \001(\r\"\272\001\n\024DMXTranslationObject\022\017\n\007line" +
+      "_in\030\001 \001(\r\022\020\n\010line_out\030\002 \001(\r\022\031\n\021dmx_start" +
+      "_address\030\003 \001(\r\022\025\n\rchannel_count\030\004 \001(\r\022\022\n" +
+      "\ndali_array\030\005 \003(\r\022\026\n\016affected_input\030\007 \001(" +
+      "\r\022\020\n\010blocking\030\010 \001(\010\022\017\n\007enabled\030\t \001(\010\"?\n\026" +
+      "DMXProtocolTranslation\022%\n\006object\030\001 \003(\0132\025" +
+      ".DMXTranslationObject\"%\n\021InputStateMessa" +
+      "ge\022\020\n\010use_mask\030\001 \001(\010\"8\n\022InputStateRespon" +
+      "se\022\016\n\006inputs\030\001 \003(\r\022\022\n\ninput_mask\030\002 \001(\r\"@" +
+      "\n\022LevelCacheResponse\022\016\n\006levels\030\001 \003(\r\022\014\n\004" +
+      "line\030\002 \001(\r\022\014\n\004page\030\003 \001(\r\"\200\005\n\034DiagnosticS" +
+      "ystemInfoResponse\022\020\n\010firmware\030\001 \001(\t\022\020\n\010h" +
+      "ardware\030\002 \001(\t\022\r\n\005error\030\003 \001(\t\022\023\n\013input_co" +
+      "unt\030\004 \001(\r\022\024\n\014output_count\030\005 \001(\r\022\020\n\010ir_co" +
+      "unt\030\006 \001(\r\022\027\n\017list_step_count\030\007 \001(\r\022\022\n\nli" +
+      "st_count\030\010 \001(\r\022\023\n\013alarm_count\030\t \001(\r\022\024\n\014b" +
+      "urnin_count\030\n \001(\r\022\031\n\021spektra_seq_count\030\013" +
+      " \001(\r\022\036\n\026spektra_seq_step_count\030\014 \001(\r\022\033\n\023" +
+      "spektra_theme_count\030\r \001(\r\022\034\n\024spektra_sta" +
+      "tic_count\030\016 \001(\r\022\025\n\rproto_version\030\017 \001(\r\022\022" +
+      "\n\nline_count\030\020 \001(\r\022\030\n\005lines\030\021 \003(\0162\t.Line" +
+      "Type\022\025\n\rprofile_count\030\022 \001(\r\022\031\n\021preset_co" +
+      "de_count\030\023 \001(\r\022\030\n\020user_level_count\030\024 \001(\r" +
+      "\022\031\n\021dmx_to_dali_count\030\025 \001(\r\022\032\n\022spektra_z" +
+      "one_count\030\026 \001(\r\022\023\n\013logic_count\030\027 \001(\r\022\030\n\020" +
+      "input_dali_count\030\030 \001(\r\022\021\n\tvendor_id\030\031 \001(" +
+      "\t\022\030\n\020selected_profile\030\032 \001(\r\"U\n\021Diagnosti" +
+      "cMessage\022$\n\004type\030\001 \001(\0162\026.DiagnosticMessa" +
+      "geType\022\014\n\004page\030\002 \001(\r\022\014\n\004line\030\003 \001(\r\"\362\001\n\035A" +
+      "dminProjectPropertiesMessage\022\023\n\013device_n" +
+      "ame\030\002 \001(\t\022\024\n\014project_name\030\003 \001(\t\022\021\n\tlongi" +
+      "tude\030\004 \001(\002\022\020\n\010latitude\030\005 \001(\002\022\024\n\014local_of" +
+      "fset\030\006 \001(\002\022\030\n\020daylight_savings\030\007 \001(\010\022\036\n\026" +
+      "daylight_savings_start\030\010 \001(\r\022\034\n\024daylight" +
+      "_savings_end\030\t \001(\r\022\023\n\013poll_active\030\n \001(\r\"" +
+      "\244\001\n\030AdminConfigStatusMessage\022\023\n\013list_sta" +
+      "tus\030\001 \003(\r\022\026\n\016burn_in_status\030\002 \003(\r\022\024\n\014ala" +
+      "rm_status\030\003 \001(\r\022.\n\023alarm_time_from_reg\030\004" +
+      " \001(\0132\021.TimeClockMessage\022\025\n\rsensor_status" +
+      "\030\005 \003(\r\"\326\001\n\035AdminNetworkPropertiesMessage" +
+      "\022\014\n\004DHCP\030\001 \001(\010\022\n\n\002IP\030\002 \001(\t\022\013\n\003MAC\030\003 \001(\t\022" +
+      "\017\n\007gateway\030\004 \001(\t\022\021\n\tNTPServer\030\005 \001(\t\022\013\n\003N" +
+      "TP\030\006 \001(\010\022\r\n\005error\030\007 \001(\t\022\022\n\nNTPTimeout\030\010 " +
+      "\001(\r\022\016\n\006subnet\030\t \001(\t\022\023\n\013DNS_Primary\030\n \001(\t" +
+      "\022\025\n\rDNS_Secondary\030\013 \001(\t\"D\n\026AdminDNSServe" +
+      "rsMessage\022\023\n\013DNS_Primary\030\001 \001(\t\022\025\n\rDNS_Se" +
+      "condary\030\002 \001(\t\"7\n\033AdminControllerLinesMes" +
+      "sage\022\030\n\005lines\030\001 \003(\0162\t.LineType\"@\n\030AdminD" +
+      "eviceStatusMessage\022\023\n\013temperature\030\001 \001(\002\022" +
+      "\017\n\007battery\030\002 \001(\002\"I\n\027AdminSecureLoginMess" +
+      "age\022\020\n\010username\030\001 \001(\t\022\016\n\006cnonce\030\002 \001(\t\022\014\n" +
+      "\004hash\030\003 \003(\r\";\n\032AdminDALISensorTypeMessag" +
+      "e\022\035\n\004type\030\001 \001(\0162\017.DALISensorType\"\264\004\n\014Adm" +
+      "inMessage\022\"\n\007command\030\001 \001(\0162\021.AdminComman" +
+      "dType\022\"\n\006target\030\002 \001(\0162\022.AdminPropertyTyp" +
+      "e\022\037\n\004data\030\003 \001(\0132\017.PayloadMessageH\000\022<\n\022ne" +
+      "twork_properties\030\004 \001(\0132\036.AdminNetworkPro" +
+      "pertiesMessageH\000\022<\n\022project_properties\030\005" +
+      " \001(\0132\036.AdminProjectPropertiesMessageH\000\0228" +
+      "\n\020controller_lines\030\006 \001(\0132\034.AdminControll" +
+      "erLinesMessageH\000\0222\n\rdevice_status\030\007 \001(\0132" +
+      "\031.AdminDeviceStatusMessageH\000\0222\n\rconfig_s" +
+      "tatus\030\010 \001(\0132\031.AdminConfigStatusMessageH\000" +
+      "\022)\n\013device_time\030\t \001(\0132\022.UpdateTimeMessag" +
+      "eH\000\0227\n\020dali_sensor_type\030\n \001(\0132\033.AdminDAL" +
+      "ISensorTypeMessageH\000\022.\n\013dns_servers\030\013 \001(" +
+      "\0132\027.AdminDNSServersMessageH\000B\t\n\007payload\"" +
+      "K\n\013DataMessage\022\022\n\nidentifier\030\001 \001(\r\022\013\n\003se" +
+      "q\030\002 \001(\r\022\r\n\005count\030\003 \001(\r\022\014\n\004data\030\004 \003(\r\"\331\002\n" +
+      "\023FirmwareMetaMessage\022\030\n\020firmware_version" +
+      "\030\001 \001(\r\022\025\n\rfirmware_date\030\002 \001(\r\022\034\n\024firmwar" +
+      "e_date_upload\030\003 \001(\r\022\031\n\021firmware_checksum" +
+      "\030\004 \001(\r\022\034\n\024firmware_chunk_count\030\005 \001(\r\022\035\n\025" +
+      "firmware_base_address\030\006 \001(\r\022\034\n\024firmware_" +
+      "end_address\030\007 \001(\r\022\032\n\022firmware_is_backup\030" +
+      "\010 \001(\010\022\r\n\005nonce\030\t \003(\r\022\031\n\021firmware_date_da" +
+      "y\030\n \001(\r\022\033\n\023firmware_date_month\030\013 \001(\r\022\032\n\022" +
+      "firmware_date_year\030\014 \001(\r\";\n\026FirmwareCont" +
+      "rolMessage\022!\n\003cmd\030\001 \001(\0162\024.FirmwareComman" +
+      "dType\"d\n\024FirmwareChunkMessage\022\030\n\020firmwar" +
+      "e_address\030\001 \001(\r\022\023\n\013total_bytes\030\002 \001(\r\022\035\n\007" +
+      "payload\030\003 \001(\0132\014.DataMessage\"j\n\024SystemLog" +
+      "ReadMessage\022\031\n\021log_start_address\030\001 \001(\r\022\026" +
+      "\n\016logs_requested\030\002 \001(\r\022\037\n\004logs\030\003 \003(\0132\021.S" +
+      "ystemLogMessage\"\267\002\n\020SystemLogMessage\022\027\n\017" +
+      "time_since_boot\030\001 \001(\r\022\036\n\004boot\030\002 \001(\0132\016.Sy" +
+      "stemLogBootH\000\022$\n\007netlink\030\003 \001(\0132\021.SystemL" +
+      "ogNetLinkH\000\022\034\n\003ntp\030\004 \001(\0132\r.SystemLogNTPH" +
+      "\000\022$\n\007trigger\030\005 \001(\0132\021.SystemLogTriggerH\000\022" +
+      "$\n\007spektra\030\006 \001(\0132\021.SystemLogSpektraH\000\022&\n" +
+      "\010schedule\030\007 \001(\0132\022.SystemLogScheduleH\000\022(\n" +
+      "\tuserstart\030\010 \001(\0132\023.SystemLogUserStartH\000B" +
+      "\010\n\006packet\"D\n\rSystemLogBoot\022$\n\ttimeclock\030" +
+      "\001 \001(\0132\021.TimeClockMessage\022\r\n\005flags\030\002 \001(\r\"" +
+      "%\n\020SystemLogNetLink\022\021\n\tis_linked\030\001 \001(\010\"4" +
+      "\n\014SystemLogNTP\022$\n\ttimeclock\030\001 \001(\0132\021.Time" +
+      "ClockMessage\"O\n\020SystemLogTrigger\022 \n\007trig" +
+      "ger\030\001 \001(\0132\017.TriggerMessage\022\031\n\006source\030\002 \001" +
+      "(\0162\t.ReadType\"g\n\020SystemLogSpektra\022\"\n\006act" +
+      "ion\030\001 \001(\0162\022.SpektraActionType\022 \n\004type\030\002 " +
+      "\001(\0162\022.SpektraTargetType\022\r\n\005index\030\003 \001(\r\"a" +
+      "\n\021SystemLogSchedule\022\r\n\005index\030\001 \001(\r\022\017\n\007is" +
+      "Start\030\002 \001(\r\022\016\n\006second\030\003 \001(\r\022\016\n\006minute\030\004 " +
+      "\001(\r\022\014\n\004hour\030\005 \001(\r\"I\n\022SystemLogUserStart\022" +
+      "$\n\ttimeclock\030\001 \001(\0132\021.TimeClockMessage\022\r\n" +
+      "\005flags\030\002 \001(\r\"\323\001\n\031SystemMetaDataReadMessa" +
+      "ge\022\033\n\023input_press_counter\030\001 \003(\r\022\032\n\022list_" +
+      "start_counter\030\002 \003(\r\022\031\n\021schedules_counter" +
+      "\030\003 \003(\r\022\026\n\016screen_on_time\030\004 \001(\r\022\027\n\017screen" +
+      "_dim_time\030\005 \001(\r\022\031\n\021screen_saver_time\030\006 \001" +
+      "(\r\022\026\n\016reboot_counter\030\007 \001(\r\"\277\001\n\013EventFilt" +
+      "er\022\r\n\005input\030\001 \001(\010\022\026\n\016dali_arc_level\030\002 \001(" +
+      "\010\022\024\n\014dali_command\030\003 \001(\010\022\023\n\013dali_sensor\030\004" +
+      " \001(\010\022\022\n\ndali_input\030\005 \001(\010\022\032\n\022dmx_stream_c" +
+      "hanged\030\006 \001(\010\022\025\n\rdali_24_frame\030\007 \001(\010\022\027\n\017t" +
+      "rigger_message\030\010 \001(\010\"\335\001\n\014TriggerEvent\022\032\n" +
+      "\004type\030\001 \001(\0162\014.TriggerType\022\017\n\005level\030\002 \001(\r" +
+      "H\000\022(\n\014dali_command\030\003 \001(\0162\020.DALICommandTy" +
+      "peH\000\022\026\n\016target_address\030\004 \001(\r\022\021\n\tline_mas" +
+      "k\030\005 \001(\r\022\014\n\004zone\030\006 \001(\r\022\r\n\005value\030\007 \001(\r\022\023\n\013" +
+      "query_index\030\010 \001(\r\022\016\n\006source\030\t \001(\rB\t\n\007pay" +
+      "load\"m\n\020DALI24InputEvent\022\r\n\005index\030\001 \001(\r\022" +
+      "\014\n\004line\030\002 \001(\r\022\017\n\007address\030\003 \001(\r\022\036\n\004type\030\004" +
+      " \001(\0162\020.DALI24InputType\022\013\n\003arg\030\005 \001(\r\"/\n\020D" +
+      "ALI24FrameEvent\022\014\n\004line\030\001 \001(\r\022\r\n\005frame\030\002" +
+      " \001(\r\"\252\001\n\017DALISensorEvent\022\r\n\005index\030\001 \001(\r\022" +
+      "\014\n\004line\030\002 \001(\r\022\017\n\007address\030\003 \001(\r\022-\n\014motion" +
+      "_state\030\004 \001(\0162\027.DALIMotionSensorStates\022\'\n" +
+      "\tlux_state\030\005 \001(\0162\024.DALILuxSensorStates\022\021" +
+      "\n\tlux_level\030\006 \001(\r\"\300\002\n\014EventMessage\022\031\n\005ev" +
+      "ent\030\001 \001(\0162\n.EventType\022 \n\007trigger\030\002 \001(\0132\r" +
+      ".TriggerEventH\000\022%\n\006inputs\030\003 \001(\0132\023.InputS" +
+      "tateResponseH\000\022\"\n\007payload\030\004 \001(\0132\017.Payloa" +
+      "dMessageH\000\022\"\n\006sensor\030\006 \001(\0132\020.DALISensorE" +
+      "ventH\000\022*\n\rdali_24_input\030\007 \001(\0132\021.DALI24In" +
+      "putEventH\000\022\036\n\006filter\030\010 \001(\0132\014.EventFilter" +
+      "H\000\022*\n\rdali_24_frame\030\t \001(\0132\021.DALI24FrameE" +
+      "ventH\000B\014\n\nevent_data\"\243\025\n\rEdidioMessage\022\022" +
+      "\n\nmessage_id\030\001 \001(\r\022\032\n\003ack\030\002 \001(\0132\013.AckMes" +
+      "sageH\000\022$\n\006inputs\030\003 \001(\0132\022.InputMultiMessa" +
+      "geH\000\022&\n\007outputs\030\004 \001(\0132\023.OutputMultiMessa" +
+      "geH\000\022\036\n\003irs\030\005 \001(\0132\017.IRMultiMessageH\000\022 \n\006" +
+      "sensor\030\006 \001(\0132\016.SensorMessageH\000\022\034\n\004list\030\010" +
+      " \001(\0132\014.ListMessageH\000\022\036\n\005alarm\030\n \001(\0132\r.Al" +
+      "armMessageH\000\022$\n\006alarms\030\013 \001(\0132\022.AlarmMult" +
+      "iMessageH\000\022\'\n\010burn_ins\030\014 \001(\0132\023.BurnInMul" +
+      "tiMessageH\000\022/\n\016sensor_command\030\r \001(\0132\025.Se" +
+      "nsorCommandMessageH\000\022/\n\016change_profile\030\016" +
+      " \001(\0132\025.ChangeProfileMessageH\000\022,\n\020identif" +
+      "y_message\030\017 \001(\0132\020.IdentifyMessageH\000\022)\n\013u" +
+      "pdate_time\030\020 \001(\0132\022.UpdateTimeMessageH\000\022)" +
+      "\n\013read_device\030\021 \001(\0132\022.ReadDeviceMessageH" +
+      "\000\022$\n\014dali_message\030\022 \001(\0132\014.DALIMessageH\000\022" +
+      "(\n\ndali_query\030\023 \001(\0132\022.DALIQueryResponseH" +
+      "\000\022\"\n\013dmx_message\030\024 \001(\0132\013.DMXMessageH\000\0223\n" +
+      "\020external_trigger\030\025 \001(\0132\027.ExternalTrigge" +
+      "rMessageH\000\0222\n\020spektra_settings\030\026 \001(\0132\026.S" +
+      "pektraSettingMessageH\000\0229\n\020spektra_sequen" +
+      "ce\030\027 \001(\0132\035.SpektraSequenceConfigMessageH" +
+      "\000\0223\n\020spektra_calendar\030\030 \001(\0132\027.SpektraCal" +
+      "endarMessageH\000\0223\n\rspektra_theme\030\031 \001(\0132\032." +
+      "SpektraThemeConfigMessageH\000\022+\n\014spektra_r" +
+      "ead\030\032 \001(\0132\023.SpektraReadMessageH\000\0221\n\017spek" +
+      "tra_control\030\033 \001(\0132\026.SpektraControlMessag" +
+      "eH\000\0221\n\016dmx_translator\030\034 \001(\0132\027.DMXProtoco" +
+      "lTranslationH\000\022+\n\rinput_request\030\035 \001(\0132\022." +
+      "InputStateMessageH\000\022-\n\016input_response\030\036 " +
+      "\001(\0132\023.InputStateResponseH\000\0224\n\013diag_syste" +
+      "m\030\037 \001(\0132\035.DiagnosticSystemInfoResponseH\000" +
+      "\022*\n\014diag_message\030  \001(\0132\022.DiagnosticMessa" +
+      "geH\000\022&\n\radmin_message\030! \001(\0132\r.AdminMessa" +
+      "geH\000\022\036\n\005event\030\" \001(\0132\r.EventMessageH\000\022>\n\026" +
+      "secure_device_settings\030# \001(\0132\034.SecureDev" +
+      "iceSettingsMessageH\000\022,\n\014firmware_new\030$ \001" +
+      "(\0132\024.FirmwareMetaMessageH\000\0223\n\020firmware_c" +
+      "ontrol\030% \001(\0132\027.FirmwareControlMessageH\000\022" +
+      "/\n\016firmware_chunk\030& \001(\0132\025.FirmwareChunkM" +
+      "essageH\000\0223\n\024level_cache_response\030\' \001(\0132\023" +
+      ".LevelCacheResponseH\000\022-\n\rlist_extended\030)" +
+      " \001(\0132\024.ExtendedListMessageH\000\022\"\n\013ayt_mess" +
+      "age\030* \001(\0132\013.AytMessageH\000\022\"\n\013rdm_message\030" +
+      "+ \001(\0132\013.RDMMessageH\000\0223\n\024rdm_response_mes" +
+      "sage\030, \001(\0132\023.RDMResponseMessageH\000\022+\n\rlog" +
+      "ic_message\030- \001(\0132\022.LogicMultiMessageH\000\0220" +
+      "\n\014secure_login\030. \001(\0132\030.AdminSecureLoginM" +
+      "essageH\000\0223\n\024device_state_message\030/ \001(\0132\023" +
+      ".DeviceStateMessageH\000\022:\n\024spektra_calenda" +
+      "r_day\0300 \001(\0132\032.SpektraCalendarDayMessageH" +
+      "\000\022D\n\031spektra_calendar_overview\0301 \001(\0132\037.S" +
+      "pektraCalendarOverviewMessageH\000\022-\n\013input" +
+      "s_dali\0302 \001(\0132\026.DALIInputMultiMessageH\000\022*" +
+      "\n\tlogs_read\0303 \001(\0132\025.SystemLogReadMessage" +
+      "H\000\0223\n\rmetadata_read\0304 \001(\0132\032.SystemMetaDa" +
+      "taReadMessageH\000\0229\n\027dali_addressing_messa" +
+      "ge\0305 \001(\0132\026.DALIAddressingMessageH\000\0227\n\026da" +
+      "li_remapping_message\0306 \001(\0132\025.DALIRemappi" +
+      "ngMessageH\000\022B\n\034spektra_show_control_mess" +
+      "age\0307 \001(\0132\032.SpektraShowControlMessageH\000\022",
+      "3\n\024spektra_show_message\0308 \001(\0132\023.SpektraS" +
+      "howMessageH\000\022D\n\035extended_spektra_show_me" +
+      "ssage\0309 \001(\0132\033.ExtendedSpektraShowMessage" +
+      "H\000\022-\n\rrdm_discovery\030: \001(\0132\024.RDMDiscovery" +
+      "MessageH\000\0228\n\023rdm_discovery_reply\030; \001(\0132\031" +
+      ".RDMDiscoveryReplyMessageH\000\022B\n\030dali_iden" +
+      "tify_duplicates\030< \001(\0132\036.DALIIdentifyDupl" +
+      "icatesMessageH\000B\t\n\007payload*\233\001\n\024TriggerOp" +
+      "erationType\022\r\n\tMOMENTARY\020\000\022\014\n\010LATCHING\020\001" +
+      "\022\024\n\020MOMENTARY_OUTPUT\020\002\022\023\n\017LATCHING_OUTPU" +
+      "T\020\003\022\n\n\006ROTARY\020\004\022\027\n\022MOMENTARY_DISABLED\020\200\001" +
+      "\022\026\n\021LATCHING_DISABLED\020\201\001*\243\014\n\013TriggerType" +
+      "\022\014\n\010DALI_ARC\020\000\022\020\n\014DALI_COMMAND\020\001\022\032\n\026DMX_" +
+      "CHANNELS_SPLIT_LOW\020\002\022\033\n\027DMX_CHANNELS_SPL" +
+      "IT_HIGH\020\003\022$\n DMX_MULTICAST_CHANNELS_SPLI" +
+      "T_LOW\020\004\022%\n!DMX_MULTICAST_CHANNELS_SPLIT_" +
+      "HIGH\020\005\022\021\n\rDMX_BROADCAST\020\006\022\t\n\005DIDIO\020\007\022\024\n\020" +
+      "FADE_UP_WITH_MIN\020\010\022\016\n\nLIST_START\020\t\022\031\n\025LI" +
+      "ST_START_CONTINUOUS\020\n\022\r\n\tLIST_STOP\020\013\022\025\n\021" +
+      "SPEKTRA_START_SEQ\020\014\022\024\n\020SPEKTRA_STOP_SEQ\020" +
+      "\r\022\021\n\rSPEKTRA_THEME\020\016\022\022\n\016SPEKTRA_STATIC\020\017" +
+      "\022\024\n\020SPEKTRA_SCHEDULE\020\020\022\016\n\nLINK_START\020\021\022\r" +
+      "\n\tLINK_STOP\020\022\022\020\n\014DISABLE_BURN\020\023\022\017\n\013ENABL" +
+      "E_BURN\020\024\022\016\n\nON_OFF_TOG\020\025\022\017\n\013MIN_MAX_TOG\020" +
+      "\026\022\020\n\014ENABLE_INPUT\020\027\022\021\n\rDISABLE_INPUT\020\030\022\024" +
+      "\n\020ENABLE_TOG_INPUT\020\031\022\016\n\nOUTPUT_TOG\020\032\022\017\n\013" +
+      "OUTPUT_HIGH\020\033\022\016\n\nOUTPUT_LOW\020\034\022\017\n\013OUTPUT_" +
+      "TRIG\020\035\022\022\n\016PROFILE_CHANGE\020\036\022\023\n\017FADE_LONG_" +
+      "PRESS\020\037\022\n\n\006SYNCRO\020 \022\017\n\013PRESET_CODE\020!\022\017\n\013" +
+      "CUSTOM_CODE\020\"\022\021\n\rSPEKTRA_SLEEP\020#\022\022\n\016SPEK" +
+      "TRA_RESUME\020$\022\020\n\014DEVICE_RESET\020%\022\017\n\013DEVICE" +
+      "_SAVE\020&\022\030\n\024USER_LEVEL_STORE_NEW\020\'\022\032\n\026USE" +
+      "R_LEVEL_SET_DEFAULT\020(\022\025\n\021USER_LEVEL_RECA" +
+      "LL\020)\022\r\n\tROOM_JOIN\020+\022\017\n\013ROOM_UNJOIN\020,\022\023\n\017" +
+      "TYPE8_TC_WARMER\020-\022\023\n\017TYPE8_TC_COOLER\020.\022\023" +
+      "\n\017TYPE8_TC_ACTUAL\020/\022\023\n\017LOGIC_OPERATION\0200" +
+      "\022\020\n\014ALARM_ENABLE\0201\022\021\n\rALARM_DISABLE\0202\022 \n" +
+      "\034DALI_CONTROL_SENSOR_OVERRIDE\0203\022$\n DALI_" +
+      "CONTROL_SENSOR_TEMP_DISABLE\0204\022\036\n\032DALI_CO" +
+      "NTROL_SENSOR_RESUME\0205\022\025\n\021DALI_ARC_OVERRI" +
+      "DE\0206\022\031\n\025DALI_COMMAND_OVERRIDE\0207\022\035\n\031FADE_" +
+      "UP_WITH_MIN_OVERRIDE\0208\022\027\n\023ON_OFF_TOG_OVE" +
+      "RRIDE\0209\022\030\n\024MIN_MAX_TOG_OVERRIDE\020:\022\017\n\013MAX" +
+      "_OFF_TOG\020;\022\030\n\024MAX_OFF_TOG_OVERRIDE\020<\022\034\n\030" +
+      "FADE_LONG_PRESS_OVERRIDE\020=\022\036\n\032USER_LEVEL" +
+      "_RECALL_OVERRIDE\020>\022\024\n\020DMX_ZONE_FADE_UP\020?" +
+      "\022\026\n\022DMX_ZONE_FADE_DOWN\020@\022\021\n\rLOGGING_LEVE" +
+      "L\020A\022\030\n\024SPEKTRA_SHOW_CONTROL\020B\022\031\n\025CIRCADI" +
+      "AN_TEMPERATURE\020C\022\034\n\030DALI_CONTROL_SENSOR_" +
+      "MUTE\020D\022\036\n\032DALI_CONTROL_SENSOR_UNMUTE\020E\022\025" +
+      "\n\021SPEKTRA_INTENSITY\020F\022\017\n\nNO_COMMAND\020\376\001*\353" +
+      "\001\n\010ReadType\022\n\n\006INPUTS\020\000\022\013\n\007OUTPUTS\020\001\022\006\n\002" +
+      "IR\020\002\022\n\n\006SENSOR\020\003\022\010\n\004LIST\020\005\022\n\n\006ALARMS\020\007\022\013" +
+      "\n\007BURN_IN\020\010\022\013\n\007PROJECT\020\t\022\013\n\007NETWORK\020\n\022\n\n" +
+      "\006DEVICE\020\013\022\r\n\tPOLL_DATA\020\014\022\021\n\rLIST_EXTENDE" +
+      "D\020\r\022\t\n\005LOGIC\020\016\022\017\n\013DALI_INPUTS\020\017\022\020\n\014SPEKT" +
+      "RA_SHOW\020\020\022\031\n\025SPEKTRA_SHOW_EXTENDED\020\021*\214\001\n" +
+      "\017AlarmRepeatType\022\023\n\017ALARM_NO_REPEAT\020\000\022\026\n" +
+      "\022ALARM_REPEAT_DAILY\020\001\022\031\n\025ALARM_REPEAT_WO" +
+      "RK_DAY\020\002\022\027\n\023ALARM_REPEAT_WEEKLY\020\003\022\030\n\024ALA" +
+      "RM_REPEAT_MONTHLY\020\004*I\n\016AlarmAstroType\022\022\n" +
+      "\016ALARM_NO_ASTRO\020\000\022\021\n\rALARM_SUNRUSE\020\001\022\020\n\014" +
+      "ALARM_SUNSET\020\002*^\n\021SpektraTargetType\022\014\n\010S" +
+      "ETTINGS\020\000\022\014\n\010SEQUENCE\020\001\022\t\n\005THEME\020\002\022\n\n\006ST" +
+      "ATIC\020\003\022\014\n\010CALENDAR\020\004\022\010\n\004SHOW\020\005*=\n\021Spektr" +
+      "aActionType\022\t\n\005START\020\000\022\010\n\004STOP\020\001\022\t\n\005PAUS" +
+      "E\020\002\022\010\n\004SAVE\020\003*p\n\025SpektraStepActionType\022\020" +
+      "\n\014RUN_SEQUENCE\020\000\022\016\n\nSHOW_THEME\020\001\022\016\n\nSTAR" +
+      "T_LIST\020\002\022\022\n\016PAUSE_PREVIOUS\020\003\022\021\n\rSTOP_PRE" +
+      "VIOUS\020\004*}\n\037SpektraUnscheduledBehaviourTy" +
+      "pe\022 \n\034RUN_RANDOM_COLOURED_SEQUENCE\020\000\022\022\n\016" +
+      "RUN_SEQUENCE_1\020\001\022\023\n\017RESUME_PREVIOUS\020\002\022\017\n" +
+      "\nDO_NOTHING\020\376\001*6\n\022LineAddressingType\022\017\n\013" +
+      "INDEPENDENT\020\000\022\017\n\013CONSECUTIVE\020\001*\347\002\n\016AckMe" +
+      "ssageType\022\021\n\rDECODE_FAILED\020\000\022\027\n\023INDEX_OU" +
+      "T_OF_BOUNDS\020\001\022\023\n\017UNEXPECTED_TYPE\020\002\022\021\n\rEN" +
+      "CODE_FAILED\020\003\022\020\n\014KEY_MISMATCH\020\004\022\013\n\007SUCCE" +
+      "SS\020\005\022\022\n\016INVALID_PARAMS\020\006\022\026\n\022UNEXPECTED_C" +
+      "OMMAND\020\007\022\030\n\024COMMUNICATION_FAILED\020\010\022\031\n\025CO" +
+      "MMUNICATION_TIMEOUT\020\t\022\021\n\rDATA_TOO_LONG\020\n" +
+      "\022\023\n\017UNEXPECTED_CASE\020\013\022\016\n\nSLOTS_FULL\020\014\022\020\n" +
+      "\014UNAUTHORISED\020\r\022\023\n\017PARTIAL_SUCCESS\020\016\022\022\n\016" +
+      "COMMAND_FAILED\020\017\022\016\n\nDEPRECATED\020\020*\352\004\n\020Typ" +
+      "e8CommandType\022\024\n\020SET_TEMP_X_COORD\020\000\022\024\n\020S" +
+      "ET_TEMP_Y_COORD\020\001\022\014\n\010ACTIVATE\020\002\022\023\n\017X_COO" +
+      "RD_STEP_UP\020\003\022\025\n\021X_COORD_STEP_DOWN\020\004\022\023\n\017Y" +
+      "_COORD_STEP_UP\020\005\022\025\n\021Y_COORD_STEP_DOWN\020\006\022" +
+      "\037\n\033SET_TEMP_COLOUR_TEMPERATURE\020\007\022\"\n\036COLO" +
+      "UR_TEMPERATURE_STEP_COOLER\020\010\022\"\n\036COLOUR_T" +
+      "EMPERATURE_STEP_WARMER\020\t\022\033\n\027SET_TEMP_PRI" +
+      "_N_DIMLEVEL\020\n\022\031\n\025SET_TEMP_RGB_DIMLEVEL\020\013" +
+      "\022\031\n\025SET_TEMP_WAF_DIMLEVEL\020\014\022\033\n\027SET_TEMP_" +
+      "RGBWAF_CONTROL\020\r\022\031\n\025COPY_REPORT_TEMPORAR" +
+      "Y\020\016\022\022\n\016STORE_TY_PRI_N\020\020\022\030\n\024STORE_XY_COOR" +
+      "D_PRI_N\020\021\022\"\n\036STORE_COLOUR_TEMPERATURE_LI" +
+      "MIT\020\022\022\036\n\032STORE_GEAR_FEATURES_STATUS\020\023\022\032\n" +
+      "\026ASSIGN_COLOR_LINKED_CH\020\025\022\022\n\016START_AUTO_" +
+      "CAL\020\026\022\027\n\023ENABLE_DEVICE_TYPE8\0200\022\025\n\021SET_XY" +
+      "_COORDINATE\0202*\221\002\n\016Type8QueryType\022\024\n\020TYPE" +
+      "8_QUERY_NULL\020\000\022$\n TYPE8_QUERY_GEAR_FEATU" +
+      "RES_STATUS\020\001\022\035\n\031TYPE8_QUERY_COLOUR_STATU" +
+      "S\020\002\022$\n TYPE8_QUERY_COLOUR_TYPE_FEATURES\020" +
+      "\003\022\034\n\030TYPE8_QUERY_COLOUR_VALUE\020\004\022\036\n\032TYPE8" +
+      "_QUERY_RGBWAF_CONTROL\020\005\022\037\n\033TYPE8_QUERY_A" +
+      "SSIGNED_COLOUR\020\006\022\037\n\033TYPE8_QUERY_EXT_VERS" +
+      "ION_NUM\020\010*\274\006\n\023DALI24DeviceSetting\022\024\n\020COM" +
+      "MAND_IDENTIFY\020\000\022\"\n\036COMMAND_RESET_POWER_C" +
+      "YCLE_SEEN\020\001\022\021\n\rCOMMAND_RESET\020\020\022\035\n\031COMMAN" +
+      "D_RESET_MEMORY_BANK\020\021\022\035\n\031COMMAND_SET_SHO" +
+      "RT_ADDRESS\020\024\022\037\n\033COMMAND_ENABLE_WRITE_MEM" +
+      "ORY\020\025\022!\n\035COMMAND_ENABLE_APP_CONTROLLER\020\026" +
+      "\022\"\n\036COMMAND_DISABLE_APP_CONTROLLER\020\027\022\036\n\032" +
+      "COMMAND_SET_OPERATING_MODE\020\030\022%\n!COMMAND_" +
+      "ADD_TO_DEVICE_GROUPS_0_15\020\031\022&\n\"COMMAND_A" +
+      "DD_TO_DEVICE_GROUPS_15_32\020\032\022#\n\037COMMAND_R" +
+      "EMOVE_FROM_GROUPS_0_15\020\033\022$\n COMMAND_REMO" +
+      "VE_FROM_GROUPS_16_32\020\034\022 \n\034COMMAND_START_" +
+      "QUIESCENT_MODE\020\035\022\037\n\033COMMAND_STOP_QUIESCE" +
+      "NT_MODE\020\036\022$\n COMMAND_ENABLE_POWER_CYCLE_" +
+      "NOTIF\020\037\022%\n!COMMAND_DISABLE_POWER_CYCLE_N" +
+      "OTIF\020 \022%\n!COMMAND_SAVE_PERSISTENT_VARIAB" +
+      "LES\020!\022\026\n\022SET_EVENT_PRIORITY\020a\022\023\n\017ENABLE_" +
+      "INSTANCE\020b\022\024\n\020DISABLE_INSTANCE\020c\022\036\n\032SET_" +
+      "PRIMARY_INSTANCE_GROUP\020d\022\030\n\024SET_INSTANCE" +
+      "_GROUP_1\020e\022\030\n\024SET_INSTANCE_GROUP_2\020f\022\024\n\020" +
+      "SET_EVENT_SCHEME\020g\022\024\n\020SET_EVENT_FILTER\020h" +
+      "*c\n\022DALI24InstanceType\022\013\n\007DEFAULT\020\000\022\t\n\005I" +
+      "NPUT\020\001\022\020\n\014ROTARY_INPUT\020\002\022\021\n\rMOTION_SENSO" +
+      "R\020\003\022\020\n\014LIGHT_SENSOR\020\004*\276\002\n\014DALI24OpCode\022\017" +
+      "\n\013OPCODE_NULL\020\000\022 \n\034SENSOR_MOTION_SET_HOL" +
+      "D_TIMER\020!\022\"\n\036SENSOR_MOTION_SET_REPORT_TI" +
+      "MER\020\"\022$\n SENSOR_MOTION_SET_DEADTIME_TIME" +
+      "R\020#\022#\n\037SENSOR_MOTION_CANCEL_HOLD_TIMER\020$" +
+      "\022!\n\035SENSOR_LIGHT_SET_REPORT_TIMER\0200\022\037\n\033S" +
+      "ENSOR_LIGHT_SET_HYSTERESIS\0201\022#\n\037SENSOR_L" +
+      "IGHT_SET_DEADTIME_TIMER\0202\022#\n\037SENSOR_LIGH" +
+      "T_SET_HYSTERESIS_MIN\0203*W\n\010LineType\022\016\n\nLI" +
+      "NE_EMPTY\020\000\022\r\n\tLINE_DALI\020\001\022\014\n\010LINE_DMX\020\002\022" +
+      "\017\n\013LINE_DMX_IN\020\003\022\r\n\tLINE_AUTO\020\004*\251\001\n\tEven" +
+      "tType\022\014\n\010REGISTER\020\000\022\021\n\rTRIGGER_EVENT\020\001\022\017" +
+      "\n\013INPUT_EVENT\020\002\022\020\n\014SENSOR_EVENT\020\003\022\021\n\rCON" +
+      "TROL_EVENT\020\004\022\023\n\017ROOM_JOIN_EVENT\020\005\022\027\n\023DAL" +
+      "I_24_INPUT_EVENT\020\006\022\027\n\023DALI_24_FRAME_EVEN" +
+      "T\020\007*\306\t\n\rDALIQueryType\022\023\n\017DALI_QUERY_NULL" +
+      "\020\000\022\026\n\021DALI_QUERY_STATUS\020\220\001\022\027\n\022DALI_QUERY" +
+      "_BALLAST\020\221\001\022\034\n\027DALI_QUERY_LAMP_FAILURE\020\222" +
+      "\001\022\035\n\030DALI_QUERY_LAMP_POWER_ON\020\223\001\022\033\n\026DALI" +
+      "_QUERY_LIMIT_ERROR\020\224\001\022\033\n\026DALI_QUERY_RESE" +
+      "T_STATE\020\225\001\022%\n DALI_QUERY_MISSING_SHORT_A" +
+      "DDRESS\020\226\001\022\036\n\031DALI_QUERY_VERSION_NUMBER\020\227" +
+      "\001\022\024\n\017DALI_QUERY_DTR0\020\230\001\022\033\n\026DALI_QUERY_DE" +
+      "VICE_TYPE\020\231\001\022\034\n\027DALI_QUERY_PHYSICAL_MIN\020" +
+      "\232\001\022\035\n\030DALI_QUERY_POWER_FAILURE\020\233\001\022\024\n\017DAL" +
+      "I_QUERY_DTR1\020\234\001\022\024\n\017DALI_QUERY_DTR2\020\235\001\022\036\n" +
+      "\031DALI_QUERY_OPERATING_MODE\020\236\001\022 \n\033DALI_QU" +
+      "ERY_LIGHTSOURCE_TYPE\020\237\001\022\034\n\027DALI_QUERY_AC" +
+      "TUAL_LEVEL\020\240\001\022\031\n\024DALI_QUERY_MAX_LEVEL\020\241\001" +
+      "\022\031\n\024DALI_QUERY_MIN_LEVEL\020\242\001\022\036\n\031DALI_QUER" +
+      "Y_POWER_ON_LEVEL\020\243\001\022$\n\037DALI_QUERY_SYSTEM" +
+      "_FAILURE_LEVEL\020\244\001\022!\n\034DALI_QUERY_FADETIME" +
+      "_FADERATE\020\245\001\022*\n%DALI_QUERY_MANUFACTURER_" +
+      "SPECIFIC_MODE\020\246\001\022 \n\033DALI_QUERY_NEXT_DEVI" +
+      "CE_TYPE\020\247\001\022\"\n\035DALI_QUERY_EXTENDED_FADE_T" +
+      "IME\020\250\001\022$\n\037DALI_QUERY_CONTROL_GEAR_FAILUR" +
+      "E\020\252\001\022\035\n\030DALI_QUERY_SCENE_X_LEVEL\020\260\001\022\032\n\025D" +
+      "ALI_QUERY_GROUPS_0_7\020\300\001\022\033\n\026DALI_QUERY_GR" +
+      "OUPS_8_15\020\301\001\022 \n\033DALI_QUERY_RANDOM_ADDRES" +
+      "S_H\020\302\001\022 \n\033DALI_QUERY_RANDOM_ADDRESS_M\020\303\001" +
+      "\022 \n\033DALI_QUERY_RANDOM_ADDRESS_L\020\304\001\022\034\n\027DA" +
+      "LI_QUERY_READ_DTR_0_1\020\305\001\022 \n\033DALI_QUERY_A" +
+      "PP_EXT_COMMANDS\020\340\001\022\"\n\035DALI_QUERY_EXT_VER" +
+      "SION_NUMBER\020\377\001\022\027\n\022DALI_QUERY_COMPARE\020\204\002\022" +
+      "$\n\037DALI_QUERY_VERIFY_SHORT_ADDRESS\020\214\002\022\035\n" +
+      "\030DALI_QUERY_SHORT_ADDRESS\020\215\002*\351\027\n\017DALICom" +
+      "mandType\022\014\n\010DALI_OFF\020\000\022\020\n\014DALI_FADE_UP\020\001" +
+      "\022\022\n\016DALI_FADE_DOWN\020\002\022\020\n\014DALI_STEP_UP\020\003\022\022" +
+      "\n\016DALI_STEP_DOWN\020\004\022\022\n\016DALI_MAX_LEVEL\020\005\022\022" +
+      "\n\016DALI_MIN_LEVEL\020\006\022\026\n\022DALI_STEP_DOWN_OFF" +
+      "\020\007\022\023\n\017DALI_ON_STEP_UP\020\010\022\030\n\024DALI_ENABLE_D" +
+      "APC_SEQ\020\t\022!\n\035DALI_RECALL_LAST_ACTIVE_LEV" +
+      "EL\020\n\022\026\n\022DALI_CONTINUOUS_UP\020\013\022\030\n\024DALI_CON" +
+      "TINUOUS_DOWN\020\014\022\027\n\023DALI_RECALL_SCENE_0\020\020\022" +
+      "\027\n\023DALI_RECALL_SCENE_1\020\021\022\027\n\023DALI_RECALL_" +
+      "SCENE_2\020\022\022\027\n\023DALI_RECALL_SCENE_3\020\023\022\027\n\023DA" +
+      "LI_RECALL_SCENE_4\020\024\022\027\n\023DALI_RECALL_SCENE" +
+      "_5\020\025\022\027\n\023DALI_RECALL_SCENE_6\020\026\022\027\n\023DALI_RE" +
+      "CALL_SCENE_7\020\027\022\027\n\023DALI_RECALL_SCENE_8\020\030\022" +
+      "\027\n\023DALI_RECALL_SCENE_9\020\031\022\030\n\024DALI_RECALL_" +
+      "SCENE_10\020\032\022\030\n\024DALI_RECALL_SCENE_11\020\033\022\030\n\024" +
+      "DALI_RECALL_SCENE_12\020\034\022\030\n\024DALI_RECALL_SC" +
+      "ENE_13\020\035\022\030\n\024DALI_RECALL_SCENE_14\020\036\022\030\n\024DA" +
+      "LI_RECALL_SCENE_15\020\037\022\016\n\nDALI_RESET\020 \022 \n\034" +
+      "DALI_STORE_ACTUAL_LEVEL_DTR0\020!\022\035\n\031DALI_S" +
+      "AVE_PERSISTENT_VARS\020\"\022\033\n\027DALI_SET_OPERAT" +
+      "ING_MODE\020#\022\032\n\026DALI_RESET_MEMORY_BANK\020$\022\030" +
+      "\n\024DALI_IDENTIFY_DEVICE\020%\022\026\n\022DALI_SET_MAX" +
+      "_LEVEL\020*\022\026\n\022DALI_SET_MIN_LEVEL\020+\022!\n\035DALI" +
+      "_SET_SYSTEM_FAILURE_LEVEL\020,\022\033\n\027DALI_SET_" +
+      "POWER_ON_LEVEL\020-\022\026\n\022DALI_SET_FADE_TIME\020." +
+      "\022\026\n\022DALI_SET_FADE_RATE\020/\022\032\n\026DALI_SET_EXT" +
+      "_FADE_TIME\0200\022\024\n\020DALI_SET_SCENE_0\020@\022\024\n\020DA" +
+      "LI_SET_SCENE_1\020A\022\024\n\020DALI_SET_SCENE_2\020B\022\024" +
+      "\n\020DALI_SET_SCENE_3\020C\022\024\n\020DALI_SET_SCENE_4" +
+      "\020D\022\024\n\020DALI_SET_SCENE_5\020E\022\024\n\020DALI_SET_SCE" +
+      "NE_6\020F\022\024\n\020DALI_SET_SCENE_7\020G\022\024\n\020DALI_SET" +
+      "_SCENE_8\020H\022\024\n\020DALI_SET_SCENE_9\020I\022\025\n\021DALI" +
+      "_SET_SCENE_10\020J\022\025\n\021DALI_SET_SCENE_11\020K\022\025" +
+      "\n\021DALI_SET_SCENE_12\020L\022\025\n\021DALI_SET_SCENE_" +
+      "13\020M\022\025\n\021DALI_SET_SCENE_14\020N\022\025\n\021DALI_SET_" +
+      "SCENE_15\020O\022\034\n\030DALI_REMOVE_FROM_SCENE_0\020P" +
+      "\022\034\n\030DALI_REMOVE_FROM_SCENE_1\020Q\022\034\n\030DALI_R" +
+      "EMOVE_FROM_SCENE_2\020R\022\034\n\030DALI_REMOVE_FROM" +
+      "_SCENE_3\020S\022\034\n\030DALI_REMOVE_FROM_SCENE_4\020T" +
+      "\022\034\n\030DALI_REMOVE_FROM_SCENE_5\020U\022\034\n\030DALI_R" +
+      "EMOVE_FROM_SCENE_6\020V\022\034\n\030DALI_REMOVE_FROM" +
+      "_SCENE_7\020W\022\034\n\030DALI_REMOVE_FROM_SCENE_8\020X" +
+      "\022\034\n\030DALI_REMOVE_FROM_SCENE_9\020Y\022\035\n\031DALI_R" +
+      "EMOVE_FROM_SCENE_10\020Z\022\035\n\031DALI_REMOVE_FRO" +
+      "M_SCENE_11\020[\022\035\n\031DALI_REMOVE_FROM_SCENE_1" +
+      "2\020\\\022\035\n\031DALI_REMOVE_FROM_SCENE_13\020]\022\035\n\031DA" +
+      "LI_REMOVE_FROM_SCENE_14\020^\022\035\n\031DALI_REMOVE" +
+      "_FROM_SCENE_15\020_\022\027\n\023DALI_ADD_TO_GROUP_0\020" +
+      "`\022\027\n\023DALI_ADD_TO_GROUP_1\020a\022\027\n\023DALI_ADD_T" +
+      "O_GROUP_2\020b\022\027\n\023DALI_ADD_TO_GROUP_3\020c\022\027\n\023" +
+      "DALI_ADD_TO_GROUP_4\020d\022\027\n\023DALI_ADD_TO_GRO" +
+      "UP_5\020e\022\027\n\023DALI_ADD_TO_GROUP_6\020f\022\027\n\023DALI_" +
+      "ADD_TO_GROUP_7\020g\022\027\n\023DALI_ADD_TO_GROUP_8\020" +
+      "h\022\027\n\023DALI_ADD_TO_GROUP_9\020i\022\030\n\024DALI_ADD_T" +
+      "O_GROUP_10\020j\022\030\n\024DALI_ADD_TO_GROUP_11\020k\022\030" +
+      "\n\024DALI_ADD_TO_GROUP_12\020l\022\030\n\024DALI_ADD_TO_" +
+      "GROUP_13\020m\022\030\n\024DALI_ADD_TO_GROUP_14\020n\022\030\n\024" +
+      "DALI_ADD_TO_GROUP_15\020o\022\034\n\030DALI_REMOVE_FR" +
+      "OM_GROUP_0\020p\022\034\n\030DALI_REMOVE_FROM_GROUP_1" +
+      "\020q\022\034\n\030DALI_REMOVE_FROM_GROUP_2\020r\022\034\n\030DALI" +
+      "_REMOVE_FROM_GROUP_3\020s\022\034\n\030DALI_REMOVE_FR" +
+      "OM_GROUP_4\020t\022\034\n\030DALI_REMOVE_FROM_GROUP_5" +
+      "\020u\022\034\n\030DALI_REMOVE_FROM_GROUP_6\020v\022\034\n\030DALI" +
+      "_REMOVE_FROM_GROUP_7\020w\022\034\n\030DALI_REMOVE_FR" +
+      "OM_GROUP_8\020x\022\034\n\030DALI_REMOVE_FROM_GROUP_9" +
+      "\020y\022\035\n\031DALI_REMOVE_FROM_GROUP_10\020z\022\035\n\031DAL" +
+      "I_REMOVE_FROM_GROUP_11\020{\022\035\n\031DALI_REMOVE_" +
+      "FROM_GROUP_12\020|\022\035\n\031DALI_REMOVE_FROM_GROU" +
+      "P_13\020}\022\035\n\031DALI_REMOVE_FROM_GROUP_14\020~\022\035\n" +
+      "\031DALI_REMOVE_FROM_GROUP_15\020\177\022\033\n\026DALI_SET" +
+      "_SHORT_ADDRESS\020\200\001\022\035\n\030DALI_ENABLE_WRITE_M" +
+      "EMORY\020\201\001\022\023\n\016DALI_TERMINATE\020\377\001\022\024\n\017DALI_IN" +
+      "ITIALISE\020\202\002\022\023\n\016DALI_RANDOMISE\020\203\002\022\022\n\rDALI" +
+      "_WITHDRAW\020\205\002\022\027\n\022DALI_SEARCH_ADDR_H\020\210\002\022\027\n" +
+      "\022DALI_SEARCH_ADDR_M\020\211\002\022\027\n\022DALI_SEARCH_AD" +
+      "DR_L\020\212\002\022\037\n\032DALI_PROGRAM_SHORT_ADDRESS\020\213\002" +
+      "*\304\001\n\025CustomDALICommandType\022\022\n\016DALI_ARC_L" +
+      "EVEL\020\000\022\023\n\017DALI_DAPC_LEVEL\020\001\022\030\n\024DALI_GROU" +
+      "P_ARC_LEVEL\020\002\022\030\n\024DALI_BROADCAST_SCENE\020\003\022" +
+      "\027\n\023DALI_SCENE_ON_GROUP\020\004\022\031\n\025DALI_SCENE_O" +
+      "N_ADDRESS\020\005\022\032\n\026DALI_QUERY_MULTI_TYPES\020\006*" +
+      "\226\004\n\021AdminPropertyType\022\017\n\013DEVICE_NAME\020\000\022\020" +
+      "\n\014PROJECT_NAME\020\001\022\r\n\tLONGITUDE\020\002\022\014\n\010LATIT" +
+      "UDE\020\003\022\024\n\020LOCAL_UTC_OFFSET\020\004\022\024\n\020DAYLIGHT_" +
+      "SAVINGS\020\005\022\017\n\013POLL_ACTIVE\020\006\022\020\n\014DHCP_ENABL" +
+      "ED\020\007\022\013\n\007IP_ADDR\020\010\022\014\n\010MAC_ADDR\020\t\022\016\n\nGATEW" +
+      "AY_IP\020\n\022\026\n\022NETWORK_PROPERTIES\020\013\022\025\n\021SYSTE" +
+      "M_PROPERTIES\020\014\022\024\n\020CONTROLLER_LINES\020\r\022\024\n\020" +
+      "EEPROM_FULL_CHIP\020\016\022\017\n\013CONFIG_DATA\020\017\022\020\n\014S" +
+      "PEKTRA_DATA\020\020\022\021\n\rDEVICE_STATUS\020\021\022\021\n\rCONF" +
+      "IG_STATUS\020\022\022\017\n\013DEVICE_TIME\020\023\022\017\n\013NTP_DETA" +
+      "ILS\020\024\022\020\n\014DALI_SENSORS\020\025\022\022\n\016SECURE_SESSIO" +
+      "N\020\026\022\t\n\005NONCE\020\027\022\024\n\020DALI_SENSOR_TYPE\020\030\022\021\n\r" +
+      "DEVICE_REBOOT\020\031\022\022\n\016SYSTEM_LOGGING\020\032\022\n\n\006S" +
+      "UBNET\020\033\022\007\n\003DNS\020\034*M\n\020AdminCommandType\022\007\n\003" +
+      "SET\020\000\022\007\n\003GET\020\001\022\007\n\003ADD\020\002\022\n\n\006REMOVE\020\003\022\t\n\005R" +
+      "ESET\020\004\022\007\n\003RUN\020\005*\265\001\n\016DALIStatusType\022\014\n\010LA" +
+      "MP_OFF\020\000\022\030\n\024CONTROL_GEAR_FAILURE\020\001\022\020\n\014LA" +
+      "MP_FAILURE\020\002\022\013\n\007LAMP_ON\020\004\022\017\n\013LIMIT_ERROR" +
+      "\020\010\022\020\n\014FADE_RUNNING\020\020\022\017\n\013RESET_STATE\020 \022\021\n" +
+      "\rSHORT_ADDRESS\020@\022\025\n\020POWER_CYCLE_SEEN\020\200\001*" +
+      "\210\002\n\020DALIRXStatusFlag\022\013\n\007WAITING\020\000\022\023\n\017REC" +
+      "EIVING_FRAME\020\001\022\025\n\021NO_RECEIVED_FRAME\020\002\022\030\n" +
+      "\024RECEIVED_8_BIT_FRAME\020\003\022\031\n\025RECEIVED_16_B" +
+      "IT_FRAME\020\004\022\031\n\025RECEIVED_24_BIT_FRAME\020\005\022\032\n" +
+      "\026RECEIVED_PARTIAL_FRAME\020\006\022\010\n\004IDLE\020\007\022\017\n\013C" +
+      "ALIBRATION\020\010\022\030\n\023ERROR_WHILE_SENDING\020\376\001\022\032" +
+      "\n\025ERROR_WHILE_RECEIVING\020\377\001*\242\001\n\025Diagnosti" +
+      "cMessageType\022\032\n\026DIAGNOSTIC_SYSTEM_INFO\020\000" +
+      "\022\033\n\027DIAGNOSTIC_INPUT_STATUS\020\001\022\024\n\020DALI_LE" +
+      "VEL_CACHE\020\002\022\023\n\017DMX_LEVEL_CACHE\020\003\022\016\n\nROOM" +
+      "_JOINS\020\004\022\025\n\021DALI_STATUS_CACHE\020\005*z\n\023Firmw" +
+      "areCommandType\022\014\n\010FW_READY\020\000\022\014\n\010FW_APPLY" +
+      "\020\001\022\r\n\tFW_VERIFY\020\002\022\024\n\020FW_VERIFY_FAILED\020\003\022" +
+      "\025\n\021FW_VERIFY_SUCCESS\020\004\022\013\n\007FW_READ\020\005*?\n\025S" +
+      "pektraTransitionType\022\t\n\005BLEND\020\000\022\010\n\004SNAP\020" +
+      "\001\022\021\n\rFADE_TO_BLACK\020\002*\302\001\n\tLogicType\022\016\n\nDA" +
+      "LI_LEVEL\020\000\022\017\n\013INPUT_STATE\020\001\022\020\n\014LIST_RUNN" +
+      "ING\020\002\022\026\n\022OCCUPANCY_DETECTED\020\003\022\017\n\013DMX_PRE" +
+      "SENT\020\004\022\017\n\013CAL_WEEKDAY\020\005\022\r\n\tCAL_MONTH\020\006\022\023" +
+      "\n\017ALARM_SCHEDULED\020\007\022\025\n\021DALI_CACHE_STATUS" +
+      "\020\010\022\r\n\tHAS_ERROR\020\t*\246\001\n\023LogicComparisonTyp" +
+      "e\022\r\n\tLESS_THAN\020\000\022\027\n\023LESS_THAN_OR_EQUALS\020" +
+      "\001\022\n\n\006EQUALS\020\002\022\r\n\tMORE_THAN\020\003\022\027\n\023MORE_THA" +
+      "N_OR_EQUALS\020\004\022\r\n\tNOT_EQUAL\020\005\022\n\n\006BIT_OR\020\006" +
+      "\022\013\n\007BIT_AND\020\007\022\013\n\007BIT_XOR\020\010*8\n\016DALISensor" +
+      "Type\022\022\n\016TRIDONIC_EDALI\020\000\022\022\n\016STANDARD_EDA" +
+      "LI\020\001*U\n\021SensorCommandType\022\016\n\nINITIALISE\020" +
+      "\000\022\010\n\004MUTE\020\001\022\n\n\006UNMUTE\020\002\022\014\n\010OVERRIDE\020\003\022\014\n" +
+      "\010IDENTIFY\020\004*b\n\rSystemLogType\022\010\n\004BOOT\020\000\022\014" +
+      "\n\010NET_LINK\020\001\022\007\n\003NTP\020\002\022\013\n\007TRIGGER\020\003\022\013\n\007SP" +
+      "EKTRA\020\004\022\014\n\010SCHEDULE\020\005\022\010\n\004USER\020\006*m\n\017DALI2" +
+      "4InputType\022\023\n\017MOMENTARY_SHORT\020\000\022\022\n\016MOMEN" +
+      "TARY_LONG\020\001\022\017\n\013LATCHED_LOW\020\002\022\020\n\014LATCHED_" +
+      "HIGH\020\003\022\016\n\nPOSITIONAL\020\004*h\n\026DALIMotionSens" +
+      "orStates\022\017\n\013MOTION_IDLE\020\000\022\023\n\017MOTION_DISA" +
+      "BLED\020\001\022\022\n\016MOTION_WARNING\020\002\022\024\n\020MOTION_OCC" +
+      "UPANCY\020\003*I\n\023DALILuxSensorStates\022\020\n\014LUX_D" +
+      "ISABLED\020\000\022\017\n\013LUX_ENABLED\020\001\022\017\n\013LUX_DEVIAT" +
+      "E\020\002*N\n\023DALIAddressingError\022\014\n\010NO_ERROR\020\000" +
+      "\022\n\n\006VERIFY\020\001\022\n\n\006SEARCH\020\002\022\021\n\rNO_NEW_DEVIC" +
+      "E\020\003*8\n\022DALIAddressingType\022\017\n\013ADDRESS_NEW" +
+      "\020\000\022\021\n\rREADDRESS_ALL\020\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -120743,336 +122765,348 @@ public final class EDS10ProtocolBuffer {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DALIRemappingMessage_descriptor,
         new java.lang.String[] { "FromAddress", "ToAddress", "LineMask", "Is24Bit", });
-    internal_static_DMXMessage_descriptor =
+    internal_static_DALIAddressableObject_descriptor =
       getDescriptor().getMessageTypes().get(38);
+    internal_static_DALIAddressableObject_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_DALIAddressableObject_descriptor,
+        new java.lang.String[] { "Line", "Address", });
+    internal_static_DALIIdentifyDuplicatesMessage_descriptor =
+      getDescriptor().getMessageTypes().get(39);
+    internal_static_DALIIdentifyDuplicatesMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_DALIIdentifyDuplicatesMessage_descriptor,
+        new java.lang.String[] { "LineMask", "Is24Bit", "PossibleDuplicates", });
+    internal_static_DMXMessage_descriptor =
+      getDescriptor().getMessageTypes().get(40);
     internal_static_DMXMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DMXMessage_descriptor,
         new java.lang.String[] { "Zone", "UniverseMask", "Channel", "Repeat", "Level", "FadeTimeBy10Ms", });
     internal_static_RDMMessage_descriptor =
-      getDescriptor().getMessageTypes().get(39);
+      getDescriptor().getMessageTypes().get(41);
     internal_static_RDMMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_RDMMessage_descriptor,
         new java.lang.String[] { "UniverseMask", "Uid", "Pid", "Getset", "Datalength", "Data", });
     internal_static_RDMResponseMessage_descriptor =
-      getDescriptor().getMessageTypes().get(40);
+      getDescriptor().getMessageTypes().get(42);
     internal_static_RDMResponseMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_RDMResponseMessage_descriptor,
         new java.lang.String[] { "Uid", "Pid", "Datalength", "Data", });
     internal_static_RDMDiscoveryMessage_descriptor =
-      getDescriptor().getMessageTypes().get(41);
+      getDescriptor().getMessageTypes().get(43);
     internal_static_RDMDiscoveryMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_RDMDiscoveryMessage_descriptor,
         new java.lang.String[] { "UniverseMask", "IsNext", });
     internal_static_RDMDiscoveryReplyMessage_descriptor =
-      getDescriptor().getMessageTypes().get(42);
+      getDescriptor().getMessageTypes().get(44);
     internal_static_RDMDiscoveryReplyMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_RDMDiscoveryReplyMessage_descriptor,
         new java.lang.String[] { "DiscoveryCount", "Uid", "ErrorCode", });
     internal_static_SpektraSettingMessage_descriptor =
-      getDescriptor().getMessageTypes().get(43);
+      getDescriptor().getMessageTypes().get(45);
     internal_static_SpektraSettingMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SpektraSettingMessage_descriptor,
         new java.lang.String[] { "Zone", "StartAddress", "LineOrUniverseMask", "Protocol", "NumberOfLights", "ChannelsPerLight", "ChannelColours", "UnscheduledBehaviour", "ChannelMapping", "LineAddressing", "ZoneScaleFactor", });
     internal_static_SpektraColourConfigMessage_descriptor =
-      getDescriptor().getMessageTypes().get(44);
+      getDescriptor().getMessageTypes().get(46);
     internal_static_SpektraColourConfigMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SpektraColourConfigMessage_descriptor,
         new java.lang.String[] { "ChannelValue", });
     internal_static_SpektraSequenceConfigMessage_descriptor =
-      getDescriptor().getMessageTypes().get(45);
+      getDescriptor().getMessageTypes().get(47);
     internal_static_SpektraSequenceConfigMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SpektraSequenceConfigMessage_descriptor,
         new java.lang.String[] { "Index", "Type", "Transition", "FadeTimeBy10Ms", "TimePerColour", "TimePerColourUnit", "TimePerStep", "TimePerStepUnit", "Range", "Colour", "IsRandomisedType", "RandomTypesMask", "IsReverseDirection", "IsCycleDirection", "Title", "HasRandomColourOrder", "Colours", "Args", });
     internal_static_SpektraCalendarMessage_descriptor =
-      getDescriptor().getMessageTypes().get(46);
+      getDescriptor().getMessageTypes().get(48);
     internal_static_SpektraCalendarMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SpektraCalendarMessage_descriptor,
         new java.lang.String[] { "Type", "Index", "Days", "IsOverride", });
     internal_static_SpektraCalendarDayMessage_descriptor =
-      getDescriptor().getMessageTypes().get(47);
+      getDescriptor().getMessageTypes().get(49);
     internal_static_SpektraCalendarDayMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SpektraCalendarDayMessage_descriptor,
         new java.lang.String[] { "DayIndex", "Type", "TargetIndex", "IsOverride", });
     internal_static_SpektraCalendarOverviewMessage_descriptor =
-      getDescriptor().getMessageTypes().get(48);
+      getDescriptor().getMessageTypes().get(50);
     internal_static_SpektraCalendarOverviewMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SpektraCalendarOverviewMessage_descriptor,
         new java.lang.String[] { "DayOffset", "Days", });
     internal_static_SpektraThemeConfigMessage_descriptor =
-      getDescriptor().getMessageTypes().get(49);
+      getDescriptor().getMessageTypes().get(51);
     internal_static_SpektraThemeConfigMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SpektraThemeConfigMessage_descriptor,
         new java.lang.String[] { "Index", "Colour", "Title", "Colours", });
     internal_static_SpektraReadMessage_descriptor =
-      getDescriptor().getMessageTypes().get(50);
+      getDescriptor().getMessageTypes().get(52);
     internal_static_SpektraReadMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SpektraReadMessage_descriptor,
         new java.lang.String[] { "Type", "Index", });
     internal_static_SpektraControlMessage_descriptor =
-      getDescriptor().getMessageTypes().get(51);
+      getDescriptor().getMessageTypes().get(53);
     internal_static_SpektraControlMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SpektraControlMessage_descriptor,
         new java.lang.String[] { "Type", "Zone", "Index", "Action", });
     internal_static_ShowStepMessage_descriptor =
-      getDescriptor().getMessageTypes().get(52);
+      getDescriptor().getMessageTypes().get(54);
     internal_static_ShowStepMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ShowStepMessage_descriptor,
         new java.lang.String[] { "StepIndex", "TargetIndex", "ActionType", "MaxRandomTargetIndex", "Zone", "MaxOutputLevelLimit", "TimeUntilNext10Ms", });
     internal_static_SpektraShowMessage_descriptor =
-      getDescriptor().getMessageTypes().get(53);
+      getDescriptor().getMessageTypes().get(55);
     internal_static_SpektraShowMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SpektraShowMessage_descriptor,
         new java.lang.String[] { "ShowIndex", "NumberOfSteps", "Step", "IsRunning", "IsLooped", "IsRandom", "IsTemporary", "ActivationsRemaining", });
     internal_static_ExtendedSpektraShowMessage_descriptor =
-      getDescriptor().getMessageTypes().get(54);
+      getDescriptor().getMessageTypes().get(56);
     internal_static_ExtendedSpektraShowMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ExtendedSpektraShowMessage_descriptor,
         new java.lang.String[] { "ShowIndex", "StepIndexOffset", "Step", });
     internal_static_SpektraShowControlMessage_descriptor =
-      getDescriptor().getMessageTypes().get(55);
+      getDescriptor().getMessageTypes().get(57);
     internal_static_SpektraShowControlMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SpektraShowControlMessage_descriptor,
         new java.lang.String[] { "ShowIndex", "StartResume", "GotoStep", });
     internal_static_DMXTranslationObject_descriptor =
-      getDescriptor().getMessageTypes().get(56);
+      getDescriptor().getMessageTypes().get(58);
     internal_static_DMXTranslationObject_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DMXTranslationObject_descriptor,
         new java.lang.String[] { "LineIn", "LineOut", "DmxStartAddress", "ChannelCount", "DaliArray", "AffectedInput", "Blocking", "Enabled", });
     internal_static_DMXProtocolTranslation_descriptor =
-      getDescriptor().getMessageTypes().get(57);
+      getDescriptor().getMessageTypes().get(59);
     internal_static_DMXProtocolTranslation_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DMXProtocolTranslation_descriptor,
         new java.lang.String[] { "Object", });
     internal_static_InputStateMessage_descriptor =
-      getDescriptor().getMessageTypes().get(58);
+      getDescriptor().getMessageTypes().get(60);
     internal_static_InputStateMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InputStateMessage_descriptor,
         new java.lang.String[] { "UseMask", });
     internal_static_InputStateResponse_descriptor =
-      getDescriptor().getMessageTypes().get(59);
+      getDescriptor().getMessageTypes().get(61);
     internal_static_InputStateResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InputStateResponse_descriptor,
         new java.lang.String[] { "Inputs", "InputMask", });
     internal_static_LevelCacheResponse_descriptor =
-      getDescriptor().getMessageTypes().get(60);
+      getDescriptor().getMessageTypes().get(62);
     internal_static_LevelCacheResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_LevelCacheResponse_descriptor,
         new java.lang.String[] { "Levels", "Line", "Page", });
     internal_static_DiagnosticSystemInfoResponse_descriptor =
-      getDescriptor().getMessageTypes().get(61);
+      getDescriptor().getMessageTypes().get(63);
     internal_static_DiagnosticSystemInfoResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DiagnosticSystemInfoResponse_descriptor,
         new java.lang.String[] { "Firmware", "Hardware", "Error", "InputCount", "OutputCount", "IrCount", "ListStepCount", "ListCount", "AlarmCount", "BurninCount", "SpektraSeqCount", "SpektraSeqStepCount", "SpektraThemeCount", "SpektraStaticCount", "ProtoVersion", "LineCount", "Lines", "ProfileCount", "PresetCodeCount", "UserLevelCount", "DmxToDaliCount", "SpektraZoneCount", "LogicCount", "InputDaliCount", "VendorId", "SelectedProfile", });
     internal_static_DiagnosticMessage_descriptor =
-      getDescriptor().getMessageTypes().get(62);
+      getDescriptor().getMessageTypes().get(64);
     internal_static_DiagnosticMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DiagnosticMessage_descriptor,
         new java.lang.String[] { "Type", "Page", "Line", });
     internal_static_AdminProjectPropertiesMessage_descriptor =
-      getDescriptor().getMessageTypes().get(63);
+      getDescriptor().getMessageTypes().get(65);
     internal_static_AdminProjectPropertiesMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminProjectPropertiesMessage_descriptor,
         new java.lang.String[] { "DeviceName", "ProjectName", "Longitude", "Latitude", "LocalOffset", "DaylightSavings", "DaylightSavingsStart", "DaylightSavingsEnd", "PollActive", });
     internal_static_AdminConfigStatusMessage_descriptor =
-      getDescriptor().getMessageTypes().get(64);
+      getDescriptor().getMessageTypes().get(66);
     internal_static_AdminConfigStatusMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminConfigStatusMessage_descriptor,
         new java.lang.String[] { "ListStatus", "BurnInStatus", "AlarmStatus", "AlarmTimeFromReg", "SensorStatus", });
     internal_static_AdminNetworkPropertiesMessage_descriptor =
-      getDescriptor().getMessageTypes().get(65);
+      getDescriptor().getMessageTypes().get(67);
     internal_static_AdminNetworkPropertiesMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminNetworkPropertiesMessage_descriptor,
         new java.lang.String[] { "DHCP", "IP", "MAC", "Gateway", "NTPServer", "NTP", "Error", "NTPTimeout", "Subnet", "DNSPrimary", "DNSSecondary", });
     internal_static_AdminDNSServersMessage_descriptor =
-      getDescriptor().getMessageTypes().get(66);
+      getDescriptor().getMessageTypes().get(68);
     internal_static_AdminDNSServersMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminDNSServersMessage_descriptor,
         new java.lang.String[] { "DNSPrimary", "DNSSecondary", });
     internal_static_AdminControllerLinesMessage_descriptor =
-      getDescriptor().getMessageTypes().get(67);
+      getDescriptor().getMessageTypes().get(69);
     internal_static_AdminControllerLinesMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminControllerLinesMessage_descriptor,
         new java.lang.String[] { "Lines", });
     internal_static_AdminDeviceStatusMessage_descriptor =
-      getDescriptor().getMessageTypes().get(68);
+      getDescriptor().getMessageTypes().get(70);
     internal_static_AdminDeviceStatusMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminDeviceStatusMessage_descriptor,
         new java.lang.String[] { "Temperature", "Battery", });
     internal_static_AdminSecureLoginMessage_descriptor =
-      getDescriptor().getMessageTypes().get(69);
+      getDescriptor().getMessageTypes().get(71);
     internal_static_AdminSecureLoginMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminSecureLoginMessage_descriptor,
         new java.lang.String[] { "Username", "Cnonce", "Hash", });
     internal_static_AdminDALISensorTypeMessage_descriptor =
-      getDescriptor().getMessageTypes().get(70);
+      getDescriptor().getMessageTypes().get(72);
     internal_static_AdminDALISensorTypeMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminDALISensorTypeMessage_descriptor,
         new java.lang.String[] { "Type", });
     internal_static_AdminMessage_descriptor =
-      getDescriptor().getMessageTypes().get(71);
+      getDescriptor().getMessageTypes().get(73);
     internal_static_AdminMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminMessage_descriptor,
         new java.lang.String[] { "Command", "Target", "Data", "NetworkProperties", "ProjectProperties", "ControllerLines", "DeviceStatus", "ConfigStatus", "DeviceTime", "DaliSensorType", "DnsServers", "Payload", });
     internal_static_DataMessage_descriptor =
-      getDescriptor().getMessageTypes().get(72);
+      getDescriptor().getMessageTypes().get(74);
     internal_static_DataMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DataMessage_descriptor,
         new java.lang.String[] { "Identifier", "Seq", "Count", "Data", });
     internal_static_FirmwareMetaMessage_descriptor =
-      getDescriptor().getMessageTypes().get(73);
+      getDescriptor().getMessageTypes().get(75);
     internal_static_FirmwareMetaMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_FirmwareMetaMessage_descriptor,
         new java.lang.String[] { "FirmwareVersion", "FirmwareDate", "FirmwareDateUpload", "FirmwareChecksum", "FirmwareChunkCount", "FirmwareBaseAddress", "FirmwareEndAddress", "FirmwareIsBackup", "Nonce", "FirmwareDateDay", "FirmwareDateMonth", "FirmwareDateYear", });
     internal_static_FirmwareControlMessage_descriptor =
-      getDescriptor().getMessageTypes().get(74);
+      getDescriptor().getMessageTypes().get(76);
     internal_static_FirmwareControlMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_FirmwareControlMessage_descriptor,
         new java.lang.String[] { "Cmd", });
     internal_static_FirmwareChunkMessage_descriptor =
-      getDescriptor().getMessageTypes().get(75);
+      getDescriptor().getMessageTypes().get(77);
     internal_static_FirmwareChunkMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_FirmwareChunkMessage_descriptor,
         new java.lang.String[] { "FirmwareAddress", "TotalBytes", "Payload", });
     internal_static_SystemLogReadMessage_descriptor =
-      getDescriptor().getMessageTypes().get(76);
+      getDescriptor().getMessageTypes().get(78);
     internal_static_SystemLogReadMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogReadMessage_descriptor,
         new java.lang.String[] { "LogStartAddress", "LogsRequested", "Logs", });
     internal_static_SystemLogMessage_descriptor =
-      getDescriptor().getMessageTypes().get(77);
+      getDescriptor().getMessageTypes().get(79);
     internal_static_SystemLogMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogMessage_descriptor,
         new java.lang.String[] { "TimeSinceBoot", "Boot", "Netlink", "Ntp", "Trigger", "Spektra", "Schedule", "Userstart", "Packet", });
     internal_static_SystemLogBoot_descriptor =
-      getDescriptor().getMessageTypes().get(78);
+      getDescriptor().getMessageTypes().get(80);
     internal_static_SystemLogBoot_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogBoot_descriptor,
         new java.lang.String[] { "Timeclock", "Flags", });
     internal_static_SystemLogNetLink_descriptor =
-      getDescriptor().getMessageTypes().get(79);
+      getDescriptor().getMessageTypes().get(81);
     internal_static_SystemLogNetLink_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogNetLink_descriptor,
         new java.lang.String[] { "IsLinked", });
     internal_static_SystemLogNTP_descriptor =
-      getDescriptor().getMessageTypes().get(80);
+      getDescriptor().getMessageTypes().get(82);
     internal_static_SystemLogNTP_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogNTP_descriptor,
         new java.lang.String[] { "Timeclock", });
     internal_static_SystemLogTrigger_descriptor =
-      getDescriptor().getMessageTypes().get(81);
+      getDescriptor().getMessageTypes().get(83);
     internal_static_SystemLogTrigger_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogTrigger_descriptor,
         new java.lang.String[] { "Trigger", "Source", });
     internal_static_SystemLogSpektra_descriptor =
-      getDescriptor().getMessageTypes().get(82);
+      getDescriptor().getMessageTypes().get(84);
     internal_static_SystemLogSpektra_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogSpektra_descriptor,
         new java.lang.String[] { "Action", "Type", "Index", });
     internal_static_SystemLogSchedule_descriptor =
-      getDescriptor().getMessageTypes().get(83);
+      getDescriptor().getMessageTypes().get(85);
     internal_static_SystemLogSchedule_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogSchedule_descriptor,
         new java.lang.String[] { "Index", "IsStart", "Second", "Minute", "Hour", });
     internal_static_SystemLogUserStart_descriptor =
-      getDescriptor().getMessageTypes().get(84);
+      getDescriptor().getMessageTypes().get(86);
     internal_static_SystemLogUserStart_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogUserStart_descriptor,
         new java.lang.String[] { "Timeclock", "Flags", });
     internal_static_SystemMetaDataReadMessage_descriptor =
-      getDescriptor().getMessageTypes().get(85);
+      getDescriptor().getMessageTypes().get(87);
     internal_static_SystemMetaDataReadMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemMetaDataReadMessage_descriptor,
         new java.lang.String[] { "InputPressCounter", "ListStartCounter", "SchedulesCounter", "ScreenOnTime", "ScreenDimTime", "ScreenSaverTime", "RebootCounter", });
     internal_static_EventFilter_descriptor =
-      getDescriptor().getMessageTypes().get(86);
+      getDescriptor().getMessageTypes().get(88);
     internal_static_EventFilter_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_EventFilter_descriptor,
         new java.lang.String[] { "Input", "DaliArcLevel", "DaliCommand", "DaliSensor", "DaliInput", "DmxStreamChanged", "Dali24Frame", "TriggerMessage", });
     internal_static_TriggerEvent_descriptor =
-      getDescriptor().getMessageTypes().get(87);
+      getDescriptor().getMessageTypes().get(89);
     internal_static_TriggerEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_TriggerEvent_descriptor,
         new java.lang.String[] { "Type", "Level", "DaliCommand", "TargetAddress", "LineMask", "Zone", "Value", "QueryIndex", "Source", "Payload", });
     internal_static_DALI24InputEvent_descriptor =
-      getDescriptor().getMessageTypes().get(88);
+      getDescriptor().getMessageTypes().get(90);
     internal_static_DALI24InputEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DALI24InputEvent_descriptor,
         new java.lang.String[] { "Index", "Line", "Address", "Type", "Arg", });
     internal_static_DALI24FrameEvent_descriptor =
-      getDescriptor().getMessageTypes().get(89);
+      getDescriptor().getMessageTypes().get(91);
     internal_static_DALI24FrameEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DALI24FrameEvent_descriptor,
         new java.lang.String[] { "Line", "Frame", });
     internal_static_DALISensorEvent_descriptor =
-      getDescriptor().getMessageTypes().get(90);
+      getDescriptor().getMessageTypes().get(92);
     internal_static_DALISensorEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DALISensorEvent_descriptor,
         new java.lang.String[] { "Index", "Line", "Address", "MotionState", "LuxState", "LuxLevel", });
     internal_static_EventMessage_descriptor =
-      getDescriptor().getMessageTypes().get(91);
+      getDescriptor().getMessageTypes().get(93);
     internal_static_EventMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_EventMessage_descriptor,
         new java.lang.String[] { "Event", "Trigger", "Inputs", "Payload", "Sensor", "Dali24Input", "Filter", "Dali24Frame", "EventData", });
     internal_static_EdidioMessage_descriptor =
-      getDescriptor().getMessageTypes().get(92);
+      getDescriptor().getMessageTypes().get(94);
     internal_static_EdidioMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_EdidioMessage_descriptor,
-        new java.lang.String[] { "MessageId", "Ack", "Inputs", "Outputs", "Irs", "Sensor", "List", "Alarm", "Alarms", "BurnIns", "SensorCommand", "ChangeProfile", "IdentifyMessage", "UpdateTime", "ReadDevice", "DaliMessage", "DaliQuery", "DmxMessage", "ExternalTrigger", "SpektraSettings", "SpektraSequence", "SpektraCalendar", "SpektraTheme", "SpektraRead", "SpektraControl", "DmxTranslator", "InputRequest", "InputResponse", "DiagSystem", "DiagMessage", "AdminMessage", "Event", "SecureDeviceSettings", "FirmwareNew", "FirmwareControl", "FirmwareChunk", "LevelCacheResponse", "ListExtended", "AytMessage", "RdmMessage", "RdmResponseMessage", "LogicMessage", "SecureLogin", "DeviceStateMessage", "SpektraCalendarDay", "SpektraCalendarOverview", "InputsDali", "LogsRead", "MetadataRead", "DaliAddressingMessage", "DaliRemappingMessage", "SpektraShowControlMessage", "SpektraShowMessage", "ExtendedSpektraShowMessage", "RdmDiscovery", "RdmDiscoveryReply", "Payload", });
+        new java.lang.String[] { "MessageId", "Ack", "Inputs", "Outputs", "Irs", "Sensor", "List", "Alarm", "Alarms", "BurnIns", "SensorCommand", "ChangeProfile", "IdentifyMessage", "UpdateTime", "ReadDevice", "DaliMessage", "DaliQuery", "DmxMessage", "ExternalTrigger", "SpektraSettings", "SpektraSequence", "SpektraCalendar", "SpektraTheme", "SpektraRead", "SpektraControl", "DmxTranslator", "InputRequest", "InputResponse", "DiagSystem", "DiagMessage", "AdminMessage", "Event", "SecureDeviceSettings", "FirmwareNew", "FirmwareControl", "FirmwareChunk", "LevelCacheResponse", "ListExtended", "AytMessage", "RdmMessage", "RdmResponseMessage", "LogicMessage", "SecureLogin", "DeviceStateMessage", "SpektraCalendarDay", "SpektraCalendarOverview", "InputsDali", "LogsRead", "MetadataRead", "DaliAddressingMessage", "DaliRemappingMessage", "SpektraShowControlMessage", "SpektraShowMessage", "ExtendedSpektraShowMessage", "RdmDiscovery", "RdmDiscoveryReply", "DaliIdentifyDuplicates", "Payload", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -1,5 +1,5 @@
 // The eDIDIO S10 Protocol Buffer Structure
-// Version Number 1.1.11
+// Version Number 1.1.13
 
 syntax = "proto3";
 
@@ -83,6 +83,9 @@ enum TriggerType {
 	LOGGING_LEVEL						= 65;	// Enable Logging to EEPROM to be read by configurator
     SPEKTRA_SHOW_CONTROL                = 66;   // Show Control 
     CIRCADIAN_TEMPERATURE               = 67;   // Selects Colour Temperature based on clock
+    DALI_CONTROL_SENSOR_MUTE            = 68;   // Mute Sensor at Index (or all with Index 255)
+    DALI_CONTROL_SENSOR_UNMUTE          = 69;   // Unmute to Sensor at Index (or all with Index 255)
+    SPEKTRA_INTENSITY                   = 70;   // Allow you to specify the maximum Spektra Sequence or Theme output intensity (10 to 100)%
     NO_COMMAND                          = 254;  // This TriggerType should always be at the bottom of the list. Add any new TriggerTypes above it (up to 253).
 }
 
@@ -283,7 +286,7 @@ enum EventType {
     REGISTER                = 0; // Sent by the client to register for events.
     TRIGGER_EVENT           = 1; // Emitted when trigger runs an action listed in TriggerType.
     INPUT_EVENT             = 2; // Emitted when a physical Input is triggered.
-    SENSOR_EVENT            = 3; // Emitted when a Sensor (Tridonic or 24-Bit) is triggered.
+    SENSOR_EVENT            = 3; // Emitted when a Sensor (24-bit DALI or 25-bit Tridonic) is triggered.
     CONTROL_EVENT           = 4; // Emitted when an DALI/DMX/phyiscal output type event is done. References an action in TriggerType.
     ROOM_JOIN_EVENT         = 5; // Emitted when rooms are joined/unjoined.
     DALI_24_INPUT_EVENT     = 6; // Emitted when a 24-bit DALI Input Device is triggered.
@@ -486,7 +489,7 @@ enum AdminPropertyType {
     CONFIG_STATUS       = 18; // Can be used to request the Config Status: Active Alarm, List States, Sensor States, Burn-in States
     DEVICE_TIME         = 19; // Get or Set the RTC time on the device
     NTP_DETAILS         = 20; // Allows you to Get or Set the NTP parameters (i.e. NTP Server) used for maintaining the RTC via NTP updates.
-    TRIDONIC_MSENSORS   = 21; // Provides actions for Tridonic MSensor control: "ADD" to un-mute all. "REMOVE" to mute all. "RESET" to remove all.
+    DALI_SENSORS        = 21; // Provides actions for DALI Sensor control: "ADD" to un-mute all. "REMOVE" to mute all. "RESET" to clear all (unprogram).
     SECURE_SESSION      = 22; // Allows you to Get or Set the "Secure Session" status of the device
     NONCE               = 23; // Allows you to request a Nonce to perform a Secure Login
     DALI_SENSOR_TYPE    = 24; // The type of DALI frame (24 or 25-bit) for eDALI packets to/from motion sensors
@@ -496,13 +499,14 @@ enum AdminPropertyType {
     DNS                 = 28; // The Primary and Secondary DNS
 }
 
+// Used with AdminPropertyType
 enum AdminCommandType {
     SET         = 0; // Set property
     GET         = 1; // Get property
-    ADD         = 2; // Add property - Used with AdminPropertyType_TRIDONIC_MSENSORS to unmute sensors
-    REMOVE      = 3; // Remove property - Used with AdminPropertyType_TRIDONIC_MSENSORS to mute sensors
-    RESET       = 4; // Reset property - Used with AdminPropertyType_TRIDONIC_MSENSORS to reset sensors to default. Used for Memory Reset Commands
-    RUN         = 5; // Run property - Used with AdminPropertyType_DEVICE_REBOOT
+    ADD         = 2; // Add property
+    REMOVE      = 3; // Remove property
+    RESET       = 4; // Reset property
+    RUN         = 5; // Run property
 }
 
 // DALI status query response bitmask values - See DALI Standard
@@ -540,6 +544,7 @@ enum DiagnosticMessageType {
     DALI_LEVEL_CACHE         = 2; // Can be used to retrieve the current entries of the in-memory DALI values cache.
     DMX_LEVEL_CACHE          = 3; // Can be used to retrieve the current entries of the in-memory DMX levels cache. Results must be paginated due to size of DMX universe (512).
     ROOM_JOINS               = 4; // DEPRECATED - Can be used to manipulate the "Joined Rooms" state.
+    DALI_STATUS_CACHE        = 5; // Can be used to retrieve the current entries of the in-memory DALI status cache.
 }
 
 enum FirmwareCommandType {
@@ -557,7 +562,6 @@ enum SpektraTransitionType {
     FADE_TO_BLACK   = 2;    // Example: Transition between red and green will fade the light off then on between colours. Not currently supported.
 }
 
-// Not Implemented
 enum LogicType {
 	DALI_LEVEL          = 0;
 	INPUT_STATE         = 1;
@@ -567,9 +571,10 @@ enum LogicType {
 	CAL_WEEKDAY         = 5;
 	CAL_MONTH           = 6;
 	ALARM_SCHEDULED     = 7;
+    DALI_CACHE_STATUS   = 8;        // Any DALI Error Status?
+    HAS_ERROR           = 9;        // Target_index is error bitmask filter [LSB DALI Poll Error, DALI Line Error, Ethernet Link Dropped, Over Temperature, OLED Error, Spare, Spare, Spare MSB]
 }
 
-// Not Implemented
 enum LogicComparisonType {
 	LESS_THAN           = 0;
 	LESS_THAN_OR_EQUALS = 1;
@@ -577,6 +582,9 @@ enum LogicComparisonType {
 	MORE_THAN           = 3;
 	MORE_THAN_OR_EQUALS = 4;
 	NOT_EQUAL           = 5;
+    BIT_OR              = 6;
+    BIT_AND             = 7;
+    BIT_XOR             = 8;
 }
 
 enum DALISensorType {
@@ -585,10 +593,11 @@ enum DALISensorType {
 }
 
 enum SensorCommandType {
-    INITIALISE  = 0; // Applies default settings to all known (programmed) Sensors and resets their state
+    INITIALISE  = 0; // Applies default settings to all Sensors (broadcast) and resets their detection state
     MUTE        = 1; // Stops a Sensor from sending DALI packets
     UNMUTE      = 2; // Allows a Sensor to send DALI packets
     OVERRIDE    = 3; // Puts a Sensor in 'Override Mode' which prevents it from adjusting the Light Level (until after the occupancy timeout occurs)
+    IDENTIFY    = 4; // Starts the 'Identify' behaviour of a Sensor (typically this involves rapid flashing of the status LED for several seconds)
 }
 
 enum SystemLogType {
@@ -655,7 +664,7 @@ message DeviceStateMessage {
     uint32 input_state                  = 7;    // Input state mask
     repeated uint32 list_states         = 8;    // State of each List (DISABLED / ENABLED / LOOPING)
 	repeated uint32 burn_in_states      = 9;    // State of each Burn-in (RUNNING / NOT RUNNING)
-	repeated uint32 sensor_states       = 10;   // State of each Tridonic MSensor (IDLE / DISABLED / WARNING / OCCUPANCY)
+	repeated uint32 sensor_states       = 10;   // State of each DALI Sensor (IDLE / DISABLED / WARNING / OCCUPANCY)
     repeated uint32 zone_states         = 11;   // State of each Spektra Zone (OFF / SEQUENCE / THEME / STATIC)
     repeated uint32 zone_sleep_states   = 12;   // Sleep State of each Spektra Zone (TRUE / FALSE)
     repeated uint32 zone_indexes        = 13;   // Index of the selected Sequence, Theme, or Static colour for each Zone
@@ -856,7 +865,7 @@ message LogicMultiMessage {
 }
 
 /*********** @exclude SYSTEM MESSAGES *******/
-// Message used to send specific sensor commands, such as Mute, Unmute and Override. Mute will stop the sensor from talking until; Unmute, Device Reset, Profile Change, or Program. Override will prevent the sensor from changing the currently selected level until it has timed-out
+// Message used to send specific sensor commands, such as Mute, Unmute and Override. Mute will stop the sensor from talking until; Unmute, Profile Change, or Program. Override will prevent the sensor from changing the currently selected level until it has timed-out
 message SensorCommandMessage {
     uint32 command          = 1; // DEPRECATED: Use 'type' instead
     uint32 index            = 2;
@@ -901,7 +910,7 @@ message DTRPayloadMessage {
 
 // Message to send a DALI command using various DALI frame types.
 message DALIMessage {
-uint32 line_mask                             = 1; // Binary mask; e.g. selecting line 1 out of 4 looks like 0b0001. For non queries, line_mask can contain multiple valid lines
+    uint32 line_mask                         = 1; // Binary mask; e.g. selecting line 1 out of 4 looks like 0b0001. For non queries, line_mask can contain multiple valid lines
     uint32 address                           = 2; // DALI Address
     oneof action {
         uint32 frame_25_bit                  = 3; // Older eDALI commmands are manufacturer specific, so we have to take a raw value.
@@ -972,6 +981,17 @@ message DALIRemappingMessage {
     uint32 to_address     = 2;  // New address for device. If populated, this address will change to the from_address
     uint32 line_mask      = 3;  // Affected DALI Line
     bool is24Bit          = 4;  // 24 bit DALI (TRUE) or Standard (FALSE)
+}
+
+message DALIAddressableObject {
+    uint32 line             = 1; // Which DALI Line is this Device on?
+    uint32 address          = 2; // What is the Short Address of this Device?
+}
+
+message DALIIdentifyDuplicatesMessage {
+    uint32 line_mask                                        = 1; // Which DALI Line(s) to check
+    bool is24Bit                                            = 2; // Use 24-bit DALI (DALI v2) or standard 16-bit DALI if FALSE
+    repeated DALIAddressableObject possible_duplicates      = 3; // A collection of DALI Devices which *may* be using duplicated Short Addresses
 }
 
 /************* @exclude DMX MESSAGES *************/
@@ -1228,7 +1248,7 @@ message AdminProjectPropertiesMessage {
     bool daylight_savings           = 7; // For astronomical calculations (e.g. sunrise/sunset)
 	uint32 daylight_savings_start   = 8; // Can be used to state when DST is active from
 	uint32 daylight_savings_end     = 9; // Can be used to state when DST is active to
-    bool poll_active                = 10; // Should the device be polling the DALI line to cache arc levels
+    uint32 poll_active              = 10; // Should the device be polling the DALI line to cache arc levels. If not 0, it is the polling interval in seconds
 }
 
 // Message to get or set Admin Properties in reference to the device configuration
@@ -1237,7 +1257,7 @@ message AdminConfigStatusMessage {
 	repeated uint32 burn_in_status = 2;				// State of each Burn-in (RUNNING / NOT RUNNING)
 	uint32 alarm_status = 3;						// Currently Selected Alarm (i.e. 'next Alarm')
 	TimeClockMessage alarm_time_from_reg = 4;		// Time for next Alarm as per RTC Register
-	repeated uint32 sensor_status = 5;				// State of each Tridonic MSensor (IDLE / DISABLED / WARNING / OCCUPANCY)
+	repeated uint32 sensor_status = 5;				// State of each DALI Sensor (IDLE / DISABLED / WARNING / OCCUPANCY)
 }
 
 // Message to get or set Admin Properties in reference to the network connection. Will require a device reboot to update - Used with AdminMessage
@@ -1549,5 +1569,6 @@ message EdidioMessage
         ExtendedSpektraShowMessage extended_spektra_show_message    = 57;
         RDMDiscoveryMessage rdm_discovery                           = 58;
         RDMDiscoveryReplyMessage rdm_discovery_reply                = 59;
+        DALIIdentifyDuplicatesMessage dali_identify_duplicates      = 60;
     }
 }
