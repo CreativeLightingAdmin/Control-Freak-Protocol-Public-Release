@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x1a\x65\x44S10_ProtocolBuffer.proto\".\n\nAckMessage\x12 \n\x07payload\x18\x01 \x01(\x0e\x32\x0f.AckMessageType\"X\n\x0ePayloadMessage\x12\x13\n\tuint_data\x18\x01 \x01(\rH\x00\x12\x14\n\nfloat_data\x18\x02 \x01(\x02H\x00\x12\x13\n\x0bstring_data\x18\x03 \x01(\tB\x06\n\x04\x64\x61ta\"Y\n\nAytMessage\x12\x15\n\rtimesinceboot\x18\x01 \x01(\r\x12\x13\n\x0btemperature\x18\x02 \x01(\x02\x12\x1f\n\x04time\x18\x03 \x01(\x0b\x32\x11.TimeClockMessage\"\xf1\x02\n\x12\x44\x65viceStateMessage\x12\x0e\n\x06uptime\x18\x01 \x01(\r\x12\x0c\n\x04temp\x18\x02 \x01(\x02\x12\x0c\n\x04vbat\x18\x03 \x01(\x02\x12 \n\x05\x63lock\x18\x04 \x01(\x0b\x32\x11.TimeClockMessage\x12\x12\n\nnext_alarm\x18\x05 \x01(\r\x12*\n\x0fnext_alarm_time\x18\x06 \x01(\x0b\x32\x11.TimeClockMessage\x12\x13\n\x0binput_state\x18\x07 \x01(\r\x12\x13\n\x0blist_states\x18\x08 \x03(\r\x12\x16\n\x0e\x62urn_in_states\x18\t \x03(\r\x12\x15\n\rsensor_states\x18\n \x03(\r\x12\x13\n\x0bzone_states\x18\x0b \x03(\r\x12\x19\n\x11zone_sleep_states\x18\x0c \x03(\r\x12\x14\n\x0czone_indexes\x18\r \x03(\r\x12\x18\n\x10\x64\x61li_input_state\x18\x0e \x01(\x04\x12\x14\n\x0coutput_state\x18\x0f \x01(\r\"\x87\x01\n\x0eTriggerMessage\x12\x1a\n\x04type\x18\x01 \x01(\x0e\x32\x0c.TriggerType\x12\x0c\n\x04zone\x18\x02 \x01(\r\x12\x11\n\tline_mask\x18\x03 \x01(\r\x12\x14\n\x0ctarget_index\x18\x04 \x01(\r\x12\r\n\x05value\x18\x05 \x01(\r\x12\x13\n\x0bquery_index\x18\x06 \x01(\r\".\n\x10TimeClockMessage\x12\x0c\n\x04\x64\x61te\x18\x01 \x01(\r\x12\x0c\n\x04time\x18\x02 \x01(\r\"S\n\x11\x42urnInBitsMessage\x12\x13\n\x0blight_state\x18\x01 \x01(\r\x12\x14\n\x0crunning_flag\x18\x02 \x01(\r\x12\x13\n\x0b\x65nable_flag\x18\x03 \x01(\r\"\x97\x01\n\x0eIOInputMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12+\n\x0c\x62utton_state\x18\x02 \x01(\x0e\x32\x15.TriggerOperationType\x12$\n\x0bshort_press\x18\x03 \x01(\x0b\x32\x0f.TriggerMessage\x12#\n\nlong_press\x18\x04 \x01(\x0b\x32\x0f.TriggerMessage\"|\n\x0fIOOutputMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12\x15\n\rinitial_level\x18\x02 \x01(\r\x12\x1e\n\x16time_trigger_is_active\x18\x03 \x01(\r\x12#\n\x04type\x18\x04 \x01(\x0e\x32\x15.TriggerOperationType\"\xcf\x01\n\x10\x44\x41LIInputMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0f\n\x07\x61\x64\x64ress\x18\x02 \x01(\r\x12\x11\n\tdali_line\x18\x03 \x01(\r\x12+\n\x0c\x62utton_state\x18\x04 \x01(\x0e\x32\x15.TriggerOperationType\x12$\n\x0bshort_press\x18\x05 \x01(\x0b\x32\x0f.TriggerMessage\x12#\n\nlong_press\x18\x06 \x01(\x0b\x32\x0f.TriggerMessage\x12\x10\n\x08instance\x18\x07 \x01(\r\"L\n\x0bIOIRMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12\x1f\n\x06\x61\x63tion\x18\x02 \x01(\x0b\x32\x0f.TriggerMessage\x12\r\n\x05\x63odes\x18\x03 \x01(\r\"\xcb\x04\n\rSensorMessage\x12\x0f\n\x07profile\x18\x01 \x01(\r\x12\r\n\x05index\x18\x02 \x01(\r\x12\x16\n\x0esensor_address\x18\x03 \x01(\r\x12\x18\n\x10sensor_dali_line\x18\x04 \x01(\r\x12\x15\n\raddress_query\x18\x05 \x01(\r\x12\x19\n\x11\x63ontrol_dali_line\x18\x06 \x01(\r\x12\x15\n\rcontrol_group\x18\x07 \x01(\r\x12\x16\n\x0elight_setpoint\x18\x08 \x01(\r\x12\x18\n\x10warning_setpoint\x18\t \x01(\r\x12\x13\n\x0bmotion_only\x18\n \x01(\r\x12\x16\n\x0etimeout_values\x18\x0b \x01(\r\x12\x16\n\x0ewarning_values\x18\x0c \x01(\r\x12\x16\n\x0e\x64isable_values\x18\r \x01(\r\x12\x12\n\ninput_1_pm\x18\x0e \x01(\r\x12\x12\n\ninput_2_pm\x18\x0f \x01(\r\x12\x15\n\rsensor_states\x18\x10 \x01(\r\x12\x16\n\x0emotion_sensors\x18\x11 \x01(\r\x12\x13\n\x0blux_sensors\x18\x12 \x01(\r\x12\x10\n\x08off_flag\x18\x13 \x01(\r\x12\x15\n\ris_programmed\x18\x14 \x01(\x08\x12*\n\x11\x64\x65tection_trigger\x18\x15 \x01(\x0b\x32\x0f.TriggerMessage\x12(\n\x0fwarning_trigger\x18\x16 \x01(\x0b\x32\x0f.TriggerMessage\x12%\n\x0cidle_trigger\x18\x17 \x01(\x0b\x32\x0f.TriggerMessage\"\\\n\x0fListStepMessage\x12\x12\n\nstep_index\x18\x01 \x01(\r\x12\x1f\n\x06\x61\x63tion\x18\x02 \x01(\x0b\x32\x0f.TriggerMessage\x12\x14\n\x0ctime_seconds\x18\x03 \x01(\r\"\xbc\x03\n\x0c\x41larmMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0f\n\x07\x65nabled\x18\x02 \x01(\x08\x12%\n\nstart_time\x18\x03 \x01(\x0b\x32\x11.TimeClockMessage\x12#\n\x08\x65nd_time\x18\x04 \x01(\x0b\x32\x11.TimeClockMessage\x12&\n\rstart_trigger\x18\x05 \x01(\x0b\x32\x0f.TriggerMessage\x12$\n\x0b\x65nd_trigger\x18\x06 \x01(\x0b\x32\x0f.TriggerMessage\x12$\n\x0b\x61stro_start\x18\x07 \x01(\x0e\x32\x0f.AlarmAstroType\x12\"\n\tastro_end\x18\x08 \x01(\x0e\x32\x0f.AlarmAstroType\x12 \n\x06repeat\x18\t \x01(\x0e\x32\x10.AlarmRepeatType\x12\x1a\n\x12repeat_day_bitmask\x18\n \x01(\r\x12\x1c\n\x14repeat_month_bitmask\x18\x0b \x01(\r\x12\x0e\n\x06yearly\x18\x0c \x01(\x08\x12\x1e\n\x16start_offset_is_before\x18\r \x01(\x08\x12\x1c\n\x14\x65nd_offset_is_before\x18\x0e \x01(\x08\"\x99\x01\n\rBurnInMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0c\n\x04line\x18\x02 \x01(\r\x12\x0f\n\x07\x61\x64\x64ress\x18\x03 \x01(\r\x12\x15\n\rquery_address\x18\x04 \x01(\r\x12\x0c\n\x04time\x18\x05 \x01(\r\x12\x11\n\tremaining\x18\x06 \x01(\r\x12\"\n\x06states\x18\x07 \x01(\x0b\x32\x12.BurnInBitsMessage\":\n\x16\x45xternalTriggerMessage\x12 \n\x07trigger\x18\x01 \x01(\x0b\x32\x0f.TriggerMessage\"E\n\x11InputMultiMessage\x12\x0f\n\x07profile\x18\x01 \x01(\r\x12\x1f\n\x06inputs\x18\x02 \x03(\x0b\x32\x0f.IOInputMessage\"H\n\x12OutputMultiMessage\x12\x0f\n\x07profile\x18\x01 \x01(\r\x12!\n\x07outputs\x18\x02 \x03(\x0b\x32\x10.IOOutputMessage\"g\n\x15\x44\x41LIInputMultiMessage\x12\x0f\n\x07profile\x18\x01 \x01(\r\x12\x1a\n\x12input_index_offset\x18\x02 \x01(\r\x12!\n\x06inputs\x18\x03 \x03(\x0b\x32\x11.DALIInputMessage\"<\n\x0eIRMultiMessage\x12\x0f\n\x07profile\x18\x01 \x01(\r\x12\x19\n\x03irs\x18\x02 \x03(\x0b\x32\x0c.IOIRMessage\"o\n\x0bListMessage\x12\x12\n\nlist_index\x18\x01 \x01(\r\x12\x1e\n\x04step\x18\x02 \x03(\x0b\x32\x10.ListStepMessage\x12\x12\n\nlist_state\x18\x03 \x01(\r\x12\x18\n\x10total_step_count\x18\x04 \x01(\r\"d\n\x13\x45xtendedListMessage\x12\x12\n\nlist_index\x18\x01 \x01(\r\x12\x19\n\x11step_index_offset\x18\x02 \x01(\r\x12\x1e\n\x04step\x18\x03 \x03(\x0b\x32\x10.ListStepMessage\"1\n\x11\x41larmMultiMessage\x12\x1c\n\x05\x61larm\x18\x01 \x03(\x0b\x32\r.AlarmMessage\"4\n\x12\x42urnInMultiMessage\x12\x1e\n\x06\x62urnin\x18\x01 \x03(\x0b\x32\x0e.BurnInMessage\"\xe7\x01\n\x0cLogicMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0f\n\x07\x65nabled\x18\x02 \x01(\x08\x12*\n\x11\x63omparison_object\x18\x03 \x01(\x0b\x32\x0f.TriggerMessage\x12\x18\n\x10\x63omparison_value\x18\x04 \x01(\r\x12-\n\x0f\x63omparison_type\x18\x05 \x01(\x0e\x32\x14.LogicComparisonType\x12 \n\x07\x61\x63tionA\x18\x06 \x01(\x0b\x32\x0f.TriggerMessage\x12 \n\x07\x61\x63tionB\x18\x07 \x01(\x0b\x32\x0f.TriggerMessage\"1\n\x11LogicMultiMessage\x12\x1c\n\x05logic\x18\x01 \x03(\x0b\x32\r.LogicMessage\"X\n\x14SensorCommandMessage\x12\x0f\n\x07\x63ommand\x18\x01 \x01(\r\x12\r\n\x05index\x18\x02 \x01(\r\x12 \n\x04type\x18\x03 \x01(\x0e\x32\x12.SensorCommandType\"\'\n\x14\x43hangeProfileMessage\x12\x0f\n\x07profile\x18\x01 \x01(\r\"*\n\x0fIdentifyMessage\x12\x0b\n\x03MAC\x18\x01 \x01(\x04\x12\n\n\x02IP\x18\x02 \x01(\x04\"4\n\x11UpdateTimeMessage\x12\x1f\n\x04time\x18\x01 \x01(\x0b\x32\x11.TimeClockMessage\"e\n\x11ReadDeviceMessage\x12\x0f\n\x07profile\x18\x01 \x01(\r\x12\x17\n\x04type\x18\x02 \x01(\x0e\x32\t.ReadType\x12\r\n\x05index\x18\x03 \x01(\r\x12\x17\n\x0fsecondary_index\x18\x04 \x01(\r\".\n\x1bSecureDeviceSettingsMessage\x12\x0f\n\x07payload\x18\x01 \x01(\t\" \n\x11\x44TRPayloadMessage\x12\x0b\n\x03\x64tr\x18\x01 \x03(\r\"\xdb\x04\n\x0b\x44\x41LIMessage\x12\x11\n\tline_mask\x18\x01 \x01(\r\x12\x0f\n\x07\x61\x64\x64ress\x18\x02 \x01(\r\x12\x16\n\x0c\x66rame_25_bit\x18\x03 \x01(\rH\x00\x12\x1c\n\x12\x66rame_25_bit_reply\x18\x04 \x01(\rH\x00\x12#\n\x07\x63ommand\x18\x05 \x01(\x0e\x32\x10.DALICommandTypeH\x00\x12\x30\n\x0e\x63ustom_command\x18\x06 \x01(\x0e\x32\x16.CustomDALICommandTypeH\x00\x12\x1f\n\x05query\x18\x07 \x01(\x0e\x32\x0e.DALIQueryTypeH\x00\x12\"\n\x05type8\x18\x08 \x01(\x0e\x32\x11.Type8CommandTypeH\x00\x12\x16\n\x0c\x66rame_16_bit\x18\x0b \x01(\rH\x00\x12\x1c\n\x12\x66rame_16_bit_reply\x18\x0c \x01(\rH\x00\x12\x16\n\x0c\x66rame_24_bit\x18\r \x01(\rH\x00\x12\x1c\n\x12\x66rame_24_bit_reply\x18\x0e \x01(\rH\x00\x12&\n\x0btype8_reply\x18\x0f \x01(\x0e\x32\x0f.Type8QueryTypeH\x00\x12\x30\n\x10\x64\x65vice24_setting\x18\x10 \x01(\x0e\x32\x14.DALI24DeviceSettingH\x00\x12\r\n\x03\x61rg\x18\t \x01(\rH\x01\x12!\n\x03\x64tr\x18\n \x01(\x0b\x32\x12.DTRPayloadMessageH\x01\x12*\n\rinstance_type\x18\x11 \x01(\x0e\x32\x13.DALI24InstanceType\x12\x1e\n\x07op_code\x18\x12 \x01(\x0e\x32\r.DALI24OpCodeB\x08\n\x06\x61\x63tionB\x08\n\x06params\"7\n\x15\x44\x41LIStatusFlagMessage\x12\x1e\n\x05\x66lags\x18\x01 \x03(\x0e\x32\x0f.DALIStatusType\"\xbd\x01\n\x11\x44\x41LIQueryResponse\x12.\n\x0cstatus_flags\x18\x01 \x01(\x0b\x32\x16.DALIStatusFlagMessageH\x00\x12\x1f\n\x04\x64\x61ta\x18\x02 \x01(\x0b\x32\x0f.PayloadMessageH\x00\x12$\n\tdali_flag\x18\x03 \x01(\x0e\x32\x11.DALIRXStatusFlag\x12&\n\rresponse_data\x18\x04 \x01(\x0b\x32\x0f.PayloadMessageB\t\n\x07payload\"\xaa\x01\n\x15\x44\x41LIAddressingMessage\x12!\n\x04type\x18\x01 \x01(\x0e\x32\x13.DALIAddressingType\x12\x16\n\x0einitialisation\x18\x02 \x01(\x08\x12\x11\n\tline_mask\x18\x03 \x01(\r\x12\x0f\n\x07is24Bit\x18\x04 \x01(\x08\x12#\n\x05\x65rror\x18\x05 \x01(\x0e\x32\x14.DALIAddressingError\x12\r\n\x05index\x18\x06 \x01(\r\"d\n\x14\x44\x41LIRemappingMessage\x12\x14\n\x0c\x66rom_address\x18\x01 \x01(\r\x12\x12\n\nto_address\x18\x02 \x01(\r\x12\x11\n\tline_mask\x18\x03 \x01(\r\x12\x0f\n\x07is24Bit\x18\x04 \x01(\x08\"6\n\x15\x44\x41LIAddressableObject\x12\x0c\n\x04line\x18\x01 \x01(\r\x12\x0f\n\x07\x61\x64\x64ress\x18\x02 \x01(\r\"x\n\x1d\x44\x41LIIdentifyDuplicatesMessage\x12\x11\n\tline_mask\x18\x01 \x01(\r\x12\x0f\n\x07is24Bit\x18\x02 \x01(\x08\x12\x33\n\x13possible_duplicates\x18\x03 \x03(\x0b\x32\x16.DALIAddressableObject\"|\n\nDMXMessage\x12\x0c\n\x04zone\x18\x01 \x01(\r\x12\x15\n\runiverse_mask\x18\x02 \x01(\r\x12\x0f\n\x07\x63hannel\x18\x03 \x01(\r\x12\x0e\n\x06repeat\x18\x04 \x01(\r\x12\r\n\x05level\x18\x05 \x03(\r\x12\x19\n\x11\x66\x61\x64\x65_time_by_10ms\x18\x06 \x01(\r\"o\n\nRDMMessage\x12\x15\n\runiverse_mask\x18\x01 \x01(\r\x12\x0b\n\x03uid\x18\x02 \x01(\x04\x12\x0b\n\x03pid\x18\x03 \x01(\r\x12\x0e\n\x06getset\x18\x04 \x01(\r\x12\x12\n\ndatalength\x18\x05 \x01(\r\x12\x0c\n\x04\x64\x61ta\x18\x06 \x03(\r\"P\n\x12RDMResponseMessage\x12\x0b\n\x03uid\x18\x01 \x01(\x04\x12\x0b\n\x03pid\x18\x02 \x01(\r\x12\x12\n\ndatalength\x18\x03 \x01(\r\x12\x0c\n\x04\x64\x61ta\x18\x04 \x03(\r\"<\n\x13RDMDiscoveryMessage\x12\x15\n\runiverse_mask\x18\x01 \x01(\r\x12\x0e\n\x06isNext\x18\x02 \x01(\x08\"T\n\x18RDMDiscoveryReplyMessage\x12\x17\n\x0f\x64iscovery_count\x18\x01 \x01(\r\x12\x0b\n\x03uid\x18\x02 \x03(\x04\x12\x12\n\nerror_code\x18\x03 \x01(\r\"\xdf\x02\n\x15SpektraSettingMessage\x12\x0c\n\x04zone\x18\x01 \x01(\r\x12\x15\n\rstart_address\x18\x02 \x01(\r\x12\x1d\n\x15line_or_universe_mask\x18\x03 \x01(\r\x12\x10\n\x08protocol\x18\x04 \x01(\r\x12\x18\n\x10number_of_lights\x18\x05 \x01(\r\x12\x1a\n\x12\x63hannels_per_light\x18\x06 \x01(\r\x12\x17\n\x0f\x63hannel_colours\x18\x07 \x03(\r\x12?\n\x15unscheduled_behaviour\x18\x08 \x01(\x0e\x32 .SpektraUnscheduledBehaviourType\x12\x17\n\x0f\x63hannel_mapping\x18\t \x03(\r\x12,\n\x0fline_addressing\x18\n \x01(\x0e\x32\x13.LineAddressingType\x12\x19\n\x11zone_scale_factor\x18\x0b \x01(\x02\"3\n\x1aSpektraColourConfigMessage\x12\x15\n\rchannel_value\x18\x01 \x03(\r\"\xe8\x03\n\x1cSpektraSequenceConfigMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0c\n\x04type\x18\x02 \x01(\r\x12*\n\ntransition\x18\x03 \x01(\x0e\x32\x16.SpektraTransitionType\x12\x19\n\x11\x66\x61\x64\x65_time_by_10ms\x18\x04 \x01(\r\x12\x17\n\x0ftime_per_colour\x18\x05 \x01(\r\x12\x1c\n\x14time_per_colour_unit\x18\x06 \x01(\r\x12\x15\n\rtime_per_step\x18\x07 \x01(\r\x12\x1a\n\x12time_per_step_unit\x18\x08 \x01(\r\x12\r\n\x05range\x18\t \x01(\r\x12\x0e\n\x06\x63olour\x18\n \x03(\x04\x12\x1a\n\x12is_randomised_type\x18\x0b \x01(\r\x12\x19\n\x11random_types_mask\x18\x0c \x01(\r\x12\x1c\n\x14is_reverse_direction\x18\r \x01(\r\x12\x1a\n\x12is_cycle_direction\x18\x0e \x01(\r\x12\r\n\x05title\x18\x0f \x01(\t\x12\x1f\n\x17has_random_colour_order\x18\x10 \x01(\x08\x12,\n\x07\x63olours\x18\x11 \x03(\x0b\x32\x1b.SpektraColourConfigMessage\x12\x0c\n\x04\x61rgs\x18\x12 \x03(\r\"k\n\x16SpektraCalendarMessage\x12 \n\x04type\x18\x01 \x01(\x0e\x32\x12.SpektraTargetType\x12\r\n\x05index\x18\x02 \x01(\r\x12\x0c\n\x04\x64\x61ys\x18\x03 \x03(\x08\x12\x12\n\nisOverride\x18\x04 \x01(\x08\"z\n\x19SpektraCalendarDayMessage\x12\x11\n\tday_index\x18\x01 \x01(\r\x12 \n\x04type\x18\x02 \x01(\x0e\x32\x12.SpektraTargetType\x12\x14\n\x0ctarget_index\x18\x03 \x01(\r\x12\x12\n\nisOverride\x18\x04 \x01(\x08\"^\n\x1eSpektraCalendarOverviewMessage\x12\x12\n\nday_offset\x18\x01 \x01(\r\x12(\n\x04\x64\x61ys\x18\x02 \x03(\x0b\x32\x1a.SpektraCalendarDayMessage\"w\n\x19SpektraThemeConfigMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0e\n\x06\x63olour\x18\x02 \x03(\x04\x12\r\n\x05title\x18\x03 \x01(\t\x12,\n\x07\x63olours\x18\x04 \x03(\x0b\x32\x1b.SpektraColourConfigMessage\"E\n\x12SpektraReadMessage\x12 \n\x04type\x18\x01 \x01(\x0e\x32\x12.SpektraTargetType\x12\r\n\x05index\x18\x02 \x01(\r\"z\n\x15SpektraControlMessage\x12 \n\x04type\x18\x01 \x01(\x0e\x32\x12.SpektraTargetType\x12\x0c\n\x04zone\x18\x02 \x01(\r\x12\r\n\x05index\x18\x03 \x01(\r\x12\"\n\x06\x61\x63tion\x18\x04 \x01(\x0e\x32\x12.SpektraActionType\"\xd5\x01\n\x0fShowStepMessage\x12\x12\n\nstep_index\x18\x01 \x01(\r\x12\x14\n\x0ctarget_index\x18\x02 \x01(\r\x12+\n\x0b\x61\x63tion_type\x18\x03 \x01(\x0e\x32\x16.SpektraStepActionType\x12\x1f\n\x17max_random_target_index\x18\x04 \x01(\r\x12\x0c\n\x04zone\x18\x05 \x01(\r\x12\x1e\n\x16max_output_level_limit\x18\x06 \x01(\r\x12\x1c\n\x14time_until_next_10ms\x18\x07 \x01(\r\"\xcc\x01\n\x12SpektraShowMessage\x12\x12\n\nshow_index\x18\x01 \x01(\r\x12\x17\n\x0fnumber_of_steps\x18\x02 \x01(\r\x12\x1e\n\x04step\x18\x03 \x03(\x0b\x32\x10.ShowStepMessage\x12\x11\n\tisRunning\x18\x04 \x01(\x08\x12\x10\n\x08isLooped\x18\x05 \x01(\x08\x12\x10\n\x08isRandom\x18\x06 \x01(\x08\x12\x13\n\x0bisTemporary\x18\x07 \x01(\x08\x12\x1d\n\x15\x61\x63tivations_remaining\x18\x08 \x01(\r\"k\n\x1a\x45xtendedSpektraShowMessage\x12\x12\n\nshow_index\x18\x01 \x01(\r\x12\x19\n\x11step_index_offset\x18\x02 \x01(\r\x12\x1e\n\x04step\x18\x03 \x03(\x0b\x32\x10.ShowStepMessage\"W\n\x19SpektraShowControlMessage\x12\x12\n\nshow_index\x18\x01 \x01(\r\x12\x14\n\x0cstart_resume\x18\x02 \x01(\r\x12\x10\n\x08gotoStep\x18\x03 \x01(\r\"\xba\x01\n\x14\x44MXTranslationObject\x12\x0f\n\x07line_in\x18\x01 \x01(\r\x12\x10\n\x08line_out\x18\x02 \x01(\r\x12\x19\n\x11\x64mx_start_address\x18\x03 \x01(\r\x12\x15\n\rchannel_count\x18\x04 \x01(\r\x12\x12\n\ndali_array\x18\x05 \x03(\r\x12\x16\n\x0e\x61\x66\x66\x65\x63ted_input\x18\x07 \x01(\r\x12\x10\n\x08\x62locking\x18\x08 \x01(\x08\x12\x0f\n\x07\x65nabled\x18\t \x01(\x08\"?\n\x16\x44MXProtocolTranslation\x12%\n\x06object\x18\x01 \x03(\x0b\x32\x15.DMXTranslationObject\"%\n\x11InputStateMessage\x12\x10\n\x08use_mask\x18\x01 \x01(\x08\"8\n\x12InputStateResponse\x12\x0e\n\x06inputs\x18\x01 \x03(\r\x12\x12\n\ninput_mask\x18\x02 \x01(\r\"@\n\x12LevelCacheResponse\x12\x0e\n\x06levels\x18\x01 \x03(\r\x12\x0c\n\x04line\x18\x02 \x01(\r\x12\x0c\n\x04page\x18\x03 \x01(\r\"\x80\x05\n\x1c\x44iagnosticSystemInfoResponse\x12\x10\n\x08\x66irmware\x18\x01 \x01(\t\x12\x10\n\x08hardware\x18\x02 \x01(\t\x12\r\n\x05\x65rror\x18\x03 \x01(\t\x12\x13\n\x0binput_count\x18\x04 \x01(\r\x12\x14\n\x0coutput_count\x18\x05 \x01(\r\x12\x10\n\x08ir_count\x18\x06 \x01(\r\x12\x17\n\x0flist_step_count\x18\x07 \x01(\r\x12\x12\n\nlist_count\x18\x08 \x01(\r\x12\x13\n\x0b\x61larm_count\x18\t \x01(\r\x12\x14\n\x0c\x62urnin_count\x18\n \x01(\r\x12\x19\n\x11spektra_seq_count\x18\x0b \x01(\r\x12\x1e\n\x16spektra_seq_step_count\x18\x0c \x01(\r\x12\x1b\n\x13spektra_theme_count\x18\r \x01(\r\x12\x1c\n\x14spektra_static_count\x18\x0e \x01(\r\x12\x15\n\rproto_version\x18\x0f \x01(\r\x12\x12\n\nline_count\x18\x10 \x01(\r\x12\x18\n\x05lines\x18\x11 \x03(\x0e\x32\t.LineType\x12\x15\n\rprofile_count\x18\x12 \x01(\r\x12\x19\n\x11preset_code_count\x18\x13 \x01(\r\x12\x18\n\x10user_level_count\x18\x14 \x01(\r\x12\x19\n\x11\x64mx_to_dali_count\x18\x15 \x01(\r\x12\x1a\n\x12spektra_zone_count\x18\x16 \x01(\r\x12\x13\n\x0blogic_count\x18\x17 \x01(\r\x12\x18\n\x10input_dali_count\x18\x18 \x01(\r\x12\x11\n\tvendor_id\x18\x19 \x01(\t\x12\x18\n\x10selected_profile\x18\x1a \x01(\r\"U\n\x11\x44iagnosticMessage\x12$\n\x04type\x18\x01 \x01(\x0e\x32\x16.DiagnosticMessageType\x12\x0c\n\x04page\x18\x02 \x01(\r\x12\x0c\n\x04line\x18\x03 \x01(\r\"\xf2\x01\n\x1d\x41\x64minProjectPropertiesMessage\x12\x13\n\x0b\x64\x65vice_name\x18\x02 \x01(\t\x12\x14\n\x0cproject_name\x18\x03 \x01(\t\x12\x11\n\tlongitude\x18\x04 \x01(\x02\x12\x10\n\x08latitude\x18\x05 \x01(\x02\x12\x14\n\x0clocal_offset\x18\x06 \x01(\x02\x12\x18\n\x10\x64\x61ylight_savings\x18\x07 \x01(\x08\x12\x1e\n\x16\x64\x61ylight_savings_start\x18\x08 \x01(\r\x12\x1c\n\x14\x64\x61ylight_savings_end\x18\t \x01(\r\x12\x13\n\x0bpoll_active\x18\n \x01(\r\"\xa4\x01\n\x18\x41\x64minConfigStatusMessage\x12\x13\n\x0blist_status\x18\x01 \x03(\r\x12\x16\n\x0e\x62urn_in_status\x18\x02 \x03(\r\x12\x14\n\x0c\x61larm_status\x18\x03 \x01(\r\x12.\n\x13\x61larm_time_from_reg\x18\x04 \x01(\x0b\x32\x11.TimeClockMessage\x12\x15\n\rsensor_status\x18\x05 \x03(\r\"\xd6\x01\n\x1d\x41\x64minNetworkPropertiesMessage\x12\x0c\n\x04\x44HCP\x18\x01 \x01(\x08\x12\n\n\x02IP\x18\x02 \x01(\t\x12\x0b\n\x03MAC\x18\x03 \x01(\t\x12\x0f\n\x07gateway\x18\x04 \x01(\t\x12\x11\n\tNTPServer\x18\x05 \x01(\t\x12\x0b\n\x03NTP\x18\x06 \x01(\x08\x12\r\n\x05\x65rror\x18\x07 \x01(\t\x12\x12\n\nNTPTimeout\x18\x08 \x01(\r\x12\x0e\n\x06subnet\x18\t \x01(\t\x12\x13\n\x0b\x44NS_Primary\x18\n \x01(\t\x12\x15\n\rDNS_Secondary\x18\x0b \x01(\t\"D\n\x16\x41\x64minDNSServersMessage\x12\x13\n\x0b\x44NS_Primary\x18\x01 \x01(\t\x12\x15\n\rDNS_Secondary\x18\x02 \x01(\t\"7\n\x1b\x41\x64minControllerLinesMessage\x12\x18\n\x05lines\x18\x01 \x03(\x0e\x32\t.LineType\"@\n\x18\x41\x64minDeviceStatusMessage\x12\x13\n\x0btemperature\x18\x01 \x01(\x02\x12\x0f\n\x07\x62\x61ttery\x18\x02 \x01(\x02\"I\n\x17\x41\x64minSecureLoginMessage\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x0e\n\x06\x63nonce\x18\x02 \x01(\t\x12\x0c\n\x04hash\x18\x03 \x03(\r\";\n\x1a\x41\x64minDALISensorTypeMessage\x12\x1d\n\x04type\x18\x01 \x01(\x0e\x32\x0f.DALISensorType\"\xb4\x04\n\x0c\x41\x64minMessage\x12\"\n\x07\x63ommand\x18\x01 \x01(\x0e\x32\x11.AdminCommandType\x12\"\n\x06target\x18\x02 \x01(\x0e\x32\x12.AdminPropertyType\x12\x1f\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x0f.PayloadMessageH\x00\x12<\n\x12network_properties\x18\x04 \x01(\x0b\x32\x1e.AdminNetworkPropertiesMessageH\x00\x12<\n\x12project_properties\x18\x05 \x01(\x0b\x32\x1e.AdminProjectPropertiesMessageH\x00\x12\x38\n\x10\x63ontroller_lines\x18\x06 \x01(\x0b\x32\x1c.AdminControllerLinesMessageH\x00\x12\x32\n\rdevice_status\x18\x07 \x01(\x0b\x32\x19.AdminDeviceStatusMessageH\x00\x12\x32\n\rconfig_status\x18\x08 \x01(\x0b\x32\x19.AdminConfigStatusMessageH\x00\x12)\n\x0b\x64\x65vice_time\x18\t \x01(\x0b\x32\x12.UpdateTimeMessageH\x00\x12\x37\n\x10\x64\x61li_sensor_type\x18\n \x01(\x0b\x32\x1b.AdminDALISensorTypeMessageH\x00\x12.\n\x0b\x64ns_servers\x18\x0b \x01(\x0b\x32\x17.AdminDNSServersMessageH\x00\x42\t\n\x07payload\"K\n\x0b\x44\x61taMessage\x12\x12\n\nidentifier\x18\x01 \x01(\r\x12\x0b\n\x03seq\x18\x02 \x01(\r\x12\r\n\x05\x63ount\x18\x03 \x01(\r\x12\x0c\n\x04\x64\x61ta\x18\x04 \x03(\r\"\xd9\x02\n\x13\x46irmwareMetaMessage\x12\x18\n\x10\x66irmware_version\x18\x01 \x01(\r\x12\x15\n\rfirmware_date\x18\x02 \x01(\r\x12\x1c\n\x14\x66irmware_date_upload\x18\x03 \x01(\r\x12\x19\n\x11\x66irmware_checksum\x18\x04 \x01(\r\x12\x1c\n\x14\x66irmware_chunk_count\x18\x05 \x01(\r\x12\x1d\n\x15\x66irmware_base_address\x18\x06 \x01(\r\x12\x1c\n\x14\x66irmware_end_address\x18\x07 \x01(\r\x12\x1a\n\x12\x66irmware_is_backup\x18\x08 \x01(\x08\x12\r\n\x05nonce\x18\t \x03(\r\x12\x19\n\x11\x66irmware_date_day\x18\n \x01(\r\x12\x1b\n\x13\x66irmware_date_month\x18\x0b \x01(\r\x12\x1a\n\x12\x66irmware_date_year\x18\x0c \x01(\r\";\n\x16\x46irmwareControlMessage\x12!\n\x03\x63md\x18\x01 \x01(\x0e\x32\x14.FirmwareCommandType\"d\n\x14\x46irmwareChunkMessage\x12\x18\n\x10\x66irmware_address\x18\x01 \x01(\r\x12\x13\n\x0btotal_bytes\x18\x02 \x01(\r\x12\x1d\n\x07payload\x18\x03 \x01(\x0b\x32\x0c.DataMessage\"j\n\x14SystemLogReadMessage\x12\x19\n\x11log_start_address\x18\x01 \x01(\r\x12\x16\n\x0elogs_requested\x18\x02 \x01(\r\x12\x1f\n\x04logs\x18\x03 \x03(\x0b\x32\x11.SystemLogMessage\"\xb7\x02\n\x10SystemLogMessage\x12\x17\n\x0ftime_since_boot\x18\x01 \x01(\r\x12\x1e\n\x04\x62oot\x18\x02 \x01(\x0b\x32\x0e.SystemLogBootH\x00\x12$\n\x07netlink\x18\x03 \x01(\x0b\x32\x11.SystemLogNetLinkH\x00\x12\x1c\n\x03ntp\x18\x04 \x01(\x0b\x32\r.SystemLogNTPH\x00\x12$\n\x07trigger\x18\x05 \x01(\x0b\x32\x11.SystemLogTriggerH\x00\x12$\n\x07spektra\x18\x06 \x01(\x0b\x32\x11.SystemLogSpektraH\x00\x12&\n\x08schedule\x18\x07 \x01(\x0b\x32\x12.SystemLogScheduleH\x00\x12(\n\tuserstart\x18\x08 \x01(\x0b\x32\x13.SystemLogUserStartH\x00\x42\x08\n\x06packet\"D\n\rSystemLogBoot\x12$\n\ttimeclock\x18\x01 \x01(\x0b\x32\x11.TimeClockMessage\x12\r\n\x05\x66lags\x18\x02 \x01(\r\"%\n\x10SystemLogNetLink\x12\x11\n\tis_linked\x18\x01 \x01(\x08\"4\n\x0cSystemLogNTP\x12$\n\ttimeclock\x18\x01 \x01(\x0b\x32\x11.TimeClockMessage\"O\n\x10SystemLogTrigger\x12 \n\x07trigger\x18\x01 \x01(\x0b\x32\x0f.TriggerMessage\x12\x19\n\x06source\x18\x02 \x01(\x0e\x32\t.ReadType\"g\n\x10SystemLogSpektra\x12\"\n\x06\x61\x63tion\x18\x01 \x01(\x0e\x32\x12.SpektraActionType\x12 \n\x04type\x18\x02 \x01(\x0e\x32\x12.SpektraTargetType\x12\r\n\x05index\x18\x03 \x01(\r\"a\n\x11SystemLogSchedule\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0f\n\x07isStart\x18\x02 \x01(\r\x12\x0e\n\x06second\x18\x03 \x01(\r\x12\x0e\n\x06minute\x18\x04 \x01(\r\x12\x0c\n\x04hour\x18\x05 \x01(\r\"I\n\x12SystemLogUserStart\x12$\n\ttimeclock\x18\x01 \x01(\x0b\x32\x11.TimeClockMessage\x12\r\n\x05\x66lags\x18\x02 \x01(\r\"\xd3\x01\n\x19SystemMetaDataReadMessage\x12\x1b\n\x13input_press_counter\x18\x01 \x03(\r\x12\x1a\n\x12list_start_counter\x18\x02 \x03(\r\x12\x19\n\x11schedules_counter\x18\x03 \x03(\r\x12\x16\n\x0escreen_on_time\x18\x04 \x01(\r\x12\x17\n\x0fscreen_dim_time\x18\x05 \x01(\r\x12\x19\n\x11screen_saver_time\x18\x06 \x01(\r\x12\x16\n\x0ereboot_counter\x18\x07 \x01(\r\"\xbf\x01\n\x0b\x45ventFilter\x12\r\n\x05input\x18\x01 \x01(\x08\x12\x16\n\x0e\x64\x61li_arc_level\x18\x02 \x01(\x08\x12\x14\n\x0c\x64\x61li_command\x18\x03 \x01(\x08\x12\x13\n\x0b\x64\x61li_sensor\x18\x04 \x01(\x08\x12\x12\n\ndali_input\x18\x05 \x01(\x08\x12\x1a\n\x12\x64mx_stream_changed\x18\x06 \x01(\x08\x12\x15\n\rdali_24_frame\x18\x07 \x01(\x08\x12\x17\n\x0ftrigger_message\x18\x08 \x01(\x08\"\xdd\x01\n\x0cTriggerEvent\x12\x1a\n\x04type\x18\x01 \x01(\x0e\x32\x0c.TriggerType\x12\x0f\n\x05level\x18\x02 \x01(\rH\x00\x12(\n\x0c\x64\x61li_command\x18\x03 \x01(\x0e\x32\x10.DALICommandTypeH\x00\x12\x16\n\x0etarget_address\x18\x04 \x01(\r\x12\x11\n\tline_mask\x18\x05 \x01(\r\x12\x0c\n\x04zone\x18\x06 \x01(\r\x12\r\n\x05value\x18\x07 \x01(\r\x12\x13\n\x0bquery_index\x18\x08 \x01(\r\x12\x0e\n\x06source\x18\t \x01(\rB\t\n\x07payload\"m\n\x10\x44\x41LI24InputEvent\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0c\n\x04line\x18\x02 \x01(\r\x12\x0f\n\x07\x61\x64\x64ress\x18\x03 \x01(\r\x12\x1e\n\x04type\x18\x04 \x01(\x0e\x32\x10.DALI24InputType\x12\x0b\n\x03\x61rg\x18\x05 \x01(\r\"/\n\x10\x44\x41LI24FrameEvent\x12\x0c\n\x04line\x18\x01 \x01(\r\x12\r\n\x05\x66rame\x18\x02 \x01(\r\"\xaa\x01\n\x0f\x44\x41LISensorEvent\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0c\n\x04line\x18\x02 \x01(\r\x12\x0f\n\x07\x61\x64\x64ress\x18\x03 \x01(\r\x12-\n\x0cmotion_state\x18\x04 \x01(\x0e\x32\x17.DALIMotionSensorStates\x12\'\n\tlux_state\x18\x05 \x01(\x0e\x32\x14.DALILuxSensorStates\x12\x11\n\tlux_level\x18\x06 \x01(\r\"\xc0\x02\n\x0c\x45ventMessage\x12\x19\n\x05\x65vent\x18\x01 \x01(\x0e\x32\n.EventType\x12 \n\x07trigger\x18\x02 \x01(\x0b\x32\r.TriggerEventH\x00\x12%\n\x06inputs\x18\x03 \x01(\x0b\x32\x13.InputStateResponseH\x00\x12\"\n\x07payload\x18\x04 \x01(\x0b\x32\x0f.PayloadMessageH\x00\x12\"\n\x06sensor\x18\x06 \x01(\x0b\x32\x10.DALISensorEventH\x00\x12*\n\rdali_24_input\x18\x07 \x01(\x0b\x32\x11.DALI24InputEventH\x00\x12\x1e\n\x06\x66ilter\x18\x08 \x01(\x0b\x32\x0c.EventFilterH\x00\x12*\n\rdali_24_frame\x18\t \x01(\x0b\x32\x11.DALI24FrameEventH\x00\x42\x0c\n\nevent_data\"\xa3\x15\n\rEdidioMessage\x12\x12\n\nmessage_id\x18\x01 \x01(\r\x12\x1a\n\x03\x61\x63k\x18\x02 \x01(\x0b\x32\x0b.AckMessageH\x00\x12$\n\x06inputs\x18\x03 \x01(\x0b\x32\x12.InputMultiMessageH\x00\x12&\n\x07outputs\x18\x04 \x01(\x0b\x32\x13.OutputMultiMessageH\x00\x12\x1e\n\x03irs\x18\x05 \x01(\x0b\x32\x0f.IRMultiMessageH\x00\x12 \n\x06sensor\x18\x06 \x01(\x0b\x32\x0e.SensorMessageH\x00\x12\x1c\n\x04list\x18\x08 \x01(\x0b\x32\x0c.ListMessageH\x00\x12\x1e\n\x05\x61larm\x18\n \x01(\x0b\x32\r.AlarmMessageH\x00\x12$\n\x06\x61larms\x18\x0b \x01(\x0b\x32\x12.AlarmMultiMessageH\x00\x12\'\n\x08\x62urn_ins\x18\x0c \x01(\x0b\x32\x13.BurnInMultiMessageH\x00\x12/\n\x0esensor_command\x18\r \x01(\x0b\x32\x15.SensorCommandMessageH\x00\x12/\n\x0e\x63hange_profile\x18\x0e \x01(\x0b\x32\x15.ChangeProfileMessageH\x00\x12,\n\x10identify_message\x18\x0f \x01(\x0b\x32\x10.IdentifyMessageH\x00\x12)\n\x0bupdate_time\x18\x10 \x01(\x0b\x32\x12.UpdateTimeMessageH\x00\x12)\n\x0bread_device\x18\x11 \x01(\x0b\x32\x12.ReadDeviceMessageH\x00\x12$\n\x0c\x64\x61li_message\x18\x12 \x01(\x0b\x32\x0c.DALIMessageH\x00\x12(\n\ndali_query\x18\x13 \x01(\x0b\x32\x12.DALIQueryResponseH\x00\x12\"\n\x0b\x64mx_message\x18\x14 \x01(\x0b\x32\x0b.DMXMessageH\x00\x12\x33\n\x10\x65xternal_trigger\x18\x15 \x01(\x0b\x32\x17.ExternalTriggerMessageH\x00\x12\x32\n\x10spektra_settings\x18\x16 \x01(\x0b\x32\x16.SpektraSettingMessageH\x00\x12\x39\n\x10spektra_sequence\x18\x17 \x01(\x0b\x32\x1d.SpektraSequenceConfigMessageH\x00\x12\x33\n\x10spektra_calendar\x18\x18 \x01(\x0b\x32\x17.SpektraCalendarMessageH\x00\x12\x33\n\rspektra_theme\x18\x19 \x01(\x0b\x32\x1a.SpektraThemeConfigMessageH\x00\x12+\n\x0cspektra_read\x18\x1a \x01(\x0b\x32\x13.SpektraReadMessageH\x00\x12\x31\n\x0fspektra_control\x18\x1b \x01(\x0b\x32\x16.SpektraControlMessageH\x00\x12\x31\n\x0e\x64mx_translator\x18\x1c \x01(\x0b\x32\x17.DMXProtocolTranslationH\x00\x12+\n\rinput_request\x18\x1d \x01(\x0b\x32\x12.InputStateMessageH\x00\x12-\n\x0einput_response\x18\x1e \x01(\x0b\x32\x13.InputStateResponseH\x00\x12\x34\n\x0b\x64iag_system\x18\x1f \x01(\x0b\x32\x1d.DiagnosticSystemInfoResponseH\x00\x12*\n\x0c\x64iag_message\x18  \x01(\x0b\x32\x12.DiagnosticMessageH\x00\x12&\n\radmin_message\x18! \x01(\x0b\x32\r.AdminMessageH\x00\x12\x1e\n\x05\x65vent\x18\" \x01(\x0b\x32\r.EventMessageH\x00\x12>\n\x16secure_device_settings\x18# \x01(\x0b\x32\x1c.SecureDeviceSettingsMessageH\x00\x12,\n\x0c\x66irmware_new\x18$ \x01(\x0b\x32\x14.FirmwareMetaMessageH\x00\x12\x33\n\x10\x66irmware_control\x18% \x01(\x0b\x32\x17.FirmwareControlMessageH\x00\x12/\n\x0e\x66irmware_chunk\x18& \x01(\x0b\x32\x15.FirmwareChunkMessageH\x00\x12\x33\n\x14level_cache_response\x18\' \x01(\x0b\x32\x13.LevelCacheResponseH\x00\x12-\n\rlist_extended\x18) \x01(\x0b\x32\x14.ExtendedListMessageH\x00\x12\"\n\x0b\x61yt_message\x18* \x01(\x0b\x32\x0b.AytMessageH\x00\x12\"\n\x0brdm_message\x18+ \x01(\x0b\x32\x0b.RDMMessageH\x00\x12\x33\n\x14rdm_response_message\x18, \x01(\x0b\x32\x13.RDMResponseMessageH\x00\x12+\n\rlogic_message\x18- \x01(\x0b\x32\x12.LogicMultiMessageH\x00\x12\x30\n\x0csecure_login\x18. \x01(\x0b\x32\x18.AdminSecureLoginMessageH\x00\x12\x33\n\x14\x64\x65vice_state_message\x18/ \x01(\x0b\x32\x13.DeviceStateMessageH\x00\x12:\n\x14spektra_calendar_day\x18\x30 \x01(\x0b\x32\x1a.SpektraCalendarDayMessageH\x00\x12\x44\n\x19spektra_calendar_overview\x18\x31 \x01(\x0b\x32\x1f.SpektraCalendarOverviewMessageH\x00\x12-\n\x0binputs_dali\x18\x32 \x01(\x0b\x32\x16.DALIInputMultiMessageH\x00\x12*\n\tlogs_read\x18\x33 \x01(\x0b\x32\x15.SystemLogReadMessageH\x00\x12\x33\n\rmetadata_read\x18\x34 \x01(\x0b\x32\x1a.SystemMetaDataReadMessageH\x00\x12\x39\n\x17\x64\x61li_addressing_message\x18\x35 \x01(\x0b\x32\x16.DALIAddressingMessageH\x00\x12\x37\n\x16\x64\x61li_remapping_message\x18\x36 \x01(\x0b\x32\x15.DALIRemappingMessageH\x00\x12\x42\n\x1cspektra_show_control_message\x18\x37 \x01(\x0b\x32\x1a.SpektraShowControlMessageH\x00\x12\x33\n\x14spektra_show_message\x18\x38 \x01(\x0b\x32\x13.SpektraShowMessageH\x00\x12\x44\n\x1d\x65xtended_spektra_show_message\x18\x39 \x01(\x0b\x32\x1b.ExtendedSpektraShowMessageH\x00\x12-\n\rrdm_discovery\x18: \x01(\x0b\x32\x14.RDMDiscoveryMessageH\x00\x12\x38\n\x13rdm_discovery_reply\x18; \x01(\x0b\x32\x19.RDMDiscoveryReplyMessageH\x00\x12\x42\n\x18\x64\x61li_identify_duplicates\x18< \x01(\x0b\x32\x1e.DALIIdentifyDuplicatesMessageH\x00\x42\t\n\x07payload*\x9b\x01\n\x14TriggerOperationType\x12\r\n\tMOMENTARY\x10\x00\x12\x0c\n\x08LATCHING\x10\x01\x12\x14\n\x10MOMENTARY_OUTPUT\x10\x02\x12\x13\n\x0fLATCHING_OUTPUT\x10\x03\x12\n\n\x06ROTARY\x10\x04\x12\x17\n\x12MOMENTARY_DISABLED\x10\x80\x01\x12\x16\n\x11LATCHING_DISABLED\x10\x81\x01*\xa3\x0c\n\x0bTriggerType\x12\x0c\n\x08\x44\x41LI_ARC\x10\x00\x12\x10\n\x0c\x44\x41LI_COMMAND\x10\x01\x12\x1a\n\x16\x44MX_CHANNELS_SPLIT_LOW\x10\x02\x12\x1b\n\x17\x44MX_CHANNELS_SPLIT_HIGH\x10\x03\x12$\n DMX_MULTICAST_CHANNELS_SPLIT_LOW\x10\x04\x12%\n!DMX_MULTICAST_CHANNELS_SPLIT_HIGH\x10\x05\x12\x11\n\rDMX_BROADCAST\x10\x06\x12\t\n\x05\x44IDIO\x10\x07\x12\x14\n\x10\x46\x41\x44\x45_UP_WITH_MIN\x10\x08\x12\x0e\n\nLIST_START\x10\t\x12\x19\n\x15LIST_START_CONTINUOUS\x10\n\x12\r\n\tLIST_STOP\x10\x0b\x12\x15\n\x11SPEKTRA_START_SEQ\x10\x0c\x12\x14\n\x10SPEKTRA_STOP_SEQ\x10\r\x12\x11\n\rSPEKTRA_THEME\x10\x0e\x12\x12\n\x0eSPEKTRA_STATIC\x10\x0f\x12\x14\n\x10SPEKTRA_SCHEDULE\x10\x10\x12\x0e\n\nLINK_START\x10\x11\x12\r\n\tLINK_STOP\x10\x12\x12\x10\n\x0c\x44ISABLE_BURN\x10\x13\x12\x0f\n\x0b\x45NABLE_BURN\x10\x14\x12\x0e\n\nON_OFF_TOG\x10\x15\x12\x0f\n\x0bMIN_MAX_TOG\x10\x16\x12\x10\n\x0c\x45NABLE_INPUT\x10\x17\x12\x11\n\rDISABLE_INPUT\x10\x18\x12\x14\n\x10\x45NABLE_TOG_INPUT\x10\x19\x12\x0e\n\nOUTPUT_TOG\x10\x1a\x12\x0f\n\x0bOUTPUT_HIGH\x10\x1b\x12\x0e\n\nOUTPUT_LOW\x10\x1c\x12\x0f\n\x0bOUTPUT_TRIG\x10\x1d\x12\x12\n\x0ePROFILE_CHANGE\x10\x1e\x12\x13\n\x0f\x46\x41\x44\x45_LONG_PRESS\x10\x1f\x12\n\n\x06SYNCRO\x10 \x12\x0f\n\x0bPRESET_CODE\x10!\x12\x0f\n\x0b\x43USTOM_CODE\x10\"\x12\x11\n\rSPEKTRA_SLEEP\x10#\x12\x12\n\x0eSPEKTRA_RESUME\x10$\x12\x10\n\x0c\x44\x45VICE_RESET\x10%\x12\x0f\n\x0b\x44\x45VICE_SAVE\x10&\x12\x18\n\x14USER_LEVEL_STORE_NEW\x10\'\x12\x1a\n\x16USER_LEVEL_SET_DEFAULT\x10(\x12\x15\n\x11USER_LEVEL_RECALL\x10)\x12\r\n\tROOM_JOIN\x10+\x12\x0f\n\x0bROOM_UNJOIN\x10,\x12\x13\n\x0fTYPE8_TC_WARMER\x10-\x12\x13\n\x0fTYPE8_TC_COOLER\x10.\x12\x13\n\x0fTYPE8_TC_ACTUAL\x10/\x12\x13\n\x0fLOGIC_OPERATION\x10\x30\x12\x10\n\x0c\x41LARM_ENABLE\x10\x31\x12\x11\n\rALARM_DISABLE\x10\x32\x12 \n\x1c\x44\x41LI_CONTROL_SENSOR_OVERRIDE\x10\x33\x12$\n DALI_CONTROL_SENSOR_TEMP_DISABLE\x10\x34\x12\x1e\n\x1a\x44\x41LI_CONTROL_SENSOR_RESUME\x10\x35\x12\x15\n\x11\x44\x41LI_ARC_OVERRIDE\x10\x36\x12\x19\n\x15\x44\x41LI_COMMAND_OVERRIDE\x10\x37\x12\x1d\n\x19\x46\x41\x44\x45_UP_WITH_MIN_OVERRIDE\x10\x38\x12\x17\n\x13ON_OFF_TOG_OVERRIDE\x10\x39\x12\x18\n\x14MIN_MAX_TOG_OVERRIDE\x10:\x12\x0f\n\x0bMAX_OFF_TOG\x10;\x12\x18\n\x14MAX_OFF_TOG_OVERRIDE\x10<\x12\x1c\n\x18\x46\x41\x44\x45_LONG_PRESS_OVERRIDE\x10=\x12\x1e\n\x1aUSER_LEVEL_RECALL_OVERRIDE\x10>\x12\x14\n\x10\x44MX_ZONE_FADE_UP\x10?\x12\x16\n\x12\x44MX_ZONE_FADE_DOWN\x10@\x12\x11\n\rLOGGING_LEVEL\x10\x41\x12\x18\n\x14SPEKTRA_SHOW_CONTROL\x10\x42\x12\x19\n\x15\x43IRCADIAN_TEMPERATURE\x10\x43\x12\x1c\n\x18\x44\x41LI_CONTROL_SENSOR_MUTE\x10\x44\x12\x1e\n\x1a\x44\x41LI_CONTROL_SENSOR_UNMUTE\x10\x45\x12\x15\n\x11SPEKTRA_INTENSITY\x10\x46\x12\x0f\n\nNO_COMMAND\x10\xfe\x01*\xeb\x01\n\x08ReadType\x12\n\n\x06INPUTS\x10\x00\x12\x0b\n\x07OUTPUTS\x10\x01\x12\x06\n\x02IR\x10\x02\x12\n\n\x06SENSOR\x10\x03\x12\x08\n\x04LIST\x10\x05\x12\n\n\x06\x41LARMS\x10\x07\x12\x0b\n\x07\x42URN_IN\x10\x08\x12\x0b\n\x07PROJECT\x10\t\x12\x0b\n\x07NETWORK\x10\n\x12\n\n\x06\x44\x45VICE\x10\x0b\x12\r\n\tPOLL_DATA\x10\x0c\x12\x11\n\rLIST_EXTENDED\x10\r\x12\t\n\x05LOGIC\x10\x0e\x12\x0f\n\x0b\x44\x41LI_INPUTS\x10\x0f\x12\x10\n\x0cSPEKTRA_SHOW\x10\x10\x12\x19\n\x15SPEKTRA_SHOW_EXTENDED\x10\x11*\x8c\x01\n\x0f\x41larmRepeatType\x12\x13\n\x0f\x41LARM_NO_REPEAT\x10\x00\x12\x16\n\x12\x41LARM_REPEAT_DAILY\x10\x01\x12\x19\n\x15\x41LARM_REPEAT_WORK_DAY\x10\x02\x12\x17\n\x13\x41LARM_REPEAT_WEEKLY\x10\x03\x12\x18\n\x14\x41LARM_REPEAT_MONTHLY\x10\x04*I\n\x0e\x41larmAstroType\x12\x12\n\x0e\x41LARM_NO_ASTRO\x10\x00\x12\x11\n\rALARM_SUNRUSE\x10\x01\x12\x10\n\x0c\x41LARM_SUNSET\x10\x02*^\n\x11SpektraTargetType\x12\x0c\n\x08SETTINGS\x10\x00\x12\x0c\n\x08SEQUENCE\x10\x01\x12\t\n\x05THEME\x10\x02\x12\n\n\x06STATIC\x10\x03\x12\x0c\n\x08\x43\x41LENDAR\x10\x04\x12\x08\n\x04SHOW\x10\x05*=\n\x11SpektraActionType\x12\t\n\x05START\x10\x00\x12\x08\n\x04STOP\x10\x01\x12\t\n\x05PAUSE\x10\x02\x12\x08\n\x04SAVE\x10\x03*p\n\x15SpektraStepActionType\x12\x10\n\x0cRUN_SEQUENCE\x10\x00\x12\x0e\n\nSHOW_THEME\x10\x01\x12\x0e\n\nSTART_LIST\x10\x02\x12\x12\n\x0ePAUSE_PREVIOUS\x10\x03\x12\x11\n\rSTOP_PREVIOUS\x10\x04*}\n\x1fSpektraUnscheduledBehaviourType\x12 \n\x1cRUN_RANDOM_COLOURED_SEQUENCE\x10\x00\x12\x12\n\x0eRUN_SEQUENCE_1\x10\x01\x12\x13\n\x0fRESUME_PREVIOUS\x10\x02\x12\x0f\n\nDO_NOTHING\x10\xfe\x01*6\n\x12LineAddressingType\x12\x0f\n\x0bINDEPENDENT\x10\x00\x12\x0f\n\x0b\x43ONSECUTIVE\x10\x01*\xe7\x02\n\x0e\x41\x63kMessageType\x12\x11\n\rDECODE_FAILED\x10\x00\x12\x17\n\x13INDEX_OUT_OF_BOUNDS\x10\x01\x12\x13\n\x0fUNEXPECTED_TYPE\x10\x02\x12\x11\n\rENCODE_FAILED\x10\x03\x12\x10\n\x0cKEY_MISMATCH\x10\x04\x12\x0b\n\x07SUCCESS\x10\x05\x12\x12\n\x0eINVALID_PARAMS\x10\x06\x12\x16\n\x12UNEXPECTED_COMMAND\x10\x07\x12\x18\n\x14\x43OMMUNICATION_FAILED\x10\x08\x12\x19\n\x15\x43OMMUNICATION_TIMEOUT\x10\t\x12\x11\n\rDATA_TOO_LONG\x10\n\x12\x13\n\x0fUNEXPECTED_CASE\x10\x0b\x12\x0e\n\nSLOTS_FULL\x10\x0c\x12\x10\n\x0cUNAUTHORISED\x10\r\x12\x13\n\x0fPARTIAL_SUCCESS\x10\x0e\x12\x12\n\x0e\x43OMMAND_FAILED\x10\x0f\x12\x0e\n\nDEPRECATED\x10\x10*\xea\x04\n\x10Type8CommandType\x12\x14\n\x10SET_TEMP_X_COORD\x10\x00\x12\x14\n\x10SET_TEMP_Y_COORD\x10\x01\x12\x0c\n\x08\x41\x43TIVATE\x10\x02\x12\x13\n\x0fX_COORD_STEP_UP\x10\x03\x12\x15\n\x11X_COORD_STEP_DOWN\x10\x04\x12\x13\n\x0fY_COORD_STEP_UP\x10\x05\x12\x15\n\x11Y_COORD_STEP_DOWN\x10\x06\x12\x1f\n\x1bSET_TEMP_COLOUR_TEMPERATURE\x10\x07\x12\"\n\x1e\x43OLOUR_TEMPERATURE_STEP_COOLER\x10\x08\x12\"\n\x1e\x43OLOUR_TEMPERATURE_STEP_WARMER\x10\t\x12\x1b\n\x17SET_TEMP_PRI_N_DIMLEVEL\x10\n\x12\x19\n\x15SET_TEMP_RGB_DIMLEVEL\x10\x0b\x12\x19\n\x15SET_TEMP_WAF_DIMLEVEL\x10\x0c\x12\x1b\n\x17SET_TEMP_RGBWAF_CONTROL\x10\r\x12\x19\n\x15\x43OPY_REPORT_TEMPORARY\x10\x0e\x12\x12\n\x0eSTORE_TY_PRI_N\x10\x10\x12\x18\n\x14STORE_XY_COORD_PRI_N\x10\x11\x12\"\n\x1eSTORE_COLOUR_TEMPERATURE_LIMIT\x10\x12\x12\x1e\n\x1aSTORE_GEAR_FEATURES_STATUS\x10\x13\x12\x1a\n\x16\x41SSIGN_COLOR_LINKED_CH\x10\x15\x12\x12\n\x0eSTART_AUTO_CAL\x10\x16\x12\x17\n\x13\x45NABLE_DEVICE_TYPE8\x10\x30\x12\x15\n\x11SET_XY_COORDINATE\x10\x32*\x91\x02\n\x0eType8QueryType\x12\x14\n\x10TYPE8_QUERY_NULL\x10\x00\x12$\n TYPE8_QUERY_GEAR_FEATURES_STATUS\x10\x01\x12\x1d\n\x19TYPE8_QUERY_COLOUR_STATUS\x10\x02\x12$\n TYPE8_QUERY_COLOUR_TYPE_FEATURES\x10\x03\x12\x1c\n\x18TYPE8_QUERY_COLOUR_VALUE\x10\x04\x12\x1e\n\x1aTYPE8_QUERY_RGBWAF_CONTROL\x10\x05\x12\x1f\n\x1bTYPE8_QUERY_ASSIGNED_COLOUR\x10\x06\x12\x1f\n\x1bTYPE8_QUERY_EXT_VERSION_NUM\x10\x08*\xbc\x06\n\x13\x44\x41LI24DeviceSetting\x12\x14\n\x10\x43OMMAND_IDENTIFY\x10\x00\x12\"\n\x1e\x43OMMAND_RESET_POWER_CYCLE_SEEN\x10\x01\x12\x11\n\rCOMMAND_RESET\x10\x10\x12\x1d\n\x19\x43OMMAND_RESET_MEMORY_BANK\x10\x11\x12\x1d\n\x19\x43OMMAND_SET_SHORT_ADDRESS\x10\x14\x12\x1f\n\x1b\x43OMMAND_ENABLE_WRITE_MEMORY\x10\x15\x12!\n\x1d\x43OMMAND_ENABLE_APP_CONTROLLER\x10\x16\x12\"\n\x1e\x43OMMAND_DISABLE_APP_CONTROLLER\x10\x17\x12\x1e\n\x1a\x43OMMAND_SET_OPERATING_MODE\x10\x18\x12%\n!COMMAND_ADD_TO_DEVICE_GROUPS_0_15\x10\x19\x12&\n\"COMMAND_ADD_TO_DEVICE_GROUPS_15_32\x10\x1a\x12#\n\x1f\x43OMMAND_REMOVE_FROM_GROUPS_0_15\x10\x1b\x12$\n COMMAND_REMOVE_FROM_GROUPS_16_32\x10\x1c\x12 \n\x1c\x43OMMAND_START_QUIESCENT_MODE\x10\x1d\x12\x1f\n\x1b\x43OMMAND_STOP_QUIESCENT_MODE\x10\x1e\x12$\n COMMAND_ENABLE_POWER_CYCLE_NOTIF\x10\x1f\x12%\n!COMMAND_DISABLE_POWER_CYCLE_NOTIF\x10 \x12%\n!COMMAND_SAVE_PERSISTENT_VARIABLES\x10!\x12\x16\n\x12SET_EVENT_PRIORITY\x10\x61\x12\x13\n\x0f\x45NABLE_INSTANCE\x10\x62\x12\x14\n\x10\x44ISABLE_INSTANCE\x10\x63\x12\x1e\n\x1aSET_PRIMARY_INSTANCE_GROUP\x10\x64\x12\x18\n\x14SET_INSTANCE_GROUP_1\x10\x65\x12\x18\n\x14SET_INSTANCE_GROUP_2\x10\x66\x12\x14\n\x10SET_EVENT_SCHEME\x10g\x12\x14\n\x10SET_EVENT_FILTER\x10h*c\n\x12\x44\x41LI24InstanceType\x12\x0b\n\x07\x44\x45\x46\x41ULT\x10\x00\x12\t\n\x05INPUT\x10\x01\x12\x10\n\x0cROTARY_INPUT\x10\x02\x12\x11\n\rMOTION_SENSOR\x10\x03\x12\x10\n\x0cLIGHT_SENSOR\x10\x04*\xbe\x02\n\x0c\x44\x41LI24OpCode\x12\x0f\n\x0bOPCODE_NULL\x10\x00\x12 \n\x1cSENSOR_MOTION_SET_HOLD_TIMER\x10!\x12\"\n\x1eSENSOR_MOTION_SET_REPORT_TIMER\x10\"\x12$\n SENSOR_MOTION_SET_DEADTIME_TIMER\x10#\x12#\n\x1fSENSOR_MOTION_CANCEL_HOLD_TIMER\x10$\x12!\n\x1dSENSOR_LIGHT_SET_REPORT_TIMER\x10\x30\x12\x1f\n\x1bSENSOR_LIGHT_SET_HYSTERESIS\x10\x31\x12#\n\x1fSENSOR_LIGHT_SET_DEADTIME_TIMER\x10\x32\x12#\n\x1fSENSOR_LIGHT_SET_HYSTERESIS_MIN\x10\x33*W\n\x08LineType\x12\x0e\n\nLINE_EMPTY\x10\x00\x12\r\n\tLINE_DALI\x10\x01\x12\x0c\n\x08LINE_DMX\x10\x02\x12\x0f\n\x0bLINE_DMX_IN\x10\x03\x12\r\n\tLINE_AUTO\x10\x04*\xa9\x01\n\tEventType\x12\x0c\n\x08REGISTER\x10\x00\x12\x11\n\rTRIGGER_EVENT\x10\x01\x12\x0f\n\x0bINPUT_EVENT\x10\x02\x12\x10\n\x0cSENSOR_EVENT\x10\x03\x12\x11\n\rCONTROL_EVENT\x10\x04\x12\x13\n\x0fROOM_JOIN_EVENT\x10\x05\x12\x17\n\x13\x44\x41LI_24_INPUT_EVENT\x10\x06\x12\x17\n\x13\x44\x41LI_24_FRAME_EVENT\x10\x07*\xc6\t\n\rDALIQueryType\x12\x13\n\x0f\x44\x41LI_QUERY_NULL\x10\x00\x12\x16\n\x11\x44\x41LI_QUERY_STATUS\x10\x90\x01\x12\x17\n\x12\x44\x41LI_QUERY_BALLAST\x10\x91\x01\x12\x1c\n\x17\x44\x41LI_QUERY_LAMP_FAILURE\x10\x92\x01\x12\x1d\n\x18\x44\x41LI_QUERY_LAMP_POWER_ON\x10\x93\x01\x12\x1b\n\x16\x44\x41LI_QUERY_LIMIT_ERROR\x10\x94\x01\x12\x1b\n\x16\x44\x41LI_QUERY_RESET_STATE\x10\x95\x01\x12%\n DALI_QUERY_MISSING_SHORT_ADDRESS\x10\x96\x01\x12\x1e\n\x19\x44\x41LI_QUERY_VERSION_NUMBER\x10\x97\x01\x12\x14\n\x0f\x44\x41LI_QUERY_DTR0\x10\x98\x01\x12\x1b\n\x16\x44\x41LI_QUERY_DEVICE_TYPE\x10\x99\x01\x12\x1c\n\x17\x44\x41LI_QUERY_PHYSICAL_MIN\x10\x9a\x01\x12\x1d\n\x18\x44\x41LI_QUERY_POWER_FAILURE\x10\x9b\x01\x12\x14\n\x0f\x44\x41LI_QUERY_DTR1\x10\x9c\x01\x12\x14\n\x0f\x44\x41LI_QUERY_DTR2\x10\x9d\x01\x12\x1e\n\x19\x44\x41LI_QUERY_OPERATING_MODE\x10\x9e\x01\x12 \n\x1b\x44\x41LI_QUERY_LIGHTSOURCE_TYPE\x10\x9f\x01\x12\x1c\n\x17\x44\x41LI_QUERY_ACTUAL_LEVEL\x10\xa0\x01\x12\x19\n\x14\x44\x41LI_QUERY_MAX_LEVEL\x10\xa1\x01\x12\x19\n\x14\x44\x41LI_QUERY_MIN_LEVEL\x10\xa2\x01\x12\x1e\n\x19\x44\x41LI_QUERY_POWER_ON_LEVEL\x10\xa3\x01\x12$\n\x1f\x44\x41LI_QUERY_SYSTEM_FAILURE_LEVEL\x10\xa4\x01\x12!\n\x1c\x44\x41LI_QUERY_FADETIME_FADERATE\x10\xa5\x01\x12*\n%DALI_QUERY_MANUFACTURER_SPECIFIC_MODE\x10\xa6\x01\x12 \n\x1b\x44\x41LI_QUERY_NEXT_DEVICE_TYPE\x10\xa7\x01\x12\"\n\x1d\x44\x41LI_QUERY_EXTENDED_FADE_TIME\x10\xa8\x01\x12$\n\x1f\x44\x41LI_QUERY_CONTROL_GEAR_FAILURE\x10\xaa\x01\x12\x1d\n\x18\x44\x41LI_QUERY_SCENE_X_LEVEL\x10\xb0\x01\x12\x1a\n\x15\x44\x41LI_QUERY_GROUPS_0_7\x10\xc0\x01\x12\x1b\n\x16\x44\x41LI_QUERY_GROUPS_8_15\x10\xc1\x01\x12 \n\x1b\x44\x41LI_QUERY_RANDOM_ADDRESS_H\x10\xc2\x01\x12 \n\x1b\x44\x41LI_QUERY_RANDOM_ADDRESS_M\x10\xc3\x01\x12 \n\x1b\x44\x41LI_QUERY_RANDOM_ADDRESS_L\x10\xc4\x01\x12\x1c\n\x17\x44\x41LI_QUERY_READ_DTR_0_1\x10\xc5\x01\x12 \n\x1b\x44\x41LI_QUERY_APP_EXT_COMMANDS\x10\xe0\x01\x12\"\n\x1d\x44\x41LI_QUERY_EXT_VERSION_NUMBER\x10\xff\x01\x12\x17\n\x12\x44\x41LI_QUERY_COMPARE\x10\x84\x02\x12$\n\x1f\x44\x41LI_QUERY_VERIFY_SHORT_ADDRESS\x10\x8c\x02\x12\x1d\n\x18\x44\x41LI_QUERY_SHORT_ADDRESS\x10\x8d\x02*\xe9\x17\n\x0f\x44\x41LICommandType\x12\x0c\n\x08\x44\x41LI_OFF\x10\x00\x12\x10\n\x0c\x44\x41LI_FADE_UP\x10\x01\x12\x12\n\x0e\x44\x41LI_FADE_DOWN\x10\x02\x12\x10\n\x0c\x44\x41LI_STEP_UP\x10\x03\x12\x12\n\x0e\x44\x41LI_STEP_DOWN\x10\x04\x12\x12\n\x0e\x44\x41LI_MAX_LEVEL\x10\x05\x12\x12\n\x0e\x44\x41LI_MIN_LEVEL\x10\x06\x12\x16\n\x12\x44\x41LI_STEP_DOWN_OFF\x10\x07\x12\x13\n\x0f\x44\x41LI_ON_STEP_UP\x10\x08\x12\x18\n\x14\x44\x41LI_ENABLE_DAPC_SEQ\x10\t\x12!\n\x1d\x44\x41LI_RECALL_LAST_ACTIVE_LEVEL\x10\n\x12\x16\n\x12\x44\x41LI_CONTINUOUS_UP\x10\x0b\x12\x18\n\x14\x44\x41LI_CONTINUOUS_DOWN\x10\x0c\x12\x17\n\x13\x44\x41LI_RECALL_SCENE_0\x10\x10\x12\x17\n\x13\x44\x41LI_RECALL_SCENE_1\x10\x11\x12\x17\n\x13\x44\x41LI_RECALL_SCENE_2\x10\x12\x12\x17\n\x13\x44\x41LI_RECALL_SCENE_3\x10\x13\x12\x17\n\x13\x44\x41LI_RECALL_SCENE_4\x10\x14\x12\x17\n\x13\x44\x41LI_RECALL_SCENE_5\x10\x15\x12\x17\n\x13\x44\x41LI_RECALL_SCENE_6\x10\x16\x12\x17\n\x13\x44\x41LI_RECALL_SCENE_7\x10\x17\x12\x17\n\x13\x44\x41LI_RECALL_SCENE_8\x10\x18\x12\x17\n\x13\x44\x41LI_RECALL_SCENE_9\x10\x19\x12\x18\n\x14\x44\x41LI_RECALL_SCENE_10\x10\x1a\x12\x18\n\x14\x44\x41LI_RECALL_SCENE_11\x10\x1b\x12\x18\n\x14\x44\x41LI_RECALL_SCENE_12\x10\x1c\x12\x18\n\x14\x44\x41LI_RECALL_SCENE_13\x10\x1d\x12\x18\n\x14\x44\x41LI_RECALL_SCENE_14\x10\x1e\x12\x18\n\x14\x44\x41LI_RECALL_SCENE_15\x10\x1f\x12\x0e\n\nDALI_RESET\x10 \x12 \n\x1c\x44\x41LI_STORE_ACTUAL_LEVEL_DTR0\x10!\x12\x1d\n\x19\x44\x41LI_SAVE_PERSISTENT_VARS\x10\"\x12\x1b\n\x17\x44\x41LI_SET_OPERATING_MODE\x10#\x12\x1a\n\x16\x44\x41LI_RESET_MEMORY_BANK\x10$\x12\x18\n\x14\x44\x41LI_IDENTIFY_DEVICE\x10%\x12\x16\n\x12\x44\x41LI_SET_MAX_LEVEL\x10*\x12\x16\n\x12\x44\x41LI_SET_MIN_LEVEL\x10+\x12!\n\x1d\x44\x41LI_SET_SYSTEM_FAILURE_LEVEL\x10,\x12\x1b\n\x17\x44\x41LI_SET_POWER_ON_LEVEL\x10-\x12\x16\n\x12\x44\x41LI_SET_FADE_TIME\x10.\x12\x16\n\x12\x44\x41LI_SET_FADE_RATE\x10/\x12\x1a\n\x16\x44\x41LI_SET_EXT_FADE_TIME\x10\x30\x12\x14\n\x10\x44\x41LI_SET_SCENE_0\x10@\x12\x14\n\x10\x44\x41LI_SET_SCENE_1\x10\x41\x12\x14\n\x10\x44\x41LI_SET_SCENE_2\x10\x42\x12\x14\n\x10\x44\x41LI_SET_SCENE_3\x10\x43\x12\x14\n\x10\x44\x41LI_SET_SCENE_4\x10\x44\x12\x14\n\x10\x44\x41LI_SET_SCENE_5\x10\x45\x12\x14\n\x10\x44\x41LI_SET_SCENE_6\x10\x46\x12\x14\n\x10\x44\x41LI_SET_SCENE_7\x10G\x12\x14\n\x10\x44\x41LI_SET_SCENE_8\x10H\x12\x14\n\x10\x44\x41LI_SET_SCENE_9\x10I\x12\x15\n\x11\x44\x41LI_SET_SCENE_10\x10J\x12\x15\n\x11\x44\x41LI_SET_SCENE_11\x10K\x12\x15\n\x11\x44\x41LI_SET_SCENE_12\x10L\x12\x15\n\x11\x44\x41LI_SET_SCENE_13\x10M\x12\x15\n\x11\x44\x41LI_SET_SCENE_14\x10N\x12\x15\n\x11\x44\x41LI_SET_SCENE_15\x10O\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_SCENE_0\x10P\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_SCENE_1\x10Q\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_SCENE_2\x10R\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_SCENE_3\x10S\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_SCENE_4\x10T\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_SCENE_5\x10U\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_SCENE_6\x10V\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_SCENE_7\x10W\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_SCENE_8\x10X\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_SCENE_9\x10Y\x12\x1d\n\x19\x44\x41LI_REMOVE_FROM_SCENE_10\x10Z\x12\x1d\n\x19\x44\x41LI_REMOVE_FROM_SCENE_11\x10[\x12\x1d\n\x19\x44\x41LI_REMOVE_FROM_SCENE_12\x10\\\x12\x1d\n\x19\x44\x41LI_REMOVE_FROM_SCENE_13\x10]\x12\x1d\n\x19\x44\x41LI_REMOVE_FROM_SCENE_14\x10^\x12\x1d\n\x19\x44\x41LI_REMOVE_FROM_SCENE_15\x10_\x12\x17\n\x13\x44\x41LI_ADD_TO_GROUP_0\x10`\x12\x17\n\x13\x44\x41LI_ADD_TO_GROUP_1\x10\x61\x12\x17\n\x13\x44\x41LI_ADD_TO_GROUP_2\x10\x62\x12\x17\n\x13\x44\x41LI_ADD_TO_GROUP_3\x10\x63\x12\x17\n\x13\x44\x41LI_ADD_TO_GROUP_4\x10\x64\x12\x17\n\x13\x44\x41LI_ADD_TO_GROUP_5\x10\x65\x12\x17\n\x13\x44\x41LI_ADD_TO_GROUP_6\x10\x66\x12\x17\n\x13\x44\x41LI_ADD_TO_GROUP_7\x10g\x12\x17\n\x13\x44\x41LI_ADD_TO_GROUP_8\x10h\x12\x17\n\x13\x44\x41LI_ADD_TO_GROUP_9\x10i\x12\x18\n\x14\x44\x41LI_ADD_TO_GROUP_10\x10j\x12\x18\n\x14\x44\x41LI_ADD_TO_GROUP_11\x10k\x12\x18\n\x14\x44\x41LI_ADD_TO_GROUP_12\x10l\x12\x18\n\x14\x44\x41LI_ADD_TO_GROUP_13\x10m\x12\x18\n\x14\x44\x41LI_ADD_TO_GROUP_14\x10n\x12\x18\n\x14\x44\x41LI_ADD_TO_GROUP_15\x10o\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_GROUP_0\x10p\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_GROUP_1\x10q\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_GROUP_2\x10r\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_GROUP_3\x10s\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_GROUP_4\x10t\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_GROUP_5\x10u\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_GROUP_6\x10v\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_GROUP_7\x10w\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_GROUP_8\x10x\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_GROUP_9\x10y\x12\x1d\n\x19\x44\x41LI_REMOVE_FROM_GROUP_10\x10z\x12\x1d\n\x19\x44\x41LI_REMOVE_FROM_GROUP_11\x10{\x12\x1d\n\x19\x44\x41LI_REMOVE_FROM_GROUP_12\x10|\x12\x1d\n\x19\x44\x41LI_REMOVE_FROM_GROUP_13\x10}\x12\x1d\n\x19\x44\x41LI_REMOVE_FROM_GROUP_14\x10~\x12\x1d\n\x19\x44\x41LI_REMOVE_FROM_GROUP_15\x10\x7f\x12\x1b\n\x16\x44\x41LI_SET_SHORT_ADDRESS\x10\x80\x01\x12\x1d\n\x18\x44\x41LI_ENABLE_WRITE_MEMORY\x10\x81\x01\x12\x13\n\x0e\x44\x41LI_TERMINATE\x10\xff\x01\x12\x14\n\x0f\x44\x41LI_INITIALISE\x10\x82\x02\x12\x13\n\x0e\x44\x41LI_RANDOMISE\x10\x83\x02\x12\x12\n\rDALI_WITHDRAW\x10\x85\x02\x12\x17\n\x12\x44\x41LI_SEARCH_ADDR_H\x10\x88\x02\x12\x17\n\x12\x44\x41LI_SEARCH_ADDR_M\x10\x89\x02\x12\x17\n\x12\x44\x41LI_SEARCH_ADDR_L\x10\x8a\x02\x12\x1f\n\x1a\x44\x41LI_PROGRAM_SHORT_ADDRESS\x10\x8b\x02*\xc4\x01\n\x15\x43ustomDALICommandType\x12\x12\n\x0e\x44\x41LI_ARC_LEVEL\x10\x00\x12\x13\n\x0f\x44\x41LI_DAPC_LEVEL\x10\x01\x12\x18\n\x14\x44\x41LI_GROUP_ARC_LEVEL\x10\x02\x12\x18\n\x14\x44\x41LI_BROADCAST_SCENE\x10\x03\x12\x17\n\x13\x44\x41LI_SCENE_ON_GROUP\x10\x04\x12\x19\n\x15\x44\x41LI_SCENE_ON_ADDRESS\x10\x05\x12\x1a\n\x16\x44\x41LI_QUERY_MULTI_TYPES\x10\x06*\x96\x04\n\x11\x41\x64minPropertyType\x12\x0f\n\x0b\x44\x45VICE_NAME\x10\x00\x12\x10\n\x0cPROJECT_NAME\x10\x01\x12\r\n\tLONGITUDE\x10\x02\x12\x0c\n\x08LATITUDE\x10\x03\x12\x14\n\x10LOCAL_UTC_OFFSET\x10\x04\x12\x14\n\x10\x44\x41YLIGHT_SAVINGS\x10\x05\x12\x0f\n\x0bPOLL_ACTIVE\x10\x06\x12\x10\n\x0c\x44HCP_ENABLED\x10\x07\x12\x0b\n\x07IP_ADDR\x10\x08\x12\x0c\n\x08MAC_ADDR\x10\t\x12\x0e\n\nGATEWAY_IP\x10\n\x12\x16\n\x12NETWORK_PROPERTIES\x10\x0b\x12\x15\n\x11SYSTEM_PROPERTIES\x10\x0c\x12\x14\n\x10\x43ONTROLLER_LINES\x10\r\x12\x14\n\x10\x45\x45PROM_FULL_CHIP\x10\x0e\x12\x0f\n\x0b\x43ONFIG_DATA\x10\x0f\x12\x10\n\x0cSPEKTRA_DATA\x10\x10\x12\x11\n\rDEVICE_STATUS\x10\x11\x12\x11\n\rCONFIG_STATUS\x10\x12\x12\x0f\n\x0b\x44\x45VICE_TIME\x10\x13\x12\x0f\n\x0bNTP_DETAILS\x10\x14\x12\x10\n\x0c\x44\x41LI_SENSORS\x10\x15\x12\x12\n\x0eSECURE_SESSION\x10\x16\x12\t\n\x05NONCE\x10\x17\x12\x14\n\x10\x44\x41LI_SENSOR_TYPE\x10\x18\x12\x11\n\rDEVICE_REBOOT\x10\x19\x12\x12\n\x0eSYSTEM_LOGGING\x10\x1a\x12\n\n\x06SUBNET\x10\x1b\x12\x07\n\x03\x44NS\x10\x1c*M\n\x10\x41\x64minCommandType\x12\x07\n\x03SET\x10\x00\x12\x07\n\x03GET\x10\x01\x12\x07\n\x03\x41\x44\x44\x10\x02\x12\n\n\x06REMOVE\x10\x03\x12\t\n\x05RESET\x10\x04\x12\x07\n\x03RUN\x10\x05*\xb5\x01\n\x0e\x44\x41LIStatusType\x12\x0c\n\x08LAMP_OFF\x10\x00\x12\x18\n\x14\x43ONTROL_GEAR_FAILURE\x10\x01\x12\x10\n\x0cLAMP_FAILURE\x10\x02\x12\x0b\n\x07LAMP_ON\x10\x04\x12\x0f\n\x0bLIMIT_ERROR\x10\x08\x12\x10\n\x0c\x46\x41\x44\x45_RUNNING\x10\x10\x12\x0f\n\x0bRESET_STATE\x10 \x12\x11\n\rSHORT_ADDRESS\x10@\x12\x15\n\x10POWER_CYCLE_SEEN\x10\x80\x01*\x88\x02\n\x10\x44\x41LIRXStatusFlag\x12\x0b\n\x07WAITING\x10\x00\x12\x13\n\x0fRECEIVING_FRAME\x10\x01\x12\x15\n\x11NO_RECEIVED_FRAME\x10\x02\x12\x18\n\x14RECEIVED_8_BIT_FRAME\x10\x03\x12\x19\n\x15RECEIVED_16_BIT_FRAME\x10\x04\x12\x19\n\x15RECEIVED_24_BIT_FRAME\x10\x05\x12\x1a\n\x16RECEIVED_PARTIAL_FRAME\x10\x06\x12\x08\n\x04IDLE\x10\x07\x12\x0f\n\x0b\x43\x41LIBRATION\x10\x08\x12\x18\n\x13\x45RROR_WHILE_SENDING\x10\xfe\x01\x12\x1a\n\x15\x45RROR_WHILE_RECEIVING\x10\xff\x01*\xa2\x01\n\x15\x44iagnosticMessageType\x12\x1a\n\x16\x44IAGNOSTIC_SYSTEM_INFO\x10\x00\x12\x1b\n\x17\x44IAGNOSTIC_INPUT_STATUS\x10\x01\x12\x14\n\x10\x44\x41LI_LEVEL_CACHE\x10\x02\x12\x13\n\x0f\x44MX_LEVEL_CACHE\x10\x03\x12\x0e\n\nROOM_JOINS\x10\x04\x12\x15\n\x11\x44\x41LI_STATUS_CACHE\x10\x05*z\n\x13\x46irmwareCommandType\x12\x0c\n\x08\x46W_READY\x10\x00\x12\x0c\n\x08\x46W_APPLY\x10\x01\x12\r\n\tFW_VERIFY\x10\x02\x12\x14\n\x10\x46W_VERIFY_FAILED\x10\x03\x12\x15\n\x11\x46W_VERIFY_SUCCESS\x10\x04\x12\x0b\n\x07\x46W_READ\x10\x05*?\n\x15SpektraTransitionType\x12\t\n\x05\x42LEND\x10\x00\x12\x08\n\x04SNAP\x10\x01\x12\x11\n\rFADE_TO_BLACK\x10\x02*\xc2\x01\n\tLogicType\x12\x0e\n\nDALI_LEVEL\x10\x00\x12\x0f\n\x0bINPUT_STATE\x10\x01\x12\x10\n\x0cLIST_RUNNING\x10\x02\x12\x16\n\x12OCCUPANCY_DETECTED\x10\x03\x12\x0f\n\x0b\x44MX_PRESENT\x10\x04\x12\x0f\n\x0b\x43\x41L_WEEKDAY\x10\x05\x12\r\n\tCAL_MONTH\x10\x06\x12\x13\n\x0f\x41LARM_SCHEDULED\x10\x07\x12\x15\n\x11\x44\x41LI_CACHE_STATUS\x10\x08\x12\r\n\tHAS_ERROR\x10\t*\xa6\x01\n\x13LogicComparisonType\x12\r\n\tLESS_THAN\x10\x00\x12\x17\n\x13LESS_THAN_OR_EQUALS\x10\x01\x12\n\n\x06\x45QUALS\x10\x02\x12\r\n\tMORE_THAN\x10\x03\x12\x17\n\x13MORE_THAN_OR_EQUALS\x10\x04\x12\r\n\tNOT_EQUAL\x10\x05\x12\n\n\x06\x42IT_OR\x10\x06\x12\x0b\n\x07\x42IT_AND\x10\x07\x12\x0b\n\x07\x42IT_XOR\x10\x08*8\n\x0e\x44\x41LISensorType\x12\x12\n\x0eTRIDONIC_EDALI\x10\x00\x12\x12\n\x0eSTANDARD_EDALI\x10\x01*U\n\x11SensorCommandType\x12\x0e\n\nINITIALISE\x10\x00\x12\x08\n\x04MUTE\x10\x01\x12\n\n\x06UNMUTE\x10\x02\x12\x0c\n\x08OVERRIDE\x10\x03\x12\x0c\n\x08IDENTIFY\x10\x04*b\n\rSystemLogType\x12\x08\n\x04\x42OOT\x10\x00\x12\x0c\n\x08NET_LINK\x10\x01\x12\x07\n\x03NTP\x10\x02\x12\x0b\n\x07TRIGGER\x10\x03\x12\x0b\n\x07SPEKTRA\x10\x04\x12\x0c\n\x08SCHEDULE\x10\x05\x12\x08\n\x04USER\x10\x06*m\n\x0f\x44\x41LI24InputType\x12\x13\n\x0fMOMENTARY_SHORT\x10\x00\x12\x12\n\x0eMOMENTARY_LONG\x10\x01\x12\x0f\n\x0bLATCHED_LOW\x10\x02\x12\x10\n\x0cLATCHED_HIGH\x10\x03\x12\x0e\n\nPOSITIONAL\x10\x04*h\n\x16\x44\x41LIMotionSensorStates\x12\x0f\n\x0bMOTION_IDLE\x10\x00\x12\x13\n\x0fMOTION_DISABLED\x10\x01\x12\x12\n\x0eMOTION_WARNING\x10\x02\x12\x14\n\x10MOTION_OCCUPANCY\x10\x03*I\n\x13\x44\x41LILuxSensorStates\x12\x10\n\x0cLUX_DISABLED\x10\x00\x12\x0f\n\x0bLUX_ENABLED\x10\x01\x12\x0f\n\x0bLUX_DEVIATE\x10\x02*N\n\x13\x44\x41LIAddressingError\x12\x0c\n\x08NO_ERROR\x10\x00\x12\n\n\x06VERIFY\x10\x01\x12\n\n\x06SEARCH\x10\x02\x12\x11\n\rNO_NEW_DEVICE\x10\x03*8\n\x12\x44\x41LIAddressingType\x12\x0f\n\x0b\x41\x44\x44RESS_NEW\x10\x00\x12\x11\n\rREADDRESS_ALL\x10\x01\x62\x06proto3')
+  serialized_pb=_b('\n\x1a\x65\x44S10_ProtocolBuffer.proto\".\n\nAckMessage\x12 \n\x07payload\x18\x01 \x01(\x0e\x32\x0f.AckMessageType\"X\n\x0ePayloadMessage\x12\x13\n\tuint_data\x18\x01 \x01(\rH\x00\x12\x14\n\nfloat_data\x18\x02 \x01(\x02H\x00\x12\x13\n\x0bstring_data\x18\x03 \x01(\tB\x06\n\x04\x64\x61ta\"Y\n\nAytMessage\x12\x15\n\rtimesinceboot\x18\x01 \x01(\r\x12\x13\n\x0btemperature\x18\x02 \x01(\x02\x12\x1f\n\x04time\x18\x03 \x01(\x0b\x32\x11.TimeClockMessage\"\xf1\x02\n\x12\x44\x65viceStateMessage\x12\x0e\n\x06uptime\x18\x01 \x01(\r\x12\x0c\n\x04temp\x18\x02 \x01(\x02\x12\x0c\n\x04vbat\x18\x03 \x01(\x02\x12 \n\x05\x63lock\x18\x04 \x01(\x0b\x32\x11.TimeClockMessage\x12\x12\n\nnext_alarm\x18\x05 \x01(\r\x12*\n\x0fnext_alarm_time\x18\x06 \x01(\x0b\x32\x11.TimeClockMessage\x12\x13\n\x0binput_state\x18\x07 \x01(\r\x12\x13\n\x0blist_states\x18\x08 \x03(\r\x12\x16\n\x0e\x62urn_in_states\x18\t \x03(\r\x12\x15\n\rsensor_states\x18\n \x03(\r\x12\x13\n\x0bzone_states\x18\x0b \x03(\r\x12\x19\n\x11zone_sleep_states\x18\x0c \x03(\r\x12\x14\n\x0czone_indexes\x18\r \x03(\r\x12\x18\n\x10\x64\x61li_input_state\x18\x0e \x01(\x04\x12\x14\n\x0coutput_state\x18\x0f \x01(\r\"\x87\x01\n\x0eTriggerMessage\x12\x1a\n\x04type\x18\x01 \x01(\x0e\x32\x0c.TriggerType\x12\x0c\n\x04zone\x18\x02 \x01(\r\x12\x11\n\tline_mask\x18\x03 \x01(\r\x12\x14\n\x0ctarget_index\x18\x04 \x01(\r\x12\r\n\x05value\x18\x05 \x01(\r\x12\x13\n\x0bquery_index\x18\x06 \x01(\r\".\n\x10TimeClockMessage\x12\x0c\n\x04\x64\x61te\x18\x01 \x01(\r\x12\x0c\n\x04time\x18\x02 \x01(\r\"S\n\x11\x42urnInBitsMessage\x12\x13\n\x0blight_state\x18\x01 \x01(\r\x12\x14\n\x0crunning_flag\x18\x02 \x01(\r\x12\x13\n\x0b\x65nable_flag\x18\x03 \x01(\r\"\x97\x01\n\x0eIOInputMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12+\n\x0c\x62utton_state\x18\x02 \x01(\x0e\x32\x15.TriggerOperationType\x12$\n\x0bshort_press\x18\x03 \x01(\x0b\x32\x0f.TriggerMessage\x12#\n\nlong_press\x18\x04 \x01(\x0b\x32\x0f.TriggerMessage\"|\n\x0fIOOutputMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12\x15\n\rinitial_level\x18\x02 \x01(\r\x12\x1e\n\x16time_trigger_is_active\x18\x03 \x01(\r\x12#\n\x04type\x18\x04 \x01(\x0e\x32\x15.TriggerOperationType\"\xcf\x01\n\x10\x44\x41LIInputMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0f\n\x07\x61\x64\x64ress\x18\x02 \x01(\r\x12\x11\n\tdali_line\x18\x03 \x01(\r\x12+\n\x0c\x62utton_state\x18\x04 \x01(\x0e\x32\x15.TriggerOperationType\x12$\n\x0bshort_press\x18\x05 \x01(\x0b\x32\x0f.TriggerMessage\x12#\n\nlong_press\x18\x06 \x01(\x0b\x32\x0f.TriggerMessage\x12\x10\n\x08instance\x18\x07 \x01(\r\"L\n\x0bIOIRMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12\x1f\n\x06\x61\x63tion\x18\x02 \x01(\x0b\x32\x0f.TriggerMessage\x12\r\n\x05\x63odes\x18\x03 \x01(\r\"\xcb\x04\n\rSensorMessage\x12\x0f\n\x07profile\x18\x01 \x01(\r\x12\r\n\x05index\x18\x02 \x01(\r\x12\x16\n\x0esensor_address\x18\x03 \x01(\r\x12\x18\n\x10sensor_dali_line\x18\x04 \x01(\r\x12\x15\n\raddress_query\x18\x05 \x01(\r\x12\x19\n\x11\x63ontrol_dali_line\x18\x06 \x01(\r\x12\x15\n\rcontrol_group\x18\x07 \x01(\r\x12\x16\n\x0elight_setpoint\x18\x08 \x01(\r\x12\x18\n\x10warning_setpoint\x18\t \x01(\r\x12\x13\n\x0bmotion_only\x18\n \x01(\r\x12\x16\n\x0etimeout_values\x18\x0b \x01(\r\x12\x16\n\x0ewarning_values\x18\x0c \x01(\r\x12\x16\n\x0e\x64isable_values\x18\r \x01(\r\x12\x12\n\ninput_1_pm\x18\x0e \x01(\r\x12\x12\n\ninput_2_pm\x18\x0f \x01(\r\x12\x15\n\rsensor_states\x18\x10 \x01(\r\x12\x16\n\x0emotion_sensors\x18\x11 \x01(\r\x12\x13\n\x0blux_sensors\x18\x12 \x01(\r\x12\x10\n\x08off_flag\x18\x13 \x01(\r\x12\x15\n\ris_programmed\x18\x14 \x01(\x08\x12*\n\x11\x64\x65tection_trigger\x18\x15 \x01(\x0b\x32\x0f.TriggerMessage\x12(\n\x0fwarning_trigger\x18\x16 \x01(\x0b\x32\x0f.TriggerMessage\x12%\n\x0cidle_trigger\x18\x17 \x01(\x0b\x32\x0f.TriggerMessage\"\\\n\x0fListStepMessage\x12\x12\n\nstep_index\x18\x01 \x01(\r\x12\x1f\n\x06\x61\x63tion\x18\x02 \x01(\x0b\x32\x0f.TriggerMessage\x12\x14\n\x0ctime_seconds\x18\x03 \x01(\r\"\xbc\x03\n\x0c\x41larmMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0f\n\x07\x65nabled\x18\x02 \x01(\x08\x12%\n\nstart_time\x18\x03 \x01(\x0b\x32\x11.TimeClockMessage\x12#\n\x08\x65nd_time\x18\x04 \x01(\x0b\x32\x11.TimeClockMessage\x12&\n\rstart_trigger\x18\x05 \x01(\x0b\x32\x0f.TriggerMessage\x12$\n\x0b\x65nd_trigger\x18\x06 \x01(\x0b\x32\x0f.TriggerMessage\x12$\n\x0b\x61stro_start\x18\x07 \x01(\x0e\x32\x0f.AlarmAstroType\x12\"\n\tastro_end\x18\x08 \x01(\x0e\x32\x0f.AlarmAstroType\x12 \n\x06repeat\x18\t \x01(\x0e\x32\x10.AlarmRepeatType\x12\x1a\n\x12repeat_day_bitmask\x18\n \x01(\r\x12\x1c\n\x14repeat_month_bitmask\x18\x0b \x01(\r\x12\x0e\n\x06yearly\x18\x0c \x01(\x08\x12\x1e\n\x16start_offset_is_before\x18\r \x01(\x08\x12\x1c\n\x14\x65nd_offset_is_before\x18\x0e \x01(\x08\"\x99\x01\n\rBurnInMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0c\n\x04line\x18\x02 \x01(\r\x12\x0f\n\x07\x61\x64\x64ress\x18\x03 \x01(\r\x12\x15\n\rquery_address\x18\x04 \x01(\r\x12\x0c\n\x04time\x18\x05 \x01(\r\x12\x11\n\tremaining\x18\x06 \x01(\r\x12\"\n\x06states\x18\x07 \x01(\x0b\x32\x12.BurnInBitsMessage\":\n\x16\x45xternalTriggerMessage\x12 \n\x07trigger\x18\x01 \x01(\x0b\x32\x0f.TriggerMessage\"E\n\x11InputMultiMessage\x12\x0f\n\x07profile\x18\x01 \x01(\r\x12\x1f\n\x06inputs\x18\x02 \x03(\x0b\x32\x0f.IOInputMessage\"H\n\x12OutputMultiMessage\x12\x0f\n\x07profile\x18\x01 \x01(\r\x12!\n\x07outputs\x18\x02 \x03(\x0b\x32\x10.IOOutputMessage\"g\n\x15\x44\x41LIInputMultiMessage\x12\x0f\n\x07profile\x18\x01 \x01(\r\x12\x1a\n\x12input_index_offset\x18\x02 \x01(\r\x12!\n\x06inputs\x18\x03 \x03(\x0b\x32\x11.DALIInputMessage\"<\n\x0eIRMultiMessage\x12\x0f\n\x07profile\x18\x01 \x01(\r\x12\x19\n\x03irs\x18\x02 \x03(\x0b\x32\x0c.IOIRMessage\"o\n\x0bListMessage\x12\x12\n\nlist_index\x18\x01 \x01(\r\x12\x1e\n\x04step\x18\x02 \x03(\x0b\x32\x10.ListStepMessage\x12\x12\n\nlist_state\x18\x03 \x01(\r\x12\x18\n\x10total_step_count\x18\x04 \x01(\r\"d\n\x13\x45xtendedListMessage\x12\x12\n\nlist_index\x18\x01 \x01(\r\x12\x19\n\x11step_index_offset\x18\x02 \x01(\r\x12\x1e\n\x04step\x18\x03 \x03(\x0b\x32\x10.ListStepMessage\"1\n\x11\x41larmMultiMessage\x12\x1c\n\x05\x61larm\x18\x01 \x03(\x0b\x32\r.AlarmMessage\"4\n\x12\x42urnInMultiMessage\x12\x1e\n\x06\x62urnin\x18\x01 \x03(\x0b\x32\x0e.BurnInMessage\"\xe7\x01\n\x0cLogicMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0f\n\x07\x65nabled\x18\x02 \x01(\x08\x12*\n\x11\x63omparison_object\x18\x03 \x01(\x0b\x32\x0f.TriggerMessage\x12\x18\n\x10\x63omparison_value\x18\x04 \x01(\r\x12-\n\x0f\x63omparison_type\x18\x05 \x01(\x0e\x32\x14.LogicComparisonType\x12 \n\x07\x61\x63tionA\x18\x06 \x01(\x0b\x32\x0f.TriggerMessage\x12 \n\x07\x61\x63tionB\x18\x07 \x01(\x0b\x32\x0f.TriggerMessage\"1\n\x11LogicMultiMessage\x12\x1c\n\x05logic\x18\x01 \x03(\x0b\x32\r.LogicMessage\"X\n\x14SensorCommandMessage\x12\x0f\n\x07\x63ommand\x18\x01 \x01(\r\x12\r\n\x05index\x18\x02 \x01(\r\x12 \n\x04type\x18\x03 \x01(\x0e\x32\x12.SensorCommandType\"\'\n\x14\x43hangeProfileMessage\x12\x0f\n\x07profile\x18\x01 \x01(\r\"*\n\x0fIdentifyMessage\x12\x0b\n\x03MAC\x18\x01 \x01(\x04\x12\n\n\x02IP\x18\x02 \x01(\x04\"4\n\x11UpdateTimeMessage\x12\x1f\n\x04time\x18\x01 \x01(\x0b\x32\x11.TimeClockMessage\"e\n\x11ReadDeviceMessage\x12\x0f\n\x07profile\x18\x01 \x01(\r\x12\x17\n\x04type\x18\x02 \x01(\x0e\x32\t.ReadType\x12\r\n\x05index\x18\x03 \x01(\r\x12\x17\n\x0fsecondary_index\x18\x04 \x01(\r\".\n\x1bSecureDeviceSettingsMessage\x12\x0f\n\x07payload\x18\x01 \x01(\t\" \n\x11\x44TRPayloadMessage\x12\x0b\n\x03\x64tr\x18\x01 \x03(\r\"\xdb\x04\n\x0b\x44\x41LIMessage\x12\x11\n\tline_mask\x18\x01 \x01(\r\x12\x0f\n\x07\x61\x64\x64ress\x18\x02 \x01(\r\x12\x16\n\x0c\x66rame_25_bit\x18\x03 \x01(\rH\x00\x12\x1c\n\x12\x66rame_25_bit_reply\x18\x04 \x01(\rH\x00\x12#\n\x07\x63ommand\x18\x05 \x01(\x0e\x32\x10.DALICommandTypeH\x00\x12\x30\n\x0e\x63ustom_command\x18\x06 \x01(\x0e\x32\x16.CustomDALICommandTypeH\x00\x12\x1f\n\x05query\x18\x07 \x01(\x0e\x32\x0e.DALIQueryTypeH\x00\x12\"\n\x05type8\x18\x08 \x01(\x0e\x32\x11.Type8CommandTypeH\x00\x12\x16\n\x0c\x66rame_16_bit\x18\x0b \x01(\rH\x00\x12\x1c\n\x12\x66rame_16_bit_reply\x18\x0c \x01(\rH\x00\x12\x16\n\x0c\x66rame_24_bit\x18\r \x01(\rH\x00\x12\x1c\n\x12\x66rame_24_bit_reply\x18\x0e \x01(\rH\x00\x12&\n\x0btype8_reply\x18\x0f \x01(\x0e\x32\x0f.Type8QueryTypeH\x00\x12\x30\n\x10\x64\x65vice24_setting\x18\x10 \x01(\x0e\x32\x14.DALI24DeviceSettingH\x00\x12\r\n\x03\x61rg\x18\t \x01(\rH\x01\x12!\n\x03\x64tr\x18\n \x01(\x0b\x32\x12.DTRPayloadMessageH\x01\x12*\n\rinstance_type\x18\x11 \x01(\x0e\x32\x13.DALI24InstanceType\x12\x1e\n\x07op_code\x18\x12 \x01(\x0e\x32\r.DALI24OpCodeB\x08\n\x06\x61\x63tionB\x08\n\x06params\"7\n\x15\x44\x41LIStatusFlagMessage\x12\x1e\n\x05\x66lags\x18\x01 \x03(\x0e\x32\x0f.DALIStatusType\"\xbd\x01\n\x11\x44\x41LIQueryResponse\x12.\n\x0cstatus_flags\x18\x01 \x01(\x0b\x32\x16.DALIStatusFlagMessageH\x00\x12\x1f\n\x04\x64\x61ta\x18\x02 \x01(\x0b\x32\x0f.PayloadMessageH\x00\x12$\n\tdali_flag\x18\x03 \x01(\x0e\x32\x11.DALIRXStatusFlag\x12&\n\rresponse_data\x18\x04 \x01(\x0b\x32\x0f.PayloadMessageB\t\n\x07payload\"\xaa\x01\n\x15\x44\x41LIAddressingMessage\x12!\n\x04type\x18\x01 \x01(\x0e\x32\x13.DALIAddressingType\x12\x16\n\x0einitialisation\x18\x02 \x01(\x08\x12\x11\n\tline_mask\x18\x03 \x01(\r\x12\x0f\n\x07is24Bit\x18\x04 \x01(\x08\x12#\n\x05\x65rror\x18\x05 \x01(\x0e\x32\x14.DALIAddressingError\x12\r\n\x05index\x18\x06 \x01(\r\"d\n\x14\x44\x41LIRemappingMessage\x12\x14\n\x0c\x66rom_address\x18\x01 \x01(\r\x12\x12\n\nto_address\x18\x02 \x01(\r\x12\x11\n\tline_mask\x18\x03 \x01(\r\x12\x0f\n\x07is24Bit\x18\x04 \x01(\x08\"6\n\x15\x44\x41LIAddressableObject\x12\x0c\n\x04line\x18\x01 \x01(\r\x12\x0f\n\x07\x61\x64\x64ress\x18\x02 \x01(\r\"x\n\x1d\x44\x41LIIdentifyDuplicatesMessage\x12\x11\n\tline_mask\x18\x01 \x01(\r\x12\x0f\n\x07is24Bit\x18\x02 \x01(\x08\x12\x33\n\x13possible_duplicates\x18\x03 \x03(\x0b\x32\x16.DALIAddressableObject\"|\n\nDMXMessage\x12\x0c\n\x04zone\x18\x01 \x01(\r\x12\x15\n\runiverse_mask\x18\x02 \x01(\r\x12\x0f\n\x07\x63hannel\x18\x03 \x01(\r\x12\x0e\n\x06repeat\x18\x04 \x01(\r\x12\r\n\x05level\x18\x05 \x03(\r\x12\x19\n\x11\x66\x61\x64\x65_time_by_10ms\x18\x06 \x01(\r\"o\n\nRDMMessage\x12\x15\n\runiverse_mask\x18\x01 \x01(\r\x12\x0b\n\x03uid\x18\x02 \x01(\x04\x12\x0b\n\x03pid\x18\x03 \x01(\r\x12\x0e\n\x06getset\x18\x04 \x01(\r\x12\x12\n\ndatalength\x18\x05 \x01(\r\x12\x0c\n\x04\x64\x61ta\x18\x06 \x03(\r\"P\n\x12RDMResponseMessage\x12\x0b\n\x03uid\x18\x01 \x01(\x04\x12\x0b\n\x03pid\x18\x02 \x01(\r\x12\x12\n\ndatalength\x18\x03 \x01(\r\x12\x0c\n\x04\x64\x61ta\x18\x04 \x03(\r\"<\n\x13RDMDiscoveryMessage\x12\x15\n\runiverse_mask\x18\x01 \x01(\r\x12\x0e\n\x06isNext\x18\x02 \x01(\x08\"T\n\x18RDMDiscoveryReplyMessage\x12\x17\n\x0f\x64iscovery_count\x18\x01 \x01(\r\x12\x0b\n\x03uid\x18\x02 \x03(\x04\x12\x12\n\nerror_code\x18\x03 \x01(\r\"\xdf\x02\n\x15SpektraSettingMessage\x12\x0c\n\x04zone\x18\x01 \x01(\r\x12\x15\n\rstart_address\x18\x02 \x01(\r\x12\x1d\n\x15line_or_universe_mask\x18\x03 \x01(\r\x12\x10\n\x08protocol\x18\x04 \x01(\r\x12\x18\n\x10number_of_lights\x18\x05 \x01(\r\x12\x1a\n\x12\x63hannels_per_light\x18\x06 \x01(\r\x12\x17\n\x0f\x63hannel_colours\x18\x07 \x03(\r\x12?\n\x15unscheduled_behaviour\x18\x08 \x01(\x0e\x32 .SpektraUnscheduledBehaviourType\x12\x17\n\x0f\x63hannel_mapping\x18\t \x03(\r\x12,\n\x0fline_addressing\x18\n \x01(\x0e\x32\x13.LineAddressingType\x12\x19\n\x11zone_scale_factor\x18\x0b \x01(\x02\"3\n\x1aSpektraColourConfigMessage\x12\x15\n\rchannel_value\x18\x01 \x03(\r\"\xe8\x03\n\x1cSpektraSequenceConfigMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0c\n\x04type\x18\x02 \x01(\r\x12*\n\ntransition\x18\x03 \x01(\x0e\x32\x16.SpektraTransitionType\x12\x19\n\x11\x66\x61\x64\x65_time_by_10ms\x18\x04 \x01(\r\x12\x17\n\x0ftime_per_colour\x18\x05 \x01(\r\x12\x1c\n\x14time_per_colour_unit\x18\x06 \x01(\r\x12\x15\n\rtime_per_step\x18\x07 \x01(\r\x12\x1a\n\x12time_per_step_unit\x18\x08 \x01(\r\x12\r\n\x05range\x18\t \x01(\r\x12\x0e\n\x06\x63olour\x18\n \x03(\x04\x12\x1a\n\x12is_randomised_type\x18\x0b \x01(\r\x12\x19\n\x11random_types_mask\x18\x0c \x01(\r\x12\x1c\n\x14is_reverse_direction\x18\r \x01(\r\x12\x1a\n\x12is_cycle_direction\x18\x0e \x01(\r\x12\r\n\x05title\x18\x0f \x01(\t\x12\x1f\n\x17has_random_colour_order\x18\x10 \x01(\x08\x12,\n\x07\x63olours\x18\x11 \x03(\x0b\x32\x1b.SpektraColourConfigMessage\x12\x0c\n\x04\x61rgs\x18\x12 \x03(\r\"k\n\x16SpektraCalendarMessage\x12 \n\x04type\x18\x01 \x01(\x0e\x32\x12.SpektraTargetType\x12\r\n\x05index\x18\x02 \x01(\r\x12\x0c\n\x04\x64\x61ys\x18\x03 \x03(\x08\x12\x12\n\nisOverride\x18\x04 \x01(\x08\"z\n\x19SpektraCalendarDayMessage\x12\x11\n\tday_index\x18\x01 \x01(\r\x12 \n\x04type\x18\x02 \x01(\x0e\x32\x12.SpektraTargetType\x12\x14\n\x0ctarget_index\x18\x03 \x01(\r\x12\x12\n\nisOverride\x18\x04 \x01(\x08\"^\n\x1eSpektraCalendarOverviewMessage\x12\x12\n\nday_offset\x18\x01 \x01(\r\x12(\n\x04\x64\x61ys\x18\x02 \x03(\x0b\x32\x1a.SpektraCalendarDayMessage\"w\n\x19SpektraThemeConfigMessage\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0e\n\x06\x63olour\x18\x02 \x03(\x04\x12\r\n\x05title\x18\x03 \x01(\t\x12,\n\x07\x63olours\x18\x04 \x03(\x0b\x32\x1b.SpektraColourConfigMessage\"E\n\x12SpektraReadMessage\x12 \n\x04type\x18\x01 \x01(\x0e\x32\x12.SpektraTargetType\x12\r\n\x05index\x18\x02 \x01(\r\"z\n\x15SpektraControlMessage\x12 \n\x04type\x18\x01 \x01(\x0e\x32\x12.SpektraTargetType\x12\x0c\n\x04zone\x18\x02 \x01(\r\x12\r\n\x05index\x18\x03 \x01(\r\x12\"\n\x06\x61\x63tion\x18\x04 \x01(\x0e\x32\x12.SpektraActionType\"\xf5\x01\n\x12SpektraLiveMessage\x12 \n\x04type\x18\x01 \x03(\x0e\x32\x12.SpektraTargetType\x12\r\n\x05index\x18\x02 \x03(\r\x12\"\n\x06\x61\x63tion\x18\x03 \x03(\x0e\x32\x12.SpektraActionType\x12\x12\n\nstep_index\x18\x04 \x03(\r\x12\x1c\n\x14step_index_direction\x18\x05 \x03(\r\x12\x14\n\x0c\x63olour_index\x18\x06 \x03(\r\x12\x14\n\x0c\x63olour_range\x18\x07 \x03(\r\x12\x17\n\x0frandom_seq_type\x18\x08 \x03(\r\x12\x13\n\x0bzone_active\x18\t \x03(\x08\"\xba\x01\n\x14\x44MXTranslationObject\x12\x0f\n\x07line_in\x18\x01 \x01(\r\x12\x10\n\x08line_out\x18\x02 \x01(\r\x12\x19\n\x11\x64mx_start_address\x18\x03 \x01(\r\x12\x15\n\rchannel_count\x18\x04 \x01(\r\x12\x12\n\ndali_array\x18\x05 \x03(\r\x12\x16\n\x0e\x61\x66\x66\x65\x63ted_input\x18\x07 \x01(\r\x12\x10\n\x08\x62locking\x18\x08 \x01(\x08\x12\x0f\n\x07\x65nabled\x18\t \x01(\x08\"?\n\x16\x44MXProtocolTranslation\x12%\n\x06object\x18\x01 \x03(\x0b\x32\x15.DMXTranslationObject\"%\n\x11InputStateMessage\x12\x10\n\x08use_mask\x18\x01 \x01(\x08\"8\n\x12InputStateResponse\x12\x0e\n\x06inputs\x18\x01 \x03(\r\x12\x12\n\ninput_mask\x18\x02 \x01(\r\"@\n\x12LevelCacheResponse\x12\x0e\n\x06levels\x18\x01 \x03(\r\x12\x0c\n\x04line\x18\x02 \x01(\r\x12\x0c\n\x04page\x18\x03 \x01(\r\"\x80\x05\n\x1c\x44iagnosticSystemInfoResponse\x12\x10\n\x08\x66irmware\x18\x01 \x01(\t\x12\x10\n\x08hardware\x18\x02 \x01(\t\x12\r\n\x05\x65rror\x18\x03 \x01(\t\x12\x13\n\x0binput_count\x18\x04 \x01(\r\x12\x14\n\x0coutput_count\x18\x05 \x01(\r\x12\x10\n\x08ir_count\x18\x06 \x01(\r\x12\x17\n\x0flist_step_count\x18\x07 \x01(\r\x12\x12\n\nlist_count\x18\x08 \x01(\r\x12\x13\n\x0b\x61larm_count\x18\t \x01(\r\x12\x14\n\x0c\x62urnin_count\x18\n \x01(\r\x12\x19\n\x11spektra_seq_count\x18\x0b \x01(\r\x12\x1e\n\x16spektra_seq_step_count\x18\x0c \x01(\r\x12\x1b\n\x13spektra_theme_count\x18\r \x01(\r\x12\x1c\n\x14spektra_static_count\x18\x0e \x01(\r\x12\x15\n\rproto_version\x18\x0f \x01(\r\x12\x12\n\nline_count\x18\x10 \x01(\r\x12\x18\n\x05lines\x18\x11 \x03(\x0e\x32\t.LineType\x12\x15\n\rprofile_count\x18\x12 \x01(\r\x12\x19\n\x11preset_code_count\x18\x13 \x01(\r\x12\x18\n\x10user_level_count\x18\x14 \x01(\r\x12\x19\n\x11\x64mx_to_dali_count\x18\x15 \x01(\r\x12\x1a\n\x12spektra_zone_count\x18\x16 \x01(\r\x12\x13\n\x0blogic_count\x18\x17 \x01(\r\x12\x18\n\x10input_dali_count\x18\x18 \x01(\r\x12\x11\n\tvendor_id\x18\x19 \x01(\t\x12\x18\n\x10selected_profile\x18\x1a \x01(\r\"U\n\x11\x44iagnosticMessage\x12$\n\x04type\x18\x01 \x01(\x0e\x32\x16.DiagnosticMessageType\x12\x0c\n\x04page\x18\x02 \x01(\r\x12\x0c\n\x04line\x18\x03 \x01(\r\"\xf2\x01\n\x1d\x41\x64minProjectPropertiesMessage\x12\x13\n\x0b\x64\x65vice_name\x18\x02 \x01(\t\x12\x14\n\x0cproject_name\x18\x03 \x01(\t\x12\x11\n\tlongitude\x18\x04 \x01(\x02\x12\x10\n\x08latitude\x18\x05 \x01(\x02\x12\x14\n\x0clocal_offset\x18\x06 \x01(\x02\x12\x18\n\x10\x64\x61ylight_savings\x18\x07 \x01(\x08\x12\x1e\n\x16\x64\x61ylight_savings_start\x18\x08 \x01(\r\x12\x1c\n\x14\x64\x61ylight_savings_end\x18\t \x01(\r\x12\x13\n\x0bpoll_active\x18\n \x01(\r\"\xa4\x01\n\x18\x41\x64minConfigStatusMessage\x12\x13\n\x0blist_status\x18\x01 \x03(\r\x12\x16\n\x0e\x62urn_in_status\x18\x02 \x03(\r\x12\x14\n\x0c\x61larm_status\x18\x03 \x01(\r\x12.\n\x13\x61larm_time_from_reg\x18\x04 \x01(\x0b\x32\x11.TimeClockMessage\x12\x15\n\rsensor_status\x18\x05 \x03(\r\"\xd6\x01\n\x1d\x41\x64minNetworkPropertiesMessage\x12\x0c\n\x04\x44HCP\x18\x01 \x01(\x08\x12\n\n\x02IP\x18\x02 \x01(\t\x12\x0b\n\x03MAC\x18\x03 \x01(\t\x12\x0f\n\x07gateway\x18\x04 \x01(\t\x12\x11\n\tNTPServer\x18\x05 \x01(\t\x12\x0b\n\x03NTP\x18\x06 \x01(\x08\x12\r\n\x05\x65rror\x18\x07 \x01(\t\x12\x12\n\nNTPTimeout\x18\x08 \x01(\r\x12\x0e\n\x06subnet\x18\t \x01(\t\x12\x13\n\x0b\x44NS_Primary\x18\n \x01(\t\x12\x15\n\rDNS_Secondary\x18\x0b \x01(\t\"D\n\x16\x41\x64minDNSServersMessage\x12\x13\n\x0b\x44NS_Primary\x18\x01 \x01(\t\x12\x15\n\rDNS_Secondary\x18\x02 \x01(\t\"7\n\x1b\x41\x64minControllerLinesMessage\x12\x18\n\x05lines\x18\x01 \x03(\x0e\x32\t.LineType\"@\n\x18\x41\x64minDeviceStatusMessage\x12\x13\n\x0btemperature\x18\x01 \x01(\x02\x12\x0f\n\x07\x62\x61ttery\x18\x02 \x01(\x02\"I\n\x17\x41\x64minSecureLoginMessage\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x0e\n\x06\x63nonce\x18\x02 \x01(\t\x12\x0c\n\x04hash\x18\x03 \x03(\r\";\n\x1a\x41\x64minDALISensorTypeMessage\x12\x1d\n\x04type\x18\x01 \x01(\x0e\x32\x0f.DALISensorType\"\xb4\x04\n\x0c\x41\x64minMessage\x12\"\n\x07\x63ommand\x18\x01 \x01(\x0e\x32\x11.AdminCommandType\x12\"\n\x06target\x18\x02 \x01(\x0e\x32\x12.AdminPropertyType\x12\x1f\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x0f.PayloadMessageH\x00\x12<\n\x12network_properties\x18\x04 \x01(\x0b\x32\x1e.AdminNetworkPropertiesMessageH\x00\x12<\n\x12project_properties\x18\x05 \x01(\x0b\x32\x1e.AdminProjectPropertiesMessageH\x00\x12\x38\n\x10\x63ontroller_lines\x18\x06 \x01(\x0b\x32\x1c.AdminControllerLinesMessageH\x00\x12\x32\n\rdevice_status\x18\x07 \x01(\x0b\x32\x19.AdminDeviceStatusMessageH\x00\x12\x32\n\rconfig_status\x18\x08 \x01(\x0b\x32\x19.AdminConfigStatusMessageH\x00\x12)\n\x0b\x64\x65vice_time\x18\t \x01(\x0b\x32\x12.UpdateTimeMessageH\x00\x12\x37\n\x10\x64\x61li_sensor_type\x18\n \x01(\x0b\x32\x1b.AdminDALISensorTypeMessageH\x00\x12.\n\x0b\x64ns_servers\x18\x0b \x01(\x0b\x32\x17.AdminDNSServersMessageH\x00\x42\t\n\x07payload\"K\n\x0b\x44\x61taMessage\x12\x12\n\nidentifier\x18\x01 \x01(\r\x12\x0b\n\x03seq\x18\x02 \x01(\r\x12\r\n\x05\x63ount\x18\x03 \x01(\r\x12\x0c\n\x04\x64\x61ta\x18\x04 \x03(\r\"\xd9\x02\n\x13\x46irmwareMetaMessage\x12\x18\n\x10\x66irmware_version\x18\x01 \x01(\r\x12\x15\n\rfirmware_date\x18\x02 \x01(\r\x12\x1c\n\x14\x66irmware_date_upload\x18\x03 \x01(\r\x12\x19\n\x11\x66irmware_checksum\x18\x04 \x01(\r\x12\x1c\n\x14\x66irmware_chunk_count\x18\x05 \x01(\r\x12\x1d\n\x15\x66irmware_base_address\x18\x06 \x01(\r\x12\x1c\n\x14\x66irmware_end_address\x18\x07 \x01(\r\x12\x1a\n\x12\x66irmware_is_backup\x18\x08 \x01(\x08\x12\r\n\x05nonce\x18\t \x03(\r\x12\x19\n\x11\x66irmware_date_day\x18\n \x01(\r\x12\x1b\n\x13\x66irmware_date_month\x18\x0b \x01(\r\x12\x1a\n\x12\x66irmware_date_year\x18\x0c \x01(\r\"W\n\x16\x46irmwareControlMessage\x12!\n\x03\x63md\x18\x01 \x01(\x0e\x32\x14.FirmwareCommandType\x12\x1a\n\x12\x66irmware_is_backup\x18\x02 \x01(\x08\"d\n\x14\x46irmwareChunkMessage\x12\x18\n\x10\x66irmware_address\x18\x01 \x01(\r\x12\x13\n\x0btotal_bytes\x18\x02 \x01(\r\x12\x1d\n\x07payload\x18\x03 \x01(\x0b\x32\x0c.DataMessage\"j\n\x14SystemLogReadMessage\x12\x19\n\x11log_start_address\x18\x01 \x01(\r\x12\x16\n\x0elogs_requested\x18\x02 \x01(\r\x12\x1f\n\x04logs\x18\x03 \x03(\x0b\x32\x11.SystemLogMessage\"\xb7\x02\n\x10SystemLogMessage\x12\x17\n\x0ftime_since_boot\x18\x01 \x01(\r\x12\x1e\n\x04\x62oot\x18\x02 \x01(\x0b\x32\x0e.SystemLogBootH\x00\x12$\n\x07netlink\x18\x03 \x01(\x0b\x32\x11.SystemLogNetLinkH\x00\x12\x1c\n\x03ntp\x18\x04 \x01(\x0b\x32\r.SystemLogNTPH\x00\x12$\n\x07trigger\x18\x05 \x01(\x0b\x32\x11.SystemLogTriggerH\x00\x12$\n\x07spektra\x18\x06 \x01(\x0b\x32\x11.SystemLogSpektraH\x00\x12&\n\x08schedule\x18\x07 \x01(\x0b\x32\x12.SystemLogScheduleH\x00\x12(\n\tuserstart\x18\x08 \x01(\x0b\x32\x13.SystemLogUserStartH\x00\x42\x08\n\x06packet\"D\n\rSystemLogBoot\x12$\n\ttimeclock\x18\x01 \x01(\x0b\x32\x11.TimeClockMessage\x12\r\n\x05\x66lags\x18\x02 \x01(\r\"%\n\x10SystemLogNetLink\x12\x11\n\tis_linked\x18\x01 \x01(\x08\"4\n\x0cSystemLogNTP\x12$\n\ttimeclock\x18\x01 \x01(\x0b\x32\x11.TimeClockMessage\"O\n\x10SystemLogTrigger\x12 \n\x07trigger\x18\x01 \x01(\x0b\x32\x0f.TriggerMessage\x12\x19\n\x06source\x18\x02 \x01(\x0e\x32\t.ReadType\"g\n\x10SystemLogSpektra\x12\"\n\x06\x61\x63tion\x18\x01 \x01(\x0e\x32\x12.SpektraActionType\x12 \n\x04type\x18\x02 \x01(\x0e\x32\x12.SpektraTargetType\x12\r\n\x05index\x18\x03 \x01(\r\"a\n\x11SystemLogSchedule\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0f\n\x07isStart\x18\x02 \x01(\r\x12\x0e\n\x06second\x18\x03 \x01(\r\x12\x0e\n\x06minute\x18\x04 \x01(\r\x12\x0c\n\x04hour\x18\x05 \x01(\r\"I\n\x12SystemLogUserStart\x12$\n\ttimeclock\x18\x01 \x01(\x0b\x32\x11.TimeClockMessage\x12\r\n\x05\x66lags\x18\x02 \x01(\r\"\xd3\x01\n\x19SystemMetaDataReadMessage\x12\x1b\n\x13input_press_counter\x18\x01 \x03(\r\x12\x1a\n\x12list_start_counter\x18\x02 \x03(\r\x12\x19\n\x11schedules_counter\x18\x03 \x03(\r\x12\x16\n\x0escreen_on_time\x18\x04 \x01(\r\x12\x17\n\x0fscreen_dim_time\x18\x05 \x01(\r\x12\x19\n\x11screen_saver_time\x18\x06 \x01(\r\x12\x16\n\x0ereboot_counter\x18\x07 \x01(\r\"\xbf\x01\n\x0b\x45ventFilter\x12\r\n\x05input\x18\x01 \x01(\x08\x12\x16\n\x0e\x64\x61li_arc_level\x18\x02 \x01(\x08\x12\x14\n\x0c\x64\x61li_command\x18\x03 \x01(\x08\x12\x13\n\x0b\x64\x61li_sensor\x18\x04 \x01(\x08\x12\x12\n\ndali_input\x18\x05 \x01(\x08\x12\x1a\n\x12\x64mx_stream_changed\x18\x06 \x01(\x08\x12\x15\n\rdali_24_frame\x18\x07 \x01(\x08\x12\x17\n\x0ftrigger_message\x18\x08 \x01(\x08\"\xdd\x01\n\x0cTriggerEvent\x12\x1a\n\x04type\x18\x01 \x01(\x0e\x32\x0c.TriggerType\x12\x0f\n\x05level\x18\x02 \x01(\rH\x00\x12(\n\x0c\x64\x61li_command\x18\x03 \x01(\x0e\x32\x10.DALICommandTypeH\x00\x12\x16\n\x0etarget_address\x18\x04 \x01(\r\x12\x11\n\tline_mask\x18\x05 \x01(\r\x12\x0c\n\x04zone\x18\x06 \x01(\r\x12\r\n\x05value\x18\x07 \x01(\r\x12\x13\n\x0bquery_index\x18\x08 \x01(\r\x12\x0e\n\x06source\x18\t \x01(\rB\t\n\x07payload\"m\n\x10\x44\x41LI24InputEvent\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0c\n\x04line\x18\x02 \x01(\r\x12\x0f\n\x07\x61\x64\x64ress\x18\x03 \x01(\r\x12\x1e\n\x04type\x18\x04 \x01(\x0e\x32\x10.DALI24InputType\x12\x0b\n\x03\x61rg\x18\x05 \x01(\r\"/\n\x10\x44\x41LI24FrameEvent\x12\x0c\n\x04line\x18\x01 \x01(\r\x12\r\n\x05\x66rame\x18\x02 \x01(\r\"\xaa\x01\n\x0f\x44\x41LISensorEvent\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0c\n\x04line\x18\x02 \x01(\r\x12\x0f\n\x07\x61\x64\x64ress\x18\x03 \x01(\r\x12-\n\x0cmotion_state\x18\x04 \x01(\x0e\x32\x17.DALIMotionSensorStates\x12\'\n\tlux_state\x18\x05 \x01(\x0e\x32\x14.DALILuxSensorStates\x12\x11\n\tlux_level\x18\x06 \x01(\r\"\xc0\x02\n\x0c\x45ventMessage\x12\x19\n\x05\x65vent\x18\x01 \x01(\x0e\x32\n.EventType\x12 \n\x07trigger\x18\x02 \x01(\x0b\x32\r.TriggerEventH\x00\x12%\n\x06inputs\x18\x03 \x01(\x0b\x32\x13.InputStateResponseH\x00\x12\"\n\x07payload\x18\x04 \x01(\x0b\x32\x0f.PayloadMessageH\x00\x12\"\n\x06sensor\x18\x06 \x01(\x0b\x32\x10.DALISensorEventH\x00\x12*\n\rdali_24_input\x18\x07 \x01(\x0b\x32\x11.DALI24InputEventH\x00\x12\x1e\n\x06\x66ilter\x18\x08 \x01(\x0b\x32\x0c.EventFilterH\x00\x12*\n\rdali_24_frame\x18\t \x01(\x0b\x32\x11.DALI24FrameEventH\x00\x42\x0c\n\nevent_data\"\x91\x14\n\rEdidioMessage\x12\x12\n\nmessage_id\x18\x01 \x01(\r\x12\x1a\n\x03\x61\x63k\x18\x02 \x01(\x0b\x32\x0b.AckMessageH\x00\x12$\n\x06inputs\x18\x03 \x01(\x0b\x32\x12.InputMultiMessageH\x00\x12&\n\x07outputs\x18\x04 \x01(\x0b\x32\x13.OutputMultiMessageH\x00\x12\x1e\n\x03irs\x18\x05 \x01(\x0b\x32\x0f.IRMultiMessageH\x00\x12 \n\x06sensor\x18\x06 \x01(\x0b\x32\x0e.SensorMessageH\x00\x12\x1c\n\x04list\x18\x08 \x01(\x0b\x32\x0c.ListMessageH\x00\x12\x1e\n\x05\x61larm\x18\n \x01(\x0b\x32\r.AlarmMessageH\x00\x12$\n\x06\x61larms\x18\x0b \x01(\x0b\x32\x12.AlarmMultiMessageH\x00\x12\'\n\x08\x62urn_ins\x18\x0c \x01(\x0b\x32\x13.BurnInMultiMessageH\x00\x12/\n\x0esensor_command\x18\r \x01(\x0b\x32\x15.SensorCommandMessageH\x00\x12/\n\x0e\x63hange_profile\x18\x0e \x01(\x0b\x32\x15.ChangeProfileMessageH\x00\x12,\n\x10identify_message\x18\x0f \x01(\x0b\x32\x10.IdentifyMessageH\x00\x12)\n\x0bupdate_time\x18\x10 \x01(\x0b\x32\x12.UpdateTimeMessageH\x00\x12)\n\x0bread_device\x18\x11 \x01(\x0b\x32\x12.ReadDeviceMessageH\x00\x12$\n\x0c\x64\x61li_message\x18\x12 \x01(\x0b\x32\x0c.DALIMessageH\x00\x12(\n\ndali_query\x18\x13 \x01(\x0b\x32\x12.DALIQueryResponseH\x00\x12\"\n\x0b\x64mx_message\x18\x14 \x01(\x0b\x32\x0b.DMXMessageH\x00\x12\x33\n\x10\x65xternal_trigger\x18\x15 \x01(\x0b\x32\x17.ExternalTriggerMessageH\x00\x12\x32\n\x10spektra_settings\x18\x16 \x01(\x0b\x32\x16.SpektraSettingMessageH\x00\x12\x39\n\x10spektra_sequence\x18\x17 \x01(\x0b\x32\x1d.SpektraSequenceConfigMessageH\x00\x12\x33\n\x10spektra_calendar\x18\x18 \x01(\x0b\x32\x17.SpektraCalendarMessageH\x00\x12\x33\n\rspektra_theme\x18\x19 \x01(\x0b\x32\x1a.SpektraThemeConfigMessageH\x00\x12+\n\x0cspektra_read\x18\x1a \x01(\x0b\x32\x13.SpektraReadMessageH\x00\x12\x31\n\x0fspektra_control\x18\x1b \x01(\x0b\x32\x16.SpektraControlMessageH\x00\x12\x31\n\x0e\x64mx_translator\x18\x1c \x01(\x0b\x32\x17.DMXProtocolTranslationH\x00\x12+\n\rinput_request\x18\x1d \x01(\x0b\x32\x12.InputStateMessageH\x00\x12-\n\x0einput_response\x18\x1e \x01(\x0b\x32\x13.InputStateResponseH\x00\x12\x34\n\x0b\x64iag_system\x18\x1f \x01(\x0b\x32\x1d.DiagnosticSystemInfoResponseH\x00\x12*\n\x0c\x64iag_message\x18  \x01(\x0b\x32\x12.DiagnosticMessageH\x00\x12&\n\radmin_message\x18! \x01(\x0b\x32\r.AdminMessageH\x00\x12\x1e\n\x05\x65vent\x18\" \x01(\x0b\x32\r.EventMessageH\x00\x12>\n\x16secure_device_settings\x18# \x01(\x0b\x32\x1c.SecureDeviceSettingsMessageH\x00\x12,\n\x0c\x66irmware_new\x18$ \x01(\x0b\x32\x14.FirmwareMetaMessageH\x00\x12\x33\n\x10\x66irmware_control\x18% \x01(\x0b\x32\x17.FirmwareControlMessageH\x00\x12/\n\x0e\x66irmware_chunk\x18& \x01(\x0b\x32\x15.FirmwareChunkMessageH\x00\x12\x33\n\x14level_cache_response\x18\' \x01(\x0b\x32\x13.LevelCacheResponseH\x00\x12-\n\rlist_extended\x18) \x01(\x0b\x32\x14.ExtendedListMessageH\x00\x12\"\n\x0b\x61yt_message\x18* \x01(\x0b\x32\x0b.AytMessageH\x00\x12\"\n\x0brdm_message\x18+ \x01(\x0b\x32\x0b.RDMMessageH\x00\x12\x33\n\x14rdm_response_message\x18, \x01(\x0b\x32\x13.RDMResponseMessageH\x00\x12+\n\rlogic_message\x18- \x01(\x0b\x32\x12.LogicMultiMessageH\x00\x12\x30\n\x0csecure_login\x18. \x01(\x0b\x32\x18.AdminSecureLoginMessageH\x00\x12\x33\n\x14\x64\x65vice_state_message\x18/ \x01(\x0b\x32\x13.DeviceStateMessageH\x00\x12:\n\x14spektra_calendar_day\x18\x30 \x01(\x0b\x32\x1a.SpektraCalendarDayMessageH\x00\x12\x44\n\x19spektra_calendar_overview\x18\x31 \x01(\x0b\x32\x1f.SpektraCalendarOverviewMessageH\x00\x12-\n\x0binputs_dali\x18\x32 \x01(\x0b\x32\x16.DALIInputMultiMessageH\x00\x12*\n\tlogs_read\x18\x33 \x01(\x0b\x32\x15.SystemLogReadMessageH\x00\x12\x33\n\rmetadata_read\x18\x34 \x01(\x0b\x32\x1a.SystemMetaDataReadMessageH\x00\x12\x39\n\x17\x64\x61li_addressing_message\x18\x35 \x01(\x0b\x32\x16.DALIAddressingMessageH\x00\x12\x37\n\x16\x64\x61li_remapping_message\x18\x36 \x01(\x0b\x32\x15.DALIRemappingMessageH\x00\x12-\n\rrdm_discovery\x18: \x01(\x0b\x32\x14.RDMDiscoveryMessageH\x00\x12\x38\n\x13rdm_discovery_reply\x18; \x01(\x0b\x32\x19.RDMDiscoveryReplyMessageH\x00\x12\x42\n\x18\x64\x61li_identify_duplicates\x18< \x01(\x0b\x32\x1e.DALIIdentifyDuplicatesMessageH\x00\x12+\n\x0cspektra_live\x18= \x01(\x0b\x32\x13.SpektraLiveMessageH\x00\x42\t\n\x07payload*\x9b\x01\n\x14TriggerOperationType\x12\r\n\tMOMENTARY\x10\x00\x12\x0c\n\x08LATCHING\x10\x01\x12\x14\n\x10MOMENTARY_OUTPUT\x10\x02\x12\x13\n\x0fLATCHING_OUTPUT\x10\x03\x12\n\n\x06ROTARY\x10\x04\x12\x17\n\x12MOMENTARY_DISABLED\x10\x80\x01\x12\x16\n\x11LATCHING_DISABLED\x10\x81\x01*\xd7\x0c\n\x0bTriggerType\x12\x0c\n\x08\x44\x41LI_ARC\x10\x00\x12\x10\n\x0c\x44\x41LI_COMMAND\x10\x01\x12\x1a\n\x16\x44MX_CHANNELS_SPLIT_LOW\x10\x02\x12\x1b\n\x17\x44MX_CHANNELS_SPLIT_HIGH\x10\x03\x12$\n DMX_MULTICAST_CHANNELS_SPLIT_LOW\x10\x04\x12%\n!DMX_MULTICAST_CHANNELS_SPLIT_HIGH\x10\x05\x12\x11\n\rDMX_BROADCAST\x10\x06\x12\t\n\x05\x44IDIO\x10\x07\x12\x14\n\x10\x46\x41\x44\x45_UP_WITH_MIN\x10\x08\x12\x0e\n\nLIST_START\x10\t\x12\x19\n\x15LIST_START_CONTINUOUS\x10\n\x12\r\n\tLIST_STOP\x10\x0b\x12\x15\n\x11SPEKTRA_START_SEQ\x10\x0c\x12\x14\n\x10SPEKTRA_STOP_SEQ\x10\r\x12\x11\n\rSPEKTRA_THEME\x10\x0e\x12\x12\n\x0eSPEKTRA_STATIC\x10\x0f\x12\x14\n\x10SPEKTRA_SCHEDULE\x10\x10\x12\x0e\n\nLINK_START\x10\x11\x12\r\n\tLINK_STOP\x10\x12\x12\x10\n\x0c\x44ISABLE_BURN\x10\x13\x12\x0f\n\x0b\x45NABLE_BURN\x10\x14\x12\x0e\n\nON_OFF_TOG\x10\x15\x12\x0f\n\x0bMIN_MAX_TOG\x10\x16\x12\x10\n\x0c\x45NABLE_INPUT\x10\x17\x12\x11\n\rDISABLE_INPUT\x10\x18\x12\x14\n\x10\x45NABLE_TOG_INPUT\x10\x19\x12\x0e\n\nOUTPUT_TOG\x10\x1a\x12\x0f\n\x0bOUTPUT_HIGH\x10\x1b\x12\x0e\n\nOUTPUT_LOW\x10\x1c\x12\x0f\n\x0bOUTPUT_TRIG\x10\x1d\x12\x12\n\x0ePROFILE_CHANGE\x10\x1e\x12\x13\n\x0f\x46\x41\x44\x45_LONG_PRESS\x10\x1f\x12\n\n\x06SYNCRO\x10 \x12\x0f\n\x0bPRESET_CODE\x10!\x12\x0f\n\x0b\x43USTOM_CODE\x10\"\x12\x11\n\rSPEKTRA_SLEEP\x10#\x12\x12\n\x0eSPEKTRA_RESUME\x10$\x12\x10\n\x0c\x44\x45VICE_RESET\x10%\x12\x0f\n\x0b\x44\x45VICE_SAVE\x10&\x12\x18\n\x14USER_LEVEL_STORE_NEW\x10\'\x12\x1a\n\x16USER_LEVEL_SET_DEFAULT\x10(\x12\x15\n\x11USER_LEVEL_RECALL\x10)\x12\r\n\tROOM_JOIN\x10+\x12\x0f\n\x0bROOM_UNJOIN\x10,\x12\x13\n\x0fTYPE8_TC_WARMER\x10-\x12\x13\n\x0fTYPE8_TC_COOLER\x10.\x12\x13\n\x0fTYPE8_TC_ACTUAL\x10/\x12\x13\n\x0fLOGIC_OPERATION\x10\x30\x12\x10\n\x0c\x41LARM_ENABLE\x10\x31\x12\x11\n\rALARM_DISABLE\x10\x32\x12 \n\x1c\x44\x41LI_CONTROL_SENSOR_OVERRIDE\x10\x33\x12$\n DALI_CONTROL_SENSOR_TEMP_DISABLE\x10\x34\x12\x1e\n\x1a\x44\x41LI_CONTROL_SENSOR_RESUME\x10\x35\x12\x15\n\x11\x44\x41LI_ARC_OVERRIDE\x10\x36\x12\x19\n\x15\x44\x41LI_COMMAND_OVERRIDE\x10\x37\x12\x1d\n\x19\x46\x41\x44\x45_UP_WITH_MIN_OVERRIDE\x10\x38\x12\x17\n\x13ON_OFF_TOG_OVERRIDE\x10\x39\x12\x18\n\x14MIN_MAX_TOG_OVERRIDE\x10:\x12\x0f\n\x0bMAX_OFF_TOG\x10;\x12\x18\n\x14MAX_OFF_TOG_OVERRIDE\x10<\x12\x1c\n\x18\x46\x41\x44\x45_LONG_PRESS_OVERRIDE\x10=\x12\x1e\n\x1aUSER_LEVEL_RECALL_OVERRIDE\x10>\x12\x14\n\x10\x44MX_ZONE_FADE_UP\x10?\x12\x16\n\x12\x44MX_ZONE_FADE_DOWN\x10@\x12\x11\n\rLOGGING_LEVEL\x10\x41\x12\x18\n\x14SPEKTRA_SHOW_CONTROL\x10\x42\x12\x19\n\x15\x43IRCADIAN_TEMPERATURE\x10\x43\x12\x1c\n\x18\x44\x41LI_CONTROL_SENSOR_MUTE\x10\x44\x12\x1e\n\x1a\x44\x41LI_CONTROL_SENSOR_UNMUTE\x10\x45\x12\x15\n\x11SPEKTRA_INTENSITY\x10\x46\x12\x1a\n\x16\x45NABLE_INPUT_NO_ACTION\x10G\x12\x16\n\x12SET_DALI_FADE_TIME\x10H\x12\x0f\n\nNO_COMMAND\x10\xfe\x01*\xbe\x01\n\x08ReadType\x12\n\n\x06INPUTS\x10\x00\x12\x0b\n\x07OUTPUTS\x10\x01\x12\x06\n\x02IR\x10\x02\x12\n\n\x06SENSOR\x10\x03\x12\x08\n\x04LIST\x10\x05\x12\n\n\x06\x41LARMS\x10\x07\x12\x0b\n\x07\x42URN_IN\x10\x08\x12\x0b\n\x07PROJECT\x10\t\x12\x0b\n\x07NETWORK\x10\n\x12\n\n\x06\x44\x45VICE\x10\x0b\x12\r\n\tPOLL_DATA\x10\x0c\x12\x11\n\rLIST_EXTENDED\x10\r\x12\t\n\x05LOGIC\x10\x0e\x12\x0f\n\x0b\x44\x41LI_INPUTS\x10\x0f*\x8c\x01\n\x0f\x41larmRepeatType\x12\x13\n\x0f\x41LARM_NO_REPEAT\x10\x00\x12\x16\n\x12\x41LARM_REPEAT_DAILY\x10\x01\x12\x19\n\x15\x41LARM_REPEAT_WORK_DAY\x10\x02\x12\x17\n\x13\x41LARM_REPEAT_WEEKLY\x10\x03\x12\x18\n\x14\x41LARM_REPEAT_MONTHLY\x10\x04*I\n\x0e\x41larmAstroType\x12\x12\n\x0e\x41LARM_NO_ASTRO\x10\x00\x12\x11\n\rALARM_SUNRUSE\x10\x01\x12\x10\n\x0c\x41LARM_SUNSET\x10\x02*h\n\x11SpektraTargetType\x12\x0c\n\x08SETTINGS\x10\x00\x12\x0c\n\x08SEQUENCE\x10\x01\x12\t\n\x05THEME\x10\x02\x12\n\n\x06STATIC\x10\x03\x12\x0c\n\x08\x43\x41LENDAR\x10\x04\x12\x08\n\x04SHOW\x10\x05\x12\x08\n\x04LIVE\x10\x06*=\n\x11SpektraActionType\x12\t\n\x05START\x10\x00\x12\x08\n\x04STOP\x10\x01\x12\t\n\x05PAUSE\x10\x02\x12\x08\n\x04SAVE\x10\x03*p\n\x15SpektraStepActionType\x12\x10\n\x0cRUN_SEQUENCE\x10\x00\x12\x0e\n\nSHOW_THEME\x10\x01\x12\x0e\n\nSTART_LIST\x10\x02\x12\x12\n\x0ePAUSE_PREVIOUS\x10\x03\x12\x11\n\rSTOP_PREVIOUS\x10\x04*\x9e\x01\n\x1fSpektraUnscheduledBehaviourType\x12 \n\x1cRUN_RANDOM_COLOURED_SEQUENCE\x10\x00\x12\x12\n\x0eRUN_SEQUENCE_1\x10\x01\x12\x13\n\x0fRESUME_PREVIOUS\x10\x02\x12\x0f\n\x0bRUN_THEME_1\x10\x03\x12\x0e\n\nRUN_SHOW_1\x10\x04\x12\x0f\n\nDO_NOTHING\x10\xfe\x01*6\n\x12LineAddressingType\x12\x0f\n\x0bINDEPENDENT\x10\x00\x12\x0f\n\x0b\x43ONSECUTIVE\x10\x01*\xe7\x02\n\x0e\x41\x63kMessageType\x12\x11\n\rDECODE_FAILED\x10\x00\x12\x17\n\x13INDEX_OUT_OF_BOUNDS\x10\x01\x12\x13\n\x0fUNEXPECTED_TYPE\x10\x02\x12\x11\n\rENCODE_FAILED\x10\x03\x12\x10\n\x0cKEY_MISMATCH\x10\x04\x12\x0b\n\x07SUCCESS\x10\x05\x12\x12\n\x0eINVALID_PARAMS\x10\x06\x12\x16\n\x12UNEXPECTED_COMMAND\x10\x07\x12\x18\n\x14\x43OMMUNICATION_FAILED\x10\x08\x12\x19\n\x15\x43OMMUNICATION_TIMEOUT\x10\t\x12\x11\n\rDATA_TOO_LONG\x10\n\x12\x13\n\x0fUNEXPECTED_CASE\x10\x0b\x12\x0e\n\nSLOTS_FULL\x10\x0c\x12\x10\n\x0cUNAUTHORISED\x10\r\x12\x13\n\x0fPARTIAL_SUCCESS\x10\x0e\x12\x12\n\x0e\x43OMMAND_FAILED\x10\x0f\x12\x0e\n\nDEPRECATED\x10\x10*\xea\x04\n\x10Type8CommandType\x12\x14\n\x10SET_TEMP_X_COORD\x10\x00\x12\x14\n\x10SET_TEMP_Y_COORD\x10\x01\x12\x0c\n\x08\x41\x43TIVATE\x10\x02\x12\x13\n\x0fX_COORD_STEP_UP\x10\x03\x12\x15\n\x11X_COORD_STEP_DOWN\x10\x04\x12\x13\n\x0fY_COORD_STEP_UP\x10\x05\x12\x15\n\x11Y_COORD_STEP_DOWN\x10\x06\x12\x1f\n\x1bSET_TEMP_COLOUR_TEMPERATURE\x10\x07\x12\"\n\x1e\x43OLOUR_TEMPERATURE_STEP_COOLER\x10\x08\x12\"\n\x1e\x43OLOUR_TEMPERATURE_STEP_WARMER\x10\t\x12\x1b\n\x17SET_TEMP_PRI_N_DIMLEVEL\x10\n\x12\x19\n\x15SET_TEMP_RGB_DIMLEVEL\x10\x0b\x12\x19\n\x15SET_TEMP_WAF_DIMLEVEL\x10\x0c\x12\x1b\n\x17SET_TEMP_RGBWAF_CONTROL\x10\r\x12\x19\n\x15\x43OPY_REPORT_TEMPORARY\x10\x0e\x12\x12\n\x0eSTORE_TY_PRI_N\x10\x10\x12\x18\n\x14STORE_XY_COORD_PRI_N\x10\x11\x12\"\n\x1eSTORE_COLOUR_TEMPERATURE_LIMIT\x10\x12\x12\x1e\n\x1aSTORE_GEAR_FEATURES_STATUS\x10\x13\x12\x1a\n\x16\x41SSIGN_COLOR_LINKED_CH\x10\x15\x12\x12\n\x0eSTART_AUTO_CAL\x10\x16\x12\x17\n\x13\x45NABLE_DEVICE_TYPE8\x10\x30\x12\x15\n\x11SET_XY_COORDINATE\x10\x32*\x91\x02\n\x0eType8QueryType\x12\x14\n\x10TYPE8_QUERY_NULL\x10\x00\x12$\n TYPE8_QUERY_GEAR_FEATURES_STATUS\x10\x01\x12\x1d\n\x19TYPE8_QUERY_COLOUR_STATUS\x10\x02\x12$\n TYPE8_QUERY_COLOUR_TYPE_FEATURES\x10\x03\x12\x1c\n\x18TYPE8_QUERY_COLOUR_VALUE\x10\x04\x12\x1e\n\x1aTYPE8_QUERY_RGBWAF_CONTROL\x10\x05\x12\x1f\n\x1bTYPE8_QUERY_ASSIGNED_COLOUR\x10\x06\x12\x1f\n\x1bTYPE8_QUERY_EXT_VERSION_NUM\x10\x08*\xbc\x06\n\x13\x44\x41LI24DeviceSetting\x12\x14\n\x10\x43OMMAND_IDENTIFY\x10\x00\x12\"\n\x1e\x43OMMAND_RESET_POWER_CYCLE_SEEN\x10\x01\x12\x11\n\rCOMMAND_RESET\x10\x10\x12\x1d\n\x19\x43OMMAND_RESET_MEMORY_BANK\x10\x11\x12\x1d\n\x19\x43OMMAND_SET_SHORT_ADDRESS\x10\x14\x12\x1f\n\x1b\x43OMMAND_ENABLE_WRITE_MEMORY\x10\x15\x12!\n\x1d\x43OMMAND_ENABLE_APP_CONTROLLER\x10\x16\x12\"\n\x1e\x43OMMAND_DISABLE_APP_CONTROLLER\x10\x17\x12\x1e\n\x1a\x43OMMAND_SET_OPERATING_MODE\x10\x18\x12%\n!COMMAND_ADD_TO_DEVICE_GROUPS_0_15\x10\x19\x12&\n\"COMMAND_ADD_TO_DEVICE_GROUPS_15_32\x10\x1a\x12#\n\x1f\x43OMMAND_REMOVE_FROM_GROUPS_0_15\x10\x1b\x12$\n COMMAND_REMOVE_FROM_GROUPS_16_32\x10\x1c\x12 \n\x1c\x43OMMAND_START_QUIESCENT_MODE\x10\x1d\x12\x1f\n\x1b\x43OMMAND_STOP_QUIESCENT_MODE\x10\x1e\x12$\n COMMAND_ENABLE_POWER_CYCLE_NOTIF\x10\x1f\x12%\n!COMMAND_DISABLE_POWER_CYCLE_NOTIF\x10 \x12%\n!COMMAND_SAVE_PERSISTENT_VARIABLES\x10!\x12\x16\n\x12SET_EVENT_PRIORITY\x10\x61\x12\x13\n\x0f\x45NABLE_INSTANCE\x10\x62\x12\x14\n\x10\x44ISABLE_INSTANCE\x10\x63\x12\x1e\n\x1aSET_PRIMARY_INSTANCE_GROUP\x10\x64\x12\x18\n\x14SET_INSTANCE_GROUP_1\x10\x65\x12\x18\n\x14SET_INSTANCE_GROUP_2\x10\x66\x12\x14\n\x10SET_EVENT_SCHEME\x10g\x12\x14\n\x10SET_EVENT_FILTER\x10h*c\n\x12\x44\x41LI24InstanceType\x12\x0b\n\x07\x44\x45\x46\x41ULT\x10\x00\x12\t\n\x05INPUT\x10\x01\x12\x10\n\x0cROTARY_INPUT\x10\x02\x12\x11\n\rMOTION_SENSOR\x10\x03\x12\x10\n\x0cLIGHT_SENSOR\x10\x04*\xbe\x02\n\x0c\x44\x41LI24OpCode\x12\x0f\n\x0bOPCODE_NULL\x10\x00\x12 \n\x1cSENSOR_MOTION_SET_HOLD_TIMER\x10!\x12\"\n\x1eSENSOR_MOTION_SET_REPORT_TIMER\x10\"\x12$\n SENSOR_MOTION_SET_DEADTIME_TIMER\x10#\x12#\n\x1fSENSOR_MOTION_CANCEL_HOLD_TIMER\x10$\x12!\n\x1dSENSOR_LIGHT_SET_REPORT_TIMER\x10\x30\x12\x1f\n\x1bSENSOR_LIGHT_SET_HYSTERESIS\x10\x31\x12#\n\x1fSENSOR_LIGHT_SET_DEADTIME_TIMER\x10\x32\x12#\n\x1fSENSOR_LIGHT_SET_HYSTERESIS_MIN\x10\x33*W\n\x08LineType\x12\x0e\n\nLINE_EMPTY\x10\x00\x12\r\n\tLINE_DALI\x10\x01\x12\x0c\n\x08LINE_DMX\x10\x02\x12\x0f\n\x0bLINE_DMX_IN\x10\x03\x12\r\n\tLINE_AUTO\x10\x04*\xa9\x01\n\tEventType\x12\x0c\n\x08REGISTER\x10\x00\x12\x11\n\rTRIGGER_EVENT\x10\x01\x12\x0f\n\x0bINPUT_EVENT\x10\x02\x12\x10\n\x0cSENSOR_EVENT\x10\x03\x12\x11\n\rCONTROL_EVENT\x10\x04\x12\x13\n\x0fROOM_JOIN_EVENT\x10\x05\x12\x17\n\x13\x44\x41LI_24_INPUT_EVENT\x10\x06\x12\x17\n\x13\x44\x41LI_24_FRAME_EVENT\x10\x07*\xc6\t\n\rDALIQueryType\x12\x13\n\x0f\x44\x41LI_QUERY_NULL\x10\x00\x12\x16\n\x11\x44\x41LI_QUERY_STATUS\x10\x90\x01\x12\x17\n\x12\x44\x41LI_QUERY_BALLAST\x10\x91\x01\x12\x1c\n\x17\x44\x41LI_QUERY_LAMP_FAILURE\x10\x92\x01\x12\x1d\n\x18\x44\x41LI_QUERY_LAMP_POWER_ON\x10\x93\x01\x12\x1b\n\x16\x44\x41LI_QUERY_LIMIT_ERROR\x10\x94\x01\x12\x1b\n\x16\x44\x41LI_QUERY_RESET_STATE\x10\x95\x01\x12%\n DALI_QUERY_MISSING_SHORT_ADDRESS\x10\x96\x01\x12\x1e\n\x19\x44\x41LI_QUERY_VERSION_NUMBER\x10\x97\x01\x12\x14\n\x0f\x44\x41LI_QUERY_DTR0\x10\x98\x01\x12\x1b\n\x16\x44\x41LI_QUERY_DEVICE_TYPE\x10\x99\x01\x12\x1c\n\x17\x44\x41LI_QUERY_PHYSICAL_MIN\x10\x9a\x01\x12\x1d\n\x18\x44\x41LI_QUERY_POWER_FAILURE\x10\x9b\x01\x12\x14\n\x0f\x44\x41LI_QUERY_DTR1\x10\x9c\x01\x12\x14\n\x0f\x44\x41LI_QUERY_DTR2\x10\x9d\x01\x12\x1e\n\x19\x44\x41LI_QUERY_OPERATING_MODE\x10\x9e\x01\x12 \n\x1b\x44\x41LI_QUERY_LIGHTSOURCE_TYPE\x10\x9f\x01\x12\x1c\n\x17\x44\x41LI_QUERY_ACTUAL_LEVEL\x10\xa0\x01\x12\x19\n\x14\x44\x41LI_QUERY_MAX_LEVEL\x10\xa1\x01\x12\x19\n\x14\x44\x41LI_QUERY_MIN_LEVEL\x10\xa2\x01\x12\x1e\n\x19\x44\x41LI_QUERY_POWER_ON_LEVEL\x10\xa3\x01\x12$\n\x1f\x44\x41LI_QUERY_SYSTEM_FAILURE_LEVEL\x10\xa4\x01\x12!\n\x1c\x44\x41LI_QUERY_FADETIME_FADERATE\x10\xa5\x01\x12*\n%DALI_QUERY_MANUFACTURER_SPECIFIC_MODE\x10\xa6\x01\x12 \n\x1b\x44\x41LI_QUERY_NEXT_DEVICE_TYPE\x10\xa7\x01\x12\"\n\x1d\x44\x41LI_QUERY_EXTENDED_FADE_TIME\x10\xa8\x01\x12$\n\x1f\x44\x41LI_QUERY_CONTROL_GEAR_FAILURE\x10\xaa\x01\x12\x1d\n\x18\x44\x41LI_QUERY_SCENE_X_LEVEL\x10\xb0\x01\x12\x1a\n\x15\x44\x41LI_QUERY_GROUPS_0_7\x10\xc0\x01\x12\x1b\n\x16\x44\x41LI_QUERY_GROUPS_8_15\x10\xc1\x01\x12 \n\x1b\x44\x41LI_QUERY_RANDOM_ADDRESS_H\x10\xc2\x01\x12 \n\x1b\x44\x41LI_QUERY_RANDOM_ADDRESS_M\x10\xc3\x01\x12 \n\x1b\x44\x41LI_QUERY_RANDOM_ADDRESS_L\x10\xc4\x01\x12\x1c\n\x17\x44\x41LI_QUERY_READ_DTR_0_1\x10\xc5\x01\x12 \n\x1b\x44\x41LI_QUERY_APP_EXT_COMMANDS\x10\xe0\x01\x12\"\n\x1d\x44\x41LI_QUERY_EXT_VERSION_NUMBER\x10\xff\x01\x12\x17\n\x12\x44\x41LI_QUERY_COMPARE\x10\x84\x02\x12$\n\x1f\x44\x41LI_QUERY_VERIFY_SHORT_ADDRESS\x10\x8c\x02\x12\x1d\n\x18\x44\x41LI_QUERY_SHORT_ADDRESS\x10\x8d\x02*\xe9\x17\n\x0f\x44\x41LICommandType\x12\x0c\n\x08\x44\x41LI_OFF\x10\x00\x12\x10\n\x0c\x44\x41LI_FADE_UP\x10\x01\x12\x12\n\x0e\x44\x41LI_FADE_DOWN\x10\x02\x12\x10\n\x0c\x44\x41LI_STEP_UP\x10\x03\x12\x12\n\x0e\x44\x41LI_STEP_DOWN\x10\x04\x12\x12\n\x0e\x44\x41LI_MAX_LEVEL\x10\x05\x12\x12\n\x0e\x44\x41LI_MIN_LEVEL\x10\x06\x12\x16\n\x12\x44\x41LI_STEP_DOWN_OFF\x10\x07\x12\x13\n\x0f\x44\x41LI_ON_STEP_UP\x10\x08\x12\x18\n\x14\x44\x41LI_ENABLE_DAPC_SEQ\x10\t\x12!\n\x1d\x44\x41LI_RECALL_LAST_ACTIVE_LEVEL\x10\n\x12\x16\n\x12\x44\x41LI_CONTINUOUS_UP\x10\x0b\x12\x18\n\x14\x44\x41LI_CONTINUOUS_DOWN\x10\x0c\x12\x17\n\x13\x44\x41LI_RECALL_SCENE_0\x10\x10\x12\x17\n\x13\x44\x41LI_RECALL_SCENE_1\x10\x11\x12\x17\n\x13\x44\x41LI_RECALL_SCENE_2\x10\x12\x12\x17\n\x13\x44\x41LI_RECALL_SCENE_3\x10\x13\x12\x17\n\x13\x44\x41LI_RECALL_SCENE_4\x10\x14\x12\x17\n\x13\x44\x41LI_RECALL_SCENE_5\x10\x15\x12\x17\n\x13\x44\x41LI_RECALL_SCENE_6\x10\x16\x12\x17\n\x13\x44\x41LI_RECALL_SCENE_7\x10\x17\x12\x17\n\x13\x44\x41LI_RECALL_SCENE_8\x10\x18\x12\x17\n\x13\x44\x41LI_RECALL_SCENE_9\x10\x19\x12\x18\n\x14\x44\x41LI_RECALL_SCENE_10\x10\x1a\x12\x18\n\x14\x44\x41LI_RECALL_SCENE_11\x10\x1b\x12\x18\n\x14\x44\x41LI_RECALL_SCENE_12\x10\x1c\x12\x18\n\x14\x44\x41LI_RECALL_SCENE_13\x10\x1d\x12\x18\n\x14\x44\x41LI_RECALL_SCENE_14\x10\x1e\x12\x18\n\x14\x44\x41LI_RECALL_SCENE_15\x10\x1f\x12\x0e\n\nDALI_RESET\x10 \x12 \n\x1c\x44\x41LI_STORE_ACTUAL_LEVEL_DTR0\x10!\x12\x1d\n\x19\x44\x41LI_SAVE_PERSISTENT_VARS\x10\"\x12\x1b\n\x17\x44\x41LI_SET_OPERATING_MODE\x10#\x12\x1a\n\x16\x44\x41LI_RESET_MEMORY_BANK\x10$\x12\x18\n\x14\x44\x41LI_IDENTIFY_DEVICE\x10%\x12\x16\n\x12\x44\x41LI_SET_MAX_LEVEL\x10*\x12\x16\n\x12\x44\x41LI_SET_MIN_LEVEL\x10+\x12!\n\x1d\x44\x41LI_SET_SYSTEM_FAILURE_LEVEL\x10,\x12\x1b\n\x17\x44\x41LI_SET_POWER_ON_LEVEL\x10-\x12\x16\n\x12\x44\x41LI_SET_FADE_TIME\x10.\x12\x16\n\x12\x44\x41LI_SET_FADE_RATE\x10/\x12\x1a\n\x16\x44\x41LI_SET_EXT_FADE_TIME\x10\x30\x12\x14\n\x10\x44\x41LI_SET_SCENE_0\x10@\x12\x14\n\x10\x44\x41LI_SET_SCENE_1\x10\x41\x12\x14\n\x10\x44\x41LI_SET_SCENE_2\x10\x42\x12\x14\n\x10\x44\x41LI_SET_SCENE_3\x10\x43\x12\x14\n\x10\x44\x41LI_SET_SCENE_4\x10\x44\x12\x14\n\x10\x44\x41LI_SET_SCENE_5\x10\x45\x12\x14\n\x10\x44\x41LI_SET_SCENE_6\x10\x46\x12\x14\n\x10\x44\x41LI_SET_SCENE_7\x10G\x12\x14\n\x10\x44\x41LI_SET_SCENE_8\x10H\x12\x14\n\x10\x44\x41LI_SET_SCENE_9\x10I\x12\x15\n\x11\x44\x41LI_SET_SCENE_10\x10J\x12\x15\n\x11\x44\x41LI_SET_SCENE_11\x10K\x12\x15\n\x11\x44\x41LI_SET_SCENE_12\x10L\x12\x15\n\x11\x44\x41LI_SET_SCENE_13\x10M\x12\x15\n\x11\x44\x41LI_SET_SCENE_14\x10N\x12\x15\n\x11\x44\x41LI_SET_SCENE_15\x10O\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_SCENE_0\x10P\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_SCENE_1\x10Q\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_SCENE_2\x10R\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_SCENE_3\x10S\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_SCENE_4\x10T\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_SCENE_5\x10U\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_SCENE_6\x10V\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_SCENE_7\x10W\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_SCENE_8\x10X\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_SCENE_9\x10Y\x12\x1d\n\x19\x44\x41LI_REMOVE_FROM_SCENE_10\x10Z\x12\x1d\n\x19\x44\x41LI_REMOVE_FROM_SCENE_11\x10[\x12\x1d\n\x19\x44\x41LI_REMOVE_FROM_SCENE_12\x10\\\x12\x1d\n\x19\x44\x41LI_REMOVE_FROM_SCENE_13\x10]\x12\x1d\n\x19\x44\x41LI_REMOVE_FROM_SCENE_14\x10^\x12\x1d\n\x19\x44\x41LI_REMOVE_FROM_SCENE_15\x10_\x12\x17\n\x13\x44\x41LI_ADD_TO_GROUP_0\x10`\x12\x17\n\x13\x44\x41LI_ADD_TO_GROUP_1\x10\x61\x12\x17\n\x13\x44\x41LI_ADD_TO_GROUP_2\x10\x62\x12\x17\n\x13\x44\x41LI_ADD_TO_GROUP_3\x10\x63\x12\x17\n\x13\x44\x41LI_ADD_TO_GROUP_4\x10\x64\x12\x17\n\x13\x44\x41LI_ADD_TO_GROUP_5\x10\x65\x12\x17\n\x13\x44\x41LI_ADD_TO_GROUP_6\x10\x66\x12\x17\n\x13\x44\x41LI_ADD_TO_GROUP_7\x10g\x12\x17\n\x13\x44\x41LI_ADD_TO_GROUP_8\x10h\x12\x17\n\x13\x44\x41LI_ADD_TO_GROUP_9\x10i\x12\x18\n\x14\x44\x41LI_ADD_TO_GROUP_10\x10j\x12\x18\n\x14\x44\x41LI_ADD_TO_GROUP_11\x10k\x12\x18\n\x14\x44\x41LI_ADD_TO_GROUP_12\x10l\x12\x18\n\x14\x44\x41LI_ADD_TO_GROUP_13\x10m\x12\x18\n\x14\x44\x41LI_ADD_TO_GROUP_14\x10n\x12\x18\n\x14\x44\x41LI_ADD_TO_GROUP_15\x10o\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_GROUP_0\x10p\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_GROUP_1\x10q\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_GROUP_2\x10r\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_GROUP_3\x10s\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_GROUP_4\x10t\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_GROUP_5\x10u\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_GROUP_6\x10v\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_GROUP_7\x10w\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_GROUP_8\x10x\x12\x1c\n\x18\x44\x41LI_REMOVE_FROM_GROUP_9\x10y\x12\x1d\n\x19\x44\x41LI_REMOVE_FROM_GROUP_10\x10z\x12\x1d\n\x19\x44\x41LI_REMOVE_FROM_GROUP_11\x10{\x12\x1d\n\x19\x44\x41LI_REMOVE_FROM_GROUP_12\x10|\x12\x1d\n\x19\x44\x41LI_REMOVE_FROM_GROUP_13\x10}\x12\x1d\n\x19\x44\x41LI_REMOVE_FROM_GROUP_14\x10~\x12\x1d\n\x19\x44\x41LI_REMOVE_FROM_GROUP_15\x10\x7f\x12\x1b\n\x16\x44\x41LI_SET_SHORT_ADDRESS\x10\x80\x01\x12\x1d\n\x18\x44\x41LI_ENABLE_WRITE_MEMORY\x10\x81\x01\x12\x13\n\x0e\x44\x41LI_TERMINATE\x10\xff\x01\x12\x14\n\x0f\x44\x41LI_INITIALISE\x10\x82\x02\x12\x13\n\x0e\x44\x41LI_RANDOMISE\x10\x83\x02\x12\x12\n\rDALI_WITHDRAW\x10\x85\x02\x12\x17\n\x12\x44\x41LI_SEARCH_ADDR_H\x10\x88\x02\x12\x17\n\x12\x44\x41LI_SEARCH_ADDR_M\x10\x89\x02\x12\x17\n\x12\x44\x41LI_SEARCH_ADDR_L\x10\x8a\x02\x12\x1f\n\x1a\x44\x41LI_PROGRAM_SHORT_ADDRESS\x10\x8b\x02*\xc4\x01\n\x15\x43ustomDALICommandType\x12\x12\n\x0e\x44\x41LI_ARC_LEVEL\x10\x00\x12\x13\n\x0f\x44\x41LI_DAPC_LEVEL\x10\x01\x12\x18\n\x14\x44\x41LI_GROUP_ARC_LEVEL\x10\x02\x12\x18\n\x14\x44\x41LI_BROADCAST_SCENE\x10\x03\x12\x17\n\x13\x44\x41LI_SCENE_ON_GROUP\x10\x04\x12\x19\n\x15\x44\x41LI_SCENE_ON_ADDRESS\x10\x05\x12\x1a\n\x16\x44\x41LI_QUERY_MULTI_TYPES\x10\x06*\xd0\x04\n\x11\x41\x64minPropertyType\x12\x0f\n\x0b\x44\x45VICE_NAME\x10\x00\x12\x10\n\x0cPROJECT_NAME\x10\x01\x12\r\n\tLONGITUDE\x10\x02\x12\x0c\n\x08LATITUDE\x10\x03\x12\x14\n\x10LOCAL_UTC_OFFSET\x10\x04\x12\x14\n\x10\x44\x41YLIGHT_SAVINGS\x10\x05\x12\x0f\n\x0bPOLL_ACTIVE\x10\x06\x12\x10\n\x0c\x44HCP_ENABLED\x10\x07\x12\x0b\n\x07IP_ADDR\x10\x08\x12\x0c\n\x08MAC_ADDR\x10\t\x12\x0e\n\nGATEWAY_IP\x10\n\x12\x16\n\x12NETWORK_PROPERTIES\x10\x0b\x12\x15\n\x11SYSTEM_PROPERTIES\x10\x0c\x12\x14\n\x10\x43ONTROLLER_LINES\x10\r\x12\x14\n\x10\x45\x45PROM_FULL_CHIP\x10\x0e\x12\x0f\n\x0b\x43ONFIG_DATA\x10\x0f\x12\x10\n\x0cSPEKTRA_DATA\x10\x10\x12\x11\n\rDEVICE_STATUS\x10\x11\x12\x11\n\rCONFIG_STATUS\x10\x12\x12\x0f\n\x0b\x44\x45VICE_TIME\x10\x13\x12\x0f\n\x0bNTP_DETAILS\x10\x14\x12\x10\n\x0c\x44\x41LI_SENSORS\x10\x15\x12\x12\n\x0eSECURE_SESSION\x10\x16\x12\t\n\x05NONCE\x10\x17\x12\x14\n\x10\x44\x41LI_SENSOR_TYPE\x10\x18\x12\x11\n\rDEVICE_REBOOT\x10\x19\x12\x12\n\x0eSYSTEM_LOGGING\x10\x1a\x12\n\n\x06SUBNET\x10\x1b\x12\x07\n\x03\x44NS\x10\x1c\x12\x08\n\x04LINK\x10\x1d\x12\r\n\tLINK_TYPE\x10\x1e\x12\r\n\tLINK_MASK\x10\x1f\x12\x10\n\x0cLINK_NETMASK\x10 *M\n\x10\x41\x64minCommandType\x12\x07\n\x03SET\x10\x00\x12\x07\n\x03GET\x10\x01\x12\x07\n\x03\x41\x44\x44\x10\x02\x12\n\n\x06REMOVE\x10\x03\x12\t\n\x05RESET\x10\x04\x12\x07\n\x03RUN\x10\x05*\xb5\x01\n\x0e\x44\x41LIStatusType\x12\x0c\n\x08LAMP_OFF\x10\x00\x12\x18\n\x14\x43ONTROL_GEAR_FAILURE\x10\x01\x12\x10\n\x0cLAMP_FAILURE\x10\x02\x12\x0b\n\x07LAMP_ON\x10\x04\x12\x0f\n\x0bLIMIT_ERROR\x10\x08\x12\x10\n\x0c\x46\x41\x44\x45_RUNNING\x10\x10\x12\x0f\n\x0bRESET_STATE\x10 \x12\x11\n\rSHORT_ADDRESS\x10@\x12\x15\n\x10POWER_CYCLE_SEEN\x10\x80\x01*\x88\x02\n\x10\x44\x41LIRXStatusFlag\x12\x0b\n\x07WAITING\x10\x00\x12\x13\n\x0fRECEIVING_FRAME\x10\x01\x12\x15\n\x11NO_RECEIVED_FRAME\x10\x02\x12\x18\n\x14RECEIVED_8_BIT_FRAME\x10\x03\x12\x19\n\x15RECEIVED_16_BIT_FRAME\x10\x04\x12\x19\n\x15RECEIVED_24_BIT_FRAME\x10\x05\x12\x1a\n\x16RECEIVED_PARTIAL_FRAME\x10\x06\x12\x08\n\x04IDLE\x10\x07\x12\x0f\n\x0b\x43\x41LIBRATION\x10\x08\x12\x18\n\x13\x45RROR_WHILE_SENDING\x10\xfe\x01\x12\x1a\n\x15\x45RROR_WHILE_RECEIVING\x10\xff\x01*\xa2\x01\n\x15\x44iagnosticMessageType\x12\x1a\n\x16\x44IAGNOSTIC_SYSTEM_INFO\x10\x00\x12\x1b\n\x17\x44IAGNOSTIC_INPUT_STATUS\x10\x01\x12\x14\n\x10\x44\x41LI_LEVEL_CACHE\x10\x02\x12\x13\n\x0f\x44MX_LEVEL_CACHE\x10\x03\x12\x0e\n\nROOM_JOINS\x10\x04\x12\x15\n\x11\x44\x41LI_STATUS_CACHE\x10\x05*\x88\x01\n\x13\x46irmwareCommandType\x12\x0c\n\x08\x46W_READY\x10\x00\x12\x0c\n\x08\x46W_APPLY\x10\x01\x12\r\n\tFW_VERIFY\x10\x02\x12\x14\n\x10\x46W_VERIFY_FAILED\x10\x03\x12\x15\n\x11\x46W_VERIFY_SUCCESS\x10\x04\x12\x0b\n\x07\x46W_READ\x10\x05\x12\x0c\n\x08\x46W_CLONE\x10\x06*?\n\x15SpektraTransitionType\x12\t\n\x05\x42LEND\x10\x00\x12\x08\n\x04SNAP\x10\x01\x12\x11\n\rFADE_TO_BLACK\x10\x02*\xc2\x01\n\tLogicType\x12\x0e\n\nDALI_LEVEL\x10\x00\x12\x0f\n\x0bINPUT_STATE\x10\x01\x12\x10\n\x0cLIST_RUNNING\x10\x02\x12\x16\n\x12OCCUPANCY_DETECTED\x10\x03\x12\x0f\n\x0b\x44MX_PRESENT\x10\x04\x12\x0f\n\x0b\x43\x41L_WEEKDAY\x10\x05\x12\r\n\tCAL_MONTH\x10\x06\x12\x13\n\x0f\x41LARM_SCHEDULED\x10\x07\x12\x15\n\x11\x44\x41LI_CACHE_STATUS\x10\x08\x12\r\n\tHAS_ERROR\x10\t*\xa6\x01\n\x13LogicComparisonType\x12\r\n\tLESS_THAN\x10\x00\x12\x17\n\x13LESS_THAN_OR_EQUALS\x10\x01\x12\n\n\x06\x45QUALS\x10\x02\x12\r\n\tMORE_THAN\x10\x03\x12\x17\n\x13MORE_THAN_OR_EQUALS\x10\x04\x12\r\n\tNOT_EQUAL\x10\x05\x12\n\n\x06\x42IT_OR\x10\x06\x12\x0b\n\x07\x42IT_AND\x10\x07\x12\x0b\n\x07\x42IT_XOR\x10\x08*8\n\x0e\x44\x41LISensorType\x12\x12\n\x0eTRIDONIC_EDALI\x10\x00\x12\x12\n\x0eSTANDARD_EDALI\x10\x01*U\n\x11SensorCommandType\x12\x0e\n\nINITIALISE\x10\x00\x12\x08\n\x04MUTE\x10\x01\x12\n\n\x06UNMUTE\x10\x02\x12\x0c\n\x08OVERRIDE\x10\x03\x12\x0c\n\x08IDENTIFY\x10\x04*b\n\rSystemLogType\x12\x08\n\x04\x42OOT\x10\x00\x12\x0c\n\x08NET_LINK\x10\x01\x12\x07\n\x03NTP\x10\x02\x12\x0b\n\x07TRIGGER\x10\x03\x12\x0b\n\x07SPEKTRA\x10\x04\x12\x0c\n\x08SCHEDULE\x10\x05\x12\x08\n\x04USER\x10\x06*m\n\x0f\x44\x41LI24InputType\x12\x13\n\x0fMOMENTARY_SHORT\x10\x00\x12\x12\n\x0eMOMENTARY_LONG\x10\x01\x12\x0f\n\x0bLATCHED_LOW\x10\x02\x12\x10\n\x0cLATCHED_HIGH\x10\x03\x12\x0e\n\nPOSITIONAL\x10\x04*h\n\x16\x44\x41LIMotionSensorStates\x12\x0f\n\x0bMOTION_IDLE\x10\x00\x12\x13\n\x0fMOTION_DISABLED\x10\x01\x12\x12\n\x0eMOTION_WARNING\x10\x02\x12\x14\n\x10MOTION_OCCUPANCY\x10\x03*I\n\x13\x44\x41LILuxSensorStates\x12\x10\n\x0cLUX_DISABLED\x10\x00\x12\x0f\n\x0bLUX_ENABLED\x10\x01\x12\x0f\n\x0bLUX_DEVIATE\x10\x02*N\n\x13\x44\x41LIAddressingError\x12\x0c\n\x08NO_ERROR\x10\x00\x12\n\n\x06VERIFY\x10\x01\x12\n\n\x06SEARCH\x10\x02\x12\x11\n\rNO_NEW_DEVICE\x10\x03*8\n\x12\x44\x41LIAddressingType\x12\x0f\n\x0b\x41\x44\x44RESS_NEW\x10\x00\x12\x11\n\rREADDRESS_ALL\x10\x01\x62\x06proto3')
 )
 
 _TRIGGEROPERATIONTYPE = _descriptor.EnumDescriptor(
@@ -60,8 +60,8 @@ _TRIGGEROPERATIONTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=16309,
-  serialized_end=16464,
+  serialized_start=15818,
+  serialized_end=15973,
 )
 _sym_db.RegisterEnumDescriptor(_TRIGGEROPERATIONTYPE)
 
@@ -353,14 +353,22 @@ _TRIGGERTYPE = _descriptor.EnumDescriptor(
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='NO_COMMAND', index=70, number=254,
+      name='ENABLE_INPUT_NO_ACTION', index=70, number=71,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='SET_DALI_FADE_TIME', index=71, number=72,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='NO_COMMAND', index=72, number=254,
       serialized_options=None,
       type=None),
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=16467,
-  serialized_end=18038,
+  serialized_start=15976,
+  serialized_end=17599,
 )
 _sym_db.RegisterEnumDescriptor(_TRIGGERTYPE)
 
@@ -427,19 +435,11 @@ _READTYPE = _descriptor.EnumDescriptor(
       name='DALI_INPUTS', index=13, number=15,
       serialized_options=None,
       type=None),
-    _descriptor.EnumValueDescriptor(
-      name='SPEKTRA_SHOW', index=14, number=16,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='SPEKTRA_SHOW_EXTENDED', index=15, number=17,
-      serialized_options=None,
-      type=None),
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=18041,
-  serialized_end=18276,
+  serialized_start=17602,
+  serialized_end=17792,
 )
 _sym_db.RegisterEnumDescriptor(_READTYPE)
 
@@ -473,8 +473,8 @@ _ALARMREPEATTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=18279,
-  serialized_end=18419,
+  serialized_start=17795,
+  serialized_end=17935,
 )
 _sym_db.RegisterEnumDescriptor(_ALARMREPEATTYPE)
 
@@ -500,8 +500,8 @@ _ALARMASTROTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=18421,
-  serialized_end=18494,
+  serialized_start=17937,
+  serialized_end=18010,
 )
 _sym_db.RegisterEnumDescriptor(_ALARMASTROTYPE)
 
@@ -536,11 +536,15 @@ _SPEKTRATARGETTYPE = _descriptor.EnumDescriptor(
       name='SHOW', index=5, number=5,
       serialized_options=None,
       type=None),
+    _descriptor.EnumValueDescriptor(
+      name='LIVE', index=6, number=6,
+      serialized_options=None,
+      type=None),
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=18496,
-  serialized_end=18590,
+  serialized_start=18012,
+  serialized_end=18116,
 )
 _sym_db.RegisterEnumDescriptor(_SPEKTRATARGETTYPE)
 
@@ -570,8 +574,8 @@ _SPEKTRAACTIONTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=18592,
-  serialized_end=18653,
+  serialized_start=18118,
+  serialized_end=18179,
 )
 _sym_db.RegisterEnumDescriptor(_SPEKTRAACTIONTYPE)
 
@@ -605,8 +609,8 @@ _SPEKTRASTEPACTIONTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=18655,
-  serialized_end=18767,
+  serialized_start=18181,
+  serialized_end=18293,
 )
 _sym_db.RegisterEnumDescriptor(_SPEKTRASTEPACTIONTYPE)
 
@@ -630,14 +634,22 @@ _SPEKTRAUNSCHEDULEDBEHAVIOURTYPE = _descriptor.EnumDescriptor(
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='DO_NOTHING', index=3, number=254,
+      name='RUN_THEME_1', index=3, number=3,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='RUN_SHOW_1', index=4, number=4,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='DO_NOTHING', index=5, number=254,
       serialized_options=None,
       type=None),
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=18769,
-  serialized_end=18894,
+  serialized_start=18296,
+  serialized_end=18454,
 )
 _sym_db.RegisterEnumDescriptor(_SPEKTRAUNSCHEDULEDBEHAVIOURTYPE)
 
@@ -659,8 +671,8 @@ _LINEADDRESSINGTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=18896,
-  serialized_end=18950,
+  serialized_start=18456,
+  serialized_end=18510,
 )
 _sym_db.RegisterEnumDescriptor(_LINEADDRESSINGTYPE)
 
@@ -742,8 +754,8 @@ _ACKMESSAGETYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=18953,
-  serialized_end=19312,
+  serialized_start=18513,
+  serialized_end=18872,
 )
 _sym_db.RegisterEnumDescriptor(_ACKMESSAGETYPE)
 
@@ -849,8 +861,8 @@ _TYPE8COMMANDTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=19315,
-  serialized_end=19933,
+  serialized_start=18875,
+  serialized_end=19493,
 )
 _sym_db.RegisterEnumDescriptor(_TYPE8COMMANDTYPE)
 
@@ -896,8 +908,8 @@ _TYPE8QUERYTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=19936,
-  serialized_end=20209,
+  serialized_start=19496,
+  serialized_end=19769,
 )
 _sym_db.RegisterEnumDescriptor(_TYPE8QUERYTYPE)
 
@@ -1015,8 +1027,8 @@ _DALI24DEVICESETTING = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=20212,
-  serialized_end=21040,
+  serialized_start=19772,
+  serialized_end=20600,
 )
 _sym_db.RegisterEnumDescriptor(_DALI24DEVICESETTING)
 
@@ -1050,8 +1062,8 @@ _DALI24INSTANCETYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=21042,
-  serialized_end=21141,
+  serialized_start=20602,
+  serialized_end=20701,
 )
 _sym_db.RegisterEnumDescriptor(_DALI24INSTANCETYPE)
 
@@ -1101,8 +1113,8 @@ _DALI24OPCODE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=21144,
-  serialized_end=21462,
+  serialized_start=20704,
+  serialized_end=21022,
 )
 _sym_db.RegisterEnumDescriptor(_DALI24OPCODE)
 
@@ -1136,8 +1148,8 @@ _LINETYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=21464,
-  serialized_end=21551,
+  serialized_start=21024,
+  serialized_end=21111,
 )
 _sym_db.RegisterEnumDescriptor(_LINETYPE)
 
@@ -1183,8 +1195,8 @@ _EVENTTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=21554,
-  serialized_end=21723,
+  serialized_start=21114,
+  serialized_end=21283,
 )
 _sym_db.RegisterEnumDescriptor(_EVENTTYPE)
 
@@ -1354,8 +1366,8 @@ _DALIQUERYTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=21726,
-  serialized_end=22948,
+  serialized_start=21286,
+  serialized_end=22508,
 )
 _sym_db.RegisterEnumDescriptor(_DALIQUERYTYPE)
 
@@ -1833,8 +1845,8 @@ _DALICOMMANDTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=22951,
-  serialized_end=26000,
+  serialized_start=22511,
+  serialized_end=25560,
 )
 _sym_db.RegisterEnumDescriptor(_DALICOMMANDTYPE)
 
@@ -1876,8 +1888,8 @@ _CUSTOMDALICOMMANDTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=26003,
-  serialized_end=26199,
+  serialized_start=25563,
+  serialized_end=25759,
 )
 _sym_db.RegisterEnumDescriptor(_CUSTOMDALICOMMANDTYPE)
 
@@ -2004,11 +2016,27 @@ _ADMINPROPERTYTYPE = _descriptor.EnumDescriptor(
       name='DNS', index=28, number=28,
       serialized_options=None,
       type=None),
+    _descriptor.EnumValueDescriptor(
+      name='LINK', index=29, number=29,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='LINK_TYPE', index=30, number=30,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='LINK_MASK', index=31, number=31,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='LINK_NETMASK', index=32, number=32,
+      serialized_options=None,
+      type=None),
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=26202,
-  serialized_end=26736,
+  serialized_start=25762,
+  serialized_end=26354,
 )
 _sym_db.RegisterEnumDescriptor(_ADMINPROPERTYTYPE)
 
@@ -2046,8 +2074,8 @@ _ADMINCOMMANDTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=26738,
-  serialized_end=26815,
+  serialized_start=26356,
+  serialized_end=26433,
 )
 _sym_db.RegisterEnumDescriptor(_ADMINCOMMANDTYPE)
 
@@ -2097,8 +2125,8 @@ _DALISTATUSTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=26818,
-  serialized_end=26999,
+  serialized_start=26436,
+  serialized_end=26617,
 )
 _sym_db.RegisterEnumDescriptor(_DALISTATUSTYPE)
 
@@ -2156,8 +2184,8 @@ _DALIRXSTATUSFLAG = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=27002,
-  serialized_end=27266,
+  serialized_start=26620,
+  serialized_end=26884,
 )
 _sym_db.RegisterEnumDescriptor(_DALIRXSTATUSFLAG)
 
@@ -2195,8 +2223,8 @@ _DIAGNOSTICMESSAGETYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=27269,
-  serialized_end=27431,
+  serialized_start=26887,
+  serialized_end=27049,
 )
 _sym_db.RegisterEnumDescriptor(_DIAGNOSTICMESSAGETYPE)
 
@@ -2231,11 +2259,15 @@ _FIRMWARECOMMANDTYPE = _descriptor.EnumDescriptor(
       name='FW_READ', index=5, number=5,
       serialized_options=None,
       type=None),
+    _descriptor.EnumValueDescriptor(
+      name='FW_CLONE', index=6, number=6,
+      serialized_options=None,
+      type=None),
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=27433,
-  serialized_end=27555,
+  serialized_start=27052,
+  serialized_end=27188,
 )
 _sym_db.RegisterEnumDescriptor(_FIRMWARECOMMANDTYPE)
 
@@ -2261,8 +2293,8 @@ _SPEKTRATRANSITIONTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=27557,
-  serialized_end=27620,
+  serialized_start=27190,
+  serialized_end=27253,
 )
 _sym_db.RegisterEnumDescriptor(_SPEKTRATRANSITIONTYPE)
 
@@ -2316,8 +2348,8 @@ _LOGICTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=27623,
-  serialized_end=27817,
+  serialized_start=27256,
+  serialized_end=27450,
 )
 _sym_db.RegisterEnumDescriptor(_LOGICTYPE)
 
@@ -2367,8 +2399,8 @@ _LOGICCOMPARISONTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=27820,
-  serialized_end=27986,
+  serialized_start=27453,
+  serialized_end=27619,
 )
 _sym_db.RegisterEnumDescriptor(_LOGICCOMPARISONTYPE)
 
@@ -2390,8 +2422,8 @@ _DALISENSORTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=27988,
-  serialized_end=28044,
+  serialized_start=27621,
+  serialized_end=27677,
 )
 _sym_db.RegisterEnumDescriptor(_DALISENSORTYPE)
 
@@ -2425,8 +2457,8 @@ _SENSORCOMMANDTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=28046,
-  serialized_end=28131,
+  serialized_start=27679,
+  serialized_end=27764,
 )
 _sym_db.RegisterEnumDescriptor(_SENSORCOMMANDTYPE)
 
@@ -2468,8 +2500,8 @@ _SYSTEMLOGTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=28133,
-  serialized_end=28231,
+  serialized_start=27766,
+  serialized_end=27864,
 )
 _sym_db.RegisterEnumDescriptor(_SYSTEMLOGTYPE)
 
@@ -2503,8 +2535,8 @@ _DALI24INPUTTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=28233,
-  serialized_end=28342,
+  serialized_start=27866,
+  serialized_end=27975,
 )
 _sym_db.RegisterEnumDescriptor(_DALI24INPUTTYPE)
 
@@ -2534,8 +2566,8 @@ _DALIMOTIONSENSORSTATES = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=28344,
-  serialized_end=28448,
+  serialized_start=27977,
+  serialized_end=28081,
 )
 _sym_db.RegisterEnumDescriptor(_DALIMOTIONSENSORSTATES)
 
@@ -2561,8 +2593,8 @@ _DALILUXSENSORSTATES = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=28450,
-  serialized_end=28523,
+  serialized_start=28083,
+  serialized_end=28156,
 )
 _sym_db.RegisterEnumDescriptor(_DALILUXSENSORSTATES)
 
@@ -2592,8 +2624,8 @@ _DALIADDRESSINGERROR = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=28525,
-  serialized_end=28603,
+  serialized_start=28158,
+  serialized_end=28236,
 )
 _sym_db.RegisterEnumDescriptor(_DALIADDRESSINGERROR)
 
@@ -2615,8 +2647,8 @@ _DALIADDRESSINGTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=28605,
-  serialized_end=28661,
+  serialized_start=28238,
+  serialized_end=28294,
 )
 _sym_db.RegisterEnumDescriptor(_DALIADDRESSINGTYPE)
 
@@ -2698,6 +2730,8 @@ CIRCADIAN_TEMPERATURE = 67
 DALI_CONTROL_SENSOR_MUTE = 68
 DALI_CONTROL_SENSOR_UNMUTE = 69
 SPEKTRA_INTENSITY = 70
+ENABLE_INPUT_NO_ACTION = 71
+SET_DALI_FADE_TIME = 72
 NO_COMMAND = 254
 INPUTS = 0
 OUTPUTS = 1
@@ -2713,8 +2747,6 @@ POLL_DATA = 12
 LIST_EXTENDED = 13
 LOGIC = 14
 DALI_INPUTS = 15
-SPEKTRA_SHOW = 16
-SPEKTRA_SHOW_EXTENDED = 17
 ALARM_NO_REPEAT = 0
 ALARM_REPEAT_DAILY = 1
 ALARM_REPEAT_WORK_DAY = 2
@@ -2729,6 +2761,7 @@ THEME = 2
 STATIC = 3
 CALENDAR = 4
 SHOW = 5
+LIVE = 6
 START = 0
 STOP = 1
 PAUSE = 2
@@ -2741,6 +2774,8 @@ STOP_PREVIOUS = 4
 RUN_RANDOM_COLOURED_SEQUENCE = 0
 RUN_SEQUENCE_1 = 1
 RESUME_PREVIOUS = 2
+RUN_THEME_1 = 3
+RUN_SHOW_1 = 4
 DO_NOTHING = 254
 INDEPENDENT = 0
 CONSECUTIVE = 1
@@ -3036,6 +3071,10 @@ DEVICE_REBOOT = 25
 SYSTEM_LOGGING = 26
 SUBNET = 27
 DNS = 28
+LINK = 29
+LINK_TYPE = 30
+LINK_MASK = 31
+LINK_NETMASK = 32
 SET = 0
 GET = 1
 ADD = 2
@@ -3074,6 +3113,7 @@ FW_VERIFY = 2
 FW_VERIFY_FAILED = 3
 FW_VERIFY_SUCCESS = 4
 FW_READ = 5
+FW_CLONE = 6
 BLEND = 0
 SNAP = 1
 FADE_TO_BLACK = 2
@@ -6168,59 +6208,73 @@ _SPEKTRACONTROLMESSAGE = _descriptor.Descriptor(
 )
 
 
-_SHOWSTEPMESSAGE = _descriptor.Descriptor(
-  name='ShowStepMessage',
-  full_name='ShowStepMessage',
+_SPEKTRALIVEMESSAGE = _descriptor.Descriptor(
+  name='SpektraLiveMessage',
+  full_name='SpektraLiveMessage',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='step_index', full_name='ShowStepMessage.step_index', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
+      name='type', full_name='SpektraLiveMessage.type', index=0,
+      number=1, type=14, cpp_type=8, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='target_index', full_name='ShowStepMessage.target_index', index=1,
-      number=2, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
+      name='index', full_name='SpektraLiveMessage.index', index=1,
+      number=2, type=13, cpp_type=3, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='action_type', full_name='ShowStepMessage.action_type', index=2,
-      number=3, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
+      name='action', full_name='SpektraLiveMessage.action', index=2,
+      number=3, type=14, cpp_type=8, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='max_random_target_index', full_name='ShowStepMessage.max_random_target_index', index=3,
-      number=4, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
+      name='step_index', full_name='SpektraLiveMessage.step_index', index=3,
+      number=4, type=13, cpp_type=3, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='zone', full_name='ShowStepMessage.zone', index=4,
-      number=5, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
+      name='step_index_direction', full_name='SpektraLiveMessage.step_index_direction', index=4,
+      number=5, type=13, cpp_type=3, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='max_output_level_limit', full_name='ShowStepMessage.max_output_level_limit', index=5,
-      number=6, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
+      name='colour_index', full_name='SpektraLiveMessage.colour_index', index=5,
+      number=6, type=13, cpp_type=3, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='time_until_next_10ms', full_name='ShowStepMessage.time_until_next_10ms', index=6,
-      number=7, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
+      name='colour_range', full_name='SpektraLiveMessage.colour_range', index=6,
+      number=7, type=13, cpp_type=3, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='random_seq_type', full_name='SpektraLiveMessage.random_seq_type', index=7,
+      number=8, type=13, cpp_type=3, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='zone_active', full_name='SpektraLiveMessage.zone_active', index=8,
+      number=9, type=8, cpp_type=7, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -6237,177 +6291,7 @@ _SHOWSTEPMESSAGE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=7469,
-  serialized_end=7682,
-)
-
-
-_SPEKTRASHOWMESSAGE = _descriptor.Descriptor(
-  name='SpektraShowMessage',
-  full_name='SpektraShowMessage',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='show_index', full_name='SpektraShowMessage.show_index', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='number_of_steps', full_name='SpektraShowMessage.number_of_steps', index=1,
-      number=2, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='step', full_name='SpektraShowMessage.step', index=2,
-      number=3, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='isRunning', full_name='SpektraShowMessage.isRunning', index=3,
-      number=4, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='isLooped', full_name='SpektraShowMessage.isLooped', index=4,
-      number=5, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='isRandom', full_name='SpektraShowMessage.isRandom', index=5,
-      number=6, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='isTemporary', full_name='SpektraShowMessage.isTemporary', index=6,
-      number=7, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='activations_remaining', full_name='SpektraShowMessage.activations_remaining', index=7,
-      number=8, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=7685,
-  serialized_end=7889,
-)
-
-
-_EXTENDEDSPEKTRASHOWMESSAGE = _descriptor.Descriptor(
-  name='ExtendedSpektraShowMessage',
-  full_name='ExtendedSpektraShowMessage',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='show_index', full_name='ExtendedSpektraShowMessage.show_index', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='step_index_offset', full_name='ExtendedSpektraShowMessage.step_index_offset', index=1,
-      number=2, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='step', full_name='ExtendedSpektraShowMessage.step', index=2,
-      number=3, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=7891,
-  serialized_end=7998,
-)
-
-
-_SPEKTRASHOWCONTROLMESSAGE = _descriptor.Descriptor(
-  name='SpektraShowControlMessage',
-  full_name='SpektraShowControlMessage',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='show_index', full_name='SpektraShowControlMessage.show_index', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='start_resume', full_name='SpektraShowControlMessage.start_resume', index=1,
-      number=2, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='gotoStep', full_name='SpektraShowControlMessage.gotoStep', index=2,
-      number=3, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=8000,
-  serialized_end=8087,
+  serialized_end=7714,
 )
 
 
@@ -6486,8 +6370,8 @@ _DMXTRANSLATIONOBJECT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8090,
-  serialized_end=8276,
+  serialized_start=7717,
+  serialized_end=7903,
 )
 
 
@@ -6517,8 +6401,8 @@ _DMXPROTOCOLTRANSLATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8278,
-  serialized_end=8341,
+  serialized_start=7905,
+  serialized_end=7968,
 )
 
 
@@ -6548,8 +6432,8 @@ _INPUTSTATEMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8343,
-  serialized_end=8380,
+  serialized_start=7970,
+  serialized_end=8007,
 )
 
 
@@ -6586,8 +6470,8 @@ _INPUTSTATERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8382,
-  serialized_end=8438,
+  serialized_start=8009,
+  serialized_end=8065,
 )
 
 
@@ -6631,8 +6515,8 @@ _LEVELCACHERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8440,
-  serialized_end=8504,
+  serialized_start=8067,
+  serialized_end=8131,
 )
 
 
@@ -6837,8 +6721,8 @@ _DIAGNOSTICSYSTEMINFORESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8507,
-  serialized_end=9147,
+  serialized_start=8134,
+  serialized_end=8774,
 )
 
 
@@ -6882,8 +6766,8 @@ _DIAGNOSTICMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9149,
-  serialized_end=9234,
+  serialized_start=8776,
+  serialized_end=8861,
 )
 
 
@@ -6969,8 +6853,8 @@ _ADMINPROJECTPROPERTIESMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9237,
-  serialized_end=9479,
+  serialized_start=8864,
+  serialized_end=9106,
 )
 
 
@@ -7028,8 +6912,8 @@ _ADMINCONFIGSTATUSMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9482,
-  serialized_end=9646,
+  serialized_start=9109,
+  serialized_end=9273,
 )
 
 
@@ -7129,8 +7013,8 @@ _ADMINNETWORKPROPERTIESMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9649,
-  serialized_end=9863,
+  serialized_start=9276,
+  serialized_end=9490,
 )
 
 
@@ -7167,8 +7051,8 @@ _ADMINDNSSERVERSMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9865,
-  serialized_end=9933,
+  serialized_start=9492,
+  serialized_end=9560,
 )
 
 
@@ -7198,8 +7082,8 @@ _ADMINCONTROLLERLINESMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9935,
-  serialized_end=9990,
+  serialized_start=9562,
+  serialized_end=9617,
 )
 
 
@@ -7236,8 +7120,8 @@ _ADMINDEVICESTATUSMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9992,
-  serialized_end=10056,
+  serialized_start=9619,
+  serialized_end=9683,
 )
 
 
@@ -7281,8 +7165,8 @@ _ADMINSECURELOGINMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10058,
-  serialized_end=10131,
+  serialized_start=9685,
+  serialized_end=9758,
 )
 
 
@@ -7312,8 +7196,8 @@ _ADMINDALISENSORTYPEMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10133,
-  serialized_end=10192,
+  serialized_start=9760,
+  serialized_end=9819,
 )
 
 
@@ -7416,8 +7300,8 @@ _ADMINMESSAGE = _descriptor.Descriptor(
       name='payload', full_name='AdminMessage.payload',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=10195,
-  serialized_end=10759,
+  serialized_start=9822,
+  serialized_end=10386,
 )
 
 
@@ -7468,8 +7352,8 @@ _DATAMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10761,
-  serialized_end=10836,
+  serialized_start=10388,
+  serialized_end=10463,
 )
 
 
@@ -7576,8 +7460,8 @@ _FIRMWAREMETAMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10839,
-  serialized_end=11184,
+  serialized_start=10466,
+  serialized_end=10811,
 )
 
 
@@ -7595,6 +7479,13 @@ _FIRMWARECONTROLMESSAGE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='firmware_is_backup', full_name='FirmwareControlMessage.firmware_is_backup', index=1,
+      number=2, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -7607,8 +7498,8 @@ _FIRMWARECONTROLMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11186,
-  serialized_end=11245,
+  serialized_start=10813,
+  serialized_end=10900,
 )
 
 
@@ -7652,8 +7543,8 @@ _FIRMWARECHUNKMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11247,
-  serialized_end=11347,
+  serialized_start=10902,
+  serialized_end=11002,
 )
 
 
@@ -7697,8 +7588,8 @@ _SYSTEMLOGREADMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11349,
-  serialized_end=11455,
+  serialized_start=11004,
+  serialized_end=11110,
 )
 
 
@@ -7780,8 +7671,8 @@ _SYSTEMLOGMESSAGE = _descriptor.Descriptor(
       name='packet', full_name='SystemLogMessage.packet',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=11458,
-  serialized_end=11769,
+  serialized_start=11113,
+  serialized_end=11424,
 )
 
 
@@ -7818,8 +7709,8 @@ _SYSTEMLOGBOOT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11771,
-  serialized_end=11839,
+  serialized_start=11426,
+  serialized_end=11494,
 )
 
 
@@ -7849,8 +7740,8 @@ _SYSTEMLOGNETLINK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11841,
-  serialized_end=11878,
+  serialized_start=11496,
+  serialized_end=11533,
 )
 
 
@@ -7880,8 +7771,8 @@ _SYSTEMLOGNTP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11880,
-  serialized_end=11932,
+  serialized_start=11535,
+  serialized_end=11587,
 )
 
 
@@ -7918,8 +7809,8 @@ _SYSTEMLOGTRIGGER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11934,
-  serialized_end=12013,
+  serialized_start=11589,
+  serialized_end=11668,
 )
 
 
@@ -7963,8 +7854,8 @@ _SYSTEMLOGSPEKTRA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12015,
-  serialized_end=12118,
+  serialized_start=11670,
+  serialized_end=11773,
 )
 
 
@@ -8022,8 +7913,8 @@ _SYSTEMLOGSCHEDULE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12120,
-  serialized_end=12217,
+  serialized_start=11775,
+  serialized_end=11872,
 )
 
 
@@ -8060,8 +7951,8 @@ _SYSTEMLOGUSERSTART = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12219,
-  serialized_end=12292,
+  serialized_start=11874,
+  serialized_end=11947,
 )
 
 
@@ -8133,8 +8024,8 @@ _SYSTEMMETADATAREADMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12295,
-  serialized_end=12506,
+  serialized_start=11950,
+  serialized_end=12161,
 )
 
 
@@ -8213,8 +8104,8 @@ _EVENTFILTER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12509,
-  serialized_end=12700,
+  serialized_start=12164,
+  serialized_end=12355,
 )
 
 
@@ -8303,8 +8194,8 @@ _TRIGGEREVENT = _descriptor.Descriptor(
       name='payload', full_name='TriggerEvent.payload',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=12703,
-  serialized_end=12924,
+  serialized_start=12358,
+  serialized_end=12579,
 )
 
 
@@ -8362,8 +8253,8 @@ _DALI24INPUTEVENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12926,
-  serialized_end=13035,
+  serialized_start=12581,
+  serialized_end=12690,
 )
 
 
@@ -8400,8 +8291,8 @@ _DALI24FRAMEEVENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13037,
-  serialized_end=13084,
+  serialized_start=12692,
+  serialized_end=12739,
 )
 
 
@@ -8466,8 +8357,8 @@ _DALISENSOREVENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13087,
-  serialized_end=13257,
+  serialized_start=12742,
+  serialized_end=12912,
 )
 
 
@@ -8549,8 +8440,8 @@ _EVENTMESSAGE = _descriptor.Descriptor(
       name='event_data', full_name='EventMessage.event_data',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=13260,
-  serialized_end=13580,
+  serialized_start=12915,
+  serialized_end=13235,
 )
 
 
@@ -8919,43 +8810,29 @@ _EDIDIOMESSAGE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='spektra_show_control_message', full_name='EdidioMessage.spektra_show_control_message', index=51,
-      number=55, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='spektra_show_message', full_name='EdidioMessage.spektra_show_message', index=52,
-      number=56, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='extended_spektra_show_message', full_name='EdidioMessage.extended_spektra_show_message', index=53,
-      number=57, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='rdm_discovery', full_name='EdidioMessage.rdm_discovery', index=54,
+      name='rdm_discovery', full_name='EdidioMessage.rdm_discovery', index=51,
       number=58, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='rdm_discovery_reply', full_name='EdidioMessage.rdm_discovery_reply', index=55,
+      name='rdm_discovery_reply', full_name='EdidioMessage.rdm_discovery_reply', index=52,
       number=59, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='dali_identify_duplicates', full_name='EdidioMessage.dali_identify_duplicates', index=56,
+      name='dali_identify_duplicates', full_name='EdidioMessage.dali_identify_duplicates', index=53,
       number=60, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='spektra_live', full_name='EdidioMessage.spektra_live', index=54,
+      number=61, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -8975,8 +8852,8 @@ _EDIDIOMESSAGE = _descriptor.Descriptor(
       name='payload', full_name='EdidioMessage.payload',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=13583,
-  serialized_end=16306,
+  serialized_start=13238,
+  serialized_end=15815,
 )
 
 _ACKMESSAGE.fields_by_name['payload'].enum_type = _ACKMESSAGETYPE
@@ -9103,9 +8980,8 @@ _SPEKTRATHEMECONFIGMESSAGE.fields_by_name['colours'].message_type = _SPEKTRACOLO
 _SPEKTRAREADMESSAGE.fields_by_name['type'].enum_type = _SPEKTRATARGETTYPE
 _SPEKTRACONTROLMESSAGE.fields_by_name['type'].enum_type = _SPEKTRATARGETTYPE
 _SPEKTRACONTROLMESSAGE.fields_by_name['action'].enum_type = _SPEKTRAACTIONTYPE
-_SHOWSTEPMESSAGE.fields_by_name['action_type'].enum_type = _SPEKTRASTEPACTIONTYPE
-_SPEKTRASHOWMESSAGE.fields_by_name['step'].message_type = _SHOWSTEPMESSAGE
-_EXTENDEDSPEKTRASHOWMESSAGE.fields_by_name['step'].message_type = _SHOWSTEPMESSAGE
+_SPEKTRALIVEMESSAGE.fields_by_name['type'].enum_type = _SPEKTRATARGETTYPE
+_SPEKTRALIVEMESSAGE.fields_by_name['action'].enum_type = _SPEKTRAACTIONTYPE
 _DMXPROTOCOLTRANSLATION.fields_by_name['object'].message_type = _DMXTRANSLATIONOBJECT
 _DIAGNOSTICSYSTEMINFORESPONSE.fields_by_name['lines'].enum_type = _LINETYPE
 _DIAGNOSTICMESSAGE.fields_by_name['type'].enum_type = _DIAGNOSTICMESSAGETYPE
@@ -9278,12 +9154,10 @@ _EDIDIOMESSAGE.fields_by_name['logs_read'].message_type = _SYSTEMLOGREADMESSAGE
 _EDIDIOMESSAGE.fields_by_name['metadata_read'].message_type = _SYSTEMMETADATAREADMESSAGE
 _EDIDIOMESSAGE.fields_by_name['dali_addressing_message'].message_type = _DALIADDRESSINGMESSAGE
 _EDIDIOMESSAGE.fields_by_name['dali_remapping_message'].message_type = _DALIREMAPPINGMESSAGE
-_EDIDIOMESSAGE.fields_by_name['spektra_show_control_message'].message_type = _SPEKTRASHOWCONTROLMESSAGE
-_EDIDIOMESSAGE.fields_by_name['spektra_show_message'].message_type = _SPEKTRASHOWMESSAGE
-_EDIDIOMESSAGE.fields_by_name['extended_spektra_show_message'].message_type = _EXTENDEDSPEKTRASHOWMESSAGE
 _EDIDIOMESSAGE.fields_by_name['rdm_discovery'].message_type = _RDMDISCOVERYMESSAGE
 _EDIDIOMESSAGE.fields_by_name['rdm_discovery_reply'].message_type = _RDMDISCOVERYREPLYMESSAGE
 _EDIDIOMESSAGE.fields_by_name['dali_identify_duplicates'].message_type = _DALIIDENTIFYDUPLICATESMESSAGE
+_EDIDIOMESSAGE.fields_by_name['spektra_live'].message_type = _SPEKTRALIVEMESSAGE
 _EDIDIOMESSAGE.oneofs_by_name['payload'].fields.append(
   _EDIDIOMESSAGE.fields_by_name['ack'])
 _EDIDIOMESSAGE.fields_by_name['ack'].containing_oneof = _EDIDIOMESSAGE.oneofs_by_name['payload']
@@ -9435,15 +9309,6 @@ _EDIDIOMESSAGE.oneofs_by_name['payload'].fields.append(
   _EDIDIOMESSAGE.fields_by_name['dali_remapping_message'])
 _EDIDIOMESSAGE.fields_by_name['dali_remapping_message'].containing_oneof = _EDIDIOMESSAGE.oneofs_by_name['payload']
 _EDIDIOMESSAGE.oneofs_by_name['payload'].fields.append(
-  _EDIDIOMESSAGE.fields_by_name['spektra_show_control_message'])
-_EDIDIOMESSAGE.fields_by_name['spektra_show_control_message'].containing_oneof = _EDIDIOMESSAGE.oneofs_by_name['payload']
-_EDIDIOMESSAGE.oneofs_by_name['payload'].fields.append(
-  _EDIDIOMESSAGE.fields_by_name['spektra_show_message'])
-_EDIDIOMESSAGE.fields_by_name['spektra_show_message'].containing_oneof = _EDIDIOMESSAGE.oneofs_by_name['payload']
-_EDIDIOMESSAGE.oneofs_by_name['payload'].fields.append(
-  _EDIDIOMESSAGE.fields_by_name['extended_spektra_show_message'])
-_EDIDIOMESSAGE.fields_by_name['extended_spektra_show_message'].containing_oneof = _EDIDIOMESSAGE.oneofs_by_name['payload']
-_EDIDIOMESSAGE.oneofs_by_name['payload'].fields.append(
   _EDIDIOMESSAGE.fields_by_name['rdm_discovery'])
 _EDIDIOMESSAGE.fields_by_name['rdm_discovery'].containing_oneof = _EDIDIOMESSAGE.oneofs_by_name['payload']
 _EDIDIOMESSAGE.oneofs_by_name['payload'].fields.append(
@@ -9452,6 +9317,9 @@ _EDIDIOMESSAGE.fields_by_name['rdm_discovery_reply'].containing_oneof = _EDIDIOM
 _EDIDIOMESSAGE.oneofs_by_name['payload'].fields.append(
   _EDIDIOMESSAGE.fields_by_name['dali_identify_duplicates'])
 _EDIDIOMESSAGE.fields_by_name['dali_identify_duplicates'].containing_oneof = _EDIDIOMESSAGE.oneofs_by_name['payload']
+_EDIDIOMESSAGE.oneofs_by_name['payload'].fields.append(
+  _EDIDIOMESSAGE.fields_by_name['spektra_live'])
+_EDIDIOMESSAGE.fields_by_name['spektra_live'].containing_oneof = _EDIDIOMESSAGE.oneofs_by_name['payload']
 DESCRIPTOR.message_types_by_name['AckMessage'] = _ACKMESSAGE
 DESCRIPTOR.message_types_by_name['PayloadMessage'] = _PAYLOADMESSAGE
 DESCRIPTOR.message_types_by_name['AytMessage'] = _AYTMESSAGE
@@ -9506,10 +9374,7 @@ DESCRIPTOR.message_types_by_name['SpektraCalendarOverviewMessage'] = _SPEKTRACAL
 DESCRIPTOR.message_types_by_name['SpektraThemeConfigMessage'] = _SPEKTRATHEMECONFIGMESSAGE
 DESCRIPTOR.message_types_by_name['SpektraReadMessage'] = _SPEKTRAREADMESSAGE
 DESCRIPTOR.message_types_by_name['SpektraControlMessage'] = _SPEKTRACONTROLMESSAGE
-DESCRIPTOR.message_types_by_name['ShowStepMessage'] = _SHOWSTEPMESSAGE
-DESCRIPTOR.message_types_by_name['SpektraShowMessage'] = _SPEKTRASHOWMESSAGE
-DESCRIPTOR.message_types_by_name['ExtendedSpektraShowMessage'] = _EXTENDEDSPEKTRASHOWMESSAGE
-DESCRIPTOR.message_types_by_name['SpektraShowControlMessage'] = _SPEKTRASHOWCONTROLMESSAGE
+DESCRIPTOR.message_types_by_name['SpektraLiveMessage'] = _SPEKTRALIVEMESSAGE
 DESCRIPTOR.message_types_by_name['DMXTranslationObject'] = _DMXTRANSLATIONOBJECT
 DESCRIPTOR.message_types_by_name['DMXProtocolTranslation'] = _DMXPROTOCOLTRANSLATION
 DESCRIPTOR.message_types_by_name['InputStateMessage'] = _INPUTSTATEMESSAGE
@@ -9965,33 +9830,12 @@ SpektraControlMessage = _reflection.GeneratedProtocolMessageType('SpektraControl
   ))
 _sym_db.RegisterMessage(SpektraControlMessage)
 
-ShowStepMessage = _reflection.GeneratedProtocolMessageType('ShowStepMessage', (_message.Message,), dict(
-  DESCRIPTOR = _SHOWSTEPMESSAGE,
+SpektraLiveMessage = _reflection.GeneratedProtocolMessageType('SpektraLiveMessage', (_message.Message,), dict(
+  DESCRIPTOR = _SPEKTRALIVEMESSAGE,
   __module__ = 'eDS10_ProtocolBuffer_pb2'
-  # @@protoc_insertion_point(class_scope:ShowStepMessage)
+  # @@protoc_insertion_point(class_scope:SpektraLiveMessage)
   ))
-_sym_db.RegisterMessage(ShowStepMessage)
-
-SpektraShowMessage = _reflection.GeneratedProtocolMessageType('SpektraShowMessage', (_message.Message,), dict(
-  DESCRIPTOR = _SPEKTRASHOWMESSAGE,
-  __module__ = 'eDS10_ProtocolBuffer_pb2'
-  # @@protoc_insertion_point(class_scope:SpektraShowMessage)
-  ))
-_sym_db.RegisterMessage(SpektraShowMessage)
-
-ExtendedSpektraShowMessage = _reflection.GeneratedProtocolMessageType('ExtendedSpektraShowMessage', (_message.Message,), dict(
-  DESCRIPTOR = _EXTENDEDSPEKTRASHOWMESSAGE,
-  __module__ = 'eDS10_ProtocolBuffer_pb2'
-  # @@protoc_insertion_point(class_scope:ExtendedSpektraShowMessage)
-  ))
-_sym_db.RegisterMessage(ExtendedSpektraShowMessage)
-
-SpektraShowControlMessage = _reflection.GeneratedProtocolMessageType('SpektraShowControlMessage', (_message.Message,), dict(
-  DESCRIPTOR = _SPEKTRASHOWCONTROLMESSAGE,
-  __module__ = 'eDS10_ProtocolBuffer_pb2'
-  # @@protoc_insertion_point(class_scope:SpektraShowControlMessage)
-  ))
-_sym_db.RegisterMessage(SpektraShowControlMessage)
+_sym_db.RegisterMessage(SpektraLiveMessage)
 
 DMXTranslationObject = _reflection.GeneratedProtocolMessageType('DMXTranslationObject', (_message.Message,), dict(
   DESCRIPTOR = _DMXTRANSLATIONOBJECT,

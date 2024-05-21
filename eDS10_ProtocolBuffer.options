@@ -80,7 +80,14 @@ SystemLogReadMessage.logs                              max_count: 32, int_size:I
 SystemMetaDataReadMessage.input_press_counter          max_count:24, int_size:IS_16
 SystemMetaDataReadMessage.list_start_counter           max_count:32, int_size:IS_16
 SystemMetaDataReadMessage.schedules_counter            max_count:10, int_size:IS_16
-SpektraShowMessage.step                                max_count:32                 # The first 32 Steps of any Show
-SpektraShowMessage.activations_remaining               max_count:100
-ExtendedSpektraShowMessage.step                        max_count:32                 # Subsequent Show Steps after the first 32, sent in batches of 32 Steps
 DALIIdentifyDuplicatesMessage.possible_duplicates      max_count:128                # At most 64 Devices per Line, duplicated, would be (64 / 2 * 4)
+SpektraLiveMessage.type       						max_count:10
+SpektraLiveMessage.index                   			max_count:10
+SpektraLiveMessage.action              				max_count:10
+SpektraLiveMessage.step_index             		max_count:10
+SpektraLiveMessage.step_index_direction    	max_count:10
+SpektraLiveMessage.colour_index            		max_count:10
+SpektraLiveMessage.colour_range            		max_count:10
+SpektraLiveMessage.random_seq_type          max_count:10
+SpektraLiveMessage.zone_active					max_count:10
+

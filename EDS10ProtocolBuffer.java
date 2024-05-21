@@ -358,7 +358,7 @@ public final class EDS10ProtocolBuffer {
     SPEKTRA_SCHEDULE(16),
     /**
      * <pre>
-     * NOTE: Beta Command - Starts a Network Link with bitmask
+     * Enables the UDP Link State - If Configured
      * </pre>
      *
      * <code>LINK_START = 17;</code>
@@ -366,7 +366,7 @@ public final class EDS10ProtocolBuffer {
     LINK_START(17),
     /**
      * <pre>
-     * NOTE: Beta Command - Stops a Network Link
+     * Temporarily disables the UDP Link State
      * </pre>
      *
      * <code>LINK_STOP = 18;</code>
@@ -742,7 +742,7 @@ public final class EDS10ProtocolBuffer {
     LOGGING_LEVEL(65),
     /**
      * <pre>
-     * Show Control 
+     * DEPRECATED
      * </pre>
      *
      * <code>SPEKTRA_SHOW_CONTROL = 66;</code>
@@ -780,6 +780,22 @@ public final class EDS10ProtocolBuffer {
      * <code>SPEKTRA_INTENSITY = 70;</code>
      */
     SPEKTRA_INTENSITY(70),
+    /**
+     * <pre>
+     * Allow you to enable an input (Latching), but not trigger the action.
+     * </pre>
+     *
+     * <code>ENABLE_INPUT_NO_ACTION = 71;</code>
+     */
+    ENABLE_INPUT_NO_ACTION(71),
+    /**
+     * <pre>
+     * Sets the DALI Fade Time
+     * </pre>
+     *
+     * <code>SET_DALI_FADE_TIME = 72;</code>
+     */
+    SET_DALI_FADE_TIME(72),
     /**
      * <pre>
      * This TriggerType should always be at the bottom of the list. Add any new TriggerTypes above it (up to 253).
@@ -929,7 +945,7 @@ public final class EDS10ProtocolBuffer {
     public static final int SPEKTRA_SCHEDULE_VALUE = 16;
     /**
      * <pre>
-     * NOTE: Beta Command - Starts a Network Link with bitmask
+     * Enables the UDP Link State - If Configured
      * </pre>
      *
      * <code>LINK_START = 17;</code>
@@ -937,7 +953,7 @@ public final class EDS10ProtocolBuffer {
     public static final int LINK_START_VALUE = 17;
     /**
      * <pre>
-     * NOTE: Beta Command - Stops a Network Link
+     * Temporarily disables the UDP Link State
      * </pre>
      *
      * <code>LINK_STOP = 18;</code>
@@ -1313,7 +1329,7 @@ public final class EDS10ProtocolBuffer {
     public static final int LOGGING_LEVEL_VALUE = 65;
     /**
      * <pre>
-     * Show Control 
+     * DEPRECATED
      * </pre>
      *
      * <code>SPEKTRA_SHOW_CONTROL = 66;</code>
@@ -1351,6 +1367,22 @@ public final class EDS10ProtocolBuffer {
      * <code>SPEKTRA_INTENSITY = 70;</code>
      */
     public static final int SPEKTRA_INTENSITY_VALUE = 70;
+    /**
+     * <pre>
+     * Allow you to enable an input (Latching), but not trigger the action.
+     * </pre>
+     *
+     * <code>ENABLE_INPUT_NO_ACTION = 71;</code>
+     */
+    public static final int ENABLE_INPUT_NO_ACTION_VALUE = 71;
+    /**
+     * <pre>
+     * Sets the DALI Fade Time
+     * </pre>
+     *
+     * <code>SET_DALI_FADE_TIME = 72;</code>
+     */
+    public static final int SET_DALI_FADE_TIME_VALUE = 72;
     /**
      * <pre>
      * This TriggerType should always be at the bottom of the list. Add any new TriggerTypes above it (up to 253).
@@ -1449,6 +1481,8 @@ public final class EDS10ProtocolBuffer {
         case 68: return DALI_CONTROL_SENSOR_MUTE;
         case 69: return DALI_CONTROL_SENSOR_UNMUTE;
         case 70: return SPEKTRA_INTENSITY;
+        case 71: return ENABLE_INPUT_NO_ACTION;
+        case 72: return SET_DALI_FADE_TIME;
         case 254: return NO_COMMAND;
         default: return null;
       }
@@ -1571,14 +1605,6 @@ public final class EDS10ProtocolBuffer {
      * <code>DALI_INPUTS = 15;</code>
      */
     DALI_INPUTS(15),
-    /**
-     * <code>SPEKTRA_SHOW = 16;</code>
-     */
-    SPEKTRA_SHOW(16),
-    /**
-     * <code>SPEKTRA_SHOW_EXTENDED = 17;</code>
-     */
-    SPEKTRA_SHOW_EXTENDED(17),
     UNRECOGNIZED(-1),
     ;
 
@@ -1646,14 +1672,6 @@ public final class EDS10ProtocolBuffer {
      * <code>DALI_INPUTS = 15;</code>
      */
     public static final int DALI_INPUTS_VALUE = 15;
-    /**
-     * <code>SPEKTRA_SHOW = 16;</code>
-     */
-    public static final int SPEKTRA_SHOW_VALUE = 16;
-    /**
-     * <code>SPEKTRA_SHOW_EXTENDED = 17;</code>
-     */
-    public static final int SPEKTRA_SHOW_EXTENDED_VALUE = 17;
 
 
     public final int getNumber() {
@@ -1688,8 +1706,6 @@ public final class EDS10ProtocolBuffer {
         case 13: return LIST_EXTENDED;
         case 14: return LOGIC;
         case 15: return DALI_INPUTS;
-        case 16: return SPEKTRA_SHOW;
-        case 17: return SPEKTRA_SHOW_EXTENDED;
         default: return null;
       }
     }
@@ -1992,6 +2008,10 @@ public final class EDS10ProtocolBuffer {
      */
     THEME(2),
     /**
+     * <pre>
+     * DEPRECATED
+     * </pre>
+     *
      * <code>STATIC = 3;</code>
      */
     STATIC(3),
@@ -2000,9 +2020,21 @@ public final class EDS10ProtocolBuffer {
      */
     CALENDAR(4),
     /**
+     * <pre>
+     * DEPRECATED
+     * </pre>
+     *
      * <code>SHOW = 5;</code>
      */
     SHOW(5),
+    /**
+     * <pre>
+     * Live Update of the Spektra settings
+     * </pre>
+     *
+     * <code>LIVE = 6;</code>
+     */
+    LIVE(6),
     UNRECOGNIZED(-1),
     ;
 
@@ -2019,6 +2051,10 @@ public final class EDS10ProtocolBuffer {
      */
     public static final int THEME_VALUE = 2;
     /**
+     * <pre>
+     * DEPRECATED
+     * </pre>
+     *
      * <code>STATIC = 3;</code>
      */
     public static final int STATIC_VALUE = 3;
@@ -2027,9 +2063,21 @@ public final class EDS10ProtocolBuffer {
      */
     public static final int CALENDAR_VALUE = 4;
     /**
+     * <pre>
+     * DEPRECATED
+     * </pre>
+     *
      * <code>SHOW = 5;</code>
      */
     public static final int SHOW_VALUE = 5;
+    /**
+     * <pre>
+     * Live Update of the Spektra settings
+     * </pre>
+     *
+     * <code>LIVE = 6;</code>
+     */
+    public static final int LIVE_VALUE = 6;
 
 
     public final int getNumber() {
@@ -2056,6 +2104,7 @@ public final class EDS10ProtocolBuffer {
         case 3: return STATIC;
         case 4: return CALENDAR;
         case 5: return SHOW;
+        case 6: return LIVE;
         default: return null;
       }
     }
@@ -2380,6 +2429,22 @@ public final class EDS10ProtocolBuffer {
     RESUME_PREVIOUS(2),
     /**
      * <pre>
+     * Resume to Theme 1
+     * </pre>
+     *
+     * <code>RUN_THEME_1 = 3;</code>
+     */
+    RUN_THEME_1(3),
+    /**
+     * <pre>
+     * Resume to Show 1 
+     * </pre>
+     *
+     * <code>RUN_SHOW_1 = 4;</code>
+     */
+    RUN_SHOW_1(4),
+    /**
+     * <pre>
      * Left as the last possible type, fill between 0 and 253 as necessary
      * </pre>
      *
@@ -2415,6 +2480,22 @@ public final class EDS10ProtocolBuffer {
     public static final int RESUME_PREVIOUS_VALUE = 2;
     /**
      * <pre>
+     * Resume to Theme 1
+     * </pre>
+     *
+     * <code>RUN_THEME_1 = 3;</code>
+     */
+    public static final int RUN_THEME_1_VALUE = 3;
+    /**
+     * <pre>
+     * Resume to Show 1 
+     * </pre>
+     *
+     * <code>RUN_SHOW_1 = 4;</code>
+     */
+    public static final int RUN_SHOW_1_VALUE = 4;
+    /**
+     * <pre>
      * Left as the last possible type, fill between 0 and 253 as necessary
      * </pre>
      *
@@ -2444,6 +2525,8 @@ public final class EDS10ProtocolBuffer {
         case 0: return RUN_RANDOM_COLOURED_SEQUENCE;
         case 1: return RUN_SEQUENCE_1;
         case 2: return RESUME_PREVIOUS;
+        case 3: return RUN_THEME_1;
+        case 4: return RUN_SHOW_1;
         case 254: return DO_NOTHING;
         default: return null;
       }
@@ -6583,6 +6666,38 @@ public final class EDS10ProtocolBuffer {
      * <code>DNS = 28;</code>
      */
     DNS(28),
+    /**
+     * <pre>
+     * Wheter or not the UDP Link state is active
+     * </pre>
+     *
+     * <code>LINK = 29;</code>
+     */
+    LINK(29),
+    /**
+     * <pre>
+     * Type of Link to enable, based on ReadType
+     * </pre>
+     *
+     * <code>LINK_TYPE = 30;</code>
+     */
+    LINK_TYPE(30),
+    /**
+     * <pre>
+     * Link Index Mask for above
+     * </pre>
+     *
+     * <code>LINK_MASK = 31;</code>
+     */
+    LINK_MASK(31),
+    /**
+     * <pre>
+     * Netmask for Link to create Network groups for UDP messaging
+     * </pre>
+     *
+     * <code>LINK_NETMASK = 32;</code>
+     */
+    LINK_NETMASK(32),
     UNRECOGNIZED(-1),
     ;
 
@@ -6818,6 +6933,38 @@ public final class EDS10ProtocolBuffer {
      * <code>DNS = 28;</code>
      */
     public static final int DNS_VALUE = 28;
+    /**
+     * <pre>
+     * Wheter or not the UDP Link state is active
+     * </pre>
+     *
+     * <code>LINK = 29;</code>
+     */
+    public static final int LINK_VALUE = 29;
+    /**
+     * <pre>
+     * Type of Link to enable, based on ReadType
+     * </pre>
+     *
+     * <code>LINK_TYPE = 30;</code>
+     */
+    public static final int LINK_TYPE_VALUE = 30;
+    /**
+     * <pre>
+     * Link Index Mask for above
+     * </pre>
+     *
+     * <code>LINK_MASK = 31;</code>
+     */
+    public static final int LINK_MASK_VALUE = 31;
+    /**
+     * <pre>
+     * Netmask for Link to create Network groups for UDP messaging
+     * </pre>
+     *
+     * <code>LINK_NETMASK = 32;</code>
+     */
+    public static final int LINK_NETMASK_VALUE = 32;
 
 
     public final int getNumber() {
@@ -6867,6 +7014,10 @@ public final class EDS10ProtocolBuffer {
         case 26: return SYSTEM_LOGGING;
         case 27: return SUBNET;
         case 28: return DNS;
+        case 29: return LINK;
+        case 30: return LINK_TYPE;
+        case 31: return LINK_MASK;
+        case 32: return LINK_NETMASK;
         default: return null;
       }
     }
@@ -7762,7 +7913,7 @@ public final class EDS10ProtocolBuffer {
     FW_APPLY(1),
     /**
      * <pre>
-     * Sent to controller to initaite stored Firmware verification
+     * Sent to controller to initaite stored Firmware verification - This will complete the firmware upload mode and unlock normal functionality. 
      * </pre>
      *
      * <code>FW_VERIFY = 2;</code>
@@ -7792,6 +7943,14 @@ public final class EDS10ProtocolBuffer {
      * <code>FW_READ = 5;</code>
      */
     FW_READ(5),
+    /**
+     * <pre>
+     * Command to Clone Main FW to Backup. Using the firmware_is_backup flag will clone Backup to Main
+     * </pre>
+     *
+     * <code>FW_CLONE = 6;</code>
+     */
+    FW_CLONE(6),
     UNRECOGNIZED(-1),
     ;
 
@@ -7813,7 +7972,7 @@ public final class EDS10ProtocolBuffer {
     public static final int FW_APPLY_VALUE = 1;
     /**
      * <pre>
-     * Sent to controller to initaite stored Firmware verification
+     * Sent to controller to initaite stored Firmware verification - This will complete the firmware upload mode and unlock normal functionality. 
      * </pre>
      *
      * <code>FW_VERIFY = 2;</code>
@@ -7843,6 +8002,14 @@ public final class EDS10ProtocolBuffer {
      * <code>FW_READ = 5;</code>
      */
     public static final int FW_READ_VALUE = 5;
+    /**
+     * <pre>
+     * Command to Clone Main FW to Backup. Using the firmware_is_backup flag will clone Backup to Main
+     * </pre>
+     *
+     * <code>FW_CLONE = 6;</code>
+     */
+    public static final int FW_CLONE_VALUE = 6;
 
 
     public final int getNumber() {
@@ -7869,6 +8036,7 @@ public final class EDS10ProtocolBuffer {
         case 3: return FW_VERIFY_FAILED;
         case 4: return FW_VERIFY_SUCCESS;
         case 5: return FW_READ;
+        case 6: return FW_CLONE;
         default: return null;
       }
     }
@@ -65288,101 +65456,291 @@ public final class EDS10ProtocolBuffer {
 
   }
 
-  public interface ShowStepMessageOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ShowStepMessage)
+  public interface SpektraLiveMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SpektraLiveMessage)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>uint32 step_index = 1;</code>
+     * <pre>
+     * Target Type Per Zone (Sequence/Theme etc)
+     * </pre>
+     *
+     * <code>repeated .SpektraTargetType type = 1;</code>
      */
-    int getStepIndex();
+    java.util.List<EDS10ProtocolBuffer.SpektraTargetType> getTypeList();
+    /**
+     * <pre>
+     * Target Type Per Zone (Sequence/Theme etc)
+     * </pre>
+     *
+     * <code>repeated .SpektraTargetType type = 1;</code>
+     */
+    int getTypeCount();
+    /**
+     * <pre>
+     * Target Type Per Zone (Sequence/Theme etc)
+     * </pre>
+     *
+     * <code>repeated .SpektraTargetType type = 1;</code>
+     */
+    EDS10ProtocolBuffer.SpektraTargetType getType(int index);
+    /**
+     * <pre>
+     * Target Type Per Zone (Sequence/Theme etc)
+     * </pre>
+     *
+     * <code>repeated .SpektraTargetType type = 1;</code>
+     */
+    java.util.List<java.lang.Integer>
+    getTypeValueList();
+    /**
+     * <pre>
+     * Target Type Per Zone (Sequence/Theme etc)
+     * </pre>
+     *
+     * <code>repeated .SpektraTargetType type = 1;</code>
+     */
+    int getTypeValue(int index);
 
     /**
      * <pre>
-     * The index for the action_type (where relevant)
+     * Target Index Per Zone
      * </pre>
      *
-     * <code>uint32 target_index = 2;</code>
+     * <code>repeated uint32 index = 2;</code>
      */
-    int getTargetIndex();
+    java.util.List<java.lang.Integer> getIndexList();
+    /**
+     * <pre>
+     * Target Index Per Zone
+     * </pre>
+     *
+     * <code>repeated uint32 index = 2;</code>
+     */
+    int getIndexCount();
+    /**
+     * <pre>
+     * Target Index Per Zone
+     * </pre>
+     *
+     * <code>repeated uint32 index = 2;</code>
+     */
+    int getIndex(int index);
 
     /**
      * <pre>
-     * Run Sequence / Show Theme / Start List / Pause / Stop &amp; Off
+     * Target Action Per Zone
      * </pre>
      *
-     * <code>.SpektraStepActionType action_type = 3;</code>
+     * <code>repeated .SpektraActionType action = 3;</code>
      */
-    int getActionTypeValue();
+    java.util.List<EDS10ProtocolBuffer.SpektraActionType> getActionList();
     /**
      * <pre>
-     * Run Sequence / Show Theme / Start List / Pause / Stop &amp; Off
+     * Target Action Per Zone
      * </pre>
      *
-     * <code>.SpektraStepActionType action_type = 3;</code>
+     * <code>repeated .SpektraActionType action = 3;</code>
      */
-    EDS10ProtocolBuffer.SpektraStepActionType getActionType();
+    int getActionCount();
+    /**
+     * <pre>
+     * Target Action Per Zone
+     * </pre>
+     *
+     * <code>repeated .SpektraActionType action = 3;</code>
+     */
+    EDS10ProtocolBuffer.SpektraActionType getAction(int index);
+    /**
+     * <pre>
+     * Target Action Per Zone
+     * </pre>
+     *
+     * <code>repeated .SpektraActionType action = 3;</code>
+     */
+    java.util.List<java.lang.Integer>
+    getActionValueList();
+    /**
+     * <pre>
+     * Target Action Per Zone
+     * </pre>
+     *
+     * <code>repeated .SpektraActionType action = 3;</code>
+     */
+    int getActionValue(int index);
 
     /**
      * <pre>
-     * If non-zero, will randomly pick a target_index between target_index and max_random_target_index, inclusive
+     * RAM Data Settings                
      * </pre>
      *
-     * <code>uint32 max_random_target_index = 4;</code>
+     * <code>repeated uint32 step_index = 4;</code>
      */
-    int getMaxRandomTargetIndex();
+    java.util.List<java.lang.Integer> getStepIndexList();
+    /**
+     * <pre>
+     * RAM Data Settings                
+     * </pre>
+     *
+     * <code>repeated uint32 step_index = 4;</code>
+     */
+    int getStepIndexCount();
+    /**
+     * <pre>
+     * RAM Data Settings                
+     * </pre>
+     *
+     * <code>repeated uint32 step_index = 4;</code>
+     */
+    int getStepIndex(int index);
 
     /**
      * <pre>
-     * Which Zone to activate the action_type on (or use 0xFF to send to All Zones)
+     * Forwards/Backwards (If Cycling)
      * </pre>
      *
-     * <code>uint32 zone = 5;</code>
+     * <code>repeated uint32 step_index_direction = 5;</code>
      */
-    int getZone();
+    java.util.List<java.lang.Integer> getStepIndexDirectionList();
+    /**
+     * <pre>
+     * Forwards/Backwards (If Cycling)
+     * </pre>
+     *
+     * <code>repeated uint32 step_index_direction = 5;</code>
+     */
+    int getStepIndexDirectionCount();
+    /**
+     * <pre>
+     * Forwards/Backwards (If Cycling)
+     * </pre>
+     *
+     * <code>repeated uint32 step_index_direction = 5;</code>
+     */
+    int getStepIndexDirection(int index);
 
     /**
      * <pre>
-     * For DMX / DALI, what should the maximum output be restricted to (e.g. 127 out of 255)
+     * Current State of Colour Index (Changes over time)
      * </pre>
      *
-     * <code>uint32 max_output_level_limit = 6;</code>
+     * <code>repeated uint32 colour_index = 6;</code>
      */
-    int getMaxOutputLevelLimit();
+    java.util.List<java.lang.Integer> getColourIndexList();
+    /**
+     * <pre>
+     * Current State of Colour Index (Changes over time)
+     * </pre>
+     *
+     * <code>repeated uint32 colour_index = 6;</code>
+     */
+    int getColourIndexCount();
+    /**
+     * <pre>
+     * Current State of Colour Index (Changes over time)
+     * </pre>
+     *
+     * <code>repeated uint32 colour_index = 6;</code>
+     */
+    int getColourIndex(int index);
 
     /**
      * <pre>
-     * How long to wait before the next step (in multiples of 10ms)
+     * Current State of Colour Range (Changes based on Sequence Step)
      * </pre>
      *
-     * <code>uint32 time_until_next_10ms = 7;</code>
+     * <code>repeated uint32 colour_range = 7;</code>
      */
-    int getTimeUntilNext10Ms();
+    java.util.List<java.lang.Integer> getColourRangeList();
+    /**
+     * <pre>
+     * Current State of Colour Range (Changes based on Sequence Step)
+     * </pre>
+     *
+     * <code>repeated uint32 colour_range = 7;</code>
+     */
+    int getColourRangeCount();
+    /**
+     * <pre>
+     * Current State of Colour Range (Changes based on Sequence Step)
+     * </pre>
+     *
+     * <code>repeated uint32 colour_range = 7;</code>
+     */
+    int getColourRange(int index);
+
+    /**
+     * <pre>
+     * Currently Active Random Sequence Type
+     * </pre>
+     *
+     * <code>repeated uint32 random_seq_type = 8;</code>
+     */
+    java.util.List<java.lang.Integer> getRandomSeqTypeList();
+    /**
+     * <pre>
+     * Currently Active Random Sequence Type
+     * </pre>
+     *
+     * <code>repeated uint32 random_seq_type = 8;</code>
+     */
+    int getRandomSeqTypeCount();
+    /**
+     * <pre>
+     * Currently Active Random Sequence Type
+     * </pre>
+     *
+     * <code>repeated uint32 random_seq_type = 8;</code>
+     */
+    int getRandomSeqType(int index);
+
+    /**
+     * <pre>
+     * Flag to show if any channel in this zone is active
+     * </pre>
+     *
+     * <code>repeated bool zone_active = 9;</code>
+     */
+    java.util.List<java.lang.Boolean> getZoneActiveList();
+    /**
+     * <pre>
+     * Flag to show if any channel in this zone is active
+     * </pre>
+     *
+     * <code>repeated bool zone_active = 9;</code>
+     */
+    int getZoneActiveCount();
+    /**
+     * <pre>
+     * Flag to show if any channel in this zone is active
+     * </pre>
+     *
+     * <code>repeated bool zone_active = 9;</code>
+     */
+    boolean getZoneActive(int index);
   }
   /**
-   * <pre>
-   * Currently Work In Progress
-   * </pre>
-   *
-   * Protobuf type {@code ShowStepMessage}
+   * Protobuf type {@code SpektraLiveMessage}
    */
-  public  static final class ShowStepMessage extends
+  public  static final class SpektraLiveMessage extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:ShowStepMessage)
-      ShowStepMessageOrBuilder {
+      // @@protoc_insertion_point(message_implements:SpektraLiveMessage)
+      SpektraLiveMessageOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use ShowStepMessage.newBuilder() to construct.
-    private ShowStepMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use SpektraLiveMessage.newBuilder() to construct.
+    private SpektraLiveMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ShowStepMessage() {
-      stepIndex_ = 0;
-      targetIndex_ = 0;
-      actionType_ = 0;
-      maxRandomTargetIndex_ = 0;
-      zone_ = 0;
-      maxOutputLevelLimit_ = 0;
-      timeUntilNext10Ms_ = 0;
+    private SpektraLiveMessage() {
+      type_ = java.util.Collections.emptyList();
+      index_ = java.util.Collections.emptyList();
+      action_ = java.util.Collections.emptyList();
+      stepIndex_ = java.util.Collections.emptyList();
+      stepIndexDirection_ = java.util.Collections.emptyList();
+      colourIndex_ = java.util.Collections.emptyList();
+      colourRange_ = java.util.Collections.emptyList();
+      randomSeqType_ = java.util.Collections.emptyList();
+      zoneActive_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -65390,7 +65748,7 @@ public final class EDS10ProtocolBuffer {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ShowStepMessage(
+    private SpektraLiveMessage(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -65410,1093 +65768,196 @@ public final class EDS10ProtocolBuffer {
               done = true;
               break;
             case 8: {
-
-              stepIndex_ = input.readUInt32();
+              int rawValue = input.readEnum();
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                type_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              type_.add(rawValue);
+              break;
+            }
+            case 10: {
+              int length = input.readRawVarint32();
+              int oldLimit = input.pushLimit(length);
+              while(input.getBytesUntilLimit() > 0) {
+                int rawValue = input.readEnum();
+                if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                  type_ = new java.util.ArrayList<java.lang.Integer>();
+                  mutable_bitField0_ |= 0x00000001;
+                }
+                type_.add(rawValue);
+              }
+              input.popLimit(oldLimit);
               break;
             }
             case 16: {
-
-              targetIndex_ = input.readUInt32();
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                index_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              index_.add(input.readUInt32());
+              break;
+            }
+            case 18: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002) && input.getBytesUntilLimit() > 0) {
+                index_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                index_.add(input.readUInt32());
+              }
+              input.popLimit(limit);
               break;
             }
             case 24: {
               int rawValue = input.readEnum();
-
-              actionType_ = rawValue;
-              break;
-            }
-            case 32: {
-
-              maxRandomTargetIndex_ = input.readUInt32();
-              break;
-            }
-            case 40: {
-
-              zone_ = input.readUInt32();
-              break;
-            }
-            case 48: {
-
-              maxOutputLevelLimit_ = input.readUInt32();
-              break;
-            }
-            case 56: {
-
-              timeUntilNext10Ms_ = input.readUInt32();
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                action_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000004;
               }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return EDS10ProtocolBuffer.internal_static_ShowStepMessage_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return EDS10ProtocolBuffer.internal_static_ShowStepMessage_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              EDS10ProtocolBuffer.ShowStepMessage.class, EDS10ProtocolBuffer.ShowStepMessage.Builder.class);
-    }
-
-    public static final int STEP_INDEX_FIELD_NUMBER = 1;
-    private int stepIndex_;
-    /**
-     * <code>uint32 step_index = 1;</code>
-     */
-    public int getStepIndex() {
-      return stepIndex_;
-    }
-
-    public static final int TARGET_INDEX_FIELD_NUMBER = 2;
-    private int targetIndex_;
-    /**
-     * <pre>
-     * The index for the action_type (where relevant)
-     * </pre>
-     *
-     * <code>uint32 target_index = 2;</code>
-     */
-    public int getTargetIndex() {
-      return targetIndex_;
-    }
-
-    public static final int ACTION_TYPE_FIELD_NUMBER = 3;
-    private int actionType_;
-    /**
-     * <pre>
-     * Run Sequence / Show Theme / Start List / Pause / Stop &amp; Off
-     * </pre>
-     *
-     * <code>.SpektraStepActionType action_type = 3;</code>
-     */
-    public int getActionTypeValue() {
-      return actionType_;
-    }
-    /**
-     * <pre>
-     * Run Sequence / Show Theme / Start List / Pause / Stop &amp; Off
-     * </pre>
-     *
-     * <code>.SpektraStepActionType action_type = 3;</code>
-     */
-    public EDS10ProtocolBuffer.SpektraStepActionType getActionType() {
-      @SuppressWarnings("deprecation")
-      EDS10ProtocolBuffer.SpektraStepActionType result = EDS10ProtocolBuffer.SpektraStepActionType.valueOf(actionType_);
-      return result == null ? EDS10ProtocolBuffer.SpektraStepActionType.UNRECOGNIZED : result;
-    }
-
-    public static final int MAX_RANDOM_TARGET_INDEX_FIELD_NUMBER = 4;
-    private int maxRandomTargetIndex_;
-    /**
-     * <pre>
-     * If non-zero, will randomly pick a target_index between target_index and max_random_target_index, inclusive
-     * </pre>
-     *
-     * <code>uint32 max_random_target_index = 4;</code>
-     */
-    public int getMaxRandomTargetIndex() {
-      return maxRandomTargetIndex_;
-    }
-
-    public static final int ZONE_FIELD_NUMBER = 5;
-    private int zone_;
-    /**
-     * <pre>
-     * Which Zone to activate the action_type on (or use 0xFF to send to All Zones)
-     * </pre>
-     *
-     * <code>uint32 zone = 5;</code>
-     */
-    public int getZone() {
-      return zone_;
-    }
-
-    public static final int MAX_OUTPUT_LEVEL_LIMIT_FIELD_NUMBER = 6;
-    private int maxOutputLevelLimit_;
-    /**
-     * <pre>
-     * For DMX / DALI, what should the maximum output be restricted to (e.g. 127 out of 255)
-     * </pre>
-     *
-     * <code>uint32 max_output_level_limit = 6;</code>
-     */
-    public int getMaxOutputLevelLimit() {
-      return maxOutputLevelLimit_;
-    }
-
-    public static final int TIME_UNTIL_NEXT_10MS_FIELD_NUMBER = 7;
-    private int timeUntilNext10Ms_;
-    /**
-     * <pre>
-     * How long to wait before the next step (in multiples of 10ms)
-     * </pre>
-     *
-     * <code>uint32 time_until_next_10ms = 7;</code>
-     */
-    public int getTimeUntilNext10Ms() {
-      return timeUntilNext10Ms_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (stepIndex_ != 0) {
-        output.writeUInt32(1, stepIndex_);
-      }
-      if (targetIndex_ != 0) {
-        output.writeUInt32(2, targetIndex_);
-      }
-      if (actionType_ != EDS10ProtocolBuffer.SpektraStepActionType.RUN_SEQUENCE.getNumber()) {
-        output.writeEnum(3, actionType_);
-      }
-      if (maxRandomTargetIndex_ != 0) {
-        output.writeUInt32(4, maxRandomTargetIndex_);
-      }
-      if (zone_ != 0) {
-        output.writeUInt32(5, zone_);
-      }
-      if (maxOutputLevelLimit_ != 0) {
-        output.writeUInt32(6, maxOutputLevelLimit_);
-      }
-      if (timeUntilNext10Ms_ != 0) {
-        output.writeUInt32(7, timeUntilNext10Ms_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (stepIndex_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, stepIndex_);
-      }
-      if (targetIndex_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(2, targetIndex_);
-      }
-      if (actionType_ != EDS10ProtocolBuffer.SpektraStepActionType.RUN_SEQUENCE.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(3, actionType_);
-      }
-      if (maxRandomTargetIndex_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(4, maxRandomTargetIndex_);
-      }
-      if (zone_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(5, zone_);
-      }
-      if (maxOutputLevelLimit_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(6, maxOutputLevelLimit_);
-      }
-      if (timeUntilNext10Ms_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(7, timeUntilNext10Ms_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof EDS10ProtocolBuffer.ShowStepMessage)) {
-        return super.equals(obj);
-      }
-      EDS10ProtocolBuffer.ShowStepMessage other = (EDS10ProtocolBuffer.ShowStepMessage) obj;
-
-      boolean result = true;
-      result = result && (getStepIndex()
-          == other.getStepIndex());
-      result = result && (getTargetIndex()
-          == other.getTargetIndex());
-      result = result && actionType_ == other.actionType_;
-      result = result && (getMaxRandomTargetIndex()
-          == other.getMaxRandomTargetIndex());
-      result = result && (getZone()
-          == other.getZone());
-      result = result && (getMaxOutputLevelLimit()
-          == other.getMaxOutputLevelLimit());
-      result = result && (getTimeUntilNext10Ms()
-          == other.getTimeUntilNext10Ms());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + STEP_INDEX_FIELD_NUMBER;
-      hash = (53 * hash) + getStepIndex();
-      hash = (37 * hash) + TARGET_INDEX_FIELD_NUMBER;
-      hash = (53 * hash) + getTargetIndex();
-      hash = (37 * hash) + ACTION_TYPE_FIELD_NUMBER;
-      hash = (53 * hash) + actionType_;
-      hash = (37 * hash) + MAX_RANDOM_TARGET_INDEX_FIELD_NUMBER;
-      hash = (53 * hash) + getMaxRandomTargetIndex();
-      hash = (37 * hash) + ZONE_FIELD_NUMBER;
-      hash = (53 * hash) + getZone();
-      hash = (37 * hash) + MAX_OUTPUT_LEVEL_LIMIT_FIELD_NUMBER;
-      hash = (53 * hash) + getMaxOutputLevelLimit();
-      hash = (37 * hash) + TIME_UNTIL_NEXT_10MS_FIELD_NUMBER;
-      hash = (53 * hash) + getTimeUntilNext10Ms();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static EDS10ProtocolBuffer.ShowStepMessage parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static EDS10ProtocolBuffer.ShowStepMessage parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static EDS10ProtocolBuffer.ShowStepMessage parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static EDS10ProtocolBuffer.ShowStepMessage parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static EDS10ProtocolBuffer.ShowStepMessage parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static EDS10ProtocolBuffer.ShowStepMessage parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static EDS10ProtocolBuffer.ShowStepMessage parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static EDS10ProtocolBuffer.ShowStepMessage parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static EDS10ProtocolBuffer.ShowStepMessage parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static EDS10ProtocolBuffer.ShowStepMessage parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static EDS10ProtocolBuffer.ShowStepMessage parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static EDS10ProtocolBuffer.ShowStepMessage parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(EDS10ProtocolBuffer.ShowStepMessage prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * <pre>
-     * Currently Work In Progress
-     * </pre>
-     *
-     * Protobuf type {@code ShowStepMessage}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ShowStepMessage)
-        EDS10ProtocolBuffer.ShowStepMessageOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return EDS10ProtocolBuffer.internal_static_ShowStepMessage_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return EDS10ProtocolBuffer.internal_static_ShowStepMessage_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                EDS10ProtocolBuffer.ShowStepMessage.class, EDS10ProtocolBuffer.ShowStepMessage.Builder.class);
-      }
-
-      // Construct using EDS10ProtocolBuffer.ShowStepMessage.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        stepIndex_ = 0;
-
-        targetIndex_ = 0;
-
-        actionType_ = 0;
-
-        maxRandomTargetIndex_ = 0;
-
-        zone_ = 0;
-
-        maxOutputLevelLimit_ = 0;
-
-        timeUntilNext10Ms_ = 0;
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return EDS10ProtocolBuffer.internal_static_ShowStepMessage_descriptor;
-      }
-
-      @java.lang.Override
-      public EDS10ProtocolBuffer.ShowStepMessage getDefaultInstanceForType() {
-        return EDS10ProtocolBuffer.ShowStepMessage.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public EDS10ProtocolBuffer.ShowStepMessage build() {
-        EDS10ProtocolBuffer.ShowStepMessage result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public EDS10ProtocolBuffer.ShowStepMessage buildPartial() {
-        EDS10ProtocolBuffer.ShowStepMessage result = new EDS10ProtocolBuffer.ShowStepMessage(this);
-        result.stepIndex_ = stepIndex_;
-        result.targetIndex_ = targetIndex_;
-        result.actionType_ = actionType_;
-        result.maxRandomTargetIndex_ = maxRandomTargetIndex_;
-        result.zone_ = zone_;
-        result.maxOutputLevelLimit_ = maxOutputLevelLimit_;
-        result.timeUntilNext10Ms_ = timeUntilNext10Ms_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof EDS10ProtocolBuffer.ShowStepMessage) {
-          return mergeFrom((EDS10ProtocolBuffer.ShowStepMessage)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(EDS10ProtocolBuffer.ShowStepMessage other) {
-        if (other == EDS10ProtocolBuffer.ShowStepMessage.getDefaultInstance()) return this;
-        if (other.getStepIndex() != 0) {
-          setStepIndex(other.getStepIndex());
-        }
-        if (other.getTargetIndex() != 0) {
-          setTargetIndex(other.getTargetIndex());
-        }
-        if (other.actionType_ != 0) {
-          setActionTypeValue(other.getActionTypeValue());
-        }
-        if (other.getMaxRandomTargetIndex() != 0) {
-          setMaxRandomTargetIndex(other.getMaxRandomTargetIndex());
-        }
-        if (other.getZone() != 0) {
-          setZone(other.getZone());
-        }
-        if (other.getMaxOutputLevelLimit() != 0) {
-          setMaxOutputLevelLimit(other.getMaxOutputLevelLimit());
-        }
-        if (other.getTimeUntilNext10Ms() != 0) {
-          setTimeUntilNext10Ms(other.getTimeUntilNext10Ms());
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        EDS10ProtocolBuffer.ShowStepMessage parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (EDS10ProtocolBuffer.ShowStepMessage) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private int stepIndex_ ;
-      /**
-       * <code>uint32 step_index = 1;</code>
-       */
-      public int getStepIndex() {
-        return stepIndex_;
-      }
-      /**
-       * <code>uint32 step_index = 1;</code>
-       */
-      public Builder setStepIndex(int value) {
-        
-        stepIndex_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>uint32 step_index = 1;</code>
-       */
-      public Builder clearStepIndex() {
-        
-        stepIndex_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int targetIndex_ ;
-      /**
-       * <pre>
-       * The index for the action_type (where relevant)
-       * </pre>
-       *
-       * <code>uint32 target_index = 2;</code>
-       */
-      public int getTargetIndex() {
-        return targetIndex_;
-      }
-      /**
-       * <pre>
-       * The index for the action_type (where relevant)
-       * </pre>
-       *
-       * <code>uint32 target_index = 2;</code>
-       */
-      public Builder setTargetIndex(int value) {
-        
-        targetIndex_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * The index for the action_type (where relevant)
-       * </pre>
-       *
-       * <code>uint32 target_index = 2;</code>
-       */
-      public Builder clearTargetIndex() {
-        
-        targetIndex_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int actionType_ = 0;
-      /**
-       * <pre>
-       * Run Sequence / Show Theme / Start List / Pause / Stop &amp; Off
-       * </pre>
-       *
-       * <code>.SpektraStepActionType action_type = 3;</code>
-       */
-      public int getActionTypeValue() {
-        return actionType_;
-      }
-      /**
-       * <pre>
-       * Run Sequence / Show Theme / Start List / Pause / Stop &amp; Off
-       * </pre>
-       *
-       * <code>.SpektraStepActionType action_type = 3;</code>
-       */
-      public Builder setActionTypeValue(int value) {
-        actionType_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * Run Sequence / Show Theme / Start List / Pause / Stop &amp; Off
-       * </pre>
-       *
-       * <code>.SpektraStepActionType action_type = 3;</code>
-       */
-      public EDS10ProtocolBuffer.SpektraStepActionType getActionType() {
-        @SuppressWarnings("deprecation")
-        EDS10ProtocolBuffer.SpektraStepActionType result = EDS10ProtocolBuffer.SpektraStepActionType.valueOf(actionType_);
-        return result == null ? EDS10ProtocolBuffer.SpektraStepActionType.UNRECOGNIZED : result;
-      }
-      /**
-       * <pre>
-       * Run Sequence / Show Theme / Start List / Pause / Stop &amp; Off
-       * </pre>
-       *
-       * <code>.SpektraStepActionType action_type = 3;</code>
-       */
-      public Builder setActionType(EDS10ProtocolBuffer.SpektraStepActionType value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        actionType_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * Run Sequence / Show Theme / Start List / Pause / Stop &amp; Off
-       * </pre>
-       *
-       * <code>.SpektraStepActionType action_type = 3;</code>
-       */
-      public Builder clearActionType() {
-        
-        actionType_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int maxRandomTargetIndex_ ;
-      /**
-       * <pre>
-       * If non-zero, will randomly pick a target_index between target_index and max_random_target_index, inclusive
-       * </pre>
-       *
-       * <code>uint32 max_random_target_index = 4;</code>
-       */
-      public int getMaxRandomTargetIndex() {
-        return maxRandomTargetIndex_;
-      }
-      /**
-       * <pre>
-       * If non-zero, will randomly pick a target_index between target_index and max_random_target_index, inclusive
-       * </pre>
-       *
-       * <code>uint32 max_random_target_index = 4;</code>
-       */
-      public Builder setMaxRandomTargetIndex(int value) {
-        
-        maxRandomTargetIndex_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * If non-zero, will randomly pick a target_index between target_index and max_random_target_index, inclusive
-       * </pre>
-       *
-       * <code>uint32 max_random_target_index = 4;</code>
-       */
-      public Builder clearMaxRandomTargetIndex() {
-        
-        maxRandomTargetIndex_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int zone_ ;
-      /**
-       * <pre>
-       * Which Zone to activate the action_type on (or use 0xFF to send to All Zones)
-       * </pre>
-       *
-       * <code>uint32 zone = 5;</code>
-       */
-      public int getZone() {
-        return zone_;
-      }
-      /**
-       * <pre>
-       * Which Zone to activate the action_type on (or use 0xFF to send to All Zones)
-       * </pre>
-       *
-       * <code>uint32 zone = 5;</code>
-       */
-      public Builder setZone(int value) {
-        
-        zone_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * Which Zone to activate the action_type on (or use 0xFF to send to All Zones)
-       * </pre>
-       *
-       * <code>uint32 zone = 5;</code>
-       */
-      public Builder clearZone() {
-        
-        zone_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int maxOutputLevelLimit_ ;
-      /**
-       * <pre>
-       * For DMX / DALI, what should the maximum output be restricted to (e.g. 127 out of 255)
-       * </pre>
-       *
-       * <code>uint32 max_output_level_limit = 6;</code>
-       */
-      public int getMaxOutputLevelLimit() {
-        return maxOutputLevelLimit_;
-      }
-      /**
-       * <pre>
-       * For DMX / DALI, what should the maximum output be restricted to (e.g. 127 out of 255)
-       * </pre>
-       *
-       * <code>uint32 max_output_level_limit = 6;</code>
-       */
-      public Builder setMaxOutputLevelLimit(int value) {
-        
-        maxOutputLevelLimit_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * For DMX / DALI, what should the maximum output be restricted to (e.g. 127 out of 255)
-       * </pre>
-       *
-       * <code>uint32 max_output_level_limit = 6;</code>
-       */
-      public Builder clearMaxOutputLevelLimit() {
-        
-        maxOutputLevelLimit_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int timeUntilNext10Ms_ ;
-      /**
-       * <pre>
-       * How long to wait before the next step (in multiples of 10ms)
-       * </pre>
-       *
-       * <code>uint32 time_until_next_10ms = 7;</code>
-       */
-      public int getTimeUntilNext10Ms() {
-        return timeUntilNext10Ms_;
-      }
-      /**
-       * <pre>
-       * How long to wait before the next step (in multiples of 10ms)
-       * </pre>
-       *
-       * <code>uint32 time_until_next_10ms = 7;</code>
-       */
-      public Builder setTimeUntilNext10Ms(int value) {
-        
-        timeUntilNext10Ms_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * How long to wait before the next step (in multiples of 10ms)
-       * </pre>
-       *
-       * <code>uint32 time_until_next_10ms = 7;</code>
-       */
-      public Builder clearTimeUntilNext10Ms() {
-        
-        timeUntilNext10Ms_ = 0;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:ShowStepMessage)
-    }
-
-    // @@protoc_insertion_point(class_scope:ShowStepMessage)
-    private static final EDS10ProtocolBuffer.ShowStepMessage DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.ShowStepMessage();
-    }
-
-    public static EDS10ProtocolBuffer.ShowStepMessage getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<ShowStepMessage>
-        PARSER = new com.google.protobuf.AbstractParser<ShowStepMessage>() {
-      @java.lang.Override
-      public ShowStepMessage parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ShowStepMessage(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<ShowStepMessage> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ShowStepMessage> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public EDS10ProtocolBuffer.ShowStepMessage getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface SpektraShowMessageOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:SpektraShowMessage)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>uint32 show_index = 1;</code>
-     */
-    int getShowIndex();
-
-    /**
-     * <code>uint32 number_of_steps = 2;</code>
-     */
-    int getNumberOfSteps();
-
-    /**
-     * <pre>
-     * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
-     * </pre>
-     *
-     * <code>repeated .ShowStepMessage step = 3;</code>
-     */
-    java.util.List<EDS10ProtocolBuffer.ShowStepMessage> 
-        getStepList();
-    /**
-     * <pre>
-     * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
-     * </pre>
-     *
-     * <code>repeated .ShowStepMessage step = 3;</code>
-     */
-    EDS10ProtocolBuffer.ShowStepMessage getStep(int index);
-    /**
-     * <pre>
-     * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
-     * </pre>
-     *
-     * <code>repeated .ShowStepMessage step = 3;</code>
-     */
-    int getStepCount();
-    /**
-     * <pre>
-     * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
-     * </pre>
-     *
-     * <code>repeated .ShowStepMessage step = 3;</code>
-     */
-    java.util.List<? extends EDS10ProtocolBuffer.ShowStepMessageOrBuilder> 
-        getStepOrBuilderList();
-    /**
-     * <pre>
-     * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
-     * </pre>
-     *
-     * <code>repeated .ShowStepMessage step = 3;</code>
-     */
-    EDS10ProtocolBuffer.ShowStepMessageOrBuilder getStepOrBuilder(
-        int index);
-
-    /**
-     * <code>bool isRunning = 4;</code>
-     */
-    boolean getIsRunning();
-
-    /**
-     * <code>bool isLooped = 5;</code>
-     */
-    boolean getIsLooped();
-
-    /**
-     * <code>bool isRandom = 6;</code>
-     */
-    boolean getIsRandom();
-
-    /**
-     * <code>bool isTemporary = 7;</code>
-     */
-    boolean getIsTemporary();
-
-    /**
-     * <pre>
-     * If isTemporary is true; this is how many times this Show can be activated [NOTE: Only 1 Temporary Show can exist at any given time]
-     * </pre>
-     *
-     * <code>uint32 activations_remaining = 8;</code>
-     */
-    int getActivationsRemaining();
-  }
-  /**
-   * <pre>
-   * Currently Work In Progress
-   * </pre>
-   *
-   * Protobuf type {@code SpektraShowMessage}
-   */
-  public  static final class SpektraShowMessage extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:SpektraShowMessage)
-      SpektraShowMessageOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use SpektraShowMessage.newBuilder() to construct.
-    private SpektraShowMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private SpektraShowMessage() {
-      showIndex_ = 0;
-      numberOfSteps_ = 0;
-      step_ = java.util.Collections.emptyList();
-      isRunning_ = false;
-      isLooped_ = false;
-      isRandom_ = false;
-      isTemporary_ = false;
-      activationsRemaining_ = 0;
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private SpektraShowMessage(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-
-              showIndex_ = input.readUInt32();
-              break;
-            }
-            case 16: {
-
-              numberOfSteps_ = input.readUInt32();
+              action_.add(rawValue);
               break;
             }
             case 26: {
-              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-                step_ = new java.util.ArrayList<EDS10ProtocolBuffer.ShowStepMessage>();
-                mutable_bitField0_ |= 0x00000004;
+              int length = input.readRawVarint32();
+              int oldLimit = input.pushLimit(length);
+              while(input.getBytesUntilLimit() > 0) {
+                int rawValue = input.readEnum();
+                if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                  action_ = new java.util.ArrayList<java.lang.Integer>();
+                  mutable_bitField0_ |= 0x00000004;
+                }
+                action_.add(rawValue);
               }
-              step_.add(
-                  input.readMessage(EDS10ProtocolBuffer.ShowStepMessage.parser(), extensionRegistry));
+              input.popLimit(oldLimit);
               break;
             }
             case 32: {
-
-              isRunning_ = input.readBool();
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                stepIndex_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              stepIndex_.add(input.readUInt32());
+              break;
+            }
+            case 34: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008) && input.getBytesUntilLimit() > 0) {
+                stepIndex_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                stepIndex_.add(input.readUInt32());
+              }
+              input.popLimit(limit);
               break;
             }
             case 40: {
-
-              isLooped_ = input.readBool();
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                stepIndexDirection_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000010;
+              }
+              stepIndexDirection_.add(input.readUInt32());
+              break;
+            }
+            case 42: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010) && input.getBytesUntilLimit() > 0) {
+                stepIndexDirection_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000010;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                stepIndexDirection_.add(input.readUInt32());
+              }
+              input.popLimit(limit);
               break;
             }
             case 48: {
-
-              isRandom_ = input.readBool();
+              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+                colourIndex_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000020;
+              }
+              colourIndex_.add(input.readUInt32());
+              break;
+            }
+            case 50: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020) && input.getBytesUntilLimit() > 0) {
+                colourIndex_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000020;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                colourIndex_.add(input.readUInt32());
+              }
+              input.popLimit(limit);
               break;
             }
             case 56: {
-
-              isTemporary_ = input.readBool();
+              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+                colourRange_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000040;
+              }
+              colourRange_.add(input.readUInt32());
+              break;
+            }
+            case 58: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040) && input.getBytesUntilLimit() > 0) {
+                colourRange_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000040;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                colourRange_.add(input.readUInt32());
+              }
+              input.popLimit(limit);
               break;
             }
             case 64: {
-
-              activationsRemaining_ = input.readUInt32();
+              if (!((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+                randomSeqType_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000080;
+              }
+              randomSeqType_.add(input.readUInt32());
+              break;
+            }
+            case 66: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000080) == 0x00000080) && input.getBytesUntilLimit() > 0) {
+                randomSeqType_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000080;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                randomSeqType_.add(input.readUInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 72: {
+              if (!((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
+                zoneActive_ = new java.util.ArrayList<java.lang.Boolean>();
+                mutable_bitField0_ |= 0x00000100;
+              }
+              zoneActive_.add(input.readBool());
+              break;
+            }
+            case 74: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000100) == 0x00000100) && input.getBytesUntilLimit() > 0) {
+                zoneActive_ = new java.util.ArrayList<java.lang.Boolean>();
+                mutable_bitField0_ |= 0x00000100;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                zoneActive_.add(input.readBool());
+              }
+              input.popLimit(limit);
               break;
             }
             default: {
@@ -66514,8 +65975,32 @@ public final class EDS10ProtocolBuffer {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          type_ = java.util.Collections.unmodifiableList(type_);
+        }
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          index_ = java.util.Collections.unmodifiableList(index_);
+        }
         if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-          step_ = java.util.Collections.unmodifiableList(step_);
+          action_ = java.util.Collections.unmodifiableList(action_);
+        }
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+          stepIndex_ = java.util.Collections.unmodifiableList(stepIndex_);
+        }
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+          stepIndexDirection_ = java.util.Collections.unmodifiableList(stepIndexDirection_);
+        }
+        if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+          colourIndex_ = java.util.Collections.unmodifiableList(colourIndex_);
+        }
+        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+          colourRange_ = java.util.Collections.unmodifiableList(colourRange_);
+        }
+        if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+          randomSeqType_ = java.util.Collections.unmodifiableList(randomSeqType_);
+        }
+        if (((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
+          zoneActive_ = java.util.Collections.unmodifiableList(zoneActive_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -66523,139 +66008,393 @@ public final class EDS10ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return EDS10ProtocolBuffer.internal_static_SpektraShowMessage_descriptor;
+      return EDS10ProtocolBuffer.internal_static_SpektraLiveMessage_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return EDS10ProtocolBuffer.internal_static_SpektraShowMessage_fieldAccessorTable
+      return EDS10ProtocolBuffer.internal_static_SpektraLiveMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              EDS10ProtocolBuffer.SpektraShowMessage.class, EDS10ProtocolBuffer.SpektraShowMessage.Builder.class);
+              EDS10ProtocolBuffer.SpektraLiveMessage.class, EDS10ProtocolBuffer.SpektraLiveMessage.Builder.class);
     }
 
-    private int bitField0_;
-    public static final int SHOW_INDEX_FIELD_NUMBER = 1;
-    private int showIndex_;
-    /**
-     * <code>uint32 show_index = 1;</code>
-     */
-    public int getShowIndex() {
-      return showIndex_;
-    }
-
-    public static final int NUMBER_OF_STEPS_FIELD_NUMBER = 2;
-    private int numberOfSteps_;
-    /**
-     * <code>uint32 number_of_steps = 2;</code>
-     */
-    public int getNumberOfSteps() {
-      return numberOfSteps_;
-    }
-
-    public static final int STEP_FIELD_NUMBER = 3;
-    private java.util.List<EDS10ProtocolBuffer.ShowStepMessage> step_;
+    public static final int TYPE_FIELD_NUMBER = 1;
+    private java.util.List<java.lang.Integer> type_;
+    private static final com.google.protobuf.Internal.ListAdapter.Converter<
+        java.lang.Integer, EDS10ProtocolBuffer.SpektraTargetType> type_converter_ =
+            new com.google.protobuf.Internal.ListAdapter.Converter<
+                java.lang.Integer, EDS10ProtocolBuffer.SpektraTargetType>() {
+              public EDS10ProtocolBuffer.SpektraTargetType convert(java.lang.Integer from) {
+                @SuppressWarnings("deprecation")
+                EDS10ProtocolBuffer.SpektraTargetType result = EDS10ProtocolBuffer.SpektraTargetType.valueOf(from);
+                return result == null ? EDS10ProtocolBuffer.SpektraTargetType.UNRECOGNIZED : result;
+              }
+            };
     /**
      * <pre>
-     * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+     * Target Type Per Zone (Sequence/Theme etc)
      * </pre>
      *
-     * <code>repeated .ShowStepMessage step = 3;</code>
+     * <code>repeated .SpektraTargetType type = 1;</code>
      */
-    public java.util.List<EDS10ProtocolBuffer.ShowStepMessage> getStepList() {
-      return step_;
+    public java.util.List<EDS10ProtocolBuffer.SpektraTargetType> getTypeList() {
+      return new com.google.protobuf.Internal.ListAdapter<
+          java.lang.Integer, EDS10ProtocolBuffer.SpektraTargetType>(type_, type_converter_);
     }
     /**
      * <pre>
-     * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+     * Target Type Per Zone (Sequence/Theme etc)
      * </pre>
      *
-     * <code>repeated .ShowStepMessage step = 3;</code>
+     * <code>repeated .SpektraTargetType type = 1;</code>
      */
-    public java.util.List<? extends EDS10ProtocolBuffer.ShowStepMessageOrBuilder> 
-        getStepOrBuilderList() {
-      return step_;
+    public int getTypeCount() {
+      return type_.size();
     }
     /**
      * <pre>
-     * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+     * Target Type Per Zone (Sequence/Theme etc)
      * </pre>
      *
-     * <code>repeated .ShowStepMessage step = 3;</code>
+     * <code>repeated .SpektraTargetType type = 1;</code>
      */
-    public int getStepCount() {
-      return step_.size();
+    public EDS10ProtocolBuffer.SpektraTargetType getType(int index) {
+      return type_converter_.convert(type_.get(index));
     }
     /**
      * <pre>
-     * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+     * Target Type Per Zone (Sequence/Theme etc)
      * </pre>
      *
-     * <code>repeated .ShowStepMessage step = 3;</code>
+     * <code>repeated .SpektraTargetType type = 1;</code>
      */
-    public EDS10ProtocolBuffer.ShowStepMessage getStep(int index) {
-      return step_.get(index);
+    public java.util.List<java.lang.Integer>
+    getTypeValueList() {
+      return type_;
     }
     /**
      * <pre>
-     * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+     * Target Type Per Zone (Sequence/Theme etc)
      * </pre>
      *
-     * <code>repeated .ShowStepMessage step = 3;</code>
+     * <code>repeated .SpektraTargetType type = 1;</code>
      */
-    public EDS10ProtocolBuffer.ShowStepMessageOrBuilder getStepOrBuilder(
-        int index) {
-      return step_.get(index);
+    public int getTypeValue(int index) {
+      return type_.get(index);
     }
+    private int typeMemoizedSerializedSize;
 
-    public static final int ISRUNNING_FIELD_NUMBER = 4;
-    private boolean isRunning_;
-    /**
-     * <code>bool isRunning = 4;</code>
-     */
-    public boolean getIsRunning() {
-      return isRunning_;
-    }
-
-    public static final int ISLOOPED_FIELD_NUMBER = 5;
-    private boolean isLooped_;
-    /**
-     * <code>bool isLooped = 5;</code>
-     */
-    public boolean getIsLooped() {
-      return isLooped_;
-    }
-
-    public static final int ISRANDOM_FIELD_NUMBER = 6;
-    private boolean isRandom_;
-    /**
-     * <code>bool isRandom = 6;</code>
-     */
-    public boolean getIsRandom() {
-      return isRandom_;
-    }
-
-    public static final int ISTEMPORARY_FIELD_NUMBER = 7;
-    private boolean isTemporary_;
-    /**
-     * <code>bool isTemporary = 7;</code>
-     */
-    public boolean getIsTemporary() {
-      return isTemporary_;
-    }
-
-    public static final int ACTIVATIONS_REMAINING_FIELD_NUMBER = 8;
-    private int activationsRemaining_;
+    public static final int INDEX_FIELD_NUMBER = 2;
+    private java.util.List<java.lang.Integer> index_;
     /**
      * <pre>
-     * If isTemporary is true; this is how many times this Show can be activated [NOTE: Only 1 Temporary Show can exist at any given time]
+     * Target Index Per Zone
      * </pre>
      *
-     * <code>uint32 activations_remaining = 8;</code>
+     * <code>repeated uint32 index = 2;</code>
      */
-    public int getActivationsRemaining() {
-      return activationsRemaining_;
+    public java.util.List<java.lang.Integer>
+        getIndexList() {
+      return index_;
     }
+    /**
+     * <pre>
+     * Target Index Per Zone
+     * </pre>
+     *
+     * <code>repeated uint32 index = 2;</code>
+     */
+    public int getIndexCount() {
+      return index_.size();
+    }
+    /**
+     * <pre>
+     * Target Index Per Zone
+     * </pre>
+     *
+     * <code>repeated uint32 index = 2;</code>
+     */
+    public int getIndex(int index) {
+      return index_.get(index);
+    }
+    private int indexMemoizedSerializedSize = -1;
+
+    public static final int ACTION_FIELD_NUMBER = 3;
+    private java.util.List<java.lang.Integer> action_;
+    private static final com.google.protobuf.Internal.ListAdapter.Converter<
+        java.lang.Integer, EDS10ProtocolBuffer.SpektraActionType> action_converter_ =
+            new com.google.protobuf.Internal.ListAdapter.Converter<
+                java.lang.Integer, EDS10ProtocolBuffer.SpektraActionType>() {
+              public EDS10ProtocolBuffer.SpektraActionType convert(java.lang.Integer from) {
+                @SuppressWarnings("deprecation")
+                EDS10ProtocolBuffer.SpektraActionType result = EDS10ProtocolBuffer.SpektraActionType.valueOf(from);
+                return result == null ? EDS10ProtocolBuffer.SpektraActionType.UNRECOGNIZED : result;
+              }
+            };
+    /**
+     * <pre>
+     * Target Action Per Zone
+     * </pre>
+     *
+     * <code>repeated .SpektraActionType action = 3;</code>
+     */
+    public java.util.List<EDS10ProtocolBuffer.SpektraActionType> getActionList() {
+      return new com.google.protobuf.Internal.ListAdapter<
+          java.lang.Integer, EDS10ProtocolBuffer.SpektraActionType>(action_, action_converter_);
+    }
+    /**
+     * <pre>
+     * Target Action Per Zone
+     * </pre>
+     *
+     * <code>repeated .SpektraActionType action = 3;</code>
+     */
+    public int getActionCount() {
+      return action_.size();
+    }
+    /**
+     * <pre>
+     * Target Action Per Zone
+     * </pre>
+     *
+     * <code>repeated .SpektraActionType action = 3;</code>
+     */
+    public EDS10ProtocolBuffer.SpektraActionType getAction(int index) {
+      return action_converter_.convert(action_.get(index));
+    }
+    /**
+     * <pre>
+     * Target Action Per Zone
+     * </pre>
+     *
+     * <code>repeated .SpektraActionType action = 3;</code>
+     */
+    public java.util.List<java.lang.Integer>
+    getActionValueList() {
+      return action_;
+    }
+    /**
+     * <pre>
+     * Target Action Per Zone
+     * </pre>
+     *
+     * <code>repeated .SpektraActionType action = 3;</code>
+     */
+    public int getActionValue(int index) {
+      return action_.get(index);
+    }
+    private int actionMemoizedSerializedSize;
+
+    public static final int STEP_INDEX_FIELD_NUMBER = 4;
+    private java.util.List<java.lang.Integer> stepIndex_;
+    /**
+     * <pre>
+     * RAM Data Settings                
+     * </pre>
+     *
+     * <code>repeated uint32 step_index = 4;</code>
+     */
+    public java.util.List<java.lang.Integer>
+        getStepIndexList() {
+      return stepIndex_;
+    }
+    /**
+     * <pre>
+     * RAM Data Settings                
+     * </pre>
+     *
+     * <code>repeated uint32 step_index = 4;</code>
+     */
+    public int getStepIndexCount() {
+      return stepIndex_.size();
+    }
+    /**
+     * <pre>
+     * RAM Data Settings                
+     * </pre>
+     *
+     * <code>repeated uint32 step_index = 4;</code>
+     */
+    public int getStepIndex(int index) {
+      return stepIndex_.get(index);
+    }
+    private int stepIndexMemoizedSerializedSize = -1;
+
+    public static final int STEP_INDEX_DIRECTION_FIELD_NUMBER = 5;
+    private java.util.List<java.lang.Integer> stepIndexDirection_;
+    /**
+     * <pre>
+     * Forwards/Backwards (If Cycling)
+     * </pre>
+     *
+     * <code>repeated uint32 step_index_direction = 5;</code>
+     */
+    public java.util.List<java.lang.Integer>
+        getStepIndexDirectionList() {
+      return stepIndexDirection_;
+    }
+    /**
+     * <pre>
+     * Forwards/Backwards (If Cycling)
+     * </pre>
+     *
+     * <code>repeated uint32 step_index_direction = 5;</code>
+     */
+    public int getStepIndexDirectionCount() {
+      return stepIndexDirection_.size();
+    }
+    /**
+     * <pre>
+     * Forwards/Backwards (If Cycling)
+     * </pre>
+     *
+     * <code>repeated uint32 step_index_direction = 5;</code>
+     */
+    public int getStepIndexDirection(int index) {
+      return stepIndexDirection_.get(index);
+    }
+    private int stepIndexDirectionMemoizedSerializedSize = -1;
+
+    public static final int COLOUR_INDEX_FIELD_NUMBER = 6;
+    private java.util.List<java.lang.Integer> colourIndex_;
+    /**
+     * <pre>
+     * Current State of Colour Index (Changes over time)
+     * </pre>
+     *
+     * <code>repeated uint32 colour_index = 6;</code>
+     */
+    public java.util.List<java.lang.Integer>
+        getColourIndexList() {
+      return colourIndex_;
+    }
+    /**
+     * <pre>
+     * Current State of Colour Index (Changes over time)
+     * </pre>
+     *
+     * <code>repeated uint32 colour_index = 6;</code>
+     */
+    public int getColourIndexCount() {
+      return colourIndex_.size();
+    }
+    /**
+     * <pre>
+     * Current State of Colour Index (Changes over time)
+     * </pre>
+     *
+     * <code>repeated uint32 colour_index = 6;</code>
+     */
+    public int getColourIndex(int index) {
+      return colourIndex_.get(index);
+    }
+    private int colourIndexMemoizedSerializedSize = -1;
+
+    public static final int COLOUR_RANGE_FIELD_NUMBER = 7;
+    private java.util.List<java.lang.Integer> colourRange_;
+    /**
+     * <pre>
+     * Current State of Colour Range (Changes based on Sequence Step)
+     * </pre>
+     *
+     * <code>repeated uint32 colour_range = 7;</code>
+     */
+    public java.util.List<java.lang.Integer>
+        getColourRangeList() {
+      return colourRange_;
+    }
+    /**
+     * <pre>
+     * Current State of Colour Range (Changes based on Sequence Step)
+     * </pre>
+     *
+     * <code>repeated uint32 colour_range = 7;</code>
+     */
+    public int getColourRangeCount() {
+      return colourRange_.size();
+    }
+    /**
+     * <pre>
+     * Current State of Colour Range (Changes based on Sequence Step)
+     * </pre>
+     *
+     * <code>repeated uint32 colour_range = 7;</code>
+     */
+    public int getColourRange(int index) {
+      return colourRange_.get(index);
+    }
+    private int colourRangeMemoizedSerializedSize = -1;
+
+    public static final int RANDOM_SEQ_TYPE_FIELD_NUMBER = 8;
+    private java.util.List<java.lang.Integer> randomSeqType_;
+    /**
+     * <pre>
+     * Currently Active Random Sequence Type
+     * </pre>
+     *
+     * <code>repeated uint32 random_seq_type = 8;</code>
+     */
+    public java.util.List<java.lang.Integer>
+        getRandomSeqTypeList() {
+      return randomSeqType_;
+    }
+    /**
+     * <pre>
+     * Currently Active Random Sequence Type
+     * </pre>
+     *
+     * <code>repeated uint32 random_seq_type = 8;</code>
+     */
+    public int getRandomSeqTypeCount() {
+      return randomSeqType_.size();
+    }
+    /**
+     * <pre>
+     * Currently Active Random Sequence Type
+     * </pre>
+     *
+     * <code>repeated uint32 random_seq_type = 8;</code>
+     */
+    public int getRandomSeqType(int index) {
+      return randomSeqType_.get(index);
+    }
+    private int randomSeqTypeMemoizedSerializedSize = -1;
+
+    public static final int ZONE_ACTIVE_FIELD_NUMBER = 9;
+    private java.util.List<java.lang.Boolean> zoneActive_;
+    /**
+     * <pre>
+     * Flag to show if any channel in this zone is active
+     * </pre>
+     *
+     * <code>repeated bool zone_active = 9;</code>
+     */
+    public java.util.List<java.lang.Boolean>
+        getZoneActiveList() {
+      return zoneActive_;
+    }
+    /**
+     * <pre>
+     * Flag to show if any channel in this zone is active
+     * </pre>
+     *
+     * <code>repeated bool zone_active = 9;</code>
+     */
+    public int getZoneActiveCount() {
+      return zoneActive_.size();
+    }
+    /**
+     * <pre>
+     * Flag to show if any channel in this zone is active
+     * </pre>
+     *
+     * <code>repeated bool zone_active = 9;</code>
+     */
+    public boolean getZoneActive(int index) {
+      return zoneActive_.get(index);
+    }
+    private int zoneActiveMemoizedSerializedSize = -1;
 
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
@@ -66671,29 +66410,69 @@ public final class EDS10ProtocolBuffer {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (showIndex_ != 0) {
-        output.writeUInt32(1, showIndex_);
+      getSerializedSize();
+      if (getTypeList().size() > 0) {
+        output.writeUInt32NoTag(10);
+        output.writeUInt32NoTag(typeMemoizedSerializedSize);
       }
-      if (numberOfSteps_ != 0) {
-        output.writeUInt32(2, numberOfSteps_);
+      for (int i = 0; i < type_.size(); i++) {
+        output.writeEnumNoTag(type_.get(i));
       }
-      for (int i = 0; i < step_.size(); i++) {
-        output.writeMessage(3, step_.get(i));
+      if (getIndexList().size() > 0) {
+        output.writeUInt32NoTag(18);
+        output.writeUInt32NoTag(indexMemoizedSerializedSize);
       }
-      if (isRunning_ != false) {
-        output.writeBool(4, isRunning_);
+      for (int i = 0; i < index_.size(); i++) {
+        output.writeUInt32NoTag(index_.get(i));
       }
-      if (isLooped_ != false) {
-        output.writeBool(5, isLooped_);
+      if (getActionList().size() > 0) {
+        output.writeUInt32NoTag(26);
+        output.writeUInt32NoTag(actionMemoizedSerializedSize);
       }
-      if (isRandom_ != false) {
-        output.writeBool(6, isRandom_);
+      for (int i = 0; i < action_.size(); i++) {
+        output.writeEnumNoTag(action_.get(i));
       }
-      if (isTemporary_ != false) {
-        output.writeBool(7, isTemporary_);
+      if (getStepIndexList().size() > 0) {
+        output.writeUInt32NoTag(34);
+        output.writeUInt32NoTag(stepIndexMemoizedSerializedSize);
       }
-      if (activationsRemaining_ != 0) {
-        output.writeUInt32(8, activationsRemaining_);
+      for (int i = 0; i < stepIndex_.size(); i++) {
+        output.writeUInt32NoTag(stepIndex_.get(i));
+      }
+      if (getStepIndexDirectionList().size() > 0) {
+        output.writeUInt32NoTag(42);
+        output.writeUInt32NoTag(stepIndexDirectionMemoizedSerializedSize);
+      }
+      for (int i = 0; i < stepIndexDirection_.size(); i++) {
+        output.writeUInt32NoTag(stepIndexDirection_.get(i));
+      }
+      if (getColourIndexList().size() > 0) {
+        output.writeUInt32NoTag(50);
+        output.writeUInt32NoTag(colourIndexMemoizedSerializedSize);
+      }
+      for (int i = 0; i < colourIndex_.size(); i++) {
+        output.writeUInt32NoTag(colourIndex_.get(i));
+      }
+      if (getColourRangeList().size() > 0) {
+        output.writeUInt32NoTag(58);
+        output.writeUInt32NoTag(colourRangeMemoizedSerializedSize);
+      }
+      for (int i = 0; i < colourRange_.size(); i++) {
+        output.writeUInt32NoTag(colourRange_.get(i));
+      }
+      if (getRandomSeqTypeList().size() > 0) {
+        output.writeUInt32NoTag(66);
+        output.writeUInt32NoTag(randomSeqTypeMemoizedSerializedSize);
+      }
+      for (int i = 0; i < randomSeqType_.size(); i++) {
+        output.writeUInt32NoTag(randomSeqType_.get(i));
+      }
+      if (getZoneActiveList().size() > 0) {
+        output.writeUInt32NoTag(74);
+        output.writeUInt32NoTag(zoneActiveMemoizedSerializedSize);
+      }
+      for (int i = 0; i < zoneActive_.size(); i++) {
+        output.writeBoolNoTag(zoneActive_.get(i));
       }
       unknownFields.writeTo(output);
     }
@@ -66704,37 +66483,124 @@ public final class EDS10ProtocolBuffer {
       if (size != -1) return size;
 
       size = 0;
-      if (showIndex_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, showIndex_);
+      {
+        int dataSize = 0;
+        for (int i = 0; i < type_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeEnumSizeNoTag(type_.get(i));
+        }
+        size += dataSize;
+        if (!getTypeList().isEmpty()) {  size += 1;
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32SizeNoTag(dataSize);
+        }typeMemoizedSerializedSize = dataSize;
       }
-      if (numberOfSteps_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(2, numberOfSteps_);
+      {
+        int dataSize = 0;
+        for (int i = 0; i < index_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeUInt32SizeNoTag(index_.get(i));
+        }
+        size += dataSize;
+        if (!getIndexList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        indexMemoizedSerializedSize = dataSize;
       }
-      for (int i = 0; i < step_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, step_.get(i));
+      {
+        int dataSize = 0;
+        for (int i = 0; i < action_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeEnumSizeNoTag(action_.get(i));
+        }
+        size += dataSize;
+        if (!getActionList().isEmpty()) {  size += 1;
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32SizeNoTag(dataSize);
+        }actionMemoizedSerializedSize = dataSize;
       }
-      if (isRunning_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(4, isRunning_);
+      {
+        int dataSize = 0;
+        for (int i = 0; i < stepIndex_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeUInt32SizeNoTag(stepIndex_.get(i));
+        }
+        size += dataSize;
+        if (!getStepIndexList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        stepIndexMemoizedSerializedSize = dataSize;
       }
-      if (isLooped_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(5, isLooped_);
+      {
+        int dataSize = 0;
+        for (int i = 0; i < stepIndexDirection_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeUInt32SizeNoTag(stepIndexDirection_.get(i));
+        }
+        size += dataSize;
+        if (!getStepIndexDirectionList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        stepIndexDirectionMemoizedSerializedSize = dataSize;
       }
-      if (isRandom_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(6, isRandom_);
+      {
+        int dataSize = 0;
+        for (int i = 0; i < colourIndex_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeUInt32SizeNoTag(colourIndex_.get(i));
+        }
+        size += dataSize;
+        if (!getColourIndexList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        colourIndexMemoizedSerializedSize = dataSize;
       }
-      if (isTemporary_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(7, isTemporary_);
+      {
+        int dataSize = 0;
+        for (int i = 0; i < colourRange_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeUInt32SizeNoTag(colourRange_.get(i));
+        }
+        size += dataSize;
+        if (!getColourRangeList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        colourRangeMemoizedSerializedSize = dataSize;
       }
-      if (activationsRemaining_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(8, activationsRemaining_);
+      {
+        int dataSize = 0;
+        for (int i = 0; i < randomSeqType_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeUInt32SizeNoTag(randomSeqType_.get(i));
+        }
+        size += dataSize;
+        if (!getRandomSeqTypeList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        randomSeqTypeMemoizedSerializedSize = dataSize;
+      }
+      {
+        int dataSize = 0;
+        dataSize = 1 * getZoneActiveList().size();
+        size += dataSize;
+        if (!getZoneActiveList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        zoneActiveMemoizedSerializedSize = dataSize;
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -66746,28 +66612,28 @@ public final class EDS10ProtocolBuffer {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof EDS10ProtocolBuffer.SpektraShowMessage)) {
+      if (!(obj instanceof EDS10ProtocolBuffer.SpektraLiveMessage)) {
         return super.equals(obj);
       }
-      EDS10ProtocolBuffer.SpektraShowMessage other = (EDS10ProtocolBuffer.SpektraShowMessage) obj;
+      EDS10ProtocolBuffer.SpektraLiveMessage other = (EDS10ProtocolBuffer.SpektraLiveMessage) obj;
 
       boolean result = true;
-      result = result && (getShowIndex()
-          == other.getShowIndex());
-      result = result && (getNumberOfSteps()
-          == other.getNumberOfSteps());
-      result = result && getStepList()
-          .equals(other.getStepList());
-      result = result && (getIsRunning()
-          == other.getIsRunning());
-      result = result && (getIsLooped()
-          == other.getIsLooped());
-      result = result && (getIsRandom()
-          == other.getIsRandom());
-      result = result && (getIsTemporary()
-          == other.getIsTemporary());
-      result = result && (getActivationsRemaining()
-          == other.getActivationsRemaining());
+      result = result && type_.equals(other.type_);
+      result = result && getIndexList()
+          .equals(other.getIndexList());
+      result = result && action_.equals(other.action_);
+      result = result && getStepIndexList()
+          .equals(other.getStepIndexList());
+      result = result && getStepIndexDirectionList()
+          .equals(other.getStepIndexDirectionList());
+      result = result && getColourIndexList()
+          .equals(other.getColourIndexList());
+      result = result && getColourRangeList()
+          .equals(other.getColourRangeList());
+      result = result && getRandomSeqTypeList()
+          .equals(other.getRandomSeqTypeList());
+      result = result && getZoneActiveList()
+          .equals(other.getZoneActiveList());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -66779,96 +66645,110 @@ public final class EDS10ProtocolBuffer {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + SHOW_INDEX_FIELD_NUMBER;
-      hash = (53 * hash) + getShowIndex();
-      hash = (37 * hash) + NUMBER_OF_STEPS_FIELD_NUMBER;
-      hash = (53 * hash) + getNumberOfSteps();
-      if (getStepCount() > 0) {
-        hash = (37 * hash) + STEP_FIELD_NUMBER;
-        hash = (53 * hash) + getStepList().hashCode();
+      if (getTypeCount() > 0) {
+        hash = (37 * hash) + TYPE_FIELD_NUMBER;
+        hash = (53 * hash) + type_.hashCode();
       }
-      hash = (37 * hash) + ISRUNNING_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getIsRunning());
-      hash = (37 * hash) + ISLOOPED_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getIsLooped());
-      hash = (37 * hash) + ISRANDOM_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getIsRandom());
-      hash = (37 * hash) + ISTEMPORARY_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getIsTemporary());
-      hash = (37 * hash) + ACTIVATIONS_REMAINING_FIELD_NUMBER;
-      hash = (53 * hash) + getActivationsRemaining();
+      if (getIndexCount() > 0) {
+        hash = (37 * hash) + INDEX_FIELD_NUMBER;
+        hash = (53 * hash) + getIndexList().hashCode();
+      }
+      if (getActionCount() > 0) {
+        hash = (37 * hash) + ACTION_FIELD_NUMBER;
+        hash = (53 * hash) + action_.hashCode();
+      }
+      if (getStepIndexCount() > 0) {
+        hash = (37 * hash) + STEP_INDEX_FIELD_NUMBER;
+        hash = (53 * hash) + getStepIndexList().hashCode();
+      }
+      if (getStepIndexDirectionCount() > 0) {
+        hash = (37 * hash) + STEP_INDEX_DIRECTION_FIELD_NUMBER;
+        hash = (53 * hash) + getStepIndexDirectionList().hashCode();
+      }
+      if (getColourIndexCount() > 0) {
+        hash = (37 * hash) + COLOUR_INDEX_FIELD_NUMBER;
+        hash = (53 * hash) + getColourIndexList().hashCode();
+      }
+      if (getColourRangeCount() > 0) {
+        hash = (37 * hash) + COLOUR_RANGE_FIELD_NUMBER;
+        hash = (53 * hash) + getColourRangeList().hashCode();
+      }
+      if (getRandomSeqTypeCount() > 0) {
+        hash = (37 * hash) + RANDOM_SEQ_TYPE_FIELD_NUMBER;
+        hash = (53 * hash) + getRandomSeqTypeList().hashCode();
+      }
+      if (getZoneActiveCount() > 0) {
+        hash = (37 * hash) + ZONE_ACTIVE_FIELD_NUMBER;
+        hash = (53 * hash) + getZoneActiveList().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static EDS10ProtocolBuffer.SpektraShowMessage parseFrom(
+    public static EDS10ProtocolBuffer.SpektraLiveMessage parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static EDS10ProtocolBuffer.SpektraShowMessage parseFrom(
+    public static EDS10ProtocolBuffer.SpektraLiveMessage parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static EDS10ProtocolBuffer.SpektraShowMessage parseFrom(
+    public static EDS10ProtocolBuffer.SpektraLiveMessage parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static EDS10ProtocolBuffer.SpektraShowMessage parseFrom(
+    public static EDS10ProtocolBuffer.SpektraLiveMessage parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static EDS10ProtocolBuffer.SpektraShowMessage parseFrom(byte[] data)
+    public static EDS10ProtocolBuffer.SpektraLiveMessage parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static EDS10ProtocolBuffer.SpektraShowMessage parseFrom(
+    public static EDS10ProtocolBuffer.SpektraLiveMessage parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static EDS10ProtocolBuffer.SpektraShowMessage parseFrom(java.io.InputStream input)
+    public static EDS10ProtocolBuffer.SpektraLiveMessage parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static EDS10ProtocolBuffer.SpektraShowMessage parseFrom(
+    public static EDS10ProtocolBuffer.SpektraLiveMessage parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static EDS10ProtocolBuffer.SpektraShowMessage parseDelimitedFrom(java.io.InputStream input)
+    public static EDS10ProtocolBuffer.SpektraLiveMessage parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static EDS10ProtocolBuffer.SpektraShowMessage parseDelimitedFrom(
+    public static EDS10ProtocolBuffer.SpektraLiveMessage parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static EDS10ProtocolBuffer.SpektraShowMessage parseFrom(
+    public static EDS10ProtocolBuffer.SpektraLiveMessage parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static EDS10ProtocolBuffer.SpektraShowMessage parseFrom(
+    public static EDS10ProtocolBuffer.SpektraLiveMessage parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -66881,7 +66761,7 @@ public final class EDS10ProtocolBuffer {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(EDS10ProtocolBuffer.SpektraShowMessage prototype) {
+    public static Builder newBuilder(EDS10ProtocolBuffer.SpektraLiveMessage prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -66897,30 +66777,26 @@ public final class EDS10ProtocolBuffer {
       return builder;
     }
     /**
-     * <pre>
-     * Currently Work In Progress
-     * </pre>
-     *
-     * Protobuf type {@code SpektraShowMessage}
+     * Protobuf type {@code SpektraLiveMessage}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:SpektraShowMessage)
-        EDS10ProtocolBuffer.SpektraShowMessageOrBuilder {
+        // @@protoc_insertion_point(builder_implements:SpektraLiveMessage)
+        EDS10ProtocolBuffer.SpektraLiveMessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return EDS10ProtocolBuffer.internal_static_SpektraShowMessage_descriptor;
+        return EDS10ProtocolBuffer.internal_static_SpektraLiveMessage_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return EDS10ProtocolBuffer.internal_static_SpektraShowMessage_fieldAccessorTable
+        return EDS10ProtocolBuffer.internal_static_SpektraLiveMessage_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                EDS10ProtocolBuffer.SpektraShowMessage.class, EDS10ProtocolBuffer.SpektraShowMessage.Builder.class);
+                EDS10ProtocolBuffer.SpektraLiveMessage.class, EDS10ProtocolBuffer.SpektraLiveMessage.Builder.class);
       }
 
-      // Construct using EDS10ProtocolBuffer.SpektraShowMessage.newBuilder()
+      // Construct using EDS10ProtocolBuffer.SpektraLiveMessage.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -66933,49 +66809,46 @@ public final class EDS10ProtocolBuffer {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getStepFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        showIndex_ = 0;
-
-        numberOfSteps_ = 0;
-
-        if (stepBuilder_ == null) {
-          step_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
-        } else {
-          stepBuilder_.clear();
-        }
-        isRunning_ = false;
-
-        isLooped_ = false;
-
-        isRandom_ = false;
-
-        isTemporary_ = false;
-
-        activationsRemaining_ = 0;
-
+        type_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        index_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        action_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        stepIndex_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        stepIndexDirection_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        colourIndex_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000020);
+        colourRange_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000040);
+        randomSeqType_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000080);
+        zoneActive_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000100);
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return EDS10ProtocolBuffer.internal_static_SpektraShowMessage_descriptor;
+        return EDS10ProtocolBuffer.internal_static_SpektraLiveMessage_descriptor;
       }
 
       @java.lang.Override
-      public EDS10ProtocolBuffer.SpektraShowMessage getDefaultInstanceForType() {
-        return EDS10ProtocolBuffer.SpektraShowMessage.getDefaultInstance();
+      public EDS10ProtocolBuffer.SpektraLiveMessage getDefaultInstanceForType() {
+        return EDS10ProtocolBuffer.SpektraLiveMessage.getDefaultInstance();
       }
 
       @java.lang.Override
-      public EDS10ProtocolBuffer.SpektraShowMessage build() {
-        EDS10ProtocolBuffer.SpektraShowMessage result = buildPartial();
+      public EDS10ProtocolBuffer.SpektraLiveMessage build() {
+        EDS10ProtocolBuffer.SpektraLiveMessage result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -66983,27 +66856,54 @@ public final class EDS10ProtocolBuffer {
       }
 
       @java.lang.Override
-      public EDS10ProtocolBuffer.SpektraShowMessage buildPartial() {
-        EDS10ProtocolBuffer.SpektraShowMessage result = new EDS10ProtocolBuffer.SpektraShowMessage(this);
+      public EDS10ProtocolBuffer.SpektraLiveMessage buildPartial() {
+        EDS10ProtocolBuffer.SpektraLiveMessage result = new EDS10ProtocolBuffer.SpektraLiveMessage(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        result.showIndex_ = showIndex_;
-        result.numberOfSteps_ = numberOfSteps_;
-        if (stepBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004)) {
-            step_ = java.util.Collections.unmodifiableList(step_);
-            bitField0_ = (bitField0_ & ~0x00000004);
-          }
-          result.step_ = step_;
-        } else {
-          result.step_ = stepBuilder_.build();
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          type_ = java.util.Collections.unmodifiableList(type_);
+          bitField0_ = (bitField0_ & ~0x00000001);
         }
-        result.isRunning_ = isRunning_;
-        result.isLooped_ = isLooped_;
-        result.isRandom_ = isRandom_;
-        result.isTemporary_ = isTemporary_;
-        result.activationsRemaining_ = activationsRemaining_;
-        result.bitField0_ = to_bitField0_;
+        result.type_ = type_;
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          index_ = java.util.Collections.unmodifiableList(index_);
+          bitField0_ = (bitField0_ & ~0x00000002);
+        }
+        result.index_ = index_;
+        if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          action_ = java.util.Collections.unmodifiableList(action_);
+          bitField0_ = (bitField0_ & ~0x00000004);
+        }
+        result.action_ = action_;
+        if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          stepIndex_ = java.util.Collections.unmodifiableList(stepIndex_);
+          bitField0_ = (bitField0_ & ~0x00000008);
+        }
+        result.stepIndex_ = stepIndex_;
+        if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          stepIndexDirection_ = java.util.Collections.unmodifiableList(stepIndexDirection_);
+          bitField0_ = (bitField0_ & ~0x00000010);
+        }
+        result.stepIndexDirection_ = stepIndexDirection_;
+        if (((bitField0_ & 0x00000020) == 0x00000020)) {
+          colourIndex_ = java.util.Collections.unmodifiableList(colourIndex_);
+          bitField0_ = (bitField0_ & ~0x00000020);
+        }
+        result.colourIndex_ = colourIndex_;
+        if (((bitField0_ & 0x00000040) == 0x00000040)) {
+          colourRange_ = java.util.Collections.unmodifiableList(colourRange_);
+          bitField0_ = (bitField0_ & ~0x00000040);
+        }
+        result.colourRange_ = colourRange_;
+        if (((bitField0_ & 0x00000080) == 0x00000080)) {
+          randomSeqType_ = java.util.Collections.unmodifiableList(randomSeqType_);
+          bitField0_ = (bitField0_ & ~0x00000080);
+        }
+        result.randomSeqType_ = randomSeqType_;
+        if (((bitField0_ & 0x00000100) == 0x00000100)) {
+          zoneActive_ = java.util.Collections.unmodifiableList(zoneActive_);
+          bitField0_ = (bitField0_ & ~0x00000100);
+        }
+        result.zoneActive_ = zoneActive_;
         onBuilt();
         return result;
       }
@@ -67042,62 +66942,105 @@ public final class EDS10ProtocolBuffer {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof EDS10ProtocolBuffer.SpektraShowMessage) {
-          return mergeFrom((EDS10ProtocolBuffer.SpektraShowMessage)other);
+        if (other instanceof EDS10ProtocolBuffer.SpektraLiveMessage) {
+          return mergeFrom((EDS10ProtocolBuffer.SpektraLiveMessage)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(EDS10ProtocolBuffer.SpektraShowMessage other) {
-        if (other == EDS10ProtocolBuffer.SpektraShowMessage.getDefaultInstance()) return this;
-        if (other.getShowIndex() != 0) {
-          setShowIndex(other.getShowIndex());
-        }
-        if (other.getNumberOfSteps() != 0) {
-          setNumberOfSteps(other.getNumberOfSteps());
-        }
-        if (stepBuilder_ == null) {
-          if (!other.step_.isEmpty()) {
-            if (step_.isEmpty()) {
-              step_ = other.step_;
-              bitField0_ = (bitField0_ & ~0x00000004);
-            } else {
-              ensureStepIsMutable();
-              step_.addAll(other.step_);
-            }
-            onChanged();
+      public Builder mergeFrom(EDS10ProtocolBuffer.SpektraLiveMessage other) {
+        if (other == EDS10ProtocolBuffer.SpektraLiveMessage.getDefaultInstance()) return this;
+        if (!other.type_.isEmpty()) {
+          if (type_.isEmpty()) {
+            type_ = other.type_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureTypeIsMutable();
+            type_.addAll(other.type_);
           }
-        } else {
-          if (!other.step_.isEmpty()) {
-            if (stepBuilder_.isEmpty()) {
-              stepBuilder_.dispose();
-              stepBuilder_ = null;
-              step_ = other.step_;
-              bitField0_ = (bitField0_ & ~0x00000004);
-              stepBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getStepFieldBuilder() : null;
-            } else {
-              stepBuilder_.addAllMessages(other.step_);
-            }
+          onChanged();
+        }
+        if (!other.index_.isEmpty()) {
+          if (index_.isEmpty()) {
+            index_ = other.index_;
+            bitField0_ = (bitField0_ & ~0x00000002);
+          } else {
+            ensureIndexIsMutable();
+            index_.addAll(other.index_);
           }
+          onChanged();
         }
-        if (other.getIsRunning() != false) {
-          setIsRunning(other.getIsRunning());
+        if (!other.action_.isEmpty()) {
+          if (action_.isEmpty()) {
+            action_ = other.action_;
+            bitField0_ = (bitField0_ & ~0x00000004);
+          } else {
+            ensureActionIsMutable();
+            action_.addAll(other.action_);
+          }
+          onChanged();
         }
-        if (other.getIsLooped() != false) {
-          setIsLooped(other.getIsLooped());
+        if (!other.stepIndex_.isEmpty()) {
+          if (stepIndex_.isEmpty()) {
+            stepIndex_ = other.stepIndex_;
+            bitField0_ = (bitField0_ & ~0x00000008);
+          } else {
+            ensureStepIndexIsMutable();
+            stepIndex_.addAll(other.stepIndex_);
+          }
+          onChanged();
         }
-        if (other.getIsRandom() != false) {
-          setIsRandom(other.getIsRandom());
+        if (!other.stepIndexDirection_.isEmpty()) {
+          if (stepIndexDirection_.isEmpty()) {
+            stepIndexDirection_ = other.stepIndexDirection_;
+            bitField0_ = (bitField0_ & ~0x00000010);
+          } else {
+            ensureStepIndexDirectionIsMutable();
+            stepIndexDirection_.addAll(other.stepIndexDirection_);
+          }
+          onChanged();
         }
-        if (other.getIsTemporary() != false) {
-          setIsTemporary(other.getIsTemporary());
+        if (!other.colourIndex_.isEmpty()) {
+          if (colourIndex_.isEmpty()) {
+            colourIndex_ = other.colourIndex_;
+            bitField0_ = (bitField0_ & ~0x00000020);
+          } else {
+            ensureColourIndexIsMutable();
+            colourIndex_.addAll(other.colourIndex_);
+          }
+          onChanged();
         }
-        if (other.getActivationsRemaining() != 0) {
-          setActivationsRemaining(other.getActivationsRemaining());
+        if (!other.colourRange_.isEmpty()) {
+          if (colourRange_.isEmpty()) {
+            colourRange_ = other.colourRange_;
+            bitField0_ = (bitField0_ & ~0x00000040);
+          } else {
+            ensureColourRangeIsMutable();
+            colourRange_.addAll(other.colourRange_);
+          }
+          onChanged();
+        }
+        if (!other.randomSeqType_.isEmpty()) {
+          if (randomSeqType_.isEmpty()) {
+            randomSeqType_ = other.randomSeqType_;
+            bitField0_ = (bitField0_ & ~0x00000080);
+          } else {
+            ensureRandomSeqTypeIsMutable();
+            randomSeqType_.addAll(other.randomSeqType_);
+          }
+          onChanged();
+        }
+        if (!other.zoneActive_.isEmpty()) {
+          if (zoneActive_.isEmpty()) {
+            zoneActive_ = other.zoneActive_;
+            bitField0_ = (bitField0_ & ~0x00000100);
+          } else {
+            ensureZoneActiveIsMutable();
+            zoneActive_.addAll(other.zoneActive_);
+          }
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -67114,11 +67057,11 @@ public final class EDS10ProtocolBuffer {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        EDS10ProtocolBuffer.SpektraShowMessage parsedMessage = null;
+        EDS10ProtocolBuffer.SpektraLiveMessage parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (EDS10ProtocolBuffer.SpektraShowMessage) e.getUnfinishedMessage();
+          parsedMessage = (EDS10ProtocolBuffer.SpektraLiveMessage) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -67129,2137 +67072,992 @@ public final class EDS10ProtocolBuffer {
       }
       private int bitField0_;
 
-      private int showIndex_ ;
-      /**
-       * <code>uint32 show_index = 1;</code>
-       */
-      public int getShowIndex() {
-        return showIndex_;
-      }
-      /**
-       * <code>uint32 show_index = 1;</code>
-       */
-      public Builder setShowIndex(int value) {
-        
-        showIndex_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>uint32 show_index = 1;</code>
-       */
-      public Builder clearShowIndex() {
-        
-        showIndex_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int numberOfSteps_ ;
-      /**
-       * <code>uint32 number_of_steps = 2;</code>
-       */
-      public int getNumberOfSteps() {
-        return numberOfSteps_;
-      }
-      /**
-       * <code>uint32 number_of_steps = 2;</code>
-       */
-      public Builder setNumberOfSteps(int value) {
-        
-        numberOfSteps_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>uint32 number_of_steps = 2;</code>
-       */
-      public Builder clearNumberOfSteps() {
-        
-        numberOfSteps_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private java.util.List<EDS10ProtocolBuffer.ShowStepMessage> step_ =
+      private java.util.List<java.lang.Integer> type_ =
         java.util.Collections.emptyList();
-      private void ensureStepIsMutable() {
-        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
-          step_ = new java.util.ArrayList<EDS10ProtocolBuffer.ShowStepMessage>(step_);
-          bitField0_ |= 0x00000004;
+      private void ensureTypeIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          type_ = new java.util.ArrayList<java.lang.Integer>(type_);
+          bitField0_ |= 0x00000001;
+        }
+      }
+      /**
+       * <pre>
+       * Target Type Per Zone (Sequence/Theme etc)
+       * </pre>
+       *
+       * <code>repeated .SpektraTargetType type = 1;</code>
+       */
+      public java.util.List<EDS10ProtocolBuffer.SpektraTargetType> getTypeList() {
+        return new com.google.protobuf.Internal.ListAdapter<
+            java.lang.Integer, EDS10ProtocolBuffer.SpektraTargetType>(type_, type_converter_);
+      }
+      /**
+       * <pre>
+       * Target Type Per Zone (Sequence/Theme etc)
+       * </pre>
+       *
+       * <code>repeated .SpektraTargetType type = 1;</code>
+       */
+      public int getTypeCount() {
+        return type_.size();
+      }
+      /**
+       * <pre>
+       * Target Type Per Zone (Sequence/Theme etc)
+       * </pre>
+       *
+       * <code>repeated .SpektraTargetType type = 1;</code>
+       */
+      public EDS10ProtocolBuffer.SpektraTargetType getType(int index) {
+        return type_converter_.convert(type_.get(index));
+      }
+      /**
+       * <pre>
+       * Target Type Per Zone (Sequence/Theme etc)
+       * </pre>
+       *
+       * <code>repeated .SpektraTargetType type = 1;</code>
+       */
+      public Builder setType(
+          int index, EDS10ProtocolBuffer.SpektraTargetType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureTypeIsMutable();
+        type_.set(index, value.getNumber());
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Target Type Per Zone (Sequence/Theme etc)
+       * </pre>
+       *
+       * <code>repeated .SpektraTargetType type = 1;</code>
+       */
+      public Builder addType(EDS10ProtocolBuffer.SpektraTargetType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureTypeIsMutable();
+        type_.add(value.getNumber());
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Target Type Per Zone (Sequence/Theme etc)
+       * </pre>
+       *
+       * <code>repeated .SpektraTargetType type = 1;</code>
+       */
+      public Builder addAllType(
+          java.lang.Iterable<? extends EDS10ProtocolBuffer.SpektraTargetType> values) {
+        ensureTypeIsMutable();
+        for (EDS10ProtocolBuffer.SpektraTargetType value : values) {
+          type_.add(value.getNumber());
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Target Type Per Zone (Sequence/Theme etc)
+       * </pre>
+       *
+       * <code>repeated .SpektraTargetType type = 1;</code>
+       */
+      public Builder clearType() {
+        type_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Target Type Per Zone (Sequence/Theme etc)
+       * </pre>
+       *
+       * <code>repeated .SpektraTargetType type = 1;</code>
+       */
+      public java.util.List<java.lang.Integer>
+      getTypeValueList() {
+        return java.util.Collections.unmodifiableList(type_);
+      }
+      /**
+       * <pre>
+       * Target Type Per Zone (Sequence/Theme etc)
+       * </pre>
+       *
+       * <code>repeated .SpektraTargetType type = 1;</code>
+       */
+      public int getTypeValue(int index) {
+        return type_.get(index);
+      }
+      /**
+       * <pre>
+       * Target Type Per Zone (Sequence/Theme etc)
+       * </pre>
+       *
+       * <code>repeated .SpektraTargetType type = 1;</code>
+       */
+      public Builder setTypeValue(
+          int index, int value) {
+        ensureTypeIsMutable();
+        type_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Target Type Per Zone (Sequence/Theme etc)
+       * </pre>
+       *
+       * <code>repeated .SpektraTargetType type = 1;</code>
+       */
+      public Builder addTypeValue(int value) {
+        ensureTypeIsMutable();
+        type_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Target Type Per Zone (Sequence/Theme etc)
+       * </pre>
+       *
+       * <code>repeated .SpektraTargetType type = 1;</code>
+       */
+      public Builder addAllTypeValue(
+          java.lang.Iterable<java.lang.Integer> values) {
+        ensureTypeIsMutable();
+        for (int value : values) {
+          type_.add(value);
+        }
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<java.lang.Integer> index_ = java.util.Collections.emptyList();
+      private void ensureIndexIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          index_ = new java.util.ArrayList<java.lang.Integer>(index_);
+          bitField0_ |= 0x00000002;
          }
       }
-
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          EDS10ProtocolBuffer.ShowStepMessage, EDS10ProtocolBuffer.ShowStepMessage.Builder, EDS10ProtocolBuffer.ShowStepMessageOrBuilder> stepBuilder_;
-
       /**
        * <pre>
-       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+       * Target Index Per Zone
        * </pre>
        *
-       * <code>repeated .ShowStepMessage step = 3;</code>
+       * <code>repeated uint32 index = 2;</code>
        */
-      public java.util.List<EDS10ProtocolBuffer.ShowStepMessage> getStepList() {
-        if (stepBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(step_);
-        } else {
-          return stepBuilder_.getMessageList();
-        }
+      public java.util.List<java.lang.Integer>
+          getIndexList() {
+        return java.util.Collections.unmodifiableList(index_);
       }
       /**
        * <pre>
-       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+       * Target Index Per Zone
        * </pre>
        *
-       * <code>repeated .ShowStepMessage step = 3;</code>
+       * <code>repeated uint32 index = 2;</code>
        */
-      public int getStepCount() {
-        if (stepBuilder_ == null) {
-          return step_.size();
-        } else {
-          return stepBuilder_.getCount();
-        }
+      public int getIndexCount() {
+        return index_.size();
       }
       /**
        * <pre>
-       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+       * Target Index Per Zone
        * </pre>
        *
-       * <code>repeated .ShowStepMessage step = 3;</code>
+       * <code>repeated uint32 index = 2;</code>
        */
-      public EDS10ProtocolBuffer.ShowStepMessage getStep(int index) {
-        if (stepBuilder_ == null) {
-          return step_.get(index);
-        } else {
-          return stepBuilder_.getMessage(index);
-        }
+      public int getIndex(int index) {
+        return index_.get(index);
       }
       /**
        * <pre>
-       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
+       * Target Index Per Zone
        * </pre>
        *
-       * <code>repeated .ShowStepMessage step = 3;</code>
+       * <code>repeated uint32 index = 2;</code>
        */
-      public Builder setStep(
-          int index, EDS10ProtocolBuffer.ShowStepMessage value) {
-        if (stepBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureStepIsMutable();
-          step_.set(index, value);
-          onChanged();
-        } else {
-          stepBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <pre>
-       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
-       * </pre>
-       *
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public Builder setStep(
-          int index, EDS10ProtocolBuffer.ShowStepMessage.Builder builderForValue) {
-        if (stepBuilder_ == null) {
-          ensureStepIsMutable();
-          step_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          stepBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <pre>
-       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
-       * </pre>
-       *
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public Builder addStep(EDS10ProtocolBuffer.ShowStepMessage value) {
-        if (stepBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureStepIsMutable();
-          step_.add(value);
-          onChanged();
-        } else {
-          stepBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <pre>
-       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
-       * </pre>
-       *
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public Builder addStep(
-          int index, EDS10ProtocolBuffer.ShowStepMessage value) {
-        if (stepBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureStepIsMutable();
-          step_.add(index, value);
-          onChanged();
-        } else {
-          stepBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <pre>
-       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
-       * </pre>
-       *
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public Builder addStep(
-          EDS10ProtocolBuffer.ShowStepMessage.Builder builderForValue) {
-        if (stepBuilder_ == null) {
-          ensureStepIsMutable();
-          step_.add(builderForValue.build());
-          onChanged();
-        } else {
-          stepBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <pre>
-       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
-       * </pre>
-       *
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public Builder addStep(
-          int index, EDS10ProtocolBuffer.ShowStepMessage.Builder builderForValue) {
-        if (stepBuilder_ == null) {
-          ensureStepIsMutable();
-          step_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          stepBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <pre>
-       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
-       * </pre>
-       *
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public Builder addAllStep(
-          java.lang.Iterable<? extends EDS10ProtocolBuffer.ShowStepMessage> values) {
-        if (stepBuilder_ == null) {
-          ensureStepIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, step_);
-          onChanged();
-        } else {
-          stepBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <pre>
-       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
-       * </pre>
-       *
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public Builder clearStep() {
-        if (stepBuilder_ == null) {
-          step_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
-          onChanged();
-        } else {
-          stepBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <pre>
-       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
-       * </pre>
-       *
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public Builder removeStep(int index) {
-        if (stepBuilder_ == null) {
-          ensureStepIsMutable();
-          step_.remove(index);
-          onChanged();
-        } else {
-          stepBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <pre>
-       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
-       * </pre>
-       *
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public EDS10ProtocolBuffer.ShowStepMessage.Builder getStepBuilder(
-          int index) {
-        return getStepFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <pre>
-       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
-       * </pre>
-       *
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public EDS10ProtocolBuffer.ShowStepMessageOrBuilder getStepOrBuilder(
-          int index) {
-        if (stepBuilder_ == null) {
-          return step_.get(index);  } else {
-          return stepBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <pre>
-       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
-       * </pre>
-       *
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public java.util.List<? extends EDS10ProtocolBuffer.ShowStepMessageOrBuilder> 
-           getStepOrBuilderList() {
-        if (stepBuilder_ != null) {
-          return stepBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(step_);
-        }
-      }
-      /**
-       * <pre>
-       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
-       * </pre>
-       *
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public EDS10ProtocolBuffer.ShowStepMessage.Builder addStepBuilder() {
-        return getStepFieldBuilder().addBuilder(
-            EDS10ProtocolBuffer.ShowStepMessage.getDefaultInstance());
-      }
-      /**
-       * <pre>
-       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
-       * </pre>
-       *
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public EDS10ProtocolBuffer.ShowStepMessage.Builder addStepBuilder(
-          int index) {
-        return getStepFieldBuilder().addBuilder(
-            index, EDS10ProtocolBuffer.ShowStepMessage.getDefaultInstance());
-      }
-      /**
-       * <pre>
-       * Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
-       * </pre>
-       *
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public java.util.List<EDS10ProtocolBuffer.ShowStepMessage.Builder> 
-           getStepBuilderList() {
-        return getStepFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          EDS10ProtocolBuffer.ShowStepMessage, EDS10ProtocolBuffer.ShowStepMessage.Builder, EDS10ProtocolBuffer.ShowStepMessageOrBuilder> 
-          getStepFieldBuilder() {
-        if (stepBuilder_ == null) {
-          stepBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              EDS10ProtocolBuffer.ShowStepMessage, EDS10ProtocolBuffer.ShowStepMessage.Builder, EDS10ProtocolBuffer.ShowStepMessageOrBuilder>(
-                  step_,
-                  ((bitField0_ & 0x00000004) == 0x00000004),
-                  getParentForChildren(),
-                  isClean());
-          step_ = null;
-        }
-        return stepBuilder_;
-      }
-
-      private boolean isRunning_ ;
-      /**
-       * <code>bool isRunning = 4;</code>
-       */
-      public boolean getIsRunning() {
-        return isRunning_;
-      }
-      /**
-       * <code>bool isRunning = 4;</code>
-       */
-      public Builder setIsRunning(boolean value) {
-        
-        isRunning_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bool isRunning = 4;</code>
-       */
-      public Builder clearIsRunning() {
-        
-        isRunning_ = false;
-        onChanged();
-        return this;
-      }
-
-      private boolean isLooped_ ;
-      /**
-       * <code>bool isLooped = 5;</code>
-       */
-      public boolean getIsLooped() {
-        return isLooped_;
-      }
-      /**
-       * <code>bool isLooped = 5;</code>
-       */
-      public Builder setIsLooped(boolean value) {
-        
-        isLooped_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bool isLooped = 5;</code>
-       */
-      public Builder clearIsLooped() {
-        
-        isLooped_ = false;
-        onChanged();
-        return this;
-      }
-
-      private boolean isRandom_ ;
-      /**
-       * <code>bool isRandom = 6;</code>
-       */
-      public boolean getIsRandom() {
-        return isRandom_;
-      }
-      /**
-       * <code>bool isRandom = 6;</code>
-       */
-      public Builder setIsRandom(boolean value) {
-        
-        isRandom_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bool isRandom = 6;</code>
-       */
-      public Builder clearIsRandom() {
-        
-        isRandom_ = false;
-        onChanged();
-        return this;
-      }
-
-      private boolean isTemporary_ ;
-      /**
-       * <code>bool isTemporary = 7;</code>
-       */
-      public boolean getIsTemporary() {
-        return isTemporary_;
-      }
-      /**
-       * <code>bool isTemporary = 7;</code>
-       */
-      public Builder setIsTemporary(boolean value) {
-        
-        isTemporary_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bool isTemporary = 7;</code>
-       */
-      public Builder clearIsTemporary() {
-        
-        isTemporary_ = false;
-        onChanged();
-        return this;
-      }
-
-      private int activationsRemaining_ ;
-      /**
-       * <pre>
-       * If isTemporary is true; this is how many times this Show can be activated [NOTE: Only 1 Temporary Show can exist at any given time]
-       * </pre>
-       *
-       * <code>uint32 activations_remaining = 8;</code>
-       */
-      public int getActivationsRemaining() {
-        return activationsRemaining_;
-      }
-      /**
-       * <pre>
-       * If isTemporary is true; this is how many times this Show can be activated [NOTE: Only 1 Temporary Show can exist at any given time]
-       * </pre>
-       *
-       * <code>uint32 activations_remaining = 8;</code>
-       */
-      public Builder setActivationsRemaining(int value) {
-        
-        activationsRemaining_ = value;
+      public Builder setIndex(
+          int index, int value) {
+        ensureIndexIsMutable();
+        index_.set(index, value);
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * If isTemporary is true; this is how many times this Show can be activated [NOTE: Only 1 Temporary Show can exist at any given time]
+       * Target Index Per Zone
        * </pre>
        *
-       * <code>uint32 activations_remaining = 8;</code>
+       * <code>repeated uint32 index = 2;</code>
        */
-      public Builder clearActivationsRemaining() {
-        
-        activationsRemaining_ = 0;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:SpektraShowMessage)
-    }
-
-    // @@protoc_insertion_point(class_scope:SpektraShowMessage)
-    private static final EDS10ProtocolBuffer.SpektraShowMessage DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.SpektraShowMessage();
-    }
-
-    public static EDS10ProtocolBuffer.SpektraShowMessage getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<SpektraShowMessage>
-        PARSER = new com.google.protobuf.AbstractParser<SpektraShowMessage>() {
-      @java.lang.Override
-      public SpektraShowMessage parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SpektraShowMessage(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<SpektraShowMessage> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<SpektraShowMessage> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public EDS10ProtocolBuffer.SpektraShowMessage getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface ExtendedSpektraShowMessageOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ExtendedSpektraShowMessage)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <pre>
-     * Which Show do these steps belong to?
-     * </pre>
-     *
-     * <code>uint32 show_index = 1;</code>
-     */
-    int getShowIndex();
-
-    /**
-     * <pre>
-     * 0 for the first ExtendedListMessage; offset by 32 for every ExtendedListMessage beyond the first
-     * </pre>
-     *
-     * <code>uint32 step_index_offset = 2;</code>
-     */
-    int getStepIndexOffset();
-
-    /**
-     * <code>repeated .ShowStepMessage step = 3;</code>
-     */
-    java.util.List<EDS10ProtocolBuffer.ShowStepMessage> 
-        getStepList();
-    /**
-     * <code>repeated .ShowStepMessage step = 3;</code>
-     */
-    EDS10ProtocolBuffer.ShowStepMessage getStep(int index);
-    /**
-     * <code>repeated .ShowStepMessage step = 3;</code>
-     */
-    int getStepCount();
-    /**
-     * <code>repeated .ShowStepMessage step = 3;</code>
-     */
-    java.util.List<? extends EDS10ProtocolBuffer.ShowStepMessageOrBuilder> 
-        getStepOrBuilderList();
-    /**
-     * <code>repeated .ShowStepMessage step = 3;</code>
-     */
-    EDS10ProtocolBuffer.ShowStepMessageOrBuilder getStepOrBuilder(
-        int index);
-  }
-  /**
-   * <pre>
-   * This Message must be used when the Show has more than 32 steps
-   * </pre>
-   *
-   * Protobuf type {@code ExtendedSpektraShowMessage}
-   */
-  public  static final class ExtendedSpektraShowMessage extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:ExtendedSpektraShowMessage)
-      ExtendedSpektraShowMessageOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use ExtendedSpektraShowMessage.newBuilder() to construct.
-    private ExtendedSpektraShowMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private ExtendedSpektraShowMessage() {
-      showIndex_ = 0;
-      stepIndexOffset_ = 0;
-      step_ = java.util.Collections.emptyList();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private ExtendedSpektraShowMessage(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-
-              showIndex_ = input.readUInt32();
-              break;
-            }
-            case 16: {
-
-              stepIndexOffset_ = input.readUInt32();
-              break;
-            }
-            case 26: {
-              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-                step_ = new java.util.ArrayList<EDS10ProtocolBuffer.ShowStepMessage>();
-                mutable_bitField0_ |= 0x00000004;
-              }
-              step_.add(
-                  input.readMessage(EDS10ProtocolBuffer.ShowStepMessage.parser(), extensionRegistry));
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-          step_ = java.util.Collections.unmodifiableList(step_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return EDS10ProtocolBuffer.internal_static_ExtendedSpektraShowMessage_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return EDS10ProtocolBuffer.internal_static_ExtendedSpektraShowMessage_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              EDS10ProtocolBuffer.ExtendedSpektraShowMessage.class, EDS10ProtocolBuffer.ExtendedSpektraShowMessage.Builder.class);
-    }
-
-    private int bitField0_;
-    public static final int SHOW_INDEX_FIELD_NUMBER = 1;
-    private int showIndex_;
-    /**
-     * <pre>
-     * Which Show do these steps belong to?
-     * </pre>
-     *
-     * <code>uint32 show_index = 1;</code>
-     */
-    public int getShowIndex() {
-      return showIndex_;
-    }
-
-    public static final int STEP_INDEX_OFFSET_FIELD_NUMBER = 2;
-    private int stepIndexOffset_;
-    /**
-     * <pre>
-     * 0 for the first ExtendedListMessage; offset by 32 for every ExtendedListMessage beyond the first
-     * </pre>
-     *
-     * <code>uint32 step_index_offset = 2;</code>
-     */
-    public int getStepIndexOffset() {
-      return stepIndexOffset_;
-    }
-
-    public static final int STEP_FIELD_NUMBER = 3;
-    private java.util.List<EDS10ProtocolBuffer.ShowStepMessage> step_;
-    /**
-     * <code>repeated .ShowStepMessage step = 3;</code>
-     */
-    public java.util.List<EDS10ProtocolBuffer.ShowStepMessage> getStepList() {
-      return step_;
-    }
-    /**
-     * <code>repeated .ShowStepMessage step = 3;</code>
-     */
-    public java.util.List<? extends EDS10ProtocolBuffer.ShowStepMessageOrBuilder> 
-        getStepOrBuilderList() {
-      return step_;
-    }
-    /**
-     * <code>repeated .ShowStepMessage step = 3;</code>
-     */
-    public int getStepCount() {
-      return step_.size();
-    }
-    /**
-     * <code>repeated .ShowStepMessage step = 3;</code>
-     */
-    public EDS10ProtocolBuffer.ShowStepMessage getStep(int index) {
-      return step_.get(index);
-    }
-    /**
-     * <code>repeated .ShowStepMessage step = 3;</code>
-     */
-    public EDS10ProtocolBuffer.ShowStepMessageOrBuilder getStepOrBuilder(
-        int index) {
-      return step_.get(index);
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (showIndex_ != 0) {
-        output.writeUInt32(1, showIndex_);
-      }
-      if (stepIndexOffset_ != 0) {
-        output.writeUInt32(2, stepIndexOffset_);
-      }
-      for (int i = 0; i < step_.size(); i++) {
-        output.writeMessage(3, step_.get(i));
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (showIndex_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, showIndex_);
-      }
-      if (stepIndexOffset_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(2, stepIndexOffset_);
-      }
-      for (int i = 0; i < step_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, step_.get(i));
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof EDS10ProtocolBuffer.ExtendedSpektraShowMessage)) {
-        return super.equals(obj);
-      }
-      EDS10ProtocolBuffer.ExtendedSpektraShowMessage other = (EDS10ProtocolBuffer.ExtendedSpektraShowMessage) obj;
-
-      boolean result = true;
-      result = result && (getShowIndex()
-          == other.getShowIndex());
-      result = result && (getStepIndexOffset()
-          == other.getStepIndexOffset());
-      result = result && getStepList()
-          .equals(other.getStepList());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + SHOW_INDEX_FIELD_NUMBER;
-      hash = (53 * hash) + getShowIndex();
-      hash = (37 * hash) + STEP_INDEX_OFFSET_FIELD_NUMBER;
-      hash = (53 * hash) + getStepIndexOffset();
-      if (getStepCount() > 0) {
-        hash = (37 * hash) + STEP_FIELD_NUMBER;
-        hash = (53 * hash) + getStepList().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static EDS10ProtocolBuffer.ExtendedSpektraShowMessage parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static EDS10ProtocolBuffer.ExtendedSpektraShowMessage parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static EDS10ProtocolBuffer.ExtendedSpektraShowMessage parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static EDS10ProtocolBuffer.ExtendedSpektraShowMessage parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static EDS10ProtocolBuffer.ExtendedSpektraShowMessage parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static EDS10ProtocolBuffer.ExtendedSpektraShowMessage parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static EDS10ProtocolBuffer.ExtendedSpektraShowMessage parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static EDS10ProtocolBuffer.ExtendedSpektraShowMessage parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static EDS10ProtocolBuffer.ExtendedSpektraShowMessage parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static EDS10ProtocolBuffer.ExtendedSpektraShowMessage parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static EDS10ProtocolBuffer.ExtendedSpektraShowMessage parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static EDS10ProtocolBuffer.ExtendedSpektraShowMessage parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(EDS10ProtocolBuffer.ExtendedSpektraShowMessage prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * <pre>
-     * This Message must be used when the Show has more than 32 steps
-     * </pre>
-     *
-     * Protobuf type {@code ExtendedSpektraShowMessage}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ExtendedSpektraShowMessage)
-        EDS10ProtocolBuffer.ExtendedSpektraShowMessageOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return EDS10ProtocolBuffer.internal_static_ExtendedSpektraShowMessage_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return EDS10ProtocolBuffer.internal_static_ExtendedSpektraShowMessage_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                EDS10ProtocolBuffer.ExtendedSpektraShowMessage.class, EDS10ProtocolBuffer.ExtendedSpektraShowMessage.Builder.class);
-      }
-
-      // Construct using EDS10ProtocolBuffer.ExtendedSpektraShowMessage.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getStepFieldBuilder();
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        showIndex_ = 0;
-
-        stepIndexOffset_ = 0;
-
-        if (stepBuilder_ == null) {
-          step_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
-        } else {
-          stepBuilder_.clear();
-        }
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return EDS10ProtocolBuffer.internal_static_ExtendedSpektraShowMessage_descriptor;
-      }
-
-      @java.lang.Override
-      public EDS10ProtocolBuffer.ExtendedSpektraShowMessage getDefaultInstanceForType() {
-        return EDS10ProtocolBuffer.ExtendedSpektraShowMessage.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public EDS10ProtocolBuffer.ExtendedSpektraShowMessage build() {
-        EDS10ProtocolBuffer.ExtendedSpektraShowMessage result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public EDS10ProtocolBuffer.ExtendedSpektraShowMessage buildPartial() {
-        EDS10ProtocolBuffer.ExtendedSpektraShowMessage result = new EDS10ProtocolBuffer.ExtendedSpektraShowMessage(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        result.showIndex_ = showIndex_;
-        result.stepIndexOffset_ = stepIndexOffset_;
-        if (stepBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004)) {
-            step_ = java.util.Collections.unmodifiableList(step_);
-            bitField0_ = (bitField0_ & ~0x00000004);
-          }
-          result.step_ = step_;
-        } else {
-          result.step_ = stepBuilder_.build();
-        }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof EDS10ProtocolBuffer.ExtendedSpektraShowMessage) {
-          return mergeFrom((EDS10ProtocolBuffer.ExtendedSpektraShowMessage)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(EDS10ProtocolBuffer.ExtendedSpektraShowMessage other) {
-        if (other == EDS10ProtocolBuffer.ExtendedSpektraShowMessage.getDefaultInstance()) return this;
-        if (other.getShowIndex() != 0) {
-          setShowIndex(other.getShowIndex());
-        }
-        if (other.getStepIndexOffset() != 0) {
-          setStepIndexOffset(other.getStepIndexOffset());
-        }
-        if (stepBuilder_ == null) {
-          if (!other.step_.isEmpty()) {
-            if (step_.isEmpty()) {
-              step_ = other.step_;
-              bitField0_ = (bitField0_ & ~0x00000004);
-            } else {
-              ensureStepIsMutable();
-              step_.addAll(other.step_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.step_.isEmpty()) {
-            if (stepBuilder_.isEmpty()) {
-              stepBuilder_.dispose();
-              stepBuilder_ = null;
-              step_ = other.step_;
-              bitField0_ = (bitField0_ & ~0x00000004);
-              stepBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getStepFieldBuilder() : null;
-            } else {
-              stepBuilder_.addAllMessages(other.step_);
-            }
-          }
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        EDS10ProtocolBuffer.ExtendedSpektraShowMessage parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (EDS10ProtocolBuffer.ExtendedSpektraShowMessage) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      private int showIndex_ ;
-      /**
-       * <pre>
-       * Which Show do these steps belong to?
-       * </pre>
-       *
-       * <code>uint32 show_index = 1;</code>
-       */
-      public int getShowIndex() {
-        return showIndex_;
-      }
-      /**
-       * <pre>
-       * Which Show do these steps belong to?
-       * </pre>
-       *
-       * <code>uint32 show_index = 1;</code>
-       */
-      public Builder setShowIndex(int value) {
-        
-        showIndex_ = value;
+      public Builder addIndex(int value) {
+        ensureIndexIsMutable();
+        index_.add(value);
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * Which Show do these steps belong to?
+       * Target Index Per Zone
        * </pre>
        *
-       * <code>uint32 show_index = 1;</code>
+       * <code>repeated uint32 index = 2;</code>
        */
-      public Builder clearShowIndex() {
-        
-        showIndex_ = 0;
+      public Builder addAllIndex(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureIndexIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, index_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Target Index Per Zone
+       * </pre>
+       *
+       * <code>repeated uint32 index = 2;</code>
+       */
+      public Builder clearIndex() {
+        index_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
 
-      private int stepIndexOffset_ ;
-      /**
-       * <pre>
-       * 0 for the first ExtendedListMessage; offset by 32 for every ExtendedListMessage beyond the first
-       * </pre>
-       *
-       * <code>uint32 step_index_offset = 2;</code>
-       */
-      public int getStepIndexOffset() {
-        return stepIndexOffset_;
-      }
-      /**
-       * <pre>
-       * 0 for the first ExtendedListMessage; offset by 32 for every ExtendedListMessage beyond the first
-       * </pre>
-       *
-       * <code>uint32 step_index_offset = 2;</code>
-       */
-      public Builder setStepIndexOffset(int value) {
-        
-        stepIndexOffset_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * 0 for the first ExtendedListMessage; offset by 32 for every ExtendedListMessage beyond the first
-       * </pre>
-       *
-       * <code>uint32 step_index_offset = 2;</code>
-       */
-      public Builder clearStepIndexOffset() {
-        
-        stepIndexOffset_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private java.util.List<EDS10ProtocolBuffer.ShowStepMessage> step_ =
+      private java.util.List<java.lang.Integer> action_ =
         java.util.Collections.emptyList();
-      private void ensureStepIsMutable() {
+      private void ensureActionIsMutable() {
         if (!((bitField0_ & 0x00000004) == 0x00000004)) {
-          step_ = new java.util.ArrayList<EDS10ProtocolBuffer.ShowStepMessage>(step_);
+          action_ = new java.util.ArrayList<java.lang.Integer>(action_);
           bitField0_ |= 0x00000004;
+        }
+      }
+      /**
+       * <pre>
+       * Target Action Per Zone
+       * </pre>
+       *
+       * <code>repeated .SpektraActionType action = 3;</code>
+       */
+      public java.util.List<EDS10ProtocolBuffer.SpektraActionType> getActionList() {
+        return new com.google.protobuf.Internal.ListAdapter<
+            java.lang.Integer, EDS10ProtocolBuffer.SpektraActionType>(action_, action_converter_);
+      }
+      /**
+       * <pre>
+       * Target Action Per Zone
+       * </pre>
+       *
+       * <code>repeated .SpektraActionType action = 3;</code>
+       */
+      public int getActionCount() {
+        return action_.size();
+      }
+      /**
+       * <pre>
+       * Target Action Per Zone
+       * </pre>
+       *
+       * <code>repeated .SpektraActionType action = 3;</code>
+       */
+      public EDS10ProtocolBuffer.SpektraActionType getAction(int index) {
+        return action_converter_.convert(action_.get(index));
+      }
+      /**
+       * <pre>
+       * Target Action Per Zone
+       * </pre>
+       *
+       * <code>repeated .SpektraActionType action = 3;</code>
+       */
+      public Builder setAction(
+          int index, EDS10ProtocolBuffer.SpektraActionType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureActionIsMutable();
+        action_.set(index, value.getNumber());
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Target Action Per Zone
+       * </pre>
+       *
+       * <code>repeated .SpektraActionType action = 3;</code>
+       */
+      public Builder addAction(EDS10ProtocolBuffer.SpektraActionType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureActionIsMutable();
+        action_.add(value.getNumber());
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Target Action Per Zone
+       * </pre>
+       *
+       * <code>repeated .SpektraActionType action = 3;</code>
+       */
+      public Builder addAllAction(
+          java.lang.Iterable<? extends EDS10ProtocolBuffer.SpektraActionType> values) {
+        ensureActionIsMutable();
+        for (EDS10ProtocolBuffer.SpektraActionType value : values) {
+          action_.add(value.getNumber());
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Target Action Per Zone
+       * </pre>
+       *
+       * <code>repeated .SpektraActionType action = 3;</code>
+       */
+      public Builder clearAction() {
+        action_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Target Action Per Zone
+       * </pre>
+       *
+       * <code>repeated .SpektraActionType action = 3;</code>
+       */
+      public java.util.List<java.lang.Integer>
+      getActionValueList() {
+        return java.util.Collections.unmodifiableList(action_);
+      }
+      /**
+       * <pre>
+       * Target Action Per Zone
+       * </pre>
+       *
+       * <code>repeated .SpektraActionType action = 3;</code>
+       */
+      public int getActionValue(int index) {
+        return action_.get(index);
+      }
+      /**
+       * <pre>
+       * Target Action Per Zone
+       * </pre>
+       *
+       * <code>repeated .SpektraActionType action = 3;</code>
+       */
+      public Builder setActionValue(
+          int index, int value) {
+        ensureActionIsMutable();
+        action_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Target Action Per Zone
+       * </pre>
+       *
+       * <code>repeated .SpektraActionType action = 3;</code>
+       */
+      public Builder addActionValue(int value) {
+        ensureActionIsMutable();
+        action_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Target Action Per Zone
+       * </pre>
+       *
+       * <code>repeated .SpektraActionType action = 3;</code>
+       */
+      public Builder addAllActionValue(
+          java.lang.Iterable<java.lang.Integer> values) {
+        ensureActionIsMutable();
+        for (int value : values) {
+          action_.add(value);
+        }
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<java.lang.Integer> stepIndex_ = java.util.Collections.emptyList();
+      private void ensureStepIndexIsMutable() {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          stepIndex_ = new java.util.ArrayList<java.lang.Integer>(stepIndex_);
+          bitField0_ |= 0x00000008;
          }
       }
-
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          EDS10ProtocolBuffer.ShowStepMessage, EDS10ProtocolBuffer.ShowStepMessage.Builder, EDS10ProtocolBuffer.ShowStepMessageOrBuilder> stepBuilder_;
-
-      /**
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public java.util.List<EDS10ProtocolBuffer.ShowStepMessage> getStepList() {
-        if (stepBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(step_);
-        } else {
-          return stepBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public int getStepCount() {
-        if (stepBuilder_ == null) {
-          return step_.size();
-        } else {
-          return stepBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public EDS10ProtocolBuffer.ShowStepMessage getStep(int index) {
-        if (stepBuilder_ == null) {
-          return step_.get(index);
-        } else {
-          return stepBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public Builder setStep(
-          int index, EDS10ProtocolBuffer.ShowStepMessage value) {
-        if (stepBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureStepIsMutable();
-          step_.set(index, value);
-          onChanged();
-        } else {
-          stepBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public Builder setStep(
-          int index, EDS10ProtocolBuffer.ShowStepMessage.Builder builderForValue) {
-        if (stepBuilder_ == null) {
-          ensureStepIsMutable();
-          step_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          stepBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public Builder addStep(EDS10ProtocolBuffer.ShowStepMessage value) {
-        if (stepBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureStepIsMutable();
-          step_.add(value);
-          onChanged();
-        } else {
-          stepBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public Builder addStep(
-          int index, EDS10ProtocolBuffer.ShowStepMessage value) {
-        if (stepBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureStepIsMutable();
-          step_.add(index, value);
-          onChanged();
-        } else {
-          stepBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public Builder addStep(
-          EDS10ProtocolBuffer.ShowStepMessage.Builder builderForValue) {
-        if (stepBuilder_ == null) {
-          ensureStepIsMutable();
-          step_.add(builderForValue.build());
-          onChanged();
-        } else {
-          stepBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public Builder addStep(
-          int index, EDS10ProtocolBuffer.ShowStepMessage.Builder builderForValue) {
-        if (stepBuilder_ == null) {
-          ensureStepIsMutable();
-          step_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          stepBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public Builder addAllStep(
-          java.lang.Iterable<? extends EDS10ProtocolBuffer.ShowStepMessage> values) {
-        if (stepBuilder_ == null) {
-          ensureStepIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, step_);
-          onChanged();
-        } else {
-          stepBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public Builder clearStep() {
-        if (stepBuilder_ == null) {
-          step_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
-          onChanged();
-        } else {
-          stepBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public Builder removeStep(int index) {
-        if (stepBuilder_ == null) {
-          ensureStepIsMutable();
-          step_.remove(index);
-          onChanged();
-        } else {
-          stepBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public EDS10ProtocolBuffer.ShowStepMessage.Builder getStepBuilder(
-          int index) {
-        return getStepFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public EDS10ProtocolBuffer.ShowStepMessageOrBuilder getStepOrBuilder(
-          int index) {
-        if (stepBuilder_ == null) {
-          return step_.get(index);  } else {
-          return stepBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public java.util.List<? extends EDS10ProtocolBuffer.ShowStepMessageOrBuilder> 
-           getStepOrBuilderList() {
-        if (stepBuilder_ != null) {
-          return stepBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(step_);
-        }
-      }
-      /**
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public EDS10ProtocolBuffer.ShowStepMessage.Builder addStepBuilder() {
-        return getStepFieldBuilder().addBuilder(
-            EDS10ProtocolBuffer.ShowStepMessage.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public EDS10ProtocolBuffer.ShowStepMessage.Builder addStepBuilder(
-          int index) {
-        return getStepFieldBuilder().addBuilder(
-            index, EDS10ProtocolBuffer.ShowStepMessage.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .ShowStepMessage step = 3;</code>
-       */
-      public java.util.List<EDS10ProtocolBuffer.ShowStepMessage.Builder> 
-           getStepBuilderList() {
-        return getStepFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          EDS10ProtocolBuffer.ShowStepMessage, EDS10ProtocolBuffer.ShowStepMessage.Builder, EDS10ProtocolBuffer.ShowStepMessageOrBuilder> 
-          getStepFieldBuilder() {
-        if (stepBuilder_ == null) {
-          stepBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              EDS10ProtocolBuffer.ShowStepMessage, EDS10ProtocolBuffer.ShowStepMessage.Builder, EDS10ProtocolBuffer.ShowStepMessageOrBuilder>(
-                  step_,
-                  ((bitField0_ & 0x00000004) == 0x00000004),
-                  getParentForChildren(),
-                  isClean());
-          step_ = null;
-        }
-        return stepBuilder_;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:ExtendedSpektraShowMessage)
-    }
-
-    // @@protoc_insertion_point(class_scope:ExtendedSpektraShowMessage)
-    private static final EDS10ProtocolBuffer.ExtendedSpektraShowMessage DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.ExtendedSpektraShowMessage();
-    }
-
-    public static EDS10ProtocolBuffer.ExtendedSpektraShowMessage getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<ExtendedSpektraShowMessage>
-        PARSER = new com.google.protobuf.AbstractParser<ExtendedSpektraShowMessage>() {
-      @java.lang.Override
-      public ExtendedSpektraShowMessage parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ExtendedSpektraShowMessage(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<ExtendedSpektraShowMessage> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ExtendedSpektraShowMessage> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public EDS10ProtocolBuffer.ExtendedSpektraShowMessage getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface SpektraShowControlMessageOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:SpektraShowControlMessage)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <pre>
-     * Which Show
-     * </pre>
-     *
-     * <code>uint32 show_index = 1;</code>
-     */
-    int getShowIndex();
-
-    /**
-     * <pre>
-     * Action
-     * </pre>
-     *
-     * <code>uint32 start_resume = 2;</code>
-     */
-    int getStartResume();
-
-    /**
-     * <pre>
-     * Which step to start on if not 0
-     * </pre>
-     *
-     * <code>uint32 gotoStep = 3;</code>
-     */
-    int getGotoStep();
-  }
-  /**
-   * <pre>
-   * Currently Work In Progress
-   * </pre>
-   *
-   * Protobuf type {@code SpektraShowControlMessage}
-   */
-  public  static final class SpektraShowControlMessage extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:SpektraShowControlMessage)
-      SpektraShowControlMessageOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use SpektraShowControlMessage.newBuilder() to construct.
-    private SpektraShowControlMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private SpektraShowControlMessage() {
-      showIndex_ = 0;
-      startResume_ = 0;
-      gotoStep_ = 0;
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private SpektraShowControlMessage(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-
-              showIndex_ = input.readUInt32();
-              break;
-            }
-            case 16: {
-
-              startResume_ = input.readUInt32();
-              break;
-            }
-            case 24: {
-
-              gotoStep_ = input.readUInt32();
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return EDS10ProtocolBuffer.internal_static_SpektraShowControlMessage_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return EDS10ProtocolBuffer.internal_static_SpektraShowControlMessage_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              EDS10ProtocolBuffer.SpektraShowControlMessage.class, EDS10ProtocolBuffer.SpektraShowControlMessage.Builder.class);
-    }
-
-    public static final int SHOW_INDEX_FIELD_NUMBER = 1;
-    private int showIndex_;
-    /**
-     * <pre>
-     * Which Show
-     * </pre>
-     *
-     * <code>uint32 show_index = 1;</code>
-     */
-    public int getShowIndex() {
-      return showIndex_;
-    }
-
-    public static final int START_RESUME_FIELD_NUMBER = 2;
-    private int startResume_;
-    /**
-     * <pre>
-     * Action
-     * </pre>
-     *
-     * <code>uint32 start_resume = 2;</code>
-     */
-    public int getStartResume() {
-      return startResume_;
-    }
-
-    public static final int GOTOSTEP_FIELD_NUMBER = 3;
-    private int gotoStep_;
-    /**
-     * <pre>
-     * Which step to start on if not 0
-     * </pre>
-     *
-     * <code>uint32 gotoStep = 3;</code>
-     */
-    public int getGotoStep() {
-      return gotoStep_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (showIndex_ != 0) {
-        output.writeUInt32(1, showIndex_);
-      }
-      if (startResume_ != 0) {
-        output.writeUInt32(2, startResume_);
-      }
-      if (gotoStep_ != 0) {
-        output.writeUInt32(3, gotoStep_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (showIndex_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, showIndex_);
-      }
-      if (startResume_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(2, startResume_);
-      }
-      if (gotoStep_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(3, gotoStep_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof EDS10ProtocolBuffer.SpektraShowControlMessage)) {
-        return super.equals(obj);
-      }
-      EDS10ProtocolBuffer.SpektraShowControlMessage other = (EDS10ProtocolBuffer.SpektraShowControlMessage) obj;
-
-      boolean result = true;
-      result = result && (getShowIndex()
-          == other.getShowIndex());
-      result = result && (getStartResume()
-          == other.getStartResume());
-      result = result && (getGotoStep()
-          == other.getGotoStep());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + SHOW_INDEX_FIELD_NUMBER;
-      hash = (53 * hash) + getShowIndex();
-      hash = (37 * hash) + START_RESUME_FIELD_NUMBER;
-      hash = (53 * hash) + getStartResume();
-      hash = (37 * hash) + GOTOSTEP_FIELD_NUMBER;
-      hash = (53 * hash) + getGotoStep();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static EDS10ProtocolBuffer.SpektraShowControlMessage parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static EDS10ProtocolBuffer.SpektraShowControlMessage parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static EDS10ProtocolBuffer.SpektraShowControlMessage parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static EDS10ProtocolBuffer.SpektraShowControlMessage parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static EDS10ProtocolBuffer.SpektraShowControlMessage parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static EDS10ProtocolBuffer.SpektraShowControlMessage parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static EDS10ProtocolBuffer.SpektraShowControlMessage parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static EDS10ProtocolBuffer.SpektraShowControlMessage parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static EDS10ProtocolBuffer.SpektraShowControlMessage parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static EDS10ProtocolBuffer.SpektraShowControlMessage parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static EDS10ProtocolBuffer.SpektraShowControlMessage parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static EDS10ProtocolBuffer.SpektraShowControlMessage parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(EDS10ProtocolBuffer.SpektraShowControlMessage prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * <pre>
-     * Currently Work In Progress
-     * </pre>
-     *
-     * Protobuf type {@code SpektraShowControlMessage}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:SpektraShowControlMessage)
-        EDS10ProtocolBuffer.SpektraShowControlMessageOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return EDS10ProtocolBuffer.internal_static_SpektraShowControlMessage_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return EDS10ProtocolBuffer.internal_static_SpektraShowControlMessage_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                EDS10ProtocolBuffer.SpektraShowControlMessage.class, EDS10ProtocolBuffer.SpektraShowControlMessage.Builder.class);
-      }
-
-      // Construct using EDS10ProtocolBuffer.SpektraShowControlMessage.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        showIndex_ = 0;
-
-        startResume_ = 0;
-
-        gotoStep_ = 0;
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return EDS10ProtocolBuffer.internal_static_SpektraShowControlMessage_descriptor;
-      }
-
-      @java.lang.Override
-      public EDS10ProtocolBuffer.SpektraShowControlMessage getDefaultInstanceForType() {
-        return EDS10ProtocolBuffer.SpektraShowControlMessage.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public EDS10ProtocolBuffer.SpektraShowControlMessage build() {
-        EDS10ProtocolBuffer.SpektraShowControlMessage result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public EDS10ProtocolBuffer.SpektraShowControlMessage buildPartial() {
-        EDS10ProtocolBuffer.SpektraShowControlMessage result = new EDS10ProtocolBuffer.SpektraShowControlMessage(this);
-        result.showIndex_ = showIndex_;
-        result.startResume_ = startResume_;
-        result.gotoStep_ = gotoStep_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof EDS10ProtocolBuffer.SpektraShowControlMessage) {
-          return mergeFrom((EDS10ProtocolBuffer.SpektraShowControlMessage)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(EDS10ProtocolBuffer.SpektraShowControlMessage other) {
-        if (other == EDS10ProtocolBuffer.SpektraShowControlMessage.getDefaultInstance()) return this;
-        if (other.getShowIndex() != 0) {
-          setShowIndex(other.getShowIndex());
-        }
-        if (other.getStartResume() != 0) {
-          setStartResume(other.getStartResume());
-        }
-        if (other.getGotoStep() != 0) {
-          setGotoStep(other.getGotoStep());
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        EDS10ProtocolBuffer.SpektraShowControlMessage parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (EDS10ProtocolBuffer.SpektraShowControlMessage) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private int showIndex_ ;
       /**
        * <pre>
-       * Which Show
+       * RAM Data Settings                
        * </pre>
        *
-       * <code>uint32 show_index = 1;</code>
+       * <code>repeated uint32 step_index = 4;</code>
        */
-      public int getShowIndex() {
-        return showIndex_;
+      public java.util.List<java.lang.Integer>
+          getStepIndexList() {
+        return java.util.Collections.unmodifiableList(stepIndex_);
       }
       /**
        * <pre>
-       * Which Show
+       * RAM Data Settings                
        * </pre>
        *
-       * <code>uint32 show_index = 1;</code>
+       * <code>repeated uint32 step_index = 4;</code>
        */
-      public Builder setShowIndex(int value) {
-        
-        showIndex_ = value;
+      public int getStepIndexCount() {
+        return stepIndex_.size();
+      }
+      /**
+       * <pre>
+       * RAM Data Settings                
+       * </pre>
+       *
+       * <code>repeated uint32 step_index = 4;</code>
+       */
+      public int getStepIndex(int index) {
+        return stepIndex_.get(index);
+      }
+      /**
+       * <pre>
+       * RAM Data Settings                
+       * </pre>
+       *
+       * <code>repeated uint32 step_index = 4;</code>
+       */
+      public Builder setStepIndex(
+          int index, int value) {
+        ensureStepIndexIsMutable();
+        stepIndex_.set(index, value);
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * Which Show
+       * RAM Data Settings                
        * </pre>
        *
-       * <code>uint32 show_index = 1;</code>
+       * <code>repeated uint32 step_index = 4;</code>
        */
-      public Builder clearShowIndex() {
-        
-        showIndex_ = 0;
+      public Builder addStepIndex(int value) {
+        ensureStepIndexIsMutable();
+        stepIndex_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * RAM Data Settings                
+       * </pre>
+       *
+       * <code>repeated uint32 step_index = 4;</code>
+       */
+      public Builder addAllStepIndex(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureStepIndexIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, stepIndex_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * RAM Data Settings                
+       * </pre>
+       *
+       * <code>repeated uint32 step_index = 4;</code>
+       */
+      public Builder clearStepIndex() {
+        stepIndex_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000008);
         onChanged();
         return this;
       }
 
-      private int startResume_ ;
-      /**
-       * <pre>
-       * Action
-       * </pre>
-       *
-       * <code>uint32 start_resume = 2;</code>
-       */
-      public int getStartResume() {
-        return startResume_;
+      private java.util.List<java.lang.Integer> stepIndexDirection_ = java.util.Collections.emptyList();
+      private void ensureStepIndexDirectionIsMutable() {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+          stepIndexDirection_ = new java.util.ArrayList<java.lang.Integer>(stepIndexDirection_);
+          bitField0_ |= 0x00000010;
+         }
       }
       /**
        * <pre>
-       * Action
+       * Forwards/Backwards (If Cycling)
        * </pre>
        *
-       * <code>uint32 start_resume = 2;</code>
+       * <code>repeated uint32 step_index_direction = 5;</code>
        */
-      public Builder setStartResume(int value) {
-        
-        startResume_ = value;
+      public java.util.List<java.lang.Integer>
+          getStepIndexDirectionList() {
+        return java.util.Collections.unmodifiableList(stepIndexDirection_);
+      }
+      /**
+       * <pre>
+       * Forwards/Backwards (If Cycling)
+       * </pre>
+       *
+       * <code>repeated uint32 step_index_direction = 5;</code>
+       */
+      public int getStepIndexDirectionCount() {
+        return stepIndexDirection_.size();
+      }
+      /**
+       * <pre>
+       * Forwards/Backwards (If Cycling)
+       * </pre>
+       *
+       * <code>repeated uint32 step_index_direction = 5;</code>
+       */
+      public int getStepIndexDirection(int index) {
+        return stepIndexDirection_.get(index);
+      }
+      /**
+       * <pre>
+       * Forwards/Backwards (If Cycling)
+       * </pre>
+       *
+       * <code>repeated uint32 step_index_direction = 5;</code>
+       */
+      public Builder setStepIndexDirection(
+          int index, int value) {
+        ensureStepIndexDirectionIsMutable();
+        stepIndexDirection_.set(index, value);
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * Action
+       * Forwards/Backwards (If Cycling)
        * </pre>
        *
-       * <code>uint32 start_resume = 2;</code>
+       * <code>repeated uint32 step_index_direction = 5;</code>
        */
-      public Builder clearStartResume() {
-        
-        startResume_ = 0;
+      public Builder addStepIndexDirection(int value) {
+        ensureStepIndexDirectionIsMutable();
+        stepIndexDirection_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Forwards/Backwards (If Cycling)
+       * </pre>
+       *
+       * <code>repeated uint32 step_index_direction = 5;</code>
+       */
+      public Builder addAllStepIndexDirection(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureStepIndexDirectionIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, stepIndexDirection_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Forwards/Backwards (If Cycling)
+       * </pre>
+       *
+       * <code>repeated uint32 step_index_direction = 5;</code>
+       */
+      public Builder clearStepIndexDirection() {
+        stepIndexDirection_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000010);
         onChanged();
         return this;
       }
 
-      private int gotoStep_ ;
-      /**
-       * <pre>
-       * Which step to start on if not 0
-       * </pre>
-       *
-       * <code>uint32 gotoStep = 3;</code>
-       */
-      public int getGotoStep() {
-        return gotoStep_;
+      private java.util.List<java.lang.Integer> colourIndex_ = java.util.Collections.emptyList();
+      private void ensureColourIndexIsMutable() {
+        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
+          colourIndex_ = new java.util.ArrayList<java.lang.Integer>(colourIndex_);
+          bitField0_ |= 0x00000020;
+         }
       }
       /**
        * <pre>
-       * Which step to start on if not 0
+       * Current State of Colour Index (Changes over time)
        * </pre>
        *
-       * <code>uint32 gotoStep = 3;</code>
+       * <code>repeated uint32 colour_index = 6;</code>
        */
-      public Builder setGotoStep(int value) {
-        
-        gotoStep_ = value;
+      public java.util.List<java.lang.Integer>
+          getColourIndexList() {
+        return java.util.Collections.unmodifiableList(colourIndex_);
+      }
+      /**
+       * <pre>
+       * Current State of Colour Index (Changes over time)
+       * </pre>
+       *
+       * <code>repeated uint32 colour_index = 6;</code>
+       */
+      public int getColourIndexCount() {
+        return colourIndex_.size();
+      }
+      /**
+       * <pre>
+       * Current State of Colour Index (Changes over time)
+       * </pre>
+       *
+       * <code>repeated uint32 colour_index = 6;</code>
+       */
+      public int getColourIndex(int index) {
+        return colourIndex_.get(index);
+      }
+      /**
+       * <pre>
+       * Current State of Colour Index (Changes over time)
+       * </pre>
+       *
+       * <code>repeated uint32 colour_index = 6;</code>
+       */
+      public Builder setColourIndex(
+          int index, int value) {
+        ensureColourIndexIsMutable();
+        colourIndex_.set(index, value);
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * Which step to start on if not 0
+       * Current State of Colour Index (Changes over time)
        * </pre>
        *
-       * <code>uint32 gotoStep = 3;</code>
+       * <code>repeated uint32 colour_index = 6;</code>
        */
-      public Builder clearGotoStep() {
-        
-        gotoStep_ = 0;
+      public Builder addColourIndex(int value) {
+        ensureColourIndexIsMutable();
+        colourIndex_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Current State of Colour Index (Changes over time)
+       * </pre>
+       *
+       * <code>repeated uint32 colour_index = 6;</code>
+       */
+      public Builder addAllColourIndex(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureColourIndexIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, colourIndex_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Current State of Colour Index (Changes over time)
+       * </pre>
+       *
+       * <code>repeated uint32 colour_index = 6;</code>
+       */
+      public Builder clearColourIndex() {
+        colourIndex_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000020);
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<java.lang.Integer> colourRange_ = java.util.Collections.emptyList();
+      private void ensureColourRangeIsMutable() {
+        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
+          colourRange_ = new java.util.ArrayList<java.lang.Integer>(colourRange_);
+          bitField0_ |= 0x00000040;
+         }
+      }
+      /**
+       * <pre>
+       * Current State of Colour Range (Changes based on Sequence Step)
+       * </pre>
+       *
+       * <code>repeated uint32 colour_range = 7;</code>
+       */
+      public java.util.List<java.lang.Integer>
+          getColourRangeList() {
+        return java.util.Collections.unmodifiableList(colourRange_);
+      }
+      /**
+       * <pre>
+       * Current State of Colour Range (Changes based on Sequence Step)
+       * </pre>
+       *
+       * <code>repeated uint32 colour_range = 7;</code>
+       */
+      public int getColourRangeCount() {
+        return colourRange_.size();
+      }
+      /**
+       * <pre>
+       * Current State of Colour Range (Changes based on Sequence Step)
+       * </pre>
+       *
+       * <code>repeated uint32 colour_range = 7;</code>
+       */
+      public int getColourRange(int index) {
+        return colourRange_.get(index);
+      }
+      /**
+       * <pre>
+       * Current State of Colour Range (Changes based on Sequence Step)
+       * </pre>
+       *
+       * <code>repeated uint32 colour_range = 7;</code>
+       */
+      public Builder setColourRange(
+          int index, int value) {
+        ensureColourRangeIsMutable();
+        colourRange_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Current State of Colour Range (Changes based on Sequence Step)
+       * </pre>
+       *
+       * <code>repeated uint32 colour_range = 7;</code>
+       */
+      public Builder addColourRange(int value) {
+        ensureColourRangeIsMutable();
+        colourRange_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Current State of Colour Range (Changes based on Sequence Step)
+       * </pre>
+       *
+       * <code>repeated uint32 colour_range = 7;</code>
+       */
+      public Builder addAllColourRange(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureColourRangeIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, colourRange_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Current State of Colour Range (Changes based on Sequence Step)
+       * </pre>
+       *
+       * <code>repeated uint32 colour_range = 7;</code>
+       */
+      public Builder clearColourRange() {
+        colourRange_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000040);
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<java.lang.Integer> randomSeqType_ = java.util.Collections.emptyList();
+      private void ensureRandomSeqTypeIsMutable() {
+        if (!((bitField0_ & 0x00000080) == 0x00000080)) {
+          randomSeqType_ = new java.util.ArrayList<java.lang.Integer>(randomSeqType_);
+          bitField0_ |= 0x00000080;
+         }
+      }
+      /**
+       * <pre>
+       * Currently Active Random Sequence Type
+       * </pre>
+       *
+       * <code>repeated uint32 random_seq_type = 8;</code>
+       */
+      public java.util.List<java.lang.Integer>
+          getRandomSeqTypeList() {
+        return java.util.Collections.unmodifiableList(randomSeqType_);
+      }
+      /**
+       * <pre>
+       * Currently Active Random Sequence Type
+       * </pre>
+       *
+       * <code>repeated uint32 random_seq_type = 8;</code>
+       */
+      public int getRandomSeqTypeCount() {
+        return randomSeqType_.size();
+      }
+      /**
+       * <pre>
+       * Currently Active Random Sequence Type
+       * </pre>
+       *
+       * <code>repeated uint32 random_seq_type = 8;</code>
+       */
+      public int getRandomSeqType(int index) {
+        return randomSeqType_.get(index);
+      }
+      /**
+       * <pre>
+       * Currently Active Random Sequence Type
+       * </pre>
+       *
+       * <code>repeated uint32 random_seq_type = 8;</code>
+       */
+      public Builder setRandomSeqType(
+          int index, int value) {
+        ensureRandomSeqTypeIsMutable();
+        randomSeqType_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Currently Active Random Sequence Type
+       * </pre>
+       *
+       * <code>repeated uint32 random_seq_type = 8;</code>
+       */
+      public Builder addRandomSeqType(int value) {
+        ensureRandomSeqTypeIsMutable();
+        randomSeqType_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Currently Active Random Sequence Type
+       * </pre>
+       *
+       * <code>repeated uint32 random_seq_type = 8;</code>
+       */
+      public Builder addAllRandomSeqType(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureRandomSeqTypeIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, randomSeqType_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Currently Active Random Sequence Type
+       * </pre>
+       *
+       * <code>repeated uint32 random_seq_type = 8;</code>
+       */
+      public Builder clearRandomSeqType() {
+        randomSeqType_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000080);
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<java.lang.Boolean> zoneActive_ = java.util.Collections.emptyList();
+      private void ensureZoneActiveIsMutable() {
+        if (!((bitField0_ & 0x00000100) == 0x00000100)) {
+          zoneActive_ = new java.util.ArrayList<java.lang.Boolean>(zoneActive_);
+          bitField0_ |= 0x00000100;
+         }
+      }
+      /**
+       * <pre>
+       * Flag to show if any channel in this zone is active
+       * </pre>
+       *
+       * <code>repeated bool zone_active = 9;</code>
+       */
+      public java.util.List<java.lang.Boolean>
+          getZoneActiveList() {
+        return java.util.Collections.unmodifiableList(zoneActive_);
+      }
+      /**
+       * <pre>
+       * Flag to show if any channel in this zone is active
+       * </pre>
+       *
+       * <code>repeated bool zone_active = 9;</code>
+       */
+      public int getZoneActiveCount() {
+        return zoneActive_.size();
+      }
+      /**
+       * <pre>
+       * Flag to show if any channel in this zone is active
+       * </pre>
+       *
+       * <code>repeated bool zone_active = 9;</code>
+       */
+      public boolean getZoneActive(int index) {
+        return zoneActive_.get(index);
+      }
+      /**
+       * <pre>
+       * Flag to show if any channel in this zone is active
+       * </pre>
+       *
+       * <code>repeated bool zone_active = 9;</code>
+       */
+      public Builder setZoneActive(
+          int index, boolean value) {
+        ensureZoneActiveIsMutable();
+        zoneActive_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Flag to show if any channel in this zone is active
+       * </pre>
+       *
+       * <code>repeated bool zone_active = 9;</code>
+       */
+      public Builder addZoneActive(boolean value) {
+        ensureZoneActiveIsMutable();
+        zoneActive_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Flag to show if any channel in this zone is active
+       * </pre>
+       *
+       * <code>repeated bool zone_active = 9;</code>
+       */
+      public Builder addAllZoneActive(
+          java.lang.Iterable<? extends java.lang.Boolean> values) {
+        ensureZoneActiveIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, zoneActive_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Flag to show if any channel in this zone is active
+       * </pre>
+       *
+       * <code>repeated bool zone_active = 9;</code>
+       */
+      public Builder clearZoneActive() {
+        zoneActive_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000100);
         onChanged();
         return this;
       }
@@ -69276,41 +68074,41 @@ public final class EDS10ProtocolBuffer {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:SpektraShowControlMessage)
+      // @@protoc_insertion_point(builder_scope:SpektraLiveMessage)
     }
 
-    // @@protoc_insertion_point(class_scope:SpektraShowControlMessage)
-    private static final EDS10ProtocolBuffer.SpektraShowControlMessage DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:SpektraLiveMessage)
+    private static final EDS10ProtocolBuffer.SpektraLiveMessage DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.SpektraShowControlMessage();
+      DEFAULT_INSTANCE = new EDS10ProtocolBuffer.SpektraLiveMessage();
     }
 
-    public static EDS10ProtocolBuffer.SpektraShowControlMessage getDefaultInstance() {
+    public static EDS10ProtocolBuffer.SpektraLiveMessage getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<SpektraShowControlMessage>
-        PARSER = new com.google.protobuf.AbstractParser<SpektraShowControlMessage>() {
+    private static final com.google.protobuf.Parser<SpektraLiveMessage>
+        PARSER = new com.google.protobuf.AbstractParser<SpektraLiveMessage>() {
       @java.lang.Override
-      public SpektraShowControlMessage parsePartialFrom(
+      public SpektraLiveMessage parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SpektraShowControlMessage(input, extensionRegistry);
+        return new SpektraLiveMessage(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<SpektraShowControlMessage> parser() {
+    public static com.google.protobuf.Parser<SpektraLiveMessage> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<SpektraShowControlMessage> getParserForType() {
+    public com.google.protobuf.Parser<SpektraLiveMessage> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public EDS10ProtocolBuffer.SpektraShowControlMessage getDefaultInstanceForType() {
+    public EDS10ProtocolBuffer.SpektraLiveMessage getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -91037,6 +89835,15 @@ public final class EDS10ProtocolBuffer {
      * <code>.FirmwareCommandType cmd = 1;</code>
      */
     EDS10ProtocolBuffer.FirmwareCommandType getCmd();
+
+    /**
+     * <pre>
+     * Flag used for FW_READ, FW_VERIFY, and FW_CLONE. Does not work for FW_APPLY
+     * </pre>
+     *
+     * <code>bool firmware_is_backup = 2;</code>
+     */
+    boolean getFirmwareIsBackup();
   }
   /**
    * <pre>
@@ -91056,6 +89863,7 @@ public final class EDS10ProtocolBuffer {
     }
     private FirmwareControlMessage() {
       cmd_ = 0;
+      firmwareIsBackup_ = false;
     }
 
     @java.lang.Override
@@ -91086,6 +89894,11 @@ public final class EDS10ProtocolBuffer {
               int rawValue = input.readEnum();
 
               cmd_ = rawValue;
+              break;
+            }
+            case 16: {
+
+              firmwareIsBackup_ = input.readBool();
               break;
             }
             default: {
@@ -91137,6 +89950,19 @@ public final class EDS10ProtocolBuffer {
       return result == null ? EDS10ProtocolBuffer.FirmwareCommandType.UNRECOGNIZED : result;
     }
 
+    public static final int FIRMWARE_IS_BACKUP_FIELD_NUMBER = 2;
+    private boolean firmwareIsBackup_;
+    /**
+     * <pre>
+     * Flag used for FW_READ, FW_VERIFY, and FW_CLONE. Does not work for FW_APPLY
+     * </pre>
+     *
+     * <code>bool firmware_is_backup = 2;</code>
+     */
+    public boolean getFirmwareIsBackup() {
+      return firmwareIsBackup_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -91154,6 +89980,9 @@ public final class EDS10ProtocolBuffer {
       if (cmd_ != EDS10ProtocolBuffer.FirmwareCommandType.FW_READY.getNumber()) {
         output.writeEnum(1, cmd_);
       }
+      if (firmwareIsBackup_ != false) {
+        output.writeBool(2, firmwareIsBackup_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -91166,6 +89995,10 @@ public final class EDS10ProtocolBuffer {
       if (cmd_ != EDS10ProtocolBuffer.FirmwareCommandType.FW_READY.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, cmd_);
+      }
+      if (firmwareIsBackup_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(2, firmwareIsBackup_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -91184,6 +90017,8 @@ public final class EDS10ProtocolBuffer {
 
       boolean result = true;
       result = result && cmd_ == other.cmd_;
+      result = result && (getFirmwareIsBackup()
+          == other.getFirmwareIsBackup());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -91197,6 +90032,9 @@ public final class EDS10ProtocolBuffer {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + CMD_FIELD_NUMBER;
       hash = (53 * hash) + cmd_;
+      hash = (37 * hash) + FIRMWARE_IS_BACKUP_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getFirmwareIsBackup());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -91336,6 +90174,8 @@ public final class EDS10ProtocolBuffer {
         super.clear();
         cmd_ = 0;
 
+        firmwareIsBackup_ = false;
+
         return this;
       }
 
@@ -91363,6 +90203,7 @@ public final class EDS10ProtocolBuffer {
       public EDS10ProtocolBuffer.FirmwareControlMessage buildPartial() {
         EDS10ProtocolBuffer.FirmwareControlMessage result = new EDS10ProtocolBuffer.FirmwareControlMessage(this);
         result.cmd_ = cmd_;
+        result.firmwareIsBackup_ = firmwareIsBackup_;
         onBuilt();
         return result;
       }
@@ -91413,6 +90254,9 @@ public final class EDS10ProtocolBuffer {
         if (other == EDS10ProtocolBuffer.FirmwareControlMessage.getDefaultInstance()) return this;
         if (other.cmd_ != 0) {
           setCmdValue(other.getCmdValue());
+        }
+        if (other.getFirmwareIsBackup() != false) {
+          setFirmwareIsBackup(other.getFirmwareIsBackup());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -91484,6 +90328,44 @@ public final class EDS10ProtocolBuffer {
       public Builder clearCmd() {
         
         cmd_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private boolean firmwareIsBackup_ ;
+      /**
+       * <pre>
+       * Flag used for FW_READ, FW_VERIFY, and FW_CLONE. Does not work for FW_APPLY
+       * </pre>
+       *
+       * <code>bool firmware_is_backup = 2;</code>
+       */
+      public boolean getFirmwareIsBackup() {
+        return firmwareIsBackup_;
+      }
+      /**
+       * <pre>
+       * Flag used for FW_READ, FW_VERIFY, and FW_CLONE. Does not work for FW_APPLY
+       * </pre>
+       *
+       * <code>bool firmware_is_backup = 2;</code>
+       */
+      public Builder setFirmwareIsBackup(boolean value) {
+        
+        firmwareIsBackup_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Flag used for FW_READ, FW_VERIFY, and FW_CLONE. Does not work for FW_APPLY
+       * </pre>
+       *
+       * <code>bool firmware_is_backup = 2;</code>
+       */
+      public Builder clearFirmwareIsBackup() {
+        
+        firmwareIsBackup_ = false;
         onChanged();
         return this;
       }
@@ -109116,53 +107998,32 @@ public final class EDS10ProtocolBuffer {
     EDS10ProtocolBuffer.DALIRemappingMessageOrBuilder getDaliRemappingMessageOrBuilder();
 
     /**
-     * <code>.SpektraShowControlMessage spektra_show_control_message = 55;</code>
-     */
-    boolean hasSpektraShowControlMessage();
-    /**
-     * <code>.SpektraShowControlMessage spektra_show_control_message = 55;</code>
-     */
-    EDS10ProtocolBuffer.SpektraShowControlMessage getSpektraShowControlMessage();
-    /**
-     * <code>.SpektraShowControlMessage spektra_show_control_message = 55;</code>
-     */
-    EDS10ProtocolBuffer.SpektraShowControlMessageOrBuilder getSpektraShowControlMessageOrBuilder();
-
-    /**
-     * <code>.SpektraShowMessage spektra_show_message = 56;</code>
-     */
-    boolean hasSpektraShowMessage();
-    /**
-     * <code>.SpektraShowMessage spektra_show_message = 56;</code>
-     */
-    EDS10ProtocolBuffer.SpektraShowMessage getSpektraShowMessage();
-    /**
-     * <code>.SpektraShowMessage spektra_show_message = 56;</code>
-     */
-    EDS10ProtocolBuffer.SpektraShowMessageOrBuilder getSpektraShowMessageOrBuilder();
-
-    /**
-     * <code>.ExtendedSpektraShowMessage extended_spektra_show_message = 57;</code>
-     */
-    boolean hasExtendedSpektraShowMessage();
-    /**
-     * <code>.ExtendedSpektraShowMessage extended_spektra_show_message = 57;</code>
-     */
-    EDS10ProtocolBuffer.ExtendedSpektraShowMessage getExtendedSpektraShowMessage();
-    /**
-     * <code>.ExtendedSpektraShowMessage extended_spektra_show_message = 57;</code>
-     */
-    EDS10ProtocolBuffer.ExtendedSpektraShowMessageOrBuilder getExtendedSpektraShowMessageOrBuilder();
-
-    /**
+     * <pre>
+     * Deprecated: SpektraShowControlMessage spektra_show_control_message      = 55;
+     * Deprecated: SpektraShowMessage spektra_show_message                     = 56;
+     * Deprecated: ExtendedSpektraShowMessage extended_spektra_show_message    = 57;
+     * </pre>
+     *
      * <code>.RDMDiscoveryMessage rdm_discovery = 58;</code>
      */
     boolean hasRdmDiscovery();
     /**
+     * <pre>
+     * Deprecated: SpektraShowControlMessage spektra_show_control_message      = 55;
+     * Deprecated: SpektraShowMessage spektra_show_message                     = 56;
+     * Deprecated: ExtendedSpektraShowMessage extended_spektra_show_message    = 57;
+     * </pre>
+     *
      * <code>.RDMDiscoveryMessage rdm_discovery = 58;</code>
      */
     EDS10ProtocolBuffer.RDMDiscoveryMessage getRdmDiscovery();
     /**
+     * <pre>
+     * Deprecated: SpektraShowControlMessage spektra_show_control_message      = 55;
+     * Deprecated: SpektraShowMessage spektra_show_message                     = 56;
+     * Deprecated: ExtendedSpektraShowMessage extended_spektra_show_message    = 57;
+     * </pre>
+     *
      * <code>.RDMDiscoveryMessage rdm_discovery = 58;</code>
      */
     EDS10ProtocolBuffer.RDMDiscoveryMessageOrBuilder getRdmDiscoveryOrBuilder();
@@ -109193,11 +108054,25 @@ public final class EDS10ProtocolBuffer {
      */
     EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessageOrBuilder getDaliIdentifyDuplicatesOrBuilder();
 
+    /**
+     * <code>.SpektraLiveMessage spektra_live = 61;</code>
+     */
+    boolean hasSpektraLive();
+    /**
+     * <code>.SpektraLiveMessage spektra_live = 61;</code>
+     */
+    EDS10ProtocolBuffer.SpektraLiveMessage getSpektraLive();
+    /**
+     * <code>.SpektraLiveMessage spektra_live = 61;</code>
+     */
+    EDS10ProtocolBuffer.SpektraLiveMessageOrBuilder getSpektraLiveOrBuilder();
+
     public EDS10ProtocolBuffer.EdidioMessage.PayloadCase getPayloadCase();
   }
   /**
    * <pre>
-   * Every Message to and from the eDIDIO will be a populated EdidioMessage with a singular payload. The EdidioMessage itself is wrapped with a 0xCD Start Byte and 2 Bytes denoting Message Length of the form: [Length MSB, Length LSB]
+   * Every Message to and from the eDIDIO will be a populated EdidioMessage with a singular payload. 
+   * The EdidioMessage itself is wrapped with a 0xCD Start Byte and 2 Bytes denoting total Message Length of the form: [Length MSB, Length LSB]
    * </pre>
    *
    * Protobuf type {@code EdidioMessage}
@@ -109945,48 +108820,6 @@ public final class EDS10ProtocolBuffer {
               payloadCase_ = 54;
               break;
             }
-            case 442: {
-              EDS10ProtocolBuffer.SpektraShowControlMessage.Builder subBuilder = null;
-              if (payloadCase_ == 55) {
-                subBuilder = ((EDS10ProtocolBuffer.SpektraShowControlMessage) payload_).toBuilder();
-              }
-              payload_ =
-                  input.readMessage(EDS10ProtocolBuffer.SpektraShowControlMessage.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom((EDS10ProtocolBuffer.SpektraShowControlMessage) payload_);
-                payload_ = subBuilder.buildPartial();
-              }
-              payloadCase_ = 55;
-              break;
-            }
-            case 450: {
-              EDS10ProtocolBuffer.SpektraShowMessage.Builder subBuilder = null;
-              if (payloadCase_ == 56) {
-                subBuilder = ((EDS10ProtocolBuffer.SpektraShowMessage) payload_).toBuilder();
-              }
-              payload_ =
-                  input.readMessage(EDS10ProtocolBuffer.SpektraShowMessage.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom((EDS10ProtocolBuffer.SpektraShowMessage) payload_);
-                payload_ = subBuilder.buildPartial();
-              }
-              payloadCase_ = 56;
-              break;
-            }
-            case 458: {
-              EDS10ProtocolBuffer.ExtendedSpektraShowMessage.Builder subBuilder = null;
-              if (payloadCase_ == 57) {
-                subBuilder = ((EDS10ProtocolBuffer.ExtendedSpektraShowMessage) payload_).toBuilder();
-              }
-              payload_ =
-                  input.readMessage(EDS10ProtocolBuffer.ExtendedSpektraShowMessage.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom((EDS10ProtocolBuffer.ExtendedSpektraShowMessage) payload_);
-                payload_ = subBuilder.buildPartial();
-              }
-              payloadCase_ = 57;
-              break;
-            }
             case 466: {
               EDS10ProtocolBuffer.RDMDiscoveryMessage.Builder subBuilder = null;
               if (payloadCase_ == 58) {
@@ -110027,6 +108860,20 @@ public final class EDS10ProtocolBuffer {
                 payload_ = subBuilder.buildPartial();
               }
               payloadCase_ = 60;
+              break;
+            }
+            case 490: {
+              EDS10ProtocolBuffer.SpektraLiveMessage.Builder subBuilder = null;
+              if (payloadCase_ == 61) {
+                subBuilder = ((EDS10ProtocolBuffer.SpektraLiveMessage) payload_).toBuilder();
+              }
+              payload_ =
+                  input.readMessage(EDS10ProtocolBuffer.SpektraLiveMessage.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((EDS10ProtocolBuffer.SpektraLiveMessage) payload_);
+                payload_ = subBuilder.buildPartial();
+              }
+              payloadCase_ = 61;
               break;
             }
             default: {
@@ -110115,12 +108962,10 @@ public final class EDS10ProtocolBuffer {
       METADATA_READ(52),
       DALI_ADDRESSING_MESSAGE(53),
       DALI_REMAPPING_MESSAGE(54),
-      SPEKTRA_SHOW_CONTROL_MESSAGE(55),
-      SPEKTRA_SHOW_MESSAGE(56),
-      EXTENDED_SPEKTRA_SHOW_MESSAGE(57),
       RDM_DISCOVERY(58),
       RDM_DISCOVERY_REPLY(59),
       DALI_IDENTIFY_DUPLICATES(60),
+      SPEKTRA_LIVE(61),
       PAYLOAD_NOT_SET(0);
       private final int value;
       private PayloadCase(int value) {
@@ -110186,12 +109031,10 @@ public final class EDS10ProtocolBuffer {
           case 52: return METADATA_READ;
           case 53: return DALI_ADDRESSING_MESSAGE;
           case 54: return DALI_REMAPPING_MESSAGE;
-          case 55: return SPEKTRA_SHOW_CONTROL_MESSAGE;
-          case 56: return SPEKTRA_SHOW_MESSAGE;
-          case 57: return EXTENDED_SPEKTRA_SHOW_MESSAGE;
           case 58: return RDM_DISCOVERY;
           case 59: return RDM_DISCOVERY_REPLY;
           case 60: return DALI_IDENTIFY_DUPLICATES;
+          case 61: return SPEKTRA_LIVE;
           case 0: return PAYLOAD_NOT_SET;
           default: return null;
         }
@@ -111556,92 +110399,26 @@ public final class EDS10ProtocolBuffer {
       return EDS10ProtocolBuffer.DALIRemappingMessage.getDefaultInstance();
     }
 
-    public static final int SPEKTRA_SHOW_CONTROL_MESSAGE_FIELD_NUMBER = 55;
-    /**
-     * <code>.SpektraShowControlMessage spektra_show_control_message = 55;</code>
-     */
-    public boolean hasSpektraShowControlMessage() {
-      return payloadCase_ == 55;
-    }
-    /**
-     * <code>.SpektraShowControlMessage spektra_show_control_message = 55;</code>
-     */
-    public EDS10ProtocolBuffer.SpektraShowControlMessage getSpektraShowControlMessage() {
-      if (payloadCase_ == 55) {
-         return (EDS10ProtocolBuffer.SpektraShowControlMessage) payload_;
-      }
-      return EDS10ProtocolBuffer.SpektraShowControlMessage.getDefaultInstance();
-    }
-    /**
-     * <code>.SpektraShowControlMessage spektra_show_control_message = 55;</code>
-     */
-    public EDS10ProtocolBuffer.SpektraShowControlMessageOrBuilder getSpektraShowControlMessageOrBuilder() {
-      if (payloadCase_ == 55) {
-         return (EDS10ProtocolBuffer.SpektraShowControlMessage) payload_;
-      }
-      return EDS10ProtocolBuffer.SpektraShowControlMessage.getDefaultInstance();
-    }
-
-    public static final int SPEKTRA_SHOW_MESSAGE_FIELD_NUMBER = 56;
-    /**
-     * <code>.SpektraShowMessage spektra_show_message = 56;</code>
-     */
-    public boolean hasSpektraShowMessage() {
-      return payloadCase_ == 56;
-    }
-    /**
-     * <code>.SpektraShowMessage spektra_show_message = 56;</code>
-     */
-    public EDS10ProtocolBuffer.SpektraShowMessage getSpektraShowMessage() {
-      if (payloadCase_ == 56) {
-         return (EDS10ProtocolBuffer.SpektraShowMessage) payload_;
-      }
-      return EDS10ProtocolBuffer.SpektraShowMessage.getDefaultInstance();
-    }
-    /**
-     * <code>.SpektraShowMessage spektra_show_message = 56;</code>
-     */
-    public EDS10ProtocolBuffer.SpektraShowMessageOrBuilder getSpektraShowMessageOrBuilder() {
-      if (payloadCase_ == 56) {
-         return (EDS10ProtocolBuffer.SpektraShowMessage) payload_;
-      }
-      return EDS10ProtocolBuffer.SpektraShowMessage.getDefaultInstance();
-    }
-
-    public static final int EXTENDED_SPEKTRA_SHOW_MESSAGE_FIELD_NUMBER = 57;
-    /**
-     * <code>.ExtendedSpektraShowMessage extended_spektra_show_message = 57;</code>
-     */
-    public boolean hasExtendedSpektraShowMessage() {
-      return payloadCase_ == 57;
-    }
-    /**
-     * <code>.ExtendedSpektraShowMessage extended_spektra_show_message = 57;</code>
-     */
-    public EDS10ProtocolBuffer.ExtendedSpektraShowMessage getExtendedSpektraShowMessage() {
-      if (payloadCase_ == 57) {
-         return (EDS10ProtocolBuffer.ExtendedSpektraShowMessage) payload_;
-      }
-      return EDS10ProtocolBuffer.ExtendedSpektraShowMessage.getDefaultInstance();
-    }
-    /**
-     * <code>.ExtendedSpektraShowMessage extended_spektra_show_message = 57;</code>
-     */
-    public EDS10ProtocolBuffer.ExtendedSpektraShowMessageOrBuilder getExtendedSpektraShowMessageOrBuilder() {
-      if (payloadCase_ == 57) {
-         return (EDS10ProtocolBuffer.ExtendedSpektraShowMessage) payload_;
-      }
-      return EDS10ProtocolBuffer.ExtendedSpektraShowMessage.getDefaultInstance();
-    }
-
     public static final int RDM_DISCOVERY_FIELD_NUMBER = 58;
     /**
+     * <pre>
+     * Deprecated: SpektraShowControlMessage spektra_show_control_message      = 55;
+     * Deprecated: SpektraShowMessage spektra_show_message                     = 56;
+     * Deprecated: ExtendedSpektraShowMessage extended_spektra_show_message    = 57;
+     * </pre>
+     *
      * <code>.RDMDiscoveryMessage rdm_discovery = 58;</code>
      */
     public boolean hasRdmDiscovery() {
       return payloadCase_ == 58;
     }
     /**
+     * <pre>
+     * Deprecated: SpektraShowControlMessage spektra_show_control_message      = 55;
+     * Deprecated: SpektraShowMessage spektra_show_message                     = 56;
+     * Deprecated: ExtendedSpektraShowMessage extended_spektra_show_message    = 57;
+     * </pre>
+     *
      * <code>.RDMDiscoveryMessage rdm_discovery = 58;</code>
      */
     public EDS10ProtocolBuffer.RDMDiscoveryMessage getRdmDiscovery() {
@@ -111651,6 +110428,12 @@ public final class EDS10ProtocolBuffer {
       return EDS10ProtocolBuffer.RDMDiscoveryMessage.getDefaultInstance();
     }
     /**
+     * <pre>
+     * Deprecated: SpektraShowControlMessage spektra_show_control_message      = 55;
+     * Deprecated: SpektraShowMessage spektra_show_message                     = 56;
+     * Deprecated: ExtendedSpektraShowMessage extended_spektra_show_message    = 57;
+     * </pre>
+     *
      * <code>.RDMDiscoveryMessage rdm_discovery = 58;</code>
      */
     public EDS10ProtocolBuffer.RDMDiscoveryMessageOrBuilder getRdmDiscoveryOrBuilder() {
@@ -111710,6 +110493,32 @@ public final class EDS10ProtocolBuffer {
          return (EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage) payload_;
       }
       return EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage.getDefaultInstance();
+    }
+
+    public static final int SPEKTRA_LIVE_FIELD_NUMBER = 61;
+    /**
+     * <code>.SpektraLiveMessage spektra_live = 61;</code>
+     */
+    public boolean hasSpektraLive() {
+      return payloadCase_ == 61;
+    }
+    /**
+     * <code>.SpektraLiveMessage spektra_live = 61;</code>
+     */
+    public EDS10ProtocolBuffer.SpektraLiveMessage getSpektraLive() {
+      if (payloadCase_ == 61) {
+         return (EDS10ProtocolBuffer.SpektraLiveMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.SpektraLiveMessage.getDefaultInstance();
+    }
+    /**
+     * <code>.SpektraLiveMessage spektra_live = 61;</code>
+     */
+    public EDS10ProtocolBuffer.SpektraLiveMessageOrBuilder getSpektraLiveOrBuilder() {
+      if (payloadCase_ == 61) {
+         return (EDS10ProtocolBuffer.SpektraLiveMessage) payload_;
+      }
+      return EDS10ProtocolBuffer.SpektraLiveMessage.getDefaultInstance();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -111879,15 +110688,6 @@ public final class EDS10ProtocolBuffer {
       if (payloadCase_ == 54) {
         output.writeMessage(54, (EDS10ProtocolBuffer.DALIRemappingMessage) payload_);
       }
-      if (payloadCase_ == 55) {
-        output.writeMessage(55, (EDS10ProtocolBuffer.SpektraShowControlMessage) payload_);
-      }
-      if (payloadCase_ == 56) {
-        output.writeMessage(56, (EDS10ProtocolBuffer.SpektraShowMessage) payload_);
-      }
-      if (payloadCase_ == 57) {
-        output.writeMessage(57, (EDS10ProtocolBuffer.ExtendedSpektraShowMessage) payload_);
-      }
       if (payloadCase_ == 58) {
         output.writeMessage(58, (EDS10ProtocolBuffer.RDMDiscoveryMessage) payload_);
       }
@@ -111896,6 +110696,9 @@ public final class EDS10ProtocolBuffer {
       }
       if (payloadCase_ == 60) {
         output.writeMessage(60, (EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage) payload_);
+      }
+      if (payloadCase_ == 61) {
+        output.writeMessage(61, (EDS10ProtocolBuffer.SpektraLiveMessage) payload_);
       }
       unknownFields.writeTo(output);
     }
@@ -112110,18 +110913,6 @@ public final class EDS10ProtocolBuffer {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(54, (EDS10ProtocolBuffer.DALIRemappingMessage) payload_);
       }
-      if (payloadCase_ == 55) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(55, (EDS10ProtocolBuffer.SpektraShowControlMessage) payload_);
-      }
-      if (payloadCase_ == 56) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(56, (EDS10ProtocolBuffer.SpektraShowMessage) payload_);
-      }
-      if (payloadCase_ == 57) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(57, (EDS10ProtocolBuffer.ExtendedSpektraShowMessage) payload_);
-      }
       if (payloadCase_ == 58) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(58, (EDS10ProtocolBuffer.RDMDiscoveryMessage) payload_);
@@ -112133,6 +110924,10 @@ public final class EDS10ProtocolBuffer {
       if (payloadCase_ == 60) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(60, (EDS10ProtocolBuffer.DALIIdentifyDuplicatesMessage) payload_);
+      }
+      if (payloadCase_ == 61) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(61, (EDS10ProtocolBuffer.SpektraLiveMessage) payload_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -112356,18 +111151,6 @@ public final class EDS10ProtocolBuffer {
           result = result && getDaliRemappingMessage()
               .equals(other.getDaliRemappingMessage());
           break;
-        case 55:
-          result = result && getSpektraShowControlMessage()
-              .equals(other.getSpektraShowControlMessage());
-          break;
-        case 56:
-          result = result && getSpektraShowMessage()
-              .equals(other.getSpektraShowMessage());
-          break;
-        case 57:
-          result = result && getExtendedSpektraShowMessage()
-              .equals(other.getExtendedSpektraShowMessage());
-          break;
         case 58:
           result = result && getRdmDiscovery()
               .equals(other.getRdmDiscovery());
@@ -112379,6 +111162,10 @@ public final class EDS10ProtocolBuffer {
         case 60:
           result = result && getDaliIdentifyDuplicates()
               .equals(other.getDaliIdentifyDuplicates());
+          break;
+        case 61:
+          result = result && getSpektraLive()
+              .equals(other.getSpektraLive());
           break;
         case 0:
         default:
@@ -112597,18 +111384,6 @@ public final class EDS10ProtocolBuffer {
           hash = (37 * hash) + DALI_REMAPPING_MESSAGE_FIELD_NUMBER;
           hash = (53 * hash) + getDaliRemappingMessage().hashCode();
           break;
-        case 55:
-          hash = (37 * hash) + SPEKTRA_SHOW_CONTROL_MESSAGE_FIELD_NUMBER;
-          hash = (53 * hash) + getSpektraShowControlMessage().hashCode();
-          break;
-        case 56:
-          hash = (37 * hash) + SPEKTRA_SHOW_MESSAGE_FIELD_NUMBER;
-          hash = (53 * hash) + getSpektraShowMessage().hashCode();
-          break;
-        case 57:
-          hash = (37 * hash) + EXTENDED_SPEKTRA_SHOW_MESSAGE_FIELD_NUMBER;
-          hash = (53 * hash) + getExtendedSpektraShowMessage().hashCode();
-          break;
         case 58:
           hash = (37 * hash) + RDM_DISCOVERY_FIELD_NUMBER;
           hash = (53 * hash) + getRdmDiscovery().hashCode();
@@ -112620,6 +111395,10 @@ public final class EDS10ProtocolBuffer {
         case 60:
           hash = (37 * hash) + DALI_IDENTIFY_DUPLICATES_FIELD_NUMBER;
           hash = (53 * hash) + getDaliIdentifyDuplicates().hashCode();
+          break;
+        case 61:
+          hash = (37 * hash) + SPEKTRA_LIVE_FIELD_NUMBER;
+          hash = (53 * hash) + getSpektraLive().hashCode();
           break;
         case 0:
         default:
@@ -112721,7 +111500,8 @@ public final class EDS10ProtocolBuffer {
     }
     /**
      * <pre>
-     * Every Message to and from the eDIDIO will be a populated EdidioMessage with a singular payload. The EdidioMessage itself is wrapped with a 0xCD Start Byte and 2 Bytes denoting Message Length of the form: [Length MSB, Length LSB]
+     * Every Message to and from the eDIDIO will be a populated EdidioMessage with a singular payload. 
+     * The EdidioMessage itself is wrapped with a 0xCD Start Byte and 2 Bytes denoting total Message Length of the form: [Length MSB, Length LSB]
      * </pre>
      *
      * Protobuf type {@code EdidioMessage}
@@ -113142,27 +111922,6 @@ public final class EDS10ProtocolBuffer {
             result.payload_ = daliRemappingMessageBuilder_.build();
           }
         }
-        if (payloadCase_ == 55) {
-          if (spektraShowControlMessageBuilder_ == null) {
-            result.payload_ = payload_;
-          } else {
-            result.payload_ = spektraShowControlMessageBuilder_.build();
-          }
-        }
-        if (payloadCase_ == 56) {
-          if (spektraShowMessageBuilder_ == null) {
-            result.payload_ = payload_;
-          } else {
-            result.payload_ = spektraShowMessageBuilder_.build();
-          }
-        }
-        if (payloadCase_ == 57) {
-          if (extendedSpektraShowMessageBuilder_ == null) {
-            result.payload_ = payload_;
-          } else {
-            result.payload_ = extendedSpektraShowMessageBuilder_.build();
-          }
-        }
         if (payloadCase_ == 58) {
           if (rdmDiscoveryBuilder_ == null) {
             result.payload_ = payload_;
@@ -113182,6 +111941,13 @@ public final class EDS10ProtocolBuffer {
             result.payload_ = payload_;
           } else {
             result.payload_ = daliIdentifyDuplicatesBuilder_.build();
+          }
+        }
+        if (payloadCase_ == 61) {
+          if (spektraLiveBuilder_ == null) {
+            result.payload_ = payload_;
+          } else {
+            result.payload_ = spektraLiveBuilder_.build();
           }
         }
         result.payloadCase_ = payloadCase_;
@@ -113437,18 +112203,6 @@ public final class EDS10ProtocolBuffer {
             mergeDaliRemappingMessage(other.getDaliRemappingMessage());
             break;
           }
-          case SPEKTRA_SHOW_CONTROL_MESSAGE: {
-            mergeSpektraShowControlMessage(other.getSpektraShowControlMessage());
-            break;
-          }
-          case SPEKTRA_SHOW_MESSAGE: {
-            mergeSpektraShowMessage(other.getSpektraShowMessage());
-            break;
-          }
-          case EXTENDED_SPEKTRA_SHOW_MESSAGE: {
-            mergeExtendedSpektraShowMessage(other.getExtendedSpektraShowMessage());
-            break;
-          }
           case RDM_DISCOVERY: {
             mergeRdmDiscovery(other.getRdmDiscovery());
             break;
@@ -113459,6 +112213,10 @@ public final class EDS10ProtocolBuffer {
           }
           case DALI_IDENTIFY_DUPLICATES: {
             mergeDaliIdentifyDuplicates(other.getDaliIdentifyDuplicates());
+            break;
+          }
+          case SPEKTRA_LIVE: {
+            mergeSpektraLive(other.getSpektraLive());
             break;
           }
           case PAYLOAD_NOT_SET: {
@@ -120456,422 +119214,26 @@ public final class EDS10ProtocolBuffer {
       }
 
       private com.google.protobuf.SingleFieldBuilderV3<
-          EDS10ProtocolBuffer.SpektraShowControlMessage, EDS10ProtocolBuffer.SpektraShowControlMessage.Builder, EDS10ProtocolBuffer.SpektraShowControlMessageOrBuilder> spektraShowControlMessageBuilder_;
-      /**
-       * <code>.SpektraShowControlMessage spektra_show_control_message = 55;</code>
-       */
-      public boolean hasSpektraShowControlMessage() {
-        return payloadCase_ == 55;
-      }
-      /**
-       * <code>.SpektraShowControlMessage spektra_show_control_message = 55;</code>
-       */
-      public EDS10ProtocolBuffer.SpektraShowControlMessage getSpektraShowControlMessage() {
-        if (spektraShowControlMessageBuilder_ == null) {
-          if (payloadCase_ == 55) {
-            return (EDS10ProtocolBuffer.SpektraShowControlMessage) payload_;
-          }
-          return EDS10ProtocolBuffer.SpektraShowControlMessage.getDefaultInstance();
-        } else {
-          if (payloadCase_ == 55) {
-            return spektraShowControlMessageBuilder_.getMessage();
-          }
-          return EDS10ProtocolBuffer.SpektraShowControlMessage.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>.SpektraShowControlMessage spektra_show_control_message = 55;</code>
-       */
-      public Builder setSpektraShowControlMessage(EDS10ProtocolBuffer.SpektraShowControlMessage value) {
-        if (spektraShowControlMessageBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          payload_ = value;
-          onChanged();
-        } else {
-          spektraShowControlMessageBuilder_.setMessage(value);
-        }
-        payloadCase_ = 55;
-        return this;
-      }
-      /**
-       * <code>.SpektraShowControlMessage spektra_show_control_message = 55;</code>
-       */
-      public Builder setSpektraShowControlMessage(
-          EDS10ProtocolBuffer.SpektraShowControlMessage.Builder builderForValue) {
-        if (spektraShowControlMessageBuilder_ == null) {
-          payload_ = builderForValue.build();
-          onChanged();
-        } else {
-          spektraShowControlMessageBuilder_.setMessage(builderForValue.build());
-        }
-        payloadCase_ = 55;
-        return this;
-      }
-      /**
-       * <code>.SpektraShowControlMessage spektra_show_control_message = 55;</code>
-       */
-      public Builder mergeSpektraShowControlMessage(EDS10ProtocolBuffer.SpektraShowControlMessage value) {
-        if (spektraShowControlMessageBuilder_ == null) {
-          if (payloadCase_ == 55 &&
-              payload_ != EDS10ProtocolBuffer.SpektraShowControlMessage.getDefaultInstance()) {
-            payload_ = EDS10ProtocolBuffer.SpektraShowControlMessage.newBuilder((EDS10ProtocolBuffer.SpektraShowControlMessage) payload_)
-                .mergeFrom(value).buildPartial();
-          } else {
-            payload_ = value;
-          }
-          onChanged();
-        } else {
-          if (payloadCase_ == 55) {
-            spektraShowControlMessageBuilder_.mergeFrom(value);
-          }
-          spektraShowControlMessageBuilder_.setMessage(value);
-        }
-        payloadCase_ = 55;
-        return this;
-      }
-      /**
-       * <code>.SpektraShowControlMessage spektra_show_control_message = 55;</code>
-       */
-      public Builder clearSpektraShowControlMessage() {
-        if (spektraShowControlMessageBuilder_ == null) {
-          if (payloadCase_ == 55) {
-            payloadCase_ = 0;
-            payload_ = null;
-            onChanged();
-          }
-        } else {
-          if (payloadCase_ == 55) {
-            payloadCase_ = 0;
-            payload_ = null;
-          }
-          spektraShowControlMessageBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>.SpektraShowControlMessage spektra_show_control_message = 55;</code>
-       */
-      public EDS10ProtocolBuffer.SpektraShowControlMessage.Builder getSpektraShowControlMessageBuilder() {
-        return getSpektraShowControlMessageFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.SpektraShowControlMessage spektra_show_control_message = 55;</code>
-       */
-      public EDS10ProtocolBuffer.SpektraShowControlMessageOrBuilder getSpektraShowControlMessageOrBuilder() {
-        if ((payloadCase_ == 55) && (spektraShowControlMessageBuilder_ != null)) {
-          return spektraShowControlMessageBuilder_.getMessageOrBuilder();
-        } else {
-          if (payloadCase_ == 55) {
-            return (EDS10ProtocolBuffer.SpektraShowControlMessage) payload_;
-          }
-          return EDS10ProtocolBuffer.SpektraShowControlMessage.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>.SpektraShowControlMessage spektra_show_control_message = 55;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          EDS10ProtocolBuffer.SpektraShowControlMessage, EDS10ProtocolBuffer.SpektraShowControlMessage.Builder, EDS10ProtocolBuffer.SpektraShowControlMessageOrBuilder> 
-          getSpektraShowControlMessageFieldBuilder() {
-        if (spektraShowControlMessageBuilder_ == null) {
-          if (!(payloadCase_ == 55)) {
-            payload_ = EDS10ProtocolBuffer.SpektraShowControlMessage.getDefaultInstance();
-          }
-          spektraShowControlMessageBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              EDS10ProtocolBuffer.SpektraShowControlMessage, EDS10ProtocolBuffer.SpektraShowControlMessage.Builder, EDS10ProtocolBuffer.SpektraShowControlMessageOrBuilder>(
-                  (EDS10ProtocolBuffer.SpektraShowControlMessage) payload_,
-                  getParentForChildren(),
-                  isClean());
-          payload_ = null;
-        }
-        payloadCase_ = 55;
-        onChanged();;
-        return spektraShowControlMessageBuilder_;
-      }
-
-      private com.google.protobuf.SingleFieldBuilderV3<
-          EDS10ProtocolBuffer.SpektraShowMessage, EDS10ProtocolBuffer.SpektraShowMessage.Builder, EDS10ProtocolBuffer.SpektraShowMessageOrBuilder> spektraShowMessageBuilder_;
-      /**
-       * <code>.SpektraShowMessage spektra_show_message = 56;</code>
-       */
-      public boolean hasSpektraShowMessage() {
-        return payloadCase_ == 56;
-      }
-      /**
-       * <code>.SpektraShowMessage spektra_show_message = 56;</code>
-       */
-      public EDS10ProtocolBuffer.SpektraShowMessage getSpektraShowMessage() {
-        if (spektraShowMessageBuilder_ == null) {
-          if (payloadCase_ == 56) {
-            return (EDS10ProtocolBuffer.SpektraShowMessage) payload_;
-          }
-          return EDS10ProtocolBuffer.SpektraShowMessage.getDefaultInstance();
-        } else {
-          if (payloadCase_ == 56) {
-            return spektraShowMessageBuilder_.getMessage();
-          }
-          return EDS10ProtocolBuffer.SpektraShowMessage.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>.SpektraShowMessage spektra_show_message = 56;</code>
-       */
-      public Builder setSpektraShowMessage(EDS10ProtocolBuffer.SpektraShowMessage value) {
-        if (spektraShowMessageBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          payload_ = value;
-          onChanged();
-        } else {
-          spektraShowMessageBuilder_.setMessage(value);
-        }
-        payloadCase_ = 56;
-        return this;
-      }
-      /**
-       * <code>.SpektraShowMessage spektra_show_message = 56;</code>
-       */
-      public Builder setSpektraShowMessage(
-          EDS10ProtocolBuffer.SpektraShowMessage.Builder builderForValue) {
-        if (spektraShowMessageBuilder_ == null) {
-          payload_ = builderForValue.build();
-          onChanged();
-        } else {
-          spektraShowMessageBuilder_.setMessage(builderForValue.build());
-        }
-        payloadCase_ = 56;
-        return this;
-      }
-      /**
-       * <code>.SpektraShowMessage spektra_show_message = 56;</code>
-       */
-      public Builder mergeSpektraShowMessage(EDS10ProtocolBuffer.SpektraShowMessage value) {
-        if (spektraShowMessageBuilder_ == null) {
-          if (payloadCase_ == 56 &&
-              payload_ != EDS10ProtocolBuffer.SpektraShowMessage.getDefaultInstance()) {
-            payload_ = EDS10ProtocolBuffer.SpektraShowMessage.newBuilder((EDS10ProtocolBuffer.SpektraShowMessage) payload_)
-                .mergeFrom(value).buildPartial();
-          } else {
-            payload_ = value;
-          }
-          onChanged();
-        } else {
-          if (payloadCase_ == 56) {
-            spektraShowMessageBuilder_.mergeFrom(value);
-          }
-          spektraShowMessageBuilder_.setMessage(value);
-        }
-        payloadCase_ = 56;
-        return this;
-      }
-      /**
-       * <code>.SpektraShowMessage spektra_show_message = 56;</code>
-       */
-      public Builder clearSpektraShowMessage() {
-        if (spektraShowMessageBuilder_ == null) {
-          if (payloadCase_ == 56) {
-            payloadCase_ = 0;
-            payload_ = null;
-            onChanged();
-          }
-        } else {
-          if (payloadCase_ == 56) {
-            payloadCase_ = 0;
-            payload_ = null;
-          }
-          spektraShowMessageBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>.SpektraShowMessage spektra_show_message = 56;</code>
-       */
-      public EDS10ProtocolBuffer.SpektraShowMessage.Builder getSpektraShowMessageBuilder() {
-        return getSpektraShowMessageFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.SpektraShowMessage spektra_show_message = 56;</code>
-       */
-      public EDS10ProtocolBuffer.SpektraShowMessageOrBuilder getSpektraShowMessageOrBuilder() {
-        if ((payloadCase_ == 56) && (spektraShowMessageBuilder_ != null)) {
-          return spektraShowMessageBuilder_.getMessageOrBuilder();
-        } else {
-          if (payloadCase_ == 56) {
-            return (EDS10ProtocolBuffer.SpektraShowMessage) payload_;
-          }
-          return EDS10ProtocolBuffer.SpektraShowMessage.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>.SpektraShowMessage spektra_show_message = 56;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          EDS10ProtocolBuffer.SpektraShowMessage, EDS10ProtocolBuffer.SpektraShowMessage.Builder, EDS10ProtocolBuffer.SpektraShowMessageOrBuilder> 
-          getSpektraShowMessageFieldBuilder() {
-        if (spektraShowMessageBuilder_ == null) {
-          if (!(payloadCase_ == 56)) {
-            payload_ = EDS10ProtocolBuffer.SpektraShowMessage.getDefaultInstance();
-          }
-          spektraShowMessageBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              EDS10ProtocolBuffer.SpektraShowMessage, EDS10ProtocolBuffer.SpektraShowMessage.Builder, EDS10ProtocolBuffer.SpektraShowMessageOrBuilder>(
-                  (EDS10ProtocolBuffer.SpektraShowMessage) payload_,
-                  getParentForChildren(),
-                  isClean());
-          payload_ = null;
-        }
-        payloadCase_ = 56;
-        onChanged();;
-        return spektraShowMessageBuilder_;
-      }
-
-      private com.google.protobuf.SingleFieldBuilderV3<
-          EDS10ProtocolBuffer.ExtendedSpektraShowMessage, EDS10ProtocolBuffer.ExtendedSpektraShowMessage.Builder, EDS10ProtocolBuffer.ExtendedSpektraShowMessageOrBuilder> extendedSpektraShowMessageBuilder_;
-      /**
-       * <code>.ExtendedSpektraShowMessage extended_spektra_show_message = 57;</code>
-       */
-      public boolean hasExtendedSpektraShowMessage() {
-        return payloadCase_ == 57;
-      }
-      /**
-       * <code>.ExtendedSpektraShowMessage extended_spektra_show_message = 57;</code>
-       */
-      public EDS10ProtocolBuffer.ExtendedSpektraShowMessage getExtendedSpektraShowMessage() {
-        if (extendedSpektraShowMessageBuilder_ == null) {
-          if (payloadCase_ == 57) {
-            return (EDS10ProtocolBuffer.ExtendedSpektraShowMessage) payload_;
-          }
-          return EDS10ProtocolBuffer.ExtendedSpektraShowMessage.getDefaultInstance();
-        } else {
-          if (payloadCase_ == 57) {
-            return extendedSpektraShowMessageBuilder_.getMessage();
-          }
-          return EDS10ProtocolBuffer.ExtendedSpektraShowMessage.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>.ExtendedSpektraShowMessage extended_spektra_show_message = 57;</code>
-       */
-      public Builder setExtendedSpektraShowMessage(EDS10ProtocolBuffer.ExtendedSpektraShowMessage value) {
-        if (extendedSpektraShowMessageBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          payload_ = value;
-          onChanged();
-        } else {
-          extendedSpektraShowMessageBuilder_.setMessage(value);
-        }
-        payloadCase_ = 57;
-        return this;
-      }
-      /**
-       * <code>.ExtendedSpektraShowMessage extended_spektra_show_message = 57;</code>
-       */
-      public Builder setExtendedSpektraShowMessage(
-          EDS10ProtocolBuffer.ExtendedSpektraShowMessage.Builder builderForValue) {
-        if (extendedSpektraShowMessageBuilder_ == null) {
-          payload_ = builderForValue.build();
-          onChanged();
-        } else {
-          extendedSpektraShowMessageBuilder_.setMessage(builderForValue.build());
-        }
-        payloadCase_ = 57;
-        return this;
-      }
-      /**
-       * <code>.ExtendedSpektraShowMessage extended_spektra_show_message = 57;</code>
-       */
-      public Builder mergeExtendedSpektraShowMessage(EDS10ProtocolBuffer.ExtendedSpektraShowMessage value) {
-        if (extendedSpektraShowMessageBuilder_ == null) {
-          if (payloadCase_ == 57 &&
-              payload_ != EDS10ProtocolBuffer.ExtendedSpektraShowMessage.getDefaultInstance()) {
-            payload_ = EDS10ProtocolBuffer.ExtendedSpektraShowMessage.newBuilder((EDS10ProtocolBuffer.ExtendedSpektraShowMessage) payload_)
-                .mergeFrom(value).buildPartial();
-          } else {
-            payload_ = value;
-          }
-          onChanged();
-        } else {
-          if (payloadCase_ == 57) {
-            extendedSpektraShowMessageBuilder_.mergeFrom(value);
-          }
-          extendedSpektraShowMessageBuilder_.setMessage(value);
-        }
-        payloadCase_ = 57;
-        return this;
-      }
-      /**
-       * <code>.ExtendedSpektraShowMessage extended_spektra_show_message = 57;</code>
-       */
-      public Builder clearExtendedSpektraShowMessage() {
-        if (extendedSpektraShowMessageBuilder_ == null) {
-          if (payloadCase_ == 57) {
-            payloadCase_ = 0;
-            payload_ = null;
-            onChanged();
-          }
-        } else {
-          if (payloadCase_ == 57) {
-            payloadCase_ = 0;
-            payload_ = null;
-          }
-          extendedSpektraShowMessageBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>.ExtendedSpektraShowMessage extended_spektra_show_message = 57;</code>
-       */
-      public EDS10ProtocolBuffer.ExtendedSpektraShowMessage.Builder getExtendedSpektraShowMessageBuilder() {
-        return getExtendedSpektraShowMessageFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.ExtendedSpektraShowMessage extended_spektra_show_message = 57;</code>
-       */
-      public EDS10ProtocolBuffer.ExtendedSpektraShowMessageOrBuilder getExtendedSpektraShowMessageOrBuilder() {
-        if ((payloadCase_ == 57) && (extendedSpektraShowMessageBuilder_ != null)) {
-          return extendedSpektraShowMessageBuilder_.getMessageOrBuilder();
-        } else {
-          if (payloadCase_ == 57) {
-            return (EDS10ProtocolBuffer.ExtendedSpektraShowMessage) payload_;
-          }
-          return EDS10ProtocolBuffer.ExtendedSpektraShowMessage.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>.ExtendedSpektraShowMessage extended_spektra_show_message = 57;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          EDS10ProtocolBuffer.ExtendedSpektraShowMessage, EDS10ProtocolBuffer.ExtendedSpektraShowMessage.Builder, EDS10ProtocolBuffer.ExtendedSpektraShowMessageOrBuilder> 
-          getExtendedSpektraShowMessageFieldBuilder() {
-        if (extendedSpektraShowMessageBuilder_ == null) {
-          if (!(payloadCase_ == 57)) {
-            payload_ = EDS10ProtocolBuffer.ExtendedSpektraShowMessage.getDefaultInstance();
-          }
-          extendedSpektraShowMessageBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              EDS10ProtocolBuffer.ExtendedSpektraShowMessage, EDS10ProtocolBuffer.ExtendedSpektraShowMessage.Builder, EDS10ProtocolBuffer.ExtendedSpektraShowMessageOrBuilder>(
-                  (EDS10ProtocolBuffer.ExtendedSpektraShowMessage) payload_,
-                  getParentForChildren(),
-                  isClean());
-          payload_ = null;
-        }
-        payloadCase_ = 57;
-        onChanged();;
-        return extendedSpektraShowMessageBuilder_;
-      }
-
-      private com.google.protobuf.SingleFieldBuilderV3<
           EDS10ProtocolBuffer.RDMDiscoveryMessage, EDS10ProtocolBuffer.RDMDiscoveryMessage.Builder, EDS10ProtocolBuffer.RDMDiscoveryMessageOrBuilder> rdmDiscoveryBuilder_;
       /**
+       * <pre>
+       * Deprecated: SpektraShowControlMessage spektra_show_control_message      = 55;
+       * Deprecated: SpektraShowMessage spektra_show_message                     = 56;
+       * Deprecated: ExtendedSpektraShowMessage extended_spektra_show_message    = 57;
+       * </pre>
+       *
        * <code>.RDMDiscoveryMessage rdm_discovery = 58;</code>
        */
       public boolean hasRdmDiscovery() {
         return payloadCase_ == 58;
       }
       /**
+       * <pre>
+       * Deprecated: SpektraShowControlMessage spektra_show_control_message      = 55;
+       * Deprecated: SpektraShowMessage spektra_show_message                     = 56;
+       * Deprecated: ExtendedSpektraShowMessage extended_spektra_show_message    = 57;
+       * </pre>
+       *
        * <code>.RDMDiscoveryMessage rdm_discovery = 58;</code>
        */
       public EDS10ProtocolBuffer.RDMDiscoveryMessage getRdmDiscovery() {
@@ -120888,6 +119250,12 @@ public final class EDS10ProtocolBuffer {
         }
       }
       /**
+       * <pre>
+       * Deprecated: SpektraShowControlMessage spektra_show_control_message      = 55;
+       * Deprecated: SpektraShowMessage spektra_show_message                     = 56;
+       * Deprecated: ExtendedSpektraShowMessage extended_spektra_show_message    = 57;
+       * </pre>
+       *
        * <code>.RDMDiscoveryMessage rdm_discovery = 58;</code>
        */
       public Builder setRdmDiscovery(EDS10ProtocolBuffer.RDMDiscoveryMessage value) {
@@ -120904,6 +119272,12 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Deprecated: SpektraShowControlMessage spektra_show_control_message      = 55;
+       * Deprecated: SpektraShowMessage spektra_show_message                     = 56;
+       * Deprecated: ExtendedSpektraShowMessage extended_spektra_show_message    = 57;
+       * </pre>
+       *
        * <code>.RDMDiscoveryMessage rdm_discovery = 58;</code>
        */
       public Builder setRdmDiscovery(
@@ -120918,6 +119292,12 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Deprecated: SpektraShowControlMessage spektra_show_control_message      = 55;
+       * Deprecated: SpektraShowMessage spektra_show_message                     = 56;
+       * Deprecated: ExtendedSpektraShowMessage extended_spektra_show_message    = 57;
+       * </pre>
+       *
        * <code>.RDMDiscoveryMessage rdm_discovery = 58;</code>
        */
       public Builder mergeRdmDiscovery(EDS10ProtocolBuffer.RDMDiscoveryMessage value) {
@@ -120940,6 +119320,12 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Deprecated: SpektraShowControlMessage spektra_show_control_message      = 55;
+       * Deprecated: SpektraShowMessage spektra_show_message                     = 56;
+       * Deprecated: ExtendedSpektraShowMessage extended_spektra_show_message    = 57;
+       * </pre>
+       *
        * <code>.RDMDiscoveryMessage rdm_discovery = 58;</code>
        */
       public Builder clearRdmDiscovery() {
@@ -120959,12 +119345,24 @@ public final class EDS10ProtocolBuffer {
         return this;
       }
       /**
+       * <pre>
+       * Deprecated: SpektraShowControlMessage spektra_show_control_message      = 55;
+       * Deprecated: SpektraShowMessage spektra_show_message                     = 56;
+       * Deprecated: ExtendedSpektraShowMessage extended_spektra_show_message    = 57;
+       * </pre>
+       *
        * <code>.RDMDiscoveryMessage rdm_discovery = 58;</code>
        */
       public EDS10ProtocolBuffer.RDMDiscoveryMessage.Builder getRdmDiscoveryBuilder() {
         return getRdmDiscoveryFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * Deprecated: SpektraShowControlMessage spektra_show_control_message      = 55;
+       * Deprecated: SpektraShowMessage spektra_show_message                     = 56;
+       * Deprecated: ExtendedSpektraShowMessage extended_spektra_show_message    = 57;
+       * </pre>
+       *
        * <code>.RDMDiscoveryMessage rdm_discovery = 58;</code>
        */
       public EDS10ProtocolBuffer.RDMDiscoveryMessageOrBuilder getRdmDiscoveryOrBuilder() {
@@ -120978,6 +119376,12 @@ public final class EDS10ProtocolBuffer {
         }
       }
       /**
+       * <pre>
+       * Deprecated: SpektraShowControlMessage spektra_show_control_message      = 55;
+       * Deprecated: SpektraShowMessage spektra_show_message                     = 56;
+       * Deprecated: ExtendedSpektraShowMessage extended_spektra_show_message    = 57;
+       * </pre>
+       *
        * <code>.RDMDiscoveryMessage rdm_discovery = 58;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -121269,6 +119673,142 @@ public final class EDS10ProtocolBuffer {
         payloadCase_ = 60;
         onChanged();;
         return daliIdentifyDuplicatesBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.SpektraLiveMessage, EDS10ProtocolBuffer.SpektraLiveMessage.Builder, EDS10ProtocolBuffer.SpektraLiveMessageOrBuilder> spektraLiveBuilder_;
+      /**
+       * <code>.SpektraLiveMessage spektra_live = 61;</code>
+       */
+      public boolean hasSpektraLive() {
+        return payloadCase_ == 61;
+      }
+      /**
+       * <code>.SpektraLiveMessage spektra_live = 61;</code>
+       */
+      public EDS10ProtocolBuffer.SpektraLiveMessage getSpektraLive() {
+        if (spektraLiveBuilder_ == null) {
+          if (payloadCase_ == 61) {
+            return (EDS10ProtocolBuffer.SpektraLiveMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.SpektraLiveMessage.getDefaultInstance();
+        } else {
+          if (payloadCase_ == 61) {
+            return spektraLiveBuilder_.getMessage();
+          }
+          return EDS10ProtocolBuffer.SpektraLiveMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.SpektraLiveMessage spektra_live = 61;</code>
+       */
+      public Builder setSpektraLive(EDS10ProtocolBuffer.SpektraLiveMessage value) {
+        if (spektraLiveBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          payload_ = value;
+          onChanged();
+        } else {
+          spektraLiveBuilder_.setMessage(value);
+        }
+        payloadCase_ = 61;
+        return this;
+      }
+      /**
+       * <code>.SpektraLiveMessage spektra_live = 61;</code>
+       */
+      public Builder setSpektraLive(
+          EDS10ProtocolBuffer.SpektraLiveMessage.Builder builderForValue) {
+        if (spektraLiveBuilder_ == null) {
+          payload_ = builderForValue.build();
+          onChanged();
+        } else {
+          spektraLiveBuilder_.setMessage(builderForValue.build());
+        }
+        payloadCase_ = 61;
+        return this;
+      }
+      /**
+       * <code>.SpektraLiveMessage spektra_live = 61;</code>
+       */
+      public Builder mergeSpektraLive(EDS10ProtocolBuffer.SpektraLiveMessage value) {
+        if (spektraLiveBuilder_ == null) {
+          if (payloadCase_ == 61 &&
+              payload_ != EDS10ProtocolBuffer.SpektraLiveMessage.getDefaultInstance()) {
+            payload_ = EDS10ProtocolBuffer.SpektraLiveMessage.newBuilder((EDS10ProtocolBuffer.SpektraLiveMessage) payload_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            payload_ = value;
+          }
+          onChanged();
+        } else {
+          if (payloadCase_ == 61) {
+            spektraLiveBuilder_.mergeFrom(value);
+          }
+          spektraLiveBuilder_.setMessage(value);
+        }
+        payloadCase_ = 61;
+        return this;
+      }
+      /**
+       * <code>.SpektraLiveMessage spektra_live = 61;</code>
+       */
+      public Builder clearSpektraLive() {
+        if (spektraLiveBuilder_ == null) {
+          if (payloadCase_ == 61) {
+            payloadCase_ = 0;
+            payload_ = null;
+            onChanged();
+          }
+        } else {
+          if (payloadCase_ == 61) {
+            payloadCase_ = 0;
+            payload_ = null;
+          }
+          spektraLiveBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.SpektraLiveMessage spektra_live = 61;</code>
+       */
+      public EDS10ProtocolBuffer.SpektraLiveMessage.Builder getSpektraLiveBuilder() {
+        return getSpektraLiveFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.SpektraLiveMessage spektra_live = 61;</code>
+       */
+      public EDS10ProtocolBuffer.SpektraLiveMessageOrBuilder getSpektraLiveOrBuilder() {
+        if ((payloadCase_ == 61) && (spektraLiveBuilder_ != null)) {
+          return spektraLiveBuilder_.getMessageOrBuilder();
+        } else {
+          if (payloadCase_ == 61) {
+            return (EDS10ProtocolBuffer.SpektraLiveMessage) payload_;
+          }
+          return EDS10ProtocolBuffer.SpektraLiveMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.SpektraLiveMessage spektra_live = 61;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          EDS10ProtocolBuffer.SpektraLiveMessage, EDS10ProtocolBuffer.SpektraLiveMessage.Builder, EDS10ProtocolBuffer.SpektraLiveMessageOrBuilder> 
+          getSpektraLiveFieldBuilder() {
+        if (spektraLiveBuilder_ == null) {
+          if (!(payloadCase_ == 61)) {
+            payload_ = EDS10ProtocolBuffer.SpektraLiveMessage.getDefaultInstance();
+          }
+          spektraLiveBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              EDS10ProtocolBuffer.SpektraLiveMessage, EDS10ProtocolBuffer.SpektraLiveMessage.Builder, EDS10ProtocolBuffer.SpektraLiveMessageOrBuilder>(
+                  (EDS10ProtocolBuffer.SpektraLiveMessage) payload_,
+                  getParentForChildren(),
+                  isClean());
+          payload_ = null;
+        }
+        payloadCase_ = 61;
+        onChanged();;
+        return spektraLiveBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -121594,25 +120134,10 @@ public final class EDS10ProtocolBuffer {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_SpektraControlMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ShowStepMessage_descriptor;
+    internal_static_SpektraLiveMessage_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ShowStepMessage_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_SpektraShowMessage_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_SpektraShowMessage_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ExtendedSpektraShowMessage_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ExtendedSpektraShowMessage_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_SpektraShowControlMessage_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_SpektraShowControlMessage_fieldAccessorTable;
+      internal_static_SpektraLiveMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_DMXTranslationObject_descriptor;
   private static final 
@@ -121993,292 +120518,281 @@ public final class EDS10ProtocolBuffer {
       "getType\022\r\n\005index\030\002 \001(\r\"z\n\025SpektraControl" +
       "Message\022 \n\004type\030\001 \001(\0162\022.SpektraTargetTyp" +
       "e\022\014\n\004zone\030\002 \001(\r\022\r\n\005index\030\003 \001(\r\022\"\n\006action" +
-      "\030\004 \001(\0162\022.SpektraActionType\"\325\001\n\017ShowStepM" +
-      "essage\022\022\n\nstep_index\030\001 \001(\r\022\024\n\014target_ind" +
-      "ex\030\002 \001(\r\022+\n\013action_type\030\003 \001(\0162\026.SpektraS" +
-      "tepActionType\022\037\n\027max_random_target_index" +
-      "\030\004 \001(\r\022\014\n\004zone\030\005 \001(\r\022\036\n\026max_output_level" +
-      "_limit\030\006 \001(\r\022\034\n\024time_until_next_10ms\030\007 \001" +
-      "(\r\"\314\001\n\022SpektraShowMessage\022\022\n\nshow_index\030" +
-      "\001 \001(\r\022\027\n\017number_of_steps\030\002 \001(\r\022\036\n\004step\030\003" +
-      " \003(\0132\020.ShowStepMessage\022\021\n\tisRunning\030\004 \001(" +
-      "\010\022\020\n\010isLooped\030\005 \001(\010\022\020\n\010isRandom\030\006 \001(\010\022\023\n" +
-      "\013isTemporary\030\007 \001(\010\022\035\n\025activations_remain" +
-      "ing\030\010 \001(\r\"k\n\032ExtendedSpektraShowMessage\022" +
-      "\022\n\nshow_index\030\001 \001(\r\022\031\n\021step_index_offset" +
-      "\030\002 \001(\r\022\036\n\004step\030\003 \003(\0132\020.ShowStepMessage\"W" +
-      "\n\031SpektraShowControlMessage\022\022\n\nshow_inde" +
-      "x\030\001 \001(\r\022\024\n\014start_resume\030\002 \001(\r\022\020\n\010gotoSte" +
-      "p\030\003 \001(\r\"\272\001\n\024DMXTranslationObject\022\017\n\007line" +
-      "_in\030\001 \001(\r\022\020\n\010line_out\030\002 \001(\r\022\031\n\021dmx_start" +
-      "_address\030\003 \001(\r\022\025\n\rchannel_count\030\004 \001(\r\022\022\n" +
-      "\ndali_array\030\005 \003(\r\022\026\n\016affected_input\030\007 \001(" +
-      "\r\022\020\n\010blocking\030\010 \001(\010\022\017\n\007enabled\030\t \001(\010\"?\n\026" +
-      "DMXProtocolTranslation\022%\n\006object\030\001 \003(\0132\025" +
-      ".DMXTranslationObject\"%\n\021InputStateMessa" +
-      "ge\022\020\n\010use_mask\030\001 \001(\010\"8\n\022InputStateRespon" +
-      "se\022\016\n\006inputs\030\001 \003(\r\022\022\n\ninput_mask\030\002 \001(\r\"@" +
-      "\n\022LevelCacheResponse\022\016\n\006levels\030\001 \003(\r\022\014\n\004" +
-      "line\030\002 \001(\r\022\014\n\004page\030\003 \001(\r\"\200\005\n\034DiagnosticS" +
-      "ystemInfoResponse\022\020\n\010firmware\030\001 \001(\t\022\020\n\010h" +
-      "ardware\030\002 \001(\t\022\r\n\005error\030\003 \001(\t\022\023\n\013input_co" +
-      "unt\030\004 \001(\r\022\024\n\014output_count\030\005 \001(\r\022\020\n\010ir_co" +
-      "unt\030\006 \001(\r\022\027\n\017list_step_count\030\007 \001(\r\022\022\n\nli" +
-      "st_count\030\010 \001(\r\022\023\n\013alarm_count\030\t \001(\r\022\024\n\014b" +
-      "urnin_count\030\n \001(\r\022\031\n\021spektra_seq_count\030\013" +
-      " \001(\r\022\036\n\026spektra_seq_step_count\030\014 \001(\r\022\033\n\023" +
-      "spektra_theme_count\030\r \001(\r\022\034\n\024spektra_sta" +
-      "tic_count\030\016 \001(\r\022\025\n\rproto_version\030\017 \001(\r\022\022" +
-      "\n\nline_count\030\020 \001(\r\022\030\n\005lines\030\021 \003(\0162\t.Line" +
-      "Type\022\025\n\rprofile_count\030\022 \001(\r\022\031\n\021preset_co" +
-      "de_count\030\023 \001(\r\022\030\n\020user_level_count\030\024 \001(\r" +
-      "\022\031\n\021dmx_to_dali_count\030\025 \001(\r\022\032\n\022spektra_z" +
-      "one_count\030\026 \001(\r\022\023\n\013logic_count\030\027 \001(\r\022\030\n\020" +
-      "input_dali_count\030\030 \001(\r\022\021\n\tvendor_id\030\031 \001(" +
-      "\t\022\030\n\020selected_profile\030\032 \001(\r\"U\n\021Diagnosti" +
-      "cMessage\022$\n\004type\030\001 \001(\0162\026.DiagnosticMessa" +
-      "geType\022\014\n\004page\030\002 \001(\r\022\014\n\004line\030\003 \001(\r\"\362\001\n\035A" +
-      "dminProjectPropertiesMessage\022\023\n\013device_n" +
-      "ame\030\002 \001(\t\022\024\n\014project_name\030\003 \001(\t\022\021\n\tlongi" +
-      "tude\030\004 \001(\002\022\020\n\010latitude\030\005 \001(\002\022\024\n\014local_of" +
-      "fset\030\006 \001(\002\022\030\n\020daylight_savings\030\007 \001(\010\022\036\n\026" +
-      "daylight_savings_start\030\010 \001(\r\022\034\n\024daylight" +
-      "_savings_end\030\t \001(\r\022\023\n\013poll_active\030\n \001(\r\"" +
-      "\244\001\n\030AdminConfigStatusMessage\022\023\n\013list_sta" +
-      "tus\030\001 \003(\r\022\026\n\016burn_in_status\030\002 \003(\r\022\024\n\014ala" +
-      "rm_status\030\003 \001(\r\022.\n\023alarm_time_from_reg\030\004" +
-      " \001(\0132\021.TimeClockMessage\022\025\n\rsensor_status" +
-      "\030\005 \003(\r\"\326\001\n\035AdminNetworkPropertiesMessage" +
-      "\022\014\n\004DHCP\030\001 \001(\010\022\n\n\002IP\030\002 \001(\t\022\013\n\003MAC\030\003 \001(\t\022" +
-      "\017\n\007gateway\030\004 \001(\t\022\021\n\tNTPServer\030\005 \001(\t\022\013\n\003N" +
-      "TP\030\006 \001(\010\022\r\n\005error\030\007 \001(\t\022\022\n\nNTPTimeout\030\010 " +
-      "\001(\r\022\016\n\006subnet\030\t \001(\t\022\023\n\013DNS_Primary\030\n \001(\t" +
-      "\022\025\n\rDNS_Secondary\030\013 \001(\t\"D\n\026AdminDNSServe" +
-      "rsMessage\022\023\n\013DNS_Primary\030\001 \001(\t\022\025\n\rDNS_Se" +
-      "condary\030\002 \001(\t\"7\n\033AdminControllerLinesMes" +
-      "sage\022\030\n\005lines\030\001 \003(\0162\t.LineType\"@\n\030AdminD" +
-      "eviceStatusMessage\022\023\n\013temperature\030\001 \001(\002\022" +
-      "\017\n\007battery\030\002 \001(\002\"I\n\027AdminSecureLoginMess" +
-      "age\022\020\n\010username\030\001 \001(\t\022\016\n\006cnonce\030\002 \001(\t\022\014\n" +
-      "\004hash\030\003 \003(\r\";\n\032AdminDALISensorTypeMessag" +
-      "e\022\035\n\004type\030\001 \001(\0162\017.DALISensorType\"\264\004\n\014Adm" +
-      "inMessage\022\"\n\007command\030\001 \001(\0162\021.AdminComman" +
-      "dType\022\"\n\006target\030\002 \001(\0162\022.AdminPropertyTyp" +
-      "e\022\037\n\004data\030\003 \001(\0132\017.PayloadMessageH\000\022<\n\022ne" +
-      "twork_properties\030\004 \001(\0132\036.AdminNetworkPro" +
-      "pertiesMessageH\000\022<\n\022project_properties\030\005" +
-      " \001(\0132\036.AdminProjectPropertiesMessageH\000\0228" +
-      "\n\020controller_lines\030\006 \001(\0132\034.AdminControll" +
-      "erLinesMessageH\000\0222\n\rdevice_status\030\007 \001(\0132" +
-      "\031.AdminDeviceStatusMessageH\000\0222\n\rconfig_s" +
-      "tatus\030\010 \001(\0132\031.AdminConfigStatusMessageH\000" +
-      "\022)\n\013device_time\030\t \001(\0132\022.UpdateTimeMessag" +
-      "eH\000\0227\n\020dali_sensor_type\030\n \001(\0132\033.AdminDAL" +
-      "ISensorTypeMessageH\000\022.\n\013dns_servers\030\013 \001(" +
-      "\0132\027.AdminDNSServersMessageH\000B\t\n\007payload\"" +
-      "K\n\013DataMessage\022\022\n\nidentifier\030\001 \001(\r\022\013\n\003se" +
-      "q\030\002 \001(\r\022\r\n\005count\030\003 \001(\r\022\014\n\004data\030\004 \003(\r\"\331\002\n" +
-      "\023FirmwareMetaMessage\022\030\n\020firmware_version" +
-      "\030\001 \001(\r\022\025\n\rfirmware_date\030\002 \001(\r\022\034\n\024firmwar" +
-      "e_date_upload\030\003 \001(\r\022\031\n\021firmware_checksum" +
-      "\030\004 \001(\r\022\034\n\024firmware_chunk_count\030\005 \001(\r\022\035\n\025" +
-      "firmware_base_address\030\006 \001(\r\022\034\n\024firmware_" +
-      "end_address\030\007 \001(\r\022\032\n\022firmware_is_backup\030" +
-      "\010 \001(\010\022\r\n\005nonce\030\t \003(\r\022\031\n\021firmware_date_da" +
-      "y\030\n \001(\r\022\033\n\023firmware_date_month\030\013 \001(\r\022\032\n\022" +
-      "firmware_date_year\030\014 \001(\r\";\n\026FirmwareCont" +
-      "rolMessage\022!\n\003cmd\030\001 \001(\0162\024.FirmwareComman" +
-      "dType\"d\n\024FirmwareChunkMessage\022\030\n\020firmwar" +
-      "e_address\030\001 \001(\r\022\023\n\013total_bytes\030\002 \001(\r\022\035\n\007" +
-      "payload\030\003 \001(\0132\014.DataMessage\"j\n\024SystemLog" +
-      "ReadMessage\022\031\n\021log_start_address\030\001 \001(\r\022\026" +
-      "\n\016logs_requested\030\002 \001(\r\022\037\n\004logs\030\003 \003(\0132\021.S" +
-      "ystemLogMessage\"\267\002\n\020SystemLogMessage\022\027\n\017" +
-      "time_since_boot\030\001 \001(\r\022\036\n\004boot\030\002 \001(\0132\016.Sy" +
-      "stemLogBootH\000\022$\n\007netlink\030\003 \001(\0132\021.SystemL" +
-      "ogNetLinkH\000\022\034\n\003ntp\030\004 \001(\0132\r.SystemLogNTPH" +
-      "\000\022$\n\007trigger\030\005 \001(\0132\021.SystemLogTriggerH\000\022" +
-      "$\n\007spektra\030\006 \001(\0132\021.SystemLogSpektraH\000\022&\n" +
-      "\010schedule\030\007 \001(\0132\022.SystemLogScheduleH\000\022(\n" +
-      "\tuserstart\030\010 \001(\0132\023.SystemLogUserStartH\000B" +
-      "\010\n\006packet\"D\n\rSystemLogBoot\022$\n\ttimeclock\030" +
-      "\001 \001(\0132\021.TimeClockMessage\022\r\n\005flags\030\002 \001(\r\"" +
-      "%\n\020SystemLogNetLink\022\021\n\tis_linked\030\001 \001(\010\"4" +
-      "\n\014SystemLogNTP\022$\n\ttimeclock\030\001 \001(\0132\021.Time" +
-      "ClockMessage\"O\n\020SystemLogTrigger\022 \n\007trig" +
-      "ger\030\001 \001(\0132\017.TriggerMessage\022\031\n\006source\030\002 \001" +
-      "(\0162\t.ReadType\"g\n\020SystemLogSpektra\022\"\n\006act" +
-      "ion\030\001 \001(\0162\022.SpektraActionType\022 \n\004type\030\002 " +
-      "\001(\0162\022.SpektraTargetType\022\r\n\005index\030\003 \001(\r\"a" +
-      "\n\021SystemLogSchedule\022\r\n\005index\030\001 \001(\r\022\017\n\007is" +
-      "Start\030\002 \001(\r\022\016\n\006second\030\003 \001(\r\022\016\n\006minute\030\004 " +
-      "\001(\r\022\014\n\004hour\030\005 \001(\r\"I\n\022SystemLogUserStart\022" +
-      "$\n\ttimeclock\030\001 \001(\0132\021.TimeClockMessage\022\r\n" +
-      "\005flags\030\002 \001(\r\"\323\001\n\031SystemMetaDataReadMessa" +
-      "ge\022\033\n\023input_press_counter\030\001 \003(\r\022\032\n\022list_" +
-      "start_counter\030\002 \003(\r\022\031\n\021schedules_counter" +
-      "\030\003 \003(\r\022\026\n\016screen_on_time\030\004 \001(\r\022\027\n\017screen" +
-      "_dim_time\030\005 \001(\r\022\031\n\021screen_saver_time\030\006 \001" +
-      "(\r\022\026\n\016reboot_counter\030\007 \001(\r\"\277\001\n\013EventFilt" +
-      "er\022\r\n\005input\030\001 \001(\010\022\026\n\016dali_arc_level\030\002 \001(" +
-      "\010\022\024\n\014dali_command\030\003 \001(\010\022\023\n\013dali_sensor\030\004" +
-      " \001(\010\022\022\n\ndali_input\030\005 \001(\010\022\032\n\022dmx_stream_c" +
-      "hanged\030\006 \001(\010\022\025\n\rdali_24_frame\030\007 \001(\010\022\027\n\017t" +
-      "rigger_message\030\010 \001(\010\"\335\001\n\014TriggerEvent\022\032\n" +
-      "\004type\030\001 \001(\0162\014.TriggerType\022\017\n\005level\030\002 \001(\r" +
-      "H\000\022(\n\014dali_command\030\003 \001(\0162\020.DALICommandTy" +
-      "peH\000\022\026\n\016target_address\030\004 \001(\r\022\021\n\tline_mas" +
-      "k\030\005 \001(\r\022\014\n\004zone\030\006 \001(\r\022\r\n\005value\030\007 \001(\r\022\023\n\013" +
-      "query_index\030\010 \001(\r\022\016\n\006source\030\t \001(\rB\t\n\007pay" +
-      "load\"m\n\020DALI24InputEvent\022\r\n\005index\030\001 \001(\r\022" +
-      "\014\n\004line\030\002 \001(\r\022\017\n\007address\030\003 \001(\r\022\036\n\004type\030\004" +
-      " \001(\0162\020.DALI24InputType\022\013\n\003arg\030\005 \001(\r\"/\n\020D" +
-      "ALI24FrameEvent\022\014\n\004line\030\001 \001(\r\022\r\n\005frame\030\002" +
-      " \001(\r\"\252\001\n\017DALISensorEvent\022\r\n\005index\030\001 \001(\r\022" +
-      "\014\n\004line\030\002 \001(\r\022\017\n\007address\030\003 \001(\r\022-\n\014motion" +
-      "_state\030\004 \001(\0162\027.DALIMotionSensorStates\022\'\n" +
-      "\tlux_state\030\005 \001(\0162\024.DALILuxSensorStates\022\021" +
-      "\n\tlux_level\030\006 \001(\r\"\300\002\n\014EventMessage\022\031\n\005ev" +
-      "ent\030\001 \001(\0162\n.EventType\022 \n\007trigger\030\002 \001(\0132\r" +
-      ".TriggerEventH\000\022%\n\006inputs\030\003 \001(\0132\023.InputS" +
-      "tateResponseH\000\022\"\n\007payload\030\004 \001(\0132\017.Payloa" +
-      "dMessageH\000\022\"\n\006sensor\030\006 \001(\0132\020.DALISensorE" +
-      "ventH\000\022*\n\rdali_24_input\030\007 \001(\0132\021.DALI24In" +
-      "putEventH\000\022\036\n\006filter\030\010 \001(\0132\014.EventFilter" +
-      "H\000\022*\n\rdali_24_frame\030\t \001(\0132\021.DALI24FrameE" +
-      "ventH\000B\014\n\nevent_data\"\243\025\n\rEdidioMessage\022\022" +
-      "\n\nmessage_id\030\001 \001(\r\022\032\n\003ack\030\002 \001(\0132\013.AckMes" +
-      "sageH\000\022$\n\006inputs\030\003 \001(\0132\022.InputMultiMessa" +
-      "geH\000\022&\n\007outputs\030\004 \001(\0132\023.OutputMultiMessa" +
-      "geH\000\022\036\n\003irs\030\005 \001(\0132\017.IRMultiMessageH\000\022 \n\006" +
-      "sensor\030\006 \001(\0132\016.SensorMessageH\000\022\034\n\004list\030\010" +
-      " \001(\0132\014.ListMessageH\000\022\036\n\005alarm\030\n \001(\0132\r.Al" +
-      "armMessageH\000\022$\n\006alarms\030\013 \001(\0132\022.AlarmMult" +
-      "iMessageH\000\022\'\n\010burn_ins\030\014 \001(\0132\023.BurnInMul" +
-      "tiMessageH\000\022/\n\016sensor_command\030\r \001(\0132\025.Se" +
-      "nsorCommandMessageH\000\022/\n\016change_profile\030\016" +
-      " \001(\0132\025.ChangeProfileMessageH\000\022,\n\020identif" +
-      "y_message\030\017 \001(\0132\020.IdentifyMessageH\000\022)\n\013u" +
-      "pdate_time\030\020 \001(\0132\022.UpdateTimeMessageH\000\022)" +
-      "\n\013read_device\030\021 \001(\0132\022.ReadDeviceMessageH" +
-      "\000\022$\n\014dali_message\030\022 \001(\0132\014.DALIMessageH\000\022" +
-      "(\n\ndali_query\030\023 \001(\0132\022.DALIQueryResponseH" +
-      "\000\022\"\n\013dmx_message\030\024 \001(\0132\013.DMXMessageH\000\0223\n" +
-      "\020external_trigger\030\025 \001(\0132\027.ExternalTrigge" +
-      "rMessageH\000\0222\n\020spektra_settings\030\026 \001(\0132\026.S" +
-      "pektraSettingMessageH\000\0229\n\020spektra_sequen" +
-      "ce\030\027 \001(\0132\035.SpektraSequenceConfigMessageH" +
-      "\000\0223\n\020spektra_calendar\030\030 \001(\0132\027.SpektraCal" +
-      "endarMessageH\000\0223\n\rspektra_theme\030\031 \001(\0132\032." +
-      "SpektraThemeConfigMessageH\000\022+\n\014spektra_r" +
-      "ead\030\032 \001(\0132\023.SpektraReadMessageH\000\0221\n\017spek" +
-      "tra_control\030\033 \001(\0132\026.SpektraControlMessag" +
-      "eH\000\0221\n\016dmx_translator\030\034 \001(\0132\027.DMXProtoco" +
-      "lTranslationH\000\022+\n\rinput_request\030\035 \001(\0132\022." +
-      "InputStateMessageH\000\022-\n\016input_response\030\036 " +
-      "\001(\0132\023.InputStateResponseH\000\0224\n\013diag_syste" +
-      "m\030\037 \001(\0132\035.DiagnosticSystemInfoResponseH\000" +
-      "\022*\n\014diag_message\030  \001(\0132\022.DiagnosticMessa" +
-      "geH\000\022&\n\radmin_message\030! \001(\0132\r.AdminMessa" +
-      "geH\000\022\036\n\005event\030\" \001(\0132\r.EventMessageH\000\022>\n\026" +
-      "secure_device_settings\030# \001(\0132\034.SecureDev" +
-      "iceSettingsMessageH\000\022,\n\014firmware_new\030$ \001" +
-      "(\0132\024.FirmwareMetaMessageH\000\0223\n\020firmware_c" +
-      "ontrol\030% \001(\0132\027.FirmwareControlMessageH\000\022" +
-      "/\n\016firmware_chunk\030& \001(\0132\025.FirmwareChunkM" +
-      "essageH\000\0223\n\024level_cache_response\030\' \001(\0132\023" +
-      ".LevelCacheResponseH\000\022-\n\rlist_extended\030)" +
-      " \001(\0132\024.ExtendedListMessageH\000\022\"\n\013ayt_mess" +
-      "age\030* \001(\0132\013.AytMessageH\000\022\"\n\013rdm_message\030" +
-      "+ \001(\0132\013.RDMMessageH\000\0223\n\024rdm_response_mes" +
-      "sage\030, \001(\0132\023.RDMResponseMessageH\000\022+\n\rlog" +
-      "ic_message\030- \001(\0132\022.LogicMultiMessageH\000\0220" +
-      "\n\014secure_login\030. \001(\0132\030.AdminSecureLoginM" +
-      "essageH\000\0223\n\024device_state_message\030/ \001(\0132\023" +
-      ".DeviceStateMessageH\000\022:\n\024spektra_calenda" +
-      "r_day\0300 \001(\0132\032.SpektraCalendarDayMessageH" +
-      "\000\022D\n\031spektra_calendar_overview\0301 \001(\0132\037.S" +
-      "pektraCalendarOverviewMessageH\000\022-\n\013input" +
-      "s_dali\0302 \001(\0132\026.DALIInputMultiMessageH\000\022*" +
-      "\n\tlogs_read\0303 \001(\0132\025.SystemLogReadMessage" +
-      "H\000\0223\n\rmetadata_read\0304 \001(\0132\032.SystemMetaDa" +
-      "taReadMessageH\000\0229\n\027dali_addressing_messa" +
-      "ge\0305 \001(\0132\026.DALIAddressingMessageH\000\0227\n\026da" +
-      "li_remapping_message\0306 \001(\0132\025.DALIRemappi" +
-      "ngMessageH\000\022B\n\034spektra_show_control_mess" +
-      "age\0307 \001(\0132\032.SpektraShowControlMessageH\000\022",
-      "3\n\024spektra_show_message\0308 \001(\0132\023.SpektraS" +
-      "howMessageH\000\022D\n\035extended_spektra_show_me" +
-      "ssage\0309 \001(\0132\033.ExtendedSpektraShowMessage" +
-      "H\000\022-\n\rrdm_discovery\030: \001(\0132\024.RDMDiscovery" +
-      "MessageH\000\0228\n\023rdm_discovery_reply\030; \001(\0132\031" +
-      ".RDMDiscoveryReplyMessageH\000\022B\n\030dali_iden" +
-      "tify_duplicates\030< \001(\0132\036.DALIIdentifyDupl" +
-      "icatesMessageH\000B\t\n\007payload*\233\001\n\024TriggerOp" +
-      "erationType\022\r\n\tMOMENTARY\020\000\022\014\n\010LATCHING\020\001" +
-      "\022\024\n\020MOMENTARY_OUTPUT\020\002\022\023\n\017LATCHING_OUTPU" +
-      "T\020\003\022\n\n\006ROTARY\020\004\022\027\n\022MOMENTARY_DISABLED\020\200\001" +
-      "\022\026\n\021LATCHING_DISABLED\020\201\001*\243\014\n\013TriggerType" +
-      "\022\014\n\010DALI_ARC\020\000\022\020\n\014DALI_COMMAND\020\001\022\032\n\026DMX_" +
-      "CHANNELS_SPLIT_LOW\020\002\022\033\n\027DMX_CHANNELS_SPL" +
-      "IT_HIGH\020\003\022$\n DMX_MULTICAST_CHANNELS_SPLI" +
-      "T_LOW\020\004\022%\n!DMX_MULTICAST_CHANNELS_SPLIT_" +
-      "HIGH\020\005\022\021\n\rDMX_BROADCAST\020\006\022\t\n\005DIDIO\020\007\022\024\n\020" +
-      "FADE_UP_WITH_MIN\020\010\022\016\n\nLIST_START\020\t\022\031\n\025LI" +
-      "ST_START_CONTINUOUS\020\n\022\r\n\tLIST_STOP\020\013\022\025\n\021" +
-      "SPEKTRA_START_SEQ\020\014\022\024\n\020SPEKTRA_STOP_SEQ\020" +
-      "\r\022\021\n\rSPEKTRA_THEME\020\016\022\022\n\016SPEKTRA_STATIC\020\017" +
-      "\022\024\n\020SPEKTRA_SCHEDULE\020\020\022\016\n\nLINK_START\020\021\022\r" +
-      "\n\tLINK_STOP\020\022\022\020\n\014DISABLE_BURN\020\023\022\017\n\013ENABL" +
-      "E_BURN\020\024\022\016\n\nON_OFF_TOG\020\025\022\017\n\013MIN_MAX_TOG\020" +
-      "\026\022\020\n\014ENABLE_INPUT\020\027\022\021\n\rDISABLE_INPUT\020\030\022\024" +
-      "\n\020ENABLE_TOG_INPUT\020\031\022\016\n\nOUTPUT_TOG\020\032\022\017\n\013" +
-      "OUTPUT_HIGH\020\033\022\016\n\nOUTPUT_LOW\020\034\022\017\n\013OUTPUT_" +
-      "TRIG\020\035\022\022\n\016PROFILE_CHANGE\020\036\022\023\n\017FADE_LONG_" +
-      "PRESS\020\037\022\n\n\006SYNCRO\020 \022\017\n\013PRESET_CODE\020!\022\017\n\013" +
-      "CUSTOM_CODE\020\"\022\021\n\rSPEKTRA_SLEEP\020#\022\022\n\016SPEK" +
-      "TRA_RESUME\020$\022\020\n\014DEVICE_RESET\020%\022\017\n\013DEVICE" +
-      "_SAVE\020&\022\030\n\024USER_LEVEL_STORE_NEW\020\'\022\032\n\026USE" +
-      "R_LEVEL_SET_DEFAULT\020(\022\025\n\021USER_LEVEL_RECA" +
-      "LL\020)\022\r\n\tROOM_JOIN\020+\022\017\n\013ROOM_UNJOIN\020,\022\023\n\017" +
-      "TYPE8_TC_WARMER\020-\022\023\n\017TYPE8_TC_COOLER\020.\022\023" +
-      "\n\017TYPE8_TC_ACTUAL\020/\022\023\n\017LOGIC_OPERATION\0200" +
-      "\022\020\n\014ALARM_ENABLE\0201\022\021\n\rALARM_DISABLE\0202\022 \n" +
-      "\034DALI_CONTROL_SENSOR_OVERRIDE\0203\022$\n DALI_" +
-      "CONTROL_SENSOR_TEMP_DISABLE\0204\022\036\n\032DALI_CO" +
-      "NTROL_SENSOR_RESUME\0205\022\025\n\021DALI_ARC_OVERRI" +
-      "DE\0206\022\031\n\025DALI_COMMAND_OVERRIDE\0207\022\035\n\031FADE_" +
-      "UP_WITH_MIN_OVERRIDE\0208\022\027\n\023ON_OFF_TOG_OVE" +
-      "RRIDE\0209\022\030\n\024MIN_MAX_TOG_OVERRIDE\020:\022\017\n\013MAX" +
-      "_OFF_TOG\020;\022\030\n\024MAX_OFF_TOG_OVERRIDE\020<\022\034\n\030" +
-      "FADE_LONG_PRESS_OVERRIDE\020=\022\036\n\032USER_LEVEL" +
-      "_RECALL_OVERRIDE\020>\022\024\n\020DMX_ZONE_FADE_UP\020?" +
-      "\022\026\n\022DMX_ZONE_FADE_DOWN\020@\022\021\n\rLOGGING_LEVE" +
-      "L\020A\022\030\n\024SPEKTRA_SHOW_CONTROL\020B\022\031\n\025CIRCADI" +
-      "AN_TEMPERATURE\020C\022\034\n\030DALI_CONTROL_SENSOR_" +
-      "MUTE\020D\022\036\n\032DALI_CONTROL_SENSOR_UNMUTE\020E\022\025" +
-      "\n\021SPEKTRA_INTENSITY\020F\022\017\n\nNO_COMMAND\020\376\001*\353" +
-      "\001\n\010ReadType\022\n\n\006INPUTS\020\000\022\013\n\007OUTPUTS\020\001\022\006\n\002" +
-      "IR\020\002\022\n\n\006SENSOR\020\003\022\010\n\004LIST\020\005\022\n\n\006ALARMS\020\007\022\013" +
-      "\n\007BURN_IN\020\010\022\013\n\007PROJECT\020\t\022\013\n\007NETWORK\020\n\022\n\n" +
-      "\006DEVICE\020\013\022\r\n\tPOLL_DATA\020\014\022\021\n\rLIST_EXTENDE" +
-      "D\020\r\022\t\n\005LOGIC\020\016\022\017\n\013DALI_INPUTS\020\017\022\020\n\014SPEKT" +
-      "RA_SHOW\020\020\022\031\n\025SPEKTRA_SHOW_EXTENDED\020\021*\214\001\n" +
-      "\017AlarmRepeatType\022\023\n\017ALARM_NO_REPEAT\020\000\022\026\n" +
-      "\022ALARM_REPEAT_DAILY\020\001\022\031\n\025ALARM_REPEAT_WO" +
-      "RK_DAY\020\002\022\027\n\023ALARM_REPEAT_WEEKLY\020\003\022\030\n\024ALA" +
-      "RM_REPEAT_MONTHLY\020\004*I\n\016AlarmAstroType\022\022\n" +
-      "\016ALARM_NO_ASTRO\020\000\022\021\n\rALARM_SUNRUSE\020\001\022\020\n\014" +
-      "ALARM_SUNSET\020\002*^\n\021SpektraTargetType\022\014\n\010S" +
-      "ETTINGS\020\000\022\014\n\010SEQUENCE\020\001\022\t\n\005THEME\020\002\022\n\n\006ST" +
-      "ATIC\020\003\022\014\n\010CALENDAR\020\004\022\010\n\004SHOW\020\005*=\n\021Spektr" +
-      "aActionType\022\t\n\005START\020\000\022\010\n\004STOP\020\001\022\t\n\005PAUS" +
-      "E\020\002\022\010\n\004SAVE\020\003*p\n\025SpektraStepActionType\022\020" +
-      "\n\014RUN_SEQUENCE\020\000\022\016\n\nSHOW_THEME\020\001\022\016\n\nSTAR" +
-      "T_LIST\020\002\022\022\n\016PAUSE_PREVIOUS\020\003\022\021\n\rSTOP_PRE" +
-      "VIOUS\020\004*}\n\037SpektraUnscheduledBehaviourTy" +
-      "pe\022 \n\034RUN_RANDOM_COLOURED_SEQUENCE\020\000\022\022\n\016" +
-      "RUN_SEQUENCE_1\020\001\022\023\n\017RESUME_PREVIOUS\020\002\022\017\n" +
+      "\030\004 \001(\0162\022.SpektraActionType\"\365\001\n\022SpektraLi" +
+      "veMessage\022 \n\004type\030\001 \003(\0162\022.SpektraTargetT" +
+      "ype\022\r\n\005index\030\002 \003(\r\022\"\n\006action\030\003 \003(\0162\022.Spe" +
+      "ktraActionType\022\022\n\nstep_index\030\004 \003(\r\022\034\n\024st" +
+      "ep_index_direction\030\005 \003(\r\022\024\n\014colour_index" +
+      "\030\006 \003(\r\022\024\n\014colour_range\030\007 \003(\r\022\027\n\017random_s" +
+      "eq_type\030\010 \003(\r\022\023\n\013zone_active\030\t \003(\010\"\272\001\n\024D" +
+      "MXTranslationObject\022\017\n\007line_in\030\001 \001(\r\022\020\n\010" +
+      "line_out\030\002 \001(\r\022\031\n\021dmx_start_address\030\003 \001(" +
+      "\r\022\025\n\rchannel_count\030\004 \001(\r\022\022\n\ndali_array\030\005" +
+      " \003(\r\022\026\n\016affected_input\030\007 \001(\r\022\020\n\010blocking" +
+      "\030\010 \001(\010\022\017\n\007enabled\030\t \001(\010\"?\n\026DMXProtocolTr" +
+      "anslation\022%\n\006object\030\001 \003(\0132\025.DMXTranslati" +
+      "onObject\"%\n\021InputStateMessage\022\020\n\010use_mas" +
+      "k\030\001 \001(\010\"8\n\022InputStateResponse\022\016\n\006inputs\030" +
+      "\001 \003(\r\022\022\n\ninput_mask\030\002 \001(\r\"@\n\022LevelCacheR" +
+      "esponse\022\016\n\006levels\030\001 \003(\r\022\014\n\004line\030\002 \001(\r\022\014\n" +
+      "\004page\030\003 \001(\r\"\200\005\n\034DiagnosticSystemInfoResp" +
+      "onse\022\020\n\010firmware\030\001 \001(\t\022\020\n\010hardware\030\002 \001(\t" +
+      "\022\r\n\005error\030\003 \001(\t\022\023\n\013input_count\030\004 \001(\r\022\024\n\014" +
+      "output_count\030\005 \001(\r\022\020\n\010ir_count\030\006 \001(\r\022\027\n\017" +
+      "list_step_count\030\007 \001(\r\022\022\n\nlist_count\030\010 \001(" +
+      "\r\022\023\n\013alarm_count\030\t \001(\r\022\024\n\014burnin_count\030\n" +
+      " \001(\r\022\031\n\021spektra_seq_count\030\013 \001(\r\022\036\n\026spekt" +
+      "ra_seq_step_count\030\014 \001(\r\022\033\n\023spektra_theme" +
+      "_count\030\r \001(\r\022\034\n\024spektra_static_count\030\016 \001" +
+      "(\r\022\025\n\rproto_version\030\017 \001(\r\022\022\n\nline_count\030" +
+      "\020 \001(\r\022\030\n\005lines\030\021 \003(\0162\t.LineType\022\025\n\rprofi" +
+      "le_count\030\022 \001(\r\022\031\n\021preset_code_count\030\023 \001(" +
+      "\r\022\030\n\020user_level_count\030\024 \001(\r\022\031\n\021dmx_to_da" +
+      "li_count\030\025 \001(\r\022\032\n\022spektra_zone_count\030\026 \001" +
+      "(\r\022\023\n\013logic_count\030\027 \001(\r\022\030\n\020input_dali_co" +
+      "unt\030\030 \001(\r\022\021\n\tvendor_id\030\031 \001(\t\022\030\n\020selected" +
+      "_profile\030\032 \001(\r\"U\n\021DiagnosticMessage\022$\n\004t" +
+      "ype\030\001 \001(\0162\026.DiagnosticMessageType\022\014\n\004pag" +
+      "e\030\002 \001(\r\022\014\n\004line\030\003 \001(\r\"\362\001\n\035AdminProjectPr" +
+      "opertiesMessage\022\023\n\013device_name\030\002 \001(\t\022\024\n\014" +
+      "project_name\030\003 \001(\t\022\021\n\tlongitude\030\004 \001(\002\022\020\n" +
+      "\010latitude\030\005 \001(\002\022\024\n\014local_offset\030\006 \001(\002\022\030\n" +
+      "\020daylight_savings\030\007 \001(\010\022\036\n\026daylight_savi" +
+      "ngs_start\030\010 \001(\r\022\034\n\024daylight_savings_end\030" +
+      "\t \001(\r\022\023\n\013poll_active\030\n \001(\r\"\244\001\n\030AdminConf" +
+      "igStatusMessage\022\023\n\013list_status\030\001 \003(\r\022\026\n\016" +
+      "burn_in_status\030\002 \003(\r\022\024\n\014alarm_status\030\003 \001" +
+      "(\r\022.\n\023alarm_time_from_reg\030\004 \001(\0132\021.TimeCl" +
+      "ockMessage\022\025\n\rsensor_status\030\005 \003(\r\"\326\001\n\035Ad" +
+      "minNetworkPropertiesMessage\022\014\n\004DHCP\030\001 \001(" +
+      "\010\022\n\n\002IP\030\002 \001(\t\022\013\n\003MAC\030\003 \001(\t\022\017\n\007gateway\030\004 " +
+      "\001(\t\022\021\n\tNTPServer\030\005 \001(\t\022\013\n\003NTP\030\006 \001(\010\022\r\n\005e" +
+      "rror\030\007 \001(\t\022\022\n\nNTPTimeout\030\010 \001(\r\022\016\n\006subnet" +
+      "\030\t \001(\t\022\023\n\013DNS_Primary\030\n \001(\t\022\025\n\rDNS_Secon" +
+      "dary\030\013 \001(\t\"D\n\026AdminDNSServersMessage\022\023\n\013" +
+      "DNS_Primary\030\001 \001(\t\022\025\n\rDNS_Secondary\030\002 \001(\t" +
+      "\"7\n\033AdminControllerLinesMessage\022\030\n\005lines" +
+      "\030\001 \003(\0162\t.LineType\"@\n\030AdminDeviceStatusMe" +
+      "ssage\022\023\n\013temperature\030\001 \001(\002\022\017\n\007battery\030\002 " +
+      "\001(\002\"I\n\027AdminSecureLoginMessage\022\020\n\010userna" +
+      "me\030\001 \001(\t\022\016\n\006cnonce\030\002 \001(\t\022\014\n\004hash\030\003 \003(\r\";" +
+      "\n\032AdminDALISensorTypeMessage\022\035\n\004type\030\001 \001" +
+      "(\0162\017.DALISensorType\"\264\004\n\014AdminMessage\022\"\n\007" +
+      "command\030\001 \001(\0162\021.AdminCommandType\022\"\n\006targ" +
+      "et\030\002 \001(\0162\022.AdminPropertyType\022\037\n\004data\030\003 \001" +
+      "(\0132\017.PayloadMessageH\000\022<\n\022network_propert" +
+      "ies\030\004 \001(\0132\036.AdminNetworkPropertiesMessag" +
+      "eH\000\022<\n\022project_properties\030\005 \001(\0132\036.AdminP" +
+      "rojectPropertiesMessageH\000\0228\n\020controller_" +
+      "lines\030\006 \001(\0132\034.AdminControllerLinesMessag" +
+      "eH\000\0222\n\rdevice_status\030\007 \001(\0132\031.AdminDevice" +
+      "StatusMessageH\000\0222\n\rconfig_status\030\010 \001(\0132\031" +
+      ".AdminConfigStatusMessageH\000\022)\n\013device_ti" +
+      "me\030\t \001(\0132\022.UpdateTimeMessageH\000\0227\n\020dali_s" +
+      "ensor_type\030\n \001(\0132\033.AdminDALISensorTypeMe" +
+      "ssageH\000\022.\n\013dns_servers\030\013 \001(\0132\027.AdminDNSS" +
+      "erversMessageH\000B\t\n\007payload\"K\n\013DataMessag" +
+      "e\022\022\n\nidentifier\030\001 \001(\r\022\013\n\003seq\030\002 \001(\r\022\r\n\005co" +
+      "unt\030\003 \001(\r\022\014\n\004data\030\004 \003(\r\"\331\002\n\023FirmwareMeta" +
+      "Message\022\030\n\020firmware_version\030\001 \001(\r\022\025\n\rfir" +
+      "mware_date\030\002 \001(\r\022\034\n\024firmware_date_upload" +
+      "\030\003 \001(\r\022\031\n\021firmware_checksum\030\004 \001(\r\022\034\n\024fir" +
+      "mware_chunk_count\030\005 \001(\r\022\035\n\025firmware_base" +
+      "_address\030\006 \001(\r\022\034\n\024firmware_end_address\030\007" +
+      " \001(\r\022\032\n\022firmware_is_backup\030\010 \001(\010\022\r\n\005nonc" +
+      "e\030\t \003(\r\022\031\n\021firmware_date_day\030\n \001(\r\022\033\n\023fi" +
+      "rmware_date_month\030\013 \001(\r\022\032\n\022firmware_date" +
+      "_year\030\014 \001(\r\"W\n\026FirmwareControlMessage\022!\n" +
+      "\003cmd\030\001 \001(\0162\024.FirmwareCommandType\022\032\n\022firm" +
+      "ware_is_backup\030\002 \001(\010\"d\n\024FirmwareChunkMes" +
+      "sage\022\030\n\020firmware_address\030\001 \001(\r\022\023\n\013total_" +
+      "bytes\030\002 \001(\r\022\035\n\007payload\030\003 \001(\0132\014.DataMessa" +
+      "ge\"j\n\024SystemLogReadMessage\022\031\n\021log_start_" +
+      "address\030\001 \001(\r\022\026\n\016logs_requested\030\002 \001(\r\022\037\n" +
+      "\004logs\030\003 \003(\0132\021.SystemLogMessage\"\267\002\n\020Syste" +
+      "mLogMessage\022\027\n\017time_since_boot\030\001 \001(\r\022\036\n\004" +
+      "boot\030\002 \001(\0132\016.SystemLogBootH\000\022$\n\007netlink\030" +
+      "\003 \001(\0132\021.SystemLogNetLinkH\000\022\034\n\003ntp\030\004 \001(\0132" +
+      "\r.SystemLogNTPH\000\022$\n\007trigger\030\005 \001(\0132\021.Syst" +
+      "emLogTriggerH\000\022$\n\007spektra\030\006 \001(\0132\021.System" +
+      "LogSpektraH\000\022&\n\010schedule\030\007 \001(\0132\022.SystemL" +
+      "ogScheduleH\000\022(\n\tuserstart\030\010 \001(\0132\023.System" +
+      "LogUserStartH\000B\010\n\006packet\"D\n\rSystemLogBoo" +
+      "t\022$\n\ttimeclock\030\001 \001(\0132\021.TimeClockMessage\022" +
+      "\r\n\005flags\030\002 \001(\r\"%\n\020SystemLogNetLink\022\021\n\tis" +
+      "_linked\030\001 \001(\010\"4\n\014SystemLogNTP\022$\n\ttimeclo" +
+      "ck\030\001 \001(\0132\021.TimeClockMessage\"O\n\020SystemLog" +
+      "Trigger\022 \n\007trigger\030\001 \001(\0132\017.TriggerMessag" +
+      "e\022\031\n\006source\030\002 \001(\0162\t.ReadType\"g\n\020SystemLo" +
+      "gSpektra\022\"\n\006action\030\001 \001(\0162\022.SpektraAction" +
+      "Type\022 \n\004type\030\002 \001(\0162\022.SpektraTargetType\022\r" +
+      "\n\005index\030\003 \001(\r\"a\n\021SystemLogSchedule\022\r\n\005in" +
+      "dex\030\001 \001(\r\022\017\n\007isStart\030\002 \001(\r\022\016\n\006second\030\003 \001" +
+      "(\r\022\016\n\006minute\030\004 \001(\r\022\014\n\004hour\030\005 \001(\r\"I\n\022Syst" +
+      "emLogUserStart\022$\n\ttimeclock\030\001 \001(\0132\021.Time" +
+      "ClockMessage\022\r\n\005flags\030\002 \001(\r\"\323\001\n\031SystemMe" +
+      "taDataReadMessage\022\033\n\023input_press_counter" +
+      "\030\001 \003(\r\022\032\n\022list_start_counter\030\002 \003(\r\022\031\n\021sc" +
+      "hedules_counter\030\003 \003(\r\022\026\n\016screen_on_time\030" +
+      "\004 \001(\r\022\027\n\017screen_dim_time\030\005 \001(\r\022\031\n\021screen" +
+      "_saver_time\030\006 \001(\r\022\026\n\016reboot_counter\030\007 \001(" +
+      "\r\"\277\001\n\013EventFilter\022\r\n\005input\030\001 \001(\010\022\026\n\016dali" +
+      "_arc_level\030\002 \001(\010\022\024\n\014dali_command\030\003 \001(\010\022\023" +
+      "\n\013dali_sensor\030\004 \001(\010\022\022\n\ndali_input\030\005 \001(\010\022" +
+      "\032\n\022dmx_stream_changed\030\006 \001(\010\022\025\n\rdali_24_f" +
+      "rame\030\007 \001(\010\022\027\n\017trigger_message\030\010 \001(\010\"\335\001\n\014" +
+      "TriggerEvent\022\032\n\004type\030\001 \001(\0162\014.TriggerType" +
+      "\022\017\n\005level\030\002 \001(\rH\000\022(\n\014dali_command\030\003 \001(\0162" +
+      "\020.DALICommandTypeH\000\022\026\n\016target_address\030\004 " +
+      "\001(\r\022\021\n\tline_mask\030\005 \001(\r\022\014\n\004zone\030\006 \001(\r\022\r\n\005" +
+      "value\030\007 \001(\r\022\023\n\013query_index\030\010 \001(\r\022\016\n\006sour" +
+      "ce\030\t \001(\rB\t\n\007payload\"m\n\020DALI24InputEvent\022" +
+      "\r\n\005index\030\001 \001(\r\022\014\n\004line\030\002 \001(\r\022\017\n\007address\030" +
+      "\003 \001(\r\022\036\n\004type\030\004 \001(\0162\020.DALI24InputType\022\013\n" +
+      "\003arg\030\005 \001(\r\"/\n\020DALI24FrameEvent\022\014\n\004line\030\001" +
+      " \001(\r\022\r\n\005frame\030\002 \001(\r\"\252\001\n\017DALISensorEvent\022" +
+      "\r\n\005index\030\001 \001(\r\022\014\n\004line\030\002 \001(\r\022\017\n\007address\030" +
+      "\003 \001(\r\022-\n\014motion_state\030\004 \001(\0162\027.DALIMotion" +
+      "SensorStates\022\'\n\tlux_state\030\005 \001(\0162\024.DALILu" +
+      "xSensorStates\022\021\n\tlux_level\030\006 \001(\r\"\300\002\n\014Eve" +
+      "ntMessage\022\031\n\005event\030\001 \001(\0162\n.EventType\022 \n\007" +
+      "trigger\030\002 \001(\0132\r.TriggerEventH\000\022%\n\006inputs" +
+      "\030\003 \001(\0132\023.InputStateResponseH\000\022\"\n\007payload" +
+      "\030\004 \001(\0132\017.PayloadMessageH\000\022\"\n\006sensor\030\006 \001(" +
+      "\0132\020.DALISensorEventH\000\022*\n\rdali_24_input\030\007" +
+      " \001(\0132\021.DALI24InputEventH\000\022\036\n\006filter\030\010 \001(" +
+      "\0132\014.EventFilterH\000\022*\n\rdali_24_frame\030\t \001(\013" +
+      "2\021.DALI24FrameEventH\000B\014\n\nevent_data\"\221\024\n\r" +
+      "EdidioMessage\022\022\n\nmessage_id\030\001 \001(\r\022\032\n\003ack" +
+      "\030\002 \001(\0132\013.AckMessageH\000\022$\n\006inputs\030\003 \001(\0132\022." +
+      "InputMultiMessageH\000\022&\n\007outputs\030\004 \001(\0132\023.O" +
+      "utputMultiMessageH\000\022\036\n\003irs\030\005 \001(\0132\017.IRMul" +
+      "tiMessageH\000\022 \n\006sensor\030\006 \001(\0132\016.SensorMess" +
+      "ageH\000\022\034\n\004list\030\010 \001(\0132\014.ListMessageH\000\022\036\n\005a" +
+      "larm\030\n \001(\0132\r.AlarmMessageH\000\022$\n\006alarms\030\013 " +
+      "\001(\0132\022.AlarmMultiMessageH\000\022\'\n\010burn_ins\030\014 " +
+      "\001(\0132\023.BurnInMultiMessageH\000\022/\n\016sensor_com" +
+      "mand\030\r \001(\0132\025.SensorCommandMessageH\000\022/\n\016c" +
+      "hange_profile\030\016 \001(\0132\025.ChangeProfileMessa" +
+      "geH\000\022,\n\020identify_message\030\017 \001(\0132\020.Identif" +
+      "yMessageH\000\022)\n\013update_time\030\020 \001(\0132\022.Update" +
+      "TimeMessageH\000\022)\n\013read_device\030\021 \001(\0132\022.Rea" +
+      "dDeviceMessageH\000\022$\n\014dali_message\030\022 \001(\0132\014" +
+      ".DALIMessageH\000\022(\n\ndali_query\030\023 \001(\0132\022.DAL" +
+      "IQueryResponseH\000\022\"\n\013dmx_message\030\024 \001(\0132\013." +
+      "DMXMessageH\000\0223\n\020external_trigger\030\025 \001(\0132\027" +
+      ".ExternalTriggerMessageH\000\0222\n\020spektra_set" +
+      "tings\030\026 \001(\0132\026.SpektraSettingMessageH\000\0229\n" +
+      "\020spektra_sequence\030\027 \001(\0132\035.SpektraSequenc" +
+      "eConfigMessageH\000\0223\n\020spektra_calendar\030\030 \001" +
+      "(\0132\027.SpektraCalendarMessageH\000\0223\n\rspektra" +
+      "_theme\030\031 \001(\0132\032.SpektraThemeConfigMessage" +
+      "H\000\022+\n\014spektra_read\030\032 \001(\0132\023.SpektraReadMe" +
+      "ssageH\000\0221\n\017spektra_control\030\033 \001(\0132\026.Spekt" +
+      "raControlMessageH\000\0221\n\016dmx_translator\030\034 \001" +
+      "(\0132\027.DMXProtocolTranslationH\000\022+\n\rinput_r" +
+      "equest\030\035 \001(\0132\022.InputStateMessageH\000\022-\n\016in" +
+      "put_response\030\036 \001(\0132\023.InputStateResponseH" +
+      "\000\0224\n\013diag_system\030\037 \001(\0132\035.DiagnosticSyste" +
+      "mInfoResponseH\000\022*\n\014diag_message\030  \001(\0132\022." +
+      "DiagnosticMessageH\000\022&\n\radmin_message\030! \001" +
+      "(\0132\r.AdminMessageH\000\022\036\n\005event\030\" \001(\0132\r.Eve" +
+      "ntMessageH\000\022>\n\026secure_device_settings\030# " +
+      "\001(\0132\034.SecureDeviceSettingsMessageH\000\022,\n\014f" +
+      "irmware_new\030$ \001(\0132\024.FirmwareMetaMessageH" +
+      "\000\0223\n\020firmware_control\030% \001(\0132\027.FirmwareCo" +
+      "ntrolMessageH\000\022/\n\016firmware_chunk\030& \001(\0132\025" +
+      ".FirmwareChunkMessageH\000\0223\n\024level_cache_r" +
+      "esponse\030\' \001(\0132\023.LevelCacheResponseH\000\022-\n\r" +
+      "list_extended\030) \001(\0132\024.ExtendedListMessag" +
+      "eH\000\022\"\n\013ayt_message\030* \001(\0132\013.AytMessageH\000\022" +
+      "\"\n\013rdm_message\030+ \001(\0132\013.RDMMessageH\000\0223\n\024r" +
+      "dm_response_message\030, \001(\0132\023.RDMResponseM" +
+      "essageH\000\022+\n\rlogic_message\030- \001(\0132\022.LogicM" +
+      "ultiMessageH\000\0220\n\014secure_login\030. \001(\0132\030.Ad" +
+      "minSecureLoginMessageH\000\0223\n\024device_state_" +
+      "message\030/ \001(\0132\023.DeviceStateMessageH\000\022:\n\024" +
+      "spektra_calendar_day\0300 \001(\0132\032.SpektraCale" +
+      "ndarDayMessageH\000\022D\n\031spektra_calendar_ove" +
+      "rview\0301 \001(\0132\037.SpektraCalendarOverviewMes" +
+      "sageH\000\022-\n\013inputs_dali\0302 \001(\0132\026.DALIInputM" +
+      "ultiMessageH\000\022*\n\tlogs_read\0303 \001(\0132\025.Syste" +
+      "mLogReadMessageH\000\0223\n\rmetadata_read\0304 \001(\013" +
+      "2\032.SystemMetaDataReadMessageH\000\0229\n\027dali_a" +
+      "ddressing_message\0305 \001(\0132\026.DALIAddressing" +
+      "MessageH\000\0227\n\026dali_remapping_message\0306 \001(" +
+      "\0132\025.DALIRemappingMessageH\000\022-\n\rrdm_discov" +
+      "ery\030: \001(\0132\024.RDMDiscoveryMessageH\000\0228\n\023rdm" +
+      "_discovery_reply\030; \001(\0132\031.RDMDiscoveryRep" +
+      "lyMessageH\000\022B\n\030dali_identify_duplicates\030" +
+      "< \001(\0132\036.DALIIdentifyDuplicatesMessageH\000\022" +
+      "+\n\014spektra_live\030= \001(\0132\023.SpektraLiveMessa" +
+      "geH\000B\t\n\007payload*\233\001\n\024TriggerOperationType" +
+      "\022\r\n\tMOMENTARY\020\000\022\014\n\010LATCHING\020\001\022\024\n\020MOMENTA" +
+      "RY_OUTPUT\020\002\022\023\n\017LATCHING_OUTPUT\020\003\022\n\n\006ROTA" +
+      "RY\020\004\022\027\n\022MOMENTARY_DISABLED\020\200\001\022\026\n\021LATCHIN" +
+      "G_DISABLED\020\201\001*\327\014\n\013TriggerType\022\014\n\010DALI_AR",
+      "C\020\000\022\020\n\014DALI_COMMAND\020\001\022\032\n\026DMX_CHANNELS_SP" +
+      "LIT_LOW\020\002\022\033\n\027DMX_CHANNELS_SPLIT_HIGH\020\003\022$" +
+      "\n DMX_MULTICAST_CHANNELS_SPLIT_LOW\020\004\022%\n!" +
+      "DMX_MULTICAST_CHANNELS_SPLIT_HIGH\020\005\022\021\n\rD" +
+      "MX_BROADCAST\020\006\022\t\n\005DIDIO\020\007\022\024\n\020FADE_UP_WIT" +
+      "H_MIN\020\010\022\016\n\nLIST_START\020\t\022\031\n\025LIST_START_CO" +
+      "NTINUOUS\020\n\022\r\n\tLIST_STOP\020\013\022\025\n\021SPEKTRA_STA" +
+      "RT_SEQ\020\014\022\024\n\020SPEKTRA_STOP_SEQ\020\r\022\021\n\rSPEKTR" +
+      "A_THEME\020\016\022\022\n\016SPEKTRA_STATIC\020\017\022\024\n\020SPEKTRA" +
+      "_SCHEDULE\020\020\022\016\n\nLINK_START\020\021\022\r\n\tLINK_STOP" +
+      "\020\022\022\020\n\014DISABLE_BURN\020\023\022\017\n\013ENABLE_BURN\020\024\022\016\n" +
+      "\nON_OFF_TOG\020\025\022\017\n\013MIN_MAX_TOG\020\026\022\020\n\014ENABLE" +
+      "_INPUT\020\027\022\021\n\rDISABLE_INPUT\020\030\022\024\n\020ENABLE_TO" +
+      "G_INPUT\020\031\022\016\n\nOUTPUT_TOG\020\032\022\017\n\013OUTPUT_HIGH" +
+      "\020\033\022\016\n\nOUTPUT_LOW\020\034\022\017\n\013OUTPUT_TRIG\020\035\022\022\n\016P" +
+      "ROFILE_CHANGE\020\036\022\023\n\017FADE_LONG_PRESS\020\037\022\n\n\006" +
+      "SYNCRO\020 \022\017\n\013PRESET_CODE\020!\022\017\n\013CUSTOM_CODE" +
+      "\020\"\022\021\n\rSPEKTRA_SLEEP\020#\022\022\n\016SPEKTRA_RESUME\020" +
+      "$\022\020\n\014DEVICE_RESET\020%\022\017\n\013DEVICE_SAVE\020&\022\030\n\024" +
+      "USER_LEVEL_STORE_NEW\020\'\022\032\n\026USER_LEVEL_SET" +
+      "_DEFAULT\020(\022\025\n\021USER_LEVEL_RECALL\020)\022\r\n\tROO" +
+      "M_JOIN\020+\022\017\n\013ROOM_UNJOIN\020,\022\023\n\017TYPE8_TC_WA" +
+      "RMER\020-\022\023\n\017TYPE8_TC_COOLER\020.\022\023\n\017TYPE8_TC_" +
+      "ACTUAL\020/\022\023\n\017LOGIC_OPERATION\0200\022\020\n\014ALARM_E" +
+      "NABLE\0201\022\021\n\rALARM_DISABLE\0202\022 \n\034DALI_CONTR" +
+      "OL_SENSOR_OVERRIDE\0203\022$\n DALI_CONTROL_SEN" +
+      "SOR_TEMP_DISABLE\0204\022\036\n\032DALI_CONTROL_SENSO" +
+      "R_RESUME\0205\022\025\n\021DALI_ARC_OVERRIDE\0206\022\031\n\025DAL" +
+      "I_COMMAND_OVERRIDE\0207\022\035\n\031FADE_UP_WITH_MIN" +
+      "_OVERRIDE\0208\022\027\n\023ON_OFF_TOG_OVERRIDE\0209\022\030\n\024" +
+      "MIN_MAX_TOG_OVERRIDE\020:\022\017\n\013MAX_OFF_TOG\020;\022" +
+      "\030\n\024MAX_OFF_TOG_OVERRIDE\020<\022\034\n\030FADE_LONG_P" +
+      "RESS_OVERRIDE\020=\022\036\n\032USER_LEVEL_RECALL_OVE" +
+      "RRIDE\020>\022\024\n\020DMX_ZONE_FADE_UP\020?\022\026\n\022DMX_ZON" +
+      "E_FADE_DOWN\020@\022\021\n\rLOGGING_LEVEL\020A\022\030\n\024SPEK" +
+      "TRA_SHOW_CONTROL\020B\022\031\n\025CIRCADIAN_TEMPERAT" +
+      "URE\020C\022\034\n\030DALI_CONTROL_SENSOR_MUTE\020D\022\036\n\032D" +
+      "ALI_CONTROL_SENSOR_UNMUTE\020E\022\025\n\021SPEKTRA_I" +
+      "NTENSITY\020F\022\032\n\026ENABLE_INPUT_NO_ACTION\020G\022\026" +
+      "\n\022SET_DALI_FADE_TIME\020H\022\017\n\nNO_COMMAND\020\376\001*" +
+      "\276\001\n\010ReadType\022\n\n\006INPUTS\020\000\022\013\n\007OUTPUTS\020\001\022\006\n" +
+      "\002IR\020\002\022\n\n\006SENSOR\020\003\022\010\n\004LIST\020\005\022\n\n\006ALARMS\020\007\022" +
+      "\013\n\007BURN_IN\020\010\022\013\n\007PROJECT\020\t\022\013\n\007NETWORK\020\n\022\n" +
+      "\n\006DEVICE\020\013\022\r\n\tPOLL_DATA\020\014\022\021\n\rLIST_EXTEND" +
+      "ED\020\r\022\t\n\005LOGIC\020\016\022\017\n\013DALI_INPUTS\020\017*\214\001\n\017Ala" +
+      "rmRepeatType\022\023\n\017ALARM_NO_REPEAT\020\000\022\026\n\022ALA" +
+      "RM_REPEAT_DAILY\020\001\022\031\n\025ALARM_REPEAT_WORK_D" +
+      "AY\020\002\022\027\n\023ALARM_REPEAT_WEEKLY\020\003\022\030\n\024ALARM_R" +
+      "EPEAT_MONTHLY\020\004*I\n\016AlarmAstroType\022\022\n\016ALA" +
+      "RM_NO_ASTRO\020\000\022\021\n\rALARM_SUNRUSE\020\001\022\020\n\014ALAR" +
+      "M_SUNSET\020\002*h\n\021SpektraTargetType\022\014\n\010SETTI" +
+      "NGS\020\000\022\014\n\010SEQUENCE\020\001\022\t\n\005THEME\020\002\022\n\n\006STATIC" +
+      "\020\003\022\014\n\010CALENDAR\020\004\022\010\n\004SHOW\020\005\022\010\n\004LIVE\020\006*=\n\021" +
+      "SpektraActionType\022\t\n\005START\020\000\022\010\n\004STOP\020\001\022\t" +
+      "\n\005PAUSE\020\002\022\010\n\004SAVE\020\003*p\n\025SpektraStepAction" +
+      "Type\022\020\n\014RUN_SEQUENCE\020\000\022\016\n\nSHOW_THEME\020\001\022\016" +
+      "\n\nSTART_LIST\020\002\022\022\n\016PAUSE_PREVIOUS\020\003\022\021\n\rST" +
+      "OP_PREVIOUS\020\004*\236\001\n\037SpektraUnscheduledBeha" +
+      "viourType\022 \n\034RUN_RANDOM_COLOURED_SEQUENC" +
+      "E\020\000\022\022\n\016RUN_SEQUENCE_1\020\001\022\023\n\017RESUME_PREVIO" +
+      "US\020\002\022\017\n\013RUN_THEME_1\020\003\022\016\n\nRUN_SHOW_1\020\004\022\017\n" +
       "\nDO_NOTHING\020\376\001*6\n\022LineAddressingType\022\017\n\013" +
       "INDEPENDENT\020\000\022\017\n\013CONSECUTIVE\020\001*\347\002\n\016AckMe" +
       "ssageType\022\021\n\rDECODE_FAILED\020\000\022\027\n\023INDEX_OU" +
@@ -122462,7 +120976,7 @@ public final class EDS10ProtocolBuffer {
       "P_ARC_LEVEL\020\002\022\030\n\024DALI_BROADCAST_SCENE\020\003\022" +
       "\027\n\023DALI_SCENE_ON_GROUP\020\004\022\031\n\025DALI_SCENE_O" +
       "N_ADDRESS\020\005\022\032\n\026DALI_QUERY_MULTI_TYPES\020\006*" +
-      "\226\004\n\021AdminPropertyType\022\017\n\013DEVICE_NAME\020\000\022\020" +
+      "\320\004\n\021AdminPropertyType\022\017\n\013DEVICE_NAME\020\000\022\020" +
       "\n\014PROJECT_NAME\020\001\022\r\n\tLONGITUDE\020\002\022\014\n\010LATIT" +
       "UDE\020\003\022\024\n\020LOCAL_UTC_OFFSET\020\004\022\024\n\020DAYLIGHT_" +
       "SAVINGS\020\005\022\017\n\013POLL_ACTIVE\020\006\022\020\n\014DHCP_ENABL" +
@@ -122475,55 +120989,57 @@ public final class EDS10ProtocolBuffer {
       "ILS\020\024\022\020\n\014DALI_SENSORS\020\025\022\022\n\016SECURE_SESSIO" +
       "N\020\026\022\t\n\005NONCE\020\027\022\024\n\020DALI_SENSOR_TYPE\020\030\022\021\n\r" +
       "DEVICE_REBOOT\020\031\022\022\n\016SYSTEM_LOGGING\020\032\022\n\n\006S" +
-      "UBNET\020\033\022\007\n\003DNS\020\034*M\n\020AdminCommandType\022\007\n\003" +
-      "SET\020\000\022\007\n\003GET\020\001\022\007\n\003ADD\020\002\022\n\n\006REMOVE\020\003\022\t\n\005R" +
-      "ESET\020\004\022\007\n\003RUN\020\005*\265\001\n\016DALIStatusType\022\014\n\010LA" +
-      "MP_OFF\020\000\022\030\n\024CONTROL_GEAR_FAILURE\020\001\022\020\n\014LA" +
-      "MP_FAILURE\020\002\022\013\n\007LAMP_ON\020\004\022\017\n\013LIMIT_ERROR" +
-      "\020\010\022\020\n\014FADE_RUNNING\020\020\022\017\n\013RESET_STATE\020 \022\021\n" +
-      "\rSHORT_ADDRESS\020@\022\025\n\020POWER_CYCLE_SEEN\020\200\001*" +
-      "\210\002\n\020DALIRXStatusFlag\022\013\n\007WAITING\020\000\022\023\n\017REC" +
-      "EIVING_FRAME\020\001\022\025\n\021NO_RECEIVED_FRAME\020\002\022\030\n" +
-      "\024RECEIVED_8_BIT_FRAME\020\003\022\031\n\025RECEIVED_16_B" +
-      "IT_FRAME\020\004\022\031\n\025RECEIVED_24_BIT_FRAME\020\005\022\032\n" +
-      "\026RECEIVED_PARTIAL_FRAME\020\006\022\010\n\004IDLE\020\007\022\017\n\013C" +
-      "ALIBRATION\020\010\022\030\n\023ERROR_WHILE_SENDING\020\376\001\022\032" +
-      "\n\025ERROR_WHILE_RECEIVING\020\377\001*\242\001\n\025Diagnosti" +
-      "cMessageType\022\032\n\026DIAGNOSTIC_SYSTEM_INFO\020\000" +
-      "\022\033\n\027DIAGNOSTIC_INPUT_STATUS\020\001\022\024\n\020DALI_LE" +
-      "VEL_CACHE\020\002\022\023\n\017DMX_LEVEL_CACHE\020\003\022\016\n\nROOM" +
-      "_JOINS\020\004\022\025\n\021DALI_STATUS_CACHE\020\005*z\n\023Firmw" +
-      "areCommandType\022\014\n\010FW_READY\020\000\022\014\n\010FW_APPLY" +
-      "\020\001\022\r\n\tFW_VERIFY\020\002\022\024\n\020FW_VERIFY_FAILED\020\003\022" +
-      "\025\n\021FW_VERIFY_SUCCESS\020\004\022\013\n\007FW_READ\020\005*?\n\025S" +
-      "pektraTransitionType\022\t\n\005BLEND\020\000\022\010\n\004SNAP\020" +
-      "\001\022\021\n\rFADE_TO_BLACK\020\002*\302\001\n\tLogicType\022\016\n\nDA" +
-      "LI_LEVEL\020\000\022\017\n\013INPUT_STATE\020\001\022\020\n\014LIST_RUNN" +
-      "ING\020\002\022\026\n\022OCCUPANCY_DETECTED\020\003\022\017\n\013DMX_PRE" +
-      "SENT\020\004\022\017\n\013CAL_WEEKDAY\020\005\022\r\n\tCAL_MONTH\020\006\022\023" +
-      "\n\017ALARM_SCHEDULED\020\007\022\025\n\021DALI_CACHE_STATUS" +
-      "\020\010\022\r\n\tHAS_ERROR\020\t*\246\001\n\023LogicComparisonTyp" +
-      "e\022\r\n\tLESS_THAN\020\000\022\027\n\023LESS_THAN_OR_EQUALS\020" +
-      "\001\022\n\n\006EQUALS\020\002\022\r\n\tMORE_THAN\020\003\022\027\n\023MORE_THA" +
-      "N_OR_EQUALS\020\004\022\r\n\tNOT_EQUAL\020\005\022\n\n\006BIT_OR\020\006" +
-      "\022\013\n\007BIT_AND\020\007\022\013\n\007BIT_XOR\020\010*8\n\016DALISensor" +
-      "Type\022\022\n\016TRIDONIC_EDALI\020\000\022\022\n\016STANDARD_EDA" +
-      "LI\020\001*U\n\021SensorCommandType\022\016\n\nINITIALISE\020" +
-      "\000\022\010\n\004MUTE\020\001\022\n\n\006UNMUTE\020\002\022\014\n\010OVERRIDE\020\003\022\014\n" +
-      "\010IDENTIFY\020\004*b\n\rSystemLogType\022\010\n\004BOOT\020\000\022\014" +
-      "\n\010NET_LINK\020\001\022\007\n\003NTP\020\002\022\013\n\007TRIGGER\020\003\022\013\n\007SP" +
-      "EKTRA\020\004\022\014\n\010SCHEDULE\020\005\022\010\n\004USER\020\006*m\n\017DALI2" +
-      "4InputType\022\023\n\017MOMENTARY_SHORT\020\000\022\022\n\016MOMEN" +
-      "TARY_LONG\020\001\022\017\n\013LATCHED_LOW\020\002\022\020\n\014LATCHED_" +
-      "HIGH\020\003\022\016\n\nPOSITIONAL\020\004*h\n\026DALIMotionSens" +
-      "orStates\022\017\n\013MOTION_IDLE\020\000\022\023\n\017MOTION_DISA" +
-      "BLED\020\001\022\022\n\016MOTION_WARNING\020\002\022\024\n\020MOTION_OCC" +
-      "UPANCY\020\003*I\n\023DALILuxSensorStates\022\020\n\014LUX_D" +
-      "ISABLED\020\000\022\017\n\013LUX_ENABLED\020\001\022\017\n\013LUX_DEVIAT" +
-      "E\020\002*N\n\023DALIAddressingError\022\014\n\010NO_ERROR\020\000" +
-      "\022\n\n\006VERIFY\020\001\022\n\n\006SEARCH\020\002\022\021\n\rNO_NEW_DEVIC" +
-      "E\020\003*8\n\022DALIAddressingType\022\017\n\013ADDRESS_NEW" +
-      "\020\000\022\021\n\rREADDRESS_ALL\020\001b\006proto3"
+      "UBNET\020\033\022\007\n\003DNS\020\034\022\010\n\004LINK\020\035\022\r\n\tLINK_TYPE\020" +
+      "\036\022\r\n\tLINK_MASK\020\037\022\020\n\014LINK_NETMASK\020 *M\n\020Ad" +
+      "minCommandType\022\007\n\003SET\020\000\022\007\n\003GET\020\001\022\007\n\003ADD\020" +
+      "\002\022\n\n\006REMOVE\020\003\022\t\n\005RESET\020\004\022\007\n\003RUN\020\005*\265\001\n\016DA" +
+      "LIStatusType\022\014\n\010LAMP_OFF\020\000\022\030\n\024CONTROL_GE" +
+      "AR_FAILURE\020\001\022\020\n\014LAMP_FAILURE\020\002\022\013\n\007LAMP_O" +
+      "N\020\004\022\017\n\013LIMIT_ERROR\020\010\022\020\n\014FADE_RUNNING\020\020\022\017" +
+      "\n\013RESET_STATE\020 \022\021\n\rSHORT_ADDRESS\020@\022\025\n\020PO" +
+      "WER_CYCLE_SEEN\020\200\001*\210\002\n\020DALIRXStatusFlag\022\013" +
+      "\n\007WAITING\020\000\022\023\n\017RECEIVING_FRAME\020\001\022\025\n\021NO_R" +
+      "ECEIVED_FRAME\020\002\022\030\n\024RECEIVED_8_BIT_FRAME\020" +
+      "\003\022\031\n\025RECEIVED_16_BIT_FRAME\020\004\022\031\n\025RECEIVED" +
+      "_24_BIT_FRAME\020\005\022\032\n\026RECEIVED_PARTIAL_FRAM" +
+      "E\020\006\022\010\n\004IDLE\020\007\022\017\n\013CALIBRATION\020\010\022\030\n\023ERROR_" +
+      "WHILE_SENDING\020\376\001\022\032\n\025ERROR_WHILE_RECEIVIN" +
+      "G\020\377\001*\242\001\n\025DiagnosticMessageType\022\032\n\026DIAGNO" +
+      "STIC_SYSTEM_INFO\020\000\022\033\n\027DIAGNOSTIC_INPUT_S" +
+      "TATUS\020\001\022\024\n\020DALI_LEVEL_CACHE\020\002\022\023\n\017DMX_LEV" +
+      "EL_CACHE\020\003\022\016\n\nROOM_JOINS\020\004\022\025\n\021DALI_STATU" +
+      "S_CACHE\020\005*\210\001\n\023FirmwareCommandType\022\014\n\010FW_" +
+      "READY\020\000\022\014\n\010FW_APPLY\020\001\022\r\n\tFW_VERIFY\020\002\022\024\n\020" +
+      "FW_VERIFY_FAILED\020\003\022\025\n\021FW_VERIFY_SUCCESS\020" +
+      "\004\022\013\n\007FW_READ\020\005\022\014\n\010FW_CLONE\020\006*?\n\025SpektraT" +
+      "ransitionType\022\t\n\005BLEND\020\000\022\010\n\004SNAP\020\001\022\021\n\rFA" +
+      "DE_TO_BLACK\020\002*\302\001\n\tLogicType\022\016\n\nDALI_LEVE" +
+      "L\020\000\022\017\n\013INPUT_STATE\020\001\022\020\n\014LIST_RUNNING\020\002\022\026" +
+      "\n\022OCCUPANCY_DETECTED\020\003\022\017\n\013DMX_PRESENT\020\004\022" +
+      "\017\n\013CAL_WEEKDAY\020\005\022\r\n\tCAL_MONTH\020\006\022\023\n\017ALARM" +
+      "_SCHEDULED\020\007\022\025\n\021DALI_CACHE_STATUS\020\010\022\r\n\tH" +
+      "AS_ERROR\020\t*\246\001\n\023LogicComparisonType\022\r\n\tLE" +
+      "SS_THAN\020\000\022\027\n\023LESS_THAN_OR_EQUALS\020\001\022\n\n\006EQ" +
+      "UALS\020\002\022\r\n\tMORE_THAN\020\003\022\027\n\023MORE_THAN_OR_EQ" +
+      "UALS\020\004\022\r\n\tNOT_EQUAL\020\005\022\n\n\006BIT_OR\020\006\022\013\n\007BIT" +
+      "_AND\020\007\022\013\n\007BIT_XOR\020\010*8\n\016DALISensorType\022\022\n" +
+      "\016TRIDONIC_EDALI\020\000\022\022\n\016STANDARD_EDALI\020\001*U\n" +
+      "\021SensorCommandType\022\016\n\nINITIALISE\020\000\022\010\n\004MU" +
+      "TE\020\001\022\n\n\006UNMUTE\020\002\022\014\n\010OVERRIDE\020\003\022\014\n\010IDENTI" +
+      "FY\020\004*b\n\rSystemLogType\022\010\n\004BOOT\020\000\022\014\n\010NET_L" +
+      "INK\020\001\022\007\n\003NTP\020\002\022\013\n\007TRIGGER\020\003\022\013\n\007SPEKTRA\020\004" +
+      "\022\014\n\010SCHEDULE\020\005\022\010\n\004USER\020\006*m\n\017DALI24InputT" +
+      "ype\022\023\n\017MOMENTARY_SHORT\020\000\022\022\n\016MOMENTARY_LO" +
+      "NG\020\001\022\017\n\013LATCHED_LOW\020\002\022\020\n\014LATCHED_HIGH\020\003\022" +
+      "\016\n\nPOSITIONAL\020\004*h\n\026DALIMotionSensorState" +
+      "s\022\017\n\013MOTION_IDLE\020\000\022\023\n\017MOTION_DISABLED\020\001\022" +
+      "\022\n\016MOTION_WARNING\020\002\022\024\n\020MOTION_OCCUPANCY\020" +
+      "\003*I\n\023DALILuxSensorStates\022\020\n\014LUX_DISABLED" +
+      "\020\000\022\017\n\013LUX_ENABLED\020\001\022\017\n\013LUX_DEVIATE\020\002*N\n\023" +
+      "DALIAddressingError\022\014\n\010NO_ERROR\020\000\022\n\n\006VER" +
+      "IFY\020\001\022\n\n\006SEARCH\020\002\022\021\n\rNO_NEW_DEVICE\020\003*8\n\022" +
+      "DALIAddressingType\022\017\n\013ADDRESS_NEW\020\000\022\021\n\rR" +
+      "EADDRESS_ALL\020\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -122861,252 +121377,234 @@ public final class EDS10ProtocolBuffer {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SpektraControlMessage_descriptor,
         new java.lang.String[] { "Type", "Zone", "Index", "Action", });
-    internal_static_ShowStepMessage_descriptor =
+    internal_static_SpektraLiveMessage_descriptor =
       getDescriptor().getMessageTypes().get(54);
-    internal_static_ShowStepMessage_fieldAccessorTable = new
+    internal_static_SpektraLiveMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ShowStepMessage_descriptor,
-        new java.lang.String[] { "StepIndex", "TargetIndex", "ActionType", "MaxRandomTargetIndex", "Zone", "MaxOutputLevelLimit", "TimeUntilNext10Ms", });
-    internal_static_SpektraShowMessage_descriptor =
-      getDescriptor().getMessageTypes().get(55);
-    internal_static_SpektraShowMessage_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_SpektraShowMessage_descriptor,
-        new java.lang.String[] { "ShowIndex", "NumberOfSteps", "Step", "IsRunning", "IsLooped", "IsRandom", "IsTemporary", "ActivationsRemaining", });
-    internal_static_ExtendedSpektraShowMessage_descriptor =
-      getDescriptor().getMessageTypes().get(56);
-    internal_static_ExtendedSpektraShowMessage_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ExtendedSpektraShowMessage_descriptor,
-        new java.lang.String[] { "ShowIndex", "StepIndexOffset", "Step", });
-    internal_static_SpektraShowControlMessage_descriptor =
-      getDescriptor().getMessageTypes().get(57);
-    internal_static_SpektraShowControlMessage_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_SpektraShowControlMessage_descriptor,
-        new java.lang.String[] { "ShowIndex", "StartResume", "GotoStep", });
+        internal_static_SpektraLiveMessage_descriptor,
+        new java.lang.String[] { "Type", "Index", "Action", "StepIndex", "StepIndexDirection", "ColourIndex", "ColourRange", "RandomSeqType", "ZoneActive", });
     internal_static_DMXTranslationObject_descriptor =
-      getDescriptor().getMessageTypes().get(58);
+      getDescriptor().getMessageTypes().get(55);
     internal_static_DMXTranslationObject_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DMXTranslationObject_descriptor,
         new java.lang.String[] { "LineIn", "LineOut", "DmxStartAddress", "ChannelCount", "DaliArray", "AffectedInput", "Blocking", "Enabled", });
     internal_static_DMXProtocolTranslation_descriptor =
-      getDescriptor().getMessageTypes().get(59);
+      getDescriptor().getMessageTypes().get(56);
     internal_static_DMXProtocolTranslation_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DMXProtocolTranslation_descriptor,
         new java.lang.String[] { "Object", });
     internal_static_InputStateMessage_descriptor =
-      getDescriptor().getMessageTypes().get(60);
+      getDescriptor().getMessageTypes().get(57);
     internal_static_InputStateMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InputStateMessage_descriptor,
         new java.lang.String[] { "UseMask", });
     internal_static_InputStateResponse_descriptor =
-      getDescriptor().getMessageTypes().get(61);
+      getDescriptor().getMessageTypes().get(58);
     internal_static_InputStateResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InputStateResponse_descriptor,
         new java.lang.String[] { "Inputs", "InputMask", });
     internal_static_LevelCacheResponse_descriptor =
-      getDescriptor().getMessageTypes().get(62);
+      getDescriptor().getMessageTypes().get(59);
     internal_static_LevelCacheResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_LevelCacheResponse_descriptor,
         new java.lang.String[] { "Levels", "Line", "Page", });
     internal_static_DiagnosticSystemInfoResponse_descriptor =
-      getDescriptor().getMessageTypes().get(63);
+      getDescriptor().getMessageTypes().get(60);
     internal_static_DiagnosticSystemInfoResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DiagnosticSystemInfoResponse_descriptor,
         new java.lang.String[] { "Firmware", "Hardware", "Error", "InputCount", "OutputCount", "IrCount", "ListStepCount", "ListCount", "AlarmCount", "BurninCount", "SpektraSeqCount", "SpektraSeqStepCount", "SpektraThemeCount", "SpektraStaticCount", "ProtoVersion", "LineCount", "Lines", "ProfileCount", "PresetCodeCount", "UserLevelCount", "DmxToDaliCount", "SpektraZoneCount", "LogicCount", "InputDaliCount", "VendorId", "SelectedProfile", });
     internal_static_DiagnosticMessage_descriptor =
-      getDescriptor().getMessageTypes().get(64);
+      getDescriptor().getMessageTypes().get(61);
     internal_static_DiagnosticMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DiagnosticMessage_descriptor,
         new java.lang.String[] { "Type", "Page", "Line", });
     internal_static_AdminProjectPropertiesMessage_descriptor =
-      getDescriptor().getMessageTypes().get(65);
+      getDescriptor().getMessageTypes().get(62);
     internal_static_AdminProjectPropertiesMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminProjectPropertiesMessage_descriptor,
         new java.lang.String[] { "DeviceName", "ProjectName", "Longitude", "Latitude", "LocalOffset", "DaylightSavings", "DaylightSavingsStart", "DaylightSavingsEnd", "PollActive", });
     internal_static_AdminConfigStatusMessage_descriptor =
-      getDescriptor().getMessageTypes().get(66);
+      getDescriptor().getMessageTypes().get(63);
     internal_static_AdminConfigStatusMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminConfigStatusMessage_descriptor,
         new java.lang.String[] { "ListStatus", "BurnInStatus", "AlarmStatus", "AlarmTimeFromReg", "SensorStatus", });
     internal_static_AdminNetworkPropertiesMessage_descriptor =
-      getDescriptor().getMessageTypes().get(67);
+      getDescriptor().getMessageTypes().get(64);
     internal_static_AdminNetworkPropertiesMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminNetworkPropertiesMessage_descriptor,
         new java.lang.String[] { "DHCP", "IP", "MAC", "Gateway", "NTPServer", "NTP", "Error", "NTPTimeout", "Subnet", "DNSPrimary", "DNSSecondary", });
     internal_static_AdminDNSServersMessage_descriptor =
-      getDescriptor().getMessageTypes().get(68);
+      getDescriptor().getMessageTypes().get(65);
     internal_static_AdminDNSServersMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminDNSServersMessage_descriptor,
         new java.lang.String[] { "DNSPrimary", "DNSSecondary", });
     internal_static_AdminControllerLinesMessage_descriptor =
-      getDescriptor().getMessageTypes().get(69);
+      getDescriptor().getMessageTypes().get(66);
     internal_static_AdminControllerLinesMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminControllerLinesMessage_descriptor,
         new java.lang.String[] { "Lines", });
     internal_static_AdminDeviceStatusMessage_descriptor =
-      getDescriptor().getMessageTypes().get(70);
+      getDescriptor().getMessageTypes().get(67);
     internal_static_AdminDeviceStatusMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminDeviceStatusMessage_descriptor,
         new java.lang.String[] { "Temperature", "Battery", });
     internal_static_AdminSecureLoginMessage_descriptor =
-      getDescriptor().getMessageTypes().get(71);
+      getDescriptor().getMessageTypes().get(68);
     internal_static_AdminSecureLoginMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminSecureLoginMessage_descriptor,
         new java.lang.String[] { "Username", "Cnonce", "Hash", });
     internal_static_AdminDALISensorTypeMessage_descriptor =
-      getDescriptor().getMessageTypes().get(72);
+      getDescriptor().getMessageTypes().get(69);
     internal_static_AdminDALISensorTypeMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminDALISensorTypeMessage_descriptor,
         new java.lang.String[] { "Type", });
     internal_static_AdminMessage_descriptor =
-      getDescriptor().getMessageTypes().get(73);
+      getDescriptor().getMessageTypes().get(70);
     internal_static_AdminMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AdminMessage_descriptor,
         new java.lang.String[] { "Command", "Target", "Data", "NetworkProperties", "ProjectProperties", "ControllerLines", "DeviceStatus", "ConfigStatus", "DeviceTime", "DaliSensorType", "DnsServers", "Payload", });
     internal_static_DataMessage_descriptor =
-      getDescriptor().getMessageTypes().get(74);
+      getDescriptor().getMessageTypes().get(71);
     internal_static_DataMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DataMessage_descriptor,
         new java.lang.String[] { "Identifier", "Seq", "Count", "Data", });
     internal_static_FirmwareMetaMessage_descriptor =
-      getDescriptor().getMessageTypes().get(75);
+      getDescriptor().getMessageTypes().get(72);
     internal_static_FirmwareMetaMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_FirmwareMetaMessage_descriptor,
         new java.lang.String[] { "FirmwareVersion", "FirmwareDate", "FirmwareDateUpload", "FirmwareChecksum", "FirmwareChunkCount", "FirmwareBaseAddress", "FirmwareEndAddress", "FirmwareIsBackup", "Nonce", "FirmwareDateDay", "FirmwareDateMonth", "FirmwareDateYear", });
     internal_static_FirmwareControlMessage_descriptor =
-      getDescriptor().getMessageTypes().get(76);
+      getDescriptor().getMessageTypes().get(73);
     internal_static_FirmwareControlMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_FirmwareControlMessage_descriptor,
-        new java.lang.String[] { "Cmd", });
+        new java.lang.String[] { "Cmd", "FirmwareIsBackup", });
     internal_static_FirmwareChunkMessage_descriptor =
-      getDescriptor().getMessageTypes().get(77);
+      getDescriptor().getMessageTypes().get(74);
     internal_static_FirmwareChunkMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_FirmwareChunkMessage_descriptor,
         new java.lang.String[] { "FirmwareAddress", "TotalBytes", "Payload", });
     internal_static_SystemLogReadMessage_descriptor =
-      getDescriptor().getMessageTypes().get(78);
+      getDescriptor().getMessageTypes().get(75);
     internal_static_SystemLogReadMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogReadMessage_descriptor,
         new java.lang.String[] { "LogStartAddress", "LogsRequested", "Logs", });
     internal_static_SystemLogMessage_descriptor =
-      getDescriptor().getMessageTypes().get(79);
+      getDescriptor().getMessageTypes().get(76);
     internal_static_SystemLogMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogMessage_descriptor,
         new java.lang.String[] { "TimeSinceBoot", "Boot", "Netlink", "Ntp", "Trigger", "Spektra", "Schedule", "Userstart", "Packet", });
     internal_static_SystemLogBoot_descriptor =
-      getDescriptor().getMessageTypes().get(80);
+      getDescriptor().getMessageTypes().get(77);
     internal_static_SystemLogBoot_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogBoot_descriptor,
         new java.lang.String[] { "Timeclock", "Flags", });
     internal_static_SystemLogNetLink_descriptor =
-      getDescriptor().getMessageTypes().get(81);
+      getDescriptor().getMessageTypes().get(78);
     internal_static_SystemLogNetLink_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogNetLink_descriptor,
         new java.lang.String[] { "IsLinked", });
     internal_static_SystemLogNTP_descriptor =
-      getDescriptor().getMessageTypes().get(82);
+      getDescriptor().getMessageTypes().get(79);
     internal_static_SystemLogNTP_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogNTP_descriptor,
         new java.lang.String[] { "Timeclock", });
     internal_static_SystemLogTrigger_descriptor =
-      getDescriptor().getMessageTypes().get(83);
+      getDescriptor().getMessageTypes().get(80);
     internal_static_SystemLogTrigger_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogTrigger_descriptor,
         new java.lang.String[] { "Trigger", "Source", });
     internal_static_SystemLogSpektra_descriptor =
-      getDescriptor().getMessageTypes().get(84);
+      getDescriptor().getMessageTypes().get(81);
     internal_static_SystemLogSpektra_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogSpektra_descriptor,
         new java.lang.String[] { "Action", "Type", "Index", });
     internal_static_SystemLogSchedule_descriptor =
-      getDescriptor().getMessageTypes().get(85);
+      getDescriptor().getMessageTypes().get(82);
     internal_static_SystemLogSchedule_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogSchedule_descriptor,
         new java.lang.String[] { "Index", "IsStart", "Second", "Minute", "Hour", });
     internal_static_SystemLogUserStart_descriptor =
-      getDescriptor().getMessageTypes().get(86);
+      getDescriptor().getMessageTypes().get(83);
     internal_static_SystemLogUserStart_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemLogUserStart_descriptor,
         new java.lang.String[] { "Timeclock", "Flags", });
     internal_static_SystemMetaDataReadMessage_descriptor =
-      getDescriptor().getMessageTypes().get(87);
+      getDescriptor().getMessageTypes().get(84);
     internal_static_SystemMetaDataReadMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SystemMetaDataReadMessage_descriptor,
         new java.lang.String[] { "InputPressCounter", "ListStartCounter", "SchedulesCounter", "ScreenOnTime", "ScreenDimTime", "ScreenSaverTime", "RebootCounter", });
     internal_static_EventFilter_descriptor =
-      getDescriptor().getMessageTypes().get(88);
+      getDescriptor().getMessageTypes().get(85);
     internal_static_EventFilter_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_EventFilter_descriptor,
         new java.lang.String[] { "Input", "DaliArcLevel", "DaliCommand", "DaliSensor", "DaliInput", "DmxStreamChanged", "Dali24Frame", "TriggerMessage", });
     internal_static_TriggerEvent_descriptor =
-      getDescriptor().getMessageTypes().get(89);
+      getDescriptor().getMessageTypes().get(86);
     internal_static_TriggerEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_TriggerEvent_descriptor,
         new java.lang.String[] { "Type", "Level", "DaliCommand", "TargetAddress", "LineMask", "Zone", "Value", "QueryIndex", "Source", "Payload", });
     internal_static_DALI24InputEvent_descriptor =
-      getDescriptor().getMessageTypes().get(90);
+      getDescriptor().getMessageTypes().get(87);
     internal_static_DALI24InputEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DALI24InputEvent_descriptor,
         new java.lang.String[] { "Index", "Line", "Address", "Type", "Arg", });
     internal_static_DALI24FrameEvent_descriptor =
-      getDescriptor().getMessageTypes().get(91);
+      getDescriptor().getMessageTypes().get(88);
     internal_static_DALI24FrameEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DALI24FrameEvent_descriptor,
         new java.lang.String[] { "Line", "Frame", });
     internal_static_DALISensorEvent_descriptor =
-      getDescriptor().getMessageTypes().get(92);
+      getDescriptor().getMessageTypes().get(89);
     internal_static_DALISensorEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DALISensorEvent_descriptor,
         new java.lang.String[] { "Index", "Line", "Address", "MotionState", "LuxState", "LuxLevel", });
     internal_static_EventMessage_descriptor =
-      getDescriptor().getMessageTypes().get(93);
+      getDescriptor().getMessageTypes().get(90);
     internal_static_EventMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_EventMessage_descriptor,
         new java.lang.String[] { "Event", "Trigger", "Inputs", "Payload", "Sensor", "Dali24Input", "Filter", "Dali24Frame", "EventData", });
     internal_static_EdidioMessage_descriptor =
-      getDescriptor().getMessageTypes().get(94);
+      getDescriptor().getMessageTypes().get(91);
     internal_static_EdidioMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_EdidioMessage_descriptor,
-        new java.lang.String[] { "MessageId", "Ack", "Inputs", "Outputs", "Irs", "Sensor", "List", "Alarm", "Alarms", "BurnIns", "SensorCommand", "ChangeProfile", "IdentifyMessage", "UpdateTime", "ReadDevice", "DaliMessage", "DaliQuery", "DmxMessage", "ExternalTrigger", "SpektraSettings", "SpektraSequence", "SpektraCalendar", "SpektraTheme", "SpektraRead", "SpektraControl", "DmxTranslator", "InputRequest", "InputResponse", "DiagSystem", "DiagMessage", "AdminMessage", "Event", "SecureDeviceSettings", "FirmwareNew", "FirmwareControl", "FirmwareChunk", "LevelCacheResponse", "ListExtended", "AytMessage", "RdmMessage", "RdmResponseMessage", "LogicMessage", "SecureLogin", "DeviceStateMessage", "SpektraCalendarDay", "SpektraCalendarOverview", "InputsDali", "LogsRead", "MetadataRead", "DaliAddressingMessage", "DaliRemappingMessage", "SpektraShowControlMessage", "SpektraShowMessage", "ExtendedSpektraShowMessage", "RdmDiscovery", "RdmDiscoveryReply", "DaliIdentifyDuplicates", "Payload", });
+        new java.lang.String[] { "MessageId", "Ack", "Inputs", "Outputs", "Irs", "Sensor", "List", "Alarm", "Alarms", "BurnIns", "SensorCommand", "ChangeProfile", "IdentifyMessage", "UpdateTime", "ReadDevice", "DaliMessage", "DaliQuery", "DmxMessage", "ExternalTrigger", "SpektraSettings", "SpektraSequence", "SpektraCalendar", "SpektraTheme", "SpektraRead", "SpektraControl", "DmxTranslator", "InputRequest", "InputResponse", "DiagSystem", "DiagMessage", "AdminMessage", "Event", "SecureDeviceSettings", "FirmwareNew", "FirmwareControl", "FirmwareChunk", "LevelCacheResponse", "ListExtended", "AytMessage", "RdmMessage", "RdmResponseMessage", "LogicMessage", "SecureLogin", "DeviceStateMessage", "SpektraCalendarDay", "SpektraCalendarOverview", "InputsDali", "LogsRead", "MetadataRead", "DaliAddressingMessage", "DaliRemappingMessage", "RdmDiscovery", "RdmDiscoveryReply", "DaliIdentifyDuplicates", "SpektraLive", "Payload", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -1,7 +1,10 @@
 // The eDIDIO S10 Protocol Buffer Structure
-// Version Number 1.1.13
+// Version Number 1.1.18
 
 syntax = "proto3";
+
+//package com.eds10pb; // <- Uncomment for API generation
+
 
 /*********** @exclude ENUMERATIONS/Types ************/
 enum TriggerOperationType {
@@ -33,8 +36,8 @@ enum TriggerType {
 	SPEKTRA_THEME                       = 14;   // Apply a Spektra Theme
 	SPEKTRA_STATIC                      = 15;   // DEPRECATED
 	SPEKTRA_SCHEDULE                    = 16;   // Start the scheduled Spektra item
-	LINK_START                          = 17;   // NOTE: Beta Command - Starts a Network Link with bitmask
-	LINK_STOP                           = 18;   // NOTE: Beta Command - Stops a Network Link
+	LINK_START                          = 17;   // Enables the UDP Link State - If Configured
+	LINK_STOP                           = 18;   // Temporarily disables the UDP Link State
 	DISABLE_BURN                        = 19;   // Disable Burn-In
 	ENABLE_BURN                         = 20;   // Enable Burn-In
 	ON_OFF_TOG                          = 21;   // Turn a Group/Addres On/Off based on query level. If DALI_GROUP_ALL, toggle based on flag
@@ -81,12 +84,15 @@ enum TriggerType {
 	DMX_ZONE_FADE_UP					= 63;   // DMX Spektra Zone Fade UP
 	DMX_ZONE_FADE_DOWN					= 64;   // DMX Spektra Zone Fade DOWN
 	LOGGING_LEVEL						= 65;	// Enable Logging to EEPROM to be read by configurator
-    SPEKTRA_SHOW_CONTROL                = 66;   // Show Control 
+    SPEKTRA_SHOW_CONTROL                = 66;   // DEPRECATED
     CIRCADIAN_TEMPERATURE               = 67;   // Selects Colour Temperature based on clock
     DALI_CONTROL_SENSOR_MUTE            = 68;   // Mute Sensor at Index (or all with Index 255)
     DALI_CONTROL_SENSOR_UNMUTE          = 69;   // Unmute to Sensor at Index (or all with Index 255)
     SPEKTRA_INTENSITY                   = 70;   // Allow you to specify the maximum Spektra Sequence or Theme output intensity (10 to 100)%
+    ENABLE_INPUT_NO_ACTION              = 71;   // Allow you to enable an input (Latching), but not trigger the action.
+    SET_DALI_FADE_TIME                  = 72;   // Sets the DALI Fade Time
     NO_COMMAND                          = 254;  // This TriggerType should always be at the bottom of the list. Add any new TriggerTypes above it (up to 253).
+
 }
 
 enum ReadType {
@@ -106,8 +112,6 @@ enum ReadType {
     LIST_EXTENDED           = 13;
 	LOGIC	                = 14;
 	DALI_INPUTS             = 15;
-    SPEKTRA_SHOW            = 16;
-    SPEKTRA_SHOW_EXTENDED   = 17;
 }
 
 enum AlarmRepeatType {
@@ -128,9 +132,10 @@ enum SpektraTargetType {
     SETTINGS        = 0;
     SEQUENCE        = 1;
     THEME           = 2;
-    STATIC          = 3;
+    STATIC          = 3;        // DEPRECATED
 	CALENDAR        = 4;
-    SHOW            = 5;
+    SHOW            = 5;        // DEPRECATED
+    LIVE            = 6;        // Live Update of the Spektra settings
 }
 
 enum SpektraActionType {
@@ -152,6 +157,8 @@ enum SpektraUnscheduledBehaviourType {
     RUN_RANDOM_COLOURED_SEQUENCE    = 0;   // Unless otherwise specified, this is a rotate sequence with random colours rotating every 5 seconds
     RUN_SEQUENCE_1                  = 1;   // Can be used to set a 'Default Sequence' with a known pattern and colour combination
     RESUME_PREVIOUS                 = 2;   // Resume the last Sequence or Theme that Spektra had active
+    RUN_THEME_1                     = 3;   // Resume to Theme 1
+    RUN_SHOW_1                      = 4;   // Resume to Show 1 
     DO_NOTHING                      = 254; // Left as the last possible type, fill between 0 and 253 as necessary
 }
 
@@ -497,6 +504,10 @@ enum AdminPropertyType {
 	SYSTEM_LOGGING      = 26; // Will reset the system logs when used with a 'RESET' AdminCommandType
     SUBNET              = 27; // The Subnet of the Device
     DNS                 = 28; // The Primary and Secondary DNS
+    LINK                = 29; // Wheter or not the UDP Link state is active
+    LINK_TYPE           = 30; // Type of Link to enable, based on ReadType
+    LINK_MASK           = 31; // Link Index Mask for above
+    LINK_NETMASK        = 32; // Netmask for Link to create Network groups for UDP messaging
 }
 
 // Used with AdminPropertyType
@@ -550,10 +561,11 @@ enum DiagnosticMessageType {
 enum FirmwareCommandType {
 	FW_READY           = 0; // System Ready for Firmware Message
 	FW_APPLY           = 1; // Sent to controller to initiaite a Firmware update
-	FW_VERIFY          = 2; // Sent to controller to initaite stored Firmware verification
+	FW_VERIFY          = 2; // Sent to controller to initaite stored Firmware verification - This will complete the firmware upload mode and unlock normal functionality. 
 	FW_VERIFY_FAILED   = 3; // Received from controller - Issue with stored Firmware
 	FW_VERIFY_SUCCESS  = 4; // Received from controller - Stored Firmware is Valid
 	FW_READ            = 5; // Set to controller to request information for currently stored Firmware
+    FW_CLONE           = 6; // Command to Clone Main FW to Backup. Using the firmware_is_backup flag will clone Backup to Main
 }
 
 enum SpektraTransitionType {
@@ -1124,42 +1136,17 @@ message SpektraControlMessage {
     SpektraActionType action      = 4;  // Type of Action. Start/Resume/Stop
 }
 
-/************ @exclude  SHOW    *************/
-// Currently Work In Progress
-message ShowStepMessage {
-    uint32 step_index                       = 1;
-    uint32 target_index                     = 2; // The index for the action_type (where relevant)
-    SpektraStepActionType action_type       = 3; // Run Sequence / Show Theme / Start List / Pause / Stop & Off
-    uint32 max_random_target_index          = 4; // If non-zero, will randomly pick a target_index between target_index and max_random_target_index, inclusive
-    uint32 zone                             = 5; // Which Zone to activate the action_type on (or use 0xFF to send to All Zones)
-    uint32 max_output_level_limit           = 6; // For DMX / DALI, what should the maximum output be restricted to (e.g. 127 out of 255)
-    uint32 time_until_next_10ms             = 7; // How long to wait before the next step (in multiples of 10ms)
-}
-
-// Currently Work In Progress
-message SpektraShowMessage {
-    uint32 show_index               = 1;
-    uint32 number_of_steps          = 2;
-    repeated ShowStepMessage step   = 3; // Limited to 32 for this Message Type; you must use ExtendedSpektraShowMessage to configure more than 32 steps per Show
-    bool isRunning                  = 4;
-    bool isLooped                   = 5;
-    bool isRandom                   = 6;
-    bool isTemporary                = 7;
-    uint32 activations_remaining    = 8; // If isTemporary is true; this is how many times this Show can be activated [NOTE: Only 1 Temporary Show can exist at any given time]
-}
-
-// This Message must be used when the Show has more than 32 steps
-message ExtendedSpektraShowMessage {
-    uint32 show_index              = 1; // Which Show do these steps belong to?
-    uint32 step_index_offset       = 2; // 0 for the first ExtendedListMessage; offset by 32 for every ExtendedListMessage beyond the first
-    repeated ShowStepMessage step  = 3;
-}
-
-// Currently Work In Progress
-message SpektraShowControlMessage {
-    uint32 show_index               = 1; // Which Show
-    uint32 start_resume             = 2; // Action
-    uint32 gotoStep                 = 3; // Which step to start on if not 0
+message SpektraLiveMessage {
+    repeated SpektraTargetType type         = 1;    // Target Type Per Zone (Sequence/Theme etc)
+    repeated uint32 index                   = 2;    // Target Index Per Zone
+    repeated SpektraActionType action       = 3;    // Target Action Per Zone
+    // RAM Data Settings                
+    repeated uint32 step_index              = 4;    // Current Step
+	repeated uint32 step_index_direction    = 5;    // Forwards/Backwards (If Cycling)
+	repeated uint32 colour_index            = 6;    // Current State of Colour Index (Changes over time)
+	repeated uint32 colour_range            = 7;    // Current State of Colour Range (Changes based on Sequence Step)
+    repeated uint32 random_seq_type         = 8;    // Currently Active Random Sequence Type
+    repeated bool zone_active               = 9;    // Flag to show if any channel in this zone is active
 }
 
 /************ @exclude TRANSLATION  *************/
@@ -1349,6 +1336,7 @@ message FirmwareMetaMessage {
 // Reply from eDIDIO, or command from program. eDIDIO will check firmware before 'Apply'
 message FirmwareControlMessage {
 	FirmwareCommandType cmd  = 1;
+    bool firmware_is_backup  = 2; // Flag used for FW_READ, FW_VERIFY, and FW_CLONE. Does not work for FW_APPLY
 }
 
 // Chunk of firmware to be sent via a 256 byte payload
@@ -1506,7 +1494,9 @@ message EventMessage {
     }
 }
 
-// Every Message to and from the eDIDIO will be a populated EdidioMessage with a singular payload. The EdidioMessage itself is wrapped with a 0xCD Start Byte and 2 Bytes denoting Message Length of the form: [Length MSB, Length LSB]
+/* Every Message to and from the eDIDIO will be a populated EdidioMessage with a singular payload. 
+* The EdidioMessage itself is wrapped with a 0xCD Start Byte and 2 Bytes denoting total Message Length of the form: [Length MSB, Length LSB]
+*/
 message EdidioMessage
 {
     uint32 message_id                                         = 1; // As decided by the client. Will not be unique across clients.
@@ -1564,11 +1554,12 @@ message EdidioMessage
 		SystemMetaDataReadMessage metadata_read						= 52;
         DALIAddressingMessage dali_addressing_message               = 53;
         DALIRemappingMessage dali_remapping_message                 = 54;
-        SpektraShowControlMessage spektra_show_control_message      = 55;
-        SpektraShowMessage spektra_show_message                     = 56;
-        ExtendedSpektraShowMessage extended_spektra_show_message    = 57;
+        // Deprecated: SpektraShowControlMessage spektra_show_control_message      = 55;
+        // Deprecated: SpektraShowMessage spektra_show_message                     = 56;
+        // Deprecated: ExtendedSpektraShowMessage extended_spektra_show_message    = 57;
         RDMDiscoveryMessage rdm_discovery                           = 58;
         RDMDiscoveryReplyMessage rdm_discovery_reply                = 59;
         DALIIdentifyDuplicatesMessage dali_identify_duplicates      = 60;
+        SpektraLiveMessage spektra_live                             = 61;
     }
 }
