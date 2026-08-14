@@ -1,3 +1,5 @@
+eDS10_ProtocolBuffer.proto proto3_singular_msgs:1 # This was introduced in nanopb 0.4.0+. If it is omitted or set to false (default), every submessage will NOT be populated unless its corresponding "bool has_submessage" field is TRUE
+
 InputMultiMessage.inputs                               max_count:24                 # Maximum 24 Physical Inputs on a 9 Pole eDIDIO
 OutputMultiMessage.outputs                             max_count:8                  # Maximum 8 Physical Outputs on a 9 Pole eDIDIO
 DALIInputMultiMessage.inputs						   max_count:10                 # Maximum 10 per Message
@@ -13,7 +15,8 @@ RDMResponseMessage.data							       max_count:256, int_size:IS_8
 RDMDiscoveryReplyMessage.uid 						   max_count:128
 InputStateResponse.inputs                              int_size:IS_8, max_count:24 
 DiagnosticSystemInfoResponse.firmware                  max_size:16
-DiagnosticSystemInfoResponse.hardware                  max_size:16
+DiagnosticSystemInfoResponse.hardware                  max_size:64
+DiagnosticSystemInfoResponse.bootloader                max_size:16
 DiagnosticSystemInfoResponse.error                     max_size:16
 DiagnosticSystemInfoResponse.input_count               int_size:IS_8
 DiagnosticSystemInfoResponse.output_count              int_size:IS_8
@@ -29,7 +32,16 @@ DiagnosticSystemInfoResponse.spektra_static_count      int_size:IS_8
 DiagnosticSystemInfoResponse.proto_version             int_size:IS_32
 DiagnosticSystemInfoResponse.line_count                int_size:IS_8
 DiagnosticSystemInfoResponse.lines                     max_count:4
-DiagnosticSystemInfoResponse.vendor_id                  max_size:16
+DiagnosticSystemInfoResponse.vendor_id                 max_size:16
+DiagnosticSystemInfoResponse.commit_hash               max_size:48
+DiagnosticSystemInfoResponse.build_date                max_size:24
+ProfileAliases.profiles                                max_count:6, max_size:23
+InputAliases.inputs                                    max_count:24, max_size:23
+OutputAliases.outputs                                  max_count:8, max_size:23
+ListAliases.lists                                      max_count:32, max_size:23
+SensorAliases.sensors                                  max_count:40, max_size:23
+DaliInputAliases.dali_inputs                           max_count:40, max_size:23
+ScheduleAliases.schedules                              max_count:10, max_size:23
 AdminProjectPropertiesMessage.device_name              max_size:32
 AdminProjectPropertiesMessage.project_name             max_size:32
 AdminNetworkPropertiesMessage.IP                       max_size:32
@@ -43,7 +55,7 @@ AdminNetworkPropertiesMessage.DNS_Secondary			   max_size:32
 AdminDNSServersMessage.DNS_Primary                     max_size:32
 AdminDNSServersMessage.DNS_Secondary                   max_size:32
 AdminControllerLinesMessage.lines                      max_count:4
-AdminConfigStatusMessage.list_status                   int_size:IS_8, max_count:32  # 32 Lists
+AdminConfigStatusMessage.list_status                   int_size:IS_8, max_count:128  # 32 Lists (Increased to 128 for future expansion)
 AdminConfigStatusMessage.burn_in_status                int_size:IS_8, max_count:2
 AdminConfigStatusMessage.sensor_status                 int_size:IS_8, max_count:40  # 40 Sensors max (10 per Line, up to 4 Lines)
 AdminSecureLoginMessage.username                       max_size:32
@@ -63,12 +75,15 @@ SpektraCalendarOverviewMessage.days                    max_count:90             
 SpektraSettingMessage.channel_colours                  max_count:256                # This allows for up to a 256 channel device (where most are 3 or 4; e.g. RGB/RGBW)
 SpektraSettingMessage.channel_mapping				   max_count:10
 DMXTranslationObject.dali_array                        max_count:64, int_size:IS_8
-DMXProtocolTranslation.object                          max_count:3
+DMXProtocolTranslation.object                          max_count:3                  # 1 for a 4Pole, up to 3 on a 9Pole
 DTRPayloadMessage.dtr                                  max_count:3, int_size:IS_8
 DataMessage.data                                       max_count:256, int_size:IS_8
 DALIStatusFlagMessage.flags                            max_count:9, int_size:IS_8
 PayloadMessage.string_data                             max_size:256
 FirmwareMetaMessage.nonce                              max_count:12, int_size:IS_8
+FirmwareMetaMessage.signature                          max_size:256
+FirmwareMetaMessage.content_iv                         max_size:16
+FirmwareMetaMessage.wrapped_content_key                max_size:256
 DeviceStateMessage.list_states                         int_size:IS_8, max_count:32
 DeviceStateMessage.burn_in_states                      int_size:IS_8, max_count:2
 DeviceStateMessage.sensor_states                       int_size:IS_8, max_count:40
@@ -81,13 +96,89 @@ SystemMetaDataReadMessage.input_press_counter          max_count:24, int_size:IS
 SystemMetaDataReadMessage.list_start_counter           max_count:32, int_size:IS_16
 SystemMetaDataReadMessage.schedules_counter            max_count:10, int_size:IS_16
 DALIIdentifyDuplicatesMessage.possible_duplicates      max_count:128                # At most 64 Devices per Line, duplicated, would be (64 / 2 * 4)
-SpektraLiveMessage.type       						max_count:10
-SpektraLiveMessage.index                   			max_count:10
-SpektraLiveMessage.action              				max_count:10
-SpektraLiveMessage.step_index             		max_count:10
-SpektraLiveMessage.step_index_direction    	max_count:10
-SpektraLiveMessage.colour_index            		max_count:10
-SpektraLiveMessage.colour_range            		max_count:10
-SpektraLiveMessage.random_seq_type          max_count:10
-SpektraLiveMessage.zone_active					max_count:10
+SpektraLiveMessage.type       						   max_count:10
+SpektraLiveMessage.index                   			   max_count:10
+SpektraLiveMessage.action              				   max_count:10
+SpektraLiveMessage.step_index             		       max_count:10
+SpektraLiveMessage.step_index_direction    	           max_count:10
+SpektraLiveMessage.colour_index            		       max_count:10
+SpektraLiveMessage.colour_range            		       max_count:10
+SpektraLiveMessage.random_seq_type                     max_count:10
+SpektraLiveMessage.zone_active					       max_count:10
+AdminDMXLineParameters.dmx_slot_mapping_raw            max_size:1024
+SensorsQuery.sensors                                   max_count:20                 # Paginated: one response carries up to 20 of the device's 40 sensors (see SensorsQuery.offset/total_count). Halves the EdidioMessage union (1936->1352 B).
+SdDirListMessage.path                                  max_size:64
+SdDirListMessage.entries                               max_count:16
+SdDirEntry.name                                        max_size:13
+SdFileReadMessage.path                                 max_size:64
+SdFileReadMessage.data                                 max_size:512
+SdFileWriteMessage.data                                max_size:512
+SdFileControlMessage.path                              max_size:64
+SdLogStreamMessage.payload                             max_size:128
+# Event Stream v2 (tag 77). text 96 = lossless vs 128-byte text logger (user portion <= ~82).
+# raw 48 = headroom over the worst-case event log item.
+EventStreamMessage.text                                max_size:96
+EventStreamMessage.raw                                 max_size:48
+ConfigEvent.ip                                         max_size:4
+ConfigEvent.mac                                        max_size:6
+NetEvent.ip                                            max_size:4
+NetEvent.mac                                           max_size:6
+CommandEvent.ip                                        max_size:4
+CommandEvent.mac                                       max_size:6
+CrashLogMessage.crash_data                             max_size:128
+CrashLogMessage.task_hwm_data                          max_size:200
+CrashLogMessage.task_name                              max_size:8
+CrashLogMessage.firmware_version                       max_size:16
+CrashLogMessage.commit_hash                            max_size:48
+CrashLogMessage.build_date                             max_size:24
+SdLogPolicyEntry.directory                             max_size:16
+SdLogPolicyEntry.prefix                                max_size:6
+SdLogPolicyEntry.extension                             max_size:6
+SdLogPolicyMessage.entries                             max_count:11
+TaskMemoryInfo.name                                    max_size:13  # configMAX_TASK_NAME_LEN (12) + NUL
+AdminMemoryDiagnosticsMessage.tasks                    max_count:16 # 14 worst-case (main6 + udp + ntp + svr + 3 clients + sddp + bacnet) + 2 headroom
+AdminEthernetDiagnosticsMessage.events                 max_count:16 # Ring buffer of recent link-state transitions
+AdminEthernetDiagnosticsMessage.buckets                max_count:30 # 30 minutes of per-minute error histogram
+AdminEthernetDiagnosticsMessage.phy_regs_all           max_count:32, int_size:IS_16 # 32 Ethernet PHY register slots (16-bit values)
+AdminLineDiagnosticsMessage.lines                      max_count:4  # Up to 4 physical line slots on 6-pole / 8-pole variants (4-pole uses 2)
+LineDiagnosticEntry.line_index                         int_size:IS_8
+AdminDaliStatusMessage.lines                           max_count:4  # Up to 4 DALI line slots on 6-pole / 8-pole variants (4-pole uses 2)
+DaliLineStatus.line_index                              int_size:IS_8
+DaliLineStatus.device_count                            int_size:IS_8
+DaliLineStatus.fault_count                             int_size:IS_8
+DaliLineStatus.lowest_fault_address                    int_size:IS_8
+EthLinkEventRecord.bmsr                                int_size:IS_16
+EthLinkEventRecord.anlpar                              int_size:IS_16
+EthLinkEventRecord.aner                                int_size:IS_16
+EthLinkEventRecord.pscsr                               int_size:IS_16
+EthLinkEventRecord.resolved_speed_mbps                 int_size:IS_8
+AdminEthernetDiagnosticsMessage.bmcr                   int_size:IS_16
+AdminEthernetDiagnosticsMessage.bmsr                   int_size:IS_16
+AdminEthernetDiagnosticsMessage.phyid1                 int_size:IS_16
+AdminEthernetDiagnosticsMessage.phyid2                 int_size:IS_16
+AdminEthernetDiagnosticsMessage.anar                   int_size:IS_16
+AdminEthernetDiagnosticsMessage.anlpar                 int_size:IS_16
+AdminEthernetDiagnosticsMessage.aner                   int_size:IS_16
+AdminEthernetDiagnosticsMessage.mcsr                   int_size:IS_16
+AdminEthernetDiagnosticsMessage.scsir                  int_size:IS_16
+AdminEthernetDiagnosticsMessage.pscsr                  int_size:IS_16
+AdminEthernetDiagnosticsMessage.link_speed_mbps        int_size:IS_8
+ConnectionStatusMessage.connections                    max_count:3  # MAX_CONNECTIONS worst case (TCP without TLS)
+ConnectionInfo.ip_bytes                                max_size:4   # IPv4 address
+ConnectionInfo.mac_bytes                               max_size:6   # MAC address
 
+# RBAC per-role login secret provisioning
+AdminUserAccountMessage.secret                         max_size:32  # raw HMAC-SHA256 key
+
+# AdminTimeDiagnosticsMessage — RTC/NTP/DST observability snapshot.
+AdminTimeDiagnosticsMessage.ntp_server_hostname        max_size:33  # NTP server hostname (max 32 chars + NUL)
+AdminTimeDiagnosticsMessage.last_ntp_error             max_size:32  # ntp_error[32]
+AdminTimeDiagnosticsMessage.ntp_history                max_count:8  # NTP history ring length
+NtpSyncRecord.stratum                                  int_size:IS_8
+AdminTimeDiagnosticsMessage.last_ntp_stratum           int_size:IS_8
+# Device provisioning (per-device PKI identity)
+ProvisionGetStateMessage.uid                           max_size:12   # 96-bit unique device ID
+ProvisionGetStateMessage.fingerprint                   max_size:32   # SHA-256 of leaf cert
+ProvisionInstallIdentityMessage.data                   max_size:256  # chunk payload (matches DataMessage; keeps EdidioMessage union small)
+ProvisionProofOfPossessionMessage.nonce                max_size:32
+ProvisionProofOfPossessionMessage.signature            max_size:256  # RSA-2048 signature
