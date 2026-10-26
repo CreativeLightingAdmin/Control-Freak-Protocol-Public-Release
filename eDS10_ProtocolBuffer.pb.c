@@ -171,6 +171,9 @@ PB_BIND(SpektraThemeConfigMessage, SpektraThemeConfigMessage, 2)
 PB_BIND(SpektraReadMessage, SpektraReadMessage, AUTO)
 
 
+PB_BIND(SpektraManifestMessage, SpektraManifestMessage, 2)
+
+
 PB_BIND(SpektraControlMessage, SpektraControlMessage, AUTO)
 
 
@@ -282,10 +285,22 @@ PB_BIND(NtpSyncRecord, NtpSyncRecord, AUTO)
 PB_BIND(AdminTimeDiagnosticsMessage, AdminTimeDiagnosticsMessage, 2)
 
 
+PB_BIND(AdminStorageDiagnosticsMessage, AdminStorageDiagnosticsMessage, 2)
+
+
 PB_BIND(DaliLineStatus, DaliLineStatus, AUTO)
 
 
 PB_BIND(AdminDaliStatusMessage, AdminDaliStatusMessage, AUTO)
+
+
+PB_BIND(AdminWifiSettingsMessage, AdminWifiSettingsMessage, AUTO)
+
+
+PB_BIND(AdminWifiStatusMessage, AdminWifiStatusMessage, AUTO)
+
+
+PB_BIND(AdminWifiDiagnosticsMessage, AdminWifiDiagnosticsMessage, AUTO)
 
 
 PB_BIND(AdminMessage, AdminMessage, 2)
@@ -436,6 +451,14 @@ PB_BIND(ProvisionDecommissionMessage, ProvisionDecommissionMessage, AUTO)
 
 
 PB_BIND(EdidioMessage, EdidioMessage, 2)
+
+
+
+
+
+
+
+
 
 
 

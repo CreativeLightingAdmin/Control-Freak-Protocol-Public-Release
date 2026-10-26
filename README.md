@@ -1,6 +1,10 @@
 # Control Freak Protocol (Public Release)
 
-The public release of the Control Freak Protocol Buffer definition and compiled libraries for the **eDIDIO Series 10** lighting controller.
+The public release of the Control Freak Protocol Buffer definition and compiled libraries for the **eDIDIO Series 10** lighting controllers (and the ADDICT V3 handheld, which speaks a subset of it).
+
+**API reference: https://creativelightingadmin.github.io/Control-Freak-Protocol-Public-Release/**. Every message, what the device replies, the login role it needs, worked examples and the full field reference. It is also in this repo as `eDIDIOS10_API.html`.
+
+Current protocol version: **1.3.2**. See [CHANGELOG.md](CHANGELOG.md) for what each version added.
 
 Protocol Buffers make it easy to share a single protocol definition and compile it automatically for many languages. If you're new to them, Google's overview is here:
 https://protobuf.dev/
@@ -16,7 +20,8 @@ https://protobuf.dev/
 | `eDS10_ProtocolBuffer.pb.c` / `.pb.h` | Pre-compiled C library (nanopb) |
 | `eDS10_ProtocolBuffer_pb.js` | Pre-compiled JavaScript library |
 | `eDS10_ProtocolBuffer_pb2.py` | Pre-compiled Python library |
-| `eDIDIOS10_API_V1.3.1.html` | Full API reference (open in a browser) |
+| `eDIDIOS10_API.html` | Full API reference: open it in a browser, or use the [online copy](https://creativelightingadmin.github.io/Control-Freak-Protocol-Public-Release/) |
+| `CHANGELOG.md` | What each protocol version added |
 
 The compiled libraries are included, so for most languages you can use them directly without running the compiler yourself.
 
@@ -40,6 +45,8 @@ Every message is a single `EdidioMessage` populated with exactly one payload fie
 ## Examples
 
 The frames below are the exact bytes to send over the socket, wrapper included.
+
+You can also generate them yourself. **SpektraPlus → Device Tools → Message Generator** builds DALI, DMX and external-trigger messages and gives the framed bytes in decimal or hex, ready to paste into another system.
 
 ### DALI — set address 5 (line 1) to arc level 200
 
@@ -102,7 +109,7 @@ frame = bytes([0xCD]) + len(msg).to_bytes(2, "big") + msg
 print(frame.hex(" "))   # cd 00 0e 08 01 92 01 09 08 01 10 05 30 00 48 c8 01
 ```
 
-See `eDIDIOS10_API_V1.3.1.html` for the full list of messages, enums and fields.
+See the [API reference](https://creativelightingadmin.github.io/Control-Freak-Protocol-Public-Release/) for every message, enum and field, and its "Requests and replies" section for what each request returns.
 
 ## Compiling the protocol files yourself
 
@@ -131,4 +138,8 @@ protoc --java_out=.   eDS10_ProtocolBuffer.proto               # Java
 
 ## Protocol version
 
-The protocol version is exposed as a compile-time constant in every generated language (e.g. C: `ProtocolVersion_PROTOCOL_VERSION_CURRENT`). It is byte-packed as `0x00_MM_mm_PP` — for example `0x010301` = **1.3.1**.
+The protocol version is exposed as a compile-time constant in every generated language (e.g. C: `ProtocolVersion_PROTOCOL_VERSION_CURRENT`). It is byte-packed as `0x00_MM_mm_PP`, so this release, 1.3.2, is `0x010302`.
+
+- **Reading a device's version:** a device reports the version it was built against in `DiagnosticSystemInfoResponse.proto_version`. Ask with a `diag_message` of type `DIAGNOSTIC_SYSTEM_INFO`.
+- **Gating a feature:** check `proto_version >= 0x010302`, using the version [CHANGELOG.md](CHANGELOG.md) says added the feature. A device that reports 0 predates the field.
+- **Compatibility:** fields are only ever added, never renumbered or removed. Older devices ignore fields they don't know.

@@ -105,6 +105,9 @@ SpektraLiveMessage.colour_index            		       max_count:10
 SpektraLiveMessage.colour_range            		       max_count:10
 SpektraLiveMessage.random_seq_type                     max_count:10
 SpektraLiveMessage.zone_active					       max_count:10
+
+SpektraManifestMessage.index                           max_count:144                # the sequence table's size; themes use the first 10
+SpektraManifestMessage.crc                             max_count:144                # 1:1 with 'index'
 AdminDMXLineParameters.dmx_slot_mapping_raw            max_size:1024
 SensorsQuery.sensors                                   max_count:20                 # Paginated: one response carries up to 20 of the device's 40 sensors (see SensorsQuery.offset/total_count). Halves the EdidioMessage union (1936->1352 B).
 SdDirListMessage.path                                  max_size:64
@@ -176,9 +179,41 @@ AdminTimeDiagnosticsMessage.last_ntp_error             max_size:32  # ntp_error[
 AdminTimeDiagnosticsMessage.ntp_history                max_count:8  # NTP history ring length
 NtpSyncRecord.stratum                                  int_size:IS_8
 AdminTimeDiagnosticsMessage.last_ntp_stratum           int_size:IS_8
+
+# AdminStorageDiagnosticsMessage — storage bus + NOR + SD health snapshot.
+# The narrowed fields all come from one-byte values in the firmware, so IS_8
+# cannot truncate a value the device can actually produce. The abort and stall
+# counters stay 32-bit: they are uint32_t and saturate at 0xFFFFFFFF.
+AdminStorageDiagnosticsMessage.nor_fault_last_status   int_size:IS_8  # NOR status register 1 byte
+AdminStorageDiagnosticsMessage.nor_presence_fault      int_size:IS_8  # presence-fault bitmask, 2 bits used
+AdminStorageDiagnosticsMessage.sd_last_probe_r1        int_size:IS_8  # SD R1 response, one byte per spec 7.3.2.1
+AdminStorageDiagnosticsMessage.sd_consecutive_health_failures   int_size:IS_8
+AdminStorageDiagnosticsMessage.sd_recovery_consecutive_failures int_size:IS_8
+AdminStorageDiagnosticsMessage.sd_recovery_failures_needed      int_size:IS_8  # capped at 160
+
+# CID register (SD spec 5.2). Sizes are fixed by the register layout, not chosen:
+# OID is exactly 2 ASCII chars and PNM exactly 5, each + NUL.
+AdminStorageDiagnosticsMessage.sd_cid_oem_id           max_size:3   # OID, 2 chars + NUL
+AdminStorageDiagnosticsMessage.sd_cid_product_name     max_size:6   # PNM, 5 chars + NUL
+AdminStorageDiagnosticsMessage.sd_cid_manufacturer_id  int_size:IS_8  # MID, one byte
+AdminStorageDiagnosticsMessage.sd_cid_revision_major   int_size:IS_8  # BCD nibble, 0-15
+AdminStorageDiagnosticsMessage.sd_cid_revision_minor   int_size:IS_8  # BCD nibble, 0-15
+AdminStorageDiagnosticsMessage.sd_cid_mdt_year         int_size:IS_16 # 2000..2255, will not fit IS_8
+AdminStorageDiagnosticsMessage.sd_cid_mdt_month        int_size:IS_8  # 1-12 in spec, raw so 0-15 possible
 # Device provisioning (per-device PKI identity)
 ProvisionGetStateMessage.uid                           max_size:12   # 96-bit unique device ID
 ProvisionGetStateMessage.fingerprint                   max_size:32   # SHA-256 of leaf cert
 ProvisionInstallIdentityMessage.data                   max_size:256  # chunk payload (matches DataMessage; keeps EdidioMessage union small)
 ProvisionProofOfPossessionMessage.nonce                max_size:32
 ProvisionProofOfPossessionMessage.signature            max_size:256  # RSA-2048 signature
+# Wi-Fi (ADDICT V3)
+AdminWifiSettingsMessage.station_ssid                 max_size:33
+AdminWifiSettingsMessage.station_password             max_size:33
+AdminWifiStatusMessage.station_ssid                   max_size:33
+AdminWifiStatusMessage.station_ip                     max_size:16
+AdminWifiStatusMessage.ap_ssid                        max_size:33
+AdminWifiStatusMessage.ap_ip                          max_size:16
+AdminWifiStatusMessage.station_mac                    max_size:18
+AdminWifiStatusMessage.ap_mac                         max_size:18
+AdminWifiDiagnosticsMessage.station_bssid             max_size:18
+AdminWifiDiagnosticsMessage.coprocessor_version       max_size:48
